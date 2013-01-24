@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TicTacToad-business-logic-build-rules" default="all-businesslogic">
+
+    <property name="TALK" value="false"/>
+
+    <property name="businesslogic.libs.test" value="${businesslogic.root}/libs/test"/>
+    <property name="businesslogic.src.test" value="${businesslogic.root}/src/test/java"/>
+    <property name="businesslogic.src.main" value="${businesslogic.root}/src/main/java"/>
+    <property name="businesslogic.test.output" value="${businesslogic.root}/bin/classes/test"/>
+    <property name="businesslogic.main.output" value="${businesslogic.root}/bin/classes/main"/>
+
+    <path id="classpath.businesslogic.base">
+        <pathelement path="${java.class.path}"/>
+        <pathelement path="${businesslogic.main.output}"/>
+    </path>
+    <path id="classpath.businesslogic.test">
+        <pathelement location="${businesslogic.libs.test}/junit-4.11.jar"/>
+        <pathelement location="${businesslogic.libs.test}/jmock-2.6.0-RC2/jmock-2.6.0-RC2.jar"/>
+        <pathelement location="${businesslogic.libs.test}/jmock-2.6.0-RC2/jmock-junit4-2.6.0-RC2.jar"/>
+        <pathelement path="${businesslogic.test.output}"/>
+        <path refid="classpath.businesslogic.base"/>
+    </path>
+
+    <target name="compile-main" description="Compile production code">
+        <mkdir dir="${businesslogic.main.output}"/>
+        <javac srcdir="${businesslogic.src.main}"
+               destdir="${businesslogic.main.output}"
+               verbose="${TALK}"
+               includeantruntime="false">
+            <classpath refid="classpath.businesslogic.test"/>
+        </javac>
+    </target>
+
+    <target name="clean-compile-main" description="Clean the compiled production code">
+        <delete verbose="${TALK}">
+            <fileset dir="${businesslogic.main.output}">
+                <include name="**/*.class"/>
+            </fileset>
+        </delete>
+    </target>
+
+    <target name="compile-tests" description="Compile unit tests" depends="compile-main">
+        <mkdir dir="${businesslogic.test.output}"/>
+        <javac srcdir="${businesslogic.src.test}"
+               destdir="${businesslogic.test.output}"
+               verbose="${TALK}"
+               includeantruntime="false">
+            <classpath refid="classpath.businesslogic.test"/>
+        </javac>
+    </target>
+
+    <target name="clean-compile-tests" description="Clean the compiled unit tests">
+        <delete verbose="${TALK}">
+            <fileset dir="${businesslogic.test.output}">
+                <include name="**/*.class"/>
+            </fileset>
+        </delete>
+    </target>
+
+    <target name="unittest" description="Execute unit tests" depends="compile-tests">
+        <junit printsummary="yes" haltonfailure="no" showoutput="yes" failureproperty="test.failure">
+            <formatter type="plain" usefile="false"/>
+            <classpath refid="classpath.businesslogic.test"/>
+            <batchtest fork="yes">
+                <fileset dir="${businesslogic.src.test}">
+                    <include name="**/*Tests.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+        <fail if="test.failure"/>
+    </target>
+
+    <target name="all-businesslogic" depends="unittest"/>
+    <target name="clean-businesslogic" depends="clean-compile-tests,clean-compile-main"/>
+
+</project>
