@@ -25,6 +25,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     @Override
     public void onResume() {
+        super.onResume();
         rendersView.render();
     }
 
