@@ -2,12 +2,13 @@ package com.chewielouie.textadventure;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.TextView;
 
-public class TextAdventureActivity extends Activity {
+public class TextAdventureActivity extends Activity implements TextAdventureView {
     private RendersView rendersView;
 
     public TextAdventureActivity() {
-        super();
+        this.rendersView = new TextAdventurePresenter( this, new BasicModel() );
     }
 
     public TextAdventureActivity( RendersView r ) {
@@ -25,6 +26,11 @@ public class TextAdventureActivity extends Activity {
     @Override
     public void onResume() {
         rendersView.render();
+    }
+
+    public void showRoomText( String s ) {
+        final TextView t = (TextView)findViewById( R.id.main_text_output );
+        t.setText( s );
     }
 }
 
