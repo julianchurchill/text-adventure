@@ -13,21 +13,18 @@ public class TextAdventurePresenterTests {
     private Mockery mockery = new Mockery();
 
     @Test
-    public void failing_test() {
-        fail("Fail");
+    public void render_tells_view_to_show_room_text_from_model() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+
+        mockery.checking( new Expectations() {{
+            allowing( model ).currentRoomText();
+            will( returnValue( "some room text" ) );
+            oneOf( view ).showRoomText( "some room text" );
+        }});
+
+        p.render();
     }
-
-    //@Test
-    //public void should_tell_view_about_board_when_rendering() {
-        //final PlayGameView view = mockery.mock( PlayGameView.class );
-        //final Board board = mockery.mock( Board.class );
-        //mockery.checking( new Expectations() {{
-            //oneOf( view ).displayBoard( board );
-            //ignoring( board );
-        //}});
-        //PlayGamePresenter p = new PlayGamePresenter( board, view );
-
-        //p.render();
-    //}
 }
 
