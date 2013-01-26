@@ -8,13 +8,15 @@ Backlog
 
 - Show a simple text view with a basic intro message
 
-- Begin in a more complex startin room with four exits, north, south, east and west.
+- Begin in a more complex starting room with four exits, north, south, east and west.
   - Allow the user to move north, south, east and west by tapping a quadrant of the screen.
   - The text should update to have a different description when the user moves.
   - The text should indicate the valid exits.
   - This map should be cross shaped with the start at the centre, total 5 rooms.
-* Add interface to the model - moveThroughExit( String ), causes room text to change for valid exits.
+* Add interface to the model - moveThroughExit( String ), causes unique location id to change for valid exits.
+* Add test to check that current location text changes when unique loc id does
 * What to do for invalid exits, ignore/throw exception?
+** Also confirms that unique loc id does not change for invalid exits.
 
 - Make a more complicated map
 
@@ -26,7 +28,7 @@ Backlog
 
 - Add other monsters, npcs
 
-- Add other verbs - attack, steal, eat, drink, dance
+- Add other verbs - attack, eat, drink, dance, take, drop, give, talk
 
 - Present verbs in a more accessible format - a wheel?
 
