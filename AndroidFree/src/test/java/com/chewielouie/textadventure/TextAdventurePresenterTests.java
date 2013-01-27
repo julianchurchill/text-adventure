@@ -50,5 +50,54 @@ public class TextAdventurePresenterTests {
 
         p.render();
     }
+
+    @Test
+    public void move_through_exit_calls_model() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        mockery.checking( new Expectations() {{
+            oneOf( model ).moveThroughExit( "north" );
+            ignoring( model );
+            ignoring( view );
+        }});
+
+        p.moveThroughExit( "north" );
+    }
+
+    @Test
+    public void move_through_exit_updates_view_with_location_description() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        mockery.checking( new Expectations() {{
+            allowing( model ).currentLocationDescription();
+            will( returnValue( "some room text" ) );
+            ignoring( model );
+            oneOf( view ).showLocationDescription( "some room text" );
+            ignoring( view );
+        }});
+
+        p.moveThroughExit( "north" );
+    }
+
+    @Test
+    public void move_through_exit_updates_view_with_location_exits() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        final List<String> exits = new ArrayList<String>();
+        exits.add( "north" );
+        exits.add( "south" );
+        mockery.checking( new Expectations() {{
+            allowing( model ).currentLocationExits();
+            will( returnValue( exits ) );
+            ignoring( model );
+            oneOf( view ).showLocationExits( exits );
+            ignoring( view );
+        }});
+
+        p.moveThroughExit( "north" );
+    }
 }
 

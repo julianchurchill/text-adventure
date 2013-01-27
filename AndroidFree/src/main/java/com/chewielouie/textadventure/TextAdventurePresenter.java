@@ -14,5 +14,10 @@ public class TextAdventurePresenter implements RendersView {
         view.showLocationDescription( model.currentLocationDescription() );
         view.showLocationExits( model.currentLocationExits() );
     }
+
+    public void moveThroughExit( String exitLabel ) {
+        model.moveThroughExit( exitLabel );
+        render();
+    }
 }
 
