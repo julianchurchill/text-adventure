@@ -2,6 +2,8 @@ package com.chewielouie.textadventure;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
@@ -58,6 +60,38 @@ public class BasicModelTests {
         model.moveThroughExit( "not an exit" );
 
         assertEquals( loc1, model.currentLocation() );
+    }
+
+    @Test
+    public void current_location_description_is_taken_from_the_current_location() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final String description = "description of this location";
+        mockery.checking( new Expectations() {{
+            oneOf( location ).description();
+            will( returnValue( description ) );
+            ignoring( location );
+        }});
+        BasicModel model = new BasicModel();
+        model.addLocation( location );
+
+        assertEquals( description, model.currentLocationDescription() );
+    }
+
+    @Test
+    public void current_location_exits_are_taken_from_the_current_location() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final List<String> exits = new ArrayList<String>();
+        exits.add( "north" );
+        exits.add( "south" );
+        mockery.checking( new Expectations() {{
+            oneOf( location ).exits();
+            will( returnValue( exits ) );
+            ignoring( location );
+        }});
+        BasicModel model = new BasicModel();
+        model.addLocation( location );
+
+        assertEquals( exits, model.currentLocationExits() );
     }
 }
 

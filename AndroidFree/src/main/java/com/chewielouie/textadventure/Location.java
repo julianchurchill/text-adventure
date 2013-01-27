@@ -1,6 +1,8 @@
 package com.chewielouie.textadventure;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Location implements ModelLocation {
@@ -25,6 +27,14 @@ public class Location implements ModelLocation {
 
     public String id() {
         return this.id;
+    }
+
+    public List<String> exits() {
+        return new ArrayList<String>();
+    }
+
+    public String description() {
+        return "";
     }
 }
 

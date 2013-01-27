@@ -10,7 +10,7 @@ public class BasicModel implements TextAdventureModel {
     ModelLocation currentLocation = new NullLocation();
 
     public String currentLocationDescription() {
-        return "Some basic room text, please add more!";
+        return currentLocation().description();
     }
 
     public void addLocation( ModelLocation location ) {
@@ -30,7 +30,7 @@ public class BasicModel implements TextAdventureModel {
     }
 
     public List<String> currentLocationExits() {
-        return new ArrayList<String>();
+        return currentLocation().exits();
     }
 }
 
