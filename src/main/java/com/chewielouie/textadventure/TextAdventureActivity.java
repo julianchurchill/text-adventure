@@ -30,7 +30,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         rendersView.render();
     }
 
-    public void showRoomText( String s ) {
+    public void showLocationDescription( String s ) {
         final TextView t = (TextView)findViewById( R.id.main_text_output );
         t.setText( s );
     }

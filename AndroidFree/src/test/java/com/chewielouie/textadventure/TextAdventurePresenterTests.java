@@ -15,16 +15,16 @@ public class TextAdventurePresenterTests {
     private Mockery mockery = new Mockery();
 
     @Test
-    public void render_tells_view_to_show_room_text_from_model() {
+    public void render_tells_view_to_show_location_description_from_model() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         TextAdventurePresenter p = new TextAdventurePresenter( view, model );
 
         mockery.checking( new Expectations() {{
-            allowing( model ).currentRoomText();
+            allowing( model ).currentLocationDescription();
             will( returnValue( "some room text" ) );
             ignoring( model );
-            oneOf( view ).showRoomText( "some room text" );
+            oneOf( view ).showLocationDescription( "some room text" );
             ignoring( view );
         }});
 

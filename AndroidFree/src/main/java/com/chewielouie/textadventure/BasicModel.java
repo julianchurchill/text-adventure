@@ -1,13 +1,15 @@
 package com.chewielouie.textadventure;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BasicModel implements TextAdventureModel {
     Map<String,ModelLocation> locations = new HashMap<String,ModelLocation>();
     ModelLocation currentLocation = new NullLocation();
 
-    public String currentRoomText() {
+    public String currentLocationDescription() {
         return "Some basic room text, please add more!";
     }
 
@@ -25,6 +27,10 @@ public class BasicModel implements TextAdventureModel {
 
     public ModelLocation currentLocation() {
         return currentLocation;
+    }
+
+    public List<String> currentLocationExits() {
+        return new ArrayList<String>();
     }
 }
 
