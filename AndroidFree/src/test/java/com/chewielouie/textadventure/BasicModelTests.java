@@ -20,6 +20,17 @@ public class BasicModelTests {
     }
 
     @Test
+    public void first_location_added_is_the_starting_location() {
+        Location loc1 = new Location( "loc1" );
+        Location loc2 = new Location( "loc2" );
+        BasicModel model = new BasicModel();
+        model.addLocation( loc1 );
+        model.addLocation( loc2 );
+
+        assertEquals( loc1, model.currentLocation() );
+    }
+
+    @Test
     public void leaving_a_location_changes_the_current_location() {
         Location loc1 = new Location( "loc1" ) {{
             addExit( "north", "loc2" );
@@ -34,7 +45,19 @@ public class BasicModelTests {
         assertEquals( loc2, model.currentLocation() );
     }
 
-    //public void first_room_added_is_the_starting_room() {
-    //public void leaving_a_room_by_an_invalid_exit_does_not_change_the_current_room() {
+    @Test
+    public void leaving_a_location_by_an_invalid_exit_does_not_change_the_current_location() {
+        Location loc1 = new Location( "loc1" ) {{
+            addExit( "north", "loc2" );
+        }};
+        Location loc2 = new Location( "loc2" );
+        BasicModel model = new BasicModel();
+        model.addLocation( loc1 );
+        model.addLocation( loc2 );
+
+        model.moveThroughExit( "not an exit" );
+
+        assertEquals( loc1, model.currentLocation() );
+    }
 }
 
