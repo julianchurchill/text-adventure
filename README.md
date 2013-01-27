@@ -13,9 +13,10 @@ Backlog
   - The text should update to have a different description when the user moves.
   - The text should indicate the valid exits.
   - This map should be cross shaped with the start at the centre, total 5 rooms.
-- Presenter when rendering should pass list of available actions for current location
-  - These should include directions {north, south etc...} if available
-  - Activity receives touch events, translates to top4 available actions and calls presenter to do the action
+- Presenter when rendering should pass list of available exits for current location to the view
+  - view.displayLocation( String locationDescription, List<String> exits )
+- Activity receives touch events, translates to available direction and calls presenter to do the movement
+  - presenter.moveThroughExit( String exit )
 
 - Make a more complicated map
 
