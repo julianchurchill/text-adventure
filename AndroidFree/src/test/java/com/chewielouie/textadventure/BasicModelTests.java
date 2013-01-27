@@ -23,8 +23,12 @@ public class BasicModelTests {
 
     @Test
     public void first_location_added_is_the_starting_location() {
-        Location loc1 = new Location( "loc1" );
-        Location loc2 = new Location( "loc2" );
+        final ModelLocation loc1 = mockery.mock( ModelLocation.class, "loc1" );
+        final ModelLocation loc2 = mockery.mock( ModelLocation.class, "loc2" );
+        mockery.checking( new Expectations() {{
+            ignoring( loc1 );
+            ignoring( loc2 );
+        }});
         BasicModel model = new BasicModel();
         model.addLocation( loc1 );
         model.addLocation( loc2 );
@@ -34,10 +38,18 @@ public class BasicModelTests {
 
     @Test
     public void leaving_a_location_changes_the_current_location() {
-        Location loc1 = new Location( "loc1" ) {{
-            addExit( "north", "loc2" );
-        }};
-        Location loc2 = new Location( "loc2" );
+        final ModelLocation loc1 = mockery.mock( ModelLocation.class, "loc1" );
+        final ModelLocation loc2 = mockery.mock( ModelLocation.class, "loc2" );
+        mockery.checking( new Expectations() {{
+            oneOf( loc1 ).exitable( "north" );
+            will( returnValue( true ) );
+            oneOf( loc1 ).exitDestinationFor( "north" );
+            will( returnValue( "loc2" ) );
+            ignoring( loc1 );
+            allowing( loc2 ).id();
+            will( returnValue( "loc2" ) );
+            ignoring( loc2 );
+        }});
         BasicModel model = new BasicModel();
         model.addLocation( loc1 );
         model.addLocation( loc2 );
@@ -49,13 +61,14 @@ public class BasicModelTests {
 
     @Test
     public void leaving_a_location_by_an_invalid_exit_does_not_change_the_current_location() {
-        Location loc1 = new Location( "loc1" ) {{
-            addExit( "north", "loc2" );
-        }};
-        Location loc2 = new Location( "loc2" );
+        final ModelLocation loc1 = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            oneOf( loc1 ).exitable( "not an exit" );
+            will( returnValue( false ) );
+            ignoring( loc1 );
+        }});
         BasicModel model = new BasicModel();
         model.addLocation( loc1 );
-        model.addLocation( loc2 );
 
         model.moveThroughExit( "not an exit" );
 
