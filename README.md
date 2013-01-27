@@ -6,15 +6,12 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 Backlog
 =======
 
-- Show a simple text view with a basic intro message
-
 - Begin in a more complex starting room with four exits, north, south, east and west.
   - Allow the user to move north, south, east and west by tapping a quadrant of the screen.
   - The text should update to have a different description when the user moves.
   - The text should indicate the valid exits.
-  - This map should be cross shaped with the start at the centre, total 5 rooms.
-- Activity receives touch events, translates to available direction and calls presenter to do the movement
-  - presenter.moveThroughExit( String exit )  
+  - This map should be cross shaped with the start at the centre, total 5 rooms. This must be hard coded setup in the activity.
+[TEST] - Activity receives touch events, translates to available direction and calls presenter to do the movement
 <br/>
 - Make a more complicated map
 

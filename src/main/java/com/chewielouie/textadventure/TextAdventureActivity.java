@@ -3,17 +3,25 @@ package com.chewielouie.textadventure;
 import java.util.List;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.widget.TextView;
 
 public class TextAdventureActivity extends Activity implements TextAdventureView {
     private RendersView rendersView;
+    private UserActionHandler userActionHandler;
+    private List<String> exits;
 
     public TextAdventureActivity() {
         this.rendersView = new TextAdventurePresenter( this, new BasicModel() );
+        //this.userActionHandler = this.rendersView;
     }
 
     public TextAdventureActivity( RendersView r ) {
         this.rendersView = r;
+    }
+
+    public TextAdventureActivity( UserActionHandler u ) {
+        this.userActionHandler = u;
     }
 
     /** Called when the activity is first created. */
@@ -36,6 +44,13 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     public void showLocationExits( List<String> exits ) {
+        this.exits = exits;
+    }
+
+    @Override
+    public boolean dispatchTouchEvent( MotionEvent e ) {
+        userActionHandler.moveThroughExit( exits.get( 0 ) );
+        return super.dispatchTouchEvent( e );
     }
 }
 
