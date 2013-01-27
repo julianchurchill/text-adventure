@@ -13,7 +13,6 @@ Backlog
   - The text should update to have a different description when the user moves.
   - The text should indicate the valid exits.
   - This map should be cross shaped with the start at the centre, total 5 rooms.
-- Tests for Location description and exits
 - Activity receives touch events, translates to available direction and calls presenter to do the movement
   - presenter.moveThroughExit( String exit )  
 <br/>
