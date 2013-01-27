@@ -13,6 +13,13 @@ public class BasicModelTests {
     private Mockery mockery = new Mockery();
 
     @Test
+    public void asking_for_the_current_location_before_one_is_set_returns_a_default_null_location() {
+        BasicModel model = new BasicModel();
+
+        assertTrue( model.currentLocation() instanceof NullLocation );
+    }
+
+    @Test
     public void leaving_a_location_changes_the_current_location() {
         Location loc1 = new Location( "loc1" ) {{
             addExit( "north", "loc2" );

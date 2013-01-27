@@ -3,7 +3,7 @@ package com.chewielouie.textadventure;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Location {
+public class Location implements ModelLocation {
     private String id;
     private Map<String,String> exits = new HashMap<String, String>();
 

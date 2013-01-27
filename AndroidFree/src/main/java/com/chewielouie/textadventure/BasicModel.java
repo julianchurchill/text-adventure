@@ -4,15 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BasicModel implements TextAdventureModel {
-    Map<String,Location> locations = new HashMap<String,Location>();
-    Location currentLocation = null;
+    Map<String,ModelLocation> locations = new HashMap<String,ModelLocation>();
+    ModelLocation currentLocation = new NullLocation();
 
     public String currentRoomText() {
         return "Some basic room text, please add more!";
     }
 
-    public void addLocation( Location location ) {
-        if( currentLocation == null )
+    public void addLocation( ModelLocation location ) {
+        if( currentLocation instanceof NullLocation )
             currentLocation = location;
         locations.put( location.id(), location );
     }
@@ -23,7 +23,7 @@ public class BasicModel implements TextAdventureModel {
                     currentLocation.exitDestinationFor( exitLabel ) );
     }
 
-    public Location currentLocation() {
+    public ModelLocation currentLocation() {
         return currentLocation;
     }
 }
