@@ -13,10 +13,10 @@ Backlog
   - The text should update to have a different description when the user moves.
   - The text should indicate the valid exits.
   - This map should be cross shaped with the start at the centre, total 5 rooms.
-- Presenter when rendering should pass list of available exits for current location to the view
-  - view.displayLocation( String locationDescription, List<String> exits )
+- BasicModel should return list of current location exits
 - Activity receives touch events, translates to available direction and calls presenter to do the movement
   - presenter.moveThroughExit( String exit )  
+- Model::currentRoomText() should be renamed to currentLocationDescription()
 <br/>
 - Make a more complicated map
 

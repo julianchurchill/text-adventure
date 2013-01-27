@@ -12,6 +12,7 @@ public class TextAdventurePresenter implements RendersView {
 
     public void render() {
         view.showRoomText( model.currentRoomText() );
+        view.showLocationExits( model.currentLocationExits() );
     }
 }
 
