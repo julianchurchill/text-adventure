@@ -13,8 +13,9 @@ Backlog
   - The text should update to have a different description when the user moves.
   - The text should indicate the valid exits.
   - This map should be cross shaped with the start at the centre, total 5 rooms.
-- Activity receives touch events, translates to {north, south, east, west}, calls model
-  - Or presenter? - if presenter then presenter also renders view, if direct from activity to model then model has to notify listeners i.e. the presenter which must _then_ render the view).
+- Presenter when rendering should pass list of available actions for current location
+  - These should include directions {north, south etc...} if available
+  - Activity receives touch events, translates to top4 available actions and calls presenter to do the action
 
 - Make a more complicated map
 
