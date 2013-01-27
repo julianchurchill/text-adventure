@@ -13,10 +13,8 @@ Backlog
   - The text should update to have a different description when the user moves.
   - The text should indicate the valid exits.
   - This map should be cross shaped with the start at the centre, total 5 rooms.
-* Add interface to the model - moveThroughExit( String ), causes unique location id to change for valid exits.
-* Add test to check that current location text changes when unique loc id does
-* What to do for invalid exits, ignore/throw exception?
-** Also confirms that unique loc id does not change for invalid exits.
+- Activity receives touch events, translates to {north, south, east, west}, calls model
+  - Or presenter? - if presenter then presenter also renders view, if direct from activity to model then model has to notify listeners i.e. the presenter which must _then_ render the view).
 
 - Make a more complicated map
 
