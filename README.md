@@ -16,8 +16,8 @@ Backlog
 - Presenter when rendering should pass list of available exits for current location to the view
   - view.displayLocation( String locationDescription, List<String> exits )
 - Activity receives touch events, translates to available direction and calls presenter to do the movement
-  - presenter.moveThroughExit( String exit )
-
+  - presenter.moveThroughExit( String exit )  
+<br/>
 - Make a more complicated map
 
 - Add objects that can be examined to rooms
