@@ -1,5 +1,6 @@
 package com.chewielouie.textadventure;
 
+import java.util.List;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -32,6 +33,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void showRoomText( String s ) {
         final TextView t = (TextView)findViewById( R.id.main_text_output );
         t.setText( s );
+    }
+
+    public void showLocationExits( List<String> exits ) {
     }
 }
 
