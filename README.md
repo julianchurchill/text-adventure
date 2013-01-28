@@ -12,6 +12,7 @@ Backlog
   - The text should indicate the valid exits.
   - This map should be cross shaped with the start at the centre, total 5 rooms. This must be hard coded setup in the activity.
 [TEST] - Activity receives touch events, translates to available direction and calls presenter to do the movement
+[TEST] - Activity only acts on press touch events, not release
 [TEST] - Activity uses exit labels on onscreen direction labels
 <br/>
 - Make a more complicated map

@@ -159,13 +159,52 @@ public class TextAdventureActivityTests {
         assertEquals( "fourth exit", t.getText().toString() );
     }
 
-    //@Test
-    //public void top_direction_label_is_blank_if_no_exits() {
-    //@Test
-    //public void bottom_direction_label_is_blank_if_less_than_two_exits() {
-    //@Test
-    //public void right_direction_label_is_blank_if_less_than_three_exits() {
-    //@Test
-    //public void left_direction_label_is_blank_if_less_than_four_exits() {
+    @Test
+    public void top_direction_label_is_blank_if_no_exits() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        List<String> exits = new ArrayList<String>();
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.top_direction_label );
+        assertEquals( "", t.getText().toString() );
+    }
+
+    @Test
+    public void bottom_direction_label_is_blank_if_less_than_two_exits() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        List<String> exits = new ArrayList<String>();
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.bottom_direction_label );
+        assertEquals( "", t.getText().toString() );
+    }
+
+    @Test
+    public void right_direction_label_is_blank_if_less_than_three_exits() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        List<String> exits = new ArrayList<String>();
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.right_direction_label );
+        assertEquals( "", t.getText().toString() );
+    }
+
+    @Test
+    public void left_direction_label_is_blank_if_less_than_four_exits() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        List<String> exits = new ArrayList<String>();
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.left_direction_label );
+        assertEquals( "", t.getText().toString() );
+    }
 }
 

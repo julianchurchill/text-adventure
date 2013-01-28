@@ -74,14 +74,17 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void showLocationExits( List<String> exits ) {
         this.exits = exits;
 
-        if( exits.size() > 0 )
-            top_direction_label.setText( exits.get( 0 ) );
-        if( exits.size() > 1 )
-            bottom_direction_label.setText( exits.get( 1 ) );
-        if( exits.size() > 2 )
-            right_direction_label.setText( exits.get( 2 ) );
-        if( exits.size() > 3 )
-            left_direction_label.setText( exits.get( 3 ) );
+        setDirectionLabelToNthExit( top_direction_label, 0 );
+        setDirectionLabelToNthExit( bottom_direction_label, 1 );
+        setDirectionLabelToNthExit( right_direction_label, 2 );
+        setDirectionLabelToNthExit( left_direction_label, 3 );
+    }
+
+    private void setDirectionLabelToNthExit( TextView dir_label, int nthExit ) {
+        if( exits.size() > nthExit )
+            dir_label.setText( exits.get( nthExit ) );
+        else
+            dir_label.setText( "" );
     }
 
     @Override
