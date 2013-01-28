@@ -1,38 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:padding="6dip"
     android:background="#000000">
 <TextView
     android:id="@+id/top_direction_label"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:gravity="center"
     android:text="North"
     />
 <TextView
     android:id="@+id/left_direction_label"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_below="@id/top_direction_label"
+    android:gravity="center"
     android:text="West"
     />
 <TextView
-    android:id="@+id/main_text_output"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="Hello!"
-    />
-<TextView
     android:id="@+id/right_direction_label"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:layout_alignParentRight="true"
+    android:layout_below="@id/top_direction_label"
+    android:gravity="center"
     android:text="East"
     />
 <TextView
     android:id="@+id/bottom_direction_label"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:gravity="center"
     android:text="South"
     />
-</LinearLayout>
+<TextView
+    android:id="@+id/main_text_output"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/top_direction_label"
+    android:layout_above="@id/bottom_direction_label"
+    android:layout_toRightOf="@id/left_direction_label"
+    android:layout_toLeftOf="@id/right_direction_label"
+    android:text="Hello!"
+    />
+</RelativeLayout>
 
