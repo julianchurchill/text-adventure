@@ -1,6 +1,6 @@
 package com.chewielouie.textadventure;
 
-public class TextAdventurePresenter implements RendersView {
+public class TextAdventurePresenter implements RendersView, UserActionHandler {
     private final TextAdventureView view;
     private final TextAdventureModel model;
 
