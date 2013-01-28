@@ -8,11 +8,8 @@ Backlog
 
 - Begin in a more complex starting room with four exits, north, south, east and west.
   - Allow the user to move north, south, east and west by tapping a quadrant of the screen.
-  - The text should update to have a different description when the user moves.
-  - The text should indicate the valid exits.
-  - This map should be cross shaped with the start at the centre, total 5 rooms. This must be hard coded setup in the activity.
+[TEST] - Activity uses exit labels on onscreen direction labels. What do we do when 'west' is the only direction - it still ends up on the top label but should be on the left label. Should we provide a direction hint to the activity (e.g. N,S,E,W,DONTCARE) to help it place the directions?
 [TEST] - Activity receives touch events, translates to available direction and calls presenter to do the movement
-[TEST] - Activity uses exit labels on onscreen direction labels
 <br/>
 - Make a more complicated map
 
