@@ -1,5 +1,6 @@
 package com.chewielouie.textadventure;
 
+import java.util.ArrayList;
 import java.util.List;
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,7 +10,7 @@ import android.widget.TextView;
 public class TextAdventureActivity extends Activity implements TextAdventureView {
     private RendersView rendersView;
     private UserActionHandler userActionHandler;
-    private List<String> exits;
+    private List<String> exits = new ArrayList<String>();
 
     public TextAdventureActivity() {
         this.rendersView = new TextAdventurePresenter( this, new BasicModel() );
@@ -49,7 +50,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     @Override
     public boolean dispatchTouchEvent( MotionEvent e ) {
-        userActionHandler.moveThroughExit( exits.get( 0 ) );
+        if( exits.size() > 0 )
+            userActionHandler.moveThroughExit( exits.get( 0 ) );
         return super.dispatchTouchEvent( e );
     }
 }

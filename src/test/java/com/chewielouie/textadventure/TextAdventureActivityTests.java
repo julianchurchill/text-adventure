@@ -18,6 +18,14 @@ public class TextAdventureActivityTests {
 
     private Mockery mockery = new Mockery();
 
+    private MotionEvent createMotionEvent( float x, float y ) {
+        long downTime = 0;
+        long eventTime = 0;
+        int action = 0;
+        int metaState = 0;
+        return MotionEvent.obtain( downTime, eventTime, action, x, y, metaState );
+    }
+
     @Test
     public void renders_the_presenter_on_resume() {
         final RendersView r = mockery.mock( RendersView.class );
@@ -60,14 +68,9 @@ public class TextAdventureActivityTests {
         exits.add( "second exit" );
         activity.showLocationExits( exits );
 
-        long downTime = 0;
-        long eventTime = 0;
-        int action = 0;
         float x = 0;
         float y = 0;
-        int metaState = 0;
-        activity.dispatchTouchEvent( MotionEvent.obtain( downTime, eventTime,
-                   action, x, y, metaState ) );
+        activity.dispatchTouchEvent( createMotionEvent( x, y ) );
 
         mockery.assertIsSatisfied();
     }
@@ -76,7 +79,21 @@ public class TextAdventureActivityTests {
     //public void touch_event_in_right_quadrant_causes_third_exit_to_be_used() {
     //public void touch_event_in_left_quadrant_causes_fourth_exit_to_be_used() {
 
-    //public void touch_event_in_top_quadrant_with_no_exits_is_ignored() {
+    @Test
+    public void touch_event_in_top_quadrant_with_no_exits_is_ignored() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        mockery.checking( new Expectations() {{
+            never( handler ).moveThroughExit( with( any( String.class ) ) );
+            ignoring( handler );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+
+        float x = 0;
+        float y = 0;
+        activity.dispatchTouchEvent( createMotionEvent( x, y ) );
+
+        mockery.assertIsSatisfied();
+    }
     //public void touch_event_in_second_quadrant_with_only_one_exit_is_ignored() {
     //public void touch_event_in_third_quadrant_with_only_two_exits_is_ignored() {
     //public void touch_event_in_fourth_quadrant_with_only_three_exits_is_ignored() {
