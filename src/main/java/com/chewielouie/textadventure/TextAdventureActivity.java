@@ -89,7 +89,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     @Override
     public boolean dispatchTouchEvent( MotionEvent e ) {
-        if( exits.size() > 0 )
+        if( e.getActionMasked() == MotionEvent.ACTION_UP && exits.size() > 0 )
             userActionHandler.moveThroughExit( exits.get( 0 ) );
         return super.dispatchTouchEvent( e );
     }

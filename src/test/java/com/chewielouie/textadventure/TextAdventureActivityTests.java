@@ -18,10 +18,18 @@ public class TextAdventureActivityTests {
 
     private Mockery mockery = new Mockery();
 
-    private MotionEvent createMotionEvent( float x, float y ) {
+    private MotionEvent createUpMotionEvent( float x, float y ) {
         long downTime = 0;
         long eventTime = 0;
-        int action = 0;
+        int action = MotionEvent.ACTION_UP;
+        int metaState = 0;
+        return MotionEvent.obtain( downTime, eventTime, action, x, y, metaState );
+    }
+
+    private MotionEvent createDownMotionEvent( float x, float y ) {
+        long downTime = 0;
+        long eventTime = 0;
+        int action = MotionEvent.ACTION_DOWN;
         int metaState = 0;
         return MotionEvent.obtain( downTime, eventTime, action, x, y, metaState );
     }
@@ -56,6 +64,25 @@ public class TextAdventureActivityTests {
     }
 
     @Test
+    public void down_touch_event_is_ignored() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        mockery.checking( new Expectations() {{
+            never( handler ).moveThroughExit( with( any( String.class ) ) );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<String> exits = new ArrayList<String>();
+        exits.add( "first exit" );
+        exits.add( "second exit" );
+        activity.showLocationExits( exits );
+
+        activity.dispatchTouchEvent( createDownMotionEvent( 0, 0 ) );
+
+        mockery.assertIsSatisfied();
+    }
+
+    @Test
     public void touch_event_in_top_quadrant_causes_first_exit_to_be_used() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
         mockery.checking( new Expectations() {{
@@ -72,7 +99,7 @@ public class TextAdventureActivityTests {
 
         float x = 0;
         float y = 0;
-        activity.dispatchTouchEvent( createMotionEvent( x, y ) );
+        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
 
         mockery.assertIsSatisfied();
     }
@@ -86,13 +113,12 @@ public class TextAdventureActivityTests {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
         mockery.checking( new Expectations() {{
             never( handler ).moveThroughExit( with( any( String.class ) ) );
-            ignoring( handler );
         }});
         TextAdventureActivity activity = new TextAdventureActivity( handler );
 
         float x = 0;
         float y = 0;
-        activity.dispatchTouchEvent( createMotionEvent( x, y ) );
+        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
 
         mockery.assertIsSatisfied();
     }
