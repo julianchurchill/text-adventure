@@ -17,7 +17,18 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private TextView left_direction_label;
 
     public TextAdventureActivity() {
-        this.rendersView = new TextAdventurePresenter( this, new BasicModel() );
+        Location loc1 = new Location( "loc1", "You are in an empty wasteland that stretches for miles and miles." );
+        loc1.addExit( "East", "loc2" );
+        Location loc2 = new Location( "loc2", "You are in a busy town. There is a clock tower to the north." );
+        loc2.addExit( "North", "loc3" );
+        loc2.addExit( "West", "loc1" );
+        Location loc3 = new Location( "loc3", "You stand before a mighty clock tower. The clock goes TICK!" );
+        loc3.addExit( "South", "loc2" );
+        BasicModel model = new BasicModel();
+        model.addLocation( loc1 );
+        model.addLocation( loc2 );
+        model.addLocation( loc3 );
+        this.rendersView = new TextAdventurePresenter( this, model );
         //this.userActionHandler = this.rendersView;
     }
 
