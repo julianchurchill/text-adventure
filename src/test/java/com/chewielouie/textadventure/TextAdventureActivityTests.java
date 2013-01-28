@@ -63,6 +63,8 @@ public class TextAdventureActivityTests {
             ignoring( handler );
         }});
         TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
         List<String> exits = new ArrayList<String>();
         exits.add( "first exit" );
         exits.add( "second exit" );
@@ -97,5 +99,73 @@ public class TextAdventureActivityTests {
     //public void touch_event_in_second_quadrant_with_only_one_exit_is_ignored() {
     //public void touch_event_in_third_quadrant_with_only_two_exits_is_ignored() {
     //public void touch_event_in_fourth_quadrant_with_only_three_exits_is_ignored() {
+
+    @Test
+    public void top_direction_label_uses_first_exit_text() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        List<String> exits = new ArrayList<String>();
+        exits.add( "first exit" );
+        exits.add( "second exit" );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.top_direction_label );
+        assertEquals( "first exit", t.getText().toString() );
+    }
+
+    @Test
+    public void bottom_direction_label_uses_second_exit_text() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        List<String> exits = new ArrayList<String>();
+        exits.add( "first exit" );
+        exits.add( "second exit" );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.bottom_direction_label );
+        assertEquals( "second exit", t.getText().toString() );
+    }
+
+    @Test
+    public void right_direction_label_uses_third_exit_text() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        List<String> exits = new ArrayList<String>();
+        exits.add( "first exit" );
+        exits.add( "second exit" );
+        exits.add( "third exit" );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.right_direction_label );
+        assertEquals( "third exit", t.getText().toString() );
+    }
+
+    @Test
+    public void left_direction_label_uses_fourth_exit_text() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        List<String> exits = new ArrayList<String>();
+        exits.add( "first exit" );
+        exits.add( "second exit" );
+        exits.add( "third exit" );
+        exits.add( "fourth exit" );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.left_direction_label );
+        assertEquals( "fourth exit", t.getText().toString() );
+    }
+
+    //@Test
+    //public void top_direction_label_is_blank_if_no_exits() {
+    //@Test
+    //public void bottom_direction_label_is_blank_if_less_than_two_exits() {
+    //@Test
+    //public void right_direction_label_is_blank_if_less_than_three_exits() {
+    //@Test
+    //public void left_direction_label_is_blank_if_less_than_four_exits() {
 }
 
