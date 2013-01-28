@@ -28,8 +28,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         model.addLocation( loc1 );
         model.addLocation( loc2 );
         model.addLocation( loc3 );
-        this.rendersView = new TextAdventurePresenter( this, model );
-        //this.userActionHandler = this.rendersView;
+        TextAdventurePresenter p = new TextAdventurePresenter( this, model );
+        this.rendersView = p;
+        this.userActionHandler = p;
     }
 
     public TextAdventureActivity( RendersView r ) {
