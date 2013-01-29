@@ -29,14 +29,14 @@ public class LocationTests {
     @Test
     public void added_exit_makes_the_exit_exitable() {
         Location l = new Location( "", "" );
-        l.addExit( "north", "loc2" );
+        l.addExit( new Exit( "north", "loc2" ) );
         assertTrue( l.exitable( new Exit( "north", "loc2" ) ) );
     }
 
     @Test
     public void exits_that_havent_been_added_are_not_exitable() {
         Location l = new Location( "", "" );
-        l.addExit( "north", "loc2" );
+        l.addExit( new Exit( "north", "loc2" ) );
         assertFalse( l.exitable( new Exit( "south", "loc1" ) ) );
     }
 
@@ -44,7 +44,7 @@ public class LocationTests {
     public void exit_destination_is_retrievable() {
         Exit north = new Exit( "north", "loc2" );
         Location l = new Location( "", "" );
-        l.addExit( "north", "loc2" );
+        l.addExit( new Exit( "north", "loc2" ) );
         assertEquals( "loc2", l.exitDestinationFor( north ) );
     }
 
@@ -55,8 +55,8 @@ public class LocationTests {
         exits.add( new Exit( "south", "loc3" ) );
 
         Location l = new Location( "", "" );
-        l.addExit( "north", "loc2" );
-        l.addExit( "south", "loc3" );
+        l.addExit( new Exit( "north", "loc2" ) );
+        l.addExit( new Exit( "south", "loc3" ) );
 
         assertEquals( exits, l.exits() );
     }

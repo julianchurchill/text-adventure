@@ -13,8 +13,8 @@ public class Location implements ModelLocation {
         this.description = description;
     }
 
-    public void addExit( String exitLabel, String destinationId ) {
-        exits.add( new Exit( exitLabel, destinationId ) );
+    public void addExit( Exit exit ) {
+        exits.add( exit );
     }
 
     public boolean exitable( Exit exit ) {

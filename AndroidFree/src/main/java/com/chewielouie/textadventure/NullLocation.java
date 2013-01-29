@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NullLocation implements ModelLocation {
-    public void addExit( String exitLabel, String destinationId ) {
+    public void addExit( Exit exit ) {
     }
 
     public boolean exitable( Exit exit ) {
