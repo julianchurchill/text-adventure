@@ -62,7 +62,7 @@ public class TextAdventurePresenterTests {
             ignoring( view );
         }});
 
-        p.moveThroughExit( "north" );
+        p.moveThroughExit( new Exit( "north" ) );
     }
 
     @Test
@@ -78,7 +78,7 @@ public class TextAdventurePresenterTests {
             ignoring( view );
         }});
 
-        p.moveThroughExit( "north" );
+        p.moveThroughExit( new Exit( "north" ) );
     }
 
     @Test
@@ -97,7 +97,7 @@ public class TextAdventurePresenterTests {
             ignoring( view );
         }});
 
-        p.moveThroughExit( "north" );
+        p.moveThroughExit( new Exit( "north" ) );
     }
 }
 

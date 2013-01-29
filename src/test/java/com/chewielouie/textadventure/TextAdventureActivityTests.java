@@ -67,7 +67,7 @@ public class TextAdventureActivityTests {
     public void down_touch_event_is_ignored() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
         mockery.checking( new Expectations() {{
-            never( handler ).moveThroughExit( with( any( String.class ) ) );
+            never( handler ).moveThroughExit( with( any( Exit.class ) ) );
         }});
         TextAdventureActivity activity = new TextAdventureActivity( handler );
         activity.onCreate( null );
@@ -85,15 +85,16 @@ public class TextAdventureActivityTests {
     @Test
     public void touch_event_in_top_quadrant_causes_first_exit_to_be_used() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        final Exit exit = new Exit( "first exit" );
         mockery.checking( new Expectations() {{
-            oneOf( handler ).moveThroughExit( "first exit" );
+            oneOf( handler ).moveThroughExit( exit );
             ignoring( handler );
         }});
         TextAdventureActivity activity = new TextAdventureActivity( handler );
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "first exit" ) );
+        exits.add( exit );
         exits.add( new Exit( "second exit" ) );
         activity.showLocationExits( exits );
 
@@ -112,7 +113,7 @@ public class TextAdventureActivityTests {
     public void touch_event_in_top_quadrant_with_no_exits_is_ignored() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
         mockery.checking( new Expectations() {{
-            never( handler ).moveThroughExit( with( any( String.class ) ) );
+            never( handler ).moveThroughExit( with( any( Exit.class ) ) );
         }});
         TextAdventureActivity activity = new TextAdventureActivity( handler );
 
