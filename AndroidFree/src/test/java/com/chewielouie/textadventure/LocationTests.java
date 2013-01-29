@@ -49,15 +49,15 @@ public class LocationTests {
 
     @Test
     public void all_valid_exits_are_retrieveable() {
-        List<String> exits = new ArrayList<String>();
-        exits.add( "north" );
-        exits.add( "south" );
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "north", "loc2" ) );
+        exits.add( new Exit( "south", "loc3" ) );
 
         Location l = new Location( "", "" );
         l.addExit( "north", "loc2" );
         l.addExit( "south", "loc3" );
 
-        assertEquals( exits, l.exits() );
+        assertEquals( exits, l.exitsNew() );
     }
 }
 

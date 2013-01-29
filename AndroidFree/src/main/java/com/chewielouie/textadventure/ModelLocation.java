@@ -8,6 +8,7 @@ public interface ModelLocation {
     public String exitDestinationFor( String exitLabel );
     public String id();
     public List<String> exits();
+    public List<Exit> exitsNew();
     public String description();
 }
 

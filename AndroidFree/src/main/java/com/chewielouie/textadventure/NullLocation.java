@@ -23,6 +23,10 @@ public class NullLocation implements ModelLocation {
         return new ArrayList<String>();
     }
 
+    public List<Exit> exitsNew() {
+        return new ArrayList<Exit>();
+    }
+
     public String description() {
         return "";
     }
