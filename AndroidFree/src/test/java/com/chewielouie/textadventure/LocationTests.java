@@ -30,14 +30,14 @@ public class LocationTests {
     public void added_exit_makes_the_exit_exitable() {
         Location l = new Location( "", "" );
         l.addExit( "north", "loc2" );
-        assertTrue( l.exitable( "north" ) );
+        assertTrue( l.exitable( new Exit( "north", "loc2" ) ) );
     }
 
     @Test
     public void exits_that_havent_been_added_are_not_exitable() {
         Location l = new Location( "", "" );
         l.addExit( "north", "loc2" );
-        assertFalse( l.exitable( "south" ) );
+        assertFalse( l.exitable( new Exit( "south", "loc1" ) ) );
     }
 
     @Test

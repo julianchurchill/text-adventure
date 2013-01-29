@@ -19,27 +19,13 @@ public class Location implements ModelLocation {
 
     public boolean exitable( Exit exit ) {
         for( Exit e : exits )
-            if( e == exit )
-                return true;
-        return false;
-    }
-
-    public boolean exitable( String exitLabel ) {
-        for( Exit e : exits )
-            if( e.label() == exitLabel )
+            if( e.equals( exit ) )
                 return true;
         return false;
     }
 
     public String exitDestinationFor( Exit exit ) {
         return exit.destination();
-    }
-
-    public String exitDestinationFor( String exitLabel ) {
-        for( Exit e : exits )
-            if( e.label() == exitLabel )
-                return e.destination();
-        return "";
     }
 
     public String id() {
