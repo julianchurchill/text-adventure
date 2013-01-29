@@ -19,10 +19,10 @@ public class BasicModel implements TextAdventureModel {
         locations.put( location.id(), location );
     }
 
-    public void moveThroughExit( String exitLabel ) {
-        if( currentLocation.exitable( exitLabel ) )
+    public void moveThroughExit( Exit exit ) {
+        if( currentLocation.exitable( exit.label() ) )
             currentLocation = locations.get(
-                    currentLocation.exitDestinationFor( exitLabel ) );
+                    currentLocation.exitDestinationFor( exit.label() ) );
     }
 
     public ModelLocation currentLocation() {

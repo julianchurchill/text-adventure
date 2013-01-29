@@ -54,7 +54,7 @@ public class BasicModelTests {
         model.addLocation( loc1 );
         model.addLocation( loc2 );
 
-        model.moveThroughExit( "north" );
+        model.moveThroughExit( new Exit( "north" ) );
 
         assertEquals( loc2, model.currentLocation() );
     }
@@ -70,7 +70,7 @@ public class BasicModelTests {
         BasicModel model = new BasicModel();
         model.addLocation( loc1 );
 
-        model.moveThroughExit( "not an exit" );
+        model.moveThroughExit( new Exit( "not an exit" ) );
 
         assertEquals( loc1, model.currentLocation() );
     }

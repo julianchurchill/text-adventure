@@ -56,13 +56,14 @@ public class TextAdventurePresenterTests {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        final Exit north = new Exit( "north" );
         mockery.checking( new Expectations() {{
-            oneOf( model ).moveThroughExit( "north" );
+            oneOf( model ).moveThroughExit( north );
             ignoring( model );
             ignoring( view );
         }});
 
-        p.moveThroughExit( new Exit( "north" ) );
+        p.moveThroughExit( north );
     }
 
     @Test
@@ -86,8 +87,9 @@ public class TextAdventurePresenterTests {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        final Exit north = new Exit( "north" );
         final List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "north" ) );
+        exits.add( north );
         exits.add( new Exit( "south" ) );
         mockery.checking( new Expectations() {{
             allowing( model ).currentLocationExits();
@@ -97,7 +99,7 @@ public class TextAdventurePresenterTests {
             ignoring( view );
         }});
 
-        p.moveThroughExit( new Exit( "north" ) );
+        p.moveThroughExit( north );
     }
 }
 
