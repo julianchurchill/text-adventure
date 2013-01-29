@@ -7,6 +7,10 @@ public class NullLocation implements ModelLocation {
     public void addExit( String exitLabel, String destinationId ) {
     }
 
+    public boolean exitable( Exit exit ) {
+        return false;
+    }
+
     public boolean exitable( String exitLabel ) {
         return false;
     }

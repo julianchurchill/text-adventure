@@ -20,7 +20,7 @@ public class BasicModel implements TextAdventureModel {
     }
 
     public void moveThroughExit( Exit exit ) {
-        if( currentLocation.exitable( exit.label() ) )
+        if( currentLocation.exitable( exit ) )
             currentLocation = locations.get(
                     currentLocation.exitDestinationFor( exit.label() ) );
     }

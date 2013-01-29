@@ -17,6 +17,13 @@ public class Location implements ModelLocation {
         exits.add( new Exit( exitLabel, destinationId ) );
     }
 
+    public boolean exitable( Exit exit ) {
+        for( Exit e : exits )
+            if( e == exit )
+                return true;
+        return false;
+    }
+
     public boolean exitable( String exitLabel ) {
         for( Exit e : exits )
             if( e.label() == exitLabel )

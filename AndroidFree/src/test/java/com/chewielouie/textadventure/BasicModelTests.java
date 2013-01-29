@@ -40,8 +40,9 @@ public class BasicModelTests {
     public void leaving_a_location_changes_the_current_location() {
         final ModelLocation loc1 = mockery.mock( ModelLocation.class, "loc1" );
         final ModelLocation loc2 = mockery.mock( ModelLocation.class, "loc2" );
+        final Exit north = new Exit( "north" );
         mockery.checking( new Expectations() {{
-            oneOf( loc1 ).exitable( "north" );
+            oneOf( loc1 ).exitable( north );
             will( returnValue( true ) );
             oneOf( loc1 ).exitDestinationFor( "north" );
             will( returnValue( "loc2" ) );
@@ -54,7 +55,7 @@ public class BasicModelTests {
         model.addLocation( loc1 );
         model.addLocation( loc2 );
 
-        model.moveThroughExit( new Exit( "north" ) );
+        model.moveThroughExit( north );
 
         assertEquals( loc2, model.currentLocation() );
     }
@@ -62,15 +63,16 @@ public class BasicModelTests {
     @Test
     public void leaving_a_location_by_an_invalid_exit_does_not_change_the_current_location() {
         final ModelLocation loc1 = mockery.mock( ModelLocation.class );
+        final Exit notAValidExit = new Exit( "north" );
         mockery.checking( new Expectations() {{
-            oneOf( loc1 ).exitable( "not an exit" );
+            oneOf( loc1 ).exitable( notAValidExit );
             will( returnValue( false ) );
             ignoring( loc1 );
         }});
         BasicModel model = new BasicModel();
         model.addLocation( loc1 );
 
-        model.moveThroughExit( new Exit( "not an exit" ) );
+        model.moveThroughExit( notAValidExit );
 
         assertEquals( loc1, model.currentLocation() );
     }
