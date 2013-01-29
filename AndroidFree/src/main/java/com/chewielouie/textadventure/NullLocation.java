@@ -15,6 +15,10 @@ public class NullLocation implements ModelLocation {
         return false;
     }
 
+    public String exitDestinationFor( Exit exit ) {
+        return "";
+    }
+
     public String exitDestinationFor( String exitLabel ) {
         return "";
     }

@@ -44,7 +44,7 @@ public class BasicModelTests {
         mockery.checking( new Expectations() {{
             oneOf( loc1 ).exitable( north );
             will( returnValue( true ) );
-            oneOf( loc1 ).exitDestinationFor( "north" );
+            oneOf( loc1 ).exitDestinationFor( north );
             will( returnValue( "loc2" ) );
             ignoring( loc1 );
             allowing( loc2 ).id();

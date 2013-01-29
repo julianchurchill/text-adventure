@@ -31,6 +31,10 @@ public class Location implements ModelLocation {
         return false;
     }
 
+    public String exitDestinationFor( Exit exit ) {
+        return exit.destination();
+    }
+
     public String exitDestinationFor( String exitLabel ) {
         for( Exit e : exits )
             if( e.label() == exitLabel )

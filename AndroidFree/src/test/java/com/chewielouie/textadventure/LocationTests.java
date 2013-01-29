@@ -42,9 +42,10 @@ public class LocationTests {
 
     @Test
     public void exit_destination_is_retrievable() {
+        Exit north = new Exit( "north", "loc2" );
         Location l = new Location( "", "" );
         l.addExit( "north", "loc2" );
-        assertEquals( "loc2", l.exitDestinationFor( "north" ) );
+        assertEquals( "loc2", l.exitDestinationFor( north ) );
     }
 
     @Test
