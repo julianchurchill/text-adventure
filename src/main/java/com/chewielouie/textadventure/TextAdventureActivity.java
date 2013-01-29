@@ -11,6 +11,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private RendersView rendersView;
     private UserActionHandler userActionHandler;
     private List<String> exits = new ArrayList<String>();
+    private List<Exit> exitsNew = new ArrayList<Exit>();
     private TextView top_direction_label;
     private TextView bottom_direction_label;
     private TextView right_direction_label;
@@ -71,8 +72,12 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         t.setText( s );
     }
 
+    // Delete this once the method is replaced with Exit in View interface
     public void showLocationExits( List<String> exits ) {
-        this.exits = exits;
+    }
+
+    public void showLocationExitsNew( List<Exit> exits ) {
+        this.exitsNew = exits;
 
         setDirectionLabelToNthExit( top_direction_label, 0 );
         setDirectionLabelToNthExit( bottom_direction_label, 1 );
@@ -81,16 +86,16 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void setDirectionLabelToNthExit( TextView dir_label, int nthExit ) {
-        if( exits.size() > nthExit )
-            dir_label.setText( exits.get( nthExit ) );
+        if( exitsNew.size() > nthExit )
+            dir_label.setText( exitsNew.get( nthExit ).label() );
         else
             dir_label.setText( "" );
     }
 
     @Override
     public boolean dispatchTouchEvent( MotionEvent e ) {
-        if( e.getActionMasked() == MotionEvent.ACTION_UP && exits.size() > 0 )
-            userActionHandler.moveThroughExit( exits.get( 0 ) );
+        if( e.getActionMasked() == MotionEvent.ACTION_UP && exitsNew.size() > 0 )
+            userActionHandler.moveThroughExit( exitsNew.get( 0 ).label() );
         return super.dispatchTouchEvent( e );
     }
 }

@@ -72,10 +72,10 @@ public class TextAdventureActivityTests {
         TextAdventureActivity activity = new TextAdventureActivity( handler );
         activity.onCreate( null );
 
-        List<String> exits = new ArrayList<String>();
-        exits.add( "first exit" );
-        exits.add( "second exit" );
-        activity.showLocationExits( exits );
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit" ) );
+        activity.showLocationExitsNew( exits );
 
         activity.dispatchTouchEvent( createDownMotionEvent( 0, 0 ) );
 
@@ -92,10 +92,10 @@ public class TextAdventureActivityTests {
         TextAdventureActivity activity = new TextAdventureActivity( handler );
         activity.onCreate( null );
 
-        List<String> exits = new ArrayList<String>();
-        exits.add( "first exit" );
-        exits.add( "second exit" );
-        activity.showLocationExits( exits );
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit" ) );
+        activity.showLocationExitsNew( exits );
 
         float x = 0;
         float y = 0;
@@ -131,10 +131,10 @@ public class TextAdventureActivityTests {
         TextAdventureActivity activity = new TextAdventureActivity();
         activity.onCreate( null );
 
-        List<String> exits = new ArrayList<String>();
-        exits.add( "first exit" );
-        exits.add( "second exit" );
-        activity.showLocationExits( exits );
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit" ) );
+        activity.showLocationExitsNew( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.top_direction_label );
         assertEquals( "first exit", t.getText().toString() );
@@ -145,10 +145,10 @@ public class TextAdventureActivityTests {
         TextAdventureActivity activity = new TextAdventureActivity();
         activity.onCreate( null );
 
-        List<String> exits = new ArrayList<String>();
-        exits.add( "first exit" );
-        exits.add( "second exit" );
-        activity.showLocationExits( exits );
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit" ) );
+        activity.showLocationExitsNew( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.bottom_direction_label );
         assertEquals( "second exit", t.getText().toString() );
@@ -159,11 +159,11 @@ public class TextAdventureActivityTests {
         TextAdventureActivity activity = new TextAdventureActivity();
         activity.onCreate( null );
 
-        List<String> exits = new ArrayList<String>();
-        exits.add( "first exit" );
-        exits.add( "second exit" );
-        exits.add( "third exit" );
-        activity.showLocationExits( exits );
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit" ) );
+        exits.add( new Exit( "third exit" ) );
+        activity.showLocationExitsNew( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.right_direction_label );
         assertEquals( "third exit", t.getText().toString() );
@@ -174,12 +174,12 @@ public class TextAdventureActivityTests {
         TextAdventureActivity activity = new TextAdventureActivity();
         activity.onCreate( null );
 
-        List<String> exits = new ArrayList<String>();
-        exits.add( "first exit" );
-        exits.add( "second exit" );
-        exits.add( "third exit" );
-        exits.add( "fourth exit" );
-        activity.showLocationExits( exits );
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit" ) );
+        exits.add( new Exit( "third exit" ) );
+        exits.add( new Exit( "fourth exit" ) );
+        activity.showLocationExitsNew( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.left_direction_label );
         assertEquals( "fourth exit", t.getText().toString() );
@@ -190,8 +190,8 @@ public class TextAdventureActivityTests {
         TextAdventureActivity activity = new TextAdventureActivity();
         activity.onCreate( null );
 
-        List<String> exits = new ArrayList<String>();
-        activity.showLocationExits( exits );
+        List<Exit> exits = new ArrayList<Exit>();
+        activity.showLocationExitsNew( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.top_direction_label );
         assertEquals( "", t.getText().toString() );
@@ -202,8 +202,8 @@ public class TextAdventureActivityTests {
         TextAdventureActivity activity = new TextAdventureActivity();
         activity.onCreate( null );
 
-        List<String> exits = new ArrayList<String>();
-        activity.showLocationExits( exits );
+        List<Exit> exits = new ArrayList<Exit>();
+        activity.showLocationExitsNew( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.bottom_direction_label );
         assertEquals( "", t.getText().toString() );
@@ -214,8 +214,8 @@ public class TextAdventureActivityTests {
         TextAdventureActivity activity = new TextAdventureActivity();
         activity.onCreate( null );
 
-        List<String> exits = new ArrayList<String>();
-        activity.showLocationExits( exits );
+        List<Exit> exits = new ArrayList<Exit>();
+        activity.showLocationExitsNew( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.right_direction_label );
         assertEquals( "", t.getText().toString() );
@@ -226,8 +226,8 @@ public class TextAdventureActivityTests {
         TextAdventureActivity activity = new TextAdventureActivity();
         activity.onCreate( null );
 
-        List<String> exits = new ArrayList<String>();
-        activity.showLocationExits( exits );
+        List<Exit> exits = new ArrayList<Exit>();
+        activity.showLocationExitsNew( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.left_direction_label );
         assertEquals( "", t.getText().toString() );

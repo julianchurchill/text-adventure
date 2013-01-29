@@ -15,6 +15,7 @@ Backlog
     - [TEST] Change Model to retrieve exits as Exit list.
     - [TEST] Change Presenter and View to pass exits as Exit list.
     - [TEST] Add 'direction hint' to Exit object so Activity can use it to place N,S,E,W appropriately.
+    - [TEST] UserActionHandler.moveThroughExit should take an Exit object
   - [TEST] Activity receives touch events, translates to available direction and calls presenter to do the movement
 <br/>
 - Make a more complicated map
