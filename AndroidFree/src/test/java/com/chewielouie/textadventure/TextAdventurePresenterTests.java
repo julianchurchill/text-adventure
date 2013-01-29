@@ -37,14 +37,14 @@ public class TextAdventurePresenterTests {
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         TextAdventurePresenter p = new TextAdventurePresenter( view, model );
 
-        final List<String> exits = new ArrayList<String>();
-        exits.add( "north" );
-        exits.add( "south" );
+        final List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "north" ) );
+        exits.add( new Exit( "south" ) );
         mockery.checking( new Expectations() {{
-            allowing( model ).currentLocationExits();
+            allowing( model ).currentLocationExitsNew();
             will( returnValue( exits ) );
             ignoring( model );
-            oneOf( view ).showLocationExits( exits );
+            oneOf( view ).showLocationExitsNew( exits );
             ignoring( view );
         }});
 
@@ -86,14 +86,14 @@ public class TextAdventurePresenterTests {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         TextAdventurePresenter p = new TextAdventurePresenter( view, model );
-        final List<String> exits = new ArrayList<String>();
-        exits.add( "north" );
-        exits.add( "south" );
+        final List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "north" ) );
+        exits.add( new Exit( "south" ) );
         mockery.checking( new Expectations() {{
-            allowing( model ).currentLocationExits();
+            allowing( model ).currentLocationExitsNew();
             will( returnValue( exits ) );
             ignoring( model );
-            oneOf( view ).showLocationExits( exits );
+            oneOf( view ).showLocationExitsNew( exits );
             ignoring( view );
         }});
 
