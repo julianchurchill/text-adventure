@@ -93,18 +93,18 @@ public class BasicModelTests {
     @Test
     public void current_location_exits_are_taken_from_the_current_location() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
-        final List<String> exits = new ArrayList<String>();
-        exits.add( "north" );
-        exits.add( "south" );
+        final List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "north" ) );
+        exits.add( new Exit( "south" ) );
         mockery.checking( new Expectations() {{
-            oneOf( location ).exits();
+            oneOf( location ).exitsNew();
             will( returnValue( exits ) );
             ignoring( location );
         }});
         BasicModel model = new BasicModel();
         model.addLocation( location );
 
-        assertEquals( exits, model.currentLocationExits() );
+        assertEquals( exits, model.currentLocationExitsNew() );
     }
 }
 
