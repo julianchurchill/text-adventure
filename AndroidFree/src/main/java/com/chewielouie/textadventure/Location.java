@@ -1,15 +1,12 @@
 package com.chewielouie.textadventure;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Location implements ModelLocation {
     private String id;
     private String description;
-    private Map<String,Exit> exits = new HashMap<String,Exit>();
-    private List<Exit> exitsNew = new ArrayList<Exit>();
+    private List<Exit> exits = new ArrayList<Exit>();
 
     public Location( String locationId, String description ) {
         this.id = locationId;
@@ -17,17 +14,21 @@ public class Location implements ModelLocation {
     }
 
     public void addExit( String exitLabel, String destinationId ) {
-        Exit exit = new Exit( exitLabel, destinationId );
-        exits.put( exitLabel, exit );
-        exitsNew.add( exit );
+        exits.add( new Exit( exitLabel, destinationId ) );
     }
 
     public boolean exitable( String exitLabel ) {
-        return exits.containsKey( exitLabel );
+        for( Exit e : exits )
+            if( e.label() == exitLabel )
+                return true;
+        return false;
     }
 
     public String exitDestinationFor( String exitLabel ) {
-        return exits.get( exitLabel ).destination();
+        for( Exit e : exits )
+            if( e.label() == exitLabel )
+                return e.destination();
+        return "";
     }
 
     public String id() {
@@ -35,7 +36,7 @@ public class Location implements ModelLocation {
     }
 
     public List<Exit> exits() {
-        return exitsNew;
+        return exits;
     }
 
     public String description() {
