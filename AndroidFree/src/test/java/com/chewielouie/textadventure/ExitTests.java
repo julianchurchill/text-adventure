@@ -7,6 +7,20 @@ import org.junit.Test;
 public class ExitTests {
 
     @Test
+    public void exit_has_a_default_direction_hint_of_dont_care() {
+        Exit exit = new Exit( "label", "destination" );
+
+        assertEquals( Exit.DirectionHint.DontCare, exit.directionHint() );
+    }
+
+    @Test
+    public void can_set_a_direction_hint() {
+        Exit exit = new Exit( "label", "destination", Exit.DirectionHint.North );
+
+        assertEquals( Exit.DirectionHint.North, exit.directionHint() );
+    }
+
+    @Test
     public void two_exits_with_the_same_value_should_be_equal() {
         Exit exit1 = new Exit( "label", "destination" );
         Exit exit2 = new Exit( "label", "destination" );
