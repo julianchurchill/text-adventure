@@ -104,7 +104,7 @@ public class BasicModelTests {
         BasicModel model = new BasicModel();
         model.addLocation( location );
 
-        assertEquals( exits, model.currentLocationExitsNew() );
+        assertEquals( exits, model.currentLocationExits() );
     }
 }
 

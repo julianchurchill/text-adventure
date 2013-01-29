@@ -29,12 +29,7 @@ public class BasicModel implements TextAdventureModel {
         return currentLocation;
     }
 
-    // Delete when this is no longer used by TextAdventurePresenter
-    public List<String> currentLocationExits() {
-        return currentLocation().exits();
-    }
-
-    public List<Exit> currentLocationExitsNew() {
+    public List<Exit> currentLocationExits() {
         return currentLocation().exitsNew();
     }
 }

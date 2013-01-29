@@ -41,7 +41,7 @@ public class TextAdventurePresenterTests {
         exits.add( new Exit( "north" ) );
         exits.add( new Exit( "south" ) );
         mockery.checking( new Expectations() {{
-            allowing( model ).currentLocationExitsNew();
+            allowing( model ).currentLocationExits();
             will( returnValue( exits ) );
             ignoring( model );
             oneOf( view ).showLocationExits( exits );
@@ -90,7 +90,7 @@ public class TextAdventurePresenterTests {
         exits.add( new Exit( "north" ) );
         exits.add( new Exit( "south" ) );
         mockery.checking( new Expectations() {{
-            allowing( model ).currentLocationExitsNew();
+            allowing( model ).currentLocationExits();
             will( returnValue( exits ) );
             ignoring( model );
             oneOf( view ).showLocationExits( exits );
