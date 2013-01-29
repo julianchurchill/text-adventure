@@ -8,8 +8,14 @@ Backlog
 
 - Begin in a more complex starting room with four exits, north, south, east and west.
   - Allow the user to move north, south, east and west by tapping a quadrant of the screen.
-[TEST] - Activity uses exit labels on onscreen direction labels. What do we do when 'west' is the only direction - it still ends up on the top label but should be on the left label. Should we provide a direction hint to the activity (e.g. N,S,E,W,DONTCARE) to help it place the directions?
-[TEST] - Activity receives touch events, translates to available direction and calls presenter to do the movement
+  - Change colour of direction labels background to contrast better with main text area.
+  - [TEST] Activity uses exit labels on onscreen direction labels.
+    - [TEST] Turn exit labels into Exit class and update all tests in Activity.
+    - [TEST] Change Location to store exits as Exit objects.
+    - [TEST] Change Model to retrieve exits as Exit list.
+    - [TEST] Change Presenter and View to pass exits as Exit list.
+    - [TEST] Add 'direction hint' to Exit object so Activity can use it to place N,S,E,W appropriately.
+  - [TEST] Activity receives touch events, translates to available direction and calls presenter to do the movement
 <br/>
 - Make a more complicated map
 
