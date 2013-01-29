@@ -44,7 +44,7 @@ public class TextAdventurePresenterTests {
             allowing( model ).currentLocationExitsNew();
             will( returnValue( exits ) );
             ignoring( model );
-            oneOf( view ).showLocationExitsNew( exits );
+            oneOf( view ).showLocationExits( exits );
             ignoring( view );
         }});
 
@@ -93,7 +93,7 @@ public class TextAdventurePresenterTests {
             allowing( model ).currentLocationExitsNew();
             will( returnValue( exits ) );
             ignoring( model );
-            oneOf( view ).showLocationExitsNew( exits );
+            oneOf( view ).showLocationExits( exits );
             ignoring( view );
         }});
 

@@ -75,7 +75,7 @@ public class TextAdventureActivityTests {
         List<Exit> exits = new ArrayList<Exit>();
         exits.add( new Exit( "first exit" ) );
         exits.add( new Exit( "second exit" ) );
-        activity.showLocationExitsNew( exits );
+        activity.showLocationExits( exits );
 
         activity.dispatchTouchEvent( createDownMotionEvent( 0, 0 ) );
 
@@ -95,7 +95,7 @@ public class TextAdventureActivityTests {
         List<Exit> exits = new ArrayList<Exit>();
         exits.add( new Exit( "first exit" ) );
         exits.add( new Exit( "second exit" ) );
-        activity.showLocationExitsNew( exits );
+        activity.showLocationExits( exits );
 
         float x = 0;
         float y = 0;
@@ -134,7 +134,7 @@ public class TextAdventureActivityTests {
         List<Exit> exits = new ArrayList<Exit>();
         exits.add( new Exit( "first exit" ) );
         exits.add( new Exit( "second exit" ) );
-        activity.showLocationExitsNew( exits );
+        activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.top_direction_label );
         assertEquals( "first exit", t.getText().toString() );
@@ -148,7 +148,7 @@ public class TextAdventureActivityTests {
         List<Exit> exits = new ArrayList<Exit>();
         exits.add( new Exit( "first exit" ) );
         exits.add( new Exit( "second exit" ) );
-        activity.showLocationExitsNew( exits );
+        activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.bottom_direction_label );
         assertEquals( "second exit", t.getText().toString() );
@@ -163,7 +163,7 @@ public class TextAdventureActivityTests {
         exits.add( new Exit( "first exit" ) );
         exits.add( new Exit( "second exit" ) );
         exits.add( new Exit( "third exit" ) );
-        activity.showLocationExitsNew( exits );
+        activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.right_direction_label );
         assertEquals( "third exit", t.getText().toString() );
@@ -179,7 +179,7 @@ public class TextAdventureActivityTests {
         exits.add( new Exit( "second exit" ) );
         exits.add( new Exit( "third exit" ) );
         exits.add( new Exit( "fourth exit" ) );
-        activity.showLocationExitsNew( exits );
+        activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.left_direction_label );
         assertEquals( "fourth exit", t.getText().toString() );
@@ -191,7 +191,7 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        activity.showLocationExitsNew( exits );
+        activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.top_direction_label );
         assertEquals( "", t.getText().toString() );
@@ -203,7 +203,7 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        activity.showLocationExitsNew( exits );
+        activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.bottom_direction_label );
         assertEquals( "", t.getText().toString() );
@@ -215,7 +215,7 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        activity.showLocationExitsNew( exits );
+        activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.right_direction_label );
         assertEquals( "", t.getText().toString() );
@@ -227,7 +227,7 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        activity.showLocationExitsNew( exits );
+        activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.left_direction_label );
         assertEquals( "", t.getText().toString() );
