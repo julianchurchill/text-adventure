@@ -30,7 +30,7 @@ public class BasicModel implements TextAdventureModel {
     }
 
     public List<Exit> currentLocationExits() {
-        return currentLocation().exitsNew();
+        return currentLocation().exits();
     }
 }
 

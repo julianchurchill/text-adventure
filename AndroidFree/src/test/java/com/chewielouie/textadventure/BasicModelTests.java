@@ -97,7 +97,7 @@ public class BasicModelTests {
         exits.add( new Exit( "north" ) );
         exits.add( new Exit( "south" ) );
         mockery.checking( new Expectations() {{
-            oneOf( location ).exitsNew();
+            oneOf( location ).exits();
             will( returnValue( exits ) );
             ignoring( location );
         }});

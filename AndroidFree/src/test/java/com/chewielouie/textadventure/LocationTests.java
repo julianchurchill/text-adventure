@@ -57,7 +57,7 @@ public class LocationTests {
         l.addExit( "north", "loc2" );
         l.addExit( "south", "loc3" );
 
-        assertEquals( exits, l.exitsNew() );
+        assertEquals( exits, l.exits() );
     }
 }
 

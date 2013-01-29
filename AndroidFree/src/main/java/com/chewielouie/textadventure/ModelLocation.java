@@ -7,8 +7,7 @@ public interface ModelLocation {
     public boolean exitable( String exitLabel );
     public String exitDestinationFor( String exitLabel );
     public String id();
-    public List<String> exits();
-    public List<Exit> exitsNew();
+    public List<Exit> exits();
     public String description();
 }
 

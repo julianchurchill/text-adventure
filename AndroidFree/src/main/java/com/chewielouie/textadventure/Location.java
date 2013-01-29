@@ -9,7 +9,6 @@ public class Location implements ModelLocation {
     private String id;
     private String description;
     private Map<String,Exit> exits = new HashMap<String,Exit>();
-    private List<String> exitLabels = new ArrayList<String>();
     private List<Exit> exitsNew = new ArrayList<Exit>();
 
     public Location( String locationId, String description ) {
@@ -20,7 +19,6 @@ public class Location implements ModelLocation {
     public void addExit( String exitLabel, String destinationId ) {
         Exit exit = new Exit( exitLabel, destinationId );
         exits.put( exitLabel, exit );
-        exitLabels.add( exitLabel );
         exitsNew.add( exit );
     }
 
@@ -36,13 +34,7 @@ public class Location implements ModelLocation {
         return this.id;
     }
 
-    // Delete when this is no longer used by BasicModel
-    // Also delete exitLabels
-    public List<String> exits() {
-        return exitLabels;
-    }
-
-    public List<Exit> exitsNew() {
+    public List<Exit> exits() {
         return exitsNew;
     }
 
