@@ -74,44 +74,52 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void showLocationExits( List<Exit> exits ) {
         this.exits = exits;
 
-        boolean northFound = false;
-        boolean southFound = false;
-        boolean eastFound = false;
-        boolean westFound = false;
+        Exit northExit = null;
+        Exit southExit = null;
+        Exit eastExit = null;
+        Exit westExit = null;
         for( Exit e : exits ) {
-            if( e.directionHint() == Exit.DirectionHint.North ) {
-                top_direction_label.setText( e.label() );
-                northFound = true;
-            }
-            else if( e.directionHint() == Exit.DirectionHint.South ) {
-                bottom_direction_label.setText( e.label() );
-                southFound = true;
-            }
-            else if( e.directionHint() == Exit.DirectionHint.East ) {
-                right_direction_label.setText( e.label() );
-                eastFound = true;
-            }
-            else if( e.directionHint() == Exit.DirectionHint.West ) {
-                left_direction_label.setText( e.label() );
-                westFound = true;
-            }
+            if( e.directionHint() == Exit.DirectionHint.North )
+                northExit = e;
+            else if( e.directionHint() == Exit.DirectionHint.South )
+                southExit = e;
+            else if( e.directionHint() == Exit.DirectionHint.East )
+                eastExit = e;
+            else if( e.directionHint() == Exit.DirectionHint.West )
+                westExit = e;
         }
 
-        if( northFound == false )
-            setDirectionLabelToNthExit( top_direction_label, 0 );
-        if( southFound == false )
-            setDirectionLabelToNthExit( bottom_direction_label, 1 );
-        if( eastFound == false )
-            setDirectionLabelToNthExit( right_direction_label, 2 );
-        if( westFound == false )
-            setDirectionLabelToNthExit( left_direction_label, 3 );
+        int exitWithNoDirHintIndex = setDirectionLabel( top_direction_label,
+                northExit, 0 );
+        exitWithNoDirHintIndex = setDirectionLabel( bottom_direction_label,
+                southExit, exitWithNoDirHintIndex );
+        exitWithNoDirHintIndex = setDirectionLabel( right_direction_label,
+                eastExit, exitWithNoDirHintIndex );
+        exitWithNoDirHintIndex = setDirectionLabel( left_direction_label,
+                westExit, exitWithNoDirHintIndex );
     }
 
-    private void setDirectionLabelToNthExit( TextView dir_label, int nthExit ) {
-        if( exits.size() > nthExit )
-            dir_label.setText( exits.get( nthExit ).label() );
-        else
-            dir_label.setText( "" );
+    private int setDirectionLabel( TextView dir_label, Exit directionExit,
+           int indexToStartLookingForUndirectedExits ) {
+        int exitWithNoDirHintIndex = nextExitWithoutADirectionHint(
+                indexToStartLookingForUndirectedExits );
+        String label = "";
+        if( directionExit != null )
+            label = directionExit.label();
+        else if( exitWithNoDirHintIndex < exits.size() ) {
+            label = exits.get( exitWithNoDirHintIndex ).label();
+            exitWithNoDirHintIndex++;
+        }
+        dir_label.setText( label );
+        return exitWithNoDirHintIndex;
+    }
+
+    private int nextExitWithoutADirectionHint( int startAt ) {
+        int i = startAt;
+        for( ; i < exits.size(); i++ )
+            if( exits.get( i ).directionHint() == Exit.DirectionHint.DontCare )
+                break;
+        return i;
     }
 
     @Override
