@@ -18,15 +18,15 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     public TextAdventureActivity() {
         Location loc1 = new Location( "loc1", "You are in an empty wasteland that stretches for miles and miles." );
-        loc1.addExit( new Exit( "North", "loc2" ) );
-        loc1.addExit( new Exit( "South", "loc1" ) );
-        loc1.addExit( new Exit( "East", "loc1" ) );
-        loc1.addExit( new Exit( "West", "loc1" ) );
+        loc1.addExit( new Exit( "North", "loc2", Exit.DirectionHint.North ) );
+        loc1.addExit( new Exit( "South", "loc1", Exit.DirectionHint.South ) );
+        loc1.addExit( new Exit( "East", "loc1", Exit.DirectionHint.East ) );
+        loc1.addExit( new Exit( "West", "loc1", Exit.DirectionHint.West ) );
         Location loc2 = new Location( "loc2", "You are in a busy town. There is a clock tower to the north." );
-        loc2.addExit( new Exit( "North", "loc3" ) );
-        loc2.addExit( new Exit( "South", "loc1" ) );
+        loc2.addExit( new Exit( "North", "loc3", Exit.DirectionHint.North ) );
+        loc2.addExit( new Exit( "South", "loc1", Exit.DirectionHint.South ) );
         Location loc3 = new Location( "loc3", "You stand before a mighty clock tower. The clock goes TICK!" );
-        loc3.addExit( new Exit( "South", "loc2" ) );
+        loc3.addExit( new Exit( "South", "loc2", Exit.DirectionHint.South ) );
         BasicModel model = new BasicModel();
         model.addLocation( loc1 );
         model.addLocation( loc2 );
@@ -74,20 +74,10 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void showLocationExits( List<Exit> exits ) {
         this.exits = exits;
 
-        Exit northExit = null;
-        Exit southExit = null;
-        Exit eastExit = null;
-        Exit westExit = null;
-        for( Exit e : exits ) {
-            if( e.directionHint() == Exit.DirectionHint.North )
-                northExit = e;
-            else if( e.directionHint() == Exit.DirectionHint.South )
-                southExit = e;
-            else if( e.directionHint() == Exit.DirectionHint.East )
-                eastExit = e;
-            else if( e.directionHint() == Exit.DirectionHint.West )
-                westExit = e;
-        }
+        Exit northExit = findExitWithDirectionHint( Exit.DirectionHint.North );
+        Exit southExit = findExitWithDirectionHint( Exit.DirectionHint.South );
+        Exit eastExit = findExitWithDirectionHint( Exit.DirectionHint.East );
+        Exit westExit = findExitWithDirectionHint( Exit.DirectionHint.West );
 
         int exitWithNoDirHintIndex = setDirectionLabel( top_direction_label,
                 northExit, 0 );
@@ -97,6 +87,13 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
                 eastExit, exitWithNoDirHintIndex );
         exitWithNoDirHintIndex = setDirectionLabel( left_direction_label,
                 westExit, exitWithNoDirHintIndex );
+    }
+
+    private Exit findExitWithDirectionHint( Exit.DirectionHint d ) {
+        for( Exit e : exits )
+            if( e.directionHint() == d )
+                return e;
+        return null;
     }
 
     private int setDirectionLabel( TextView dir_label, Exit directionExit,
