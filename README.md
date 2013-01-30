@@ -10,6 +10,7 @@ Backlog
   - Allow the user to move north, south, east and west by tapping a quadrant of the screen.
   - Change colour of direction labels background to contrast better with main text area.
   - [TEST] Activity receives touch events, translates to available direction and calls presenter to do the movement
+    - Touch events don't seem to be quite right in the expected places...
 <br/>
 - Make a more complicated map
 

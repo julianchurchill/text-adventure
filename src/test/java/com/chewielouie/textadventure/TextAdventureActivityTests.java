@@ -83,7 +83,7 @@ public class TextAdventureActivityTests {
     }
 
     @Test
-    public void touch_event_in_top_quadrant_causes_first_exit_to_be_used() {
+    public void touch_event_in_top_right_quadrant_causes_first_exit_to_be_used() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
         final Exit exit = new Exit( "first exit" );
         mockery.checking( new Expectations() {{
@@ -98,16 +98,204 @@ public class TextAdventureActivityTests {
         exits.add( new Exit( "second exit" ) );
         activity.showLocationExits( exits );
 
-        float x = 0;
+        TextView t = (TextView)activity.findViewById( R.id.main_text_output );
+        t.getLayoutParams().width = 100;
+        t.getLayoutParams().height = 100;
+        float x = 75;
         float y = 0;
         activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
 
         mockery.assertIsSatisfied();
     }
 
-    //public void touch_event_in_bottom_quadrant_causes_second_exit_to_be_used() {
-    //public void touch_event_in_right_quadrant_causes_third_exit_to_be_used() {
-    //public void touch_event_in_left_quadrant_causes_fourth_exit_to_be_used() {
+    @Test
+    public void touch_event_in_top_left_quadrant_causes_first_exit_to_be_used() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        final Exit exit = new Exit( "first exit" );
+        mockery.checking( new Expectations() {{
+            oneOf( handler ).moveThroughExit( exit );
+            ignoring( handler );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( exit );
+        exits.add( new Exit( "second exit" ) );
+        activity.showLocationExits( exits );
+
+        TextView t = (TextView)activity.findViewById( R.id.main_text_output );
+        t.getLayoutParams().width = 100;
+        t.getLayoutParams().height = 100;
+        float x = 25;
+        float y = 0;
+        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+
+        mockery.assertIsSatisfied();
+    }
+
+    @Test
+    public void touch_event_in_bottom_right_quadrant_causes_second_exit_to_be_used() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        final Exit exit = new Exit( "second exit" );
+        mockery.checking( new Expectations() {{
+            oneOf( handler ).moveThroughExit( exit );
+            ignoring( handler );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( exit );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.main_text_output );
+        t.getLayoutParams().width = 100;
+        t.getLayoutParams().height = 100;
+        float x = 75;
+        float y = 99;
+        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+
+        mockery.assertIsSatisfied();
+    }
+
+    @Test
+    public void touch_event_in_bottom_left_quadrant_causes_second_exit_to_be_used() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        final Exit exit = new Exit( "second exit" );
+        mockery.checking( new Expectations() {{
+            oneOf( handler ).moveThroughExit( exit );
+            ignoring( handler );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( exit );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.main_text_output );
+        t.getLayoutParams().width = 100;
+        t.getLayoutParams().height = 100;
+        float x = 25;
+        float y = 99;
+        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+
+        mockery.assertIsSatisfied();
+    }
+
+    @Test
+    public void touch_event_in_right_bottom_quadrant_causes_third_exit_to_be_used() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        final Exit exit = new Exit( "third exit" );
+        mockery.checking( new Expectations() {{
+            oneOf( handler ).moveThroughExit( exit );
+            ignoring( handler );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit" ) );
+        exits.add( exit );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.main_text_output );
+        t.getLayoutParams().width = 100;
+        t.getLayoutParams().height = 100;
+        float x = 99;
+        float y = 75;
+        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+
+        mockery.assertIsSatisfied();
+    }
+
+    @Test
+    public void touch_event_in_right_top_quadrant_causes_third_exit_to_be_used() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        final Exit exit = new Exit( "third exit" );
+        mockery.checking( new Expectations() {{
+            oneOf( handler ).moveThroughExit( exit );
+            ignoring( handler );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit" ) );
+        exits.add( exit );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.main_text_output );
+        t.getLayoutParams().width = 100;
+        t.getLayoutParams().height = 100;
+        float x = 99;
+        float y = 25;
+        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+
+        mockery.assertIsSatisfied();
+    }
+
+    @Test
+    public void touch_event_in_left_bottom_quadrant_causes_fourth_exit_to_be_used() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        final Exit exit = new Exit( "fourth exit" );
+        mockery.checking( new Expectations() {{
+            oneOf( handler ).moveThroughExit( exit );
+            ignoring( handler );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit" ) );
+        exits.add( new Exit( "third exit" ) );
+        exits.add( exit );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.main_text_output );
+        t.getLayoutParams().width = 100;
+        t.getLayoutParams().height = 100;
+        float x = 1;
+        float y = 75;
+        assertTrue( 1 < (t.getLayoutParams().height-75) );
+        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+
+        mockery.assertIsSatisfied();
+    }
+
+    @Test
+    public void touch_event_in_left_top_quadrant_causes_fourth_exit_to_be_used() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        final Exit exit = new Exit( "fourth exit" );
+        mockery.checking( new Expectations() {{
+            oneOf( handler ).moveThroughExit( exit );
+            ignoring( handler );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit" ) );
+        exits.add( new Exit( "third exit" ) );
+        exits.add( exit );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.main_text_output );
+        t.getLayoutParams().width = 100;
+        t.getLayoutParams().height = 100;
+        float x = 1;
+        float y = 25;
+        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+
+        mockery.assertIsSatisfied();
+    }
 
     @Test
     public void touch_event_in_top_quadrant_with_no_exits_is_ignored() {
@@ -123,8 +311,12 @@ public class TextAdventureActivityTests {
 
         mockery.assertIsSatisfied();
     }
+
+    //@Test
     //public void touch_event_in_second_quadrant_with_only_one_exit_is_ignored() {
+    //@Test
     //public void touch_event_in_third_quadrant_with_only_two_exits_is_ignored() {
+    //@Test
     //public void touch_event_in_fourth_quadrant_with_only_three_exits_is_ignored() {
 
     @Test
