@@ -5,7 +5,7 @@ public class Exit {
     private String destination = new String();
     private DirectionHint directionHint = DirectionHint.DontCare;
 
-    public enum DirectionHint { DontCare, North };
+    public enum DirectionHint { DontCare, North, South, East, West };
 
     public Exit( String label ) {
         this.label = label;

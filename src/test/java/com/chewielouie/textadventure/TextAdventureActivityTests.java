@@ -233,5 +233,80 @@ public class TextAdventureActivityTests {
         final TextView t = (TextView)activity.findViewById( R.id.left_direction_label );
         assertEquals( "", t.getText().toString() );
     }
+
+    @Test
+    public void exit_with_north_direction_hint_is_preferred_on_top_label() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit", "dest", Exit.DirectionHint.North ) );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.top_direction_label );
+        assertEquals( "second exit", t.getText().toString() );
+    }
+
+    @Test
+    public void exit_with_south_direction_hint_is_preferred_on_bottom_label() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit", "dest", Exit.DirectionHint.South ) );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.bottom_direction_label );
+        assertEquals( "first exit", t.getText().toString() );
+    }
+
+    @Test
+    public void exit_with_east_direction_hint_is_preferred_on_right_label() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit", "dest", Exit.DirectionHint.East ) );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.right_direction_label );
+        assertEquals( "first exit", t.getText().toString() );
+    }
+
+    @Test
+    public void exit_with_west_direction_hint_is_preferred_on_left_label() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit", "dest", Exit.DirectionHint.West ) );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.left_direction_label );
+        assertEquals( "first exit", t.getText().toString() );
+    }
+
+    //@Test
+    //public void exits_without_direction_hints_fill_the_holes() {
+        //TextAdventureActivity activity = new TextAdventureActivity();
+        //activity.onCreate( null );
+
+        //List<Exit> exits = new ArrayList<Exit>();
+        //exits.add( new Exit( "first exit" ) );
+        //exits.add( new Exit( "second exit", "dest", Exit.DirectionHint.North ) );
+        //exits.add( new Exit( "third exit" ) );
+        //exits.add( new Exit( "fourth exit", "dest", Exit.DirectionHint.East  ) );
+        //activity.showLocationExits( exits );
+
+        //final TextView t = (TextView)activity.findViewById( R.id.top_direction_label );
+        //assertEquals( "second exit", t.getText().toString() );
+        //final TextView t = (TextView)activity.findViewById( R.id.bottom_direction_label );
+        //assertEquals( "first exit", t.getText().toString() );
+        //final TextView t = (TextView)activity.findViewById( R.id.right_direction_label );
+        //assertEquals( "fourth exit", t.getText().toString() );
+        //final TextView t = (TextView)activity.findViewById( R.id.left_direction_label );
+        //assertEquals( "third exit", t.getText().toString() );
+    //}
 }
 

@@ -74,10 +74,37 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void showLocationExits( List<Exit> exits ) {
         this.exits = exits;
 
-        setDirectionLabelToNthExit( top_direction_label, 0 );
-        setDirectionLabelToNthExit( bottom_direction_label, 1 );
-        setDirectionLabelToNthExit( right_direction_label, 2 );
-        setDirectionLabelToNthExit( left_direction_label, 3 );
+        boolean northFound = false;
+        boolean southFound = false;
+        boolean eastFound = false;
+        boolean westFound = false;
+        for( Exit e : exits ) {
+            if( e.directionHint() == Exit.DirectionHint.North ) {
+                top_direction_label.setText( e.label() );
+                northFound = true;
+            }
+            else if( e.directionHint() == Exit.DirectionHint.South ) {
+                bottom_direction_label.setText( e.label() );
+                southFound = true;
+            }
+            else if( e.directionHint() == Exit.DirectionHint.East ) {
+                right_direction_label.setText( e.label() );
+                eastFound = true;
+            }
+            else if( e.directionHint() == Exit.DirectionHint.West ) {
+                left_direction_label.setText( e.label() );
+                westFound = true;
+            }
+        }
+
+        if( northFound == false )
+            setDirectionLabelToNthExit( top_direction_label, 0 );
+        if( southFound == false )
+            setDirectionLabelToNthExit( bottom_direction_label, 1 );
+        if( eastFound == false )
+            setDirectionLabelToNthExit( right_direction_label, 2 );
+        if( westFound == false )
+            setDirectionLabelToNthExit( left_direction_label, 3 );
     }
 
     private void setDirectionLabelToNthExit( TextView dir_label, int nthExit ) {
