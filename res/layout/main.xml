@@ -46,6 +46,7 @@
     android:layout_above="@id/bottom_direction_label"
     android:layout_toRightOf="@id/left_direction_label"
     android:layout_toLeftOf="@id/right_direction_label"
+    android:textSize="25sp"
     android:text="Hello!"
     />
 </RelativeLayout>
