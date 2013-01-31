@@ -6,7 +6,11 @@ import java.util.List;
 import java.util.Map;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuInflater;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 import com.chewielouie.textadventure.action.Action;
 
@@ -72,10 +76,19 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         right_direction_label = findTextView( R.id.right_direction_label );
         left_direction_label = findTextView( R.id.left_direction_label );
         main_text_output = findTextView( R.id.main_text_output );
+        registerForContextMenu( main_text_output );
     }
 
     private TextView findTextView( int id ) {
         return (TextView)findViewById( id );
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
     }
 
     @Override

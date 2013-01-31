@@ -493,5 +493,23 @@ public class TextAdventureActivityTests {
         t = (TextView)activity.findViewById( R.id.left_direction_label );
         assertEquals( "third exit", t.getText().toString() );
     }
+
+    //@Test
+    //public void touch_event_in_the_centre_shows_actions_menu() {
+        //TextAdventureActivity activity = new TextAdventureActivity();
+        //activity.onCreate( null );
+
+        //final TextView t = (TextView)activity.findViewById( R.id.main_text_output );
+        //t.getLayoutParams().width = 100;
+        //t.getLayoutParams().height = 100;
+        //float x = 50;
+        //float y = 50;
+        //activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+
+        //confirm actions menu is shown
+    //}
+
+    //@Test
+    //public void actions_menu_contains_last_set_of_actions_sent_with_set_actions() {
 }
 
