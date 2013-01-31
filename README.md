@@ -7,7 +7,6 @@ Backlog
 =======
 
 - [FEATURE] Add ability to look at inventory
-  - [TEST] Add value object test (hashCode and equals) for ShowInventory
   - [TEST] View shows available room actions as a menu activated by tap centre of the screen
   - [TEST] View maps menu items to available actions upon selection
   - [TEST] Presenter tells view to display inventory upon receiving 'Show inventory' action. Inventory takes the form of actions list with 'look at {itemname}' type actions. Presenter calls view.actionChain( List<Action> )
