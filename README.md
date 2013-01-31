@@ -6,17 +6,24 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 Backlog
 =======
 
-- Begin in a more complex starting room with four exits, north, south, east and west.
-  - Allow the user to move north, south, east and west by tapping a quadrant of the screen.
+- [FEATURE] Allow the user to move north, south, east and west by tapping a quadrant of the screen.
   - Change colour of direction labels background to contrast better with main text area.
   - [TEST] Activity receives touch events, translates to available direction and calls presenter to do the movement
-    - Touch events don't seem to be quite right in the expected places...
-<br/>
-- Make a more complicated map
-- Add ability to look at inventory
-  - [TEST] Presenter tells view what actions are available in this room
-  - [TEST] Presenter tells view to display inventory upon receiving 'Inventory' action
-  - [TEST] Inventory takes the form of actions list to 'look at' items
+
+- [FEATURE] Add ability to look at inventory
+  - [TEST] Presenter tells view what actions are available in this room, default is 'Show inventory'
+  - [TEST] View shows available room actions as a menu activated by tap centre of the screen
+  - [TEST] View maps menu items to available actions upon selection
+  - [TEST] Presenter tells view to display inventory upon receiving 'Show inventory' action. Inventory takes the form of actions list with 'look at {itemname}' type actions
+- [FEATURE] Add ability to pick up objects from the current room
+  - [TEST] Presenter tells view that 'Pick up' action is available in rooms with objects in
+  - [TEST] Pick up action has choices, i.e. the object to pick up. Upon triggering the action the presenter must tell the view what choices are available
+  - [TEST] View tells presenter which object is chosen for pick up action
+  - [TEST] Presenter adds object to user inventory
+  - [TEST] Presenter removes object from room - state is persisted upon leaving and reentering room
+- [FEATURE] Add ability to drop objects from the inventory into the current room
+
+- Exit touch events don't seem to be quite right in the expected places...
 
 - Add objects that can be examined to rooms
   - Pressing the centre of the screen gives a list of verbs, just 'examine' is available atm.
