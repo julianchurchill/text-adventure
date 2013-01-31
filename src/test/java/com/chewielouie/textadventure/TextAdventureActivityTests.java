@@ -312,13 +312,6 @@ public class TextAdventureActivityTests {
         mockery.assertIsSatisfied();
     }
 
-    //@Test
-    //public void touch_event_in_second_quadrant_with_only_one_exit_is_ignored() {
-    //@Test
-    //public void touch_event_in_third_quadrant_with_only_two_exits_is_ignored() {
-    //@Test
-    //public void touch_event_in_fourth_quadrant_with_only_three_exits_is_ignored() {
-
     @Test
     public void top_direction_label_uses_first_exit_text() {
         TextAdventureActivity activity = new TextAdventureActivity();
