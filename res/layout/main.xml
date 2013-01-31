@@ -10,6 +10,7 @@
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true"
     android:gravity="center"
+    android:background="#660000"
     android:text="North"
     />
 <TextView
@@ -19,6 +20,7 @@
     android:layout_alignParentLeft="true"
     android:layout_below="@id/top_direction_label"
     android:gravity="center"
+    android:background="#660000"
     android:text="West"
     />
 <TextView
@@ -28,6 +30,7 @@
     android:layout_alignParentRight="true"
     android:layout_below="@id/top_direction_label"
     android:gravity="center"
+    android:background="#660000"
     android:text="East"
     />
 <TextView
@@ -36,6 +39,7 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:gravity="center"
+    android:background="#660000"
     android:text="South"
     />
 <TextView
