@@ -13,6 +13,10 @@ Backlog
     - Touch events don't seem to be quite right in the expected places...
 <br/>
 - Make a more complicated map
+- Add ability to look at inventory
+  - [TEST] Presenter tells view what actions are available in this room
+  - [TEST] Presenter tells view to display inventory upon receiving 'Inventory' action
+  - [TEST] Inventory takes the form of actions list to 'look at' items
 
 - Add objects that can be examined to rooms
   - Pressing the centre of the screen gives a list of verbs, just 'examine' is available atm.
