@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.action.ShowInventory;
 import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
@@ -45,6 +47,23 @@ public class TextAdventurePresenterTests {
             will( returnValue( exits ) );
             ignoring( model );
             oneOf( view ).showLocationExits( exits );
+            ignoring( view );
+        }});
+
+        p.render();
+    }
+
+    @Test
+    public void render_tells_view_default_action_of_show_inventory_is_available() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+
+        final List<Action> actions = new ArrayList<Action>();
+        actions.add( new ShowInventory() );
+        mockery.checking( new Expectations() {{
+            ignoring( model );
+            oneOf( view ).setActions( actions );
             ignoring( view );
         }});
 

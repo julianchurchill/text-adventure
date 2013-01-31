@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.TextView;
+import com.chewielouie.textadventure.action.Action;
 
 public class TextAdventureActivity extends Activity implements TextAdventureView {
     private RendersView rendersView;
@@ -136,6 +137,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             if( exits.get( i ).directionHint() == Exit.DirectionHint.DontCare )
                 break;
         return i;
+    }
+
+    public void setActions( List<Action> actions ) {
     }
 
     @Override
