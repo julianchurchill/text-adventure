@@ -38,20 +38,25 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     public TextAdventurePresenter createPresenter() {
-        Location loc1 = new Location( "loc1", "You are in an empty wasteland that stretches for miles and miles." );
-        loc1.addExit( new Exit( "North", "loc2", Exit.DirectionHint.North ) );
-        loc1.addExit( new Exit( "South", "loc1", Exit.DirectionHint.South ) );
-        loc1.addExit( new Exit( "East", "loc1", Exit.DirectionHint.East ) );
-        loc1.addExit( new Exit( "West", "loc1", Exit.DirectionHint.West ) );
-        Location loc2 = new Location( "loc2", "You are in a busy town. There is a clock tower to the north." );
-        loc2.addExit( new Exit( "North", "loc3", Exit.DirectionHint.North ) );
-        loc2.addExit( new Exit( "South", "loc1", Exit.DirectionHint.South ) );
-        Location loc3 = new Location( "loc3", "You stand before a mighty clock tower. The clock goes TICK!" );
-        loc3.addExit( new Exit( "South", "loc2", Exit.DirectionHint.South ) );
+        Location startloc = new Location( "startloc", "You are in an empty wasteland that stretches for miles and miles." );
+        startloc.addExit( new Exit( "North", "busytown", Exit.DirectionHint.North ) );
+        startloc.addExit( new Exit( "East", "eastloc", Exit.DirectionHint.East ) );
+        startloc.addExit( new Exit( "West", "westloc", Exit.DirectionHint.West ) );
+        Location busytown = new Location( "busytown", "You are in a busy town. There is a clock tower to the north." );
+        busytown.addExit( new Exit( "North", "clocktower", Exit.DirectionHint.North ) );
+        busytown.addExit( new Exit( "South", "startloc", Exit.DirectionHint.South ) );
+        Location clocktower = new Location( "clocktower", "You stand before a mighty clock tower. The clock goes TICK!" );
+        clocktower.addExit( new Exit( "South", "busytown", Exit.DirectionHint.South ) );
+        Location eastloc = new Location( "eastloc", "You are in the middle of a vast and endless ocean. Of despair." );
+        eastloc.addExit( new Exit( "West", "startloc", Exit.DirectionHint.West ) );
+        Location westloc = new Location( "westloc", "You are in the precise centre of the universe. You are disappointed to find there is nothing here." );
+        westloc.addExit( new Exit( "East", "startloc", Exit.DirectionHint.East ) );
         BasicModel model = new BasicModel();
-        model.addLocation( loc1 );
-        model.addLocation( loc2 );
-        model.addLocation( loc3 );
+        model.addLocation( startloc );
+        model.addLocation( busytown );
+        model.addLocation( clocktower );
+        model.addLocation( eastloc );
+        model.addLocation( westloc );
         return new TextAdventurePresenter( this, model );
     }
 
