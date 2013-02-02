@@ -120,5 +120,47 @@ public class TextAdventurePresenterTests {
 
         p.moveThroughExit( north );
     }
+
+    @Test
+    public void upon_enact_action_presenter_triggers_the_action() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        final Action action = mockery.mock( Action.class );
+        mockery.checking( new Expectations() {{
+            oneOf( action ).trigger();
+            ignoring( action );
+            ignoring( model );
+            ignoring( view );
+        }});
+
+        p.enact( action );
+    }
+
+    @Test
+    public void upon_enact_action_that_requires_further_action_pass_new_actions_to_view() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        final Action action = mockery.mock( Action.class, "original action" );
+        final List<Action> actions = new ArrayList<Action>();
+        actions.add( mockery.mock( Action.class, "follow up action" ) );
+        mockery.checking( new Expectations() {{
+            oneOf( action ).trigger();
+            oneOf( action ).userMustChooseFollowUpAction();
+            will( returnValue( true ) );
+            oneOf( action ).followUpActions();
+            will( returnValue( actions ) );
+            ignoring( action );
+            ignoring( model );
+            oneOf( view ).giveUserImmediateActionChoice( actions );
+            ignoring( view );
+        }});
+
+        p.enact( action );
+    }
+
+    //@Test
+    //public void upon_enact_action_that_requires_no_further_action_do_not_pass_any_new_actions_to_view() {
 }
 

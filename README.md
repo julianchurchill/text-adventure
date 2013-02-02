@@ -6,13 +6,23 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 Backlog
 =======
 
-- [FEATURE] Add ability to look at inventory
-  - [TEST] Touch events need to be release events, otherwise they trigger movement even on a long press (which we need for showing the context menu)
-  - [TEST] Presenter tells view to display inventory upon receiving 'Show inventory' action. Inventory takes the form of actions list with 'look at {itemname}' type actions. Presenter calls view.actionChain( List<Action> )
 - [FEATURE] Add ability to look at items in inventory
-  - [TEST] Add default object in the inventory - 'Pocket Lint' and description 'It's fluffy and shaped like an inverted belly button'
-  - [TEST] View responds to actionChain by immediately showing the advertised actions
-  - [TEST] Presenter responds to 'Look at' action by appending item description to location description and calling view.showLocationDescription
+  - [TEST] View responds to giveUserImmediateActionChoice by immediately showing the advertised actions as context menu
+  - [TEST] ShowInventory trigger gathers inventory items from the model.
+  - [TEST] Add default inventory contents to the model - 'Pocket Lint' and description 'It's fluffy and shaped like an inverted belly button'
+  - [TEST] ShowInventory userMustChooseFollowUpAction() returns true.
+  - [TEST] ShowInventory followUpActions() contains Examine actions for each item in inventory
+  - [TEST] Examine action trigger prepares item description.
+  - [TEST] Examine action label is 'Examine {item name}'
+  - [TEST] Examine userMustChooseFollowUpAction() returns false.
+  - [TEST] Examine followUpActions() is an empty list.
+  - [TEST] Examine userTextToShow() returns true.
+  - [TEST] Examine userText() is the item description.
+  - [TEST] ShowInventory userTextToShow() returns false.
+  - [TEST] After triggering action in enact() Presenter asks action if text must be displayed and if so appends the text to the location description and calls view.showLocationDescription
+  - [TEST] Rename View.showLocationDescription() to showMainText()
+  - [TEST] Presenter should append action text history onto the location description text until the location changes - this resets the action text history to be empty.
+- [TEST] Touch events need to be release events, otherwise they trigger movement even on a long press (which we need for showing the context menu)
 - [REFACTOR]
   - Pull out activity screen touch code into separate class
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface

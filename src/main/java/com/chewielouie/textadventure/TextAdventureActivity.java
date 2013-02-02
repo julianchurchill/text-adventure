@@ -169,6 +169,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         this.actions = actions;
     }
 
+    public void giveUserImmediateActionChoice( List<Action> actions ) {
+    }
+
     @Override
     public boolean dispatchTouchEvent( MotionEvent e ) {
         if( e.getActionMasked() == MotionEvent.ACTION_UP && exits.size() > 0 ) {

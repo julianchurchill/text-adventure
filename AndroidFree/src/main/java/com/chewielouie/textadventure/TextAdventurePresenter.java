@@ -29,6 +29,9 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
     }
 
     public void enact( Action action ) {
+        action.trigger();
+        if( action.userMustChooseFollowUpAction() )
+            view.giveUserImmediateActionChoice( action.followUpActions() );
     }
 }
 

@@ -1,8 +1,22 @@
 package com.chewielouie.textadventure.action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShowInventory implements Action {
     public String label() {
         return "Show inventory";
+    }
+
+    public void trigger() {
+    }
+
+    public boolean userMustChooseFollowUpAction() {
+        return false;
+    }
+
+    public List<Action> followUpActions() {
+        return new ArrayList<Action>();
     }
 
     @Override
