@@ -25,6 +25,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private TextView main_text_output;
     private Map<TextView,Exit> directions_and_exits =
         new HashMap<TextView,Exit>();
+    private List<Action> actions = new ArrayList<Action>();
 
     public TextAdventureActivity() {
         TextAdventurePresenter p = createPresenter();
@@ -87,8 +88,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.context_menu, menu);
+        for( Action action : actions )
+            menu.add( action.label() );
     }
 
     @Override
@@ -153,6 +154,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     public void setActions( List<Action> actions ) {
+        this.actions = actions;
     }
 
     @Override

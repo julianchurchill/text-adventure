@@ -4,7 +4,10 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import com.xtremelabs.robolectric.Robolectric;
@@ -12,6 +15,7 @@ import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import com.chewielouie.textadventure.action.Action;
 
 @RunWith(RobolectricTestRunner.class)
 public class TextAdventureActivityTests {
@@ -506,10 +510,36 @@ public class TextAdventureActivityTests {
         //float y = 50;
         //activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
 
-        //confirm actions menu is shown
+        //confirm actions menu is shown - don't know how to do this!
     //}
 
+    @Test
+    public void actions_menu_contains_last_set_of_actions_sent_with_set_actions() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        //activity.onCreate( null );
+        final ContextMenu menu = mockery.mock( ContextMenu.class );
+        final TextView view = (TextView)activity.findViewById( R.id.main_text_output );
+        final ContextMenuInfo menuInfo = mockery.mock( ContextMenuInfo.class );
+        final Action action = mockery.mock( Action.class );
+        mockery.checking( new Expectations() {{
+            allowing( action ).label();
+            will( returnValue( "action 1" ) );
+            ignoring( action );
+            oneOf( menu ).add( "action 1" );
+            ignoring( menu );
+            ignoring( menuInfo );
+        }});
+
+        List<Action> actions = new ArrayList<Action>();
+        actions.add( action );
+        activity.setActions( actions );
+
+        activity.onCreateContextMenu( menu, view, menuInfo );
+
+        mockery.assertIsSatisfied();
+    }
+
     //@Test
-    //public void actions_menu_contains_last_set_of_actions_sent_with_set_actions() {
+    //public void selection_of_an_action_item_is_reported_to_user_action_handler() {
 }
 
