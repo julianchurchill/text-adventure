@@ -26,6 +26,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private Map<TextView,Exit> directions_and_exits =
         new HashMap<TextView,Exit>();
     private List<Action> actions = new ArrayList<Action>();
+    private List<Action> immediateActions = null;
 
     public TextAdventureActivity() {
         TextAdventurePresenter p = createPresenter();
@@ -84,23 +85,30 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         return (TextView)findViewById( id );
     }
 
+    private List<Action> menuActions() {
+        if( immediateActions != null )
+            return immediateActions;
+        return actions;
+    }
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        for( Action action : actions )
+        for( Action action : menuActions() )
             menu.add( action.label() );
     }
 
     @Override
     public boolean onContextItemSelected( MenuItem menuItem ) {
         CharSequence menuLabel = menuItem.getTitle();
-        for( Action action : actions ) {
+        for( Action action : menuActions() ) {
             if( menuLabel == action.label() ) {
                 userActionHandler.enact( action );
                 break;
             }
         }
+        immediateActions = null;
         return true;
     }
 
@@ -170,6 +178,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     public void giveUserImmediateActionChoice( List<Action> actions ) {
+        this.immediateActions = actions;
+        openContextMenu( main_text_output );
     }
 
     @Override

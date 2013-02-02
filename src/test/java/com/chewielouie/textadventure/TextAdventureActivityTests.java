@@ -517,6 +517,7 @@ public class TextAdventureActivityTests {
     @Test
     public void actions_menu_contains_last_set_of_actions_sent_with_set_actions() {
         TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
         final ContextMenu menu = mockery.mock( ContextMenu.class );
         final TextView view = (TextView)activity.findViewById( R.id.main_text_output );
         final ContextMenuInfo menuInfo = mockery.mock( ContextMenuInfo.class );
@@ -564,5 +565,61 @@ public class TextAdventureActivityTests {
 
         mockery.assertIsSatisfied();
     }
+
+    //@Test
+    //public void on_immediate_user_action_choice_show_a_context_menu_with_the_choices() {
+        //TextAdventureActivity activity = new TextAdventureActivity();
+        //activity.onCreate( null );
+        //final Action action = mockery.mock( Action.class );
+        //mockery.checking( new Expectations() {{
+            //oneOf( action ).label();
+            //will( returnValue( "action 1" ) );
+            //ignoring( action );
+        //}});
+
+        //List<Action> actions = new ArrayList<Action>();
+        //actions.add( action );
+        //activity.giveUserImmediateActionChoice( actions );
+
+        // The call to openContextMenu in giveUserImmediateActionChoice() doesn't trigger
+        // onCreateContextMenu as expected and so this test fails...
+
+        //mockery.assertIsSatisfied();
+    //}
+
+    //@Test
+    //public void after_immediate_user_action_choice_context_menu_shows_original_actions() {
+        //TextAdventureActivity activity = new TextAdventureActivity();
+        //activity.onCreate( null );
+        //final ContextMenu menu = mockery.mock( ContextMenu.class );
+        //final TextView view = (TextView)activity.findViewById( R.id.main_text_output );
+        //final ContextMenuInfo menuInfo = mockery.mock( ContextMenuInfo.class );
+        //final Action action = mockery.mock( Action.class, "original action" );
+        //final Action immediateAction = mockery.mock( Action.class, "immediate action" );
+        //mockery.checking( new Expectations() {{
+            //allowing( action ).label();
+            //will( returnValue( "action 1" ) );
+            //ignoring( action );
+            //oneOf( menu ).add( "action 1" );
+            //ignoring( menu );
+            //ignoring( menuInfo );
+            //ignoring( immediateAction );
+        //}});
+
+        //List<Action> immediateActions = new ArrayList<Action>();
+        //immediateActions.add( immediateAction );
+        //activity.giveUserImmediateActionChoice( immediateActions );
+
+        // The call to openContextMenu in giveUserImmediateActionChoice() doesn't trigger
+        // onCreateContextMenu as expected so this test is invalid...
+
+        //List<Action> actions = new ArrayList<Action>();
+        //actions.add( action );
+        //activity.setActions( actions );
+
+        //activity.onCreateContextMenu( menu, view, menuInfo );
+
+        //mockery.assertIsSatisfied();
+    //}
 }
 
