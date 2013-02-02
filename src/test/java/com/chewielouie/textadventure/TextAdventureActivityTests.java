@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -516,7 +517,6 @@ public class TextAdventureActivityTests {
     @Test
     public void actions_menu_contains_last_set_of_actions_sent_with_set_actions() {
         TextAdventureActivity activity = new TextAdventureActivity();
-        //activity.onCreate( null );
         final ContextMenu menu = mockery.mock( ContextMenu.class );
         final TextView view = (TextView)activity.findViewById( R.id.main_text_output );
         final ContextMenuInfo menuInfo = mockery.mock( ContextMenuInfo.class );
@@ -539,7 +539,30 @@ public class TextAdventureActivityTests {
         mockery.assertIsSatisfied();
     }
 
-    //@Test
-    //public void selection_of_an_action_item_is_reported_to_user_action_handler() {
+    @Test
+    public void selection_of_an_action_item_is_reported_to_user_action_handler() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        final MenuItem menuItem = mockery.mock( MenuItem.class );
+        final Action action = mockery.mock( Action.class );
+        mockery.checking( new Expectations() {{
+            allowing( action ).label();
+            will( returnValue( "action 1" ) );
+            ignoring( action );
+            allowing( menuItem ).getTitle();
+            will( returnValue( "action 1" ) );
+            ignoring( menuItem );
+            oneOf( handler ).enact( action );
+            ignoring( handler );
+        }});
+
+        List<Action> actions = new ArrayList<Action>();
+        actions.add( action );
+        activity.setActions( actions );
+
+        assertTrue( activity.onContextItemSelected( menuItem ) );
+
+        mockery.assertIsSatisfied();
+    }
 }
 

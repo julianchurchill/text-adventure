@@ -8,7 +8,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -90,6 +90,18 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         super.onCreateContextMenu(menu, v, menuInfo);
         for( Action action : actions )
             menu.add( action.label() );
+    }
+
+    @Override
+    public boolean onContextItemSelected( MenuItem menuItem ) {
+        CharSequence menuLabel = menuItem.getTitle();
+        for( Action action : actions ) {
+            if( menuLabel == action.label() ) {
+                userActionHandler.enact( action );
+                break;
+            }
+        }
+        return true;
     }
 
     @Override

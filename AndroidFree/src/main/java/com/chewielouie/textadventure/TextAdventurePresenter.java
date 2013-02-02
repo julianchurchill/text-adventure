@@ -27,5 +27,8 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
         model.moveThroughExit( exit );
         render();
     }
+
+    public void enact( Action action ) {
+    }
 }
 

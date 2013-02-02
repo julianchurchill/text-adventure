@@ -8,14 +8,13 @@ Backlog
 
 - [FEATURE] Add ability to look at inventory
   - [TEST] Touch events need to be release events, otherwise they trigger movement even on a long press (which we need for showing the context menu)
-  - [TEST] View shows available room actions as a menu activated by tap centre of the screen
-  - [TEST] View maps menu items to available actions upon selection
   - [TEST] Presenter tells view to display inventory upon receiving 'Show inventory' action. Inventory takes the form of actions list with 'look at {itemname}' type actions. Presenter calls view.actionChain( List<Action> )
 - [FEATURE] Add ability to look at items in inventory
   - [TEST] Add default object in the inventory - 'Pocket Lint' and description 'It's fluffy and shaped like an inverted belly button'
   - [TEST] View responds to actionChain by immediately showing the advertised actions
   - [TEST] Presenter responds to 'Look at' action by appending item description to location description and calling view.showLocationDescription
 - [REFACTOR]
+  - Pull out activity screen touch code into separate class
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
 - [FEATURE] Add ability to pick up objects from the current room
   - [TEST] Presenter tells view that 'Pick up' action is available in rooms with objects in
