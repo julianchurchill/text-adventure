@@ -8,5 +8,13 @@ public class InventoryItem implements Item {
         this.name = name;
         this.description = description;
     }
+
+    public String description() {
+        return description;
+    }
+
+    public String name() {
+        return name;
+    }
 }
 

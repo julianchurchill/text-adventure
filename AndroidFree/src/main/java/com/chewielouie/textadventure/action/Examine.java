@@ -12,7 +12,7 @@ public class Examine implements Action {
     }
 
     public String label() {
-        return "";
+        return "Examine " + item.name();
     }
 
     public void trigger() {
@@ -23,11 +23,19 @@ public class Examine implements Action {
     }
 
     public List<Action> followUpActions() {
-        return null;
+        return new ArrayList<Action>();
     }
 
     public Item item() {
         return item;
+    }
+
+    public String userText() {
+        return item.description();
+    }
+
+    public boolean userTextAvailable() {
+        return true;
     }
 }
 
