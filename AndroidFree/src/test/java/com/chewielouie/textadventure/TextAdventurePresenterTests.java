@@ -160,7 +160,23 @@ public class TextAdventurePresenterTests {
         p.enact( action );
     }
 
-    //@Test
-    //public void upon_enact_action_that_requires_no_further_action_do_not_pass_any_new_actions_to_view() {
+    @Test
+    public void upon_enact_action_that_requires_no_further_action_do_not_pass_any_new_actions_to_view() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        final Action action = mockery.mock( Action.class, "original action" );
+        mockery.checking( new Expectations() {{
+            allowing( action ).trigger();
+            allowing( action ).userMustChooseFollowUpAction();
+            will( returnValue( false ) );
+            ignoring( action );
+            ignoring( model );
+            never( view ).giveUserImmediateActionChoice( with( any( List.class ) ) );
+            ignoring( view );
+        }});
+
+        p.enact( action );
+    }
 }
 
