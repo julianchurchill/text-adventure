@@ -85,5 +85,12 @@ public class ShowInventoryTests {
         assertTrue( actions.get(1) instanceof Examine );
         assertEquals( item2, ((Examine)actions.get(1)).item() );
     }
+
+    @Test
+    public void user_text_is_not_available() {
+        ShowInventory action = new ShowInventory( null );
+
+        assertFalse( action.userTextAvailable() );
+    }
 }
 
