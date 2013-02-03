@@ -7,7 +7,6 @@ Backlog
 =======
 
 - [FEATURE] Add ability to look at items in inventory
-  - [TEST] Add default inventory contents to the model - 'Pocket Lint' and description 'It's fluffy and shaped like an inverted belly button'
   - [TEST] ShowInventory userMustChooseFollowUpAction() returns true.
   - [TEST] ShowInventory followUpActions() contains Examine actions for each item in inventory
   - [TEST] Examine action trigger prepares item description.
