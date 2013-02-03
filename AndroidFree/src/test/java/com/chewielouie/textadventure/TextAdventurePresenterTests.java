@@ -60,7 +60,7 @@ public class TextAdventurePresenterTests {
         TextAdventurePresenter p = new TextAdventurePresenter( view, model );
 
         final List<Action> actions = new ArrayList<Action>();
-        actions.add( new ShowInventory() );
+        actions.add( new ShowInventory( null ) );
         mockery.checking( new Expectations() {{
             ignoring( model );
             oneOf( view ).setActions( actions );

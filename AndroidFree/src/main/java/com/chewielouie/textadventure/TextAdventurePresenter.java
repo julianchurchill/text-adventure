@@ -14,7 +14,7 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
            TextAdventureModel m ) {
         this.view = v;
         this.model = m;
-        defaultActions.add( new ShowInventory() );
+        defaultActions.add( new ShowInventory( m ) );
     }
 
     public void render() {
