@@ -53,5 +53,37 @@ public class ShowInventoryTests {
 
         action.trigger();
     }
+
+    @Test
+    public void user_must_choose_follow_up_action_is_always_true() {
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        ShowInventory action = new ShowInventory( model );
+
+        assertTrue( action.userMustChooseFollowUpAction() );
+    }
+
+    @Test
+    public void follow_up_actions_contains_Examine_actions_for_each_inventory_item() {
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        ShowInventory action = new ShowInventory( model );
+        final List<Item> items = new ArrayList<Item>();
+        Item item1 = mockery.mock( Item.class, "item 1" );
+        Item item2 = mockery.mock( Item.class, "item 2" );
+        items.add( item1 );
+        items.add( item2 );
+        mockery.checking( new Expectations() {{
+            oneOf( model ).inventoryItems();
+            will( returnValue( items ) );
+            ignoring( model );
+        }});
+
+        action.trigger();
+        List<Action> actions = action.followUpActions();
+        assertEquals( 2, actions.size() );
+        assertTrue( actions.get(0) instanceof Examine );
+        assertEquals( item1, ((Examine)actions.get(0)).item() );
+        assertTrue( actions.get(1) instanceof Examine );
+        assertEquals( item2, ((Examine)actions.get(1)).item() );
+    }
 }
 

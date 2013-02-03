@@ -7,13 +7,11 @@ Backlog
 =======
 
 - [FEATURE] Add ability to look at items in inventory
-  - [TEST] ShowInventory userMustChooseFollowUpAction() returns true.
-  - [TEST] ShowInventory followUpActions() contains Examine actions for each item in inventory
   - [TEST] Examine action trigger prepares item description.
   - [TEST] Examine action label is 'Examine {item name}'
   - [TEST] Examine userMustChooseFollowUpAction() returns false.
   - [TEST] Examine followUpActions() is an empty list.
-  - [TEST] Examine userTextToShow() returns true.
+  - [TEST] Examine userTextAvailable() returns true.
   - [TEST] Examine userText() is the item description.
   - [TEST] ShowInventory userTextToShow() returns false.
   - [TEST] After triggering action in enact() Presenter asks action if text must be displayed and if so appends the text to the location description and calls view.showLocationDescription

@@ -2,10 +2,12 @@ package com.chewielouie.textadventure.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.chewielouie.textadventure.Item;
 import com.chewielouie.textadventure.TextAdventureModel;
 
 public class ShowInventory implements Action {
     private TextAdventureModel model;
+    private List<Item> items = null;
 
     public ShowInventory( TextAdventureModel model ) {
         this.model = model;
@@ -16,15 +18,18 @@ public class ShowInventory implements Action {
     }
 
     public void trigger() {
-        model.inventoryItems();
+        items = model.inventoryItems();
     }
 
     public boolean userMustChooseFollowUpAction() {
-        return false;
+        return true;
     }
 
     public List<Action> followUpActions() {
-        return new ArrayList<Action>();
+        List<Action> actions = new ArrayList<Action>();
+        for( Item item : items )
+            actions.add( new Examine( item ) );
+        return actions;
     }
 
     @Override
