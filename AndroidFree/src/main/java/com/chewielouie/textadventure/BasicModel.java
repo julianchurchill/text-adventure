@@ -8,6 +8,12 @@ import java.util.Map;
 public class BasicModel implements TextAdventureModel {
     Map<String,ModelLocation> locations = new HashMap<String,ModelLocation>();
     ModelLocation currentLocation = new NullLocation();
+    private List<Item> inventoryItems = new ArrayList<Item>();
+
+    public BasicModel() {
+        inventoryItems.add( new InventoryItem( "Pocket lint",
+            "It's fluffy and shaped like an inverted belly button" ) );
+    }
 
     public String currentLocationDescription() {
         return currentLocation().description();
@@ -31,6 +37,10 @@ public class BasicModel implements TextAdventureModel {
 
     public List<Exit> currentLocationExits() {
         return currentLocation().exits();
+    }
+
+    public List<Item> inventoryItems() {
+        return inventoryItems;
     }
 }
 
