@@ -6,8 +6,7 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 Backlog
 =======
 
-- [TEST] Touch events need to be release events, otherwise they trigger movement even on a long press (which we need for showing the context menu)
-  - Should react to a short press, on action down to avoid clashing with context menu triggering long press
+- [TEST] Exit touch events don't seem to be quite right in the expected places...
 - [FEATURE] Add ability to look at items in inventory
   - [TEST] Presenter should append action text history onto the location description text until the location changes - this resets the action text history to be empty.
 - [REFACTOR]
@@ -21,7 +20,6 @@ Backlog
   - [TEST] Presenter removes object from room - state is persisted upon leaving and reentering room
 - [FEATURE] Add ability to drop objects from the inventory into the current room
 
-- Exit touch events don't seem to be quite right in the expected places...
 
 - Add objects that can be examined to rooms
   - Pressing the centre of the screen gives a list of verbs, just 'examine' is available atm.
