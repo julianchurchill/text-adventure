@@ -16,7 +16,7 @@ import android.view.View.OnLongClickListener;
 import android.widget.TextView;
 import com.chewielouie.textadventure.action.Action;
 
-public class TextAdventureActivity extends Activity implements TextAdventureView, OnTouchListener, OnLongClickListener {
+public class TextAdventureActivity extends Activity implements TextAdventureView, ShortTouchHandler {
     private RendersView rendersView;
     private UserActionHandler userActionHandler;
     private List<Exit> exits = new ArrayList<Exit>();
@@ -29,7 +29,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         new HashMap<TextView,Exit>();
     private List<Action> actions = new ArrayList<Action>();
     private List<Action> immediateActions = null;
-    private boolean longPressOnMainTextView = false;
+    private ShortTouchDisseminator shortTouchDisseminator;
 
     public TextAdventureActivity() {
         TextAdventurePresenter p = createPresenter();
@@ -81,8 +81,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         right_direction_label = findTextView( R.id.right_direction_label );
         left_direction_label = findTextView( R.id.left_direction_label );
         main_text_output = findTextView( R.id.main_text_output );
-        main_text_output.setOnTouchListener( this );
-        main_text_output.setOnLongClickListener( this );
+        shortTouchDisseminator = new ShortTouchDisseminator( this );
+        shortTouchDisseminator.setView( main_text_output );
+        main_text_output.setOnTouchListener( shortTouchDisseminator );
         registerForContextMenu( main_text_output );
     }
 
@@ -194,91 +195,130 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         openContextMenu( main_text_output );
     }
 
-    public boolean onTouch( View v, MotionEvent e ) {
-        if( v == main_text_output &&
-              e.getActionMasked() == MotionEvent.ACTION_UP &&
-              exits.size() > 0 &&
-              longPressOnMainTextView == false ) {
-            if( touchIsInTopQuandrant( e ) )
-                deliverExitActionFor( top_direction_label );
-            else if( touchIsInBottomQuandrant( e ) )
-                deliverExitActionFor( bottom_direction_label );
-            else if( touchIsInRightQuandrant( e ) )
-                deliverExitActionFor( right_direction_label );
-            else if( touchIsInLeftQuandrant( e ) )
-                deliverExitActionFor( left_direction_label );
-        }
-
-        if( v == main_text_output &&
-              e.getActionMasked() == MotionEvent.ACTION_UP &&
-              longPressOnMainTextView == true )
-            longPressOnMainTextView = false;
-        return false;
-    }
-
-    public boolean onLongClick( View v ) {
+    public void topQuadrantTouch( View v ) {
         if( v == main_text_output )
-            longPressOnMainTextView = true;
-        return false;
+            deliverExitActionFor( top_direction_label );
     }
 
-    private int main_text_height() {
-        if( main_text_output.getHeight() != 0 )
-            return main_text_output.getHeight();
-        return main_text_output.getLayoutParams().height;
+    public void bottomQuadrantTouch( View v ) {
+        if( v == main_text_output )
+            deliverExitActionFor( bottom_direction_label );
     }
 
-    private int main_text_width() {
-        if( main_text_output.getWidth() != 0 )
-            return main_text_output.getWidth();
-        return main_text_output.getLayoutParams().width;
+    public void rightQuadrantTouch( View v ) {
+        if( v == main_text_output )
+            deliverExitActionFor( right_direction_label );
     }
 
-    private float x_y_ratio_for_main_text_view() {
-        return (float)main_text_height() / (float)main_text_width();
-    }
-
-    private float x_adjusted_for_width_height_ratio( MotionEvent e ) {
-        return e.getX() * x_y_ratio_for_main_text_view();
-    }
-
-    private boolean touchIsInTopQuandrant( MotionEvent e ) {
-        if( touchIsToTheLeft( e ) )
-            return x_adjusted_for_width_height_ratio( e ) > e.getY();
-        return x_adjusted_for_width_height_ratio( e ) <
-            (main_text_height() - e.getY());
-    }
-
-    private boolean touchIsToTheLeft( MotionEvent e ) {
-        return e.getX() < (main_text_width()/2);
-    }
-
-    private boolean touchIsInBottomQuandrant( MotionEvent e ) {
-        if( touchIsToTheLeft( e ) )
-            return x_adjusted_for_width_height_ratio( e ) >
-               (main_text_height() - e.getY());
-        return x_adjusted_for_width_height_ratio( e ) < e.getY();
-    }
-
-    private boolean touchIsInRightQuandrant( MotionEvent e ) {
-        if( touchIsToTheTop( e ) )
-            return x_adjusted_for_width_height_ratio( e ) > (main_text_height() - e.getY());
-        return x_adjusted_for_width_height_ratio( e ) > e.getY();
-    }
-
-    private boolean touchIsToTheTop( MotionEvent e ) {
-        return e.getY() < (main_text_height()/2);
-    }
-
-    private boolean touchIsInLeftQuandrant( MotionEvent e ) {
-        if( touchIsToTheTop( e ) )
-            return x_adjusted_for_width_height_ratio( e ) < e.getY();
-        return x_adjusted_for_width_height_ratio( e ) < (main_text_height() - e.getY());
+    public void leftQuadrantTouch( View v ) {
+        if( v == main_text_output )
+            deliverExitActionFor( left_direction_label );
     }
 
     private void deliverExitActionFor( TextView dir_label ) {
-        userActionHandler.moveThroughExit(
+        if( exits.size() > 0 )
+            userActionHandler.moveThroughExit(
                directions_and_exits.get( dir_label ) );
+    }
+
+    public boolean onLongClick( View v ) {
+        return shortTouchDisseminator.onLongClick( v );
+    }
+
+    public boolean onTouch( View v, MotionEvent e ) {
+        return shortTouchDisseminator.onTouch( v, e );
+    }
+
+    class ShortTouchDisseminator implements OnTouchListener, OnLongClickListener {
+        private ShortTouchHandler handler;
+        private boolean longPressOnView = false;
+        private View viewToObserve;
+
+        public ShortTouchDisseminator( ShortTouchHandler h ) {
+            this.handler = h;
+        }
+
+        public void setView( View v ) {
+            this.viewToObserve = v;
+            this.viewToObserve.setOnLongClickListener( this );
+        }
+
+        public boolean onLongClick( View v ) {
+            if( v == viewToObserve )
+                longPressOnView = true;
+            return false;
+        }
+
+        public boolean onTouch( View v, MotionEvent e ) {
+            if( v == viewToObserve &&
+                  e.getActionMasked() == MotionEvent.ACTION_UP &&
+                  longPressOnView == false ) {
+                if( touchIsInTopQuandrant( e ) )
+                    handler.topQuadrantTouch( v );
+                else if( touchIsInBottomQuandrant( e ) )
+                    handler.bottomQuadrantTouch( v );
+                else if( touchIsInRightQuandrant( e ) )
+                    handler.rightQuadrantTouch( v );
+                else if( touchIsInLeftQuandrant( e ) )
+                    handler.leftQuadrantTouch( v );
+            }
+
+            if( v == viewToObserve &&
+                  e.getActionMasked() == MotionEvent.ACTION_UP &&
+                  longPressOnView == true )
+                longPressOnView = false;
+            return false;
+        }
+
+        private int view_height() {
+            if( viewToObserve.getHeight() != 0 )
+                return viewToObserve.getHeight();
+            return viewToObserve.getLayoutParams().height;
+        }
+
+        private int view_width() {
+            if( viewToObserve.getWidth() != 0 )
+                return viewToObserve.getWidth();
+            return viewToObserve.getLayoutParams().width;
+        }
+
+        private float x_adjusted_for_width_height_ratio( MotionEvent e ) {
+            return e.getX() * (float)view_height() / (float)view_width();
+        }
+
+        private boolean touchIsInTopQuandrant( MotionEvent e ) {
+            if( touchIsToTheLeft( e ) )
+                return x_adjusted_for_width_height_ratio( e ) > e.getY();
+            return x_adjusted_for_width_height_ratio( e ) <
+                (view_height() - e.getY());
+        }
+
+        private boolean touchIsToTheLeft( MotionEvent e ) {
+            return e.getX() < (view_width()/2);
+        }
+
+        private boolean touchIsInBottomQuandrant( MotionEvent e ) {
+            if( touchIsToTheLeft( e ) )
+                return x_adjusted_for_width_height_ratio( e ) >
+                   (view_height() - e.getY());
+            return x_adjusted_for_width_height_ratio( e ) < e.getY();
+        }
+
+        private boolean touchIsInRightQuandrant( MotionEvent e ) {
+            if( touchIsToTheTop( e ) )
+                return x_adjusted_for_width_height_ratio( e ) > (view_height() - e.getY());
+            return x_adjusted_for_width_height_ratio( e ) > e.getY();
+        }
+
+        private boolean touchIsToTheTop( MotionEvent e ) {
+            return e.getY() < (view_height()/2);
+        }
+
+        private boolean touchIsInLeftQuandrant( MotionEvent e ) {
+            if( touchIsToTheTop( e ) )
+                return x_adjusted_for_width_height_ratio( e ) < e.getY();
+            return x_adjusted_for_width_height_ratio( e ) < (view_height() - e.getY());
+        }
     }
 }
 

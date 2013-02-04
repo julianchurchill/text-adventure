@@ -337,6 +337,7 @@ public class TextAdventureActivityTests {
             never( handler ).moveThroughExit( with( any( Exit.class ) ) );
         }});
         TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
 
         final TextView t = (TextView)activity.findViewById( R.id.main_text_output );
         float x = 0;
