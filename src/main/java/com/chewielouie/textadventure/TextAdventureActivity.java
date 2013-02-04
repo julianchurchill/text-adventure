@@ -11,10 +11,11 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.TextView;
 import com.chewielouie.textadventure.action.Action;
 
-public class TextAdventureActivity extends Activity implements TextAdventureView {
+public class TextAdventureActivity extends Activity implements TextAdventureView, OnTouchListener {
     private RendersView rendersView;
     private UserActionHandler userActionHandler;
     private List<Exit> exits = new ArrayList<Exit>();
@@ -78,6 +79,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         right_direction_label = findTextView( R.id.right_direction_label );
         left_direction_label = findTextView( R.id.left_direction_label );
         main_text_output = findTextView( R.id.main_text_output );
+        main_text_output.setOnTouchListener( this );
         registerForContextMenu( main_text_output );
     }
 
@@ -189,9 +191,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         openContextMenu( main_text_output );
     }
 
-    @Override
-    public boolean dispatchTouchEvent( MotionEvent e ) {
-        if( e.getActionMasked() == MotionEvent.ACTION_UP && exits.size() > 0 ) {
+    public boolean onTouch( View v, MotionEvent e ) {
+        if( v == main_text_output && e.getActionMasked() == MotionEvent.ACTION_UP && exits.size() > 0 ) {
             if( touchIsInTopQuandrant( e ) )
                 deliverExitActionFor( top_direction_label );
             else if( touchIsInBottomQuandrant( e ) )
@@ -201,7 +202,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             else if( touchIsInLeftQuandrant( e ) )
                 deliverExitActionFor( left_direction_label );
         }
-        return super.dispatchTouchEvent( e );
+        return true;
     }
 
     private int main_text_height() {

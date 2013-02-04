@@ -82,7 +82,8 @@ public class TextAdventureActivityTests {
         exits.add( new Exit( "second exit" ) );
         activity.showLocationExits( exits );
 
-        activity.dispatchTouchEvent( createDownMotionEvent( 0, 0 ) );
+        final TextView t = (TextView)activity.findViewById( R.id.main_text_output );
+        activity.onTouch( t, createDownMotionEvent( 0, 0 ) );
 
         mockery.assertIsSatisfied();
     }
@@ -108,7 +109,7 @@ public class TextAdventureActivityTests {
         t.getLayoutParams().height = 100;
         float x = 75;
         float y = 0;
-        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+        activity.onTouch( t, createUpMotionEvent( x, y ) );
 
         mockery.assertIsSatisfied();
     }
@@ -134,7 +135,7 @@ public class TextAdventureActivityTests {
         t.getLayoutParams().height = 100;
         float x = 25;
         float y = 0;
-        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+        activity.onTouch( t, createUpMotionEvent( x, y ) );
 
         mockery.assertIsSatisfied();
     }
@@ -160,7 +161,7 @@ public class TextAdventureActivityTests {
         t.getLayoutParams().height = 100;
         float x = 75;
         float y = 99;
-        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+        activity.onTouch( t, createUpMotionEvent( x, y ) );
 
         mockery.assertIsSatisfied();
     }
@@ -186,7 +187,7 @@ public class TextAdventureActivityTests {
         t.getLayoutParams().height = 100;
         float x = 25;
         float y = 99;
-        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+        activity.onTouch( t, createUpMotionEvent( x, y ) );
 
         mockery.assertIsSatisfied();
     }
@@ -213,7 +214,7 @@ public class TextAdventureActivityTests {
         t.getLayoutParams().height = 100;
         float x = 99;
         float y = 75;
-        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+        activity.onTouch( t, createUpMotionEvent( x, y ) );
 
         mockery.assertIsSatisfied();
     }
@@ -240,7 +241,7 @@ public class TextAdventureActivityTests {
         t.getLayoutParams().height = 100;
         float x = 99;
         float y = 25;
-        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+        activity.onTouch( t, createUpMotionEvent( x, y ) );
 
         mockery.assertIsSatisfied();
     }
@@ -269,7 +270,7 @@ public class TextAdventureActivityTests {
         float x = 1;
         float y = 75;
         assertTrue( 1 < (t.getLayoutParams().height-75) );
-        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+        activity.onTouch( t, createUpMotionEvent( x, y ) );
 
         mockery.assertIsSatisfied();
     }
@@ -297,7 +298,7 @@ public class TextAdventureActivityTests {
         t.getLayoutParams().height = 100;
         float x = 1;
         float y = 25;
-        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+        activity.onTouch( t, createUpMotionEvent( x, y ) );
 
         mockery.assertIsSatisfied();
     }
@@ -310,9 +311,10 @@ public class TextAdventureActivityTests {
         }});
         TextAdventureActivity activity = new TextAdventureActivity( handler );
 
+        final TextView t = (TextView)activity.findViewById( R.id.main_text_output );
         float x = 0;
         float y = 0;
-        activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+        activity.onTouch( t, createUpMotionEvent( x, y ) );
 
         mockery.assertIsSatisfied();
     }

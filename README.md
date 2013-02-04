@@ -6,9 +6,10 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 Backlog
 =======
 
+- [TEST] Touch events need to be release events, otherwise they trigger movement even on a long press (which we need for showing the context menu)
+  - Should react to a short press, on action down to avoid clashing with context menu triggering long press
 - [FEATURE] Add ability to look at items in inventory
   - [TEST] Presenter should append action text history onto the location description text until the location changes - this resets the action text history to be empty.
-- [TEST] Touch events need to be release events, otherwise they trigger movement even on a long press (which we need for showing the context menu)
 - [REFACTOR]
   - Pull out activity screen touch code into separate class
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
