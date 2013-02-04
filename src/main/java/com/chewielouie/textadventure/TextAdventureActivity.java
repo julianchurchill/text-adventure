@@ -185,9 +185,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     public void giveUserImmediateActionChoice( List<Action> actions ) {
         this.immediateActions = actions;
-        openContextMenu( main_text_output );
-        // don't know why but the context menu doesn't
-        // appear unless you do this twice!!!
+        closeContextMenu();
         openContextMenu( main_text_output );
     }
 
