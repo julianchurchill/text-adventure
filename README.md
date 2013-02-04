@@ -7,7 +7,6 @@ Backlog
 =======
 
 - [FEATURE] Add ability to look at items in inventory
-  - [TEST] After triggering action in enact() Presenter asks action if text must be displayed and if so appends the text to the location description and calls view.showLocationDescription
   - [TEST] Rename View.showLocationDescription() to showMainText()
   - [TEST] Presenter should append action text history onto the location description text until the location changes - this resets the action text history to be empty.
 - [TEST] Touch events need to be release events, otherwise they trigger movement even on a long press (which we need for showing the context menu)

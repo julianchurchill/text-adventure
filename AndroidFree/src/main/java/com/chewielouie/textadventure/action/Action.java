@@ -7,5 +7,7 @@ public interface Action {
     public void trigger();
     public boolean userMustChooseFollowUpAction();
     public List<Action> followUpActions();
+    public boolean userTextAvailable();
+    public String userText();
 }
 

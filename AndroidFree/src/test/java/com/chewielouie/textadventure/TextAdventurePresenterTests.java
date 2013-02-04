@@ -178,5 +178,28 @@ public class TextAdventurePresenterTests {
 
         p.enact( action );
     }
+
+    @Test
+    public void if_text_is_available_for_display_after_enacting_an_action_tell_the_view() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        final Action action = mockery.mock( Action.class );
+        mockery.checking( new Expectations() {{
+            allowing( action ).trigger();
+            allowing( action ).userTextAvailable();
+            will( returnValue( true ) );
+            allowing( action ).userText();
+            will( returnValue( "some user text" ) );
+            ignoring( action );
+            allowing( model ).currentLocationDescription();
+            will( returnValue( "location description" ) );
+            ignoring( model );
+            oneOf( view ).showLocationDescription( "location description\n\nsome user text\n" );
+            ignoring( view );
+        }});
+
+        p.enact( action );
+    }
 }
 
