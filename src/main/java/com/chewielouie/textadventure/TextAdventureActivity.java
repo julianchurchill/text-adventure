@@ -12,10 +12,11 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.View.OnLongClickListener;
 import android.widget.TextView;
 import com.chewielouie.textadventure.action.Action;
 
-public class TextAdventureActivity extends Activity implements TextAdventureView, OnTouchListener {
+public class TextAdventureActivity extends Activity implements TextAdventureView, OnTouchListener, OnLongClickListener {
     private RendersView rendersView;
     private UserActionHandler userActionHandler;
     private List<Exit> exits = new ArrayList<Exit>();
@@ -28,6 +29,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         new HashMap<TextView,Exit>();
     private List<Action> actions = new ArrayList<Action>();
     private List<Action> immediateActions = null;
+    private boolean longPressOnMainTextView = false;
 
     public TextAdventureActivity() {
         TextAdventurePresenter p = createPresenter();
@@ -80,6 +82,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         left_direction_label = findTextView( R.id.left_direction_label );
         main_text_output = findTextView( R.id.main_text_output );
         main_text_output.setOnTouchListener( this );
+        main_text_output.setOnLongClickListener( this );
         registerForContextMenu( main_text_output );
     }
 
@@ -192,7 +195,10 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     public boolean onTouch( View v, MotionEvent e ) {
-        if( v == main_text_output && e.getActionMasked() == MotionEvent.ACTION_UP && exits.size() > 0 ) {
+        if( v == main_text_output &&
+              e.getActionMasked() == MotionEvent.ACTION_UP &&
+              exits.size() > 0 &&
+              longPressOnMainTextView == false ) {
             if( touchIsInTopQuandrant( e ) )
                 deliverExitActionFor( top_direction_label );
             else if( touchIsInBottomQuandrant( e ) )
@@ -202,7 +208,18 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             else if( touchIsInLeftQuandrant( e ) )
                 deliverExitActionFor( left_direction_label );
         }
-        return true;
+
+        if( v == main_text_output &&
+              e.getActionMasked() == MotionEvent.ACTION_UP &&
+              longPressOnMainTextView == true )
+            longPressOnMainTextView = false;
+        return false;
+    }
+
+    public boolean onLongClick( View v ) {
+        if( v == main_text_output )
+            longPressOnMainTextView = true;
+        return false;
     }
 
     private int main_text_height() {

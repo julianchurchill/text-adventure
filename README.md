@@ -6,10 +6,11 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 Backlog
 =======
 
+- [REFACTOR]
+  - Pull out activity screen touch code into separate class
 - [FEATURE] Add ability to look at items in inventory
   - [TEST] Presenter should append action text history onto the location description text until the location changes - this resets the action text history to be empty.
 - [REFACTOR]
-  - Pull out activity screen touch code into separate class
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
 - [FEATURE] Add ability to pick up objects from the current room
   - [TEST] Presenter tells view that 'Pick up' action is available in rooms with objects in

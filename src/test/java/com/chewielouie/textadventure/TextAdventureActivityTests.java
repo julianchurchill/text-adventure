@@ -528,8 +528,49 @@ public class TextAdventureActivityTests {
         assertEquals( "third exit", t.getText().toString() );
     }
 
+    @Test
+    public void on_touch_must_never_consume_events_so_that_long_press_will_still_work() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "only exit" ) );
+        activity.showLocationExits( exits );
+
+        TextView t = (TextView)activity.findViewById( R.id.main_text_output );
+        t.getLayoutParams().width = 100;
+        t.getLayoutParams().height = 100;
+        float x = 75;
+        float y = 0;
+        assertFalse( activity.onTouch( t, createUpMotionEvent( 75, 0 ) ) );
+    }
+
+    @Test
+    public void long_touch_does_not_trigger_an_exit_action() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        mockery.checking( new Expectations() {{
+            never( handler ).moveThroughExit( with( any( Exit.class ) ) );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "only exit" ) );
+        activity.showLocationExits( exits );
+
+        TextView t = (TextView)activity.findViewById( R.id.main_text_output );
+        t.getLayoutParams().width = 100;
+        t.getLayoutParams().height = 100;
+        float x = 75;
+        float y = 0;
+        activity.onLongClick( t );
+        activity.onTouch( t, createUpMotionEvent( x, y ) );
+
+        mockery.assertIsSatisfied();
+    }
+
     //@Test
-    //public void touch_event_in_the_centre_shows_actions_menu() {
+    //public void long_touch_in_the_centre_shows_actions_menu() {
         //TextAdventureActivity activity = new TextAdventureActivity();
         //activity.onCreate( null );
 
@@ -538,7 +579,7 @@ public class TextAdventureActivityTests {
         //t.getLayoutParams().height = 100;
         //float x = 50;
         //float y = 50;
-        //activity.dispatchTouchEvent( createUpMotionEvent( x, y ) );
+        //activity.onTouch( t, createUpMotionEvent( x, y ) );
 
         //confirm actions menu is shown - don't know how to do this!
     //}
@@ -594,11 +635,6 @@ public class TextAdventureActivityTests {
 
         mockery.assertIsSatisfied();
     }
-
-    //@Test
-    //public void on_long_touch_show_a_context_menu_with_the_available_actions() {
-        // Don't know how to detect that a context menu has been opened...
-    //}
 
     //@Test
     //public void on_immediate_user_action_choice_show_a_context_menu_with_the_choices() {
