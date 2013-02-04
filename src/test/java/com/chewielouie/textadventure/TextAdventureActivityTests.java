@@ -596,6 +596,11 @@ public class TextAdventureActivityTests {
     }
 
     //@Test
+    //public void on_long_touch_show_a_context_menu_with_the_available_actions() {
+        // Don't know how to detect that a context menu has been opened...
+    //}
+
+    //@Test
     //public void on_immediate_user_action_choice_show_a_context_menu_with_the_choices() {
         //TextAdventureActivity activity = new TextAdventureActivity();
         //activity.onCreate( null );
