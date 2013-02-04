@@ -36,6 +36,10 @@ public class ShowInventory implements Action {
         return false;
     }
 
+    public String userText() {
+        return "";
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof ShowInventory) )
