@@ -102,13 +102,20 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     @Override
     public boolean onContextItemSelected( MenuItem menuItem ) {
         CharSequence menuLabel = menuItem.getTitle();
+        boolean actionOriginatedFromImmediateActions = false;
+        if( menuActions() == immediateActions )
+            actionOriginatedFromImmediateActions = true;
+
         for( Action action : menuActions() ) {
             if( menuLabel == action.label() ) {
                 userActionHandler.enact( action );
+                openContextMenu( main_text_output );
                 break;
             }
         }
-        immediateActions = null;
+
+        if( actionOriginatedFromImmediateActions )
+            immediateActions = null;
         return true;
     }
 
