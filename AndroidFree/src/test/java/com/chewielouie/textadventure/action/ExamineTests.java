@@ -21,11 +21,13 @@ public class ExamineTests {
         Examine action = new Examine( item );
         mockery.checking( new Expectations() {{
             allowing( item ).description();
-            will( returnValue( "item description" ) );
+            will( returnValue( "description" ) );
+            allowing( item ).name();
+            will( returnValue( "name" ) );
             ignoring( item );
         }});
 
-        assertEquals( "item description", action.userText() );
+        assertEquals( "You examined the name. description", action.userText() );
     }
 
     @Test

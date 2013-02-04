@@ -31,7 +31,7 @@ public class Examine implements Action {
     }
 
     public String userText() {
-        return item.description();
+        return "You examined the " + item.name() + ". " + item.description();
     }
 
     public boolean userTextAvailable() {
