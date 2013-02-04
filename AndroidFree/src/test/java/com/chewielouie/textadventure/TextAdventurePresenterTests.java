@@ -26,7 +26,7 @@ public class TextAdventurePresenterTests {
             allowing( model ).currentLocationDescription();
             will( returnValue( "some room text" ) );
             ignoring( model );
-            oneOf( view ).showLocationDescription( "some room text" );
+            oneOf( view ).showMainText( "some room text" );
             ignoring( view );
         }});
 
@@ -94,7 +94,7 @@ public class TextAdventurePresenterTests {
             allowing( model ).currentLocationDescription();
             will( returnValue( "some room text" ) );
             ignoring( model );
-            oneOf( view ).showLocationDescription( "some room text" );
+            oneOf( view ).showMainText( "some room text" );
             ignoring( view );
         }});
 
@@ -195,7 +195,7 @@ public class TextAdventurePresenterTests {
             allowing( model ).currentLocationDescription();
             will( returnValue( "location description" ) );
             ignoring( model );
-            oneOf( view ).showLocationDescription( "location description\n\nsome user text\n" );
+            oneOf( view ).showMainText( "location description\n\nsome user text\n" );
             ignoring( view );
         }});
 

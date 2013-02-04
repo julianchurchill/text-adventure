@@ -124,7 +124,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         rendersView.render();
     }
 
-    public void showLocationDescription( String s ) {
+    public void showMainText( String s ) {
         main_text_output.setText( s );
     }
 

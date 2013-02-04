@@ -62,7 +62,7 @@ public class TextAdventureActivityTests {
         TextAdventureActivity activity = new TextAdventureActivity();
         activity.onCreate( null );
 
-        activity.showLocationDescription( "cheese" );
+        activity.showMainText( "cheese" );
 
         final TextView t = (TextView)activity.findViewById( R.id.main_text_output );
         assertEquals( "cheese", t.getText().toString() );
