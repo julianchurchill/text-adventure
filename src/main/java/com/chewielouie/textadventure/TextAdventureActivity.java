@@ -217,10 +217,19 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         return main_text_output.getLayoutParams().width;
     }
 
+    private float x_y_ratio_for_main_text_view() {
+        return (float)main_text_height() / (float)main_text_width();
+    }
+
+    private float x_adjusted_for_width_height_ratio( MotionEvent e ) {
+        return e.getX() * x_y_ratio_for_main_text_view();
+    }
+
     private boolean touchIsInTopQuandrant( MotionEvent e ) {
         if( touchIsToTheLeft( e ) )
-            return e.getX() > e.getY();
-        return e.getX() < (main_text_height() - e.getY());
+            return x_adjusted_for_width_height_ratio( e ) > e.getY();
+        return x_adjusted_for_width_height_ratio( e ) <
+            (main_text_height() - e.getY());
     }
 
     private boolean touchIsToTheLeft( MotionEvent e ) {
@@ -229,14 +238,15 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private boolean touchIsInBottomQuandrant( MotionEvent e ) {
         if( touchIsToTheLeft( e ) )
-            return e.getX() > (main_text_height() - e.getY());
-        return e.getX() < e.getY();
+            return x_adjusted_for_width_height_ratio( e ) >
+               (main_text_height() - e.getY());
+        return x_adjusted_for_width_height_ratio( e ) < e.getY();
     }
 
     private boolean touchIsInRightQuandrant( MotionEvent e ) {
         if( touchIsToTheTop( e ) )
-            return e.getX() > (main_text_height() - e.getY());
-        return e.getX() > e.getY();
+            return x_adjusted_for_width_height_ratio( e ) > (main_text_height() - e.getY());
+        return x_adjusted_for_width_height_ratio( e ) > e.getY();
     }
 
     private boolean touchIsToTheTop( MotionEvent e ) {
@@ -245,8 +255,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private boolean touchIsInLeftQuandrant( MotionEvent e ) {
         if( touchIsToTheTop( e ) )
-            return e.getX() < e.getY();
-        return e.getX() < (main_text_height() - e.getY());
+            return x_adjusted_for_width_height_ratio( e ) < e.getY();
+        return x_adjusted_for_width_height_ratio( e ) < (main_text_height() - e.getY());
     }
 
     private void deliverExitActionFor( TextView dir_label ) {

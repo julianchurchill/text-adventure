@@ -247,6 +247,33 @@ public class TextAdventureActivityTests {
     }
 
     @Test
+    public void touch_event_in_right_top_quadrant_causes_third_exit_to_be_used_on_non_square_view() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        final Exit exit = new Exit( "third exit" );
+        mockery.checking( new Expectations() {{
+            oneOf( handler ).moveThroughExit( exit );
+            ignoring( handler );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit" ) );
+        exits.add( exit );
+        activity.showLocationExits( exits );
+
+        final TextView t = (TextView)activity.findViewById( R.id.main_text_output );
+        t.getLayoutParams().width = 200;
+        t.getLayoutParams().height = 400;
+        float x = 102;
+        float y = 199;
+        activity.onTouch( t, createUpMotionEvent( x, y ) );
+
+        mockery.assertIsSatisfied();
+    }
+
+    @Test
     public void touch_event_in_left_bottom_quadrant_causes_fourth_exit_to_be_used() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
         final Exit exit = new Exit( "fourth exit" );
