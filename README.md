@@ -6,7 +6,6 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 Backlog
 =======
 
-- [TEST] Exit touch events don't seem to be quite right in the expected places...
 - [FEATURE] Add ability to look at items in inventory
   - [TEST] Presenter should append action text history onto the location description text until the location changes - this resets the action text history to be empty.
 - [REFACTOR]
