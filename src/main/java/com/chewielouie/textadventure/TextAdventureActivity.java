@@ -107,9 +107,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             actionOriginatedFromImmediateActions = true;
 
         for( Action action : menuActions() ) {
-            if( menuLabel == action.label() ) {
+            if( menuLabel.equals( action.label() ) ) {
                 userActionHandler.enact( action );
-                openContextMenu( main_text_output );
                 break;
             }
         }
@@ -186,6 +185,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     public void giveUserImmediateActionChoice( List<Action> actions ) {
         this.immediateActions = actions;
+        openContextMenu( main_text_output );
+        // don't know why but the context menu doesn't
+        // appear unless you do this twice!!!
         openContextMenu( main_text_output );
     }
 
