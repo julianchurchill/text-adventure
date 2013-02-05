@@ -42,6 +42,10 @@ public class BasicModel implements TextAdventureModel {
     public List<Item> inventoryItems() {
         return inventoryItems;
     }
+
+    public List<Item> itemsInCurrentLocation() {
+        return new ArrayList<Item>();
+    }
 }
 
 
