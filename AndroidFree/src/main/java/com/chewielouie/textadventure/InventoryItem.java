@@ -16,5 +16,23 @@ public class InventoryItem implements Item {
     public String name() {
         return name;
     }
+
+    @Override
+    public boolean equals( Object o ) {
+        if( !(o instanceof InventoryItem) )
+            return false;
+        InventoryItem other = (InventoryItem)o;
+        return name.equals( other.name ) &&
+               description.equals( other.description );
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + name.hashCode();
+        result = prime * result + description.hashCode();
+        return 1;
+    }
 }
 

@@ -8,7 +8,8 @@ Backlog
 
 - [FEATURE] Add ability to pick up objects from the current room
   - [TEST] BasicModel must return items in current location
-  - [TEST] Location must return items in it
+  - [REFACTOR] Rename InventoryItem to NormalItem
+  - [TEST] NormaItem is a value object
   - [TEST] TakeAnItem is a value object
   - [TEST] TakeAnItem label should be 'Take an item'
   - [TEST] TakeAnItem has follow up actions of TakeSpecificItem actions populated from items in current location

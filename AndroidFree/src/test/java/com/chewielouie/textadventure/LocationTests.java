@@ -60,5 +60,16 @@ public class LocationTests {
 
         assertEquals( exits, l.exits() );
     }
+
+    @Test
+    public void added_items_are_retrieveable() {
+        List<Item> items = new ArrayList<Item>();
+        items.add( new InventoryItem( "name", "description" ) );
+
+        Location l = new Location( "", "" );
+        l.addItem( new InventoryItem( "name", "description" ) );
+
+        assertEquals( items, l.items() );
+    }
 }
 

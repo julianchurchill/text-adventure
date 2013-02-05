@@ -7,6 +7,7 @@ public class Location implements ModelLocation {
     private String id;
     private String description;
     private List<Exit> exits = new ArrayList<Exit>();
+    private List<Item> items = new ArrayList<Item>();
 
     public Location( String locationId, String description ) {
         this.id = locationId;
@@ -38,6 +39,14 @@ public class Location implements ModelLocation {
 
     public String description() {
         return description;
+    }
+
+    public void addItem( Item item ) {
+        items.add( item );
+    }
+
+    public List<Item> items() {
+        return items;
     }
 }
 
