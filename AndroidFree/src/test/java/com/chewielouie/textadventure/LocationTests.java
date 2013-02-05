@@ -16,28 +16,32 @@ public class LocationTests {
 
     private Mockery mockery = new Mockery();
 
+    Location createLocation() {
+        return new Location( "", "", null );
+    }
+
     @Test
     public void id_is_set_on_construction() {
-        Location l = new Location( "id", "" );
+        Location l = new Location( "id", "", null );
         assertEquals( "id", l.id() );
     }
 
     @Test
     public void description_is_set_on_construction() {
-        Location l = new Location( "", "description" );
+        Location l = new Location( "", "description", null );
         assertEquals( "description", l.description() );
     }
 
     @Test
     public void added_exit_makes_the_exit_exitable() {
-        Location l = new Location( "", "" );
+        Location l = createLocation();
         l.addExit( new Exit( "north", "loc2" ) );
         assertTrue( l.exitable( new Exit( "north", "loc2" ) ) );
     }
 
     @Test
     public void exits_that_havent_been_added_are_not_exitable() {
-        Location l = new Location( "", "" );
+        Location l = createLocation();
         l.addExit( new Exit( "north", "loc2" ) );
         assertFalse( l.exitable( new Exit( "south", "loc1" ) ) );
     }
@@ -45,7 +49,7 @@ public class LocationTests {
     @Test
     public void exit_destination_is_retrievable() {
         Exit north = new Exit( "north", "loc2" );
-        Location l = new Location( "", "" );
+        Location l = createLocation();
         l.addExit( new Exit( "north", "loc2" ) );
         assertEquals( "loc2", l.exitDestinationFor( north ) );
     }
@@ -56,7 +60,7 @@ public class LocationTests {
         exits.add( new Exit( "north", "loc2" ) );
         exits.add( new Exit( "south", "loc3" ) );
 
-        Location l = new Location( "", "" );
+        Location l = createLocation();
         l.addExit( new Exit( "north", "loc2" ) );
         l.addExit( new Exit( "south", "loc3" ) );
 
@@ -68,7 +72,7 @@ public class LocationTests {
         List<Item> items = new ArrayList<Item>();
         items.add( new NormalItem( "name", "description" ) );
 
-        Location l = new Location( "", "" );
+        Location l = createLocation();
         l.addItem( new NormalItem( "name", "description" ) );
 
         assertEquals( items, l.items() );
@@ -76,7 +80,7 @@ public class LocationTests {
 
     @Test
     public void location_actions_include_take_an_item_when_location_has_item() {
-        Location l = new Location( "", "" );
+        Location l = createLocation();
         l.addItem( new NormalItem( "name", "description" ) );
 
         boolean actionsIncludeTakeAnItemAction = false;
@@ -88,7 +92,7 @@ public class LocationTests {
 
     @Test
     public void location_action_to_take_an_item_is_created_with_location_items() {
-        Location l = new Location( "", "" );
+        Location l = createLocation();
         l.addItem( new NormalItem( "name", "description" ) );
         List<Item> items = new ArrayList<Item>();
         items.add( new NormalItem( "name", "description" ) );
@@ -96,6 +100,15 @@ public class LocationTests {
         for( Action a : l.actions() )
             if( a instanceof TakeAnItem )
                 assertEquals( items, ((TakeAnItem)a).items() );
+    }
+
+    @Test
+    public void location_action_to_take_an_item_has_user_inventory_passed_to_it() {
+        UserInventory inventory = mockery.mock( UserInventory.class );
+        Location l = new Location( "", "", inventory );
+        l.addItem( new NormalItem( "name", "description" ) );
+
+        assertEquals( inventory, ((TakeAnItem)l.actions().get( 0 )).inventory() );
     }
 }
 

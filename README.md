@@ -7,11 +7,11 @@ Backlog
 =======
 
 - [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] Location creates TakeAnItem with the UserInventory
   - [TEST] BasicModel implements UserInventory interface to add the item to the inventory
-  - [TEST] Locations are created with a UserInventory
+  - [TEST] Activity should create Locations with the model as the UserInventory
   - [TEST] TakeSpecificItem trigger removes item from current location in model.
   - [TEST] Location item contents state is persisted upon leaving and reentering room
+  - [TEST] Objects available to pick up should be an automatically added as part of the room description - e.g. 'You are in a square room. There is a pickaxe, a banana and some pocket lint here.'
 - [REFACTOR]
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
 - [FEATURE] Add ability to drop objects from the inventory into the current room

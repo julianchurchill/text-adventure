@@ -10,10 +10,12 @@ public class Location implements ModelLocation {
     private String description;
     private List<Exit> exits = new ArrayList<Exit>();
     private List<Item> items = new ArrayList<Item>();
+    private UserInventory inventory;
 
-    public Location( String locationId, String description ) {
+    public Location( String locationId, String description, UserInventory inventory ) {
         this.id = locationId;
         this.description = description;
+        this.inventory = inventory;
     }
 
     public void addExit( Exit exit ) {
@@ -54,7 +56,7 @@ public class Location implements ModelLocation {
     public List<Action> actions() {
         List<Action> actions = new ArrayList<Action>();
         if( items().size() > 0 )
-            actions.add( new TakeAnItem( items, null ) );
+            actions.add( new TakeAnItem( items, inventory ) );
         return actions;
     }
 }

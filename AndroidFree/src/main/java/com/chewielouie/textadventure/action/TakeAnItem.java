@@ -9,15 +9,21 @@ import com.chewielouie.textadventure.UserInventory;
 public class TakeAnItem implements Action {
     private List<Action> followUpActions = new ArrayList<Action>();
     private List<Item> items;
+    private UserInventory inventory;
 
     public TakeAnItem( List<Item> items, UserInventory inventory ) {
         this.items = items;
+        this.inventory = inventory;
         for( Item item : items )
             followUpActions.add( new TakeSpecificItem( item, inventory ) );
     }
 
     public List<Item> items() {
        return items;
+    }
+
+    public UserInventory inventory() {
+        return inventory;
     }
 
     public String label() {

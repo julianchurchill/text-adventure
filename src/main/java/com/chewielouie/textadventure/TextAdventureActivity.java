@@ -48,18 +48,18 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     public TextAdventurePresenter createPresenter() {
-        Location startloc = new Location( "startloc", "You are in an empty wasteland that stretches for miles and miles." );
+        Location startloc = new Location( "startloc", "You are in an empty wasteland that stretches for miles and miles.", null );
         startloc.addExit( new Exit( "North", "busytown", Exit.DirectionHint.North ) );
         startloc.addExit( new Exit( "East", "eastloc", Exit.DirectionHint.East ) );
         startloc.addExit( new Exit( "West", "westloc", Exit.DirectionHint.West ) );
-        Location busytown = new Location( "busytown", "You are in a busy town. There is a clock tower to the north." );
+        Location busytown = new Location( "busytown", "You are in a busy town. There is a clock tower to the north.", null );
         busytown.addExit( new Exit( "North", "clocktower", Exit.DirectionHint.North ) );
         busytown.addExit( new Exit( "South", "startloc", Exit.DirectionHint.South ) );
-        Location clocktower = new Location( "clocktower", "You stand before a mighty clock tower. The clock goes TICK!" );
+        Location clocktower = new Location( "clocktower", "You stand before a mighty clock tower. The clock goes TICK!", null );
         clocktower.addExit( new Exit( "South", "busytown", Exit.DirectionHint.South ) );
-        Location eastloc = new Location( "eastloc", "You are in the middle of a vast and endless ocean. Of despair." );
+        Location eastloc = new Location( "eastloc", "You are in the middle of a vast and endless ocean. Of despair.", null );
         eastloc.addExit( new Exit( "West", "startloc", Exit.DirectionHint.West ) );
-        Location westloc = new Location( "westloc", "You are in the precise centre of the universe. You are disappointed to find there is nothing here." );
+        Location westloc = new Location( "westloc", "You are in the precise centre of the universe. You are disappointed to find there is nothing here.", null );
         westloc.addExit( new Exit( "East", "startloc", Exit.DirectionHint.East ) );
         BasicModel model = new BasicModel();
         model.addLocation( startloc );
