@@ -7,10 +7,11 @@ Backlog
 =======
 
 - [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] Presenter tells view that 'Take' action is available in rooms with objects in
+  - [TEST] Presenter tells view that 'TakeAnItem' action is available in rooms with objects in
   - [TEST] BasicModel must return items in current location
-  - [TEST] Take is a value object
-  - [TEST] Take up action has choices, i.e. the object to pick up. Upon triggering the action the presenter must tell the view what choices are available
+  - [TEST] TakeAnItem is a value object
+  - [TEST] TakeAnItem has follow up actions of TakeSpecificItem actions populated from items in current location
+  - [TEST] TakeSpecificItem has user text 'You take {item name}.'
   - [TEST] View tells presenter which object is chosen for take action
   - [TEST] Presenter adds object to user inventory
   - [TEST] Presenter removes object from room - state is persisted upon leaving and reentering room
