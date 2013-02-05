@@ -34,7 +34,7 @@ public class TakeSpecificItemTests {
     }
 
     @Test
-    public void user_must_choose_follow_up_action_is_always_true() {
+    public void user_must_choose_follow_up_action_is_always_false() {
         TakeSpecificItem object1 = createAction( new NormalItem( "", "" ) );
         assertFalse( object1.userMustChooseFollowUpAction() );
     }
