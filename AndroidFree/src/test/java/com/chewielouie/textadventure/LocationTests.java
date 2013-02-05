@@ -64,10 +64,10 @@ public class LocationTests {
     @Test
     public void added_items_are_retrieveable() {
         List<Item> items = new ArrayList<Item>();
-        items.add( new InventoryItem( "name", "description" ) );
+        items.add( new NormalItem( "name", "description" ) );
 
         Location l = new Location( "", "" );
-        l.addItem( new InventoryItem( "name", "description" ) );
+        l.addItem( new NormalItem( "name", "description" ) );
 
         assertEquals( items, l.items() );
     }

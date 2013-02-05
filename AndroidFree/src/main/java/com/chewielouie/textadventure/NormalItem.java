@@ -1,10 +1,10 @@
 package com.chewielouie.textadventure;
 
-public class InventoryItem implements Item {
+public class NormalItem implements Item {
     private String name = "";
     private String description = "";
 
-    public InventoryItem( String name, String description ) {
+    public NormalItem( String name, String description ) {
         this.name = name;
         this.description = description;
     }
@@ -19,9 +19,9 @@ public class InventoryItem implements Item {
 
     @Override
     public boolean equals( Object o ) {
-        if( !(o instanceof InventoryItem) )
+        if( !(o instanceof NormalItem) )
             return false;
-        InventoryItem other = (InventoryItem)o;
+        NormalItem other = (NormalItem)o;
         return name.equals( other.name ) &&
                description.equals( other.description );
     }
