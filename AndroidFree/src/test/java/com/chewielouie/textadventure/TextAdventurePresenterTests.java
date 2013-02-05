@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ShowInventory;
-import com.chewielouie.textadventure.action.TakeAnItem;
 import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;

@@ -6,6 +6,12 @@ import com.chewielouie.textadventure.Item;
 import com.chewielouie.textadventure.TextAdventureModel;
 
 public class TakeAnItem implements Action {
+    private List<Action> followUpActions = new ArrayList<Action>();
+
+    public TakeAnItem( List<Item> items ) {
+        for( Item item : items )
+            followUpActions.add( new TakeSpecificItem( item ) );
+    }
 
     public String label() {
         return "Take an item";
@@ -19,11 +25,7 @@ public class TakeAnItem implements Action {
     }
 
     public List<Action> followUpActions() {
-        //List<Action> actions = new ArrayList<Action>();
-        //for( Item item : items )
-            //actions.add( new Examine( item ) );
-        //return actions;
-        return new ArrayList<Action>();
+        return followUpActions;
     }
 
     public boolean userTextAvailable() {

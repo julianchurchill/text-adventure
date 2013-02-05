@@ -7,12 +7,12 @@ Backlog
 =======
 
 - [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] TakeAnItem label should be 'Take an item'
-  - [TEST] TakeAnItem has follow up actions of TakeSpecificItem actions populated from items in current location
+  - [TEST] Location creates TakeAnItem action by passing items to it
   - [TEST] TakeSpecificItem has user text 'You take {item name}.'
-  - [TEST] View tells presenter which object is chosen for take action
-  - [TEST] Presenter adds object to user inventory
-  - [TEST] Presenter removes object from room - state is persisted upon leaving and reentering room
+  - [TEST] TakeSpecificItem is a value object.
+  - [TEST] TakeSpecificItem trigger adds item to user inventory in model.
+  - [TEST] TakeSpecificItem trigger removes item from current location in model.
+  - [TEST] Location item contents state is persisted upon leaving and reentering room
 - [REFACTOR]
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
 - [FEATURE] Add ability to drop objects from the inventory into the current room
