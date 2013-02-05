@@ -12,7 +12,7 @@ public class TakeSpecificItem implements Action {
     }
 
     public String label() {
-        return "";
+        return "Take " + item.name();
     }
 
     public void trigger() {
@@ -34,17 +34,21 @@ public class TakeSpecificItem implements Action {
         return "";
     }
 
-    //@Override
-    //public boolean equals( Object o ) {
-        //if( !(o instanceof TakeSpecificItem) )
-            //return false;
-        //return true;
-    //}
+    @Override
+    public boolean equals( Object o ) {
+        if( !(o instanceof TakeSpecificItem) )
+            return false;
+        TakeSpecificItem other = (TakeSpecificItem)o;
+        return item.equals( other.item );
+    }
 
-    //@Override
-    //public int hashCode() {
-        //return 1;
-    //}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + item.hashCode();
+        return result;
+    }
 
     public Item item() {
         return item;
