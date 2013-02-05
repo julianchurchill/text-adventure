@@ -12,7 +12,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
 
     public BasicModel() {
         inventoryItems.add( new NormalItem( "Pocket lint",
-            "It's fluffy and shaped like an inverted belly button" ) );
+            "It's fluffy and shaped like an inverted belly button", "some" ) );
     }
 
     public String currentLocationDescription() {

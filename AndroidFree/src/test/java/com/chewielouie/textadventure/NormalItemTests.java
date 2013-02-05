@@ -15,6 +15,18 @@ public class NormalItemTests {
     private Mockery mockery = new Mockery();
 
     @Test
+    public void countable_noun_prefix_defaults_to_a() {
+        NormalItem item = new NormalItem( "name", "description" );
+        assertEquals( "a", item.countableNounPrefix() );
+    }
+
+    @Test
+    public void countable_noun_prefix_is_as_specified() {
+        NormalItem item = new NormalItem( "name", "description", "some" );
+        assertEquals( "some", item.countableNounPrefix() );
+    }
+
+    @Test
     public void two_objects_with_the_same_value_should_be_equal() {
         NormalItem object1 = new NormalItem( "name", "description" );
         NormalItem object2 = new NormalItem( "name", "description" );

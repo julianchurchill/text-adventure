@@ -7,11 +7,11 @@ Backlog
 =======
 
 - [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] Items should supply a 'pre-noun' e.g. 'a' or 'some' to prefix the item name. Default to 'a'.
-  - [TEST] Items available to pick up should be an automatically added as part of the room description - e.g. 'You are in a square room. There is a pickaxe, a banana and some pocket lint here.'
+  - [TEST] Items should provide a midSentenceCasedName(), defaults to name().toLower(), overidable in the constructor.
+  - [TEST] Examine action should use the items mid sentence cased name - e.g. not name() = 'Pocket lint' but midSentenceCasedName() = 'pocket lint'.
+  - [TEST] Items available to pick up should be automatically added as part of the room description - e.g. 'You are in a square room. There is a pickaxe, a banana and some pocket lint here.'
   - [TEST] TakeSpecificItem trigger removes item from current location in model.
   - [TEST] Location item contents state is persisted upon leaving and reentering room
-  - [TEST] Examine action should use the items lower case name - e.g. not name() = 'Pocket lint' but lowercaseName() = 'pocket lint'. 
   - [TEST] When all items are removed from a location it's actions should have TakeAnItem removed
   - [TEST] When an item is added to an empty location the TakeAnItem action should be added to the locations actions
   - [TEST] After enacting an action in the Presenter the view should be updated with the latest action list, in case any actions resulted in a change of available actions

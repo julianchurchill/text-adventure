@@ -3,10 +3,17 @@ package com.chewielouie.textadventure;
 public class NormalItem implements Item {
     private String name = "";
     private String description = "";
+    private String countableNounPrefix = "a";
 
     public NormalItem( String name, String description ) {
         this.name = name;
         this.description = description;
+    }
+
+    public NormalItem( String name, String description,
+           String countableNounPrefix ) {
+        this( name, description );
+        this.countableNounPrefix = countableNounPrefix;
     }
 
     public String description() {
@@ -15,6 +22,10 @@ public class NormalItem implements Item {
 
     public String name() {
         return name;
+    }
+
+    public String countableNounPrefix() {
+        return countableNounPrefix;
     }
 
     @Override
