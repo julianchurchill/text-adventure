@@ -34,7 +34,7 @@ public class TextAdventurePresenterTests {
     }
 
     @Test
-    public void render_tells_view_to_what_room_exits_are_available() {
+    public void render_tells_view_what_room_exits_are_available() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         TextAdventurePresenter p = new TextAdventurePresenter( view, model );
@@ -54,13 +54,12 @@ public class TextAdventurePresenterTests {
     }
 
     @Test
-    public void render_tells_view_default_action_of_show_inventory_is_available() {
+    public void render_tells_of_view_default_actions() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         TextAdventurePresenter p = new TextAdventurePresenter( view, model );
 
-        final List<Action> actions = new ArrayList<Action>();
-        actions.add( new ShowInventory( null ) );
+        final List<Action> actions = new ArrayList<Action>( p.defaultActions() );
         mockery.checking( new Expectations() {{
             ignoring( model );
             oneOf( view ).setActions( actions );
@@ -69,6 +68,42 @@ public class TextAdventurePresenterTests {
 
         p.render();
     }
+
+    @Test
+    public void default_actions_include_show_inventory() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+
+        boolean actionsIncludesShowInventory = false;
+        List<Action> actions = p.defaultActions();
+        for( Action a : actions )
+            if( a instanceof ShowInventory )
+                actionsIncludesShowInventory = true;
+        assertTrue( actionsIncludesShowInventory );
+    }
+
+    //@Test
+    //public void render_tells_view_take_action_is_available_when_room_has_objects() {
+        //final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        //final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        //TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+
+        //Item item = mockery.mock( Item.class );
+        //final List<Item> items = new ArrayList<Item>();
+        //items.add( item );
+        //final List<Action> actions = new ArrayList<Action>( p.defaultActions() );
+        //actions.add( new Take() );
+        //mockery.checking( new Expectations() {{
+            //allowing( model ).itemsInCurrentLocation();
+            //will( returnValue( items ) );
+            //ignoring( model );
+            //oneOf( view ).setActions( actions );
+            //ignoring( view );
+        //}});
+
+        //p.render();
+    //}
 
     @Test
     public void move_through_exit_calls_model() {
