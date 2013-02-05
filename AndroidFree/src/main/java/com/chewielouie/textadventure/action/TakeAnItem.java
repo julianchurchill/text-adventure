@@ -7,10 +7,16 @@ import com.chewielouie.textadventure.TextAdventureModel;
 
 public class TakeAnItem implements Action {
     private List<Action> followUpActions = new ArrayList<Action>();
+    private List<Item> items;
 
     public TakeAnItem( List<Item> items ) {
+        this.items = items;
         for( Item item : items )
             followUpActions.add( new TakeSpecificItem( item ) );
+    }
+
+    public List<Item> items() {
+       return items;
     }
 
     public String label() {

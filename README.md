@@ -7,7 +7,6 @@ Backlog
 =======
 
 - [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] Location creates TakeAnItem action by passing items to it
   - [TEST] TakeSpecificItem has user text 'You take {item name}.'
   - [TEST] TakeSpecificItem is a value object.
   - [TEST] TakeSpecificItem trigger adds item to user inventory in model.

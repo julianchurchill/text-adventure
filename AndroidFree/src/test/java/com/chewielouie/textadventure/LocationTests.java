@@ -85,5 +85,17 @@ public class LocationTests {
                 actionsIncludeTakeAnItemAction = true;
         assertTrue( actionsIncludeTakeAnItemAction );
     }
+
+    @Test
+    public void location_action_to_take_an_item_is_created_with_location_items() {
+        Location l = new Location( "", "" );
+        l.addItem( new NormalItem( "name", "description" ) );
+        List<Item> items = new ArrayList<Item>();
+        items.add( new NormalItem( "name", "description" ) );
+
+        for( Action a : l.actions() )
+            if( a instanceof TakeAnItem )
+                assertEquals( items, ((TakeAnItem)a).items() );
+    }
 }
 
