@@ -110,5 +110,15 @@ public class LocationTests {
 
         assertEquals( inventory, ((TakeAnItem)l.actions().get( 0 )).inventory() );
     }
+
+    @Test
+    public void added_items_are_added_to_location_description() {
+        Location l = new Location( "", "Location description.", null );
+        l.addItem( new NormalItem( "name", "description" ) );
+        l.addItem( new NormalItem( "name2", "description" ) );
+        l.addItem( new NormalItem( "name3", "description" ) );
+
+        assertEquals( "Location description. There is a name, a name2 and a name3 here.", l.description() );
+    }
 }
 

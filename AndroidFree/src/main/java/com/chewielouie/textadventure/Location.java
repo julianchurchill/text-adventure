@@ -42,7 +42,26 @@ public class Location implements ModelLocation {
     }
 
     public String description() {
-        return description;
+        return description + itemsPostAmble();
+    }
+
+    private String itemsPostAmble() {
+        String itemsPostAmble = "";
+        if( items.size() > 0 ) {
+            itemsPostAmble = " There is ";
+            for( int i = 0; i < items.size(); i++ ) {
+                if( items.size() > 1 ) {
+                    if( i != 0 && i != (items.size()-1) )
+                        itemsPostAmble += ", ";
+                    if( i == (items.size()-1) )
+                        itemsPostAmble += " and ";
+                }
+                itemsPostAmble += items.get(i).countableNounPrefix() + " " +
+                              items.get(i).midSentenceCasedName();
+            }
+            itemsPostAmble += " here.";
+        }
+        return itemsPostAmble;
     }
 
     public void addItem( Item item ) {

@@ -7,12 +7,13 @@ Backlog
 =======
 
 - [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] Items available to pick up should be automatically added as part of the room description - e.g. 'You are in a square room. There is a pickaxe, a banana and some pocket lint here.'
+  - [TEST] TakeSpecificItem should use midSentenceCasedName() from item.
   - [TEST] TakeSpecificItem trigger removes item from current location in model.
   - [TEST] Location item contents state is persisted upon leaving and reentering room
+  - [TEST] After enacting an action in the Presenter the view should be updated with the latest action list, in case any actions resulted in a change of available actions
   - [TEST] When all items are removed from a location it's actions should have TakeAnItem removed
   - [TEST] When an item is added to an empty location the TakeAnItem action should be added to the locations actions
-  - [TEST] After enacting an action in the Presenter the view should be updated with the latest action list, in case any actions resulted in a change of available actions
+- [BUG] If you are in the middle of a chain of actions (e.g. taking an item) and the back key is pressed to cancel, then the actions are not reset to the topmost level.
 - [REFACTOR]
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
 - [FEATURE] Add ability to drop objects from the inventory into the current room
