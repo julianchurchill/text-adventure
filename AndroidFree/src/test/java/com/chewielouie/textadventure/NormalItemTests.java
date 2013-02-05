@@ -27,6 +27,18 @@ public class NormalItemTests {
     }
 
     @Test
+    public void mid_sentence_cased_name_defaults_to_name_lower_cased() {
+        NormalItem item = new NormalItem( "NAME", "description" );
+        assertEquals( "name", item.midSentenceCasedName() );
+    }
+
+    @Test
+    public void mid_sentence_cased_name_can_be_supplied_on_construction() {
+        NormalItem item = new NormalItem( "NAME", "description", "a", "Name" );
+        assertEquals( "Name", item.midSentenceCasedName() );
+    }
+
+    @Test
     public void two_objects_with_the_same_value_should_be_equal() {
         NormalItem object1 = new NormalItem( "name", "description" );
         NormalItem object2 = new NormalItem( "name", "description" );

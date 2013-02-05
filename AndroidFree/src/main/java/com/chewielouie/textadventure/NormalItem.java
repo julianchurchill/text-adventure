@@ -4,6 +4,7 @@ public class NormalItem implements Item {
     private String name = "";
     private String description = "";
     private String countableNounPrefix = "a";
+    private String midSentenceCasedName = null;
 
     public NormalItem( String name, String description ) {
         this.name = name;
@@ -16,6 +17,12 @@ public class NormalItem implements Item {
         this.countableNounPrefix = countableNounPrefix;
     }
 
+    public NormalItem( String name, String description,
+           String countableNounPrefix, String midSentenceCasedName ) {
+        this( name, description, countableNounPrefix );
+        this.midSentenceCasedName = midSentenceCasedName;
+    }
+
     public String description() {
         return description;
     }
@@ -26,6 +33,12 @@ public class NormalItem implements Item {
 
     public String countableNounPrefix() {
         return countableNounPrefix;
+    }
+
+    public String midSentenceCasedName() {
+        if( midSentenceCasedName == null )
+            return name().toLowerCase();
+        return midSentenceCasedName;
     }
 
     @Override
