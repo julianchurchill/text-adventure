@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.Item;
 import com.chewielouie.textadventure.TextAdventureModel;
+import com.chewielouie.textadventure.UserInventory;
 
 public class TakeAnItem implements Action {
     private List<Action> followUpActions = new ArrayList<Action>();
     private List<Item> items;
 
-    public TakeAnItem( List<Item> items ) {
+    public TakeAnItem( List<Item> items, UserInventory inventory ) {
         this.items = items;
         for( Item item : items )
-            followUpActions.add( new TakeSpecificItem( item, null ) );
+            followUpActions.add( new TakeSpecificItem( item, inventory ) );
     }
 
     public List<Item> items() {

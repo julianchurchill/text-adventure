@@ -57,5 +57,9 @@ public class TakeSpecificItem implements Action {
     public Item item() {
         return item;
     }
+
+    public UserInventory inventory() {
+        return inventory;
+    }
 }
 

@@ -54,7 +54,7 @@ public class Location implements ModelLocation {
     public List<Action> actions() {
         List<Action> actions = new ArrayList<Action>();
         if( items().size() > 0 )
-            actions.add( new TakeAnItem( items ) );
+            actions.add( new TakeAnItem( items, null ) );
         return actions;
     }
 }

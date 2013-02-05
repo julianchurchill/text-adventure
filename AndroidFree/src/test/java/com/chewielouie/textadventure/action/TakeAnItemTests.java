@@ -9,6 +9,7 @@ import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.UserInventory;
 
 @RunWith(JMock.class)
 public class TakeAnItemTests {
@@ -16,7 +17,7 @@ public class TakeAnItemTests {
     private Mockery mockery = new Mockery();
 
     TakeAnItem createAction() {
-        return new TakeAnItem( new ArrayList<Item>() );
+        return new TakeAnItem( new ArrayList<Item>(), null );
     }
 
     @Test
@@ -36,7 +37,7 @@ public class TakeAnItemTests {
         Item item2 = mockery.mock( Item.class, "item 2" );
         items.add( item1 );
         items.add( item2 );
-        TakeAnItem action = new TakeAnItem( items );
+        TakeAnItem action = new TakeAnItem( items, null );
 
         List<Action> actions = action.followUpActions();
         assertEquals( 2, actions.size() );
@@ -44,6 +45,18 @@ public class TakeAnItemTests {
         assertEquals( item1, ((TakeSpecificItem)actions.get(0)).item() );
         assertTrue( actions.get(1) instanceof TakeSpecificItem );
         assertEquals( item2, ((TakeSpecificItem)actions.get(1)).item() );
+    }
+
+    @Test
+    public void user_inventory_is_passed_to_TakeSpecificItem_follow_up_actions() {
+        final List<Item> items = new ArrayList<Item>();
+        Item item = mockery.mock( Item.class, "item 1" );
+        items.add( item );
+        UserInventory inventory = mockery.mock( UserInventory.class );
+        TakeAnItem action = new TakeAnItem( items, inventory );
+
+        List<Action> actions = action.followUpActions();
+        assertEquals( inventory, ((TakeSpecificItem)actions.get(0)).inventory() );
     }
 
     @Test
