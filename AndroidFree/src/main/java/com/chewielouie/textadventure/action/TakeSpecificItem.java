@@ -15,7 +15,7 @@ public class TakeSpecificItem implements Action {
     }
 
     public String label() {
-        return "Take " + item.name();
+        return "Take " + item.midSentenceCasedName();
     }
 
     public void trigger() {
@@ -31,11 +31,11 @@ public class TakeSpecificItem implements Action {
     }
 
     public boolean userTextAvailable() {
-        return false;
+        return true;
     }
 
     public String userText() {
-        return "";
+        return "You take the " + item.midSentenceCasedName() + ".";
     }
 
     @Override

@@ -26,12 +26,31 @@ public class TakeSpecificItemTests {
         final Item item = mockery.mock( Item.class );
         TakeSpecificItem action = new TakeSpecificItem( item, null );
         mockery.checking( new Expectations() {{
-            allowing( item ).name();
+            allowing( item ).midSentenceCasedName();
             will( returnValue( "item name" ) );
             ignoring( item );
         }});
 
         assertEquals( "Take item name", action.label() );
+    }
+
+    @Test
+    public void user_text_is_available() {
+        TakeSpecificItem action = new TakeSpecificItem( null, null );
+        assertTrue( action.userTextAvailable() );
+    }
+
+    @Test
+    public void user_text_contains_item_name() {
+        final Item item = mockery.mock( Item.class );
+        TakeSpecificItem action = new TakeSpecificItem( item, null );
+        mockery.checking( new Expectations() {{
+            allowing( item ).midSentenceCasedName();
+            will( returnValue( "item name" ) );
+            ignoring( item );
+        }});
+
+        assertEquals( "You take the item name.", action.userText() );
     }
 
     @Test
