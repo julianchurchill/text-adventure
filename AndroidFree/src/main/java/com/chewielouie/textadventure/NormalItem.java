@@ -32,7 +32,7 @@ public class NormalItem implements Item {
         int result = 1;
         result = prime * result + name.hashCode();
         result = prime * result + description.hashCode();
-        return 1;
+        return result;
     }
 }
 

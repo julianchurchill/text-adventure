@@ -7,7 +7,6 @@ Backlog
 =======
 
 - [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] NormaItem is a value object
   - [TEST] TakeAnItem is a value object
   - [TEST] TakeAnItem label should be 'Take an item'
   - [TEST] TakeAnItem has follow up actions of TakeSpecificItem actions populated from items in current location
