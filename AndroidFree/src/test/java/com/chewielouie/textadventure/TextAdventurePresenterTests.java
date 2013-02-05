@@ -85,20 +85,24 @@ public class TextAdventurePresenterTests {
     }
 
     @Test
-    public void render_tells_view_take_action_is_available_when_room_has_objects() {
+    public void render_includes_location_actions_in_view_set_actions() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         TextAdventurePresenter p = new TextAdventurePresenter( view, model );
 
-        Item item = mockery.mock( Item.class );
-        final List<Item> items = new ArrayList<Item>();
-        items.add( item );
+        Action action = mockery.mock( Action.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final List<Action> locationActions = new ArrayList<Action>();
+        locationActions.add( action );
         final List<Action> actions = new ArrayList<Action>( p.defaultActions() );
-        actions.add( new TakeAnItem( model ) );
+        actions.add( action );
         mockery.checking( new Expectations() {{
-            allowing( model ).itemsInCurrentLocation();
-            will( returnValue( items ) );
+            allowing( model ).currentLocation();
+            will( returnValue( location ) );
             ignoring( model );
+            allowing( location ).actions();
+            will( returnValue( locationActions ) );
+            ignoring( location );
             oneOf( view ).setActions( actions );
             ignoring( view );
         }});

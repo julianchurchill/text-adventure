@@ -2,6 +2,8 @@ package com.chewielouie.textadventure;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.action.TakeAnItem;
 
 public class Location implements ModelLocation {
     private String id;
@@ -47,6 +49,13 @@ public class Location implements ModelLocation {
 
     public List<Item> items() {
         return items;
+    }
+
+    public List<Action> actions() {
+        List<Action> actions = new ArrayList<Action>();
+        if( items().size() > 0 )
+            actions.add( new TakeAnItem() );
+        return actions;
     }
 }
 

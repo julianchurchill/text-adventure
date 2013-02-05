@@ -2,6 +2,7 @@ package com.chewielouie.textadventure;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.chewielouie.textadventure.action.Action;
 
 public class NullLocation implements ModelLocation {
     public void addExit( Exit exit ) {
@@ -25,6 +26,10 @@ public class NullLocation implements ModelLocation {
 
     public String description() {
         return "";
+    }
+
+    public List<Action> actions() {
+        return new ArrayList<Action>();
     }
 }
 

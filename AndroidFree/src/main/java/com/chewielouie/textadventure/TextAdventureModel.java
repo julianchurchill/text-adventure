@@ -8,5 +8,6 @@ public interface TextAdventureModel {
     public void moveThroughExit( Exit exit );
     public List<Item> inventoryItems();
     public List<Item> itemsInCurrentLocation();
+    public ModelLocation currentLocation();
 }
 

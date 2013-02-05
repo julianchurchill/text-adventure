@@ -6,18 +6,12 @@ import com.chewielouie.textadventure.Item;
 import com.chewielouie.textadventure.TextAdventureModel;
 
 public class TakeAnItem implements Action {
-    private TextAdventureModel model;
-
-    public TakeAnItem( TextAdventureModel model ) {
-        this.model = model;
-    }
 
     public String label() {
         return "Take an item";
     }
 
     public void trigger() {
-        //items = model.inventoryItems();
     }
 
     public boolean userMustChooseFollowUpAction() {

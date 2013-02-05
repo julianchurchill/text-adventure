@@ -8,6 +8,8 @@ import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.action.TakeAnItem;
 
 @RunWith(JMock.class)
 public class LocationTests {
@@ -70,6 +72,18 @@ public class LocationTests {
         l.addItem( new NormalItem( "name", "description" ) );
 
         assertEquals( items, l.items() );
+    }
+
+    @Test
+    public void location_actions_include_take_an_item_when_location_has_item() {
+        Location l = new Location( "", "" );
+        l.addItem( new NormalItem( "name", "description" ) );
+
+        boolean actionsIncludeTakeAnItemAction = false;
+        for( Action a : l.actions() )
+            if( a instanceof TakeAnItem )
+                actionsIncludeTakeAnItemAction = true;
+        assertTrue( actionsIncludeTakeAnItemAction );
     }
 }
 
