@@ -23,7 +23,7 @@ public class NormalItemTests {
     }
 
     @Test
-    public void two_items_with_different_values_should_not_be_equal() {
+    public void two_objects_with_different_values_should_not_be_equal() {
         NormalItem item1 = new NormalItem( "name a", "description a" );
         NormalItem item2 = new NormalItem( "name b", "description b" );
 
@@ -31,7 +31,7 @@ public class NormalItemTests {
     }
 
     @Test
-    public void a_show_inventory_object_is_not_equal_to_a_non_object() {
+    public void an_object_is_not_equal_to_a_non_object() {
         NormalItem object = new NormalItem( "name", "description" );
         Object notANormalItem = new Object();
 
@@ -47,7 +47,7 @@ public class NormalItemTests {
     }
 
     @Test
-    public void two_items_with_different_values_should_have_different_hashcodes() {
+    public void two_objects_with_different_values_should_have_different_hashcodes() {
         NormalItem item1 = new NormalItem( "name a", "description a" );
         NormalItem item2 = new NormalItem( "name b", "description b" );
 
