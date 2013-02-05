@@ -195,10 +195,59 @@ public class TextAdventurePresenterTests {
             allowing( model ).currentLocationDescription();
             will( returnValue( "location description" ) );
             ignoring( model );
-            oneOf( view ).showMainText( "location description\n\nsome user text\n" );
+            oneOf( view ).showMainText( "location description\n\nsome user text\n\n" );
             ignoring( view );
         }});
 
+        p.enact( action );
+    }
+
+    @Test
+    public void text_output_from_multiple_actions_is_appended_to_main_text() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        final Action action = mockery.mock( Action.class );
+        mockery.checking( new Expectations() {{
+            allowing( action ).userTextAvailable();
+            will( returnValue( true ) );
+            allowing( action ).userText();
+            will( returnValue( "some user text" ) );
+            ignoring( action );
+            allowing( model ).currentLocationDescription();
+            will( returnValue( "location description" ) );
+            ignoring( model );
+            oneOf( view ).showMainText( "location description\n\nsome user text\n\nsome user text\n\n" );
+            ignoring( view );
+        }});
+
+        p.enact( action );
+        p.enact( action );
+    }
+
+    @Test
+    public void changing_locations_clears_the_action_text_history() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        final Action action = mockery.mock( Action.class );
+        final Exit north = new Exit( "north" );
+        mockery.checking( new Expectations() {{
+            allowing( action ).userTextAvailable();
+            will( returnValue( true ) );
+            allowing( action ).userText();
+            will( returnValue( "some user text" ) );
+            ignoring( action );
+            allowing( model ).currentLocationDescription();
+            will( returnValue( "location description" ) );
+            allowing( model ).moveThroughExit( north );
+            ignoring( model );
+            exactly(2).of( view ).showMainText( "location description\n\nsome user text\n\n" );
+            ignoring( view );
+        }});
+
+        p.enact( action );
+        p.moveThroughExit( north );
         p.enact( action );
     }
 }

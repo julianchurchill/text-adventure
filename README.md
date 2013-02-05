@@ -7,10 +7,6 @@ Backlog
 =======
 
 - [REFACTOR]
-  - Pull out activity screen touch code into separate class
-- [FEATURE] Add ability to look at items in inventory
-  - [TEST] Presenter should append action text history onto the location description text until the location changes - this resets the action text history to be empty.
-- [REFACTOR]
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
 - [FEATURE] Add ability to pick up objects from the current room
   - [TEST] Presenter tells view that 'Pick up' action is available in rooms with objects in
@@ -19,19 +15,12 @@ Backlog
   - [TEST] Presenter adds object to user inventory
   - [TEST] Presenter removes object from room - state is persisted upon leaving and reentering room
 - [FEATURE] Add ability to drop objects from the inventory into the current room
+- [FEATURE] The user must be able to scroll the main text view when it gets full up
 
 
-- Add objects that can be examined to rooms
-  - Pressing the centre of the screen gives a list of verbs, just 'examine' is available atm.
-  - When user selects examine a list of objects in the room is given.
-  - When the user chooses the object a description is shown.
-  - The user can show the text for the room again by selecting 'examine' and choosing 'room'.
-
-- Add other monsters, npcs
+- Add monsters, npcs
 
 - Add other verbs - attack, eat, drink, dance, take, drop, give, talk
-
-- Present verbs in a more accessible format - a wheel?
 
 - Save progress
   - Add a menu on the Android menu key so the user can select 'save'.
@@ -39,12 +28,7 @@ Backlog
 
 - Optional images to go with text?
 
-Technical Tasks
-===============
-
 - Read the map from a text file for easy configurability.
 - Read object data from a text file for easy configurability.
 - Read npc/monster data from a text file for easy configurability.
-- Improve build system so only necessary files are recompiled.
-- Improve build system so only tests with changed source code are rerun.
 

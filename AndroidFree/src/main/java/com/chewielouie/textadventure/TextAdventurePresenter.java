@@ -9,6 +9,7 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
     private final TextAdventureView view;
     private final TextAdventureModel model;
     private List<Action> defaultActions = new ArrayList<Action>();
+    private String actionText = "";
 
     public TextAdventurePresenter( TextAdventureView v,
            TextAdventureModel m ) {
@@ -25,14 +26,17 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
 
     public void moveThroughExit( Exit exit ) {
         model.moveThroughExit( exit );
+        actionText = "";
         render();
     }
 
     public void enact( Action action ) {
         action.trigger();
-        if( action.userTextAvailable() )
+        if( action.userTextAvailable() ) {
+            actionText += action.userText() + "\n\n";
             view.showMainText( model.currentLocationDescription()
-                    + "\n\n" + action.userText() + "\n" );
+                    + "\n\n" + actionText );
+        }
         if( action.userMustChooseFollowUpAction() )
             view.giveUserImmediateActionChoice( action.followUpActions() );
     }
