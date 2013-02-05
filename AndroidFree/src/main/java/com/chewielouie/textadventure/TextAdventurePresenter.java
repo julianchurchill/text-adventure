@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ShowInventory;
+import com.chewielouie.textadventure.action.TakeAnItem;
 
 public class TextAdventurePresenter implements RendersView, UserActionHandler {
     private final TextAdventureView view;
@@ -21,7 +22,14 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
     public void render() {
         view.showMainText( model.currentLocationDescription() );
         view.showLocationExits( model.currentLocationExits() );
-        view.setActions( defaultActions );
+        prepareActions();
+    }
+
+    private void prepareActions() {
+        List<Action> availableActions = new ArrayList<Action>( defaultActions );
+        if( model.itemsInCurrentLocation().size() > 0 )
+            availableActions.add( new TakeAnItem( model ) );
+        view.setActions( availableActions );
     }
 
     public void moveThroughExit( Exit exit ) {

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ShowInventory;
+import com.chewielouie.textadventure.action.TakeAnItem;
 import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
@@ -83,27 +84,27 @@ public class TextAdventurePresenterTests {
         assertTrue( actionsIncludesShowInventory );
     }
 
-    //@Test
-    //public void render_tells_view_take_action_is_available_when_room_has_objects() {
-        //final TextAdventureView view = mockery.mock( TextAdventureView.class );
-        //final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        //TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+    @Test
+    public void render_tells_view_take_action_is_available_when_room_has_objects() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
 
-        //Item item = mockery.mock( Item.class );
-        //final List<Item> items = new ArrayList<Item>();
-        //items.add( item );
-        //final List<Action> actions = new ArrayList<Action>( p.defaultActions() );
-        //actions.add( new Take() );
-        //mockery.checking( new Expectations() {{
-            //allowing( model ).itemsInCurrentLocation();
-            //will( returnValue( items ) );
-            //ignoring( model );
-            //oneOf( view ).setActions( actions );
-            //ignoring( view );
-        //}});
+        Item item = mockery.mock( Item.class );
+        final List<Item> items = new ArrayList<Item>();
+        items.add( item );
+        final List<Action> actions = new ArrayList<Action>( p.defaultActions() );
+        actions.add( new TakeAnItem( model ) );
+        mockery.checking( new Expectations() {{
+            allowing( model ).itemsInCurrentLocation();
+            will( returnValue( items ) );
+            ignoring( model );
+            oneOf( view ).setActions( actions );
+            ignoring( view );
+        }});
 
-        //p.render();
-    //}
+        p.render();
+    }
 
     @Test
     public void move_through_exit_calls_model() {

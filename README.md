@@ -7,9 +7,10 @@ Backlog
 =======
 
 - [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] Presenter tells view that 'TakeAnItem' action is available in rooms with objects in
   - [TEST] BasicModel must return items in current location
+  - [TEST] Location must return items in it
   - [TEST] TakeAnItem is a value object
+  - [TEST] TakeAnItem label should be 'Take an item'
   - [TEST] TakeAnItem has follow up actions of TakeSpecificItem actions populated from items in current location
   - [TEST] TakeSpecificItem has user text 'You take {item name}.'
   - [TEST] View tells presenter which object is chosen for take action
