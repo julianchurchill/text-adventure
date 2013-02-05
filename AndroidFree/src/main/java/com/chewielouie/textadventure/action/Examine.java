@@ -12,7 +12,7 @@ public class Examine implements Action {
     }
 
     public String label() {
-        return "Examine " + item.name();
+        return "Examine " + item.midSentenceCasedName();
     }
 
     public void trigger() {
@@ -31,7 +31,7 @@ public class Examine implements Action {
     }
 
     public String userText() {
-        return "You examined the " + item.name() + ". " + item.description();
+        return "You examined the " + item.midSentenceCasedName() + ". " + item.description();
     }
 
     public boolean userTextAvailable() {

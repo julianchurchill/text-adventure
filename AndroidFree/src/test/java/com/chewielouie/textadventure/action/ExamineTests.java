@@ -22,7 +22,7 @@ public class ExamineTests {
         mockery.checking( new Expectations() {{
             allowing( item ).description();
             will( returnValue( "description" ) );
-            allowing( item ).name();
+            allowing( item ).midSentenceCasedName();
             will( returnValue( "name" ) );
             ignoring( item );
         }});
@@ -42,7 +42,7 @@ public class ExamineTests {
         final Item item = mockery.mock( Item.class );
         Examine action = new Examine( item );
         mockery.checking( new Expectations() {{
-            allowing( item ).name();
+            allowing( item ).midSentenceCasedName();
             will( returnValue( "item name" ) );
             ignoring( item );
         }});

@@ -7,7 +7,6 @@ Backlog
 =======
 
 - [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] Examine action should use the items mid sentence cased name - e.g. not name() = 'Pocket lint' but midSentenceCasedName() = 'pocket lint'.
   - [TEST] Items available to pick up should be automatically added as part of the room description - e.g. 'You are in a square room. There is a pickaxe, a banana and some pocket lint here.'
   - [TEST] TakeSpecificItem trigger removes item from current location in model.
   - [TEST] Location item contents state is persisted upon leaving and reentering room
