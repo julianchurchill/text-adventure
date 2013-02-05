@@ -3,12 +3,15 @@ package com.chewielouie.textadventure.action;
 import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.UserInventory;
 
 public class TakeSpecificItem implements Action {
     private Item item;
+    private UserInventory inventory;
 
-    public TakeSpecificItem( Item item ) {
+    public TakeSpecificItem( Item item, UserInventory inventory ) {
         this.item = item;
+        this.inventory = inventory;
     }
 
     public String label() {
@@ -16,6 +19,7 @@ public class TakeSpecificItem implements Action {
     }
 
     public void trigger() {
+        inventory.addToInventory( item );
     }
 
     public boolean userMustChooseFollowUpAction() {

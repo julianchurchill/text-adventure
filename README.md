@@ -7,7 +7,10 @@ Backlog
 =======
 
 - [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] TakeSpecificItem trigger adds item to user inventory in model.
+  - [TEST] TakeAnItem creates TakeSpecificItems with the UserInventory
+  - [TEST] Location creates TakeAnItem with the UserInventory
+  - [TEST] BasicModel implements UserInventory interface to add the item to the inventory
+  - [TEST] Locations are created with a UserInventory
   - [TEST] TakeSpecificItem trigger removes item from current location in model.
   - [TEST] Location item contents state is persisted upon leaving and reentering room
 - [REFACTOR]

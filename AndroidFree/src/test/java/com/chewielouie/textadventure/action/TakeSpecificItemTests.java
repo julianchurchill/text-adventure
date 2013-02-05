@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.Item;
 import com.chewielouie.textadventure.NormalItem;
+import com.chewielouie.textadventure.UserInventory;
 
 @RunWith(JMock.class)
 public class TakeSpecificItemTests {
@@ -17,13 +18,13 @@ public class TakeSpecificItemTests {
     private Mockery mockery = new Mockery();
 
     TakeSpecificItem createAction( Item item ) {
-        return new TakeSpecificItem( item );
+        return new TakeSpecificItem( item, null );
     }
 
     @Test
     public void label_includes_item_name() {
         final Item item = mockery.mock( Item.class );
-        TakeSpecificItem action = new TakeSpecificItem( item );
+        TakeSpecificItem action = new TakeSpecificItem( item, null );
         mockery.checking( new Expectations() {{
             allowing( item ).name();
             will( returnValue( "item name" ) );
@@ -37,6 +38,20 @@ public class TakeSpecificItemTests {
     public void user_must_choose_follow_up_action_is_always_false() {
         TakeSpecificItem object1 = createAction( new NormalItem( "", "" ) );
         assertFalse( object1.userMustChooseFollowUpAction() );
+    }
+
+    @Test
+    public void trigger_adds_item_to_model_inventory() {
+        final Item item = mockery.mock( Item.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        TakeSpecificItem action = new TakeSpecificItem( item, inventory );
+        mockery.checking( new Expectations() {{
+            ignoring( item );
+            oneOf( inventory ).addToInventory( item );
+            ignoring( inventory );
+        }});
+
+        action.trigger();
     }
 
     @Test

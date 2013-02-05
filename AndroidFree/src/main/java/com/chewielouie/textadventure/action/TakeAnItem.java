@@ -12,7 +12,7 @@ public class TakeAnItem implements Action {
     public TakeAnItem( List<Item> items ) {
         this.items = items;
         for( Item item : items )
-            followUpActions.add( new TakeSpecificItem( item ) );
+            followUpActions.add( new TakeSpecificItem( item, null ) );
     }
 
     public List<Item> items() {
