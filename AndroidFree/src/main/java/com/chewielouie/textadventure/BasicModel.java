@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BasicModel implements TextAdventureModel {
+public class BasicModel implements TextAdventureModel, UserInventory {
     Map<String,ModelLocation> locations = new HashMap<String,ModelLocation>();
     ModelLocation currentLocation = new NullLocation();
     private List<Item> inventoryItems = new ArrayList<Item>();
@@ -41,6 +41,10 @@ public class BasicModel implements TextAdventureModel {
 
     public List<Item> inventoryItems() {
         return inventoryItems;
+    }
+
+    public void addToInventory( Item item ) {
+        inventoryItems.add( item );
     }
 }
 

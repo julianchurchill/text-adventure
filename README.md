@@ -7,7 +7,6 @@ Backlog
 =======
 
 - [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] BasicModel implements UserInventory interface to add the item to the inventory
   - [TEST] Activity should create Locations with the model as the UserInventory
   - [TEST] TakeSpecificItem trigger removes item from current location in model.
   - [TEST] Location item contents state is persisted upon leaving and reentering room

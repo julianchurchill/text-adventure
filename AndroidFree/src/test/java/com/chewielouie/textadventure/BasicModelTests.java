@@ -108,5 +108,16 @@ public class BasicModelTests {
 
         assertEquals( exits, model.currentLocationExits() );
     }
+
+    @Test
+    public void adding_an_item_to_the_inventory_actually_adds_it() {
+        Item item = mockery.mock( Item.class );
+        BasicModel model = new BasicModel();
+        int sizeBeforeAdd = model.inventoryItems().size();
+        model.addToInventory( item );
+
+        assertEquals( sizeBeforeAdd+1, model.inventoryItems().size() );
+        assertEquals( item, model.inventoryItems().get(sizeBeforeAdd) );
+    }
 }
 
