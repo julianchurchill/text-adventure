@@ -7,8 +7,6 @@ Backlog
 =======
 
 - [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] TakeSpecificItem should use midSentenceCasedName() from item.
-  - [TEST] TakeSpecificItem should supply user text indicating 'You take the {whatever}'.
   - [TEST] TakeSpecificItem trigger removes item from current location in model.
   - [TEST] Location item contents state is persisted upon leaving and reentering room
   - [TEST] After enacting an action in the Presenter the view should be updated with the latest action list, in case any actions resulted in a change of available actions
