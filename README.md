@@ -6,11 +6,12 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 Backlog
 =======
 
+- [FEATURE] The user must be able to scroll the main text view when it gets full up
+- [FEATURE] Pressing the direction labels themselves should trigger moving through that exit
 - [BUG] If you are in the middle of a chain of actions (e.g. taking an item) and the back key is pressed to cancel, then the actions are not reset to the topmost level.
 - [REFACTOR]
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
 - [FEATURE] Add ability to drop objects from the inventory into the current room
-- [FEATURE] The user must be able to scroll the main text view when it gets full up
 - [FEATURE] Allow the user to examine objects in the current location without taking them first
 
 
