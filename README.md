@@ -7,8 +7,6 @@ Backlog
 =======
 
 - [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] When all items are removed from a location it's actions should have TakeAnItem removed
-  - [TEST] When an item is added to an empty location the TakeAnItem action should be added to the locations actions
   - [TEST] TakeSpecificItem trigger removes item from current location in model.
   - [TEST] Location item contents state is persisted upon leaving and reentering room
 - [BUG] If you are in the middle of a chain of actions (e.g. taking an item) and the back key is pressed to cancel, then the actions are not reset to the topmost level.

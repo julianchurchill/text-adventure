@@ -120,5 +120,26 @@ public class LocationTests {
 
         assertEquals( "Location description. There is a name, a name2 and a name3 here.", l.description() );
     }
+
+    @Test
+    public void removing_all_items_from_a_location_removes_TakeAnItem_action_from_action_list() {
+        Item item = new NormalItem( "name", "description" );
+        Location l = new Location( "", "Location description.", null );
+        l.addItem( item );
+        l.removeItem( item );
+
+        for( Action a : l.actions() )
+            if( a instanceof TakeAnItem )
+                fail("TakeAnItem action is not needed by this location as it has no items!");
+    }
+
+    @Test
+    public void a_location_without_items_does_not_need_a_TakeAnItem_action() {
+        Location l = new Location( "", "Location description.", null );
+
+        for( Action a : l.actions() )
+            if( a instanceof TakeAnItem )
+                fail("TakeAnItem action is not needed by this location as it has no items!");
+    }
 }
 
