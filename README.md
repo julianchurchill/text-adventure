@@ -6,8 +6,6 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 Backlog
 =======
 
-- [FEATURE] Pressing the direction labels themselves should trigger moving through that exit
-  - Consider removing navigation by touching the main text view...
 - [TEST] Expand the long click area to the ScrollView or better still the whole app
 - [BUG] If you are in the middle of a chain of actions (e.g. taking an item) and the back key is pressed to cancel, then the actions are not reset to the topmost level.
 - [REFACTOR]
