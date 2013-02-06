@@ -348,6 +348,58 @@ public class TextAdventureActivityTests {
     }
 
     @Test
+    public void click_top_label_uses_the_correct_exit() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        final Exit exit = new Exit( "first exit" );
+        mockery.checking( new Expectations() {{
+            oneOf( handler ).moveThroughExit( exit );
+            ignoring( handler );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( exit );
+        exits.add( new Exit( "second exit" ) );
+        activity.showLocationExits( exits );
+
+        TextView topLabel = (TextView)activity.findViewById( R.id.top_direction_label );
+        activity.onClick( topLabel );
+
+        mockery.assertIsSatisfied();
+    }
+
+    @Test
+    public void click_bottom_label_uses_the_correct_exit() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        final Exit exit = new Exit( "second exit" );
+        mockery.checking( new Expectations() {{
+            oneOf( handler ).moveThroughExit( exit );
+            ignoring( handler );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( exit );
+        exits.add( new Exit( "third exit" ) );
+        activity.showLocationExits( exits );
+
+        TextView bottomLabel = (TextView)activity.findViewById( R.id.bottom_direction_label );
+        activity.onClick( bottomLabel );
+
+        mockery.assertIsSatisfied();
+    }
+    //@Test
+    //public void click_right_label_uses_the_correct_exit() {
+    //@Test
+    //public void click_left_label_uses_the_correct_exit() {
+
+    // And expand the following tests to account for exits with Directionhints
+    // these cases are currently covered by tests above to do with onTouch
+
+    @Test
     public void top_direction_label_uses_first_exit_text() {
         TextAdventureActivity activity = new TextAdventureActivity();
         activity.onCreate( null );

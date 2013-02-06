@@ -13,11 +13,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.View.OnLongClickListener;
+import android.view.View.OnClickListener;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.chewielouie.textadventure.action.Action;
 
-public class TextAdventureActivity extends Activity implements TextAdventureView, ShortTouchHandler {
+public class TextAdventureActivity extends Activity implements TextAdventureView, ShortTouchHandler, OnClickListener {
     private RendersView rendersView;
     private UserActionHandler userActionHandler;
     private List<Exit> exits = new ArrayList<Exit>();
@@ -83,6 +84,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         top_direction_label = findTextView( R.id.top_direction_label );
+        top_direction_label.setOnClickListener( this );
         bottom_direction_label = findTextView( R.id.bottom_direction_label );
         right_direction_label = findTextView( R.id.right_direction_label );
         left_direction_label = findTextView( R.id.left_direction_label );
@@ -210,6 +212,13 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         this.immediateActions = actions;
         closeContextMenu();
         openContextMenu( main_text_output );
+    }
+
+    public void onClick( View v ) {
+        if( v == top_direction_label )
+            deliverExitActionFor( top_direction_label );
+        else if( v == bottom_direction_label )
+            deliverExitActionFor( bottom_direction_label );
     }
 
     public void topQuadrantTouch( View v ) {
