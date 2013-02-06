@@ -22,10 +22,10 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
     public void render() {
         view.showMainText( model.currentLocationDescription() );
         view.showLocationExits( model.currentLocationExits() );
-        prepareActions();
+        notifyViewOfAvailableActions();
     }
 
-    private void prepareActions() {
+    private void notifyViewOfAvailableActions() {
         List<Action> availableActions = new ArrayList<Action>( defaultActions );
         availableActions.addAll( model.currentLocation().actions() );
         view.setActions( availableActions );
@@ -46,6 +46,7 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
         }
         if( action.userMustChooseFollowUpAction() )
             view.giveUserImmediateActionChoice( action.followUpActions() );
+        notifyViewOfAvailableActions();
     }
 
     public List<Action> defaultActions() {

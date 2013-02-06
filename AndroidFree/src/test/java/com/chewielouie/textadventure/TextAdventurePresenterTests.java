@@ -289,5 +289,32 @@ public class TextAdventurePresenterTests {
         p.moveThroughExit( north );
         p.enact( action );
     }
+
+    @Test
+    public void actions_are_updated_on_view_after_enacting_any_action() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+
+        final Action action = mockery.mock( Action.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final List<Action> locationActions = new ArrayList<Action>();
+        locationActions.add( action );
+        final List<Action> actions = new ArrayList<Action>( p.defaultActions() );
+        actions.add( action );
+        mockery.checking( new Expectations() {{
+            allowing( model ).currentLocation();
+            will( returnValue( location ) );
+            ignoring( model );
+            allowing( location ).actions();
+            will( returnValue( locationActions ) );
+            ignoring( location );
+            ignoring( action );
+            oneOf( view ).setActions( actions );
+            ignoring( view );
+        }});
+
+        p.enact( action );
+    }
 }
 
