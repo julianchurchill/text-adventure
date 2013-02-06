@@ -31,5 +31,8 @@ public class NullLocation implements ModelLocation {
     public List<Action> actions() {
         return new ArrayList<Action>();
     }
+
+    public void removeItem( Item item ) {
+    }
 }
 

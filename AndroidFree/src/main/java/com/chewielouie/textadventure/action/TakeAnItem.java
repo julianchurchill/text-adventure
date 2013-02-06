@@ -3,6 +3,7 @@ package com.chewielouie.textadventure.action;
 import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
 import com.chewielouie.textadventure.UserInventory;
 
@@ -10,12 +11,15 @@ public class TakeAnItem implements Action {
     private List<Action> followUpActions = new ArrayList<Action>();
     private List<Item> items;
     private UserInventory inventory;
+    private ModelLocation location;
 
-    public TakeAnItem( List<Item> items, UserInventory inventory ) {
+    public TakeAnItem( List<Item> items, UserInventory inventory,
+           ModelLocation location ) {
         this.items = items;
         this.inventory = inventory;
+        this.location = location;
         for( Item item : items )
-            followUpActions.add( new TakeSpecificItem( item, inventory ) );
+            followUpActions.add( new TakeSpecificItem( item, inventory, location ) );
     }
 
     public List<Item> items() {
@@ -24,6 +28,10 @@ public class TakeAnItem implements Action {
 
     public UserInventory inventory() {
         return inventory;
+    }
+
+    public ModelLocation location() {
+        return location;
     }
 
     public String label() {

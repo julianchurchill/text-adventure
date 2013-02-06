@@ -112,6 +112,15 @@ public class LocationTests {
     }
 
     @Test
+    public void location_action_to_take_an_item_has_location_passed_to_it() {
+        UserInventory inventory = mockery.mock( UserInventory.class );
+        Location l = new Location( "", "", inventory );
+        l.addItem( new NormalItem( "name", "description" ) );
+
+        assertEquals( l, ((TakeAnItem)l.actions().get( 0 )).location() );
+    }
+
+    @Test
     public void added_items_are_added_to_location_description() {
         Location l = new Location( "", "Location description.", null );
         l.addItem( new NormalItem( "name", "description" ) );

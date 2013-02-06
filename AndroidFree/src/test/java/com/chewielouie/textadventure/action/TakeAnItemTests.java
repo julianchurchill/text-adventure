@@ -9,6 +9,7 @@ import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.UserInventory;
 
 @RunWith(JMock.class)
@@ -17,7 +18,7 @@ public class TakeAnItemTests {
     private Mockery mockery = new Mockery();
 
     TakeAnItem createAction() {
-        return new TakeAnItem( new ArrayList<Item>(), null );
+        return new TakeAnItem( new ArrayList<Item>(), null, null );
     }
 
     @Test
@@ -37,7 +38,7 @@ public class TakeAnItemTests {
         Item item2 = mockery.mock( Item.class, "item 2" );
         items.add( item1 );
         items.add( item2 );
-        TakeAnItem action = new TakeAnItem( items, null );
+        TakeAnItem action = new TakeAnItem( items, null, null );
 
         List<Action> actions = action.followUpActions();
         assertEquals( 2, actions.size() );
@@ -53,10 +54,23 @@ public class TakeAnItemTests {
         Item item = mockery.mock( Item.class, "item 1" );
         items.add( item );
         UserInventory inventory = mockery.mock( UserInventory.class );
-        TakeAnItem action = new TakeAnItem( items, inventory );
+        TakeAnItem action = new TakeAnItem( items, inventory, null );
 
         List<Action> actions = action.followUpActions();
         assertEquals( inventory, ((TakeSpecificItem)actions.get(0)).inventory() );
+    }
+
+    @Test
+    public void location_is_passed_to_TakeSpecificItem_follow_up_actions() {
+        final List<Item> items = new ArrayList<Item>();
+        Item item = mockery.mock( Item.class, "item 1" );
+        items.add( item );
+        UserInventory inventory = mockery.mock( UserInventory.class );
+        ModelLocation location = mockery.mock( ModelLocation.class );
+        TakeAnItem action = new TakeAnItem( items, inventory, location );
+
+        List<Action> actions = action.followUpActions();
+        assertEquals( location, ((TakeSpecificItem)actions.get(0)).location() );
     }
 
     @Test

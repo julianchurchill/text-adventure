@@ -11,6 +11,7 @@ public interface ModelLocation {
     public List<Exit> exits();
     public String description();
     public List<Action> actions();
+    public void removeItem( Item item );
 }
 
 

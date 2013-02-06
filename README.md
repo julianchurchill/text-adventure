@@ -6,9 +6,6 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 Backlog
 =======
 
-- [FEATURE] Add ability to pick up objects from the current room
-  - [TEST] TakeSpecificItem trigger removes item from current location in model.
-  - [TEST] Location item contents state is persisted upon leaving and reentering room
 - [BUG] If you are in the middle of a chain of actions (e.g. taking an item) and the back key is pressed to cancel, then the actions are not reset to the topmost level.
 - [REFACTOR]
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
@@ -34,6 +31,7 @@ Backlog
 Done
 ====
 
+- [FEATURE] Add ability to pick up objects from the current location
 - [FEATURE] Add ability to examine items in the inventory
 - [FEATURE] Add ability to show inventory
 - [FEATURE] Add ability navigate between locations using the four edges of the screen

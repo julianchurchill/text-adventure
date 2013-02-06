@@ -3,15 +3,19 @@ package com.chewielouie.textadventure.action;
 import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.UserInventory;
 
 public class TakeSpecificItem implements Action {
     private Item item;
     private UserInventory inventory;
+    private ModelLocation location;
 
-    public TakeSpecificItem( Item item, UserInventory inventory ) {
+    public TakeSpecificItem( Item item, UserInventory inventory,
+           ModelLocation location ) {
         this.item = item;
         this.inventory = inventory;
+        this.location = location;
     }
 
     public String label() {
@@ -19,6 +23,7 @@ public class TakeSpecificItem implements Action {
     }
 
     public void trigger() {
+        location.removeItem( item );
         inventory.addToInventory( item );
     }
 
@@ -60,6 +65,10 @@ public class TakeSpecificItem implements Action {
 
     public UserInventory inventory() {
         return inventory;
+    }
+
+    public ModelLocation location() {
+        return location;
     }
 }
 
