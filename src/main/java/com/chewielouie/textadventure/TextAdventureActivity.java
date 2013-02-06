@@ -219,6 +219,10 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             deliverExitActionFor( top_direction_label );
         else if( v == bottom_direction_label )
             deliverExitActionFor( bottom_direction_label );
+        else if( v == right_direction_label )
+            deliverExitActionFor( right_direction_label );
+        else if( v == left_direction_label )
+            deliverExitActionFor( left_direction_label );
     }
 
     public void topQuadrantTouch( View v ) {

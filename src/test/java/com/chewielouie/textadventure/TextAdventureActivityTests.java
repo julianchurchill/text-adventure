@@ -391,10 +391,54 @@ public class TextAdventureActivityTests {
 
         mockery.assertIsSatisfied();
     }
-    //@Test
-    //public void click_right_label_uses_the_correct_exit() {
-    //@Test
-    //public void click_left_label_uses_the_correct_exit() {
+
+    @Test
+    public void click_right_label_uses_the_correct_exit() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        final Exit exit = new Exit( "third exit" );
+        mockery.checking( new Expectations() {{
+            oneOf( handler ).moveThroughExit( exit );
+            ignoring( handler );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit" ) );
+        exits.add( exit );
+        exits.add( new Exit( "fourth exit" ) );
+        activity.showLocationExits( exits );
+
+        TextView rightLabel = (TextView)activity.findViewById( R.id.right_direction_label );
+        activity.onClick( rightLabel );
+
+        mockery.assertIsSatisfied();
+    }
+
+    @Test
+    public void click_left_label_uses_the_correct_exit() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        final Exit exit = new Exit( "fourth exit" );
+        mockery.checking( new Expectations() {{
+            oneOf( handler ).moveThroughExit( exit );
+            ignoring( handler );
+        }});
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+
+        List<Exit> exits = new ArrayList<Exit>();
+        exits.add( new Exit( "first exit" ) );
+        exits.add( new Exit( "second exit" ) );
+        exits.add( new Exit( "third exit" ) );
+        exits.add( exit );
+        activity.showLocationExits( exits );
+
+        TextView leftLabel = (TextView)activity.findViewById( R.id.left_direction_label );
+        activity.onClick( leftLabel );
+
+        mockery.assertIsSatisfied();
+    }
 
     // And expand the following tests to account for exits with Directionhints
     // these cases are currently covered by tests above to do with onTouch
