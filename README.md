@@ -6,7 +6,6 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 Backlog
 =======
 
-- [FEATURE] The user must be able to scroll the main text view when it gets full up
 - [FEATURE] Pressing the direction labels themselves should trigger moving through that exit
 - [BUG] If you are in the middle of a chain of actions (e.g. taking an item) and the back key is pressed to cancel, then the actions are not reset to the topmost level.
 - [REFACTOR]
@@ -32,6 +31,7 @@ Backlog
 Done
 ====
 
+- [FEATURE] The user must be able to scroll the main text view when it gets full up
 - [FEATURE] Add ability to pick up objects from the current location
 - [FEATURE] Add ability to examine items in the inventory
 - [FEATURE] Add ability to show inventory

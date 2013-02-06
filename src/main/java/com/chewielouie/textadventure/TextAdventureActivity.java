@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.View.OnLongClickListener;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import com.chewielouie.textadventure.action.Action;
 
@@ -137,6 +138,17 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     public void showMainText( String s ) {
         main_text_output.setText( s );
+        scrollToBottomOfMainText();
+    }
+
+    private void scrollToBottomOfMainText() {
+        final ScrollView scrollView = (ScrollView)findViewById(
+                R.id.main_text_output_scroll_view );
+        scrollView.post(new Runnable() {
+            public void run() {
+                scrollView.smoothScrollTo( 0, main_text_output.getBottom() );
+            }
+        });
     }
 
     public void showLocationExits( List<Exit> exits ) {

@@ -42,16 +42,22 @@
     android:background="#660000"
     android:text="South"
     />
-<TextView
-    android:id="@+id/main_text_output"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/top_direction_label"
-    android:layout_above="@id/bottom_direction_label"
-    android:layout_toRightOf="@id/left_direction_label"
-    android:layout_toLeftOf="@id/right_direction_label"
-    android:textSize="25sp"
-    android:text="Hello!"
-    />
+<ScrollView
+        android:id="@+id/main_text_output_scroll_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_direction_label"
+        android:layout_above="@id/bottom_direction_label"
+        android:layout_toRightOf="@id/left_direction_label"
+        android:layout_toLeftOf="@id/right_direction_label"
+        android:scrollbars="vertical">
+    <TextView
+        android:id="@+id/main_text_output"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:textSize="25sp"
+        android:text="Hello!"
+        />
+</ScrollView>
 </RelativeLayout>
 
