@@ -16,6 +16,7 @@ Backlog
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
 - [FEATURE] Add ability to drop objects from the inventory into the current room
 - [FEATURE] The user must be able to scroll the main text view when it gets full up
+- [FEATURE] Allow the user to examine objects in the current location without taking them first
 
 
 - Add monsters, npcs
@@ -31,4 +32,11 @@ Backlog
 - Read the map from a text file for easy configurability.
 - Read object data from a text file for easy configurability.
 - Read npc/monster data from a text file for easy configurability.
+
+Done
+====
+
+- [FEATURE] Add ability to examine items in the inventory
+- [FEATURE] Add ability to show inventory
+- [FEATURE] Add ability navigate between locations using the four edges of the screen
 
