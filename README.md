@@ -3,8 +3,18 @@ Text Adventure
 
 An Android old-skool text adventure game. This is another exercise in TDD in an Android environment.
 
+Don't forget to drive the development by producing value - the value is game content and this should drive the development of functionality to support it.
+
 Backlog
 =======
+
+- [FEATURE] Read a model setup from a plain text file
+  - [TEST] A PlainTextModelPopulator takes a model and some text and fills the model with locations and items to match the description.
+  - [TEST] Activity should create a PlainTextModelPopulator and give it the model to populate as well as some plain text describing the model contents. Change the demo model content to use this mechanism.
+- [FEATURE] Write some decent content! Expand it and expand the framework to supply functionality to support the content.
+
+- [FEATURE] Action navigator - instead of long click context menu sequence use a sidebar which either expands or gets replaced (with a title to preserve context e.g. 'take', 'drop').
+- [FEATURE] Direction navigator - instead of top, bottom, right, left clickable labels use a compass with small labels.
 
 - [TEST] Expand the long click area to the ScrollView or better still the whole app
 - [BUG] If you are in the middle of a chain of actions (e.g. taking an item) and the back key is pressed to cancel, then the actions are not reset to the topmost level.
@@ -23,10 +33,6 @@ Backlog
   - Autosave
 
 - Optional images to go with text?
-
-- Read the map from a text file for easy configurability.
-- Read object data from a text file for easy configurability.
-- Read npc/monster data from a text file for easy configurability.
 
 Done
 ====
