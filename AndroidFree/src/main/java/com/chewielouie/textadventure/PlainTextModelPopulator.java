@@ -3,7 +3,7 @@ package com.chewielouie.textadventure;
 public class PlainTextModelPopulator {
     private final String locationNameTag = "location_name:";
     private final String locationDescriptionTag = "location description:";
-    private int currentIndex = 0;
+    private int nextCharToParseIndex = 0;
     private TextAdventureModel model;
     private ModelLocationFactory locationFactory;
     private String content;
@@ -20,37 +20,34 @@ public class PlainTextModelPopulator {
     }
 
     private boolean moreContentToParse() {
-        return currentIndex != -1 && currentIndex < content.length();
+        return nextCharToParseIndex < content.length();
     }
 
     private String extractName() {
-        currentIndex = content.indexOf( locationNameTag, currentIndex );
-        String name = "";
-        if( currentIndex != -1 ) {
-            int endOfValue = endOfValue();
-            name = content.substring( currentIndex+locationNameTag.length(), endOfValue );
-            currentIndex = endOfValue + 1;
-        }
-        return name;
-    }
-
-    private int endOfValue() {
-        int endOfValue = content.indexOf( "\n", currentIndex );
-        if( endOfValue == -1 )
-            return content.length();
-        return endOfValue;
+        return extractValue( locationNameTag );
     }
 
     private String extractDescription() {
-        int testIndex = content.indexOf( locationDescriptionTag, currentIndex );
+        return extractValue( locationDescriptionTag );
+    }
+
+    private String extractValue( String tag ) {
+        int testIndex = content.indexOf( tag, nextCharToParseIndex );
         String value = "";
         if( testIndex != -1 ) {
-            currentIndex = testIndex;
+            nextCharToParseIndex = testIndex;
             int endOfValue = endOfValue();
-            value = content.substring( currentIndex+locationDescriptionTag.length(), endOfValue );
-            currentIndex = endOfValue + 1;
+            value = content.substring( nextCharToParseIndex+tag.length(), endOfValue );
+            nextCharToParseIndex = endOfValue + 1;
         }
         return value;
+    }
+
+    private int endOfValue() {
+        int endOfValue = content.indexOf( "\n", nextCharToParseIndex );
+        if( endOfValue == -1 )
+            return content.length();
+        return endOfValue;
     }
 }
 
