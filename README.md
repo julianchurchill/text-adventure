@@ -10,6 +10,9 @@ Backlog
 
 - [FEATURE] Read a model setup from a plain text file
   - [TEST] A PlainTextModelPopulator takes a model and some text and fills the model with locations and items to match the description.
+      - [TEST] PlainTextModelPopulator should call factory to create a ModelLocation and then ModelLocation.deserialise() with a portion of the input text between 'location_name:' identifiers
+      - [TEST] Move the tag/value extracting code and tests from PlainTextModelPopulator to Location
+  - [TEST] Expand Location.deserialise() to work with exits and items
   - [TEST] LocationFactory should create Location object with the correct parameters.
   - [TEST] Activity should create a PlainTextModelPopulator and give it the model to populate as well as some plain text describing the model contents. Change the demo model content to use this mechanism.
 - [FEATURE] Write some decent content! Expand it and expand the framework to supply functionality to support the content.
