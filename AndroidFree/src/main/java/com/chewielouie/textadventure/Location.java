@@ -90,20 +90,35 @@ public class Location implements ModelLocation {
     class Deserialiser {
         private final String locationIDTag = "location_id:";
         private final String locationDescriptionTag = "location description:";
+        private final String exitLabelTag = "exit label:";
+        private final String exitDestinationTag = "exit destination:";
+        private final String exitDirectionHintTag = "exit direction hint:";
         private String content;
+        private int startOfLastFoundTag = -1;
 
         public Deserialiser( String content ) {
             this.content = content;
-            deserialiseID();
+
+            id = extractNewlineDelimitedValueFor( locationIDTag );
             deserialiseDescription();
+
+            String exitLabel = extractNewlineDelimitedValueFor( exitLabelTag );
+            if( exitLabel != "" )
+                addExit( new Exit( exitLabel,
+                    extractNewlineDelimitedValueFor( exitDestinationTag ),
+                    stringToDirectionHint(
+                        extractNewlineDelimitedValueFor( exitDirectionHintTag ) ) ) );
         }
 
-        private void deserialiseID() {
-            int startOfID = content.indexOf( locationIDTag );
-            int endOfID = content.indexOf( "\n", startOfID );
-            if( endOfID == -1 )
-                endOfID = content.length();
-            id = content.substring( startOfID + locationIDTag.length(), endOfID );
+        private String extractNewlineDelimitedValueFor( String tag ) {
+            int startOfTag = content.indexOf( tag, startOfLastFoundTag + 1 );
+            if( startOfTag == -1 )
+                return "";
+            startOfLastFoundTag = startOfTag;
+            int endOfTag = content.indexOf( "\n", startOfTag );
+            if( endOfTag == -1 )
+                endOfTag = content.length();
+            return content.substring( startOfTag + tag.length(), endOfTag );
         }
 
         private void deserialiseDescription() {
@@ -111,6 +126,18 @@ public class Location implements ModelLocation {
             if( startOfDescription != -1 )
                 description = content.substring(
                         startOfDescription + locationDescriptionTag.length() );
+        }
+
+        private Exit.DirectionHint stringToDirectionHint( String hint ) {
+            if( hint.equals( "North" ) )
+                return Exit.DirectionHint.North;
+            if( hint.equals( "South" ) )
+                return Exit.DirectionHint.South;
+            if( hint.equals( "East" ) )
+                return Exit.DirectionHint.East;
+            if( hint.equals( "West" ) )
+                return Exit.DirectionHint.West;
+            return Exit.DirectionHint.DontCare;
         }
     }
 }

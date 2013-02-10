@@ -168,11 +168,29 @@ public class LocationTests {
     @Test
     public void deserialise_finds_location_description() {
         Location l = new Location( "", "", null );
-        l.deserialise( "location_name:name\n" +
+        l.deserialise( "location_id:name\n" +
                        "location description:You are in a room.\n" +
                        "It is a bit untidy." );
         assertEquals( "You are in a room.\n" +
                       "It is a bit untidy.", l.description() );
     }
+
+    @Test
+    public void deserialise_extracts_exit() {
+        Location l = new Location( "", "", null );
+        l.deserialise( "location_id:name\n" +
+                       "exit label:label\n" +
+                       "exit destination:destination\n" +
+                       "exit direction hint:East" );
+        assertEquals( "label", l.exits().get(0).label() );
+        assertEquals( "destination", l.exits().get(0).destination() );
+        assertEquals( Exit.DirectionHint.East, l.exits().get(0).directionHint() );
+    }
+
+    //@Test
+    //public void deserialise_exit_direction_hint_is_optional() {
+
+    //@Test
+    //public void deserialise_extracts_multiple_exits() {
 }
 
