@@ -13,7 +13,7 @@ public class PlainTextModelPopulatorTests {
     private Mockery mockery = new Mockery();
 
     @Test
-    public void location_is_deserialised_from_location_name_onwards() {
+    public void location_is_deserialised_from_location_tag_onwards() {
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         final ModelLocation location = mockery.mock( ModelLocation.class );
         final ModelLocationFactory locationFactory =
@@ -29,11 +29,11 @@ public class PlainTextModelPopulatorTests {
         }});
 
         new PlainTextModelPopulator( model, locationFactory,
-                                     "location_name:name" );
+                                     "LOCATION\nlocation_name:name" );
     }
 
     @Test
-    public void multiple_locations_are_deserialised_from_location_name_onwards() {
+    public void multiple_locations_are_deserialised_from_location_tag_onwards() {
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         final ModelLocation location = mockery.mock( ModelLocation.class );
         final ModelLocationFactory locationFactory =
@@ -50,8 +50,8 @@ public class PlainTextModelPopulatorTests {
         }});
 
         new PlainTextModelPopulator( model, locationFactory,
-                                     "location_name:name\n" +
-                                     "location_name:name2\n" );
+                                     "LOCATION\nlocation_name:name\n" +
+                                     "LOCATION\nlocation_name:name2\n" );
     }
 
     @Test
@@ -71,7 +71,7 @@ public class PlainTextModelPopulatorTests {
         }});
 
         new PlainTextModelPopulator( model, locationFactory,
-                                     "location_name:name" );
+                                     "LOCATION\nlocation_name:name" );
     }
 
     @Test
@@ -96,7 +96,8 @@ public class PlainTextModelPopulatorTests {
         }});
 
         new PlainTextModelPopulator( model, locationFactory,
-                                     "location_name:name1\nlocation_name:name2" );
+                                     "LOCATION\nlocation_name:name1\n" +
+                                     "LOCATION\nlocation_name:name2" );
     }
 }
 

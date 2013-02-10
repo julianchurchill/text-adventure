@@ -1,7 +1,7 @@
 package com.chewielouie.textadventure;
 
 public class PlainTextModelPopulator {
-    private final String locationNameTag = "location_name:";
+    private final String locationNameTag = "LOCATION\n";
     private int nextLocation = 0;
     private TextAdventureModel model;
     private ModelLocationFactory locationFactory;
@@ -33,7 +33,8 @@ public class PlainTextModelPopulator {
             if( nextLocation == -1 )
                 nextLocation = content.length();
 
-            locationContent = content.substring( locationStart, nextLocation );
+            locationContent = content.substring(
+                    locationStart + locationNameTag.length(), nextLocation );
         }
         return locationContent;
     }
