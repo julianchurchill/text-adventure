@@ -158,8 +158,12 @@ public class LocationTests {
         assertEquals( "name", l.id() );
     }
 
-    //@Test
-    //public void deserialise_strips_trailing_newlines_from_location_id() {
+    @Test
+    public void deserialise_strips_trailing_newlines_from_location_id() {
+        Location l = new Location( "", "Location description.", null );
+        l.deserialise( "location_id:name\n" );
+        assertEquals( "name", l.id() );
+    }
 
     //@Test
     //public void deserialise_finds_location_description() {

@@ -86,7 +86,10 @@ public class Location implements ModelLocation {
 
     public void deserialise( String content ) {
         int startOfID = content.indexOf( locationIDTag );
-        id = content.substring( startOfID + locationIDTag.length() );
+        int endOfID = content.indexOf( "\n", startOfID );
+        if( endOfID == -1 )
+            endOfID = content.length();
+        id = content.substring( startOfID + locationIDTag.length(), endOfID );
     }
 }
 
