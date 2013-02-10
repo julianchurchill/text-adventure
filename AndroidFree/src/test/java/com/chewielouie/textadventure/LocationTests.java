@@ -160,20 +160,19 @@ public class LocationTests {
 
     @Test
     public void deserialise_strips_trailing_newlines_from_location_id() {
-        Location l = new Location( "", "Location description.", null );
+        Location l = new Location( "", "", null );
         l.deserialise( "location_id:name\n" );
         assertEquals( "name", l.id() );
     }
 
-    //@Test
-    //public void deserialise_finds_location_description() {
-        //Location location = new Location();
-        //location.deserialise( "location_name:name\n" +
-                              //"location description:You are in a room" );
-        //assertEquals( "You are in a room", location.description() );
-    //}
-
-    //@Test
-    //public void deserialise_description_can_include_newlines() {
+    @Test
+    public void deserialise_finds_location_description() {
+        Location l = new Location( "", "", null );
+        l.deserialise( "location_name:name\n" +
+                       "location description:You are in a room.\n" +
+                       "It is a bit untidy." );
+        assertEquals( "You are in a room.\n" +
+                      "It is a bit untidy.", l.description() );
+    }
 }
 

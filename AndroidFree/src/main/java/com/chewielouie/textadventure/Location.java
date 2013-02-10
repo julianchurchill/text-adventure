@@ -11,7 +11,6 @@ public class Location implements ModelLocation {
     private List<Exit> exits = new ArrayList<Exit>();
     private List<Item> items = new ArrayList<Item>();
     private UserInventory inventory;
-    private final String locationIDTag = "location_id:";
 
     public Location( String locationId, String description, UserInventory inventory ) {
         this.id = locationId;
@@ -85,11 +84,34 @@ public class Location implements ModelLocation {
     }
 
     public void deserialise( String content ) {
-        int startOfID = content.indexOf( locationIDTag );
-        int endOfID = content.indexOf( "\n", startOfID );
-        if( endOfID == -1 )
-            endOfID = content.length();
-        id = content.substring( startOfID + locationIDTag.length(), endOfID );
+        new Deserialiser( content );
+    }
+
+    class Deserialiser {
+        private final String locationIDTag = "location_id:";
+        private final String locationDescriptionTag = "location description:";
+        private String content;
+
+        public Deserialiser( String content ) {
+            this.content = content;
+            deserialiseID();
+            deserialiseDescription();
+        }
+
+        private void deserialiseID() {
+            int startOfID = content.indexOf( locationIDTag );
+            int endOfID = content.indexOf( "\n", startOfID );
+            if( endOfID == -1 )
+                endOfID = content.length();
+            id = content.substring( startOfID + locationIDTag.length(), endOfID );
+        }
+
+        private void deserialiseDescription() {
+            int startOfDescription = content.indexOf( locationDescriptionTag );
+            if( startOfDescription != -1 )
+                description = content.substring(
+                        startOfDescription + locationDescriptionTag.length() );
+        }
     }
 }
 
