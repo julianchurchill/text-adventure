@@ -20,8 +20,6 @@ public class PlainTextModelPopulatorTests {
             mockery.mock( ModelLocationFactory.class );
 
         mockery.checking( new Expectations() {{
-            //allowing( locationFactory ).create( with( any( String.class ) ),
-                                                //with( any( String.class ) ) );
             allowing( locationFactory ).create();
             will( returnValue( location ) );
             ignoring( locationFactory );
@@ -42,8 +40,6 @@ public class PlainTextModelPopulatorTests {
             mockery.mock( ModelLocationFactory.class );
 
         mockery.checking( new Expectations() {{
-            //allowing( locationFactory ).create( with( any( String.class ) ),
-                                                //with( any( String.class ) ) );
             allowing( locationFactory ).create();
             will( returnValue( location ) );
             ignoring( locationFactory );
@@ -66,8 +62,6 @@ public class PlainTextModelPopulatorTests {
             mockery.mock( ModelLocationFactory.class );
 
         mockery.checking( new Expectations() {{
-            //allowing( locationFactory ).create( with( any( String.class ) ),
-                                                //with( any( String.class ) ) );
             allowing( locationFactory ).create();
             will( returnValue( location ) );
             ignoring( locationFactory );
@@ -104,30 +98,5 @@ public class PlainTextModelPopulatorTests {
         new PlainTextModelPopulator( model, locationFactory,
                                      "location_name:name1\nlocation_name:name2" );
     }
-
-    // Move this to Location.deserialise() tests
-    //@Test
-    //public void location_descriptions_are_included_on_creation() {
-        //final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        //final ModelLocation location1 = mockery.mock( ModelLocation.class, "l1" );
-        //final ModelLocationFactory locationFactory =
-            //mockery.mock( ModelLocationFactory.class );
-
-        //mockery.checking( new Expectations() {{
-            //allowing( locationFactory ).create( "name1",
-               //"You are in a room" );
-            //will( returnValue( location1 ) );
-            //ignoring( locationFactory );
-            //ignoring( location1 );
-            //oneOf( model ).addLocation( location1 );
-            //ignoring( model );
-        //}});
-
-        //new PlainTextModelPopulator( model, locationFactory,
-                 //"location_name:name1\nlocation description:You are in a room");
-    //}
-
-    //@Test
-    //public void descriptions_can_include_newlines() {
 }
 
