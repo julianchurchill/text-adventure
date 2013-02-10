@@ -11,6 +11,7 @@ public class Location implements ModelLocation {
     private List<Exit> exits = new ArrayList<Exit>();
     private List<Item> items = new ArrayList<Item>();
     private UserInventory inventory;
+    private final String locationIDTag = "location_id:";
 
     public Location( String locationId, String description, UserInventory inventory ) {
         this.id = locationId;
@@ -84,6 +85,8 @@ public class Location implements ModelLocation {
     }
 
     public void deserialise( String content ) {
+        int startOfID = content.indexOf( locationIDTag );
+        id = content.substring( startOfID + locationIDTag.length() );
     }
 }
 
