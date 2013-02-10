@@ -34,5 +34,8 @@ public class NullLocation implements ModelLocation {
 
     public void removeItem( Item item ) {
     }
+
+    public void deserialise( String content ) {
+    }
 }
 

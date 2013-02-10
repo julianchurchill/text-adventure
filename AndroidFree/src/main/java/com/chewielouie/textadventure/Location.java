@@ -82,5 +82,8 @@ public class Location implements ModelLocation {
             actions.add( new TakeAnItem( items, inventory, this ) );
         return actions;
     }
+
+    public void deserialise( String content ) {
+    }
 }
 
