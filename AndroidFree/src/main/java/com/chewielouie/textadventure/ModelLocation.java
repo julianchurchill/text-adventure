@@ -12,6 +12,7 @@ public interface ModelLocation {
     public String description();
     public List<Action> actions();
     public void removeItem( Item item );
+    public void deserialise( String content );
 }
 
 
