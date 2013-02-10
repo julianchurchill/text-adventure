@@ -101,13 +101,7 @@ public class Location implements ModelLocation {
 
             id = extractNewlineDelimitedValueFor( locationIDTag );
             deserialiseDescription();
-
-            String exitLabel = extractNewlineDelimitedValueFor( exitLabelTag );
-            if( exitLabel != "" )
-                addExit( new Exit( exitLabel,
-                    extractNewlineDelimitedValueFor( exitDestinationTag ),
-                    stringToDirectionHint(
-                        extractNewlineDelimitedValueFor( exitDirectionHintTag ) ) ) );
+            deserialiseExits();
         }
 
         private String extractNewlineDelimitedValueFor( String tag ) {
@@ -126,6 +120,16 @@ public class Location implements ModelLocation {
             if( startOfDescription != -1 )
                 description = content.substring(
                         startOfDescription + locationDescriptionTag.length() );
+        }
+
+        private void deserialiseExits() {
+            String exitLabel;
+            while( (exitLabel=extractNewlineDelimitedValueFor( exitLabelTag )) != "" )
+                addExit( new Exit(
+                    exitLabel,
+                    extractNewlineDelimitedValueFor( exitDestinationTag ),
+                    stringToDirectionHint(
+                        extractNewlineDelimitedValueFor( exitDirectionHintTag ) ) ) );
         }
 
         private Exit.DirectionHint stringToDirectionHint( String hint ) {

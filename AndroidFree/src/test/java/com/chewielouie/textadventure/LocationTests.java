@@ -198,7 +198,19 @@ public class LocationTests {
         assertEquals( Exit.DirectionHint.DontCare, l.exits().get(0).directionHint() );
     }
 
-    //@Test
-    //public void deserialise_extracts_multiple_exits() {
+    @Test
+    public void deserialise_extracts_multiple_exits() {
+        Location l = new Location( "", "", null );
+        l.deserialise( "location_id:name\n" +
+                       "exit label:label1\n" +
+                       "exit destination:destination\n" +
+                       "exit direction hint:East\n" +
+                       "exit label:label2\n" +
+                       "exit destination:destination\n" +
+                       "exit direction hint:North" );
+        assertEquals( "label2", l.exits().get(1).label() );
+        assertEquals( "destination", l.exits().get(1).destination() );
+        assertEquals( Exit.DirectionHint.North, l.exits().get(1).directionHint() );
+    }
 }
 
