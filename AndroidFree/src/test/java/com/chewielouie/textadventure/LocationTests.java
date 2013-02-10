@@ -187,8 +187,16 @@ public class LocationTests {
         assertEquals( Exit.DirectionHint.East, l.exits().get(0).directionHint() );
     }
 
-    //@Test
-    //public void deserialise_exit_direction_hint_is_optional() {
+    @Test
+    public void deserialise_exit_direction_hint_is_optional() {
+        Location l = new Location( "", "", null );
+        l.deserialise( "location_id:name\n" +
+                       "exit label:label\n" +
+                       "exit destination:destination" );
+        assertEquals( "label", l.exits().get(0).label() );
+        assertEquals( "destination", l.exits().get(0).destination() );
+        assertEquals( Exit.DirectionHint.DontCare, l.exits().get(0).directionHint() );
+    }
 
     //@Test
     //public void deserialise_extracts_multiple_exits() {
