@@ -9,7 +9,6 @@ Backlog
 =======
 
 - [FEATURE] Read a model setup from a plain text file
-  - [TEST] PlainTextModelPopulator uses 'LOCATION' tag to delimit the start of a new location description.
   - [TEST] Location.deserialise() extracts name and description
   - [TEST] Expand Location.deserialise() to work with exits and items
   - [TEST] LocationFactory should create Location objects with default parameters.
