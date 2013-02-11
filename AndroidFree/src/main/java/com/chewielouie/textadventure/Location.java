@@ -14,15 +14,11 @@ public class Location implements ModelLocation {
     private ItemFactory itemFactory;
     private Deserialiser deserialiser = new Deserialiser();
 
-    public Location( String locationId, String description, UserInventory inventory ) {
+    public Location( String locationId, String description,
+            UserInventory inventory, ItemFactory itemFactory ) {
         this.id = locationId;
         this.description = description;
         this.inventory = inventory;
-    }
-
-    public Location( String locationId, String description,
-            UserInventory inventory, ItemFactory itemFactory ) {
-        this( locationId, description, inventory );
         this.itemFactory = itemFactory;
     }
 

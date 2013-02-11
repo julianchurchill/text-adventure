@@ -17,18 +17,18 @@ public class LocationTests {
     private Mockery mockery = new Mockery();
 
     Location createLocation() {
-        return new Location( "", "", null );
+        return new Location( "", "", null, null );
     }
 
     @Test
     public void id_is_set_on_construction() {
-        Location l = new Location( "id", "", null );
+        Location l = new Location( "id", "", null, null );
         assertEquals( "id", l.id() );
     }
 
     @Test
     public void description_is_set_on_construction() {
-        Location l = new Location( "", "description", null );
+        Location l = new Location( "", "description", null, null );
         assertEquals( "description", l.description() );
     }
 
@@ -105,7 +105,7 @@ public class LocationTests {
     @Test
     public void location_action_to_take_an_item_has_user_inventory_passed_to_it() {
         UserInventory inventory = mockery.mock( UserInventory.class );
-        Location l = new Location( "", "", inventory );
+        Location l = new Location( "", "", inventory, null );
         l.addItem( new NormalItem( "name", "description" ) );
 
         assertEquals( inventory, ((TakeAnItem)l.actions().get( 0 )).inventory() );
@@ -114,7 +114,7 @@ public class LocationTests {
     @Test
     public void location_action_to_take_an_item_has_location_passed_to_it() {
         UserInventory inventory = mockery.mock( UserInventory.class );
-        Location l = new Location( "", "", inventory );
+        Location l = new Location( "", "", inventory, null );
         l.addItem( new NormalItem( "name", "description" ) );
 
         assertEquals( l, ((TakeAnItem)l.actions().get( 0 )).location() );
@@ -122,7 +122,7 @@ public class LocationTests {
 
     @Test
     public void added_items_are_added_to_location_description() {
-        Location l = new Location( "", "Location description.", null );
+        Location l = new Location( "", "Location description.", null, null );
         l.addItem( new NormalItem( "name", "description" ) );
         l.addItem( new NormalItem( "name2", "description" ) );
         l.addItem( new NormalItem( "name3", "description" ) );
@@ -133,7 +133,7 @@ public class LocationTests {
     @Test
     public void removing_all_items_from_a_location_removes_TakeAnItem_action_from_action_list() {
         Item item = new NormalItem( "name", "description" );
-        Location l = new Location( "", "Location description.", null );
+        Location l = createLocation();
         l.addItem( item );
         l.removeItem( item );
 
@@ -144,7 +144,7 @@ public class LocationTests {
 
     @Test
     public void a_location_without_items_does_not_need_a_TakeAnItem_action() {
-        Location l = new Location( "", "Location description.", null );
+        Location l = createLocation();
 
         for( Action a : l.actions() )
             if( a instanceof TakeAnItem )
@@ -153,21 +153,21 @@ public class LocationTests {
 
     @Test
     public void deserialise_finds_location_id() {
-        Location l = new Location( "", "Location description.", null );
+        Location l = createLocation();
         l.deserialise( "location_id:name" );
         assertEquals( "name", l.id() );
     }
 
     @Test
     public void deserialise_strips_trailing_newlines_from_location_id() {
-        Location l = new Location( "", "", null );
+        Location l = createLocation();
         l.deserialise( "location_id:name\n" );
         assertEquals( "name", l.id() );
     }
 
     @Test
     public void deserialise_finds_location_description() {
-        Location l = new Location( "", "", null );
+        Location l = createLocation();
         l.deserialise( "location_id:name\n" +
                        "location description:You are in a room.\n" +
                        "It is a bit untidy." );
@@ -177,7 +177,7 @@ public class LocationTests {
 
     @Test
     public void deserialise_extracts_exit() {
-        Location l = new Location( "", "", null );
+        Location l = createLocation();
         l.deserialise( "location_id:name\n" +
                        "exit label:label\n" +
                        "exit destination:destination\n" +
@@ -189,7 +189,7 @@ public class LocationTests {
 
     @Test
     public void deserialise_exit_direction_hint_is_optional() {
-        Location l = new Location( "", "", null );
+        Location l = createLocation();
         l.deserialise( "location_id:name\n" +
                        "exit label:label\n" +
                        "exit destination:destination" );
@@ -200,7 +200,7 @@ public class LocationTests {
 
     @Test
     public void deserialise_extracts_multiple_exits() {
-        Location l = new Location( "", "", null );
+        Location l = createLocation();
         l.deserialise( "location_id:name\n" +
                        "exit label:label1\n" +
                        "exit destination:destination\n" +
