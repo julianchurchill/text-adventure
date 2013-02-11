@@ -9,7 +9,7 @@ Backlog
 =======
 
 - [FEATURE] Read a model setup from a plain text file
-  - [TEST] Expand Location.deserialise() to work with exits and items
+  - [TEST] NormalItemFactory should produce NormalItems
   - [TEST] Equality of Exit should include DirectionHint
   - [TEST] LocationFactory should create Location objects with default parameters.
   - [TEST] PlainTextModelPopulator should populate initial inventory with items.

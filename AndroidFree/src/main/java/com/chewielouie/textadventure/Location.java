@@ -11,11 +11,19 @@ public class Location implements ModelLocation {
     private List<Exit> exits = new ArrayList<Exit>();
     private List<Item> items = new ArrayList<Item>();
     private UserInventory inventory;
+    private ItemFactory itemFactory;
+    private Deserialiser deserialiser = new Deserialiser();
 
     public Location( String locationId, String description, UserInventory inventory ) {
         this.id = locationId;
         this.description = description;
         this.inventory = inventory;
+    }
+
+    public Location( String locationId, String description,
+            UserInventory inventory, ItemFactory itemFactory ) {
+        this( locationId, description, inventory );
+        this.itemFactory = itemFactory;
     }
 
     public void addExit( Exit exit ) {
@@ -84,7 +92,7 @@ public class Location implements ModelLocation {
     }
 
     public void deserialise( String content ) {
-        new Deserialiser( content );
+        deserialiser.parse( content );
     }
 
     class Deserialiser {
@@ -93,15 +101,21 @@ public class Location implements ModelLocation {
         private final String exitLabelTag = "exit label:";
         private final String exitDestinationTag = "exit destination:";
         private final String exitDirectionHintTag = "exit direction hint:";
+        private final String itemNameTag = "item name:";
+        private final String itemDescriptionTag = "item description:";
+        private final String itemCountableNounPrefixTag = "item countable noun prefix:";
+        private final String itemMidSentenceCasedNameTag = "item mid sentence cased name:";
         private String content;
         private int startOfLastFoundTag = -1;
 
-        public Deserialiser( String content ) {
+        public void parse( String content ) {
             this.content = content;
+            startOfLastFoundTag = -1;
 
             id = extractNewlineDelimitedValueFor( locationIDTag );
             deserialiseDescription();
             deserialiseExits();
+            deserialiseItems();
         }
 
         private String extractNewlineDelimitedValueFor( String tag ) {
@@ -130,6 +144,16 @@ public class Location implements ModelLocation {
                     extractNewlineDelimitedValueFor( exitDestinationTag ),
                     stringToDirectionHint(
                         extractNewlineDelimitedValueFor( exitDirectionHintTag ) ) ) );
+        }
+
+        private void deserialiseItems() {
+            String itemName;
+            while( (itemName=extractNewlineDelimitedValueFor( itemNameTag )) != "" )
+                addItem( itemFactory.create(
+                    itemName,
+                    extractNewlineDelimitedValueFor( itemDescriptionTag ),
+                    extractNewlineDelimitedValueFor( itemCountableNounPrefixTag ),
+                    extractNewlineDelimitedValueFor( itemMidSentenceCasedNameTag ) ) );
         }
 
         private Exit.DirectionHint stringToDirectionHint( String hint ) {

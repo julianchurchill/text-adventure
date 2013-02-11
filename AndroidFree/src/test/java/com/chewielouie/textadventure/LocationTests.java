@@ -212,5 +212,55 @@ public class LocationTests {
         assertEquals( "destination", l.exits().get(1).destination() );
         assertEquals( Exit.DirectionHint.North, l.exits().get(1).directionHint() );
     }
+
+    @Test
+    public void deserialise_extracts_item() {
+        Location l = new Location( "", "", null, new NormalItemFactory() );
+        l.deserialise( "location_id:name\n" +
+                       "item name:Name\n" +
+                       "item description:description\n" +
+                       "item countable noun prefix:some\n" +
+                       "item mid sentence cased name:name" );
+        assertEquals( "Name", l.items().get(0).name() );
+        assertEquals( "description", l.items().get(0).description() );
+        assertEquals( "some", l.items().get(0).countableNounPrefix() );
+        assertEquals( "name", l.items().get(0).midSentenceCasedName() );
+    }
+
+    @Test
+    public void deserialise_item_mid_sentence_cased_name_is_optional() {
+        Location l = new Location( "", "", null, new NormalItemFactory() );
+        l.deserialise( "location_id:name\n" +
+                       "item name:Name\n" +
+                       "item description:description\n" );
+        assertEquals( "", l.items().get(0).midSentenceCasedName() );
+    }
+
+    @Test
+    public void deserialise_item_countable_noun_prefix_is_optional() {
+        Location l = new Location( "", "", null, new NormalItemFactory() );
+        l.deserialise( "location_id:name\n" +
+                       "item name:Name\n" +
+                       "item description:description\n" );
+        assertEquals( "", l.items().get(0).countableNounPrefix() );
+    }
+
+    @Test
+    public void deserialise_extracts_multiple_items() {
+        Location l = new Location( "", "", null, new NormalItemFactory() );
+        l.deserialise( "location_id:name\n" +
+                       "item name:Name1\n" +
+                       "item description:description1\n" +
+                       "item countable noun prefix:some1\n" +
+                       "item mid sentence cased name:name1\n" +
+                       "item name:Name2\n" +
+                       "item description:description2\n" +
+                       "item countable noun prefix:some2\n" +
+                       "item mid sentence cased name:name2" );
+        assertEquals( "Name2", l.items().get(1).name() );
+        assertEquals( "description2", l.items().get(1).description() );
+        assertEquals( "some2", l.items().get(1).countableNounPrefix() );
+        assertEquals( "name2", l.items().get(1).midSentenceCasedName() );
+    }
 }
 
