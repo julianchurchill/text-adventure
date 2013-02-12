@@ -10,6 +10,8 @@ Backlog
 
 - [FEATURE] Read a model setup from a plain text file
   - [TEST] PlainTextModelPopulator should populate initial inventory with items.
+  - [TEST] Item deserialisation should be moved from Location to NormalItem.
+  - [TEST] ItemFactory.create() should supercede ItemFactory.create( String x4 )
   - [TEST] Activity should create a PlainTextModelPopulator and give it the model to populate as well as some plain text describing the model contents. Change the demo model content to use this mechanism.
 - [FEATURE] Write some decent content! Expand it and expand the framework to supply functionality to support the content.
 

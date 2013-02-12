@@ -13,6 +13,42 @@ public class PlainTextModelPopulatorTests {
     private Mockery mockery = new Mockery();
 
     @Test
+    public void an_inventory_item_is_deserialised_from_inventory_tag_onwards() {
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        final ModelLocationFactory locationFactory =
+            mockery.mock( ModelLocationFactory.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final Item item = mockery.mock( Item.class );
+        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
+
+        mockery.checking( new Expectations() {{
+            allowing( itemFactory ).create();
+            will( returnValue( item ) );
+            ignoring( itemFactory );
+            oneOf( item ).deserialise( "inventory content" );
+            ignoring( item );
+            ignoring( inventory );
+            ignoring( locationFactory );
+            ignoring( model );
+        }});
+
+        new PlainTextModelPopulator( model, locationFactory, itemFactory,
+                                     "INVENTORY ITEM\ninventory content" );
+    }
+
+    //@Test
+    //public void multiple_inventory_items_are_deserialised_from_inventory_tag_onwards() {
+
+    //@Test
+    //public void inventory_item_is_added_to_user_inventory() {
+
+    //@Test
+    //public void multiple_inventory_items_are_added_to_user_inventory() {
+
+    //@Test
+    //public void inventory_section_may_be_followed_by_locations_section() {
+
+    @Test
     public void location_is_deserialised_from_location_tag_onwards() {
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         final ModelLocation location = mockery.mock( ModelLocation.class );
@@ -28,7 +64,7 @@ public class PlainTextModelPopulatorTests {
             ignoring( model );
         }});
 
-        new PlainTextModelPopulator( model, locationFactory,
+        new PlainTextModelPopulator( model, locationFactory, null,
                                      "LOCATION\nlocation_name:name" );
     }
 
@@ -49,7 +85,7 @@ public class PlainTextModelPopulatorTests {
             ignoring( model );
         }});
 
-        new PlainTextModelPopulator( model, locationFactory,
+        new PlainTextModelPopulator( model, locationFactory, null,
                                      "LOCATION\nlocation_name:name\n" +
                                      "LOCATION\nlocation_name:name2\n" );
     }
@@ -70,7 +106,7 @@ public class PlainTextModelPopulatorTests {
             ignoring( model );
         }});
 
-        new PlainTextModelPopulator( model, locationFactory,
+        new PlainTextModelPopulator( model, locationFactory, null,
                                      "LOCATION\nlocation_name:name" );
     }
 
@@ -95,7 +131,7 @@ public class PlainTextModelPopulatorTests {
           ignoring( model );
         }});
 
-        new PlainTextModelPopulator( model, locationFactory,
+        new PlainTextModelPopulator( model, locationFactory, null,
                                      "LOCATION\nlocation_name:name1\n" +
                                      "LOCATION\nlocation_name:name2" );
     }
