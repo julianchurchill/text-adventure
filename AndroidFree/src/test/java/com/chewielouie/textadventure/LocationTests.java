@@ -154,21 +154,21 @@ public class LocationTests {
     @Test
     public void deserialise_finds_location_id() {
         Location l = createLocation();
-        l.deserialise( "location_id:name" );
+        l.deserialise( "location id:name" );
         assertEquals( "name", l.id() );
     }
 
     @Test
     public void deserialise_strips_trailing_newlines_from_location_id() {
         Location l = createLocation();
-        l.deserialise( "location_id:name\n" );
+        l.deserialise( "location id:name\n" );
         assertEquals( "name", l.id() );
     }
 
     @Test
     public void deserialise_finds_location_description() {
         Location l = createLocation();
-        l.deserialise( "location_id:name\n" +
+        l.deserialise( "location id:name\n" +
                        "location description:You are in a room.\n" +
                        "It is a bit untidy." );
         assertEquals( "You are in a room.\n" +
@@ -178,7 +178,7 @@ public class LocationTests {
     @Test
     public void deserialise_extracts_exit() {
         Location l = createLocation();
-        l.deserialise( "location_id:name\n" +
+        l.deserialise( "location id:name\n" +
                        "exit label:label\n" +
                        "exit destination:destination\n" +
                        "exit direction hint:East" );
@@ -190,7 +190,7 @@ public class LocationTests {
     @Test
     public void deserialise_exit_direction_hint_is_optional() {
         Location l = createLocation();
-        l.deserialise( "location_id:name\n" +
+        l.deserialise( "location id:name\n" +
                        "exit label:label\n" +
                        "exit destination:destination" );
         assertEquals( "label", l.exits().get(0).label() );
@@ -201,7 +201,7 @@ public class LocationTests {
     @Test
     public void deserialise_extracts_multiple_exits() {
         Location l = createLocation();
-        l.deserialise( "location_id:name\n" +
+        l.deserialise( "location id:name\n" +
                        "exit label:label1\n" +
                        "exit destination:destination\n" +
                        "exit direction hint:East\n" +
@@ -216,7 +216,7 @@ public class LocationTests {
     @Test
     public void deserialise_extracts_item() {
         Location l = new Location( "", "", null, new NormalItemFactory() );
-        l.deserialise( "location_id:name\n" +
+        l.deserialise( "location id:name\n" +
                        "item name:Name\n" +
                        "item description:description\n" +
                        "item countable noun prefix:some\n" +
@@ -230,7 +230,7 @@ public class LocationTests {
     @Test
     public void deserialise_item_mid_sentence_cased_name_is_optional() {
         Location l = new Location( "", "", null, new NormalItemFactory() );
-        l.deserialise( "location_id:name\n" +
+        l.deserialise( "location id:name\n" +
                        "item name:Name\n" +
                        "item description:description\n" );
         assertEquals( "", l.items().get(0).midSentenceCasedName() );
@@ -239,7 +239,7 @@ public class LocationTests {
     @Test
     public void deserialise_item_countable_noun_prefix_is_optional() {
         Location l = new Location( "", "", null, new NormalItemFactory() );
-        l.deserialise( "location_id:name\n" +
+        l.deserialise( "location id:name\n" +
                        "item name:Name\n" +
                        "item description:description\n" );
         assertEquals( "", l.items().get(0).countableNounPrefix() );
@@ -248,7 +248,7 @@ public class LocationTests {
     @Test
     public void deserialise_extracts_multiple_items() {
         Location l = new Location( "", "", null, new NormalItemFactory() );
-        l.deserialise( "location_id:name\n" +
+        l.deserialise( "location id:name\n" +
                        "item name:Name1\n" +
                        "item description:description1\n" +
                        "item countable noun prefix:some1\n" +

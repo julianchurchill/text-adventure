@@ -100,7 +100,7 @@ public class Location implements ModelLocation {
     }
 
     class Deserialiser {
-        private final String locationIDTag = "location_id:";
+        private final String locationIDTag = "location id:";
         private final String locationDescriptionTag = "location description:";
         private final String exitLabelTag = "exit label:";
         private final String exitDestinationTag = "exit destination:";
