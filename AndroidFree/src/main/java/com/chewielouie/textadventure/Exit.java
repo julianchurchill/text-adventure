@@ -39,7 +39,8 @@ public class Exit {
             return false;
         Exit other = (Exit)o;
         return label == other.label &&
-               destination == other.destination;
+               destination == other.destination &&
+               directionHint == other.directionHint;
     }
 
     @Override
@@ -48,6 +49,7 @@ public class Exit {
         int result = 1;
         result = prime * result + label.hashCode();
         result = prime * result + destination.hashCode();
+        result = prime * result + directionHint.hashCode();
         return result;
     }
 }
