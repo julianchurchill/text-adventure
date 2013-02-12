@@ -22,6 +22,14 @@ public class Location implements ModelLocation {
         this.itemFactory = itemFactory;
     }
 
+    public UserInventory inventory() {
+        return inventory;
+    }
+
+    public ItemFactory itemFactory() {
+        return itemFactory;
+    }
+
     public void addExit( Exit exit ) {
         exits.add( exit );
     }

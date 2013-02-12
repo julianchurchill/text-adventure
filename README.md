@@ -9,7 +9,6 @@ Backlog
 =======
 
 - [FEATURE] Read a model setup from a plain text file
-  - [TEST] LocationFactory should create Location objects with default parameters.
   - [TEST] PlainTextModelPopulator should populate initial inventory with items.
   - [TEST] Activity should create a PlainTextModelPopulator and give it the model to populate as well as some plain text describing the model contents. Change the demo model content to use this mechanism.
 - [FEATURE] Write some decent content! Expand it and expand the framework to supply functionality to support the content.
