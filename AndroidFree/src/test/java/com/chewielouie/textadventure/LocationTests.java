@@ -215,52 +215,71 @@ public class LocationTests {
 
     @Test
     public void deserialise_extracts_item() {
-        Location l = new Location( "", "", null, new NormalItemFactory() );
+        final Item item = mockery.mock( Item.class );
+        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
+        Location l = new Location( "", "", null, itemFactory );
+
+        mockery.checking( new Expectations() {{
+            allowing( itemFactory ).create();
+            will( returnValue( item ) );
+            ignoring( itemFactory );
+            oneOf( item ).deserialise( "item name:item content\n" +
+                                       "and more item content" );
+            ignoring( item );
+        }});
+
         l.deserialise( "location id:name\n" +
-                       "item name:Name\n" +
-                       "item description:description\n" +
-                       "item countable noun prefix:some\n" +
-                       "item mid sentence cased name:name" );
-        assertEquals( "Name", l.items().get(0).name() );
-        assertEquals( "description", l.items().get(0).description() );
-        assertEquals( "some", l.items().get(0).countableNounPrefix() );
-        assertEquals( "name", l.items().get(0).midSentenceCasedName() );
+                       "ITEM\nitem name:item content\n" +
+                       "and more item content" );
     }
 
     @Test
-    public void deserialise_item_mid_sentence_cased_name_is_optional() {
-        Location l = new Location( "", "", null, new NormalItemFactory() );
-        l.deserialise( "location id:name\n" +
-                       "item name:Name\n" +
-                       "item description:description\n" );
-        assertEquals( "", l.items().get(0).midSentenceCasedName() );
-    }
+    public void deserialise_extracts_item_up_to_next_location() {
+        final Item item = mockery.mock( Item.class );
+        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
+        Location l = new Location( "", "", null, itemFactory );
 
-    @Test
-    public void deserialise_item_countable_noun_prefix_is_optional() {
-        Location l = new Location( "", "", null, new NormalItemFactory() );
-        l.deserialise( "location id:name\n" +
-                       "item name:Name\n" +
-                       "item description:description\n" );
-        assertEquals( "", l.items().get(0).countableNounPrefix() );
+        mockery.checking( new Expectations() {{
+            allowing( itemFactory ).create();
+            will( returnValue( item ) );
+            ignoring( itemFactory );
+            oneOf( item ).deserialise( "item name:item content\n" +
+                                       "and more item content\n" );
+            ignoring( item );
+        }});
+
+        l.deserialise( "location id:name1\n" +
+                       "ITEM\nitem name:item content\n" +
+                       "and more item content\n" +
+                       "location id:name2\n" );
     }
 
     @Test
     public void deserialise_extracts_multiple_items() {
-        Location l = new Location( "", "", null, new NormalItemFactory() );
+        final Item item1 = mockery.mock( Item.class, "item1" );
+        final Item item2 = mockery.mock( Item.class, "item2" );
+        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
+        Location l = new Location( "", "", null, itemFactory );
+
+        mockery.checking( new Expectations() {{
+            atLeast( 1 ).of( itemFactory ).create();
+                will( onConsecutiveCalls(
+                      returnValue( item1 ),
+                      returnValue( item2 ) ) );
+            ignoring( itemFactory );
+            oneOf( item1 ).deserialise( "item 1 content\n" +
+                                        "and more item content\n" );
+            ignoring( item1 );
+            oneOf( item2 ).deserialise( "item 2 content\n" +
+                                        "and more item content\n" );
+            ignoring( item2 );
+        }});
+
         l.deserialise( "location id:name\n" +
-                       "item name:Name1\n" +
-                       "item description:description1\n" +
-                       "item countable noun prefix:some1\n" +
-                       "item mid sentence cased name:name1\n" +
-                       "item name:Name2\n" +
-                       "item description:description2\n" +
-                       "item countable noun prefix:some2\n" +
-                       "item mid sentence cased name:name2" );
-        assertEquals( "Name2", l.items().get(1).name() );
-        assertEquals( "description2", l.items().get(1).description() );
-        assertEquals( "some2", l.items().get(1).countableNounPrefix() );
-        assertEquals( "name2", l.items().get(1).midSentenceCasedName() );
+                       "ITEM\nitem 1 content\n" +
+                       "and more item content\n" +
+                       "ITEM\nitem 2 content\n" +
+                       "and more item content\n" );
     }
 }
 

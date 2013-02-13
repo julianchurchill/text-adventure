@@ -11,7 +11,7 @@ public class Location implements ModelLocation {
     private List<Exit> exits = new ArrayList<Exit>();
     private List<Item> items = new ArrayList<Item>();
     private UserInventory inventory;
-    private ItemFactory itemFactory;
+    private ItemFactory itemFactory = null;
     private Deserialiser deserialiser = new Deserialiser();
 
     public Location( String locationId, String description,
@@ -105,10 +105,7 @@ public class Location implements ModelLocation {
         private final String exitLabelTag = "exit label:";
         private final String exitDestinationTag = "exit destination:";
         private final String exitDirectionHintTag = "exit direction hint:";
-        private final String itemNameTag = "item name:";
-        private final String itemDescriptionTag = "item description:";
-        private final String itemCountableNounPrefixTag = "item countable noun prefix:";
-        private final String itemMidSentenceCasedNameTag = "item mid sentence cased name:";
+        private final String itemTag = "ITEM\n";
         private String content;
         private int startOfLastFoundTag = -1;
 
@@ -151,13 +148,25 @@ public class Location implements ModelLocation {
         }
 
         private void deserialiseItems() {
-            String itemName;
-            while( (itemName=extractNewlineDelimitedValueFor( itemNameTag )) != "" )
-                addItem( itemFactory.create(
-                    itemName,
-                    extractNewlineDelimitedValueFor( itemDescriptionTag ),
-                    extractNewlineDelimitedValueFor( itemCountableNounPrefixTag ),
-                    extractNewlineDelimitedValueFor( itemMidSentenceCasedNameTag ) ) );
+            if( itemFactory != null ) {
+                while( itemAvailable() ) {
+                    int startOfItem = content.indexOf( itemTag, startOfLastFoundTag+1 );
+                    int endOfItem = content.indexOf( itemTag, startOfItem+1 );
+                    if( endOfItem == -1 ) {
+                        endOfItem = content.indexOf( locationIDTag, startOfItem+1 );
+                        if( endOfItem == -1 )
+                            endOfItem = content.length();
+                    }
+                    Item item = itemFactory.create();
+                    item.deserialise(
+                      content.substring( startOfItem + itemTag.length(), endOfItem ) );
+                    startOfLastFoundTag = startOfItem;
+                }
+            }
+        }
+
+        private boolean itemAvailable() {
+            return content.indexOf( itemTag, startOfLastFoundTag+1 ) != -1;
         }
 
         private Exit.DirectionHint stringToDirectionHint( String hint ) {
