@@ -113,8 +113,25 @@ public class PlainTextModelPopulatorTests {
                                      "LOCATION\nlocation content\n" );
     }
 
-    //@Test
-    //public void location_content_is_correct_when_preceeded_by_inventory_items() {
+    @Test
+    public void location_content_is_correct_when_preceeded_by_inventory_items() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final ModelLocationFactory locationFactory =
+            mockery.mock( ModelLocationFactory.class );
+
+        mockery.checking( new Expectations() {{
+            allowing( locationFactory ).create();
+            will( returnValue( location ) );
+            ignoring( locationFactory );
+            oneOf( location ).deserialise( "location content\n" );
+            ignoring( location );
+        }});
+
+        new PlainTextModelPopulator( null, locationFactory,
+                                     null, null,
+                                     "INVENTORY ITEM\ninventory content\n" +
+                                     "LOCATION\nlocation content\n" );
+    }
 
     @Test
     public void location_is_deserialised_from_location_tag_onwards() {
