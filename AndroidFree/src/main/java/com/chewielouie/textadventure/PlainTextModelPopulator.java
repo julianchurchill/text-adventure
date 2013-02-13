@@ -4,17 +4,20 @@ public class PlainTextModelPopulator {
     private final String locationNameTag = "LOCATION\n";
     private final String inventoryItemNameTag = "INVENTORY ITEM\n";
     private int nextCharToParse = 0;
-    private TextAdventureModel model;
+    private TextAdventureModel model = null;
     private ModelLocationFactory locationFactory;
+    private UserInventory inventory = null;
     private ItemFactory itemFactory;
     private String content;
 
     public PlainTextModelPopulator( TextAdventureModel model,
                                     ModelLocationFactory locationFactory,
+                                    UserInventory inventory,
                                     ItemFactory itemFactory,
                                     String content ) {
         this.model = model;
         this.locationFactory = locationFactory;
+        this.inventory = inventory;
         this.itemFactory = itemFactory;
         this.content = content;
 
@@ -23,8 +26,14 @@ public class PlainTextModelPopulator {
     }
 
     private void extractInventory() {
-        if( content.indexOf( inventoryItemNameTag, nextCharToParse ) != -1 )
-            itemFactory.create().deserialise( extractInventoryItemContent() );
+        if( content.indexOf( inventoryItemNameTag, nextCharToParse ) != -1 ) {
+            while( moreContentToParse() ) {
+                Item item = itemFactory.create();
+                item.deserialise( extractInventoryItemContent() );
+                if( inventory != null )
+                    inventory.addToInventory( item );
+            }
+        }
     }
 
     private String extractInventoryItemContent() {
@@ -47,7 +56,8 @@ public class PlainTextModelPopulator {
         while( moreContentToParse() ) {
             ModelLocation l = locationFactory.create();
             l.deserialise( extractLocationContent() );
-            model.addLocation( l );
+            if( model != null )
+                model.addLocation( l );
         }
     }
 

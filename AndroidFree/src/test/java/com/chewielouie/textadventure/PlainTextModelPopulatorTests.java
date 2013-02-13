@@ -14,10 +14,6 @@ public class PlainTextModelPopulatorTests {
 
     @Test
     public void an_inventory_item_is_deserialised_from_inventory_tag_onwards() {
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        final ModelLocationFactory locationFactory =
-            mockery.mock( ModelLocationFactory.class );
-        final UserInventory inventory = mockery.mock( UserInventory.class );
         final Item item = mockery.mock( Item.class );
         final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
 
@@ -27,30 +23,82 @@ public class PlainTextModelPopulatorTests {
             ignoring( itemFactory );
             oneOf( item ).deserialise( "inventory content" );
             ignoring( item );
-            ignoring( inventory );
-            ignoring( locationFactory );
-            ignoring( model );
         }});
 
-        new PlainTextModelPopulator( model, locationFactory, itemFactory,
+        new PlainTextModelPopulator( null, null, null, itemFactory,
                                      "INVENTORY ITEM\ninventory content" );
     }
 
-    //@Test
-    //public void multiple_inventory_items_are_deserialised_from_inventory_tag_onwards() {
+    @Test
+    public void multiple_inventory_items_are_deserialised_from_inventory_tag_onwards() {
+        final Item item = mockery.mock( Item.class );
+        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
 
-    //@Test
-    //public void inventory_item_is_added_to_user_inventory() {
+        mockery.checking( new Expectations() {{
+            allowing( itemFactory ).create();
+            will( returnValue( item ) );
+            ignoring( itemFactory );
+            oneOf( item ).deserialise( "inventory item 1\n" );
+            oneOf( item ).deserialise( "inventory item 2\n" );
+            ignoring( item );
+        }});
 
-    //@Test
-    //public void multiple_inventory_items_are_added_to_user_inventory() {
+        new PlainTextModelPopulator( null, null, null, itemFactory,
+                                     "INVENTORY ITEM\ninventory item 1\n" +
+                                     "INVENTORY ITEM\ninventory item 2\n" );
+    }
+
+    @Test
+    public void inventory_item_is_added_to_user_inventory() {
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final Item item = mockery.mock( Item.class );
+        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
+
+        mockery.checking( new Expectations() {{
+            allowing( itemFactory ).create();
+            will( returnValue( item ) );
+            ignoring( itemFactory );
+            ignoring( item );
+            oneOf( inventory ).addToInventory( item );
+            ignoring( inventory );
+        }});
+
+        new PlainTextModelPopulator( null, null,
+                                     inventory, itemFactory,
+                                     "INVENTORY ITEM\ninventory content" );
+    }
+
+    @Test
+    public void multiple_inventory_items_are_added_to_user_inventory() {
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final Item item1 = mockery.mock( Item.class, "item 1" );
+        final Item item2 = mockery.mock( Item.class, "item 2" );
+        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
+
+        mockery.checking( new Expectations() {{
+            atLeast( 1 ).of( itemFactory ).create();
+                will( onConsecutiveCalls(
+                      returnValue( item1 ),
+                      returnValue( item2 ) ) );
+            ignoring( itemFactory );
+            ignoring( item1 );
+            ignoring( item2 );
+            oneOf( inventory ).addToInventory( item1 );
+            oneOf( inventory ).addToInventory( item2 );
+            ignoring( inventory );
+        }});
+
+        new PlainTextModelPopulator( null, null,
+                                     inventory, itemFactory,
+                                     "INVENTORY ITEM\ninventory item 1\n" +
+                                     "INVENTORY ITEM\ninventory item 2\n" );
+    }
 
     //@Test
     //public void inventory_section_may_be_followed_by_locations_section() {
 
     @Test
     public void location_is_deserialised_from_location_tag_onwards() {
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         final ModelLocation location = mockery.mock( ModelLocation.class );
         final ModelLocationFactory locationFactory =
             mockery.mock( ModelLocationFactory.class );
@@ -61,16 +109,14 @@ public class PlainTextModelPopulatorTests {
             ignoring( locationFactory );
             oneOf( location ).deserialise( "location_name:name" );
             ignoring( location );
-            ignoring( model );
         }});
 
-        new PlainTextModelPopulator( model, locationFactory, null,
+        new PlainTextModelPopulator( null, locationFactory, null, null,
                                      "LOCATION\nlocation_name:name" );
     }
 
     @Test
     public void multiple_locations_are_deserialised_from_location_tag_onwards() {
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         final ModelLocation location = mockery.mock( ModelLocation.class );
         final ModelLocationFactory locationFactory =
             mockery.mock( ModelLocationFactory.class );
@@ -82,10 +128,9 @@ public class PlainTextModelPopulatorTests {
             oneOf( location ).deserialise( "location_name:name\n" );
             oneOf( location ).deserialise( "location_name:name2\n" );
             ignoring( location );
-            ignoring( model );
         }});
 
-        new PlainTextModelPopulator( model, locationFactory, null,
+        new PlainTextModelPopulator( null, locationFactory, null, null,
                                      "LOCATION\nlocation_name:name\n" +
                                      "LOCATION\nlocation_name:name2\n" );
     }
@@ -106,7 +151,7 @@ public class PlainTextModelPopulatorTests {
             ignoring( model );
         }});
 
-        new PlainTextModelPopulator( model, locationFactory, null,
+        new PlainTextModelPopulator( model, locationFactory, null, null,
                                      "LOCATION\nlocation_name:name" );
     }
 
@@ -131,7 +176,7 @@ public class PlainTextModelPopulatorTests {
           ignoring( model );
         }});
 
-        new PlainTextModelPopulator( model, locationFactory, null,
+        new PlainTextModelPopulator( model, locationFactory, null, null,
                                      "LOCATION\nlocation_name:name1\n" +
                                      "LOCATION\nlocation_name:name2" );
     }
