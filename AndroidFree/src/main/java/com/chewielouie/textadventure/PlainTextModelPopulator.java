@@ -7,7 +7,7 @@ public class PlainTextModelPopulator {
     private TextAdventureModel model = null;
     private ModelLocationFactory locationFactory = null;
     private UserInventory inventory = null;
-    private ItemFactory itemFactory;
+    private ItemFactory itemFactory = null;
     private String content;
 
     public PlainTextModelPopulator( TextAdventureModel model,
@@ -26,11 +26,13 @@ public class PlainTextModelPopulator {
     }
 
     private void extractInventory() {
-        while( moreContentToParse() && nextSectionIsAnInventoryItem() ) {
-            Item item = itemFactory.create();
-            item.deserialise( extractInventoryItemContent() );
-            if( inventory != null )
-                inventory.addToInventory( item );
+        if( itemFactory != null ) {
+            while( moreContentToParse() && nextSectionIsAnInventoryItem() ) {
+                Item item = itemFactory.create();
+                item.deserialise( extractInventoryItemContent() );
+                if( inventory != null )
+                    inventory.addToInventory( item );
+            }
         }
     }
 
@@ -46,12 +48,13 @@ public class PlainTextModelPopulator {
     }
 
     private void findEndOfCurrentSection() {
-        nextCharToParse = content.indexOf( inventoryItemNameTag, nextCharToParse+1 );
-        if( nextCharToParse == -1 ) {
-            nextCharToParse = content.indexOf( locationNameTag, nextCharToParse+1 );
-            if( nextCharToParse == -1 )
-                nextCharToParse = content.length();
+        int endOfSection = content.indexOf( inventoryItemNameTag, nextCharToParse+1 );
+        if( endOfSection == -1 ) {
+            endOfSection = content.indexOf( locationNameTag, nextCharToParse+1 );
+            if( endOfSection == -1 )
+                endOfSection = content.length();
         }
+        nextCharToParse = endOfSection;
     }
 
     private void extractLocations() {
