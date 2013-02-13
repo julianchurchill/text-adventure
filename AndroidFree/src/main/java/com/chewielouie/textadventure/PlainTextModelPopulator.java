@@ -5,7 +5,7 @@ public class PlainTextModelPopulator {
     private final String inventoryItemNameTag = "INVENTORY ITEM\n";
     private int nextCharToParse = 0;
     private TextAdventureModel model = null;
-    private ModelLocationFactory locationFactory;
+    private ModelLocationFactory locationFactory = null;
     private UserInventory inventory = null;
     private ItemFactory itemFactory;
     private String content;
@@ -26,38 +26,42 @@ public class PlainTextModelPopulator {
     }
 
     private void extractInventory() {
-        if( content.indexOf( inventoryItemNameTag, nextCharToParse ) != -1 ) {
-            while( moreContentToParse() ) {
-                Item item = itemFactory.create();
-                item.deserialise( extractInventoryItemContent() );
-                if( inventory != null )
-                    inventory.addToInventory( item );
-            }
+        while( moreContentToParse() && nextSectionIsAnInventoryItem() ) {
+            Item item = itemFactory.create();
+            item.deserialise( extractInventoryItemContent() );
+            if( inventory != null )
+                inventory.addToInventory( item );
         }
+    }
+
+    private boolean nextSectionIsAnInventoryItem() {
+        return content.indexOf( inventoryItemNameTag, nextCharToParse ) != -1;
     }
 
     private String extractInventoryItemContent() {
-        String itemContent = "";
         int itemStart = content.indexOf( inventoryItemNameTag, nextCharToParse );
-        if( itemStart != -1 ) {
-            nextCharToParse = content.indexOf( inventoryItemNameTag, itemStart+1 );
+        findEndOfCurrentSection();
+        return content.substring(
+                itemStart + inventoryItemNameTag.length(), nextCharToParse );
+    }
+
+    private void findEndOfCurrentSection() {
+        nextCharToParse = content.indexOf( inventoryItemNameTag, nextCharToParse+1 );
+        if( nextCharToParse == -1 ) {
+            nextCharToParse = content.indexOf( locationNameTag, nextCharToParse+1 );
             if( nextCharToParse == -1 )
                 nextCharToParse = content.length();
-
-            itemContent = content.substring(
-                    itemStart + inventoryItemNameTag.length(), nextCharToParse );
         }
-        else
-            nextCharToParse = content.length();
-        return itemContent;
     }
 
     private void extractLocations() {
-        while( moreContentToParse() ) {
-            ModelLocation l = locationFactory.create();
-            l.deserialise( extractLocationContent() );
-            if( model != null )
-                model.addLocation( l );
+        if( locationFactory != null ) {
+            while( moreContentToParse() ) {
+                ModelLocation l = locationFactory.create();
+                l.deserialise( extractLocationContent() );
+                if( model != null )
+                    model.addLocation( l );
+            }
         }
     }
 

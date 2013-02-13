@@ -94,8 +94,27 @@ public class PlainTextModelPopulatorTests {
                                      "INVENTORY ITEM\ninventory item 2\n" );
     }
 
+    @Test
+    public void inventory_item_content_does_not_include_location_content() {
+        final Item item = mockery.mock( Item.class );
+        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
+
+        mockery.checking( new Expectations() {{
+            allowing( itemFactory ).create();
+            will( returnValue( item ) );
+            ignoring( itemFactory );
+            oneOf( item ).deserialise( "inventory content\n" );
+            ignoring( item );
+        }});
+
+        new PlainTextModelPopulator( null, null,
+                                     null, itemFactory,
+                                     "INVENTORY ITEM\ninventory content\n" +
+                                     "LOCATION\nlocation content\n" );
+    }
+
     //@Test
-    //public void inventory_section_may_be_followed_by_locations_section() {
+    //public void location_content_is_correct_when_preceeded_by_inventory_items() {
 
     @Test
     public void location_is_deserialised_from_location_tag_onwards() {
