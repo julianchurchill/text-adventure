@@ -77,6 +77,34 @@ public class NormalItemTests {
 
         assertNotEquals( item1.hashCode(), item2.hashCode() );
     }
-}
 
+    @Test
+    public void deserialise_extracts_item() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item countable noun prefix:some\n" +
+                          "item mid sentence cased name:name" );
+        assertEquals( "Name", item.name() );
+        assertEquals( "description", item.description() );
+        assertEquals( "some", item.countableNounPrefix() );
+        assertEquals( "name", item.midSentenceCasedName() );
+    }
+
+    @Test
+    public void deserialise_item_mid_sentence_cased_name_is_optional() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                       "item description:description\n" );
+        assertEquals( "name", item.midSentenceCasedName() );
+    }
+
+    @Test
+    public void deserialise_item_countable_noun_prefix_is_optional() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" );
+        assertEquals( "", item.countableNounPrefix() );
+    }
+}
 
