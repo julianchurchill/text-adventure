@@ -282,5 +282,50 @@ public class LocationTests {
                        "ITEM\nitem 2 content\n" +
                        "and more item content\n" );
     }
+
+    @Test
+    public void deserialise_adds_extracted_item_to_location() {
+        final Item item = mockery.mock( Item.class );
+        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
+        Location l = new Location( "", "", null, itemFactory );
+
+        mockery.checking( new Expectations() {{
+            allowing( itemFactory ).create();
+            will( returnValue( item ) );
+            ignoring( itemFactory );
+            ignoring( item );
+        }});
+
+        l.deserialise( "location id:name\n" +
+                       "ITEM\nitem name:item content\n" +
+                       "and more item content" );
+        assertEquals( item, l.items().get(0) );
+    }
+
+    @Test
+    public void deserialise_adds_extracted_items_to_location() {
+        final Item item1 = mockery.mock( Item.class, "item1" );
+        final Item item2 = mockery.mock( Item.class, "item2" );
+        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
+        Location l = new Location( "", "", null, itemFactory );
+
+        mockery.checking( new Expectations() {{
+            atLeast( 1 ).of( itemFactory ).create();
+                will( onConsecutiveCalls(
+                      returnValue( item1 ),
+                      returnValue( item2 ) ) );
+            ignoring( itemFactory );
+            ignoring( item1 );
+            ignoring( item2 );
+        }});
+
+        l.deserialise( "location id:name\n" +
+                       "ITEM\nitem 1 content\n" +
+                       "and more item content\n" +
+                       "ITEM\nitem 2 content\n" +
+                       "and more item content\n" );
+        assertEquals( item1, l.items().get(0) );
+        assertEquals( item2, l.items().get(1) );
+    }
 }
 

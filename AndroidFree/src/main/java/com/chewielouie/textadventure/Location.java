@@ -171,6 +171,7 @@ public class Location implements ModelLocation {
                     Item item = itemFactory.create();
                     item.deserialise(
                       content.substring( startOfItem + itemTag.length(), endOfItem ) );
+                    addItem( item );
                     startOfLastFoundTag = startOfItem;
                 }
             }
