@@ -8,8 +8,7 @@ public class NormalItemFactoryTests {
 
     @Test
     public void produces_NormalItem_objects() {
-        Item item = new NormalItemFactory().create( "name", "description",
-                "countableNounPrefix", "midSentenceCasedName" );
+        Item item = new NormalItemFactory().create();
         assertTrue( item instanceof NormalItem );
     }
 }
