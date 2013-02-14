@@ -52,8 +52,8 @@ exit direction hint:South
 ITEM
 item name:Minute Hand of the Clock Tower
 item description:It is quite heavy, ornate and made of iron.
-item mid sentence cased name:Minute Hand of the Clock Tower
 item countable noun prefix:a
+item mid sentence cased name:Minute Hand of the Clock Tower
 LOCATION
 location id:eastloc
 location description:You are in the middle of a vast and endless ocean. Of despair.
