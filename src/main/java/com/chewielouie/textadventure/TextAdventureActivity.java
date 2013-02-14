@@ -1,5 +1,10 @@
 package com.chewielouie.textadventure;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.lang.StringBuilder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,9 +36,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private List<Action> immediateActions = null;
 
     public TextAdventureActivity() {
-        TextAdventurePresenter p = new TextAdventurePresenter( this, createModel() );
-        this.rendersView = p;
-        this.userActionHandler = p;
     }
 
     public TextAdventureActivity( RendersView r ) {
@@ -44,80 +46,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public TextAdventureActivity( UserActionHandler u ) {
         this();
         this.userActionHandler = u;
-    }
 
-    private String demoContent() {
-        String content = "";
-        content += "INVENTORY ITEM\n";
-        content += "item name:Pocket lint\n";
-        content += "item description:It's fluffy and shaped like an inverted belly button.\n";
-        content += "item countable noun prefix:some\n";
-        content += "INVENTORY ITEM\n";
-        content += "item name:Multitool\n";
-        content += "item description:It's got a lot of tools on it. You feel like a man of the wilderness when you wield this formidable contraption.\n";
-
-        content += "LOCATION\n";
-        content += "location id:startloc\n";
-        content += "location description:You are in an empty wasteland that stretches for miles and miles.\n";
-        content += "exit label:North\nexit destination:busytown\nexit direction hint:North\n";
-        content += "exit label:East\nexit destination:eastloc\nexit direction hint:East\n";
-        content += "exit label:West\nexit destination:westloc\nexit direction hint:West\n";
-        content += "ITEM\n";
-        content += "item name:Skeleton key\n";
-        content += "item description:It is rather dirty and has clearly been carved from some poor unfortunates metacarpal.\n";
-        content += "item countable noun prefix:a\n";
-        content += "ITEM\n";
-        content += "item name:Banana peel\n";
-        content += "item description:It is yellow and a little moldy.\n";
-        content += "item countable noun prefix:some\n";
-        content += "ITEM\n";
-        content += "item name:Sand\n";
-        content += "item description:The fine grains run through your fingers, reminding you of passing time and an urgent task that must be done.\n";
-        content += "item countable noun prefix:some\n";
-
-        content += "LOCATION\n";
-        content += "location id:busytown\n";
-        content += "location description:You are in a busy town. There is a clock tower to the north.\n";
-        content += "exit label:North\nexit destination:clocktower\nexit direction hint:North\n";
-        content += "exit label:South\nexit destination:startloc\nexit direction hint:South\n";
-        content += "ITEM\n";
-        content += "item name:Dust of the Ancients\n";
-        content += "item description:This dust looks pretty powerful, for dust.\n";
-        content += "item countable noun prefix:some\n";
-        content += "item mid sentence cased name:Dust of the Ancients\n";
-
-        content += "LOCATION\n";
-        content += "location id:clocktower\n";
-        content += "location description:You stand before a mighty clock tower. The clock goes TICK!\n";
-        content += "exit label:South\nexit destination:busytown\nexit direction hint:South\n";
-        content += "ITEM\n";
-        content += "item name:Minute Hand of the Clock Tower\n";
-        content += "item description:It is quite heavy, ornate and made of iron.\n";
-        content += "item mid sentence cased name:Minute Hand of the Clock Tower\n";
-        content += "item countable noun prefix:a\n";
-
-        content += "LOCATION\n";
-        content += "location id:eastloc\n";
-        content += "location description:You are in the middle of a vast and endless ocean. Of despair.\n";
-        content += "exit label:West\nexit destination:startloc\nexit direction hint:West\n";
-
-        content += "LOCATION\n";
-        content += "location id:westloc\n";
-        content += "location description:You are in the precise centre of the universe. You are disappointed to find there is nothing here.\n";
-        content += "exit label:East\nexit destination:startloc\nexit direction hint:East\n";
-        return content;
-    }
-
-    private TextAdventureModel createModel() {
-        BasicModel model = new BasicModel();
-        UserInventory inventory = model;
-        ItemFactory itemFactory = new NormalItemFactory();
-        new PlainTextModelPopulator( model,
-                                     new LocationFactory( inventory, itemFactory ),
-                                     inventory,
-                                     itemFactory,
-                                     demoContent() );
-        return model;
     }
 
     /** Called when the activity is first created. */
@@ -136,6 +65,47 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         left_direction_label.setOnClickListener( this );
         main_text_output = findTextView( R.id.main_text_output );
         registerForContextMenu( main_text_output );
+
+        TextAdventurePresenter p = new TextAdventurePresenter( this, createModel() );
+        if( this.rendersView == null )
+            this.rendersView = p;
+        if( this.userActionHandler == null )
+            this.userActionHandler = p;
+    }
+
+    private TextAdventureModel createModel() {
+        BasicModel model = new BasicModel();
+        UserInventory inventory = model;
+        ItemFactory itemFactory = new NormalItemFactory();
+        new PlainTextModelPopulator( model,
+                                     new LocationFactory( inventory, itemFactory ),
+                                     inventory,
+                                     itemFactory,
+                                     demoContent() );
+        return model;
+    }
+
+    private String demoContent() {
+        return readRawTextFile( R.raw.demo_model_content );
+    }
+
+    private String readRawTextFile( int resId ) {
+        BufferedReader buffreader = new BufferedReader(
+            new InputStreamReader( getResources().openRawResource( resId ) ) );
+        String line;
+        StringBuilder text = new StringBuilder();
+        try {
+            while (( line = buffreader.readLine()) != null) {
+                text.append(line);
+                text.append('\n');
+            }
+        } catch (IOException e) {
+            System.out.println("Exception thrown while reading resource file " +
+                    "with id " + resId );
+            System.out.println( e.getMessage() );
+            return null;
+        }
+        return text.toString();
     }
 
     private TextView findTextView( int id ) {
