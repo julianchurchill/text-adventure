@@ -45,34 +45,95 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         this();
         this.userActionHandler = u;
     }
+        //Location startloc = new Location( "startloc", "You are in an empty wasteland that stretches for miles and miles.", inventory, f );
+        //startloc.addExit( new Exit( "North", "busytown", Exit.DirectionHint.North ) );
+        //startloc.addExit( new Exit( "East", "eastloc", Exit.DirectionHint.East ) );
+        //startloc.addExit( new Exit( "West", "westloc", Exit.DirectionHint.West ) );
+        //startloc.addItem( new NormalItem( "Skeleton key", "It is rather dirty and has clearly been carved from some poor unfortunates metacarpal." ) );
+        //startloc.addItem( new NormalItem( "Banana peel", "It is yellow and a little moldy.", "some" ) );
+        //startloc.addItem( new NormalItem( "Sand", "The fine grains run through your fingers, reminding you of passing time and an urgent task that must be done.", "some" ) );
+        //Location busytown = new Location( "busytown", "You are in a busy town. There is a clock tower to the north.", inventory, f );
+        //busytown.addExit( new Exit( "North", "clocktower", Exit.DirectionHint.North ) );
+        //busytown.addExit( new Exit( "South", "startloc", Exit.DirectionHint.South ) );
+        //Location clocktower = new Location( "clocktower", "You stand before a mighty clock tower. The clock goes TICK!", inventory, f );
+        //clocktower.addExit( new Exit( "South", "busytown", Exit.DirectionHint.South ) );
+        //clocktower.addItem( new NormalItem( "Minute Hand of the Clock Tower", "It is quite heavy, ornate and made of iron.", "a", "Minute Hand of the Clock Tower" ) );
+        //Location eastloc = new Location( "eastloc", "You are in the middle of a vast and endless ocean. Of despair.", inventory, f );
+        //eastloc.addExit( new Exit( "West", "startloc", Exit.DirectionHint.West ) );
+        //Location westloc = new Location( "westloc", "You are in the precise centre of the universe. You are disappointed to find there is nothing here.", inventory, f );
+        //westloc.addExit( new Exit( "East", "startloc", Exit.DirectionHint.East ) );
 
-    public TextAdventureModel createModel() {
+    private String demoContent() {
+        String content = "";
+        content += "INVENTORY ITEM\n";
+        content += "item name:Pocket lint\n";
+        content += "item description:It's fluffy and shaped like an inverted belly button.\n";
+        content += "item countable noun prefix:some\n";
+        content += "INVENTORY ITEM\n";
+        content += "item name:Multitool\n";
+        content += "item description:It's got a lot of tools on it. You feel like a man of the wilderness when you wield this formidable contraption.\n";
+
+        content += "LOCATION\n";
+        content += "location id:startloc\n";
+        content += "location description:You are in an empty wasteland that stretches for miles and miles.\n";
+        content += "exit label:North\nexit destination:busytown\nexit direction hint:North\n";
+        content += "exit label:East\nexit destination:eastloc\nexit direction hint:East\n";
+        content += "exit label:West\nexit destination:westloc\nexit direction hint:West\n";
+        content += "ITEM\n";
+        content += "item name:Skeleton key\n";
+        content += "item description:It is rather dirty and has clearly been carved from some poor unfortunates metacarpal.\n";
+        content += "item countable noun prefix:a\n";
+        content += "ITEM\n";
+        content += "item name:Banana peel\n";
+        content += "item description:It is yellow and a little moldy.\n";
+        content += "item countable noun prefix:some\n";
+        content += "ITEM\n";
+        content += "item name:Sand\n";
+        content += "item description:The fine grains run through your fingers, reminding you of passing time and an urgent task that must be done.\n";
+        content += "item countable noun prefix:some\n";
+
+        content += "LOCATION\n";
+        content += "location id:busytown\n";
+        content += "location description:You are in a busy town. There is a clock tower to the north.\n";
+        content += "exit label:North\nexit destination:clocktower\nexit direction hint:North\n";
+        content += "exit label:South\nexit destination:startloc\nexit direction hint:South\n";
+        content += "ITEM\n";
+        content += "item name:Dust of the Ancients\n";
+        content += "item description:This dust looks pretty powerful, for dust.\n";
+        content += "item countable noun prefix:some\n";
+        content += "item mid sentence cased name:Dust of the Ancients\n";
+
+        content += "LOCATION\n";
+        content += "location id:clocktower\n";
+        content += "location description:You stand before a mighty clock tower. The clock goes TICK!\n";
+        content += "exit label:South\nexit destination:busytown\nexit direction hint:South\n";
+        content += "ITEM\n";
+        content += "item name:Minute Hand of the Clock Tower\n";
+        content += "item description:It is quite heavy, ornate and made of iron.\n";
+        content += "item mid sentence cased name:Minute Hand of the Clock Tower\n";
+        content += "item countable noun prefix:a\n";
+
+        content += "LOCATION\n";
+        content += "location id:eastloc\n";
+        content += "location description:You are in the middle of a vast and endless ocean. Of despair.\n";
+        content += "exit label:West\nexit destination:startloc\nexit direction hint:West\n";
+
+        content += "LOCATION\n";
+        content += "location id:westloc\n";
+        content += "location description:You are in the precise centre of the universe. You are disappointed to find there is nothing here.\n";
+        content += "exit label:East\nexit destination:startloc\nexit direction hint:East\n";
+        return content;
+    }
+
+    private TextAdventureModel createModel() {
         BasicModel model = new BasicModel();
         UserInventory inventory = model;
-        ItemFactory f = new NormalItemFactory();
-
-        Location startloc = new Location( "startloc", "You are in an empty wasteland that stretches for miles and miles.", inventory, f );
-        startloc.addExit( new Exit( "North", "busytown", Exit.DirectionHint.North ) );
-        startloc.addExit( new Exit( "East", "eastloc", Exit.DirectionHint.East ) );
-        startloc.addExit( new Exit( "West", "westloc", Exit.DirectionHint.West ) );
-        startloc.addItem( new NormalItem( "Skeleton key", "It is rather dirty and has clearly been carved from some poor unfortunates metacarpal." ) );
-        startloc.addItem( new NormalItem( "Banana peel", "It is yellow and a little moldy.", "some" ) );
-        startloc.addItem( new NormalItem( "Sand", "The fine grains run through your fingers, reminding you of passing time and an urgent task that must be done.", "some" ) );
-        Location busytown = new Location( "busytown", "You are in a busy town. There is a clock tower to the north.", inventory, f );
-        busytown.addExit( new Exit( "North", "clocktower", Exit.DirectionHint.North ) );
-        busytown.addExit( new Exit( "South", "startloc", Exit.DirectionHint.South ) );
-        Location clocktower = new Location( "clocktower", "You stand before a mighty clock tower. The clock goes TICK!", inventory, f );
-        clocktower.addExit( new Exit( "South", "busytown", Exit.DirectionHint.South ) );
-        clocktower.addItem( new NormalItem( "Minute Hand of the Clock Tower", "It is quite heavy, ornate and made of iron.", "a", "Minute Hand of the Clock Tower" ) );
-        Location eastloc = new Location( "eastloc", "You are in the middle of a vast and endless ocean. Of despair.", inventory, f );
-        eastloc.addExit( new Exit( "West", "startloc", Exit.DirectionHint.West ) );
-        Location westloc = new Location( "westloc", "You are in the precise centre of the universe. You are disappointed to find there is nothing here.", inventory, f );
-        westloc.addExit( new Exit( "East", "startloc", Exit.DirectionHint.East ) );
-        model.addLocation( startloc );
-        model.addLocation( busytown );
-        model.addLocation( clocktower );
-        model.addLocation( eastloc );
-        model.addLocation( westloc );
+        ItemFactory itemFactory = new NormalItemFactory();
+        new PlainTextModelPopulator( model,
+                                     new LocationFactory( inventory, itemFactory ),
+                                     inventory,
+                                     itemFactory,
+                                     demoContent() );
         return model;
     }
 
