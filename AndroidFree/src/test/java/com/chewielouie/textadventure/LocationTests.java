@@ -176,6 +176,28 @@ public class LocationTests {
     }
 
     @Test
+    public void deserialise_extracts_location_description_up_to_exit_label() {
+        Location l = createLocation();
+        l.deserialise( "location id:name\n" +
+                       "location description:You are in a room.\n" +
+                       "It is a bit untidy.\n" +
+                       "exit label:label\n" );
+        assertEquals( "You are in a room.\n" +
+                      "It is a bit untidy.\n", l.description() );
+    }
+
+    @Test
+    public void deserialise_extracts_location_description_up_to_item() {
+        Location l = createLocation();
+        l.deserialise( "location id:name\n" +
+                       "location description:You are in a room.\n" +
+                       "It is a bit untidy.\n" +
+                       "ITEM\n" );
+        assertEquals( "You are in a room.\n" +
+                      "It is a bit untidy.\n", l.description() );
+    }
+
+    @Test
     public void deserialise_extracts_exit() {
         Location l = createLocation();
         l.deserialise( "location id:name\n" +
@@ -231,27 +253,6 @@ public class LocationTests {
         l.deserialise( "location id:name\n" +
                        "ITEM\nitem name:item content\n" +
                        "and more item content" );
-    }
-
-    @Test
-    public void deserialise_extracts_item_up_to_next_location() {
-        final Item item = mockery.mock( Item.class );
-        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
-        Location l = new Location( "", "", null, itemFactory );
-
-        mockery.checking( new Expectations() {{
-            allowing( itemFactory ).create();
-            will( returnValue( item ) );
-            ignoring( itemFactory );
-            oneOf( item ).deserialise( "item name:item content\n" +
-                                       "and more item content\n" );
-            ignoring( item );
-        }});
-
-        l.deserialise( "location id:name1\n" +
-                       "ITEM\nitem name:item content\n" +
-                       "and more item content\n" +
-                       "location id:name2\n" );
     }
 
     @Test

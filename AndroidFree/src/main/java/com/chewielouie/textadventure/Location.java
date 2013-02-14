@@ -134,7 +134,18 @@ public class Location implements ModelLocation {
             int startOfDescription = content.indexOf( locationDescriptionTag );
             if( startOfDescription != -1 )
                 description = content.substring(
-                        startOfDescription + locationDescriptionTag.length() );
+                        startOfDescription + locationDescriptionTag.length(),
+                        findEndOfDescription() );
+        }
+
+        private int findEndOfDescription() {
+            int endOfDescription = content.indexOf( exitLabelTag );
+            if( endOfDescription == -1 ) {
+                endOfDescription = content.indexOf( itemTag );
+                if( endOfDescription == -1 )
+                    endOfDescription = content.length();
+            }
+            return endOfDescription;
         }
 
         private void deserialiseExits() {
