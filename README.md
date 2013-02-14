@@ -8,8 +8,6 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [FEATURE] Read a model setup from a plain text file
-  - [TEST] Activity should create a PlainTextModelPopulator and give it the model to populate as well as some plain text describing the model contents. Change the demo model content to use this mechanism.
 - [FEATURE] Write some decent content! Expand it and expand the framework to supply functionality to support the content.
 
 - [FEATURE] Action navigator - instead of long click context menu sequence use a sidebar which either expands or gets replaced (with a title to preserve context e.g. 'take', 'drop').
@@ -36,6 +34,7 @@ Backlog
 Done
 ====
 
+- [FEATURE] Read a model setup from a plain text file
 - [FEATURE] The user must be able to scroll the main text view when it gets full up
 - [FEATURE] Add ability to pick up objects from the current location
 - [FEATURE] Add ability to examine items in the inventory
