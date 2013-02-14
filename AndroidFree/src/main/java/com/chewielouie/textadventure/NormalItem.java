@@ -41,6 +41,10 @@ public class NormalItem implements Item {
         return midSentenceCasedName;
     }
 
+    public void setName( String name ) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof NormalItem) )
