@@ -8,9 +8,15 @@ item description:It's got a lot of tools on it. You feel like a man of the wilde
 LOCATION
 location id:startloc
 location description:You are in an empty wasteland that stretches for miles and miles.
-exit label:North\nexit destination:busytown\nexit direction hint:North
-exit label:East\nexit destination:eastloc\nexit direction hint:East
-exit label:West\nexit destination:westloc\nexit direction hint:West
+exit label:North
+exit destination:busytown
+exit direction hint:North
+exit label:East
+exit destination:eastloc
+exit direction hint:East
+exit label:West
+exit destination:westloc
+exit direction hint:West
 ITEM
 item name:Skeleton key
 item description:It is rather dirty and has clearly been carved from some poor unfortunates metacarpal.
@@ -26,8 +32,12 @@ item countable noun prefix:some
 LOCATION
 location id:busytown
 location description:You are in a busy town. There is a clock tower to the north.
-exit label:North\nexit destination:clocktower\nexit direction hint:North
-exit label:South\nexit destination:startloc\nexit direction hint:South
+exit label:North
+exit destination:clocktower
+exit direction hint:North
+exit label:South
+exit destination:startloc
+exit direction hint:South
 ITEM
 item name:Dust of the Ancients
 item description:This dust looks pretty powerful, for dust.
@@ -36,7 +46,9 @@ item mid sentence cased name:Dust of the Ancients
 LOCATION
 location id:clocktower
 location description:You stand before a mighty clock tower. The clock goes TICK!
-exit label:South\nexit destination:busytown\nexit direction hint:South
+exit label:South
+exit destination:busytown
+exit direction hint:South
 ITEM
 item name:Minute Hand of the Clock Tower
 item description:It is quite heavy, ornate and made of iron.
@@ -45,9 +57,13 @@ item countable noun prefix:a
 LOCATION
 location id:eastloc
 location description:You are in the middle of a vast and endless ocean. Of despair.
-exit label:West\nexit destination:startloc\nexit direction hint:West
+exit label:West
+exit destination:startloc
+exit direction hint:West
 LOCATION
 location id:westloc
 location description:You are in the precise centre of the universe. You are disappointed to find there is nothing here.
-exit label:East\nexit destination:startloc\nexit direction hint:East
+exit label:East
+exit destination:startloc
+exit direction hint:East
 
