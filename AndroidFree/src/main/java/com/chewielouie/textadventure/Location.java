@@ -60,7 +60,7 @@ public class Location implements ModelLocation {
     private String itemsPostAmble() {
         String itemsPostAmble = "";
         if( items.size() > 0 ) {
-            itemsPostAmble = " There is ";
+            itemsPostAmble = "\nThere is ";
             for( int i = 0; i < items.size(); i++ ) {
                 if( items.size() > 1 ) {
                     if( i != 0 && i != (items.size()-1) )

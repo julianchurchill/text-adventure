@@ -127,7 +127,7 @@ public class LocationTests {
         l.addItem( new NormalItem( "name2", "description" ) );
         l.addItem( new NormalItem( "name3", "description" ) );
 
-        assertEquals( "Location description. There is a name, a name2 and a name3 here.", l.description() );
+        assertEquals( "Location description.\nThere is a name, a name2 and a name3 here.", l.description() );
     }
 
     @Test
