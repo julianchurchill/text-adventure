@@ -31,25 +31,26 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private List<Action> immediateActions = null;
 
     public TextAdventureActivity() {
-        TextAdventurePresenter p = createPresenter();
+        TextAdventurePresenter p = new TextAdventurePresenter( this, createModel() );
         this.rendersView = p;
         this.userActionHandler = p;
     }
 
     public TextAdventureActivity( RendersView r ) {
+        this();
         this.rendersView = r;
     }
 
     public TextAdventureActivity( UserActionHandler u ) {
-        TextAdventurePresenter p = createPresenter();
-        this.rendersView = p;
+        this();
         this.userActionHandler = u;
     }
 
-    public TextAdventurePresenter createPresenter() {
+    public TextAdventureModel createModel() {
         BasicModel model = new BasicModel();
         UserInventory inventory = model;
         ItemFactory f = new NormalItemFactory();
+
         Location startloc = new Location( "startloc", "You are in an empty wasteland that stretches for miles and miles.", inventory, f );
         startloc.addExit( new Exit( "North", "busytown", Exit.DirectionHint.North ) );
         startloc.addExit( new Exit( "East", "eastloc", Exit.DirectionHint.East ) );
@@ -72,7 +73,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         model.addLocation( clocktower );
         model.addLocation( eastloc );
         model.addLocation( westloc );
-        return new TextAdventurePresenter( this, model );
+        return model;
     }
 
     /** Called when the activity is first created. */
