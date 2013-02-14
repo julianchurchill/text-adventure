@@ -1,0 +1,53 @@
+INVENTORY ITEM
+item name:Pocket lint
+item description:It's fluffy and shaped like an inverted belly button.
+item countable noun prefix:some
+INVENTORY ITEM
+item name:Multitool
+item description:It's got a lot of tools on it. You feel like a man of the wilderness when you wield this formidable contraption.
+LOCATION
+location id:startloc
+location description:You are in an empty wasteland that stretches for miles and miles.
+exit label:North\nexit destination:busytown\nexit direction hint:North
+exit label:East\nexit destination:eastloc\nexit direction hint:East
+exit label:West\nexit destination:westloc\nexit direction hint:West
+ITEM
+item name:Skeleton key
+item description:It is rather dirty and has clearly been carved from some poor unfortunates metacarpal.
+item countable noun prefix:a
+ITEM
+item name:Banana peel
+item description:It is yellow and a little moldy.
+item countable noun prefix:some
+ITEM
+item name:Sand
+item description:The fine grains run through your fingers, reminding you of passing time and an urgent task that must be done.
+item countable noun prefix:some
+LOCATION
+location id:busytown
+location description:You are in a busy town. There is a clock tower to the north.
+exit label:North\nexit destination:clocktower\nexit direction hint:North
+exit label:South\nexit destination:startloc\nexit direction hint:South
+ITEM
+item name:Dust of the Ancients
+item description:This dust looks pretty powerful, for dust.
+item countable noun prefix:some
+item mid sentence cased name:Dust of the Ancients
+LOCATION
+location id:clocktower
+location description:You stand before a mighty clock tower. The clock goes TICK!
+exit label:South\nexit destination:busytown\nexit direction hint:South
+ITEM
+item name:Minute Hand of the Clock Tower
+item description:It is quite heavy, ornate and made of iron.
+item mid sentence cased name:Minute Hand of the Clock Tower
+item countable noun prefix:a
+LOCATION
+location id:eastloc
+location description:You are in the middle of a vast and endless ocean. Of despair.
+exit label:West\nexit destination:startloc\nexit direction hint:West
+LOCATION
+location id:westloc
+location description:You are in the precise centre of the universe. You are disappointed to find there is nothing here.
+exit label:East\nexit destination:startloc\nexit direction hint:East
+
