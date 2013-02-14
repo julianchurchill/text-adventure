@@ -45,23 +45,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         this();
         this.userActionHandler = u;
     }
-        //Location startloc = new Location( "startloc", "You are in an empty wasteland that stretches for miles and miles.", inventory, f );
-        //startloc.addExit( new Exit( "North", "busytown", Exit.DirectionHint.North ) );
-        //startloc.addExit( new Exit( "East", "eastloc", Exit.DirectionHint.East ) );
-        //startloc.addExit( new Exit( "West", "westloc", Exit.DirectionHint.West ) );
-        //startloc.addItem( new NormalItem( "Skeleton key", "It is rather dirty and has clearly been carved from some poor unfortunates metacarpal." ) );
-        //startloc.addItem( new NormalItem( "Banana peel", "It is yellow and a little moldy.", "some" ) );
-        //startloc.addItem( new NormalItem( "Sand", "The fine grains run through your fingers, reminding you of passing time and an urgent task that must be done.", "some" ) );
-        //Location busytown = new Location( "busytown", "You are in a busy town. There is a clock tower to the north.", inventory, f );
-        //busytown.addExit( new Exit( "North", "clocktower", Exit.DirectionHint.North ) );
-        //busytown.addExit( new Exit( "South", "startloc", Exit.DirectionHint.South ) );
-        //Location clocktower = new Location( "clocktower", "You stand before a mighty clock tower. The clock goes TICK!", inventory, f );
-        //clocktower.addExit( new Exit( "South", "busytown", Exit.DirectionHint.South ) );
-        //clocktower.addItem( new NormalItem( "Minute Hand of the Clock Tower", "It is quite heavy, ornate and made of iron.", "a", "Minute Hand of the Clock Tower" ) );
-        //Location eastloc = new Location( "eastloc", "You are in the middle of a vast and endless ocean. Of despair.", inventory, f );
-        //eastloc.addExit( new Exit( "West", "startloc", Exit.DirectionHint.West ) );
-        //Location westloc = new Location( "westloc", "You are in the precise centre of the universe. You are disappointed to find there is nothing here.", inventory, f );
-        //westloc.addExit( new Exit( "East", "startloc", Exit.DirectionHint.East ) );
 
     private String demoContent() {
         String content = "";
