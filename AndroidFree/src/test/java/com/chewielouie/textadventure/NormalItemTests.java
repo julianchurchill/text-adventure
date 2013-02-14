@@ -79,16 +79,32 @@ public class NormalItemTests {
     }
 
     @Test
+    public void deserialise_extracts_item_name() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" );
+        assertEquals( "Name", item.name() );
+    }
+
+    @Test
+    public void deserialise_extracts_item_description() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" );
+        assertEquals( "description", item.description() );
+    }
+
+    @Test
     public void deserialise_extracts_item() {
         NormalItem item = new NormalItem( "", "" );
         item.deserialise( "item name:Name\n" +
                           "item description:description\n" +
                           "item countable noun prefix:some\n" +
-                          "item mid sentence cased name:name" );
+                          "item mid sentence cased name:cased name" );
         assertEquals( "Name", item.name() );
         assertEquals( "description", item.description() );
         assertEquals( "some", item.countableNounPrefix() );
-        assertEquals( "name", item.midSentenceCasedName() );
+        assertEquals( "cased name", item.midSentenceCasedName() );
     }
 
     @Test
