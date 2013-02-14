@@ -284,25 +284,6 @@ public class LocationTests {
     }
 
     @Test
-    public void deserialise_adds_extracted_item_to_location() {
-        final Item item = mockery.mock( Item.class );
-        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
-        Location l = new Location( "", "", null, itemFactory );
-
-        mockery.checking( new Expectations() {{
-            allowing( itemFactory ).create();
-            will( returnValue( item ) );
-            ignoring( itemFactory );
-            ignoring( item );
-        }});
-
-        l.deserialise( "location id:name\n" +
-                       "ITEM\nitem name:item content\n" +
-                       "and more item content" );
-        assertEquals( item, l.items().get(0) );
-    }
-
-    @Test
     public void deserialise_adds_extracted_items_to_location() {
         final Item item1 = mockery.mock( Item.class, "item1" );
         final Item item2 = mockery.mock( Item.class, "item2" );
