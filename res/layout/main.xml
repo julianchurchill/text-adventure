@@ -11,6 +11,7 @@
     android:layout_alignParentTop="true"
     android:gravity="center"
     android:background="#660000"
+    android:textSize="20sp"
     android:text="North"
     />
 <TextView
@@ -21,6 +22,7 @@
     android:layout_below="@id/top_direction_label"
     android:gravity="center"
     android:background="#660000"
+    android:textSize="20sp"
     android:text="West"
     />
 <TextView
@@ -31,6 +33,7 @@
     android:layout_below="@id/top_direction_label"
     android:gravity="center"
     android:background="#660000"
+    android:textSize="20sp"
     android:text="East"
     />
 <TextView
@@ -40,6 +43,7 @@
     android:layout_alignParentBottom="true"
     android:gravity="center"
     android:background="#660000"
+    android:textSize="20sp"
     android:text="South"
     />
 <ScrollView
@@ -55,7 +59,7 @@
         android:id="@+id/main_text_output"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:textSize="25sp"
+        android:textSize="18sp"
         android:text="Hello!"
         />
 </ScrollView>
