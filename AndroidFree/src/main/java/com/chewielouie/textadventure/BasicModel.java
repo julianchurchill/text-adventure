@@ -11,8 +11,6 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     private List<Item> inventoryItems = new ArrayList<Item>();
 
     public BasicModel() {
-        inventoryItems.add( new NormalItem( "Pocket lint",
-            "It's fluffy and shaped like an inverted belly button", "some" ) );
     }
 
     public String currentLocationDescription() {
