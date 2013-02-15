@@ -8,13 +8,20 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [FEATURE] Write some decent content! Expand it and expand the framework to supply functionality to support the content.
-
-- [FEATURE] Action navigator - instead of long click context menu sequence use a sidebar which either expands or gets replaced (with a title to preserve context e.g. 'take', 'drop').
+- [FEATURE] Action navigator - instead of long click context menu sequence use a sidebar which either expands or gets replaced (with a title to preserve context e.g. 'Show inventory...', 'Take an item...').
+  - [TEST] action view has buttons showing currently available actions
+  - [TEST] pressing an action button triggers that action
+  - [TEST[ action view is updated with follow up actions
+  - [TEST] action view title defaults to 'Actions...'
+  - [TEST] activity sets action view title when user selects an action
+  - [TEST] action view includes a cancel button to reset the actions and the title to the top level
 - [FEATURE] Direction navigator - instead of top, bottom, right, left clickable labels use a compass with small labels.
 
 - [TEST] Expand the long click area to the ScrollView or better still the whole app
+  - Redundant if the long click menu is removed
 - [BUG] If you are in the middle of a chain of actions (e.g. taking an item) and the back key is pressed to cancel, then the actions are not reset to the topmost level.
+  - Redundant if the long click menu is removed
+
 - [REFACTOR]
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
 - [FEATURE] Add ability to drop objects from the inventory into the current room
