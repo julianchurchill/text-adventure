@@ -11,10 +11,6 @@ import java.util.List;
 import java.util.Map;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
@@ -71,7 +67,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         left_direction_label.setOnClickListener( this );
         main_text_output = findTextView( R.id.main_text_output );
         available_actions_view = (LinearLayout)findViewById( R.id.available_actions );
-        registerForContextMenu( main_text_output );
 
         TextAdventurePresenter p = new TextAdventurePresenter( this, createModel() );
         if( this.rendersView == null )
@@ -117,39 +112,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private TextView findTextView( int id ) {
         return (TextView)findViewById( id );
-    }
-
-    private List<Action> menuActions() {
-        if( immediateActions != null )
-            return immediateActions;
-        return actions;
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v,
-                                    ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        for( Action action : menuActions() )
-            menu.add( action.label() );
-    }
-
-    @Override
-    public boolean onContextItemSelected( MenuItem menuItem ) {
-        CharSequence menuLabel = menuItem.getTitle();
-        boolean actionOriginatedFromImmediateActions = false;
-        if( menuActions() == immediateActions )
-            actionOriginatedFromImmediateActions = true;
-
-        for( Action action : menuActions() ) {
-            if( menuLabel.equals( action.label() ) ) {
-                userActionHandler.enact( action );
-                break;
-            }
-        }
-
-        if( actionOriginatedFromImmediateActions )
-            immediateActions = null;
-        return true;
     }
 
     @Override
@@ -251,9 +213,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void giveUserImmediateActionChoice( List<Action> acts ) {
         this.immediateActions = acts;
         updateAvailableActionsButtons( immediateActions );
-
-        closeContextMenu();
-        openContextMenu( main_text_output );
     }
 
     public void onClick( View v ) {

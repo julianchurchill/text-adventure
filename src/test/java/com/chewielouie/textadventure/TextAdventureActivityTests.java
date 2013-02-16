@@ -7,7 +7,6 @@ import java.util.List;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -24,22 +23,6 @@ import com.chewielouie.textadventure.action.Action;
 public class TextAdventureActivityTests {
 
     private Mockery mockery = new Mockery();
-
-    private MotionEvent createUpMotionEvent( float x, float y ) {
-        long downTime = 0;
-        long eventTime = 0;
-        int action = MotionEvent.ACTION_UP;
-        int metaState = 0;
-        return MotionEvent.obtain( downTime, eventTime, action, x, y, metaState );
-    }
-
-    private MotionEvent createDownMotionEvent( float x, float y ) {
-        long downTime = 0;
-        long eventTime = 0;
-        int action = MotionEvent.ACTION_DOWN;
-        int metaState = 0;
-        return MotionEvent.obtain( downTime, eventTime, action, x, y, metaState );
-    }
 
     @Test
     public void renders_the_presenter_on_resume() {
@@ -344,115 +327,6 @@ public class TextAdventureActivityTests {
         t = (TextView)activity.findViewById( R.id.left_direction_label );
         assertEquals( "third exit", t.getText().toString() );
     }
-
-    @Test
-    public void actions_menu_contains_last_set_of_actions_sent_with_set_actions() {
-        TextAdventureActivity activity = new TextAdventureActivity();
-        activity.onCreate( null );
-        final ContextMenu menu = mockery.mock( ContextMenu.class );
-        final TextView view = (TextView)activity.findViewById( R.id.main_text_output );
-        final ContextMenuInfo menuInfo = mockery.mock( ContextMenuInfo.class );
-        final Action action = mockery.mock( Action.class );
-        mockery.checking( new Expectations() {{
-            allowing( action ).label();
-            will( returnValue( "action 1" ) );
-            ignoring( action );
-            oneOf( menu ).add( "action 1" );
-            ignoring( menu );
-            ignoring( menuInfo );
-        }});
-
-        List<Action> actions = new ArrayList<Action>();
-        actions.add( action );
-        activity.setActions( actions );
-
-        activity.onCreateContextMenu( menu, view, menuInfo );
-
-        mockery.assertIsSatisfied();
-    }
-
-    @Test
-    public void selection_of_an_action_item_is_reported_to_user_action_handler() {
-        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        TextAdventureActivity activity = new TextAdventureActivity( handler );
-        activity.onCreate( null );
-        final MenuItem menuItem = mockery.mock( MenuItem.class );
-        final Action action = mockery.mock( Action.class );
-        mockery.checking( new Expectations() {{
-            allowing( action ).label();
-            will( returnValue( "action 1" ) );
-            ignoring( action );
-            allowing( menuItem ).getTitle();
-            will( returnValue( "action 1" ) );
-            ignoring( menuItem );
-            oneOf( handler ).enact( action );
-            ignoring( handler );
-        }});
-
-        List<Action> actions = new ArrayList<Action>();
-        actions.add( action );
-        activity.setActions( actions );
-
-        assertTrue( activity.onContextItemSelected( menuItem ) );
-
-        mockery.assertIsSatisfied();
-    }
-
-    //@Test
-    //public void on_immediate_user_action_choice_show_a_context_menu_with_the_choices() {
-        //TextAdventureActivity activity = new TextAdventureActivity();
-        //activity.onCreate( null );
-        //final Action action = mockery.mock( Action.class );
-        //mockery.checking( new Expectations() {{
-            //oneOf( action ).label();
-            //will( returnValue( "action 1" ) );
-            //ignoring( action );
-        //}});
-
-        //List<Action> actions = new ArrayList<Action>();
-        //actions.add( action );
-        //activity.giveUserImmediateActionChoice( actions );
-
-        // The call to openContextMenu in giveUserImmediateActionChoice() doesn't trigger
-        // onCreateContextMenu as expected and so this test fails...
-
-        //mockery.assertIsSatisfied();
-    //}
-
-    //@Test
-    //public void after_immediate_user_action_choice_context_menu_shows_original_actions() {
-        //TextAdventureActivity activity = new TextAdventureActivity();
-        //activity.onCreate( null );
-        //final ContextMenu menu = mockery.mock( ContextMenu.class );
-        //final TextView view = (TextView)activity.findViewById( R.id.main_text_output );
-        //final ContextMenuInfo menuInfo = mockery.mock( ContextMenuInfo.class );
-        //final Action action = mockery.mock( Action.class, "original action" );
-        //final Action immediateAction = mockery.mock( Action.class, "immediate action" );
-        //mockery.checking( new Expectations() {{
-            //allowing( action ).label();
-            //will( returnValue( "action 1" ) );
-            //ignoring( action );
-            //oneOf( menu ).add( "action 1" );
-            //ignoring( menu );
-            //ignoring( menuInfo );
-            //ignoring( immediateAction );
-        //}});
-
-        //List<Action> immediateActions = new ArrayList<Action>();
-        //immediateActions.add( immediateAction );
-        //activity.giveUserImmediateActionChoice( immediateActions );
-
-        // The call to openContextMenu in giveUserImmediateActionChoice() doesn't trigger
-        // onCreateContextMenu as expected so this test is invalid...
-
-        //List<Action> actions = new ArrayList<Action>();
-        //actions.add( action );
-        //activity.setActions( actions );
-
-        //activity.onCreateContextMenu( menu, view, menuInfo );
-
-        //mockery.assertIsSatisfied();
-    //}
 
     @Test
     public void set_actions_updates_action_view_with_buttons_for_each_action() {
