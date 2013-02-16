@@ -2,6 +2,7 @@
 <project name="TextAdventure-custom-build-rules">
 
     <property name="TALK" value="false"/>
+    <property name="DEBUG" value="on"/>
 
     <property name="businesslogic.root" value="AndroidFree"/>
     <property name="android.businesslogic.lib" value="libs/textadventure.businesslogic.jar"/>
@@ -54,6 +55,7 @@
         <javac srcdir="${android.src.test}"
                destdir="${android.test.output}"
                verbose="${TALK}"
+               debug="${DEBUG}"
                bootclasspathref="${android.project.classpath}"
                includeantruntime="false">
             <classpath refid="classpath.android.test"/>

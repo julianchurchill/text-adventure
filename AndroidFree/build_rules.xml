@@ -2,6 +2,7 @@
 <project name="TextAdventure-business-logic-build-rules" default="all-businesslogic">
 
     <property name="TALK" value="false"/>
+    <property name="DEBUG" value="on"/>
 
     <property name="businesslogic.libs.test" value="${businesslogic.root}/libs/test"/>
     <property name="businesslogic.src.test" value="${businesslogic.root}/src/test/java"/>
@@ -26,6 +27,7 @@
         <javac srcdir="${businesslogic.src.main}"
                destdir="${businesslogic.main.output}"
                verbose="${TALK}"
+               debug="${DEBUG}"
                includeantruntime="false">
             <classpath refid="classpath.businesslogic.test"/>
         </javac>
@@ -44,6 +46,7 @@
         <javac srcdir="${businesslogic.src.test}"
                destdir="${businesslogic.test.output}"
                verbose="${TALK}"
+               debug="${DEBUG}"
                includeantruntime="false">
             <classpath refid="classpath.businesslogic.test"/>
         </javac>
