@@ -15,6 +15,16 @@ Backlog
   - [TEST] action view title defaults to 'Actions...'
   - [TEST] activity sets action view title when user selects an action
   - [TEST] action view includes a cancel button to reset the actions and the title to the top level
+
+- [FEATURE] Unlock the clock tower door with the skeleton key to reveal an 'up' exit
+  - [TEST] New item type - unmovable item - e.g. the clock tower door
+  - [TEST] Split 'Show inventory' into items, when item is selected then given a choice of actions, initially 'Examine'
+  - [TEST] New action - 'UseWith' available when an item is selected from the inventory. Follow up action 'UseWithSpecificItem' is a choice of items in the location and inventory.
+  - [TEST] Enacting 'UseWithSpecificItem' calls useWith() on the item object, returning a default user message 'Nothing happens.'
+  - [TEST] Model text can specify that an item can be used with another named item. This should include a message for the user upon using the item with the named item.
+  - [TEST] useWith() on the item object when used with a named item it can be used with returns the defined user message.
+  - [TEST] useWith() on the item object when used with a named item it can be used with changes some state as defined in the model text. In this feature case it adds an exit to the clock tower location.
+
 - [FEATURE] Direction navigator - instead of top, bottom, right, left clickable labels use a compass with small labels.
 
 - [TEST] Expand the long click area to the ScrollView or better still the whole app
