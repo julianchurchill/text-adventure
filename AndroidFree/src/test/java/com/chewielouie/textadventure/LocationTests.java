@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.TakeAnItem;
+import com.chewielouie.textadventure.action.ExamineAnItem;
 
 @RunWith(JMock.class)
 public class LocationTests {
@@ -121,6 +122,30 @@ public class LocationTests {
     }
 
     @Test
+    public void location_actions_include_examine_an_item_when_location_has_item() {
+        Location l = createLocation();
+        l.addItem( new NormalItem( "name", "description" ) );
+
+        boolean actionsIncludeExamineAnItemAction = false;
+        for( Action a : l.actions() )
+            if( a instanceof ExamineAnItem )
+                actionsIncludeExamineAnItemAction = true;
+        assertTrue( actionsIncludeExamineAnItemAction );
+    }
+
+    @Test
+    public void location_action_to_examine_an_item_is_created_with_location_items() {
+        Location l = createLocation();
+        l.addItem( new NormalItem( "name", "description" ) );
+        List<Item> items = new ArrayList<Item>();
+        items.add( new NormalItem( "name", "description" ) );
+
+        for( Action a : l.actions() )
+            if( a instanceof ExamineAnItem )
+                assertEquals( items, ((ExamineAnItem)a).items() );
+    }
+
+    @Test
     public void added_items_are_added_to_location_description() {
         Location l = new Location( "", "Location description.", null, null );
         l.addItem( new NormalItem( "name", "description" ) );
@@ -149,6 +174,27 @@ public class LocationTests {
         for( Action a : l.actions() )
             if( a instanceof TakeAnItem )
                 fail("TakeAnItem action is not needed by this location as it has no items!");
+    }
+
+    @Test
+    public void removing_all_items_from_a_location_removes_ExamineAnItem_action_from_action_list() {
+        Item item = new NormalItem( "name", "description" );
+        Location l = createLocation();
+        l.addItem( item );
+        l.removeItem( item );
+
+        for( Action a : l.actions() )
+            if( a instanceof ExamineAnItem )
+                fail("ExamineAnItem action is not needed by this location as it has no items!");
+    }
+
+    @Test
+    public void a_location_without_items_does_not_need_a_ExamineAnItem_action() {
+        Location l = createLocation();
+
+        for( Action a : l.actions() )
+            if( a instanceof ExamineAnItem )
+                fail("ExamineAnItem action is not needed by this location as it has no items!");
     }
 
     @Test

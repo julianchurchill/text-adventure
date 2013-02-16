@@ -9,7 +9,6 @@ Backlog
 =======
 
 - [FEATURE] Unlock the clock tower door with the skeleton key to reveal an 'up' exit
-  - [TEST] New default action 'Examine some item' - can be used to look at items in the current location without picking it up
   - [TEST] New item type - unmovable item - e.g. the clock tower door, no take action is generated for this item.
   - [TEST] Split 'Show inventory' into items, when item is selected then given a choice of actions, initially 'Examine'
   - [TEST] New action - 'UseWith' available when an item is selected from the inventory. Follow up action 'UseWithSpecificItem' is a choice of items in the location and inventory.
@@ -17,6 +16,8 @@ Backlog
   - [TEST] Model text can specify that an item can be used with another named item. This should include a message for the user upon using the item with the named item.
   - [TEST] useWith() on the item object when used with a named item it can be used with returns the defined user message.
   - [TEST] useWith() on the item object when used with a named item it can be used with changes some state as defined in the model text. In this feature case it adds an exit to the clock tower location.
+
+- [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
 
 - [FEATURE] Direction navigator - instead of top, bottom, right, left clickable labels use a compass with small labels.
 
@@ -41,6 +42,7 @@ Backlog
 Done
 ====
 
+- [FEATURE] New default action 'Examine some item' - can be used to look at items in the current location without picking it up
 - [FEATURE] Replaced long press context menu for actions with actions buttons
 - [FEATURE] Read a model setup from a plain text file
 - [FEATURE] The user must be able to scroll the main text view when it gets full up
