@@ -9,8 +9,9 @@ Backlog
 =======
 
 - [FEATURE] Unlock the clock tower door with the skeleton key to reveal an 'up' exit
-  - [TEST] Split 'Show inventory' into items, when item is selected then given a choice of actions, initially 'Examine'
-  - [TEST] New action - 'UseWith' available when an item is selected from the inventory. Follow up action 'UseWithSpecificItem' is a choice of items in the location and inventory.
+  - [TEST] 'Inventory item' action leads to 'Examine' follow up action
+  - [TEST] Change the 'Show inventory' action to make an 'Inventory item' follow up action for each item in the inventory with the item and a label of 'item name'.
+  - [TEST] New action - 'UseWith' - add to 'Inventory item' action as additional follow up action. Follow up action 'UseWithSpecificItem' is a choice of items in the location and inventory.
   - [TEST] Enacting 'UseWithSpecificItem' calls useWith() on the item object, returning a default user message 'Nothing happens.'
   - [TEST] Model text can specify that an item can be used with another named item. This should include a message for the user upon using the item with the named item.
   - [TEST] useWith() on the item object when used with a named item it can be used with returns the defined user message.
