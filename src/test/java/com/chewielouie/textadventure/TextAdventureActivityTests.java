@@ -4,9 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -412,59 +409,13 @@ public class TextAdventureActivityTests {
         List<Action> newActions = new ArrayList<Action>();
         newActions.add( newAction1 );
         newActions.add( newAction2 );
-        activity.giveUserImmediateActionChoice( newActions );
-        // Normally the presenter will reaffirm the root actions like this
-        activity.setActions( actions );
+        activity.setActions( newActions );
 
         assertEquals( 2, actionView.getChildCount() );
         Button button1 = (Button)actionView.getChildAt(0);
         Button button2 = (Button)actionView.getChildAt(1);
         assertEquals( "new action 1", button1.getText().toString() );
         assertEquals( "new action 2", button2.getText().toString() );
-    }
-
-    @Test
-    public void action_view_buttons_reset_to_original_actions_when_action_chain_is_completed() {
-        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        TextAdventureActivity activity = new TextAdventureActivity( handler );
-        activity.onCreate( null );
-        final Action action = mockery.mock( Action.class, "action" );
-        final Action newAction1 = mockery.mock( Action.class, "new action 1" );
-        final Action newAction2 = mockery.mock( Action.class, "new action 2" );
-        mockery.checking( new Expectations() {{
-            allowing( action ).label();
-            will( returnValue( "action" ) );
-            ignoring( action );
-            allowing( newAction1 ).label();
-            will( returnValue( "new action 1" ) );
-            ignoring( newAction1 );
-            allowing( newAction2 ).label();
-            will( returnValue( "new action 2" ) );
-            ignoring( newAction2 );
-            ignoring( handler );
-        }});
-
-        List<Action> actions = new ArrayList<Action>();
-        actions.add( action );
-        activity.setActions( actions );
-
-        ViewGroup actionView = (ViewGroup)activity.findViewById( R.id.available_actions );
-        Button button = (Button)actionView.getChildAt(0);
-        button.performClick();
-        List<Action> newActions = new ArrayList<Action>();
-        newActions.add( newAction1 );
-        newActions.add( newAction2 );
-        activity.giveUserImmediateActionChoice( newActions );
-        // Normally the presenter will reaffirm the root actions like this
-        activity.setActions( actions );
-
-        // Choose a follow up action
-        button = (Button)actionView.getChildAt(0);
-        button.performClick();
-
-        assertEquals( 1, actionView.getChildCount() );
-        button = (Button)actionView.getChildAt(0);
-        assertEquals( "action", button.getText().toString() );
     }
 
     //@Test

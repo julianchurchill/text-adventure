@@ -32,8 +32,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private TextView main_text_output;
     private Map<TextView,Exit> directions_and_exits =
         new HashMap<TextView,Exit>();
-    private List<Action> actions = new ArrayList<Action>();
-    private List<Action> immediateActions = null;
     private Map<Button,Action> actionButtons = new HashMap<Button,Action>();
     private LinearLayout available_actions_view;
 
@@ -187,15 +185,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     public void setActions( List<Action> actions ) {
-        this.actions = actions;
-        if( immediateActions == null )
-            updateAvailableActionsButtons( actions );
-    }
-
-    private void updateAvailableActionsButtons( List<Action> a ) {
         actionButtons.clear();
         available_actions_view.removeAllViews();
-        for( Action action : a )
+        for( Action action : actions )
             makeActionButton( action );
     }
 
@@ -203,16 +195,10 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         Button button = new Button( this );
         button.setText( action.label() );
         button.setOnClickListener( this );
-        //LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         LayoutParams lp = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
         available_actions_view.addView( button, lp );
 
         actionButtons.put( button, action );
-    }
-
-    public void giveUserImmediateActionChoice( List<Action> acts ) {
-        this.immediateActions = acts;
-        updateAvailableActionsButtons( immediateActions );
     }
 
     public void onClick( View v ) {
@@ -224,16 +210,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             deliverExitActionFor( right_direction_label );
         else if( v == left_direction_label )
             deliverExitActionFor( left_direction_label );
-        else if( v instanceof Button && actionButtons.containsKey( (Button)v ) ) {
-            boolean immediateActionClicked = false;
-            if( immediateActions != null )
-                immediateActionClicked = true;
+        else if( v instanceof Button && actionButtons.containsKey( (Button)v ) )
             userActionHandler.enact( actionButtons.get( (Button)v ) );
-            if( immediateActionClicked ) {
-                immediateActions = null;
-                updateAvailableActionsButtons( actions );
-            }
-        }
     }
 
     private void deliverExitActionFor( TextView dir_label ) {

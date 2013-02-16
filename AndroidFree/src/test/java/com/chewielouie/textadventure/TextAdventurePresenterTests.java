@@ -192,7 +192,7 @@ public class TextAdventurePresenterTests {
             will( returnValue( actions ) );
             ignoring( action );
             ignoring( model );
-            oneOf( view ).giveUserImmediateActionChoice( actions );
+            oneOf( view ).setActions( actions );
             ignoring( view );
         }});
 
@@ -200,18 +200,19 @@ public class TextAdventurePresenterTests {
     }
 
     @Test
-    public void upon_enact_action_that_requires_no_further_action_do_not_pass_any_new_actions_to_view() {
+    public void upon_enact_action_that_requires_no_further_action_tell_view_of_location_actions() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         TextAdventurePresenter p = new TextAdventurePresenter( view, model );
         final Action action = mockery.mock( Action.class, "original action" );
+        final List<Action> locationActions = new ArrayList<Action>( p.defaultActions() );
         mockery.checking( new Expectations() {{
             allowing( action ).trigger();
             allowing( action ).userMustChooseFollowUpAction();
             will( returnValue( false ) );
             ignoring( action );
             ignoring( model );
-            never( view ).giveUserImmediateActionChoice( with( any( List.class ) ) );
+            oneOf( view ).setActions( locationActions );
             ignoring( view );
         }});
 

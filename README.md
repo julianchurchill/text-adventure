@@ -9,7 +9,6 @@ Backlog
 =======
 
 - [FEATURE] Action navigator - instead of long click context menu sequence use a sidebar which either expands or gets replaced (with a title to preserve context e.g. 'Show inventory...', 'Take an item...').
-  - [TEST] Should the presenter be reaffirming the root actions _even_ when it sets follow up actions? This makes it hard for the view to determine the current set of actions... It should be the presenters responsibility to provide the right actions based on the state, e.g. changing location or enacting an action. Is giveUserImmediateActionChoice() even necessary, isn't setActions() enough?
   - [TEST] action view title defaults to 'Actions...'
   - [TEST] activity sets action view title when user selects an action
   - [TEST] action view includes a cancel button to reset the actions and the title to the top level
