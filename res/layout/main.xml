@@ -4,6 +4,15 @@
     android:layout_height="fill_parent"
     android:padding="6dip"
     android:background="#000000">
+<LinearLayout
+    android:id="@+id/available_actions"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:gravity="center"
+    android:background="#660055"
+    />
 <TextView
     android:id="@+id/top_direction_label"
     android:layout_width="fill_parent"
@@ -18,6 +27,7 @@
     android:id="@+id/left_direction_label"
     android:layout_width="wrap_content"
     android:layout_height="fill_parent"
+    android:layout_above="@id/available_actions"
     android:layout_alignParentLeft="true"
     android:layout_below="@id/top_direction_label"
     android:gravity="center"
@@ -29,6 +39,7 @@
     android:id="@+id/right_direction_label"
     android:layout_width="wrap_content"
     android:layout_height="fill_parent"
+    android:layout_above="@id/available_actions"
     android:layout_alignParentRight="true"
     android:layout_below="@id/top_direction_label"
     android:gravity="center"
@@ -40,7 +51,7 @@
     android:id="@+id/bottom_direction_label"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
+    android:layout_above="@id/available_actions"
     android:gravity="center"
     android:background="#660000"
     android:textSize="20sp"

@@ -16,7 +16,11 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.chewielouie.textadventure.action.Action;
@@ -34,6 +38,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         new HashMap<TextView,Exit>();
     private List<Action> actions = new ArrayList<Action>();
     private List<Action> immediateActions = null;
+    private Map<Button,Action> actionButtons = new HashMap<Button,Action>();
+    private LinearLayout available_actions_view;
 
     public TextAdventureActivity() {
     }
@@ -64,6 +70,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         left_direction_label = findTextView( R.id.left_direction_label );
         left_direction_label.setOnClickListener( this );
         main_text_output = findTextView( R.id.main_text_output );
+        available_actions_view = (LinearLayout)findViewById( R.id.available_actions );
         registerForContextMenu( main_text_output );
 
         TextAdventurePresenter p = new TextAdventurePresenter( this, createModel() );
@@ -219,10 +226,32 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     public void setActions( List<Action> actions ) {
         this.actions = actions;
+        if( immediateActions == null )
+            updateAvailableActionsButtons( actions );
     }
 
-    public void giveUserImmediateActionChoice( List<Action> actions ) {
-        this.immediateActions = actions;
+    private void updateAvailableActionsButtons( List<Action> a ) {
+        actionButtons.clear();
+        available_actions_view.removeAllViews();
+        for( Action action : a )
+            makeActionButton( action );
+    }
+
+    private void makeActionButton( Action action ) {
+        Button button = new Button( this );
+        button.setText( action.label() );
+        button.setOnClickListener( this );
+        //LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        LayoutParams lp = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
+        available_actions_view.addView( button, lp );
+
+        actionButtons.put( button, action );
+    }
+
+    public void giveUserImmediateActionChoice( List<Action> acts ) {
+        this.immediateActions = acts;
+        updateAvailableActionsButtons( immediateActions );
+
         closeContextMenu();
         openContextMenu( main_text_output );
     }
@@ -236,6 +265,16 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             deliverExitActionFor( right_direction_label );
         else if( v == left_direction_label )
             deliverExitActionFor( left_direction_label );
+        else if( v instanceof Button && actionButtons.containsKey( (Button)v ) ) {
+            boolean immediateActionClicked = false;
+            if( immediateActions != null )
+                immediateActionClicked = true;
+            userActionHandler.enact( actionButtons.get( (Button)v ) );
+            if( immediateActionClicked ) {
+                immediateActions = null;
+                updateAvailableActionsButtons( actions );
+            }
+        }
     }
 
     private void deliverExitActionFor( TextView dir_label ) {
