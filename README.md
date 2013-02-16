@@ -8,13 +8,9 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [FEATURE] Action navigator - instead of long click context menu sequence use a sidebar which either expands or gets replaced (with a title to preserve context e.g. 'Show inventory...', 'Take an item...').
-  - [TEST] action view title defaults to 'Actions...'
-  - [TEST] activity sets action view title when user selects an action
-  - [TEST] action view includes a cancel button to reset the actions and the title to the top level
-
 - [FEATURE] Unlock the clock tower door with the skeleton key to reveal an 'up' exit
-  - [TEST] New item type - unmovable item - e.g. the clock tower door
+  - [TEST] New default action 'Examine some item' - can be used to look at items in the current location without picking it up
+  - [TEST] New item type - unmovable item - e.g. the clock tower door, no take action is generated for this item.
   - [TEST] Split 'Show inventory' into items, when item is selected then given a choice of actions, initially 'Examine'
   - [TEST] New action - 'UseWith' available when an item is selected from the inventory. Follow up action 'UseWithSpecificItem' is a choice of items in the location and inventory.
   - [TEST] Enacting 'UseWithSpecificItem' calls useWith() on the item object, returning a default user message 'Nothing happens.'
@@ -24,16 +20,13 @@ Backlog
 
 - [FEATURE] Direction navigator - instead of top, bottom, right, left clickable labels use a compass with small labels.
 
-- [TEST] Expand the long click area to the ScrollView or better still the whole app
-  - Redundant if the long click menu is removed
-- [BUG] If you are in the middle of a chain of actions (e.g. taking an item) and the back key is pressed to cancel, then the actions are not reset to the topmost level.
-  - Redundant if the long click menu is removed
+- [FEATURE] Action navigator - instead of long click context menu sequence use a sidebar which either expands or gets replaced (with a title to preserve context e.g. 'Show inventory...', 'Take an item...').
+  - [TEST] action view title defaults to 'Actions...'
+  - [TEST] activity sets action view title when user selects an action
+  - [TEST] action view includes a cancel button to reset the actions and the title to the top level
 
 - [REFACTOR]
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
-- [FEATURE] Add ability to drop objects from the inventory into the current room
-- [FEATURE] Allow the user to examine objects in the current location without taking them first
-
 
 - Add monsters, npcs
 
