@@ -104,6 +104,32 @@ public class LocationTests {
     }
 
     @Test
+    public void location_action_to_take_an_item_does_not_include_untakeable_items() {
+        Location l = createLocation();
+        NormalItem item1 = new NormalItem( "name", "description" );
+        NormalItem item2 = new NormalItem( "name", "description" );
+        item1.setUntakeable();
+        l.addItem( item1 );
+        l.addItem( item2 );
+
+        for( Action a : l.actions() )
+            if( a instanceof TakeAnItem )
+                assertEquals( 1, ((TakeAnItem)a).items().size() );
+    }
+
+    @Test
+    public void location_action_to_take_an_item_is_not_included_if_only_untakeable_items_available() {
+        Location l = createLocation();
+        NormalItem item = new NormalItem( "name", "description" );
+        item.setUntakeable();
+        l.addItem( item );
+
+        for( Action a : l.actions() )
+            if( a instanceof TakeAnItem )
+                fail("TakeAnItem action is not needed by this location as it has no takeable items!");
+    }
+
+    @Test
     public void location_action_to_take_an_item_has_user_inventory_passed_to_it() {
         UserInventory inventory = mockery.mock( UserInventory.class );
         Location l = new Location( "", "", inventory, null );

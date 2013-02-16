@@ -39,6 +39,19 @@ public class NormalItemTests {
     }
 
     @Test
+    public void item_is_takeable_by_default() {
+        NormalItem item = new NormalItem( "NAME", "description", "a", "Name" );
+        assertTrue( item.takeable() );
+    }
+
+    @Test
+    public void setting_untakeable_makes_item_not_takeable() {
+        NormalItem item = new NormalItem( "NAME", "description", "a", "Name" );
+        item.setUntakeable();
+        assertFalse( item.takeable() );
+    }
+
+    @Test
     public void two_objects_with_the_same_value_should_be_equal() {
         NormalItem object1 = new NormalItem( "name", "description" );
         NormalItem object2 = new NormalItem( "name", "description" );
@@ -95,24 +108,60 @@ public class NormalItemTests {
     }
 
     @Test
-    public void deserialise_extracts_item() {
+    public void deserialise_extracts_item_countable_noun_prefix() {
         NormalItem item = new NormalItem( "", "" );
         item.deserialise( "item name:Name\n" +
                           "item description:description\n" +
-                          "item countable noun prefix:some\n" +
-                          "item mid sentence cased name:cased name" );
-        assertEquals( "Name", item.name() );
-        assertEquals( "description", item.description() );
+                          "item countable noun prefix:some\n" );
         assertEquals( "some", item.countableNounPrefix() );
+    }
+
+    @Test
+    public void deserialise_extracts_item_mid_sentence_cased_name() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item mid sentence cased name:cased name\n" );
         assertEquals( "cased name", item.midSentenceCasedName() );
     }
 
     @Test
-    public void deserialise_item_mid_sentence_cased_name_is_optional() {
+    public void deserialise_mid_sentence_cased_name_must_come_after_countable_noun_prefix() {
         NormalItem item = new NormalItem( "", "" );
         item.deserialise( "item name:Name\n" +
-                       "item description:description\n" );
-        assertEquals( "name", item.midSentenceCasedName() );
+                          "item description:description\n" +
+                          "item mid sentence cased name:cased name\n" +
+                          "item countable noun prefix:some\n" );
+        assertFalse( item.midSentenceCasedName().equals( "cased name" ) );
+    }
+
+    @Test
+    public void deserialise_untakeable_must_come_after_countable_noun_prefix() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item is untakeable:\n" +
+                          "item countable noun prefix:some\n" );
+        assertTrue( item.takeable() );
+    }
+
+    @Test
+    public void deserialise_untakeable_must_come_after_mid_sentence_cased_name() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item is untakeable:\n" +
+                          "item mid sentence cased name:cased name\n" );
+        assertTrue( item.takeable() );
+    }
+
+    @Test
+    public void deserialise_extracts_item_is_untakeable() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item is untakeable:\n" );
+        assertFalse( item.takeable() );
     }
 
     @Test
@@ -121,6 +170,14 @@ public class NormalItemTests {
         item.deserialise( "item name:Name\n" +
                           "item description:description\n" );
         assertEquals( "", item.countableNounPrefix() );
+    }
+
+    @Test
+    public void deserialise_item_mid_sentence_cased_name_is_optional() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                       "item description:description\n" );
+        assertEquals( "name", item.midSentenceCasedName() );
     }
 }
 

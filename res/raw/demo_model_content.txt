@@ -54,6 +54,11 @@ item name:Minute Hand of the Clock Tower
 item description:It is quite heavy, ornate and made of iron.
 item countable noun prefix:a
 item mid sentence cased name:Minute Hand of the Clock Tower
+ITEM
+item name:locked door
+item description:It is locked and looks impenetrable.
+item countable noun prefix:a
+item is untakeable:
 LOCATION
 location id:eastloc
 location description:You are in the middle of a vast and endless ocean. Of despair.

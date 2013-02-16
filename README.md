@@ -9,7 +9,6 @@ Backlog
 =======
 
 - [FEATURE] Unlock the clock tower door with the skeleton key to reveal an 'up' exit
-  - [TEST] New item type - unmovable item - e.g. the clock tower door, no take action is generated for this item.
   - [TEST] Split 'Show inventory' into items, when item is selected then given a choice of actions, initially 'Examine'
   - [TEST] New action - 'UseWith' available when an item is selected from the inventory. Follow up action 'UseWithSpecificItem' is a choice of items in the location and inventory.
   - [TEST] Enacting 'UseWithSpecificItem' calls useWith() on the item object, returning a default user message 'Nothing happens.'

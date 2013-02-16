@@ -5,6 +5,7 @@ public class NormalItem implements Item {
     private String description = "";
     private String countableNounPrefix = "a";
     private String midSentenceCasedName = null;
+    private boolean takeable = true;
 
     public NormalItem( String name, String description ) {
         this.name = name;
@@ -45,6 +46,14 @@ public class NormalItem implements Item {
         this.name = name;
     }
 
+    public void setUntakeable() {
+        takeable = false;
+    }
+
+    public boolean takeable() {
+        return takeable;
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof NormalItem) )
@@ -72,6 +81,7 @@ public class NormalItem implements Item {
         private final String itemDescriptionTag = "item description:";
         private final String itemCountableNounPrefixTag = "item countable noun prefix:";
         private final String itemMidSentenceCasedNameTag = "item mid sentence cased name:";
+        private final String itemIsUntakeableTag = "item is untakeable:";
         private String content;
         private int startOfLastFoundTag = -1;
 
@@ -82,8 +92,12 @@ public class NormalItem implements Item {
             deserialiseItems();
         }
 
+        private int findTag( String tag ) {
+            return content.indexOf( tag, startOfLastFoundTag + 1 );
+        }
+
         private String extractNewlineDelimitedValueFor( String tag ) {
-            int startOfTag = content.indexOf( tag, startOfLastFoundTag + 1 );
+            int startOfTag = findTag( tag );
             if( startOfTag == -1 )
                 return "";
             startOfLastFoundTag = startOfTag;
@@ -100,6 +114,12 @@ public class NormalItem implements Item {
             String m = extractNewlineDelimitedValueFor( itemMidSentenceCasedNameTag );
             if( m != "" )
                 midSentenceCasedName = m;
+
+            int startOfTag = findTag( itemIsUntakeableTag );
+            if( startOfTag != -1 ) {
+                startOfLastFoundTag = startOfTag;
+                takeable = false;
+            }
         }
     }
 }

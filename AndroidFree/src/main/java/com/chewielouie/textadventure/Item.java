@@ -6,6 +6,7 @@ public interface Item {
     public String countableNounPrefix();
     public String midSentenceCasedName();
     public void setName( String name );
+    public boolean takeable();
     public void deserialise( String content );
 }
 
