@@ -20,6 +20,7 @@ exit direction hint:West
 ITEM
 item name:Skeleton key
 item description:It is rather dirty and has clearly been carved from some poor unfortunates metacarpal.
+item id:clocktowerskeletonkey
 item countable noun prefix:a
 ITEM
 item name:Banana peel
@@ -56,7 +57,7 @@ item countable noun prefix:a
 item mid sentence cased name:Minute Hand of the Clock Tower
 ITEM
 item name:locked door
-item description:It is locked and looks impenetrable.
+item description:It is locked and looks impenetrable. It appears to allow access to the clock tower itself.
 item countable noun prefix:a
 item is untakeable:
 LOCATION

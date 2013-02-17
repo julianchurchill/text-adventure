@@ -6,6 +6,7 @@ public class NormalItem implements Item {
     private String countableNounPrefix = "a";
     private String midSentenceCasedName = null;
     private boolean takeable = true;
+    private String id = "";
 
     public NormalItem( String name, String description ) {
         this.name = name;
@@ -54,6 +55,10 @@ public class NormalItem implements Item {
         return takeable;
     }
 
+    public String id() {
+        return id;
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof NormalItem) )
@@ -79,6 +84,7 @@ public class NormalItem implements Item {
     class Deserialiser {
         private final String itemNameTag = "item name:";
         private final String itemDescriptionTag = "item description:";
+        private final String itemIDTag = "item id:";
         private final String itemCountableNounPrefixTag = "item countable noun prefix:";
         private final String itemMidSentenceCasedNameTag = "item mid sentence cased name:";
         private final String itemIsUntakeableTag = "item is untakeable:";
@@ -110,6 +116,7 @@ public class NormalItem implements Item {
         private void deserialiseItems() {
             name = extractNewlineDelimitedValueFor( itemNameTag );
             description = extractNewlineDelimitedValueFor( itemDescriptionTag );
+            id = extractNewlineDelimitedValueFor( itemIDTag );
             countableNounPrefix = extractNewlineDelimitedValueFor( itemCountableNounPrefixTag );
             String m = extractNewlineDelimitedValueFor( itemMidSentenceCasedNameTag );
             if( m != "" )

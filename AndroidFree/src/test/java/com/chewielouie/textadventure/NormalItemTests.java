@@ -108,12 +108,31 @@ public class NormalItemTests {
     }
 
     @Test
+    public void deserialise_extracts_item_id() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item id:an id\n" );
+        assertEquals( "an id", item.id() );
+    }
+
+    @Test
     public void deserialise_extracts_item_countable_noun_prefix() {
         NormalItem item = new NormalItem( "", "" );
         item.deserialise( "item name:Name\n" +
                           "item description:description\n" +
                           "item countable noun prefix:some\n" );
         assertEquals( "some", item.countableNounPrefix() );
+    }
+
+    @Test
+    public void deserialise_countable_noun_prefix_must_come_after_id() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item countable noun prefix:some\n" +
+                          "item id:id\n" );
+        assertFalse( item.countableNounPrefix().equals( "some" ) );
     }
 
     @Test
@@ -134,6 +153,17 @@ public class NormalItemTests {
                           "item countable noun prefix:some\n" );
         assertFalse( item.midSentenceCasedName().equals( "cased name" ) );
     }
+
+    @Test
+    public void deserialise_mid_sentence_cased_name_must_come_after_id() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item mid sentence cased name:cased name\n" +
+                          "item id:id\n" );
+        assertFalse( item.midSentenceCasedName().equals( "cased name" ) );
+    }
+
 
     @Test
     public void deserialise_untakeable_must_come_after_countable_noun_prefix() {
