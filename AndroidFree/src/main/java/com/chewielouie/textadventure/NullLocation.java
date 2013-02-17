@@ -37,5 +37,9 @@ public class NullLocation implements ModelLocation {
 
     public void deserialise( String content ) {
     }
+
+    public List<Item> items() {
+        return new ArrayList<Item>();
+    }
 }
 
