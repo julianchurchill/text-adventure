@@ -6,18 +6,24 @@ import com.chewielouie.textadventure.Item;
 
 public class UseWithSpecificItem implements Action {
     private List<Action> followUpActions = new ArrayList<Action>();
-    private Item item;
+    private Item originalItem;
+    private Item targetItem;
 
     public UseWithSpecificItem( Item item ) {
-        this.item = item;
+        this.targetItem = item;
+    }
+
+    public UseWithSpecificItem( Item original, Item target ) {
+        this.originalItem = original;
+        this.targetItem = target;
     }
 
     public Item item() {
-        return item;
+        return targetItem;
     }
 
     public String label() {
-        return item.name();
+        return targetItem.name();
     }
 
     public void trigger() {
@@ -36,6 +42,9 @@ public class UseWithSpecificItem implements Action {
     }
 
     public String userText() {
+        if( targetItem != null && originalItem != null )
+            if( targetItem.canBeUsedWith( originalItem ) )
+                return targetItem.usedWithSuccessText( originalItem );
         return "Nothing happens.";
     }
 

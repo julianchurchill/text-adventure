@@ -126,6 +126,15 @@ public class NormalItemTests {
     }
 
     @Test
+    public void deserialise_extracts_item_is_untakeable() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item is untakeable:\n" );
+        assertFalse( item.takeable() );
+    }
+
+    @Test
     public void deserialise_countable_noun_prefix_must_come_after_id() {
         NormalItem item = new NormalItem( "", "" );
         item.deserialise( "item name:Name\n" +
@@ -186,15 +195,6 @@ public class NormalItemTests {
     }
 
     @Test
-    public void deserialise_extracts_item_is_untakeable() {
-        NormalItem item = new NormalItem( "", "" );
-        item.deserialise( "item name:Name\n" +
-                          "item description:description\n" +
-                          "item is untakeable:\n" );
-        assertFalse( item.takeable() );
-    }
-
-    @Test
     public void deserialise_item_countable_noun_prefix_is_optional() {
         NormalItem item = new NormalItem( "", "" );
         item.deserialise( "item name:Name\n" +
@@ -208,6 +208,22 @@ public class NormalItemTests {
         item.deserialise( "item name:Name\n" +
                        "item description:description\n" );
         assertEquals( "name", item.midSentenceCasedName() );
+    }
+
+    @Test
+    public void deserialise_item_untakeable_is_optional() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" );
+        assertTrue( item.takeable() );
+    }
+
+    @Test
+    public void deserialise_item_id_is_optional() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" );
+        assertEquals( "", item.id() );
     }
 }
 

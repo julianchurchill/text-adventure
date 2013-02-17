@@ -60,6 +60,8 @@ item name:locked door
 item description:It is locked and looks impenetrable. It appears to allow access to the clock tower itself.
 item countable noun prefix:a
 item is untakeable:
+item can be used with:clocktowerskeletonkey
+item successful use message:You hear a click and the door springs open.
 LOCATION
 location id:eastloc
 location description:You are in the middle of a vast and endless ocean. Of despair.
