@@ -28,7 +28,7 @@ public class ShowInventory implements Action {
     public List<Action> followUpActions() {
         List<Action> actions = new ArrayList<Action>();
         for( Item item : items )
-            actions.add( new Examine( item ) );
+            actions.add( new InventoryItem( item ) );
         return actions;
     }
 

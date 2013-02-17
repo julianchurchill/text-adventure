@@ -13,6 +13,10 @@ public class InventoryItem implements Action {
         followUpActions.add( new Examine( item ) );
     }
 
+    public Item item() {
+        return item;
+    }
+
     public String label() {
         return item.name();
     }

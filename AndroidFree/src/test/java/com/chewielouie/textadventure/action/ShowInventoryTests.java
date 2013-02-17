@@ -63,7 +63,7 @@ public class ShowInventoryTests {
     }
 
     @Test
-    public void follow_up_actions_contains_Examine_actions_for_each_inventory_item() {
+    public void follow_up_actions_contains_InventoryItem_actions_for_each_inventory_item() {
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         ShowInventory action = new ShowInventory( model );
         final List<Item> items = new ArrayList<Item>();
@@ -80,10 +80,10 @@ public class ShowInventoryTests {
         action.trigger();
         List<Action> actions = action.followUpActions();
         assertEquals( 2, actions.size() );
-        assertTrue( actions.get(0) instanceof Examine );
-        assertEquals( item1, ((Examine)actions.get(0)).item() );
-        assertTrue( actions.get(1) instanceof Examine );
-        assertEquals( item2, ((Examine)actions.get(1)).item() );
+        assertTrue( actions.get(0) instanceof InventoryItem );
+        assertEquals( item1, ((InventoryItem)actions.get(0)).item() );
+        assertTrue( actions.get(1) instanceof InventoryItem );
+        assertEquals( item2, ((InventoryItem)actions.get(1)).item() );
     }
 
     @Test
