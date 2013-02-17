@@ -8,9 +8,10 @@ public interface ModelLocation {
     public boolean exitable( Exit exit );
     public String exitDestinationFor( Exit exit );
     public String id();
-    public List<Exit> exits();
     public String description();
+    public List<Exit> exits();
     public List<Action> actions();
+    public List<Item> items();
     public void removeItem( Item item );
     public void deserialise( String content );
 }
