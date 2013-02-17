@@ -87,6 +87,26 @@ public class ShowInventoryTests {
     }
 
     @Test
+    public void follow_up_actions_contains_InventoryItem_actions_which_are_constructed_with_the_model() {
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        ShowInventory action = new ShowInventory( model );
+        final List<Item> items = new ArrayList<Item>();
+        Item item = mockery.mock( Item.class );
+        items.add( item );
+        mockery.checking( new Expectations() {{
+            oneOf( model ).inventoryItems();
+            will( returnValue( items ) );
+            ignoring( model );
+        }});
+
+        action.trigger();
+        List<Action> actions = action.followUpActions();
+        assertTrue( actions.size() > 0 );
+        assertTrue( actions.get(0) instanceof InventoryItem );
+        assertEquals( model, ((InventoryItem)actions.get(0)).model() );
+    }
+
+    @Test
     public void user_text_is_not_available() {
         ShowInventory action = new ShowInventory( null );
 

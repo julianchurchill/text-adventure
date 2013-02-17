@@ -10,7 +10,7 @@ Backlog
 
 - [FEATURE] Unlock the clock tower door with the skeleton key to reveal an 'up' exit
   DONE - [TEST] New action 'UseWithSpecificItem' returns a default user message 'Nothing happens.'. Label for action is item name. Constructor takes an Item.
-  - [TEST] New action - 'UseWith' - add to 'Inventory item' action as additional follow up action. Follow up actions are 'UseWithSpecificItem' action for each item in the current location and inventory.
+  DONE - [TEST] New action - 'UseWith' - add to 'Inventory item' action as additional follow up action. Follow up actions are 'UseWithSpecificItem' action for each item in the current location and inventory.
   - [TEST] Model text can specify that an item can be used with another named item. This should include a successful use message for the user upon using the item with the named item.
   - [TEST] Using an item with a named item it can be used with changes some state as defined in the model text. In this feature case it adds an exit to the clock tower location, changes the clock tower door name and description to unlocked.
   - [TEST] Enacting 'UseWithSpecificItem' triggers actions and returns success message or default fail message.

@@ -7,12 +7,26 @@ import com.chewielouie.textadventure.TextAdventureModel;
 
 public class UseWith implements Action {
     private List<Action> followUpActions = new ArrayList<Action>();
+    private Item item;
+    private TextAdventureModel model;
 
-    public UseWith( TextAdventureModel model ) {
-        for( Item item : model.inventoryItems() )
-            followUpActions.add( new UseWithSpecificItem( item ) );
-        for( Item item : model.currentLocation().items() )
-            followUpActions.add( new UseWithSpecificItem( item ) );
+    public UseWith( Item item, TextAdventureModel model ) {
+        this.item = item;
+        this.model = model;
+        if( model != null ) {
+            for( Item it : model.inventoryItems() )
+                followUpActions.add( new UseWithSpecificItem( it ) );
+            for( Item it : model.currentLocation().items() )
+                followUpActions.add( new UseWithSpecificItem( it ) );
+        }
+    }
+
+    public Item item() {
+        return item;
+    }
+
+    public TextAdventureModel model() {
+        return model;
     }
 
     public String label() {

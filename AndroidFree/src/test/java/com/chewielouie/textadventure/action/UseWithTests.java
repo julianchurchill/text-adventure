@@ -18,12 +18,7 @@ public class UseWithTests {
     private Mockery mockery = new Mockery();
 
     UseWith createAction() {
-        final TextAdventureModel model =
-            mockery.mock( TextAdventureModel.class, "model1" );
-        mockery.checking( new Expectations() {{
-            ignoring( model );
-        }});
-        return new UseWith( model );
+        return new UseWith( null, null );
     }
 
     @Test
@@ -56,7 +51,7 @@ public class UseWithTests {
             will( returnValue( location ) );
             ignoring( model );
         }});
-        UseWith action = new UseWith( model );
+        UseWith action = new UseWith( null, model );
 
         List<Action> actions = action.followUpActions();
         assertEquals( 2, actions.size() );
