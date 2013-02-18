@@ -31,7 +31,7 @@ public class Examine implements Action {
     }
 
     public String userText() {
-        return "You examined the " + item.midSentenceCasedName() + ". " + item.description();
+        return "You examine the " + item.midSentenceCasedName() + ". " + item.description();
     }
 
     public boolean userTextAvailable() {

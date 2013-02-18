@@ -27,7 +27,7 @@ public class ExamineTests {
             ignoring( item );
         }});
 
-        assertEquals( "You examined the name. description", action.userText() );
+        assertEquals( "You examine the name. description", action.userText() );
     }
 
     @Test
