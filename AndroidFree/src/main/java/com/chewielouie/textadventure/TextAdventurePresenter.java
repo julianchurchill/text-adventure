@@ -13,10 +13,10 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
     private String actionText = "";
 
     public TextAdventurePresenter( TextAdventureView v,
-           TextAdventureModel m ) {
+           TextAdventureModel m, UserInventory inventory ) {
         this.view = v;
         this.model = m;
-        defaultActions.add( new ShowInventory( m ) );
+        defaultActions.add( new ShowInventory( inventory, m ) );
     }
 
     public void render() {

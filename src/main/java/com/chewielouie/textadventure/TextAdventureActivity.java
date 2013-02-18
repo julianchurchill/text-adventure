@@ -66,14 +66,16 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         main_text_output = findTextView( R.id.main_text_output );
         available_actions_view = (LinearLayout)findViewById( R.id.available_actions );
 
-        TextAdventurePresenter p = new TextAdventurePresenter( this, createModel() );
+        BasicModel model = createModel();
+        TextAdventurePresenter p = new TextAdventurePresenter( this, model,
+               (UserInventory)model );
         if( this.rendersView == null )
             this.rendersView = p;
         if( this.userActionHandler == null )
             this.userActionHandler = p;
     }
 
-    private TextAdventureModel createModel() {
+    private BasicModel createModel() {
         BasicModel model = new BasicModel();
         UserInventory inventory = model;
         ItemFactory itemFactory = new NormalItemFactory();

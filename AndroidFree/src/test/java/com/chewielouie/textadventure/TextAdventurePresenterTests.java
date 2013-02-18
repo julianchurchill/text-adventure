@@ -20,7 +20,7 @@ public class TextAdventurePresenterTests {
     public void render_tells_view_to_show_location_description_from_model() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
 
         mockery.checking( new Expectations() {{
             allowing( model ).currentLocationDescription();
@@ -37,7 +37,7 @@ public class TextAdventurePresenterTests {
     public void render_tells_view_what_room_exits_are_available() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
 
         final List<Exit> exits = new ArrayList<Exit>();
         exits.add( new Exit( "north" ) );
@@ -57,7 +57,7 @@ public class TextAdventurePresenterTests {
     public void render_tells_of_view_default_actions() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
 
         final List<Action> actions = new ArrayList<Action>( p.defaultActions() );
         mockery.checking( new Expectations() {{
@@ -73,7 +73,7 @@ public class TextAdventurePresenterTests {
     public void default_actions_include_show_inventory() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
 
         boolean actionsIncludesShowInventory = false;
         List<Action> actions = p.defaultActions();
@@ -87,7 +87,7 @@ public class TextAdventurePresenterTests {
     public void render_includes_location_actions_in_view_set_actions() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
 
         Action action = mockery.mock( Action.class );
         final ModelLocation location = mockery.mock( ModelLocation.class );
@@ -113,7 +113,7 @@ public class TextAdventurePresenterTests {
     public void move_through_exit_calls_model() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
         final Exit north = new Exit( "north" );
         mockery.checking( new Expectations() {{
             oneOf( model ).moveThroughExit( north );
@@ -128,7 +128,7 @@ public class TextAdventurePresenterTests {
     public void move_through_exit_updates_view_with_location_description() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
         mockery.checking( new Expectations() {{
             allowing( model ).currentLocationDescription();
             will( returnValue( "some room text" ) );
@@ -144,7 +144,7 @@ public class TextAdventurePresenterTests {
     public void move_through_exit_updates_view_with_location_exits() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
         final Exit north = new Exit( "north" );
         final List<Exit> exits = new ArrayList<Exit>();
         exits.add( north );
@@ -164,7 +164,7 @@ public class TextAdventurePresenterTests {
     public void upon_enact_action_presenter_triggers_the_action() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
         final Action action = mockery.mock( Action.class );
         mockery.checking( new Expectations() {{
             oneOf( action ).trigger();
@@ -180,7 +180,7 @@ public class TextAdventurePresenterTests {
     public void upon_enact_action_that_requires_further_action_pass_new_actions_to_view() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
         final Action action = mockery.mock( Action.class, "original action" );
         final List<Action> actions = new ArrayList<Action>();
         actions.add( mockery.mock( Action.class, "follow up action" ) );
@@ -203,7 +203,7 @@ public class TextAdventurePresenterTests {
     public void upon_enact_action_that_requires_no_further_action_tell_view_of_location_actions() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
         final Action action = mockery.mock( Action.class, "original action" );
         final List<Action> locationActions = new ArrayList<Action>( p.defaultActions() );
         mockery.checking( new Expectations() {{
@@ -223,7 +223,7 @@ public class TextAdventurePresenterTests {
     public void if_text_is_available_for_display_after_enacting_an_action_tell_the_view() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
         final Action action = mockery.mock( Action.class );
         mockery.checking( new Expectations() {{
             allowing( action ).trigger();
@@ -246,7 +246,7 @@ public class TextAdventurePresenterTests {
     public void text_output_from_multiple_actions_is_appended_to_main_text() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
         final Action action = mockery.mock( Action.class );
         mockery.checking( new Expectations() {{
             allowing( action ).userTextAvailable();
@@ -269,7 +269,7 @@ public class TextAdventurePresenterTests {
     public void changing_locations_clears_the_action_text_history() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
         final Action action = mockery.mock( Action.class );
         final Exit north = new Exit( "north" );
         mockery.checking( new Expectations() {{
@@ -295,7 +295,7 @@ public class TextAdventurePresenterTests {
     public void actions_are_updated_on_view_after_enacting_any_action() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        TextAdventurePresenter p = new TextAdventurePresenter( view, model );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
 
         final Action action = mockery.mock( Action.class );
         final ModelLocation location = mockery.mock( ModelLocation.class );

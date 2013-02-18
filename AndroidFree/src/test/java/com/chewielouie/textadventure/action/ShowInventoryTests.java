@@ -20,15 +20,15 @@ public class ShowInventoryTests {
 
     @Test
     public void two_objects_with_the_same_value_should_be_equal() {
-        ShowInventory object1 = new ShowInventory( null );
-        ShowInventory object2 = new ShowInventory( null );
+        ShowInventory object1 = new ShowInventory( null, null );
+        ShowInventory object2 = new ShowInventory( null, null );
 
         assertEquals( object1, object2 );
     }
 
     @Test
     public void a_show_inventory_object_is_not_equal_to_a_non_object() {
-        ShowInventory object = new ShowInventory( null );
+        ShowInventory object = new ShowInventory( null, null );
         Object notAShowInventory = new Object();
 
         assertNotEquals( object, notAShowInventory );
@@ -36,15 +36,15 @@ public class ShowInventoryTests {
 
     @Test
     public void two_objects_with_the_same_value_should_have_the_same_hashcode() {
-        ShowInventory object1 = new ShowInventory( null );
-        ShowInventory object2 = new ShowInventory( null );
+        ShowInventory object1 = new ShowInventory( null, null );
+        ShowInventory object2 = new ShowInventory( null, null );
 
         assertEquals( object1.hashCode(), object2.hashCode() );
     }
 
     @Test
     public void user_must_choose_follow_up_action_is_always_true() {
-        ShowInventory action = new ShowInventory( null );
+        ShowInventory action = new ShowInventory( null, null );
 
         assertTrue( action.userMustChooseFollowUpAction() );
     }
@@ -121,7 +121,7 @@ public class ShowInventoryTests {
 
     @Test
     public void user_text_is_not_available() {
-        ShowInventory action = new ShowInventory( null );
+        ShowInventory action = new ShowInventory( null, null );
 
         assertFalse( action.userTextAvailable() );
     }
