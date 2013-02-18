@@ -11,11 +11,6 @@ public class ShowInventory implements Action {
     private UserInventory inventory;
     private List<Item> items = null;
 
-    public ShowInventory( TextAdventureModel model ) {
-        this( (model instanceof UserInventory ? (UserInventory)model : null),
-              model );
-    }
-
     public ShowInventory( UserInventory inventory, TextAdventureModel model ) {
         this.inventory = inventory;
         this.model = model;
