@@ -5,21 +5,12 @@ import java.util.List;
 import com.chewielouie.textadventure.Item;
 import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.UserInventory;
-import com.chewielouie.textadventure.TextAdventureModel;
 
 public class InventoryItem implements Action {
     private List<Action> followUpActions = new ArrayList<Action>();
     private Item item;
     private UserInventory inventory;
     private ModelLocation location;
-    private TextAdventureModel model;
-
-    public InventoryItem( Item item, TextAdventureModel model ) {
-        this( item,
-              (model instanceof UserInventory ? (UserInventory)model : null),
-              (model != null ? model.currentLocation() : null ) );
-        this.model = model;
-    }
 
     public InventoryItem( Item item, UserInventory inventory, ModelLocation location ) {
         this.item = item;
@@ -35,10 +26,6 @@ public class InventoryItem implements Action {
 
     public ModelLocation location() {
         return location;
-    }
-
-    public TextAdventureModel model() {
-        return model;
     }
 
     public Item item() {

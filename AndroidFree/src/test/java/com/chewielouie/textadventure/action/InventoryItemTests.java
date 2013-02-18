@@ -10,7 +10,6 @@ import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.Item;
 import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.UserInventory;
-import com.chewielouie.textadventure.TextAdventureModel;
 
 @RunWith(JMock.class)
 public class InventoryItemTests {
@@ -18,7 +17,7 @@ public class InventoryItemTests {
     private Mockery mockery = new Mockery();
 
     InventoryItem createAction() {
-        return new InventoryItem( null, null );
+        return new InventoryItem( null, null, null );
     }
 
     @Test
@@ -29,7 +28,7 @@ public class InventoryItemTests {
             will( returnValue( "Item name" ) );
             ignoring( item );
         }});
-        InventoryItem action = new InventoryItem( item, null );
+        InventoryItem action = new InventoryItem( item, null, null );
 
         assertEquals( "Item name", action.label() );
     }
@@ -42,7 +41,7 @@ public class InventoryItemTests {
     @Test
     public void follow_up_actions_contains_Examine_action_for_item() {
         Item item = mockery.mock( Item.class );
-        InventoryItem action = new InventoryItem( item, null );
+        InventoryItem action = new InventoryItem( item, null, null );
 
         List<Action> actions = action.followUpActions();
         assertTrue( actions.size() > 0 );

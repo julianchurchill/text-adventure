@@ -3,13 +3,21 @@ package com.chewielouie.textadventure.action;
 import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.UserInventory;
 import com.chewielouie.textadventure.TextAdventureModel;
 
 public class ShowInventory implements Action {
     private TextAdventureModel model;
+    private UserInventory inventory;
     private List<Item> items = null;
 
     public ShowInventory( TextAdventureModel model ) {
+        this( (model instanceof UserInventory ? (UserInventory)model : null),
+              model );
+    }
+
+    public ShowInventory( UserInventory inventory, TextAdventureModel model ) {
+        this.inventory = inventory;
         this.model = model;
     }
 
@@ -18,7 +26,8 @@ public class ShowInventory implements Action {
     }
 
     public void trigger() {
-        items = model.inventoryItems();
+        if( inventory != null )
+            items = inventory.inventoryItems();
     }
 
     public boolean userMustChooseFollowUpAction() {
@@ -28,7 +37,9 @@ public class ShowInventory implements Action {
     public List<Action> followUpActions() {
         List<Action> actions = new ArrayList<Action>();
         for( Item item : items )
-            actions.add( new InventoryItem( item, model ) );
+            actions.add(
+                new InventoryItem( item, inventory,
+                    (model != null ? model.currentLocation() : null ) ) );
         return actions;
     }
 

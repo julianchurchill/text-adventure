@@ -9,6 +9,8 @@ import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.ModelLocation;
+import com.chewielouie.textadventure.UserInventory;
 import com.chewielouie.textadventure.TextAdventureModel;
 
 @RunWith(JMock.class)
@@ -41,40 +43,25 @@ public class ShowInventoryTests {
     }
 
     @Test
-    public void trigger_action_gathers_inventory_items_from_model() {
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        ShowInventory action = new ShowInventory( model );
-        final List<Item> items = new ArrayList<Item>();
-        mockery.checking( new Expectations() {{
-            oneOf( model ).inventoryItems();
-            will( returnValue( items ) );
-            ignoring( model );
-        }});
-
-        action.trigger();
-    }
-
-    @Test
     public void user_must_choose_follow_up_action_is_always_true() {
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        ShowInventory action = new ShowInventory( model );
+        ShowInventory action = new ShowInventory( null );
 
         assertTrue( action.userMustChooseFollowUpAction() );
     }
 
     @Test
     public void follow_up_actions_contains_InventoryItem_actions_for_each_inventory_item() {
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        ShowInventory action = new ShowInventory( model );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        ShowInventory action = new ShowInventory( inventory, null );
         final List<Item> items = new ArrayList<Item>();
         Item item1 = mockery.mock( Item.class, "item 1" );
         Item item2 = mockery.mock( Item.class, "item 2" );
         items.add( item1 );
         items.add( item2 );
         mockery.checking( new Expectations() {{
-            oneOf( model ).inventoryItems();
+            oneOf( inventory ).inventoryItems();
             will( returnValue( items ) );
-            ignoring( model );
+            ignoring( inventory );
         }});
 
         action.trigger();
@@ -87,23 +74,49 @@ public class ShowInventoryTests {
     }
 
     @Test
-    public void follow_up_actions_contains_InventoryItem_actions_which_are_constructed_with_the_model() {
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        ShowInventory action = new ShowInventory( model );
+    public void follow_up_actions_contains_InventoryItem_actions_which_are_constructed_with_the_inventory() {
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        ShowInventory action = new ShowInventory( inventory, null );
         final List<Item> items = new ArrayList<Item>();
         Item item = mockery.mock( Item.class );
         items.add( item );
         mockery.checking( new Expectations() {{
-            oneOf( model ).inventoryItems();
+            allowing( inventory ).inventoryItems();
             will( returnValue( items ) );
-            ignoring( model );
+            ignoring( inventory );
         }});
 
         action.trigger();
         List<Action> actions = action.followUpActions();
         assertTrue( actions.size() > 0 );
         assertTrue( actions.get(0) instanceof InventoryItem );
-        assertEquals( model, ((InventoryItem)actions.get(0)).model() );
+        assertEquals( inventory, ((InventoryItem)actions.get(0)).inventory() );
+    }
+
+    @Test
+    public void follow_up_actions_contains_InventoryItem_actions_which_are_constructed_with_the_current_location_from_the_model() {
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        ShowInventory action = new ShowInventory( inventory, model );
+        final List<Item> items = new ArrayList<Item>();
+        Item item = mockery.mock( Item.class );
+        items.add( item );
+        mockery.checking( new Expectations() {{
+            allowing( inventory ).inventoryItems();
+            will( returnValue( items ) );
+            ignoring( inventory );
+            allowing( model ).currentLocation();
+            will( returnValue( location ) );
+            ignoring( model );
+            ignoring( location );
+        }});
+
+        action.trigger();
+        List<Action> actions = action.followUpActions();
+        assertTrue( actions.size() > 0 );
+        assertTrue( actions.get(0) instanceof InventoryItem );
+        assertEquals( location, ((InventoryItem)actions.get(0)).location() );
     }
 
     @Test
