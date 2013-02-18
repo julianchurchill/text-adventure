@@ -58,16 +58,14 @@ public class UseWithSpecificItemTests {
     }
 
     @Test
-    public void using_an_item_that_is_usable_with_the_target_item_changes_the_user_text_to_the_success_message_of_target_item() {
+    public void using_an_item_changes_the_user_text_to_the_success_message_of_the_target_item() {
         final Item original = mockery.mock( Item.class, "original" );
         final Item target = mockery.mock( Item.class, "target" );
         mockery.checking( new Expectations() {{
-            allowing( original ).id();
-            will( returnValue( "originalid") );
             ignoring( original );
             allowing( target ).canBeUsedWith( original );
             will( returnValue( true ) );
-            allowing( target ).usedWithSuccessText( with( any( Item.class ) ) );
+            allowing( target ).usedWithSuccessText();
             will( returnValue( "success text" ) );
             ignoring( target );
         }});
@@ -78,63 +76,40 @@ public class UseWithSpecificItemTests {
         assertEquals( "success text", action.userText() );
     }
 
-    //@Test
-    //public void using_an_item_causes_the_target_item_to_be_queried_for_usability() {
-        //final Item original = mockery.mock( Item.class );
-        //final Item target = mockery.mock( Item.class );
-        //mockery.checking( new Expectations() {{
-            //allowing( original ).id();
-            //will( returnValue( "originalid") );
-            //ignoring( original );
-            //oneOf( target ).canBeUsedWith( "originalid" );
-            //will( returnValue( true ) );
-            //ignoring( target );
-        //}});
-        //UseWithSpecificItem action = new UseWithSpecificItem( original, target );
+    @Test
+    public void using_an_item_causes_the_target_item_to_be_queried_for_usability() {
+        final Item original = mockery.mock( Item.class, "original" );
+        final Item target = mockery.mock( Item.class, "target" );
+        mockery.checking( new Expectations() {{
+            allowing( original ).id();
+            will( returnValue( "originalid") );
+            ignoring( original );
+            oneOf( target ).canBeUsedWith( original );
+            will( returnValue( true ) );
+            ignoring( target );
+        }});
+        UseWithSpecificItem action = new UseWithSpecificItem( original, target );
 
-        //action.trigger();
-    //}
+        action.trigger();
+    }
 
-    //@Test
-    //public void using_an_item_causes_the_original_item_to_be_queried_for_usability() {
-        //final Item original = mockery.mock( Item.class );
-        //final Item target = mockery.mock( Item.class );
-        //mockery.checking( new Expectations() {{
-            //oneOf( original ).canBeUsedWith( "targetid" );
-            //will( returnValue( true ) );
-            //ignoring( original );
-            //allowing( target ).id();
-            //will( returnValue( "targetid") );
-            //ignoring( target );
-        //}});
-        //UseWithSpecificItem action = new UseWithSpecificItem( original, target );
+    @Test
+    public void using_an_item_that_is_not_usable_with_the_target_leaves_the_user_text_as_the_default_failure_message() {
+        final Item original = mockery.mock( Item.class, "original" );
+        final Item target = mockery.mock( Item.class, "target" );
+        mockery.checking( new Expectations() {{
+            ignoring( original );
+            allowing( target ).canBeUsedWith( original );
+            will( returnValue( false ) );
+            ignoring( target );
+        }});
+        UseWithSpecificItem action = new UseWithSpecificItem( original, target );
 
-        //action.trigger();
-    //}
+        String originalUserText = action.userText();
+        action.trigger();
 
-    //@Test
-    //public void using_an_item_that_is_usable_with_the_target_causes_the_original_item_id_to_be_used_to_retrieve_the_success_text() {
-        //final Item original = mockery.mock( Item.class );
-        //final Item target = mockery.mock( Item.class );
-        //mockery.checking( new Expectations() {{
-            //allowing( original ).id();
-            //will( returnValue( "originalid") );
-            //ignoring( original );
-            //allowing( target ).canBeUsedWith( "originalid" );
-            //will( returnValue( true ) );
-            //oneOf( target ).usedWithSuccessText( "originalid" );
-            //will( returnValue( "success text" ) );
-            //ignoring( target );
-        //}});
-        //UseWithSpecificItem action = new UseWithSpecificItem( original, target );
-
-        //action.trigger();
-
-        //assertEquals( "success text", action.userText() );
-    //}
-
-    //@Test
-    //public void using_an_item_that_is_not_usable_with_the_target_item_leaves_the_user_text_as_the_default_failure_message() {
+        assertEquals( originalUserText, action.userText() );
+    }
 
     @Test
     public void two_objects_with_the_same_value_should_be_equal() {

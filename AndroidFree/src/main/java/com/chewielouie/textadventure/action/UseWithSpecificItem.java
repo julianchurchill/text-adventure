@@ -8,6 +8,8 @@ public class UseWithSpecificItem implements Action {
     private List<Action> followUpActions = new ArrayList<Action>();
     private Item originalItem;
     private Item targetItem;
+    private final String failedItemUseText = "Nothing happens.";
+    private String userText = failedItemUseText;
 
     public UseWithSpecificItem( Item item ) {
         this.targetItem = item;
@@ -27,6 +29,9 @@ public class UseWithSpecificItem implements Action {
     }
 
     public void trigger() {
+        if( targetItem != null && originalItem != null )
+            if( targetItem.canBeUsedWith( originalItem ) )
+                userText = targetItem.usedWithSuccessText();
     }
 
     public boolean userMustChooseFollowUpAction() {
@@ -42,10 +47,7 @@ public class UseWithSpecificItem implements Action {
     }
 
     public String userText() {
-        if( targetItem != null && originalItem != null )
-            if( targetItem.canBeUsedWith( originalItem ) )
-                return targetItem.usedWithSuccessText( originalItem );
-        return "Nothing happens.";
+        return userText;
     }
 
     @Override
