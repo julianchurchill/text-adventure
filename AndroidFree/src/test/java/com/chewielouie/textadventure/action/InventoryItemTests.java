@@ -8,6 +8,8 @@ import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.ModelLocation;
+import com.chewielouie.textadventure.UserInventory;
 import com.chewielouie.textadventure.TextAdventureModel;
 
 @RunWith(JMock.class)
@@ -51,18 +53,21 @@ public class InventoryItemTests {
     @Test
     public void follow_up_actions_contains_UseWith_action_for_item() {
         final Item item = mockery.mock( Item.class );
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
         mockery.checking( new Expectations() {{
             ignoring( item );
-            ignoring( model );
+            ignoring( inventory );
+            ignoring( location );
         }});
-        InventoryItem action = new InventoryItem( item, model );
+        InventoryItem action = new InventoryItem( item, inventory, location );
 
         List<Action> actions = action.followUpActions();
         assertTrue( actions.size() > 1 );
         assertTrue( actions.get(1) instanceof UseWith );
         assertEquals( item, ((UseWith)actions.get(1)).item() );
-        assertEquals( model, ((UseWith)actions.get(1)).model() );
+        assertEquals( inventory, ((UseWith)actions.get(1)).inventory() );
+        assertEquals( location, ((UseWith)actions.get(1)).location() );
     }
 
     @Test
