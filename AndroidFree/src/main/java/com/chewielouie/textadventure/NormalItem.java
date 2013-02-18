@@ -77,6 +77,14 @@ public class NormalItem implements Item {
         return result;
     }
 
+    public boolean canBeUsedWith( Item item ) {
+        return false;
+    }
+
+    public String usedWithSuccessText() {
+        return "";
+    }
+
     public void deserialise( String content ) {
         new Deserialiser().parse( content );
     }
