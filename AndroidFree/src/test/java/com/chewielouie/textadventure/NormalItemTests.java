@@ -40,15 +40,21 @@ public class NormalItemTests {
 
     @Test
     public void item_is_takeable_by_default() {
-        NormalItem item = new NormalItem( "NAME", "description", "a", "Name" );
+        NormalItem item = new NormalItem( "", "", "", "" );
         assertTrue( item.takeable() );
     }
 
     @Test
     public void setting_untakeable_makes_item_not_takeable() {
-        NormalItem item = new NormalItem( "NAME", "description", "a", "Name" );
+        NormalItem item = new NormalItem( "", "", "", "" );
         item.setUntakeable();
         assertFalse( item.takeable() );
+    }
+
+    @Test
+    public void used_with_success_text_is_blank_by_default() {
+        NormalItem item = new NormalItem( "", "", "", "" );
+        assertEquals( "", item.usedWithSuccessText() );
     }
 
     @Test
@@ -126,12 +132,48 @@ public class NormalItemTests {
     }
 
     @Test
+    public void deserialise_extracts_item_mid_sentence_cased_name() {
+        NormalItem item = new NormalItem( "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item mid sentence cased name:cased name\n" );
+        assertEquals( "cased name", item.midSentenceCasedName() );
+    }
+
+    @Test
     public void deserialise_extracts_item_is_untakeable() {
         NormalItem item = new NormalItem( "", "" );
         item.deserialise( "item name:Name\n" +
                           "item description:description\n" +
                           "item is untakeable:\n" );
         assertFalse( item.takeable() );
+    }
+
+    @Test
+    public void deserialise_extracts_item_can_be_used_with() {
+        final Item target = mockery.mock( Item.class );
+        mockery.checking( new Expectations() {{
+            allowing( target ).id();
+            will( returnValue( "itemid" ) );
+            ignoring( target );
+        }});
+        NormalItem item = new NormalItem( "", "" );
+        assertFalse( item.canBeUsedWith( target ) );
+
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item can be used with:itemid\n" );
+        assertTrue( item.canBeUsedWith( target ) );
+    }
+
+    @Test
+    public void deserialise_extracts_item_successful_use_messsage() {
+        NormalItem item = new NormalItem( "", "" );
+
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item successful use message:message\n" );
+        assertEquals( "message", item.usedWithSuccessText() );
     }
 
     @Test
@@ -142,15 +184,6 @@ public class NormalItemTests {
                           "item countable noun prefix:some\n" +
                           "item id:id\n" );
         assertFalse( item.countableNounPrefix().equals( "some" ) );
-    }
-
-    @Test
-    public void deserialise_extracts_item_mid_sentence_cased_name() {
-        NormalItem item = new NormalItem( "", "" );
-        item.deserialise( "item name:Name\n" +
-                          "item description:description\n" +
-                          "item mid sentence cased name:cased name\n" );
-        assertEquals( "cased name", item.midSentenceCasedName() );
     }
 
     @Test
@@ -172,7 +205,6 @@ public class NormalItemTests {
                           "item id:id\n" );
         assertFalse( item.midSentenceCasedName().equals( "cased name" ) );
     }
-
 
     @Test
     public void deserialise_untakeable_must_come_after_countable_noun_prefix() {

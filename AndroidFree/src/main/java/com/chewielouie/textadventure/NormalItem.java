@@ -7,6 +7,8 @@ public class NormalItem implements Item {
     private String midSentenceCasedName = null;
     private boolean takeable = true;
     private String id = "";
+    private String canBeUsedWithTargetID;
+    private String successfulUseMessage = "";
 
     public NormalItem( String name, String description ) {
         this.name = name;
@@ -78,11 +80,11 @@ public class NormalItem implements Item {
     }
 
     public boolean canBeUsedWith( Item item ) {
-        return false;
+        return item.id().equals( canBeUsedWithTargetID );
     }
 
     public String usedWithSuccessText() {
-        return "";
+        return successfulUseMessage;
     }
 
     public void deserialise( String content ) {
@@ -96,6 +98,8 @@ public class NormalItem implements Item {
         private final String itemCountableNounPrefixTag = "item countable noun prefix:";
         private final String itemMidSentenceCasedNameTag = "item mid sentence cased name:";
         private final String itemIsUntakeableTag = "item is untakeable:";
+        private final String itemCanBeUsedWithTag = "item can be used with:";
+        private final String itemSuccessfulUseMessageTag = "item successful use message:";
         private String content;
         private int startOfLastFoundTag = -1;
 
@@ -135,6 +139,8 @@ public class NormalItem implements Item {
                 startOfLastFoundTag = startOfTag;
                 takeable = false;
             }
+            canBeUsedWithTargetID = extractNewlineDelimitedValueFor( itemCanBeUsedWithTag );
+            successfulUseMessage = extractNewlineDelimitedValueFor( itemSuccessfulUseMessageTag );
         }
     }
 }
