@@ -13,6 +13,13 @@ Backlog
   DONE - [TEST] New action - 'UseWith' - add to 'Inventory item' action as additional follow up action. Follow up actions are 'UseWithSpecificItem' action for each item in the current location and inventory.
   DONE - [TEST] Items need ids in the serialised model content
   - [TEST] Model text can specify that an item can be used with another named item. This should include a successful use message to be displayed to the user upon using the item with the named item. Update 'UseWithSpecificItem' to return this message.
+    - [TEST] InventoryItem should take an Inventory to pass to the UseWith action
+    - [TEST] Remove UseWith constuctor that takes a model
+    - [TEST] ShowInventory should take an Inventory to pass to the InventoryItem action
+    - [TEST] Remove Inventory constuctor that takes a model
+    - [TEST] Presenter should take a UserInvetory to pass to the ShowInventory action
+    - [TEST] Remove ShowInventory constuctor that takes a model
+    - [TEST] Rename UseWithSpecificItem item() to targetItem()
     - [TEST] NormalItem must deserialise 'can be used with' and successful use message'
     - [TEST] Remove UseWithSpecificItem single Item constructor.
     - [TEST] Pass original item to UseWithSpecificItem constructor on UseWith constructor

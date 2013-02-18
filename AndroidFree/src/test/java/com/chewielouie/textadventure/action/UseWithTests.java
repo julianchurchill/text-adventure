@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.Item;
 import com.chewielouie.textadventure.ModelLocation;
-import com.chewielouie.textadventure.TextAdventureModel;
+import com.chewielouie.textadventure.UserInventory;
 
 @RunWith(JMock.class)
 public class UseWithTests {
@@ -18,7 +18,7 @@ public class UseWithTests {
     private Mockery mockery = new Mockery();
 
     UseWith createAction() {
-        return new UseWith( null, null );
+        return new UseWith( null, null, null );
     }
 
     @Test
@@ -39,19 +39,17 @@ public class UseWithTests {
         final Item locationItem = mockery.mock( Item.class, "loc item" );
         final List<Item> locationItems = new ArrayList<Item>();
         locationItems.add( locationItem );
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         final ModelLocation location = mockery.mock( ModelLocation.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
         mockery.checking( new Expectations() {{
             allowing( location ).items();
             will( returnValue( locationItems ) );
             ignoring( location );
-            allowing( model ).inventoryItems();
+            allowing( inventory ).inventoryItems();
             will( returnValue( inventoryItems ) );
-            allowing( model ).currentLocation();
-            will( returnValue( location ) );
-            ignoring( model );
+            ignoring( inventory );
         }});
-        UseWith action = new UseWith( null, model );
+        UseWith action = new UseWith( null, inventory, location );
 
         List<Action> actions = action.followUpActions();
         assertEquals( 2, actions.size() );
@@ -66,17 +64,13 @@ public class UseWithTests {
         final Item locationItem = mockery.mock( Item.class, "loc item" );
         final List<Item> locationItems = new ArrayList<Item>();
         locationItems.add( locationItem );
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         final ModelLocation location = mockery.mock( ModelLocation.class );
         mockery.checking( new Expectations() {{
             allowing( location ).items();
             will( returnValue( locationItems ) );
             ignoring( location );
-            allowing( model ).currentLocation();
-            will( returnValue( location ) );
-            ignoring( model );
         }});
-        UseWith action = new UseWith( null, model );
+        UseWith action = new UseWith( null, null, location );
 
         List<Action> actions = action.followUpActions();
         assertEquals( 1, actions.size() );
@@ -89,14 +83,13 @@ public class UseWithTests {
         final Item inventoryItem = mockery.mock( Item.class, "inv item" );
         final List<Item> inventoryItems = new ArrayList<Item>();
         inventoryItems.add( inventoryItem );
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
         mockery.checking( new Expectations() {{
-            allowing( model ).inventoryItems();
+            allowing( inventory ).inventoryItems();
             will( returnValue( inventoryItems ) );
-            ignoring( model );
+            ignoring( inventory );
         }});
-        UseWith action = new UseWith( null, model );
+        UseWith action = new UseWith( null, inventory, null );
 
         List<Action> actions = action.followUpActions();
         assertEquals( 1, actions.size() );
@@ -109,18 +102,14 @@ public class UseWithTests {
         final Item locationItem = mockery.mock( Item.class, "loc item" );
         final List<Item> locationItems = new ArrayList<Item>();
         locationItems.add( locationItem );
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         final ModelLocation location = mockery.mock( ModelLocation.class );
         mockery.checking( new Expectations() {{
             allowing( location ).items();
             will( returnValue( locationItems ) );
             ignoring( location );
-            allowing( model ).currentLocation();
-            will( returnValue( location ) );
-            ignoring( model );
         }});
         Item originalItem = mockery.mock( Item.class, "item being used" );
-        UseWith action = new UseWith( originalItem, model );
+        UseWith action = new UseWith( originalItem, null, location );
 
         List<Action> actions = action.followUpActions();
         assertEquals( 1, actions.size() );
@@ -133,25 +122,20 @@ public class UseWithTests {
         final Item inventoryItem = mockery.mock( Item.class, "inv item" );
         final List<Item> inventoryItems = new ArrayList<Item>();
         inventoryItems.add( inventoryItem );
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
         mockery.checking( new Expectations() {{
-            allowing( model ).inventoryItems();
+            allowing( inventory ).inventoryItems();
             will( returnValue( inventoryItems ) );
-            ignoring( model );
+            ignoring( inventory );
         }});
         Item originalItem = mockery.mock( Item.class, "item being used" );
-        UseWith action = new UseWith( originalItem, model );
+        UseWith action = new UseWith( originalItem, inventory, null );
 
         List<Action> actions = action.followUpActions();
         assertEquals( 1, actions.size() );
         assertTrue( actions.get(0) instanceof UseWithSpecificItem );
         assertEquals( originalItem, ((UseWithSpecificItem)actions.get(0)).itemBeingUsed() );
     }
-
-    // Change UseWith constructor to take a UserInventory
-    // Expand UseWith constructor to take a Location (model.currentLocation())
-    // Rename UseWithSpecificItem item() to targetItem()
 
     @Test
     public void two_objects_with_the_same_value_should_be_equal() {

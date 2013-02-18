@@ -3,26 +3,42 @@ package com.chewielouie.textadventure.action;
 import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.ModelLocation;
+import com.chewielouie.textadventure.UserInventory;
 import com.chewielouie.textadventure.TextAdventureModel;
 
 public class UseWith implements Action {
     private List<Action> followUpActions = new ArrayList<Action>();
     private Item item;
+    private UserInventory inventory;
+    private ModelLocation location;
     private TextAdventureModel model;
 
     public UseWith( Item item, TextAdventureModel model ) {
-        this.item = item;
+        this( item,
+              (model instanceof UserInventory ? (UserInventory)model : null),
+              (model != null ? model.currentLocation() : null ) );
         this.model = model;
-        if( model != null ) {
-            for( Item target : model.inventoryItems() )
+    }
+
+    public UseWith( Item item, UserInventory inventory, ModelLocation location ) {
+        this.item = item;
+        this.inventory = inventory;
+        this.location = location;
+        if( inventory != null )
+            for( Item target : inventory.inventoryItems() )
                 followUpActions.add( new UseWithSpecificItem( item, target ) );
-            for( Item target : model.currentLocation().items() )
+        if( location != null )
+            for( Item target : location.items() )
                 followUpActions.add( new UseWithSpecificItem( item, target ) );
-        }
     }
 
     public Item item() {
         return item;
+    }
+
+    public UserInventory inventory() {
+        return inventory;
     }
 
     public TextAdventureModel model() {
