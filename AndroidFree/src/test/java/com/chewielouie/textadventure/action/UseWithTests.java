@@ -62,6 +62,98 @@ public class UseWithTests {
     }
 
     @Test
+    public void follow_up_actions_contains_UseWithSpecificItem_actions_for_each_item_from_location() {
+        final Item locationItem = mockery.mock( Item.class, "loc item" );
+        final List<Item> locationItems = new ArrayList<Item>();
+        locationItems.add( locationItem );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            allowing( location ).items();
+            will( returnValue( locationItems ) );
+            ignoring( location );
+            allowing( model ).currentLocation();
+            will( returnValue( location ) );
+            ignoring( model );
+        }});
+        UseWith action = new UseWith( null, model );
+
+        List<Action> actions = action.followUpActions();
+        assertEquals( 1, actions.size() );
+        assertTrue( actions.get(0) instanceof UseWithSpecificItem );
+        assertEquals( locationItem, ((UseWithSpecificItem)actions.get(0)).item() );
+    }
+
+    @Test
+    public void follow_up_actions_contains_UseWithSpecificItem_actions_for_each_item_from_inventory() {
+        final Item inventoryItem = mockery.mock( Item.class, "inv item" );
+        final List<Item> inventoryItems = new ArrayList<Item>();
+        inventoryItems.add( inventoryItem );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            allowing( model ).inventoryItems();
+            will( returnValue( inventoryItems ) );
+            ignoring( model );
+        }});
+        UseWith action = new UseWith( null, model );
+
+        List<Action> actions = action.followUpActions();
+        assertEquals( 1, actions.size() );
+        assertTrue( actions.get(0) instanceof UseWithSpecificItem );
+        assertEquals( inventoryItem, ((UseWithSpecificItem)actions.get(0)).item() );
+    }
+
+    @Test
+    public void UseWithSpecificItem_location_actions_are_created_with_original_item() {
+        final Item locationItem = mockery.mock( Item.class, "loc item" );
+        final List<Item> locationItems = new ArrayList<Item>();
+        locationItems.add( locationItem );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            allowing( location ).items();
+            will( returnValue( locationItems ) );
+            ignoring( location );
+            allowing( model ).currentLocation();
+            will( returnValue( location ) );
+            ignoring( model );
+        }});
+        Item originalItem = mockery.mock( Item.class, "item being used" );
+        UseWith action = new UseWith( originalItem, model );
+
+        List<Action> actions = action.followUpActions();
+        assertEquals( 1, actions.size() );
+        assertTrue( actions.get(0) instanceof UseWithSpecificItem );
+        assertEquals( originalItem, ((UseWithSpecificItem)actions.get(0)).itemBeingUsed() );
+    }
+
+    @Test
+    public void UseWithSpecificItem_inventory_actions_are_created_with_original_item() {
+        final Item inventoryItem = mockery.mock( Item.class, "inv item" );
+        final List<Item> inventoryItems = new ArrayList<Item>();
+        inventoryItems.add( inventoryItem );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            allowing( model ).inventoryItems();
+            will( returnValue( inventoryItems ) );
+            ignoring( model );
+        }});
+        Item originalItem = mockery.mock( Item.class, "item being used" );
+        UseWith action = new UseWith( originalItem, model );
+
+        List<Action> actions = action.followUpActions();
+        assertEquals( 1, actions.size() );
+        assertTrue( actions.get(0) instanceof UseWithSpecificItem );
+        assertEquals( originalItem, ((UseWithSpecificItem)actions.get(0)).itemBeingUsed() );
+    }
+
+    // Change UseWith constructor to take a UserInventory
+    // Expand UseWith constructor to take a Location (model.currentLocation())
+    // Rename UseWithSpecificItem item() to targetItem()
+
+    @Test
     public void two_objects_with_the_same_value_should_be_equal() {
         UseWith object1 = createAction();
         UseWith object2 = createAction();

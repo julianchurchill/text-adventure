@@ -14,10 +14,10 @@ public class UseWith implements Action {
         this.item = item;
         this.model = model;
         if( model != null ) {
-            for( Item it : model.inventoryItems() )
-                followUpActions.add( new UseWithSpecificItem( it ) );
-            for( Item it : model.currentLocation().items() )
-                followUpActions.add( new UseWithSpecificItem( it ) );
+            for( Item target : model.inventoryItems() )
+                followUpActions.add( new UseWithSpecificItem( item, target ) );
+            for( Item target : model.currentLocation().items() )
+                followUpActions.add( new UseWithSpecificItem( item, target ) );
         }
     }
 

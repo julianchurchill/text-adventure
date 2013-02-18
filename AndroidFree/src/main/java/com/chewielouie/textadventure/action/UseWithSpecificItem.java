@@ -24,6 +24,10 @@ public class UseWithSpecificItem implements Action {
         return targetItem;
     }
 
+    public Item itemBeingUsed() {
+        return originalItem;
+    }
+
     public String label() {
         return targetItem.name();
     }
