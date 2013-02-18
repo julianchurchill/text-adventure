@@ -15,26 +15,25 @@ public class UseWithSpecificItemTests {
     private Mockery mockery = new Mockery();
 
     UseWithSpecificItem createAction() {
-        return new UseWithSpecificItem( null );
+        return new UseWithSpecificItem( null, null );
     }
 
     @Test
-    public void label_is_item_name() {
+    public void label_is_target_item_name() {
         final Item item = mockery.mock( Item.class );
         mockery.checking( new Expectations() {{
             allowing( item ).name();
             will( returnValue( "Item name" ) );
             ignoring( item );
         }});
-        UseWithSpecificItem action = new UseWithSpecificItem( item );
+        UseWithSpecificItem action = new UseWithSpecificItem( null, item );
 
         assertEquals( "Item name", action.label() );
     }
 
     @Test
     public void user_text_contains_failure_message_by_default() {
-        final Item item = mockery.mock( Item.class );
-        UseWithSpecificItem action = new UseWithSpecificItem( item );
+        UseWithSpecificItem action = new UseWithSpecificItem( null, null );
         assertEquals( "Nothing happens.", action.userText() );
     }
 
@@ -50,11 +49,7 @@ public class UseWithSpecificItemTests {
 
     @Test
     public void follow_up_actions_is_empty() {
-        Item item = mockery.mock( Item.class );
-        UseWithSpecificItem action = new UseWithSpecificItem( item );
-
-        List<Action> actions = action.followUpActions();
-        assertEquals( 0, actions.size() );
+        assertEquals( 0, createAction().followUpActions().size() );
     }
 
     @Test

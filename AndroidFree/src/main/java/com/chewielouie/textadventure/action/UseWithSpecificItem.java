@@ -11,10 +11,6 @@ public class UseWithSpecificItem implements Action {
     private final String failedItemUseText = "Nothing happens.";
     private String userText = failedItemUseText;
 
-    public UseWithSpecificItem( Item item ) {
-        this.targetItem = item;
-    }
-
     public UseWithSpecificItem( Item original, Item target ) {
         this.originalItem = original;
         this.targetItem = target;
