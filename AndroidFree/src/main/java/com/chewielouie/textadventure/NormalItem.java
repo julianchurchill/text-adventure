@@ -80,6 +80,8 @@ public class NormalItem implements Item {
     }
 
     public boolean canBeUsedWith( Item item ) {
+        if( item.id() == "" )
+            return false;
         return item.id().equals( canBeUsedWithTargetID );
     }
 
