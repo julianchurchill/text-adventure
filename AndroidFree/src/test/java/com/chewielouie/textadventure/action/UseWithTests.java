@@ -54,9 +54,9 @@ public class UseWithTests {
         List<Action> actions = action.followUpActions();
         assertEquals( 2, actions.size() );
         assertTrue( actions.get(0) instanceof UseWithSpecificItem );
-        assertEquals( inventoryItem, ((UseWithSpecificItem)actions.get(0)).item() );
+        assertEquals( inventoryItem, ((UseWithSpecificItem)actions.get(0)).targetItem() );
         assertTrue( actions.get(1) instanceof UseWithSpecificItem );
-        assertEquals( locationItem, ((UseWithSpecificItem)actions.get(1)).item() );
+        assertEquals( locationItem, ((UseWithSpecificItem)actions.get(1)).targetItem() );
     }
 
     @Test
@@ -75,7 +75,7 @@ public class UseWithTests {
         List<Action> actions = action.followUpActions();
         assertEquals( 1, actions.size() );
         assertTrue( actions.get(0) instanceof UseWithSpecificItem );
-        assertEquals( locationItem, ((UseWithSpecificItem)actions.get(0)).item() );
+        assertEquals( locationItem, ((UseWithSpecificItem)actions.get(0)).targetItem() );
     }
 
     @Test
@@ -94,7 +94,7 @@ public class UseWithTests {
         List<Action> actions = action.followUpActions();
         assertEquals( 1, actions.size() );
         assertTrue( actions.get(0) instanceof UseWithSpecificItem );
-        assertEquals( inventoryItem, ((UseWithSpecificItem)actions.get(0)).item() );
+        assertEquals( inventoryItem, ((UseWithSpecificItem)actions.get(0)).targetItem() );
     }
 
     @Test

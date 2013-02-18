@@ -20,7 +20,7 @@ public class UseWithSpecificItem implements Action {
         this.targetItem = target;
     }
 
-    public Item item() {
+    public Item targetItem() {
         return targetItem;
     }
 
