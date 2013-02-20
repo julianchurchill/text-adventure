@@ -80,9 +80,9 @@ public class NormalItemTests {
     }
 
     @Test
-    public void used_with_success_text_is_blank_by_default() {
+    public void used_with_text_is_blank_by_default() {
         NormalItem item = new NormalItem( "", "", "", "" );
-        assertEquals( "", item.usedWithSuccessText() );
+        assertEquals( "", item.usedWithText() );
     }
 
     @Test
@@ -207,7 +207,7 @@ public class NormalItemTests {
         item.deserialise( "item name:Name\n" +
                           "item description:description\n" +
                           "item successful use message:message\n" );
-        assertEquals( "message", item.usedWithSuccessText() );
+        assertEquals( "message", item.usedWithText() );
     }
 
     @Test

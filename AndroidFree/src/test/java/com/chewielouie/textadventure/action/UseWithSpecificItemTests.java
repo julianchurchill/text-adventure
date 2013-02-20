@@ -53,22 +53,22 @@ public class UseWithSpecificItemTests {
     }
 
     @Test
-    public void using_an_item_changes_the_user_text_to_the_success_message_of_the_target_item() {
+    public void using_an_item_changes_the_user_text_to_the_use_with_message_of_the_target_item() {
         final Item original = mockery.mock( Item.class, "original" );
         final Item target = mockery.mock( Item.class, "target" );
         mockery.checking( new Expectations() {{
             ignoring( original );
             allowing( target ).canBeUsedWith( original );
             will( returnValue( true ) );
-            allowing( target ).usedWithSuccessText();
-            will( returnValue( "success text" ) );
+            allowing( target ).usedWithText();
+            will( returnValue( "use with text" ) );
             ignoring( target );
         }});
         UseWithSpecificItem action = new UseWithSpecificItem( original, target );
 
         action.trigger();
 
-        assertEquals( "success text", action.userText() );
+        assertEquals( "use with text", action.userText() );
     }
 
     @Test

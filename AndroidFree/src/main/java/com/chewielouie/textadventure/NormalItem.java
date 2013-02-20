@@ -90,7 +90,7 @@ public class NormalItem implements Item {
         return item.id().equals( canBeUsedWithTargetID );
     }
 
-    public String usedWithSuccessText() {
+    public String usedWithText() {
         return successfulUseMessage;
     }
 

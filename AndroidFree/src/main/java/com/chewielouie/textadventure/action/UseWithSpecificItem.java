@@ -31,7 +31,7 @@ public class UseWithSpecificItem implements Action {
     public void trigger() {
         if( targetItem != null && originalItem != null )
             if( targetItem.canBeUsedWith( originalItem ) )
-                userText = targetItem.usedWithSuccessText();
+                userText = targetItem.usedWithText();
     }
 
     public boolean userMustChooseFollowUpAction() {

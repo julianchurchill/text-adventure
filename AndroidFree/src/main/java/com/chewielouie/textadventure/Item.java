@@ -10,6 +10,6 @@ public interface Item {
     public boolean takeable();
     public void deserialise( String content );
     public boolean canBeUsedWith( Item item );
-    public String usedWithSuccessText();
+    public String usedWithText();
 }
 
