@@ -86,6 +86,12 @@ public class NormalItemTests {
     }
 
     @Test
+    public void item_use_is_repeatable_by_default() {
+        NormalItem item = new NormalItem( "", "", "", "" );
+        assertTrue( item.useIsRepeatable() );
+    }
+
+    @Test
     public void two_objects_with_the_same_value_should_be_equal() {
         NormalItem object1 = new NormalItem( "name", "description" );
         NormalItem object2 = new NormalItem( "name", "description" );
@@ -202,6 +208,16 @@ public class NormalItemTests {
                           "item description:description\n" +
                           "item successful use message:message\n" );
         assertEquals( "message", item.usedWithSuccessText() );
+    }
+
+    @Test
+    public void deserialise_extracts_item_use_is_not_repeatable() {
+        NormalItem item = new NormalItem( "", "" );
+
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item use is not repeatable:\n" );
+        assertFalse( item.useIsRepeatable() );
     }
 
     @Test

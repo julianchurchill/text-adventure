@@ -62,6 +62,7 @@ item countable noun prefix:a
 item is untakeable:
 item can be used with:clocktowerskeletonkey
 item successful use message:You hear a click and the door springs open.
+item use is not repeatable:
 LOCATION
 location id:eastloc
 location description:You are in the middle of a vast and endless ocean. Of despair.

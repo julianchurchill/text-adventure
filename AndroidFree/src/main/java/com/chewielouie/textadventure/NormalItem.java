@@ -9,6 +9,7 @@ public class NormalItem implements Item {
     private String id = "";
     private String canBeUsedWithTargetID;
     private String successfulUseMessage = "";
+    private boolean useIsRepeatable = true;
 
     public NormalItem( String name, String description ) {
         this.name = name;
@@ -61,6 +62,10 @@ public class NormalItem implements Item {
         return id;
     }
 
+    public boolean useIsRepeatable() {
+        return useIsRepeatable;
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof NormalItem) )
@@ -102,6 +107,7 @@ public class NormalItem implements Item {
         private final String itemIsUntakeableTag = "item is untakeable:";
         private final String itemCanBeUsedWithTag = "item can be used with:";
         private final String itemSuccessfulUseMessageTag = "item successful use message:";
+        private final String itemUseIsNotRepeatableTag = "item use is not repeatable:";
         private String content;
         private int startOfLastFoundTag = -1;
 
@@ -136,13 +142,23 @@ public class NormalItem implements Item {
             if( m != "" )
                 midSentenceCasedName = m;
 
-            int startOfTag = findTag( itemIsUntakeableTag );
-            if( startOfTag != -1 ) {
-                startOfLastFoundTag = startOfTag;
+            if( findTagWithNoArgument( itemIsUntakeableTag ) )
                 takeable = false;
-            }
+
             canBeUsedWithTargetID = extractNewlineDelimitedValueFor( itemCanBeUsedWithTag );
             successfulUseMessage = extractNewlineDelimitedValueFor( itemSuccessfulUseMessageTag );
+
+            if( findTagWithNoArgument( itemUseIsNotRepeatableTag ) )
+                useIsRepeatable = false;
+        }
+
+        private boolean findTagWithNoArgument( String tag ) {
+            int startOfTag = findTag( tag );
+            if( startOfTag != -1 ) {
+                startOfLastFoundTag = startOfTag;
+                return true;
+            }
+            return false;
         }
     }
 }
