@@ -86,6 +86,40 @@ public class NormalItemTests {
     }
 
     @Test
+    public void used_with_text_is_deserialised_message_for_non_repeatable_use_item_before_being_used() {
+        NormalItem item = new NormalItem( "", "", "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item successful use message:message\n" +
+                          "item use is not repeatable:\n" );
+        assertEquals( "message", item.usedWithText() );
+    }
+
+    @Test
+    public void used_with_text_is_deserialised_message_for_non_repeatable_use_item_after_being_used_once() {
+        NormalItem item = new NormalItem( "", "", "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item successful use message:message\n" +
+                          "item use is not repeatable:\n" );
+
+        item.use();
+
+        assertEquals( "message", item.usedWithText() );
+    }
+
+    @Test
+    public void used_with_text_is_failure_message_for_non_repeatable_use_item_after_being_used_twice() {
+        NormalItem item = new NormalItem( "", "", "", "" );
+        item.deserialise( "item name:Name\n" +
+                          "item successful use message:message\n" +
+                          "item use is not repeatable:\n" );
+
+        item.use();
+        item.use();
+
+        assertEquals( "You have already done that.", item.usedWithText() );
+    }
+
+    @Test
     public void item_use_is_repeatable_by_default() {
         NormalItem item = new NormalItem( "", "", "", "" );
         assertTrue( item.useIsRepeatable() );

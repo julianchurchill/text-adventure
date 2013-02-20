@@ -8,8 +8,9 @@ public class NormalItem implements Item {
     private boolean takeable = true;
     private String id = "";
     private String canBeUsedWithTargetID;
-    private String successfulUseMessage = "";
+    private String usedWithText = "";
     private boolean useIsRepeatable = true;
+    private boolean used = false;
 
     public NormalItem( String name, String description ) {
         this.name = name;
@@ -91,7 +92,13 @@ public class NormalItem implements Item {
     }
 
     public String usedWithText() {
-        return successfulUseMessage;
+        return usedWithText;
+    }
+
+    public void use() {
+        if( used )
+            usedWithText = "You have already done that.";
+        used = true;
     }
 
     public void deserialise( String content ) {
@@ -146,7 +153,7 @@ public class NormalItem implements Item {
                 takeable = false;
 
             canBeUsedWithTargetID = extractNewlineDelimitedValueFor( itemCanBeUsedWithTag );
-            successfulUseMessage = extractNewlineDelimitedValueFor( itemSuccessfulUseMessageTag );
+            usedWithText = extractNewlineDelimitedValueFor( itemSuccessfulUseMessageTag );
 
             if( findTagWithNoArgument( itemUseIsNotRepeatableTag ) )
                 useIsRepeatable = false;
