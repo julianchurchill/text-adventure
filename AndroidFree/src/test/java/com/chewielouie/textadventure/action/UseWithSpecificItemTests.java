@@ -107,6 +107,24 @@ public class UseWithSpecificItemTests {
     }
 
     @Test
+    public void using_an_item_causes_the_target_item_to_be_used() {
+        final Item original = mockery.mock( Item.class, "original" );
+        final Item target = mockery.mock( Item.class, "target" );
+        mockery.checking( new Expectations() {{
+            allowing( original ).id();
+            will( returnValue( "originalid") );
+            ignoring( original );
+            allowing( target ).canBeUsedWith( original );
+            will( returnValue( true ) );
+            oneOf( target ).use();
+            ignoring( target );
+        }});
+        UseWithSpecificItem action = new UseWithSpecificItem( original, target );
+
+        action.trigger();
+    }
+
+    @Test
     public void two_objects_with_the_same_value_should_be_equal() {
         UseWithSpecificItem object1 = createAction();
         UseWithSpecificItem object2 = createAction();

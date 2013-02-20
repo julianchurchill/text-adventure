@@ -11,5 +11,6 @@ public interface Item {
     public void deserialise( String content );
     public boolean canBeUsedWith( Item item );
     public String usedWithText();
+    public void use();
 }
 
