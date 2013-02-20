@@ -13,7 +13,11 @@ Backlog
   DONE - [TEST] New action - 'UseWith' - add to 'Inventory item' action as additional follow up action. Follow up actions are 'UseWithSpecificItem' action for each item in the current location and inventory.
   DONE - [TEST] Items need ids in the serialised model content
   - [TEST] Model text can specify that an item can be used with another named item. This should include a successful use message to be displayed to the user upon using the item with the named item. Update 'UseWithSpecificItem' to return this message.
-    - [TEST] Also include actions resulting from the item use as defined in the model text. In this feature case it adds an exit to the clock tower location, changes the clock tower door name and description to unlocked.
+    - [TEST] 'item use is not repeatable'
+    - [TEST] Include actions resulting from the item use as defined in the model text. In this feature case it adds an exit to the clock tower location, changes the clock tower door name and description to unlocked.
+        - [TEST] 'item use action change description:new item description'
+        - [TEST] 'item use action change name:new item name'
+        - [TEST] 'item use action add exit:exit info'
 
 - [TEST] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
 
