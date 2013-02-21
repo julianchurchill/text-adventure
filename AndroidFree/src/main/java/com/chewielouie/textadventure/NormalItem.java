@@ -1,5 +1,8 @@
 package com.chewielouie.textadventure;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NormalItem implements Item {
     private String name = "";
     private String description = "";
@@ -11,6 +14,7 @@ public class NormalItem implements Item {
     private String usedWithText = "";
     private boolean useIsRepeatable = true;
     private boolean used = false;
+    //private List<ItemAction> onUseActions = new ArrayList<ItemAction>();
 
     public NormalItem( String name, String description ) {
         this.name = name;
@@ -91,15 +95,25 @@ public class NormalItem implements Item {
         return item.id().equals( canBeUsedWithTargetID );
     }
 
+    public void setUseIsNotRepeatable() {
+        useIsRepeatable = false;
+    }
+
     public String usedWithText() {
         return usedWithText;
     }
 
     public void use() {
-        if( used )
+        if( used && useIsRepeatable == false )
             usedWithText = "You have already done that.";
         used = true;
+        //for( ItemAction action : onUseActions )
+            //action.enact();
     }
+
+    //public void addOnUseAction( ItemAction action ) {
+        //onUseActions.add( action );
+    //}
 
     public void deserialise( String content ) {
         new Deserialiser().parse( content );

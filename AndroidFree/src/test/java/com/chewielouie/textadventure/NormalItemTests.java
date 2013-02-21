@@ -86,11 +86,24 @@ public class NormalItemTests {
     }
 
     @Test
-    public void used_with_text_is_deserialised_message_for_non_repeatable_use_item_before_being_used() {
+    public void item_use_is_repeatable_by_default() {
+        NormalItem item = new NormalItem( "", "", "", "" );
+        assertTrue( item.useIsRepeatable() );
+    }
+
+    @Test
+    public void item_use_is_not_repeatable_can_be_set() {
+        NormalItem item = new NormalItem( "", "", "", "" );
+        item.setUseIsNotRepeatable();
+        assertFalse( item.useIsRepeatable() );
+    }
+
+    @Test
+    public void used_with_text_is_succesful_use_message_for_non_repeatable_use_item_before_being_used() {
         NormalItem item = new NormalItem( "", "", "", "" );
         item.deserialise( "item name:Name\n" +
-                          "item successful use message:message\n" +
-                          "item use is not repeatable:\n" );
+                          "item successful use message:message\n" );
+        item.setUseIsNotRepeatable();
         assertEquals( "message", item.usedWithText() );
     }
 
@@ -98,8 +111,8 @@ public class NormalItemTests {
     public void used_with_text_is_deserialised_message_for_non_repeatable_use_item_after_being_used_once() {
         NormalItem item = new NormalItem( "", "", "", "" );
         item.deserialise( "item name:Name\n" +
-                          "item successful use message:message\n" +
-                          "item use is not repeatable:\n" );
+                          "item successful use message:message\n" );
+        item.setUseIsNotRepeatable();
 
         item.use();
 
@@ -110,8 +123,8 @@ public class NormalItemTests {
     public void used_with_text_is_failure_message_for_non_repeatable_use_item_after_being_used_twice() {
         NormalItem item = new NormalItem( "", "", "", "" );
         item.deserialise( "item name:Name\n" +
-                          "item successful use message:message\n" +
-                          "item use is not repeatable:\n" );
+                          "item successful use message:message\n" );
+        item.setUseIsNotRepeatable();
 
         item.use();
         item.use();
@@ -120,10 +133,54 @@ public class NormalItemTests {
     }
 
     @Test
-    public void item_use_is_repeatable_by_default() {
+    public void used_with_text_is_successful_use_message_for_repeatable_use_item_after_being_used_twice() {
         NormalItem item = new NormalItem( "", "", "", "" );
-        assertTrue( item.useIsRepeatable() );
+        item.deserialise( "item name:Name\n" +
+                          "item successful use message:message\n" );
+
+        item.use();
+        item.use();
+
+        assertEquals( "message", item.usedWithText() );
     }
+
+    //@Test
+    //public void item_use_actions_are_all_enacted_upon_use() {
+        //final ItemAction action1 = mockery.mock( ItemAction.class, "act1" );
+        //final ItemAction action2 = mockery.mock( ItemAction.class, "act2" );
+        //mockery.checking( new Expectations() {{
+            //oneOf( action1 ).enact();
+            //ignoring( action1 );
+            //oneOf( action2 ).enact();
+            //ignoring( action2 );
+        //}});
+        //NormalItem item = new NormalItem( "", "", "", "" );
+        //item.addOnUseAction( action1 );
+        //item.addOnUseAction( action2 );
+
+        //item.use();
+    //}
+
+    //@Test
+    //public void item_use_actions_are_not_enacted_upon_use_for_an_unrepeatable_use_item() {
+        //final ItemAction action1 = mockery.mock( ItemAction.class, "act1" );
+        //final ItemAction action2 = mockery.mock( ItemAction.class, "act2" );
+        //mockery.checking( new Expectations() {{
+            //never( action1 ).enact();
+            //never( action2 ).enact();
+        //}});
+        //NormalItem item = new NormalItem( "", "", "", "" );
+        //item.setUseIsNotRepeatable();
+        //item.addOnUseAction( action1 );
+        //item.addOnUseAction( action2 );
+
+        //item.use();
+    //}
+
+    //@Test
+    //public void item_has_no_default_use_actions() {
+    //@Test
+    //public void deserialise_item_use_action_uses_ItemAction_factory() {
 
     @Test
     public void two_objects_with_the_same_value_should_be_equal() {
