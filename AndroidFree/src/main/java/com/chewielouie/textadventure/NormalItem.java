@@ -14,11 +14,17 @@ public class NormalItem implements Item {
     private String usedWithText = "";
     private boolean useIsRepeatable = true;
     private boolean used = false;
-    //private List<ItemAction> onUseActions = new ArrayList<ItemAction>();
+    private List<ItemAction> onUseActions = new ArrayList<ItemAction>();
+    private ItemActionFactory itemActionFactory = null;
 
     public NormalItem( String name, String description ) {
         this.name = name;
         this.description = description;
+    }
+
+    public NormalItem( String name, String description, ItemActionFactory f ) {
+        this( name, description );
+        this.itemActionFactory = f;
     }
 
     public NormalItem( String name, String description,
@@ -104,16 +110,21 @@ public class NormalItem implements Item {
     }
 
     public void use() {
-        if( used && useIsRepeatable == false )
+        if( itemCanBeUsedNow() )
+            for( ItemAction action : onUseActions )
+                action.enact();
+        else
             usedWithText = "You have already done that.";
         used = true;
-        //for( ItemAction action : onUseActions )
-            //action.enact();
     }
 
-    //public void addOnUseAction( ItemAction action ) {
-        //onUseActions.add( action );
-    //}
+    private boolean itemCanBeUsedNow() {
+        return !used || (used && useIsRepeatable);
+    }
+
+    public void addOnUseAction( ItemAction action ) {
+        onUseActions.add( action );
+    }
 
     public void deserialise( String content ) {
         new Deserialiser().parse( content );
@@ -129,6 +140,7 @@ public class NormalItem implements Item {
         private final String itemCanBeUsedWithTag = "item can be used with:";
         private final String itemSuccessfulUseMessageTag = "item successful use message:";
         private final String itemUseIsNotRepeatableTag = "item use is not repeatable:";
+        private final String itemUseActionTag = "item use action:";
         private String content;
         private int startOfLastFoundTag = -1;
 
@@ -148,10 +160,14 @@ public class NormalItem implements Item {
             if( startOfTag == -1 )
                 return "";
             startOfLastFoundTag = startOfTag;
-            int endOfTag = content.indexOf( "\n", startOfTag );
+            return extractValueUpToNewline( startOfTag + tag.length() );
+        }
+
+        private String extractValueUpToNewline( int startOfValue ) {
+            int endOfTag = content.indexOf( "\n", startOfLastFoundTag );
             if( endOfTag == -1 )
                 endOfTag = content.length();
-            return content.substring( startOfTag + tag.length(), endOfTag );
+            return content.substring( startOfValue, endOfTag );
         }
 
         private void deserialiseItems() {
@@ -171,6 +187,20 @@ public class NormalItem implements Item {
 
             if( findTagWithNoArgument( itemUseIsNotRepeatableTag ) )
                 useIsRepeatable = false;
+
+            if( itemActionFactory != null ) {
+                while( findTagAndUpdatePosition( itemUseActionTag ) ) {
+                    ItemAction action = itemActionFactory.create();
+                    action.deserialise(
+                        extractValueUpToNewline( startOfLastFoundTag +
+                                                 itemUseActionTag.length() ) );
+                    addOnUseAction( action );
+                }
+            }
+        }
+
+        private boolean findTagAndUpdatePosition( String tag ) {
+            return findTagWithNoArgument( tag );
         }
 
         private boolean findTagWithNoArgument( String tag ) {

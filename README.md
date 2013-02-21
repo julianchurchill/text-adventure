@@ -15,9 +15,15 @@ Backlog
   - [TEST] Model text can specify that an item can be used with another named item
     DONE - [TEST] 'item use is not repeatable'
     - [TEST] Include actions resulting from the item use as defined in the model text. In this feature case it adds an exit to the clock tower location, changes the clock tower door name and description to unlocked.
-        - [TEST] 'item use action change description:new item description'
-        - [TEST] 'item use action change name:new item name'
-        - [TEST] 'item use action add exit:exit info'
+      - [TEST] 'item use action change description:new item description'
+        - [TEST] how to represent 'change description' item action?
+        - [TEST] RealItemActionFactory creates RealItemActions
+        - [TEST] Pass a RealItemActionFactory instance to NormalItemFactory in activity to initialise NormalItem objects when create() is called
+      - [TEST] 'item use action change name:new item name'
+      - [TEST] 'item use action make exit visible:exit id'
+        - [TEST] Exits needs optional ids
+        - [TEST] Exits are visible by default
+        - [TEST] 'exit is not visible:' - makes an exit not appear in exit list
 
 - [TEST] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
 

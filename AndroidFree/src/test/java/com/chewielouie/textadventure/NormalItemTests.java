@@ -144,43 +144,41 @@ public class NormalItemTests {
         assertEquals( "message", item.usedWithText() );
     }
 
-    //@Test
-    //public void item_use_actions_are_all_enacted_upon_use() {
-        //final ItemAction action1 = mockery.mock( ItemAction.class, "act1" );
-        //final ItemAction action2 = mockery.mock( ItemAction.class, "act2" );
-        //mockery.checking( new Expectations() {{
-            //oneOf( action1 ).enact();
-            //ignoring( action1 );
-            //oneOf( action2 ).enact();
-            //ignoring( action2 );
-        //}});
-        //NormalItem item = new NormalItem( "", "", "", "" );
-        //item.addOnUseAction( action1 );
-        //item.addOnUseAction( action2 );
+    @Test
+    public void item_use_actions_are_all_enacted_upon_use() {
+        final ItemAction action1 = mockery.mock( ItemAction.class, "act1" );
+        final ItemAction action2 = mockery.mock( ItemAction.class, "act2" );
+        mockery.checking( new Expectations() {{
+            oneOf( action1 ).enact();
+            ignoring( action1 );
+            oneOf( action2 ).enact();
+            ignoring( action2 );
+        }});
+        NormalItem item = new NormalItem( "", "", "", "" );
+        item.addOnUseAction( action1 );
+        item.addOnUseAction( action2 );
 
-        //item.use();
-    //}
+        item.use();
+    }
 
-    //@Test
-    //public void item_use_actions_are_not_enacted_upon_use_for_an_unrepeatable_use_item() {
-        //final ItemAction action1 = mockery.mock( ItemAction.class, "act1" );
-        //final ItemAction action2 = mockery.mock( ItemAction.class, "act2" );
-        //mockery.checking( new Expectations() {{
-            //never( action1 ).enact();
-            //never( action2 ).enact();
-        //}});
-        //NormalItem item = new NormalItem( "", "", "", "" );
-        //item.setUseIsNotRepeatable();
-        //item.addOnUseAction( action1 );
-        //item.addOnUseAction( action2 );
+    @Test
+    public void item_use_actions_are_not_enacted_on_repeated_use_for_an_unrepeatable_use_item() {
+        final ItemAction action1 = mockery.mock( ItemAction.class, "act1" );
+        final ItemAction action2 = mockery.mock( ItemAction.class, "act2" );
+        mockery.checking( new Expectations() {{
+            oneOf( action1 ).enact();
+            ignoring( action1 );
+            oneOf( action2 ).enact();
+            ignoring( action2 );
+        }});
+        NormalItem item = new NormalItem( "", "", "", "" );
+        item.setUseIsNotRepeatable();
+        item.addOnUseAction( action1 );
+        item.addOnUseAction( action2 );
 
-        //item.use();
-    //}
-
-    //@Test
-    //public void item_has_no_default_use_actions() {
-    //@Test
-    //public void deserialise_item_use_action_uses_ItemAction_factory() {
+        item.use();
+        item.use();
+    }
 
     @Test
     public void two_objects_with_the_same_value_should_be_equal() {
@@ -309,6 +307,59 @@ public class NormalItemTests {
                           "item description:description\n" +
                           "item use is not repeatable:\n" );
         assertFalse( item.useIsRepeatable() );
+    }
+
+    @Test
+    public void deserialise_extracts_multiple_item_use_actions_with_ItemAction_factory() {
+        final ItemActionFactory itemActionFactory = mockery.mock( ItemActionFactory.class );
+        mockery.checking( new Expectations() {{
+            exactly( 2 ).of( itemActionFactory ).create();
+            ignoring( itemActionFactory );
+        }});
+        NormalItem item = new NormalItem( "", "", itemActionFactory );
+
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item use action:action:action arguments\n" +
+                          "item use action:action:action arguments\n" );
+    }
+
+    @Test
+    public void deserialise_extracts_item_use_action_into_ItemAction_object() {
+        final ItemActionFactory itemActionFactory = mockery.mock( ItemActionFactory.class );
+        final ItemAction action = mockery.mock( ItemAction.class );
+        mockery.checking( new Expectations() {{
+            allowing( itemActionFactory ).create();
+            will( returnValue( action ) );
+            ignoring( itemActionFactory );
+            oneOf( action ).deserialise( "action:action arguments" );
+            ignoring( action );
+        }});
+        NormalItem item = new NormalItem( "", "", itemActionFactory );
+
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item use action:action:action arguments\n" );
+    }
+
+    @Test
+    public void deserialise_extracts_item_use_action_and_enacts_it_during_use() {
+        final ItemActionFactory itemActionFactory = mockery.mock( ItemActionFactory.class );
+        final ItemAction action = mockery.mock( ItemAction.class );
+        mockery.checking( new Expectations() {{
+            allowing( itemActionFactory ).create();
+            will( returnValue( action ) );
+            ignoring( itemActionFactory );
+            allowing( action ).deserialise( with( any( String.class ) ) );
+            oneOf( action ).enact();
+            ignoring( action );
+        }});
+        NormalItem item = new NormalItem( "", "", itemActionFactory );
+
+        item.deserialise( "item name:Name\n" +
+                          "item description:description\n" +
+                          "item use action:action:action arguments\n" );
+        item.use();
     }
 
     @Test
