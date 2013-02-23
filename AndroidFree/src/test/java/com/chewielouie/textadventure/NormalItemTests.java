@@ -313,7 +313,8 @@ public class NormalItemTests {
     public void deserialise_extracts_multiple_item_use_actions_with_ItemAction_factory() {
         final ItemActionFactory itemActionFactory = mockery.mock( ItemActionFactory.class );
         mockery.checking( new Expectations() {{
-            exactly( 2 ).of( itemActionFactory ).create( with( any( String.class ) ) );
+            exactly( 2 ).of( itemActionFactory ).create( with( any( String.class ) ),
+               with( any( Item.class ) ) );
             ignoring( itemActionFactory );
         }});
         NormalItem item = new NormalItem( "", "", itemActionFactory );
@@ -328,12 +329,12 @@ public class NormalItemTests {
     public void deserialise_extracts_item_use_action_into_ItemAction_object() {
         final ItemActionFactory itemActionFactory = mockery.mock( ItemActionFactory.class );
         final ItemAction action = mockery.mock( ItemAction.class );
+        final NormalItem item = new NormalItem( "", "", itemActionFactory );
         mockery.checking( new Expectations() {{
-            oneOf( itemActionFactory ).create( "action:action arguments" );
+            oneOf( itemActionFactory ).create( "action:action arguments", item );
             will( returnValue( action ) );
             ignoring( itemActionFactory );
         }});
-        NormalItem item = new NormalItem( "", "", itemActionFactory );
 
         item.deserialise( "item name:Name\n" +
                           "item description:description\n" +
@@ -345,7 +346,8 @@ public class NormalItemTests {
         final ItemActionFactory itemActionFactory = mockery.mock( ItemActionFactory.class );
         final ItemAction action = mockery.mock( ItemAction.class );
         mockery.checking( new Expectations() {{
-            allowing( itemActionFactory ).create( with( any( String.class ) ) );
+            allowing( itemActionFactory ).create( with( any( String.class ) ),
+               with( any( Item.class ) ) );
             will( returnValue( action ) );
             ignoring( itemActionFactory );
             oneOf( action ).enact();

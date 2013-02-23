@@ -192,11 +192,17 @@ public class NormalItem implements Item {
             if( findTagWithNoArgument( itemUseIsNotRepeatableTag ) )
                 useIsRepeatable = false;
 
+            extractItemActions();
+        }
+
+        private void extractItemActions() {
             if( itemActionFactory != null ) {
                 while( findTagAndUpdatePosition( itemUseActionTag ) ) {
-                    ItemAction action = itemActionFactory.create(
-                        extractValueUpToNewline( startOfLastFoundTag +
-                                                 itemUseActionTag.length() ) );
+                    ItemAction action =
+                        itemActionFactory.create(
+                            extractValueUpToNewline( startOfLastFoundTag +
+                                                     itemUseActionTag.length() ),
+                            NormalItem.this );
                     addOnUseAction( action );
                 }
             }
