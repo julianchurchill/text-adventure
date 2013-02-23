@@ -16,8 +16,8 @@ Backlog
     DONE - [TEST] 'item use is not repeatable'
     - [TEST] Include actions resulting from the item use as defined in the model text. In this feature case it adds an exit to the clock tower location, changes the clock tower door name and description to unlocked.
       - [TEST] 'item use action change description:new item description'
-        - [TEST] how to represent 'change description' item action?
-        - [TEST] RealItemActionFactory creates RealItemActions
+        - [TEST] NormalItems should call ItemActionFactory create() with ItemAction content to deserialise and create an appropriate ItemAction object
+        - [TEST] RealItemActionFactory creates objects that descend from ItemAction according to the first bit of deserialisation
         - [TEST] Pass a RealItemActionFactory instance to NormalItemFactory in activity to initialise NormalItem objects when create() is called
       - [TEST] 'item use action change name:new item name'
       - [TEST] 'item use action make exit visible:exit id'
@@ -27,6 +27,10 @@ Backlog
 
 - [TEST] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
 
+- [REFACTOR] Deserialisation should be pulled out into seperate classes - ModelDeserialiser, ModelLocationDeserialiser, ItemDeserialiser - all coordinate with a PlainTextDeserialiser used by the PlainTextModelPopulator
+
+- [TEST] action view includes a cancel button to reset the actions and the title to the top level
+
 - [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
 
 - [FEATURE] Direction navigator - instead of top, bottom, right, left clickable labels use a compass with small labels.
@@ -34,7 +38,6 @@ Backlog
 - [FEATURE] Action navigator - instead of long click context menu sequence use a sidebar which either expands or gets replaced (with a title to preserve context e.g. 'Show inventory...', 'Take an item...').
   - [TEST] action view title defaults to 'Actions...'
   - [TEST] activity sets action view title when user selects an action
-  - [TEST] action view includes a cancel button to reset the actions and the title to the top level
 
 - [REFACTOR]
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
