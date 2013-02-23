@@ -1,6 +1,6 @@
 package com.chewielouie.textadventure;
 
 public interface ItemActionFactory {
-    public ItemAction create();
+    public ItemAction create( String content );
 }
 

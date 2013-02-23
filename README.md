@@ -16,9 +16,9 @@ Backlog
     DONE - [TEST] 'item use is not repeatable'
     - [TEST] Include actions resulting from the item use as defined in the model text. In this feature case it adds an exit to the clock tower location, changes the clock tower door name and description to unlocked.
       - [TEST] 'item use action change description:new item description'
-        - [TEST] NormalItems should call ItemActionFactory create() with ItemAction content to deserialise and create an appropriate ItemAction object
-        - [TEST] RealItemActionFactory creates objects that descend from ItemAction according to the first bit of deserialisation
         - [TEST] Pass a RealItemActionFactory instance to NormalItemFactory in activity to initialise NormalItem objects when create() is called
+        - [TEST] RealItemActionFactory creates objects that descend from ItemAction according to the first bit of deserialisation
+        - [TEST] RealItemFactory deserialises 'Change item description' into a ChangeItemDescriptionItemAction
       - [TEST] 'item use action change name:new item name'
       - [TEST] 'item use action make exit visible:exit id'
         - [TEST] Exits needs optional ids

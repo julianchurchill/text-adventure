@@ -190,8 +190,7 @@ public class NormalItem implements Item {
 
             if( itemActionFactory != null ) {
                 while( findTagAndUpdatePosition( itemUseActionTag ) ) {
-                    ItemAction action = itemActionFactory.create();
-                    action.deserialise(
+                    ItemAction action = itemActionFactory.create(
                         extractValueUpToNewline( startOfLastFoundTag +
                                                  itemUseActionTag.length() ) );
                     addOnUseAction( action );

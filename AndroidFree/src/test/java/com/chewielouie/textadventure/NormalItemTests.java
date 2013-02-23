@@ -313,7 +313,7 @@ public class NormalItemTests {
     public void deserialise_extracts_multiple_item_use_actions_with_ItemAction_factory() {
         final ItemActionFactory itemActionFactory = mockery.mock( ItemActionFactory.class );
         mockery.checking( new Expectations() {{
-            exactly( 2 ).of( itemActionFactory ).create();
+            exactly( 2 ).of( itemActionFactory ).create( with( any( String.class ) ) );
             ignoring( itemActionFactory );
         }});
         NormalItem item = new NormalItem( "", "", itemActionFactory );
@@ -329,11 +329,9 @@ public class NormalItemTests {
         final ItemActionFactory itemActionFactory = mockery.mock( ItemActionFactory.class );
         final ItemAction action = mockery.mock( ItemAction.class );
         mockery.checking( new Expectations() {{
-            allowing( itemActionFactory ).create();
+            oneOf( itemActionFactory ).create( "action:action arguments" );
             will( returnValue( action ) );
             ignoring( itemActionFactory );
-            oneOf( action ).deserialise( "action:action arguments" );
-            ignoring( action );
         }});
         NormalItem item = new NormalItem( "", "", itemActionFactory );
 
@@ -347,10 +345,9 @@ public class NormalItemTests {
         final ItemActionFactory itemActionFactory = mockery.mock( ItemActionFactory.class );
         final ItemAction action = mockery.mock( ItemAction.class );
         mockery.checking( new Expectations() {{
-            allowing( itemActionFactory ).create();
+            allowing( itemActionFactory ).create( with( any( String.class ) ) );
             will( returnValue( action ) );
             ignoring( itemActionFactory );
-            allowing( action ).deserialise( with( any( String.class ) ) );
             oneOf( action ).enact();
             ignoring( action );
         }});
