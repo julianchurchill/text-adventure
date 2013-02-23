@@ -18,7 +18,6 @@ Backlog
       DONE - [TEST] 'item use action change description:new item description'
       DONE - [TEST] 'item use action change name:new item name'
       - [TEST] 'item use action:make exit visible:exit id'
-        - [TEST] Exit.visible() is true except when setInvisible() has been called
         - [TEST] Exits needs optional ids
         - [TEST] 'exit is not visible:' - makes an exit not appear in exit list
         - [TEST] NormalItemActionFactory creates MakeExitVisibleItemActions

@@ -4,6 +4,7 @@ public class LocationExit implements Exit {
     private String label = new String();
     private String destination = new String();
     private DirectionHint directionHint = DirectionHint.DontCare;
+    private boolean visible = true;
 
     public LocationExit( String label ) {
         this.label = label;
@@ -32,7 +33,11 @@ public class LocationExit implements Exit {
     }
 
     public boolean visible() {
-        return true;
+        return visible;
+    }
+
+    public void setInvisible() {
+        visible = false;
     }
 
     @Override

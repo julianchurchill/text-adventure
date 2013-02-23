@@ -7,6 +7,18 @@ import org.junit.Test;
 public class LocationExitTests {
 
     @Test
+    public void exit_is_visible_by_default() {
+        assertTrue( new LocationExit( "", "" ).visible() );
+    }
+
+    @Test
+    public void exit_can_be_made_invisible() {
+        LocationExit exit = new LocationExit( "", "" );
+        exit.setInvisible();
+        assertFalse( exit.visible() );
+    }
+
+    @Test
     public void exit_has_a_default_direction_hint_of_dont_care() {
         LocationExit exit = new LocationExit( "label", "destination" );
 
