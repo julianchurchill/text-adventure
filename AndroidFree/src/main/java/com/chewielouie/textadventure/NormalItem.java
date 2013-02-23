@@ -126,6 +126,10 @@ public class NormalItem implements Item {
         onUseActions.add( action );
     }
 
+    public ItemActionFactory itemActionFactory() {
+        return itemActionFactory;
+    }
+
     public void deserialise( String content ) {
         new Deserialiser().parse( content );
     }
