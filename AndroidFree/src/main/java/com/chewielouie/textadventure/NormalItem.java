@@ -43,6 +43,10 @@ public class NormalItem implements Item {
         return description;
     }
 
+    public void setDescription( String description ) {
+        this.description = description;
+    }
+
     public String name() {
         return name;
     }

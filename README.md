@@ -15,8 +15,7 @@ Backlog
   - [TEST] Model text can specify that an item can be used with another named item
     DONE - [TEST] 'item use is not repeatable'
     - [TEST] Include actions resulting from the item use as defined in the model text. In this feature case it adds an exit to the clock tower location, changes the clock tower door name and description to unlocked.
-      - [TEST] 'item use action change description:new item description'
-        - [TEST] ChangeItemDescriptionItemAction calls setDescription() on the item with the deserialised content
+      DONE - [TEST] 'item use action change description:new item description'
       - [TEST] 'item use action change name:new item name'
       - [TEST] 'item use action make exit visible:exit id'
         - [TEST] Exits needs optional ids
