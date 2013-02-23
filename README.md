@@ -16,7 +16,6 @@ Backlog
     DONE - [TEST] 'item use is not repeatable'
     - [TEST] Include actions resulting from the item use as defined in the model text. In this feature case it adds an exit to the clock tower location, changes the clock tower door name and description to unlocked.
       - [TEST] 'item use action change description:new item description'
-        - [TEST] NormalItemActionFactory deserialises '^Change item description:' into a ChangeItemDescriptionItemAction
         - [TEST] NormalItemActionFactory passes Item to ChangeItemDescriptionItemAction
         - [TEST] NormalItemActionFactory passes remaining content to be deserialised to ChangeItemDescriptionItemAction
         - [TEST] ChangeItemDescriptionItemAction calls setDescription() on the item with the deserialised content

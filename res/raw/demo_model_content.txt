@@ -63,7 +63,7 @@ item is untakeable:
 item can be used with:clocktowerskeletonkey
 item successful use message:You hear a click and the door springs open.
 item use is not repeatable:
-item use action:change description:It is unlocked. It appears to allow access to the clock tower itself.
+item use action:change item description:It is unlocked. It appears to allow access to the clock tower itself.
 LOCATION
 location id:eastloc
 location description:You are in the middle of a vast and endless ocean. Of despair.
