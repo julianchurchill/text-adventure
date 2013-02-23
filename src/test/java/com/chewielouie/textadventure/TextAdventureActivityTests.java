@@ -53,17 +53,24 @@ public class TextAdventureActivityTests {
     @Test
     public void click_top_label_uses_the_correct_exit() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        final Exit exit = new Exit( "first exit" );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        final Exit exit2 = mockery.mock( Exit.class, "exit2" );
         mockery.checking( new Expectations() {{
-            oneOf( handler ).moveThroughExit( exit );
+            oneOf( handler ).moveThroughExit( exit1 );
             ignoring( handler );
+            allowing( exit1 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit1 );
+            allowing( exit2 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit2 );
         }});
         TextAdventureActivity activity = new TextAdventureActivity( handler );
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( exit );
-        exits.add( new Exit( "second exit" ) );
+        exits.add( exit1 );
+        exits.add( exit2 );
         activity.showLocationExits( exits );
 
         TextView topLabel = (TextView)activity.findViewById( R.id.top_direction_label );
@@ -75,18 +82,29 @@ public class TextAdventureActivityTests {
     @Test
     public void click_bottom_label_uses_the_correct_exit() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        final Exit exit = new Exit( "second exit" );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        final Exit exit2 = mockery.mock( Exit.class, "exit2" );
+        final Exit exit3 = mockery.mock( Exit.class, "exit3" );
         mockery.checking( new Expectations() {{
-            oneOf( handler ).moveThroughExit( exit );
+            oneOf( handler ).moveThroughExit( exit2 );
             ignoring( handler );
+            allowing( exit1 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit1 );
+            allowing( exit2 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit2 );
+            allowing( exit3 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit3 );
         }});
         TextAdventureActivity activity = new TextAdventureActivity( handler );
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "first exit" ) );
-        exits.add( exit );
-        exits.add( new Exit( "third exit" ) );
+        exits.add( exit1 );
+        exits.add( exit2 );
+        exits.add( exit3 );
         activity.showLocationExits( exits );
 
         TextView bottomLabel = (TextView)activity.findViewById( R.id.bottom_direction_label );
@@ -98,19 +116,34 @@ public class TextAdventureActivityTests {
     @Test
     public void click_right_label_uses_the_correct_exit() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        final Exit exit = new Exit( "third exit" );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        final Exit exit2 = mockery.mock( Exit.class, "exit2" );
+        final Exit exit3 = mockery.mock( Exit.class, "exit3" );
+        final Exit exit4 = mockery.mock( Exit.class, "exit4" );
         mockery.checking( new Expectations() {{
-            oneOf( handler ).moveThroughExit( exit );
+            oneOf( handler ).moveThroughExit( exit3 );
             ignoring( handler );
+            allowing( exit1 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit1 );
+            allowing( exit2 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit2 );
+            allowing( exit3 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit3 );
+            allowing( exit4 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit4 );
         }});
         TextAdventureActivity activity = new TextAdventureActivity( handler );
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "first exit" ) );
-        exits.add( new Exit( "second exit" ) );
-        exits.add( exit );
-        exits.add( new Exit( "fourth exit" ) );
+        exits.add( exit1 );
+        exits.add( exit2 );
+        exits.add( exit3 );
+        exits.add( exit4 );
         activity.showLocationExits( exits );
 
         TextView rightLabel = (TextView)activity.findViewById( R.id.right_direction_label );
@@ -122,19 +155,34 @@ public class TextAdventureActivityTests {
     @Test
     public void click_left_label_uses_the_correct_exit() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        final Exit exit = new Exit( "fourth exit" );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        final Exit exit2 = mockery.mock( Exit.class, "exit2" );
+        final Exit exit3 = mockery.mock( Exit.class, "exit3" );
+        final Exit exit4 = mockery.mock( Exit.class, "exit4" );
         mockery.checking( new Expectations() {{
-            oneOf( handler ).moveThroughExit( exit );
+            oneOf( handler ).moveThroughExit( exit4 );
             ignoring( handler );
+            allowing( exit1 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit1 );
+            allowing( exit2 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit2 );
+            allowing( exit3 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit3 );
+            allowing( exit4 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit4 );
         }});
         TextAdventureActivity activity = new TextAdventureActivity( handler );
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "first exit" ) );
-        exits.add( new Exit( "second exit" ) );
-        exits.add( new Exit( "third exit" ) );
-        exits.add( exit );
+        exits.add( exit1 );
+        exits.add( exit2 );
+        exits.add( exit3 );
+        exits.add( exit4 );
         activity.showLocationExits( exits );
 
         TextView leftLabel = (TextView)activity.findViewById( R.id.left_direction_label );
@@ -149,8 +197,20 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "first exit" ) );
-        exits.add( new Exit( "second exit" ) );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        final Exit exit2 = mockery.mock( Exit.class, "exit2" );
+        mockery.checking( new Expectations() {{
+            allowing( exit1 ).label();
+            will( returnValue( "first exit" ) );
+            allowing( exit1 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit1 );
+            allowing( exit2 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit2 );
+        }});
+        exits.add( exit1 );
+        exits.add( exit2 );
         activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.top_direction_label );
@@ -163,8 +223,20 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "first exit" ) );
-        exits.add( new Exit( "second exit" ) );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        final Exit exit2 = mockery.mock( Exit.class, "exit2" );
+        mockery.checking( new Expectations() {{
+            allowing( exit1 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit1 );
+            allowing( exit2 ).label();
+            will( returnValue( "second exit" ) );
+            allowing( exit2 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit2 );
+        }});
+        exits.add( exit1 );
+        exits.add( exit2 );
         activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.bottom_direction_label );
@@ -177,9 +249,25 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "first exit" ) );
-        exits.add( new Exit( "second exit" ) );
-        exits.add( new Exit( "third exit" ) );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        final Exit exit2 = mockery.mock( Exit.class, "exit2" );
+        final Exit exit3 = mockery.mock( Exit.class, "exit3" );
+        mockery.checking( new Expectations() {{
+            allowing( exit1 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit1 );
+            allowing( exit2 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit2 );
+            allowing( exit3 ).label();
+            will( returnValue( "third exit" ) );
+            allowing( exit3 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit3 );
+        }});
+        exits.add( exit1 );
+        exits.add( exit2 );
+        exits.add( exit3 );
         activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.right_direction_label );
@@ -192,10 +280,30 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "first exit" ) );
-        exits.add( new Exit( "second exit" ) );
-        exits.add( new Exit( "third exit" ) );
-        exits.add( new Exit( "fourth exit" ) );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        final Exit exit2 = mockery.mock( Exit.class, "exit2" );
+        final Exit exit3 = mockery.mock( Exit.class, "exit3" );
+        final Exit exit4 = mockery.mock( Exit.class, "exit4" );
+        mockery.checking( new Expectations() {{
+            allowing( exit1 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit1 );
+            allowing( exit2 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit2 );
+            allowing( exit3 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit3 );
+            allowing( exit4 ).label();
+            will( returnValue( "fourth exit" ) );
+            allowing( exit4 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            ignoring( exit4 );
+        }});
+        exits.add( exit1 );
+        exits.add( exit2 );
+        exits.add( exit3 );
+        exits.add( exit4 );
         activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.left_direction_label );
@@ -256,8 +364,18 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "first exit" ) );
-        exits.add( new Exit( "second exit", "dest", Exit.DirectionHint.North ) );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        final Exit exit2 = mockery.mock( Exit.class, "exit2" );
+        mockery.checking( new Expectations() {{
+            allowing( exit2 ).label();
+            will( returnValue( "second exit" ) );
+            allowing( exit2 ).directionHint();
+            will( returnValue( Exit.DirectionHint.North ) );
+            ignoring( exit1 );
+            ignoring( exit2 );
+        }});
+        exits.add( exit1 );
+        exits.add( exit2 );
         activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.top_direction_label );
@@ -270,7 +388,15 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "first exit", "dest", Exit.DirectionHint.South ) );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        mockery.checking( new Expectations() {{
+            allowing( exit1 ).label();
+            will( returnValue( "first exit" ) );
+            allowing( exit1 ).directionHint();
+            will( returnValue( Exit.DirectionHint.South ) );
+            ignoring( exit1 );
+        }});
+        exits.add( exit1 );
         activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.bottom_direction_label );
@@ -283,7 +409,15 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "first exit", "dest", Exit.DirectionHint.East ) );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        mockery.checking( new Expectations() {{
+            allowing( exit1 ).label();
+            will( returnValue( "first exit" ) );
+            allowing( exit1 ).directionHint();
+            will( returnValue( Exit.DirectionHint.East ) );
+            ignoring( exit1 );
+        }});
+        exits.add( exit1 );
         activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.right_direction_label );
@@ -296,7 +430,15 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "first exit", "dest", Exit.DirectionHint.West ) );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        mockery.checking( new Expectations() {{
+            allowing( exit1 ).label();
+            will( returnValue( "first exit" ) );
+            allowing( exit1 ).directionHint();
+            will( returnValue( Exit.DirectionHint.West ) );
+            ignoring( exit1 );
+        }});
+        exits.add( exit1 );
         activity.showLocationExits( exits );
 
         final TextView t = (TextView)activity.findViewById( R.id.left_direction_label );
@@ -309,10 +451,36 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
 
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "first exit" ) );
-        exits.add( new Exit( "second exit", "dest", Exit.DirectionHint.North ) );
-        exits.add( new Exit( "third exit" ) );
-        exits.add( new Exit( "fourth exit", "dest", Exit.DirectionHint.East  ) );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        final Exit exit2 = mockery.mock( Exit.class, "exit2" );
+        final Exit exit3 = mockery.mock( Exit.class, "exit3" );
+        final Exit exit4 = mockery.mock( Exit.class, "exit4" );
+        mockery.checking( new Expectations() {{
+            allowing( exit1 ).label();
+            will( returnValue( "first exit" ) );
+            allowing( exit1 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            allowing( exit2 ).label();
+            will( returnValue( "second exit" ) );
+            allowing( exit2 ).directionHint();
+            will( returnValue( Exit.DirectionHint.North ) );
+            allowing( exit3 ).label();
+            will( returnValue( "third exit" ) );
+            allowing( exit3 ).directionHint();
+            will( returnValue( Exit.DirectionHint.DontCare ) );
+            allowing( exit4 ).label();
+            will( returnValue( "fourth exit" ) );
+            allowing( exit4 ).directionHint();
+            will( returnValue( Exit.DirectionHint.East ) );
+            ignoring( exit1 );
+            ignoring( exit2 );
+            ignoring( exit3 );
+            ignoring( exit4 );
+        }});
+        exits.add( exit1 );
+        exits.add( exit2 );
+        exits.add( exit3 );
+        exits.add( exit4 );
         activity.showLocationExits( exits );
 
         TextView t = (TextView)activity.findViewById( R.id.top_direction_label );

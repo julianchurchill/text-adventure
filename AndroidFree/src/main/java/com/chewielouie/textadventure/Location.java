@@ -162,7 +162,7 @@ public class Location implements ModelLocation {
         private void deserialiseExits() {
             String exitLabel;
             while( (exitLabel=extractNewlineDelimitedValueFor( exitLabelTag )) != "" )
-                addExit( new Exit(
+                addExit( new LocationExit(
                     exitLabel,
                     extractNewlineDelimitedValueFor( exitDestinationTag ),
                     stringToDirectionHint(

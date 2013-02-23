@@ -35,35 +35,70 @@ public class LocationTests {
 
     @Test
     public void added_exit_makes_the_exit_exitable() {
+        final Exit exit = mockery.mock( Exit.class );
+        mockery.checking( new Expectations() {{
+            allowing( exit ).visible();
+            will( returnValue( true ) );
+            ignoring( exit );
+        }});
         Location l = createLocation();
-        l.addExit( new Exit( "north", "loc2" ) );
-        assertTrue( l.exitable( new Exit( "north", "loc2" ) ) );
+        l.addExit( exit );
+        assertTrue( l.exitable( exit ) );
     }
+
+    //@Test
+    //public void non_visible_exits_are_not_exitable() {
+        //final Exit exit = mockery.mock( Exit.class );
+        //mockery.checking( new Expectations() {{
+            //allowing( exit ).visible();
+            //will( returnValue( false ) );
+            //ignoring( exit );
+        //}});
+        //Location l = createLocation();
+        //l.addExit( exit );
+        //assertFalse( l.exitable( exit ) );
+    //}
+
+    //@Test
+    //public void non_visible_exits_are_not_in_the_exits_list() {
 
     @Test
     public void exits_that_havent_been_added_are_not_exitable() {
+        final Exit exit = mockery.mock( Exit.class );
+        mockery.checking( new Expectations() {{
+            ignoring( exit );
+        }});
         Location l = createLocation();
-        l.addExit( new Exit( "north", "loc2" ) );
-        assertFalse( l.exitable( new Exit( "south", "loc1" ) ) );
+        assertFalse( l.exitable( exit ) );
     }
 
     @Test
     public void exit_destination_is_retrievable() {
-        Exit north = new Exit( "north", "loc2" );
+        final Exit exit = mockery.mock( Exit.class );
+        mockery.checking( new Expectations() {{
+            allowing( exit ).destination();
+            will( returnValue( "destination" ) );
+            ignoring( exit );
+        }});
         Location l = createLocation();
-        l.addExit( new Exit( "north", "loc2" ) );
-        assertEquals( "loc2", l.exitDestinationFor( north ) );
+        assertEquals( "destination", l.exitDestinationFor( exit ) );
     }
 
     @Test
     public void all_valid_exits_are_retrieveable() {
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        final Exit exit2 = mockery.mock( Exit.class, "exit2" );
+        mockery.checking( new Expectations() {{
+            ignoring( exit1 );
+            ignoring( exit2 );
+        }});
         List<Exit> exits = new ArrayList<Exit>();
-        exits.add( new Exit( "north", "loc2" ) );
-        exits.add( new Exit( "south", "loc3" ) );
+        exits.add( exit1 );
+        exits.add( exit2 );
 
         Location l = createLocation();
-        l.addExit( new Exit( "north", "loc2" ) );
-        l.addExit( new Exit( "south", "loc3" ) );
+        l.addExit( exit1 );
+        l.addExit( exit2 );
 
         assertEquals( exits, l.exits() );
     }
