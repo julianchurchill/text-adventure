@@ -46,21 +46,31 @@ public class LocationTests {
         assertTrue( l.exitable( exit ) );
     }
 
-    //@Test
-    //public void non_visible_exits_are_not_exitable() {
-        //final Exit exit = mockery.mock( Exit.class );
-        //mockery.checking( new Expectations() {{
-            //allowing( exit ).visible();
-            //will( returnValue( false ) );
-            //ignoring( exit );
-        //}});
-        //Location l = createLocation();
-        //l.addExit( exit );
-        //assertFalse( l.exitable( exit ) );
-    //}
+    @Test
+    public void non_visible_exits_are_not_exitable() {
+        final Exit exit = mockery.mock( Exit.class );
+        mockery.checking( new Expectations() {{
+            allowing( exit ).visible();
+            will( returnValue( false ) );
+            ignoring( exit );
+        }});
+        Location l = createLocation();
+        l.addExit( exit );
+        assertFalse( l.exitable( exit ) );
+    }
 
-    //@Test
-    //public void non_visible_exits_are_not_in_the_exits_list() {
+    @Test
+    public void non_visible_exits_are_not_in_the_exits_list() {
+        final Exit exit = mockery.mock( Exit.class );
+        mockery.checking( new Expectations() {{
+            allowing( exit ).visible();
+            will( returnValue( false ) );
+            ignoring( exit );
+        }});
+        Location l = createLocation();
+        l.addExit( exit );
+        assertEquals( 0, l.exits().size() );
+    }
 
     @Test
     public void exits_that_havent_been_added_are_not_exitable() {
@@ -89,7 +99,11 @@ public class LocationTests {
         final Exit exit1 = mockery.mock( Exit.class, "exit1" );
         final Exit exit2 = mockery.mock( Exit.class, "exit2" );
         mockery.checking( new Expectations() {{
+            allowing( exit1 ).visible();
+            will( returnValue( true ) );
             ignoring( exit1 );
+            allowing( exit2 ).visible();
+            will( returnValue( true ) );
             ignoring( exit2 );
         }});
         List<Exit> exits = new ArrayList<Exit>();

@@ -36,9 +36,10 @@ public class Location implements ModelLocation {
     }
 
     public boolean exitable( Exit exit ) {
-        for( Exit e : exits )
-            if( e.equals( exit ) )
-                return true;
+        if( exit.visible() )
+            for( Exit e : exits )
+                if( e.equals( exit ) )
+                    return true;
         return false;
     }
 
@@ -51,7 +52,11 @@ public class Location implements ModelLocation {
     }
 
     public List<Exit> exits() {
-        return exits;
+        List<Exit> visibleExits = new ArrayList<Exit>();
+        for( Exit e : exits )
+            if( e.visible() )
+                visibleExits.add( e );
+        return visibleExits;
     }
 
     public String description() {
