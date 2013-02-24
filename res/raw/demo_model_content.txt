@@ -54,6 +54,7 @@ exit label:Clock tower door
 exit destination:groundfloorclocktower
 exit direction hint:North
 exit is not visible:
+exit id:clocktowerdoor
 ITEM
 item name:Minute Hand of the Clock Tower
 item description:It is quite heavy, ornate and made of iron.

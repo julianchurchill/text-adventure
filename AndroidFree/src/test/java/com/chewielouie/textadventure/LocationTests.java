@@ -374,6 +374,16 @@ public class LocationTests {
     }
 
     @Test
+    public void deserialise_extracts_exit_id() {
+        Location l = createLocation();
+        l.deserialise( "location id:name\n" +
+                       "exit label:label\n" +
+                       "exit destination:destination\n" +
+                       "exit id:exit id" );
+        assertEquals( "exit id", l.exits().get(0).id() );
+    }
+
+    @Test
     public void deserialise_extracts_multiple_exits() {
         Location l = createLocation();
         l.deserialise( "location id:name\n" +

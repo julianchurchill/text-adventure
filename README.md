@@ -19,6 +19,7 @@ Backlog
       DONE - [TEST] 'item use action change name:new item name'
       - [TEST] 'item use action:make exit visible:exit id'
         - [TEST] Exits need optional ids deserialised in Location
+        - [TEST] LocationExit.setID() works
 
 - [TEST] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
 

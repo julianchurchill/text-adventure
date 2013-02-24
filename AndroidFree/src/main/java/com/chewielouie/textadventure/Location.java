@@ -126,6 +126,7 @@ public class Location implements ModelLocation {
         private final String exitDestinationTag = "exit destination:";
         private final String exitDirectionHintTag = "exit direction hint:";
         private final String exitIsNotVisibleTag = "exit is not visible:";
+        private final String exitIDTag = "exit id:";
         private final String itemTag = "ITEM\n";
         private String content;
         private int startOfLastFoundTag = -1;
@@ -177,15 +178,35 @@ public class Location implements ModelLocation {
                     extractNewlineDelimitedValueFor( exitDestinationTag ),
                     stringToDirectionHint(
                         extractNewlineDelimitedValueFor( exitDirectionHintTag ) ) );
-                int startOfTag = content.indexOf( exitIsNotVisibleTag, startOfLastFoundTag + 1 );
-                int nextExit = content.indexOf( exitLabelTag, startOfLastFoundTag + 1 );
-                if( startOfTag != -1 &&
-                    ( nextExit == -1 || nextExit > startOfTag ) ) {
-                    extractNewlineDelimitedValueFor( exitIsNotVisibleTag );
+
+                if( exitNotVisibleIsSpecifiedDiscardIt() )
                     exit.setInvisible();
-                }
+                exit.setID( extractExitID() );
                 addExit( exit );
             }
+        }
+
+        private boolean exitNotVisibleIsSpecifiedDiscardIt() {
+            int startOfTag = content.indexOf( exitIsNotVisibleTag, startOfLastFoundTag + 1 );
+            if( indexIsInCurrentExit( startOfTag ) ) {
+                extractNewlineDelimitedValueFor( exitIsNotVisibleTag );
+                return true;
+            }
+            return false;
+        }
+
+        private String extractExitID() {
+            int startOfTag = content.indexOf( exitIDTag, startOfLastFoundTag + 1 );
+            if( indexIsInCurrentExit( startOfTag ) )
+                return extractNewlineDelimitedValueFor( exitIDTag );
+            return "";
+        }
+
+        private boolean indexIsInCurrentExit( int index ) {
+            int nextExit = content.indexOf( exitLabelTag, startOfLastFoundTag + 1 );
+            if( index != -1 && ( nextExit == -1 || nextExit > index ) )
+                return true;
+            return false;
         }
 
         private void deserialiseItems() {

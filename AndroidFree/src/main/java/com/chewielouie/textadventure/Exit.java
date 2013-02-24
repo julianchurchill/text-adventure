@@ -8,5 +8,6 @@ public interface Exit {
     public boolean visible();
     public void setVisible();
     public String id();
+    public void setID( String id );
 }
 

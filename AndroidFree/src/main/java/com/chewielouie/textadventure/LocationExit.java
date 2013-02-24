@@ -5,6 +5,7 @@ public class LocationExit implements Exit {
     private String destination = new String();
     private DirectionHint directionHint = DirectionHint.DontCare;
     private boolean visible = true;
+    private String id = "";
 
     public LocationExit( String label ) {
         this.label = label;
@@ -45,7 +46,11 @@ public class LocationExit implements Exit {
     }
 
     public String id() {
-        return "";
+        return id;
+    }
+
+    public void setID( String id ) {
+        this.id = id;
     }
 
     @Override
