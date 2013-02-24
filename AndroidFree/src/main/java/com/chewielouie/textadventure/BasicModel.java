@@ -44,6 +44,10 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     public void addToInventory( Item item ) {
         inventoryItems.add( item );
     }
+
+    public Exit findExitByID( String id ) {
+        return null;
+    }
 }
 
 

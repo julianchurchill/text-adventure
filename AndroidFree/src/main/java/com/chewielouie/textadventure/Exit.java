@@ -6,5 +6,6 @@ public interface Exit {
     public String destination();
     public DirectionHint directionHint();
     public boolean visible();
+    public void setVisible();
 }
 

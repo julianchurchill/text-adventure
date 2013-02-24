@@ -17,7 +17,8 @@ public class NormalItemActionFactory implements ItemActionFactory {
         else if( content.startsWith( makeExitVisibleTag ) )
             return new MakeExitVisibleItemAction(
                        content.substring( makeExitVisibleTag.length() ),
-                       item );
+                       item,
+                       null );
         return new NullItemAction();
     }
 }

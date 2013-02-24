@@ -9,5 +9,6 @@ public interface TextAdventureModel {
     public void moveThroughExit( Exit exit );
     public List<Item> inventoryItems();
     public ModelLocation currentLocation();
+    public Exit findExitByID( String id );
 }
 

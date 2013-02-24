@@ -40,6 +40,10 @@ public class LocationExit implements Exit {
         visible = false;
     }
 
+    public void setVisible() {
+        visible = true;
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof LocationExit) )
