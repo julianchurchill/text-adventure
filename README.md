@@ -17,6 +17,16 @@ Backlog
 
 - [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
 
+- [STORY] Tidy up locations, remove dummy locs, perhaps add a couple spacer locs.
+- [STORY] Find a spade in a shed.
+- [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
+  - [TEST] New ItemAction MakeItemVisible (clock face), MakeItemInvisible (mound)
+- [STORY] Find clock hour hand in untakeable bags of junk somewhere.
+  - [TEST] New trigger ItemAction on examine, MakeItemVisible( clock hour hand )
+- [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some points or money or something and maybe a quest/hint as to what to do next - open up a new area.
+  - [TEST] New ItemAction RemoveItem (clock face, minute hand, hour hand)
+  - [TEST] New ItemAction something like AddPoints, MakeMoney, ShowCutScene
+
 - [FEATURE] Direction navigator - instead of top, bottom, right, left clickable labels use a compass with small labels.
 
 - [FEATURE] Action navigator - instead of long click context menu sequence use a sidebar which either expands or gets replaced (with a title to preserve context e.g. 'Show inventory...', 'Take an item...').
