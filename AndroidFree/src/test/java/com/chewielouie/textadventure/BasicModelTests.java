@@ -122,5 +122,41 @@ public class BasicModelTests {
         assertEquals( sizeBeforeAdd+1, model.inventoryItems().size() );
         assertEquals( item, model.inventoryItems().get(sizeBeforeAdd) );
     }
+
+    @Test
+    public void find_exit_by_id_finds_the_exit() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final List<Exit> exits = new ArrayList<Exit>();
+        final Exit exit = mockery.mock( Exit.class );
+        exits.add( exit );
+        mockery.checking( new Expectations() {{
+            oneOf( location ).exits();
+            will( returnValue( exits ) );
+            ignoring( location );
+            oneOf( exit ).id();
+            will( returnValue( "exit id" ) );
+            ignoring( exit );
+        }});
+        BasicModel model = new BasicModel();
+        model.addLocation( location );
+
+        assertEquals( exit, model.findExitByID( "exit id" ) );
+    }
+
+    @Test
+    public void find_exit_by_id_returns_null_if_it_cant_find_the_exit() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final List<Exit> exits = new ArrayList<Exit>();
+        final Exit exit = mockery.mock( Exit.class );
+        mockery.checking( new Expectations() {{
+            oneOf( location ).exits();
+            will( returnValue( exits ) );
+            ignoring( location );
+        }});
+        BasicModel model = new BasicModel();
+        model.addLocation( location );
+
+        assertEquals( null, model.findExitByID( "exit id" ) );
+    }
 }
 

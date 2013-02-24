@@ -46,6 +46,10 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public Exit findExitByID( String id ) {
+        for( ModelLocation location : locations.values() )
+            for( Exit exit : location.exits() )
+                if( exit.id().equals( id ) )
+                    return exit;
         return null;
     }
 }

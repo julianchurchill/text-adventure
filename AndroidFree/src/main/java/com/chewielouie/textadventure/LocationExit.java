@@ -44,6 +44,10 @@ public class LocationExit implements Exit {
         visible = true;
     }
 
+    public String id() {
+        return "";
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof LocationExit) )
