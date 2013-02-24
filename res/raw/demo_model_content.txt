@@ -69,6 +69,7 @@ item successful use message:You hear a click and the door springs open.
 item use is not repeatable:
 item use action:change item description:It is unlocked. It appears to allow access to the clock tower itself.
 item use action:change item name:unlocked door
+item use action:make exit visible:clocktowerdoor
 LOCATION
 location id:groundfloorclocktower
 location description:You are inside the mighty clock tower. Sounds resonates around youas the clock ticks.

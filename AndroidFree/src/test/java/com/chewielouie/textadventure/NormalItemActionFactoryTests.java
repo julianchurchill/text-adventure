@@ -27,5 +27,16 @@ public class NormalItemActionFactoryTests {
 
         assertTrue( action instanceof ChangeItemNameItemAction );
     }
+
+    @Test
+    public void creates_MakeExitVisibleItemActions() {
+        NormalItemActionFactory factory = new NormalItemActionFactory();
+
+        ItemAction action = factory.create(
+               "make exit visible:exit name",
+               null );
+
+        assertTrue( action instanceof MakeExitVisibleItemAction );
+    }
 }
 

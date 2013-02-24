@@ -18,7 +18,6 @@ Backlog
       DONE - [TEST] 'item use action change description:new item description'
       DONE - [TEST] 'item use action change name:new item name'
       - [TEST] 'item use action:make exit visible:exit id'
-        - [TEST] NormalItemActionFactory creates MakeExitVisibleItemActions
         - [TEST] MakeExitVisibleItemAction does what it says
         - [TEST] Exits needs optional ids
 
