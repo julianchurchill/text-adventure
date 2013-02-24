@@ -69,7 +69,7 @@ public class LocationTests {
         }});
         Location l = createLocation();
         l.addExit( exit );
-        assertEquals( 0, l.exits().size() );
+        assertEquals( 0, l.visibleExits().size() );
     }
 
     @Test
@@ -114,7 +114,7 @@ public class LocationTests {
         l.addExit( exit1 );
         l.addExit( exit2 );
 
-        assertEquals( exits, l.exits() );
+        assertEquals( exits, l.visibleExits() );
     }
 
     @Test
@@ -325,9 +325,9 @@ public class LocationTests {
                        "exit label:label\n" +
                        "exit destination:destination\n" +
                        "exit direction hint:East" );
-        assertEquals( "label", l.exits().get(0).label() );
-        assertEquals( "destination", l.exits().get(0).destination() );
-        assertEquals( Exit.DirectionHint.East, l.exits().get(0).directionHint() );
+        assertEquals( "label", l.visibleExits().get(0).label() );
+        assertEquals( "destination", l.visibleExits().get(0).destination() );
+        assertEquals( Exit.DirectionHint.East, l.visibleExits().get(0).directionHint() );
     }
 
     @Test
@@ -336,9 +336,9 @@ public class LocationTests {
         l.deserialise( "location id:name\n" +
                        "exit label:label\n" +
                        "exit destination:destination" );
-        assertEquals( "label", l.exits().get(0).label() );
-        assertEquals( "destination", l.exits().get(0).destination() );
-        assertEquals( Exit.DirectionHint.DontCare, l.exits().get(0).directionHint() );
+        assertEquals( "label", l.visibleExits().get(0).label() );
+        assertEquals( "destination", l.visibleExits().get(0).destination() );
+        assertEquals( Exit.DirectionHint.DontCare, l.visibleExits().get(0).directionHint() );
     }
 
     @Test
@@ -347,7 +347,7 @@ public class LocationTests {
         l.deserialise( "location id:name\n" +
                        "exit label:label\n" +
                        "exit destination:destination" );
-        assertTrue( l.exits().get(0).visible() );
+        assertTrue( l.visibleExits().get(0).visible() );
     }
 
     @Test
@@ -380,7 +380,7 @@ public class LocationTests {
                        "exit label:label\n" +
                        "exit destination:destination\n" +
                        "exit id:exit id" );
-        assertEquals( "exit id", l.exits().get(0).id() );
+        assertEquals( "exit id", l.visibleExits().get(0).id() );
     }
 
     @Test
@@ -393,9 +393,9 @@ public class LocationTests {
                        "exit label:label2\n" +
                        "exit destination:destination\n" +
                        "exit direction hint:North" );
-        assertEquals( "label2", l.exits().get(1).label() );
-        assertEquals( "destination", l.exits().get(1).destination() );
-        assertEquals( Exit.DirectionHint.North, l.exits().get(1).directionHint() );
+        assertEquals( "label2", l.visibleExits().get(1).label() );
+        assertEquals( "destination", l.visibleExits().get(1).destination() );
+        assertEquals( Exit.DirectionHint.North, l.visibleExits().get(1).directionHint() );
     }
 
     @Test

@@ -8,20 +8,7 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [FEATURE] Unlock the clock tower door with the skeleton key to reveal an 'up' exit
-  DONE - [TEST] New action 'UseWithSpecificItem' returns a default user message 'Nothing happens.'. Label for action is item name. Constructor takes an Item.
-  DONE - [TEST] New action - 'UseWith' - add to 'Inventory item' action as additional follow up action. Follow up actions are 'UseWithSpecificItem' action for each item in the current location and inventory.
-  DONE - [TEST] Items need ids in the serialised model content
-  - [TEST] Model text can specify that an item can be used with another named item
-    DONE - [TEST] 'item use is not repeatable'
-    - [TEST] Include actions resulting from the item use as defined in the model text. In this feature case it adds an exit to the clock tower location, changes the clock tower door name and description to unlocked.
-      DONE - [TEST] 'item use action change description:new item description'
-      DONE - [TEST] 'item use action change name:new item name'
-      - [TEST] 'item use action:make exit visible:exit id'
-      - [REFACTOR] Rename ModelLocation.exits to visibleExits
-
-- [TEST] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
-
+- [REFACTOR] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
 - [REFACTOR] Moves items into their own namespace
 - [REFACTOR] Exits should deserialise themselves - not Location
 - [REFACTOR] Deserialisation should be pulled out into seperate classes - ModelDeserialiser, ModelLocationDeserialiser, ItemDeserialiser - all coordinate with a PlainTextDeserialiser used by the PlainTextModelPopulator
@@ -52,6 +39,7 @@ Backlog
 Done
 ====
 
+- [FEATURE] Items can be used with other items. This iteraction must be specified in the model content text and is limited to the following actions - change item name, change item description, make an exit visible
 - [FEATURE] New default action 'Examine some item' - can be used to look at items in the current location without picking it up
 - [FEATURE] Replaced long press context menu for actions with actions buttons
 - [FEATURE] Read a model setup from a plain text file

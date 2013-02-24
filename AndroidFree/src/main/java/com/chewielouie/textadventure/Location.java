@@ -51,7 +51,7 @@ public class Location implements ModelLocation {
         return this.id;
     }
 
-    public List<Exit> exits() {
+    public List<Exit> visibleExits() {
         List<Exit> visibleExits = new ArrayList<Exit>();
         for( Exit e : exits )
             if( e.visible() )

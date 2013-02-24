@@ -102,7 +102,7 @@ public class BasicModelTests {
         exits.add( exit1 );
         exits.add( exit2 );
         mockery.checking( new Expectations() {{
-            oneOf( location ).exits();
+            oneOf( location ).visibleExits();
             will( returnValue( exits ) );
             ignoring( location );
         }});

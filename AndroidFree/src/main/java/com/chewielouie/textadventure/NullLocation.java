@@ -20,7 +20,7 @@ public class NullLocation implements ModelLocation {
         return "";
     }
 
-    public List<Exit> exits() {
+    public List<Exit> visibleExits() {
         return new ArrayList<Exit>();
     }
 

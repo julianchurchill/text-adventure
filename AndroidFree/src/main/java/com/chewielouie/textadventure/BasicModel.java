@@ -34,7 +34,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public List<Exit> currentLocationExits() {
-        return currentLocation().exits();
+        return currentLocation().visibleExits();
     }
 
     public List<Item> inventoryItems() {
