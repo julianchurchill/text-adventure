@@ -79,7 +79,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         BasicModel model = new BasicModel();
         UserInventory inventory = model;
         ItemFactory itemFactory =
-            new NormalItemFactory( new NormalItemActionFactory() );
+            new NormalItemFactory( new NormalItemActionFactory( model ) );
         new PlainTextModelPopulator( model,
                                      new LocationFactory( inventory, itemFactory ),
                                      inventory,

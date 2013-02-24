@@ -4,6 +4,11 @@ public class NormalItemActionFactory implements ItemActionFactory {
     private String changeItemDescriptionTag = "change item description:";
     private String changeItemNameTag = "change item name:";
     private String makeExitVisibleTag = "make exit visible:";
+    private TextAdventureModel model;
+
+    public NormalItemActionFactory( TextAdventureModel model ) {
+        this.model = model;
+    }
 
     public ItemAction create( String content, Item item ) {
         if( content.startsWith( changeItemDescriptionTag ) )
@@ -18,7 +23,7 @@ public class NormalItemActionFactory implements ItemActionFactory {
             return new MakeExitVisibleItemAction(
                        content.substring( makeExitVisibleTag.length() ),
                        item,
-                       null );
+                       model );
         return new NullItemAction();
     }
 }

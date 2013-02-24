@@ -8,7 +8,7 @@ public class NormalItemActionFactoryTests {
 
     @Test
     public void creates_ChangeItemDescriptionItemActions() {
-        NormalItemActionFactory factory = new NormalItemActionFactory();
+        NormalItemActionFactory factory = new NormalItemActionFactory( null );
 
         ItemAction action = factory.create(
                "change item description:new description",
@@ -19,7 +19,7 @@ public class NormalItemActionFactoryTests {
 
     @Test
     public void creates_ChangeItemNameItemActions() {
-        NormalItemActionFactory factory = new NormalItemActionFactory();
+        NormalItemActionFactory factory = new NormalItemActionFactory( null );
 
         ItemAction action = factory.create(
                "change item name:new name",
@@ -30,7 +30,7 @@ public class NormalItemActionFactoryTests {
 
     @Test
     public void creates_MakeExitVisibleItemActions() {
-        NormalItemActionFactory factory = new NormalItemActionFactory();
+        NormalItemActionFactory factory = new NormalItemActionFactory( null );
 
         ItemAction action = factory.create(
                "make exit visible:exit name",
