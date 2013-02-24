@@ -18,8 +18,6 @@ Backlog
       DONE - [TEST] 'item use action change description:new item description'
       DONE - [TEST] 'item use action change name:new item name'
       - [TEST] 'item use action:make exit visible:exit id'
-        - [TEST] MakeExitVisibleItemAction does what it says
-        - [TEST] LocationExit needs setVisible()
         - [TEST] BasicModel needs findExitByID()
         - [TEST] Exits need optional ids
         - [TEST] NormalItemActionFactory creates MakeExitVisibleItemActions with the model as a construction parameter

@@ -19,6 +19,15 @@ public class LocationExitTests {
     }
 
     @Test
+    public void exit_can_be_made_visible_again() {
+        LocationExit exit = new LocationExit( "", "" );
+        exit.setInvisible();
+        exit.setVisible();
+        assertTrue( exit.visible() );
+    }
+
+
+    @Test
     public void exit_has_a_default_direction_hint_of_dont_care() {
         LocationExit exit = new LocationExit( "label", "destination" );
 
