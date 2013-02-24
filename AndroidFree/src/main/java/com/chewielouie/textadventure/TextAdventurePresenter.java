@@ -39,6 +39,7 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
 
     public void enact( Action action ) {
         action.trigger();
+        view.showLocationExits( model.currentLocationExits() );
         if( action.userTextAvailable() ) {
             actionText += action.userText() + "\n\n";
             view.showMainText( model.currentLocationDescription()

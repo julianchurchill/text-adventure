@@ -184,6 +184,27 @@ public class TextAdventurePresenterTests {
     }
 
     @Test
+    public void upon_enact_presenter_refreshes_view_with_exits() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
+        final Action action = mockery.mock( Action.class );
+        final Exit exit = mockery.mock( Exit.class );
+        final List<Exit> exits = new ArrayList<Exit>();
+        exits.add( exit );
+        mockery.checking( new Expectations() {{
+            ignoring( action );
+            allowing( model ).currentLocationExits();
+            will( returnValue( exits ) );
+            ignoring( model );
+            oneOf( view ).showLocationExits( exits );
+            ignoring( view );
+        }});
+
+        p.enact( action );
+    }
+
+    @Test
     public void upon_enact_action_that_requires_further_action_pass_new_actions_to_view() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
