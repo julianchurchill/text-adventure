@@ -73,10 +73,10 @@ item use action:change item name:unlocked door
 item use action:make exit visible:clocktowerdoor
 LOCATION
 location id:groundfloorclocktower
-location description:You are inside the mighty clock tower. Sounds resonates around youas the clock ticks.
+location description:You are inside the mighty clock tower. Sounds resonates around you as the clock ticks.
 exit label:Clock tower door
 exit destination:clocktower
-exit direction hint:south
+exit direction hint:South
 LOCATION
 location id:eastloc
 location description:You are in the middle of a vast and endless ocean. Of despair.

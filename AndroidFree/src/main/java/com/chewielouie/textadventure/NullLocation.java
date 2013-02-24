@@ -24,6 +24,10 @@ public class NullLocation implements ModelLocation {
         return new ArrayList<Exit>();
     }
 
+    public List<Exit> exitsIncludingInvisibleOnes() {
+        return new ArrayList<Exit>();
+    }
+
     public String description() {
         return "";
     }

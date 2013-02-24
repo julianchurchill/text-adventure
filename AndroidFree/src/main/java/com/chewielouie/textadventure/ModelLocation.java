@@ -10,6 +10,7 @@ public interface ModelLocation {
     public String id();
     public String description();
     public List<Exit> exits();
+    public List<Exit> exitsIncludingInvisibleOnes();
     public List<Action> actions();
     public List<Item> items();
     public void removeItem( Item item );

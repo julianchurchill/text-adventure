@@ -130,7 +130,7 @@ public class BasicModelTests {
         final Exit exit = mockery.mock( Exit.class );
         exits.add( exit );
         mockery.checking( new Expectations() {{
-            oneOf( location ).exits();
+            oneOf( location ).exitsIncludingInvisibleOnes();
             will( returnValue( exits ) );
             ignoring( location );
             oneOf( exit ).id();
@@ -149,7 +149,7 @@ public class BasicModelTests {
         final List<Exit> exits = new ArrayList<Exit>();
         final Exit exit = mockery.mock( Exit.class );
         mockery.checking( new Expectations() {{
-            oneOf( location ).exits();
+            oneOf( location ).exitsIncludingInvisibleOnes();
             will( returnValue( exits ) );
             ignoring( location );
         }});

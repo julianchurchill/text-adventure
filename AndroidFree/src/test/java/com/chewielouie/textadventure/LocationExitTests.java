@@ -26,6 +26,18 @@ public class LocationExitTests {
         assertTrue( exit.visible() );
     }
 
+    @Test
+    public void exit_id_is_blank_by_default() {
+        LocationExit exit = new LocationExit( "", "" );
+        assertEquals( "", exit.id() );
+    }
+
+    @Test
+    public void exit_id_can_be_set() {
+        LocationExit exit = new LocationExit( "", "" );
+        exit.setID( "exit id" );
+        assertEquals( "exit id", exit.id() );
+    }
 
     @Test
     public void exit_has_a_default_direction_hint_of_dont_care() {
