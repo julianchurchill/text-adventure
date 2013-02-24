@@ -59,6 +59,10 @@ public class Location implements ModelLocation {
         return visibleExits;
     }
 
+    public List<Exit> exitsIncludingInvisibleOnes() {
+        return exits;
+    }
+
     public String description() {
         return description + itemsPostAmble();
     }
@@ -121,6 +125,7 @@ public class Location implements ModelLocation {
         private final String exitLabelTag = "exit label:";
         private final String exitDestinationTag = "exit destination:";
         private final String exitDirectionHintTag = "exit direction hint:";
+        private final String exitIsNotVisibleTag = "exit is not visible:";
         private final String itemTag = "ITEM\n";
         private String content;
         private int startOfLastFoundTag = -1;
@@ -166,12 +171,21 @@ public class Location implements ModelLocation {
 
         private void deserialiseExits() {
             String exitLabel;
-            while( (exitLabel=extractNewlineDelimitedValueFor( exitLabelTag )) != "" )
-                addExit( new LocationExit(
+            while( (exitLabel=extractNewlineDelimitedValueFor( exitLabelTag )) != "" ) {
+                LocationExit exit =  new LocationExit(
                     exitLabel,
                     extractNewlineDelimitedValueFor( exitDestinationTag ),
                     stringToDirectionHint(
-                        extractNewlineDelimitedValueFor( exitDirectionHintTag ) ) ) );
+                        extractNewlineDelimitedValueFor( exitDirectionHintTag ) ) );
+                int startOfTag = content.indexOf( exitIsNotVisibleTag, startOfLastFoundTag + 1 );
+                int nextExit = content.indexOf( exitLabelTag, startOfLastFoundTag + 1 );
+                if( startOfTag != -1 &&
+                    ( nextExit == -1 || nextExit > startOfTag ) ) {
+                    extractNewlineDelimitedValueFor( exitIsNotVisibleTag );
+                    exit.setInvisible();
+                }
+                addExit( exit );
+            }
         }
 
         private void deserialiseItems() {

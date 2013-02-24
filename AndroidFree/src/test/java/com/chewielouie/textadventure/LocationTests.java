@@ -342,6 +342,38 @@ public class LocationTests {
     }
 
     @Test
+    public void deserialise_exit_is_visible_by_default() {
+        Location l = createLocation();
+        l.deserialise( "location id:name\n" +
+                       "exit label:label\n" +
+                       "exit destination:destination" );
+        assertTrue( l.exits().get(0).visible() );
+    }
+
+    @Test
+    public void deserialise_extracts_exit_is_not_visible() {
+        Location l = createLocation();
+        l.deserialise( "location id:name\n" +
+                       "exit label:label\n" +
+                       "exit destination:destination\n" +
+                       "exit is not visible:" );
+        assertFalse( l.exitsIncludingInvisibleOnes().get(0).visible() );
+    }
+
+    @Test
+    public void deserialise_extracts_exit_is_not_visible_for_relevant_exit_only() {
+        Location l = createLocation();
+        l.deserialise( "location id:name\n" +
+                       "exit label:label1\n" +
+                       "exit destination:destination1\n" +
+                       "exit label:label2\n" +
+                       "exit destination:destination2\n" +
+                       "exit is not visible:" );
+        assertTrue( l.exitsIncludingInvisibleOnes().get(0).visible() );
+        assertFalse( l.exitsIncludingInvisibleOnes().get(1).visible() );
+    }
+
+    @Test
     public void deserialise_extracts_multiple_exits() {
         Location l = createLocation();
         l.deserialise( "location id:name\n" +

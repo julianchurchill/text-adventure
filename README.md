@@ -18,10 +18,9 @@ Backlog
       DONE - [TEST] 'item use action change description:new item description'
       DONE - [TEST] 'item use action change name:new item name'
       - [TEST] 'item use action:make exit visible:exit id'
-        - [TEST] Exits needs optional ids
-        - [TEST] 'exit is not visible:' - makes an exit not appear in exit list
         - [TEST] NormalItemActionFactory creates MakeExitVisibleItemActions
         - [TEST] MakeExitVisibleItemAction does what it says
+        - [TEST] Exits needs optional ids
 
 - [TEST] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
 

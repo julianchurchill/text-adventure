@@ -219,8 +219,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private void deliverExitActionFor( TextView dir_label ) {
         if( exits.size() > 0 )
-            userActionHandler.moveThroughExit(
-               directions_and_exits.get( dir_label ) );
+            if( directions_and_exits.get( dir_label ) != null )
+                userActionHandler.moveThroughExit(
+                   directions_and_exits.get( dir_label ) );
     }
 }
 

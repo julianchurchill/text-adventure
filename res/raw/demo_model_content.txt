@@ -50,6 +50,10 @@ location description:You stand before a mighty clock tower. The clock goes TICK!
 exit label:South
 exit destination:busytown
 exit direction hint:South
+exit label:Clock tower door
+exit destination:groundfloorclocktower
+exit direction hint:North
+exit is not visible:
 ITEM
 item name:Minute Hand of the Clock Tower
 item description:It is quite heavy, ornate and made of iron.
@@ -65,6 +69,12 @@ item successful use message:You hear a click and the door springs open.
 item use is not repeatable:
 item use action:change item description:It is unlocked. It appears to allow access to the clock tower itself.
 item use action:change item name:unlocked door
+LOCATION
+location id:groundfloorclocktower
+location description:You are inside the mighty clock tower. Sounds resonates around youas the clock ticks.
+exit label:Clock tower door
+exit destination:clocktower
+exit direction hint:south
 LOCATION
 location id:eastloc
 location description:You are in the middle of a vast and endless ocean. Of despair.
