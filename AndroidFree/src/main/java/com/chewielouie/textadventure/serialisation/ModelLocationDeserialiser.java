@@ -26,7 +26,7 @@ public class ModelLocationDeserialiser {
         this.itemFactory = itemFactory;
     }
 
-    public void parse( String content ) {
+    public void deserialise( String content ) {
         this.content = content;
         startOfLastFoundTag = -1;
 

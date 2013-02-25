@@ -23,7 +23,7 @@ public class ModelLocationDeserialiserTests {
             oneOf( location ).setId( "name" );
             ignoring( location );
         }});
-        d.parse( "location id:name\n" );
+        d.deserialise( "location id:name\n" );
     }
 
     @Test
@@ -36,7 +36,7 @@ public class ModelLocationDeserialiserTests {
                 "It is a bit untidy." );
             ignoring( location );
         }});
-        d.parse( "location id:name\n" +
+        d.deserialise( "location id:name\n" +
                  "location description:You are in a room.\n" +
                                       "It is a bit untidy." );
     }
@@ -51,7 +51,7 @@ public class ModelLocationDeserialiserTests {
                 "It is a bit untidy.\n" );
             ignoring( location );
         }});
-        d.parse( "location id:name\n" +
+        d.deserialise( "location id:name\n" +
                  "location description:You are in a room.\n" +
                                       "It is a bit untidy.\n" +
                  "exit label:label\n" );
@@ -67,7 +67,7 @@ public class ModelLocationDeserialiserTests {
                 "It is a bit untidy.\n" );
             ignoring( location );
         }});
-        d.parse( "location id:name\n" +
+        d.deserialise( "location id:name\n" +
                  "location description:You are in a room.\n" +
                                       "It is a bit untidy.\n" +
                  "ITEM\n" );
@@ -83,7 +83,7 @@ public class ModelLocationDeserialiserTests {
             //oneOf( location ).addExit( exit );
             //ignoring( location );
         //}});
-        //d.parse( "location id:name\n" +
+        //d.deserialise( "location id:name\n" +
                        //"exit label:label\n" +
                        //"exit destination:destination\n" +
                        //"exit direction hint:East" );
@@ -92,7 +92,7 @@ public class ModelLocationDeserialiserTests {
     //@Test
     //public void deserialise_exit_direction_hint_is_optional() {
         //ModelLocationDeserialiser d = createDeserialiser();
-        //d.parse( "location id:name\n" +
+        //d.deserialise( "location id:name\n" +
                        //"exit label:label\n" +
                        //"exit destination:destination" );
         //assertEquals( "label", l.visibleExits().get(0).label() );
@@ -103,7 +103,7 @@ public class ModelLocationDeserialiserTests {
     //@Test
     //public void deserialise_exit_is_visible_by_default() {
         //ModelLocationDeserialiser d = createDeserialiser();
-        //d.parse( "location id:name\n" +
+        //d.deserialise( "location id:name\n" +
                        //"exit label:label\n" +
                        //"exit destination:destination" );
         //assertTrue( l.visibleExits().get(0).visible() );
@@ -112,7 +112,7 @@ public class ModelLocationDeserialiserTests {
     //@Test
     //public void deserialise_extracts_exit_is_not_visible() {
         //ModelLocationDeserialiser d = createDeserialiser();
-        //d.parse( "location id:name\n" +
+        //d.deserialise( "location id:name\n" +
                        //"exit label:label\n" +
                        //"exit destination:destination\n" +
                        //"exit is not visible:" );
@@ -122,7 +122,7 @@ public class ModelLocationDeserialiserTests {
     //@Test
     //public void deserialise_extracts_exit_is_not_visible_for_relevant_exit_only() {
         //ModelLocationDeserialiser d = createDeserialiser();
-        //d.parse( "location id:name\n" +
+        //d.deserialise( "location id:name\n" +
                        //"exit label:label1\n" +
                        //"exit destination:destination1\n" +
                        //"exit label:label2\n" +
@@ -135,7 +135,7 @@ public class ModelLocationDeserialiserTests {
     //@Test
     //public void deserialise_extracts_exit_id() {
         //ModelLocationDeserialiser d = createDeserialiser();
-        //d.parse( "location id:name\n" +
+        //d.deserialise( "location id:name\n" +
                        //"exit label:label\n" +
                        //"exit destination:destination\n" +
                        //"exit id:exit id" );
@@ -145,7 +145,7 @@ public class ModelLocationDeserialiserTests {
     //@Test
     //public void deserialise_extracts_multiple_exits() {
         //ModelLocationDeserialiser d = createDeserialiser();
-        //d.parse( "location id:name\n" +
+        //d.deserialise( "location id:name\n" +
                        //"exit label:label1\n" +
                        //"exit destination:destination\n" +
                        //"exit direction hint:East\n" +
@@ -175,7 +175,7 @@ public class ModelLocationDeserialiserTests {
             ignoring( location );
         }});
 
-        d.parse( "location id:name\n" +
+        d.deserialise( "location id:name\n" +
                        "ITEM\nitem name:item content\n" +
                        "and more item content" );
     }
@@ -204,7 +204,7 @@ public class ModelLocationDeserialiserTests {
             ignoring( location );
         }});
 
-        d.parse( "location id:name\n" +
+        d.deserialise( "location id:name\n" +
                        "ITEM\nitem 1 content\n" +
                        "and more item content\n" +
                        "ITEM\nitem 2 content\n" +
@@ -233,7 +233,7 @@ public class ModelLocationDeserialiserTests {
             ignoring( location );
         }});
 
-        d.parse( "location id:name\n" +
+        d.deserialise( "location id:name\n" +
                        "ITEM\nitem 1 content\n" +
                        "and more item content\n" +
                        "ITEM\nitem 2 content\n" +

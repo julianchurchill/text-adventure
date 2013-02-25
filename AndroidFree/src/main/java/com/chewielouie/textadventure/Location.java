@@ -126,7 +126,7 @@ public class Location implements ModelLocation {
     }
 
     public void deserialise( String content ) {
-        deserialiser.parse( content );
+        deserialiser.deserialise( content );
     }
 }
 

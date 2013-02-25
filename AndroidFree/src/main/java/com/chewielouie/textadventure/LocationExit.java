@@ -7,6 +7,9 @@ public class LocationExit implements Exit {
     private boolean visible = true;
     private String id = "";
 
+    public LocationExit() {
+    }
+
     public LocationExit( String label ) {
         this.label = label;
     }
