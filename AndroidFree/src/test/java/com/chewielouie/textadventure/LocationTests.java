@@ -272,52 +272,8 @@ public class LocationTests {
                 fail("ExamineAnItem action is not needed by this location as it has no items!");
     }
 
-    @Test
-    public void deserialise_finds_location_id() {
-        Location l = createLocation();
-        l.deserialise( "location id:name" );
-        assertEquals( "name", l.id() );
-    }
-
-    @Test
-    public void deserialise_strips_trailing_newlines_from_location_id() {
-        Location l = createLocation();
-        l.deserialise( "location id:name\n" );
-        assertEquals( "name", l.id() );
-    }
-
-    @Test
-    public void deserialise_finds_location_description() {
-        Location l = createLocation();
-        l.deserialise( "location id:name\n" +
-                       "location description:You are in a room.\n" +
-                       "It is a bit untidy." );
-        assertEquals( "You are in a room.\n" +
-                      "It is a bit untidy.", l.description() );
-    }
-
-    @Test
-    public void deserialise_extracts_location_description_up_to_exit_label() {
-        Location l = createLocation();
-        l.deserialise( "location id:name\n" +
-                       "location description:You are in a room.\n" +
-                       "It is a bit untidy.\n" +
-                       "exit label:label\n" );
-        assertEquals( "You are in a room.\n" +
-                      "It is a bit untidy.\n", l.description() );
-    }
-
-    @Test
-    public void deserialise_extracts_location_description_up_to_item() {
-        Location l = createLocation();
-        l.deserialise( "location id:name\n" +
-                       "location description:You are in a room.\n" +
-                       "It is a bit untidy.\n" +
-                       "ITEM\n" );
-        assertEquals( "You are in a room.\n" +
-                      "It is a bit untidy.\n", l.description() );
-    }
-
+    // these Exit tests should be removed once the ModelLocationDeserialiser
+    // uses a testable exit factory
     @Test
     public void deserialise_extracts_exit() {
         Location l = createLocation();
@@ -396,80 +352,6 @@ public class LocationTests {
         assertEquals( "label2", l.visibleExits().get(1).label() );
         assertEquals( "destination", l.visibleExits().get(1).destination() );
         assertEquals( Exit.DirectionHint.North, l.visibleExits().get(1).directionHint() );
-    }
-
-    @Test
-    public void deserialise_extracts_item() {
-        final Item item = mockery.mock( Item.class );
-        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
-        Location l = new Location( "", "", null, itemFactory );
-
-        mockery.checking( new Expectations() {{
-            allowing( itemFactory ).create();
-            will( returnValue( item ) );
-            ignoring( itemFactory );
-            oneOf( item ).deserialise( "item name:item content\n" +
-                                       "and more item content" );
-            ignoring( item );
-        }});
-
-        l.deserialise( "location id:name\n" +
-                       "ITEM\nitem name:item content\n" +
-                       "and more item content" );
-    }
-
-    @Test
-    public void deserialise_extracts_multiple_items() {
-        final Item item1 = mockery.mock( Item.class, "item1" );
-        final Item item2 = mockery.mock( Item.class, "item2" );
-        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
-        Location l = new Location( "", "", null, itemFactory );
-
-        mockery.checking( new Expectations() {{
-            atLeast( 1 ).of( itemFactory ).create();
-                will( onConsecutiveCalls(
-                      returnValue( item1 ),
-                      returnValue( item2 ) ) );
-            ignoring( itemFactory );
-            oneOf( item1 ).deserialise( "item 1 content\n" +
-                                        "and more item content\n" );
-            ignoring( item1 );
-            oneOf( item2 ).deserialise( "item 2 content\n" +
-                                        "and more item content\n" );
-            ignoring( item2 );
-        }});
-
-        l.deserialise( "location id:name\n" +
-                       "ITEM\nitem 1 content\n" +
-                       "and more item content\n" +
-                       "ITEM\nitem 2 content\n" +
-                       "and more item content\n" );
-    }
-
-    @Test
-    public void deserialise_adds_extracted_items_to_location() {
-        final Item item1 = mockery.mock( Item.class, "item1" );
-        final Item item2 = mockery.mock( Item.class, "item2" );
-        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
-        Location l = new Location( "", "", null, itemFactory );
-
-        mockery.checking( new Expectations() {{
-            atLeast( 1 ).of( itemFactory ).create();
-                will( onConsecutiveCalls(
-                      returnValue( item1 ),
-                      returnValue( item2 ) ) );
-            ignoring( itemFactory );
-            ignoring( item1 );
-            ignoring( item2 );
-        }});
-
-        l.deserialise( "location id:name\n" +
-                       "ITEM\nitem 1 content\n" +
-                       "and more item content\n" +
-                       "ITEM\nitem 2 content\n" +
-                       "and more item content\n" );
-        assertEquals( item1, l.items().get(0) );
-        assertEquals( item2, l.items().get(1) );
     }
 }
 
