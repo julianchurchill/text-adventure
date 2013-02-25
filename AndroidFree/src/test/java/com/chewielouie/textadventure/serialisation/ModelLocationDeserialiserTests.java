@@ -18,7 +18,7 @@ public class ModelLocationDeserialiserTests {
     @Test
     public void deserialise_extracts_id_after_stripping_trailing_newlines() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
-        ModelLocationDeserialiser d = new ModelLocationDeserialiser( location, null );
+        ModelLocationDeserialiser d = new ModelLocationDeserialiser( location, null, null );
         mockery.checking( new Expectations() {{
             oneOf( location ).setId( "name" );
             ignoring( location );
@@ -29,7 +29,7 @@ public class ModelLocationDeserialiserTests {
     @Test
     public void deserialise_finds_location_description() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
-        ModelLocationDeserialiser d = new ModelLocationDeserialiser( location, null );
+        ModelLocationDeserialiser d = new ModelLocationDeserialiser( location, null, null );
         mockery.checking( new Expectations() {{
             oneOf( location ).setLocationDescription(
                 "You are in a room.\n" +
@@ -44,7 +44,7 @@ public class ModelLocationDeserialiserTests {
     @Test
     public void deserialise_extracts_location_description_up_to_exit_label() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
-        ModelLocationDeserialiser d = new ModelLocationDeserialiser( location, null );
+        ModelLocationDeserialiser d = new ModelLocationDeserialiser( location, null, null );
         mockery.checking( new Expectations() {{
             oneOf( location ).setLocationDescription(
                 "You are in a room.\n" +
@@ -60,7 +60,7 @@ public class ModelLocationDeserialiserTests {
     @Test
     public void deserialise_extracts_location_description_up_to_item() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
-        ModelLocationDeserialiser d = new ModelLocationDeserialiser( location, null );
+        ModelLocationDeserialiser d = new ModelLocationDeserialiser( location, null, null );
         mockery.checking( new Expectations() {{
             oneOf( location ).setLocationDescription(
                 "You are in a room.\n" +
@@ -163,7 +163,7 @@ public class ModelLocationDeserialiserTests {
         final Item item = mockery.mock( Item.class );
         final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
         ModelLocationDeserialiser d =
-            new ModelLocationDeserialiser( location, itemFactory );
+            new ModelLocationDeserialiser( location, itemFactory, null );
 
         mockery.checking( new Expectations() {{
             allowing( itemFactory ).create();
@@ -187,7 +187,7 @@ public class ModelLocationDeserialiserTests {
         final Item item2 = mockery.mock( Item.class, "item2" );
         final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
         ModelLocationDeserialiser d =
-            new ModelLocationDeserialiser( location, itemFactory );
+            new ModelLocationDeserialiser( location, itemFactory, null );
 
         mockery.checking( new Expectations() {{
             atLeast( 1 ).of( itemFactory ).create();
@@ -218,7 +218,7 @@ public class ModelLocationDeserialiserTests {
         final Item item2 = mockery.mock( Item.class, "item2" );
         final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
         ModelLocationDeserialiser d =
-            new ModelLocationDeserialiser( location, itemFactory );
+            new ModelLocationDeserialiser( location, itemFactory, null );
 
         mockery.checking( new Expectations() {{
             atLeast( 1 ).of( itemFactory ).create();

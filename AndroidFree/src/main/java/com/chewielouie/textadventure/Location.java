@@ -22,7 +22,8 @@ public class Location implements ModelLocation {
         this.description = description;
         this.inventory = inventory;
         this.itemFactory = itemFactory;
-        deserialiser = new ModelLocationDeserialiser( this, itemFactory );
+        deserialiser = new ModelLocationDeserialiser( this, itemFactory,
+               new LocationExitFactory() );
     }
 
     public UserInventory inventory() {

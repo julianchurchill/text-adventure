@@ -1,6 +1,7 @@
 package com.chewielouie.textadventure.serialisation;
 
 import com.chewielouie.textadventure.Exit;
+import com.chewielouie.textadventure.ExitFactory;
 import com.chewielouie.textadventure.Item;
 import com.chewielouie.textadventure.ItemFactory;
 import com.chewielouie.textadventure.ModelLocation;
@@ -19,11 +20,13 @@ public class ModelLocationDeserialiser {
     private int startOfLastFoundTag = -1;
     private ModelLocation location;
     private ItemFactory itemFactory;
+    private ExitFactory exitFactory;
 
     public ModelLocationDeserialiser( ModelLocation location,
-           ItemFactory itemFactory ) {
+           ItemFactory itemFactory, ExitFactory exitFactory ) {
         this.location = location;
         this.itemFactory = itemFactory;
+        this.exitFactory = exitFactory;
     }
 
     public void deserialise( String content ) {
