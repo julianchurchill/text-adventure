@@ -44,7 +44,7 @@ public class ModelLocationDeserialiserTests {
     }
 
     @Test
-    public void deserialise_extracts_location_description_up_to_exit_label() {
+    public void deserialise_extracts_location_description_up_to_exit() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
         ModelLocationDeserialiser d = new ModelLocationDeserialiser( location, null, null );
         mockery.checking( new Expectations() {{
@@ -56,7 +56,7 @@ public class ModelLocationDeserialiserTests {
         d.deserialise( "location id:name\n" +
                  "location description:You are in a room.\n" +
                                       "It is a bit untidy.\n" +
-                 "exit label:label\n" );
+                 "EXIT\n" );
     }
 
     @Test
@@ -98,65 +98,65 @@ public class ModelLocationDeserialiserTests {
                        "some more content" );
     }
 
-    //@Test
-    //public void deserialise_extracts_multiple_exits() {
-        //final ModelLocation location = mockery.mock( ModelLocation.class );
-        //final Exit exit1 = mockery.mock( Exit.class, "exit1" );
-        //final Exit exit2 = mockery.mock( Exit.class, "exit2" );
-        //final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
-        //ModelLocationDeserialiser d =
-            //new ModelLocationDeserialiser( location, null, exitFactory );
+    @Test
+    public void deserialise_extracts_multiple_exits() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        final Exit exit2 = mockery.mock( Exit.class, "exit2" );
+        final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
+        ModelLocationDeserialiser d =
+            new ModelLocationDeserialiser( location, null, exitFactory );
 
-        //mockery.checking( new Expectations() {{
-            //atLeast( 1 ).of( exitFactory ).create();
-                //will( onConsecutiveCalls(
-                      //returnValue( exit1 ),
-                      //returnValue( exit2 ) ) );
-            //ignoring( exitFactory );
-            //oneOf( exit1 ).deserialise( "exit 1 content\n" +
-                                       //"some more content" );
-            //ignoring( exit1 );
-            //oneOf( exit2 ).deserialise( "exit 2 content\n" +
-                                       //"some more content" );
-            //ignoring( exit2 );
-            //ignoring( location );
-        //}});
+        mockery.checking( new Expectations() {{
+            atLeast( 1 ).of( exitFactory ).create();
+                will( onConsecutiveCalls(
+                      returnValue( exit1 ),
+                      returnValue( exit2 ) ) );
+            ignoring( exitFactory );
+            oneOf( exit1 ).deserialise( "exit 1 content\n" +
+                                       "some more content" );
+            ignoring( exit1 );
+            oneOf( exit2 ).deserialise( "exit 2 content\n" +
+                                       "some more content" );
+            ignoring( exit2 );
+            ignoring( location );
+        }});
 
-        //d.deserialise( "location id:name\n" +
-                       //"EXIT\nexit 1 content\n" +
-                       //"some more content" +
-                       //"EXIT\nexit 2 content\n" +
-                       //"some more content" );
-    //}
+        d.deserialise( "location id:name\n" +
+                       "EXIT\nexit 1 content\n" +
+                       "some more content" +
+                       "EXIT\nexit 2 content\n" +
+                       "some more content" );
+    }
 
-    //@Test
-    //public void deserialise_adds_extracted_exits_to_location() {
-        //final ModelLocation location = mockery.mock( ModelLocation.class );
-        //final Exit exit1 = mockery.mock( Exit.class, "exit1" );
-        //final Exit exit2 = mockery.mock( Exit.class, "exit2" );
-        //final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
-        //ModelLocationDeserialiser d =
-            //new ModelLocationDeserialiser( location, null, exitFactory );
+    @Test
+    public void deserialise_adds_extracted_exits_to_location() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final Exit exit1 = mockery.mock( Exit.class, "exit1" );
+        final Exit exit2 = mockery.mock( Exit.class, "exit2" );
+        final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
+        ModelLocationDeserialiser d =
+            new ModelLocationDeserialiser( location, null, exitFactory );
 
-        //mockery.checking( new Expectations() {{
-            //atLeast( 1 ).of( exitFactory ).create();
-                //will( onConsecutiveCalls(
-                      //returnValue( exit1 ),
-                      //returnValue( exit2 ) ) );
-            //ignoring( exitFactory );
-            //ignoring( exit1 );
-            //ignoring( exit2 );
-            //oneOf( location ).addExit( exit1 );
-            //oneOf( location ).addExit( exit2 );
-            //ignoring( location );
-        //}});
+        mockery.checking( new Expectations() {{
+            atLeast( 1 ).of( exitFactory ).create();
+                will( onConsecutiveCalls(
+                      returnValue( exit1 ),
+                      returnValue( exit2 ) ) );
+            ignoring( exitFactory );
+            ignoring( exit1 );
+            ignoring( exit2 );
+            oneOf( location ).addExit( exit1 );
+            oneOf( location ).addExit( exit2 );
+            ignoring( location );
+        }});
 
-        //d.deserialise( "location id:name\n" +
-                       //"EXIT\nexit 1 content\n" +
-                       //"and more exit content\n" +
-                       //"EXIT\nexit 2 content\n" +
-                       //"and more exit content\n" );
-    //}
+        d.deserialise( "location id:name\n" +
+                       "EXIT\nexit 1 content\n" +
+                       "and more exit content\n" +
+                       "EXIT\nexit 2 content\n" +
+                       "and more exit content\n" );
+    }
 
     @Test
     public void deserialise_extracts_item() {

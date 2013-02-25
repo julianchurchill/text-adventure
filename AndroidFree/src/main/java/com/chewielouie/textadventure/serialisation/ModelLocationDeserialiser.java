@@ -60,7 +60,7 @@ public class ModelLocationDeserialiser {
     }
 
     private int findEndOfDescription() {
-        int endOfDescription = content.indexOf( exitLabelTag );
+        int endOfDescription = content.indexOf( exitTag );
         if( endOfDescription == -1 ) {
             endOfDescription = content.indexOf( itemTag );
             if( endOfDescription == -1 )
