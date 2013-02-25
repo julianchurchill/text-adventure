@@ -9,7 +9,8 @@ Backlog
 =======
 
 - [REFACTOR] Exits should deserialise themselves - not Location
-   - Deserialiser needs to be initialized with a LocationExitFactory
+   - LocationExit needs to deserialise itself
+   - Deserialiser should call LocationExit.deserialise
    - Deserialiser should use the LocationExitFactory
 - [REFACTOR] Deserialisation should be pulled out into seperate classes - ModelDeserialiser, ModelLocationDeserialiser, ItemDeserialiser - all coordinate with a PlainTextDeserialiser used by the PlainTextModelPopulator
 - [REFACTOR] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
