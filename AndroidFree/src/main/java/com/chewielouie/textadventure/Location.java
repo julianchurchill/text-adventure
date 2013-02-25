@@ -13,7 +13,8 @@ public class Location implements ModelLocation {
     private List<Item> items = new ArrayList<Item>();
     private UserInventory inventory;
     private ItemFactory itemFactory = null;
-    private Deserialiser deserialiser = new Deserialiser();
+    private ModelLocationDeserialiser deserialiser =
+        new ModelLocationDeserialiser( this );
 
     public Location( String locationId, String description,
             UserInventory inventory, ItemFactory itemFactory ) {
@@ -51,6 +52,10 @@ public class Location implements ModelLocation {
         return this.id;
     }
 
+    public void setId( String id ) {
+        this.id = id;
+    }
+
     public List<Exit> visibleExits() {
         List<Exit> visibleExits = new ArrayList<Exit>();
         for( Exit e : exits )
@@ -65,6 +70,10 @@ public class Location implements ModelLocation {
 
     public String description() {
         return description + itemsPostAmble();
+    }
+
+    public void setLocationDescription( String description ) {
+        this.description = description;
     }
 
     private String itemsPostAmble() {
@@ -119,7 +128,7 @@ public class Location implements ModelLocation {
         deserialiser.parse( content );
     }
 
-    class Deserialiser {
+    class ModelLocationDeserialiser {
         private final String locationIDTag = "location id:";
         private final String locationDescriptionTag = "location description:";
         private final String exitLabelTag = "exit label:";
@@ -130,12 +139,17 @@ public class Location implements ModelLocation {
         private final String itemTag = "ITEM\n";
         private String content;
         private int startOfLastFoundTag = -1;
+        private ModelLocation location;
+
+        public ModelLocationDeserialiser( ModelLocation location ) {
+            this.location = location;
+        }
 
         public void parse( String content ) {
             this.content = content;
             startOfLastFoundTag = -1;
 
-            id = extractNewlineDelimitedValueFor( locationIDTag );
+            location.setId( extractNewlineDelimitedValueFor( locationIDTag ) );
             deserialiseDescription();
             deserialiseExits();
             deserialiseItems();
@@ -155,9 +169,9 @@ public class Location implements ModelLocation {
         private void deserialiseDescription() {
             int startOfDescription = content.indexOf( locationDescriptionTag );
             if( startOfDescription != -1 )
-                description = content.substring(
+                location.setLocationDescription( content.substring(
                         startOfDescription + locationDescriptionTag.length(),
-                        findEndOfDescription() );
+                        findEndOfDescription() ) );
         }
 
         private int findEndOfDescription() {
@@ -182,7 +196,7 @@ public class Location implements ModelLocation {
                 if( exitNotVisibleIsSpecifiedDiscardIt() )
                     exit.setInvisible();
                 exit.setID( extractExitID() );
-                addExit( exit );
+                location.addExit( exit );
             }
         }
 
@@ -222,7 +236,7 @@ public class Location implements ModelLocation {
                     Item item = itemFactory.create();
                     item.deserialise(
                       content.substring( startOfItem + itemTag.length(), endOfItem ) );
-                    addItem( item );
+                    location.addItem( item );
                     startOfLastFoundTag = startOfItem;
                 }
             }

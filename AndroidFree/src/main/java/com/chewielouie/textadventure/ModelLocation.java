@@ -8,11 +8,14 @@ public interface ModelLocation {
     public boolean exitable( Exit exit );
     public String exitDestinationFor( Exit exit );
     public String id();
+    public void setId( String id );
     public String description();
+    public void setLocationDescription( String description );
     public List<Exit> visibleExits();
     public List<Exit> exitsIncludingInvisibleOnes();
     public List<Action> actions();
     public List<Item> items();
+    public void addItem( Item item );
     public void removeItem( Item item );
     public void deserialise( String content );
 }

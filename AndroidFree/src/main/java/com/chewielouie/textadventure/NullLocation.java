@@ -20,6 +20,9 @@ public class NullLocation implements ModelLocation {
         return "";
     }
 
+    public void setId( String id ) {
+    }
+
     public List<Exit> visibleExits() {
         return new ArrayList<Exit>();
     }
@@ -32,8 +35,14 @@ public class NullLocation implements ModelLocation {
         return "";
     }
 
+    public void setLocationDescription( String description ) {
+    }
+
     public List<Action> actions() {
         return new ArrayList<Action>();
+    }
+
+    public void addItem( Item item ) {
     }
 
     public void removeItem( Item item ) {
