@@ -6,6 +6,8 @@ import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import com.chewielouie.textadventure.Exit;
+import com.chewielouie.textadventure.ExitFactory;
 import com.chewielouie.textadventure.Item;
 import com.chewielouie.textadventure.ItemFactory;
 import com.chewielouie.textadventure.ModelLocation;
@@ -73,28 +75,28 @@ public class ModelLocationDeserialiserTests {
                  "ITEM\n" );
     }
 
-    //@Test
-    //public void deserialise_extracts_exit() {
-        //final ModelLocation location = mockery.mock( ModelLocation.class );
-        //final Exit exit = mockery.mock( Exit.class );
-        //final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
-        //ModelLocationDeserialiser d =
-            //new ModelLocationDeserialiser( location, null, exitFactory );
+    @Test
+    public void deserialise_extracts_exit() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final Exit exit = mockery.mock( Exit.class );
+        final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
+        ModelLocationDeserialiser d =
+            new ModelLocationDeserialiser( location, null, exitFactory );
 
-        //mockery.checking( new Expectations() {{
-            //allowing( exitFactory ).create();
-            //will( returnValue( exit ) );
-            //ignoring( exitFactory );
-            //oneOf( exit ).deserialise( "exit 1\n" +
-                                       //"some more content" );
-            //ignoring( exit );
-            //ignoring( location );
-        //}});
+        mockery.checking( new Expectations() {{
+            allowing( exitFactory ).create();
+            will( returnValue( exit ) );
+            ignoring( exitFactory );
+            oneOf( exit ).deserialise( "exit 1\n" +
+                                       "some more content" );
+            ignoring( exit );
+            ignoring( location );
+        }});
 
-        //d.deserialise( "location id:name\n" +
-                       //"EXIT\nexit 1\n" +
-                       //"some more content" );
-    //}
+        d.deserialise( "location id:name\n" +
+                       "EXIT\nexit 1\n" +
+                       "some more content" );
+    }
 
     //@Test
     //public void deserialise_extracts_multiple_exits() {

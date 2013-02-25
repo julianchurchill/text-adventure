@@ -8,12 +8,15 @@ item description:It's got a lot of tools on it. You feel like a man of the wilde
 LOCATION
 location id:startloc
 location description:You are in an empty wasteland that stretches for miles and miles.
+EXIT
 exit label:North
 exit destination:busytown
 exit direction hint:North
+EXIT
 exit label:East
 exit destination:eastloc
 exit direction hint:East
+EXIT
 exit label:West
 exit destination:westloc
 exit direction hint:West
@@ -33,9 +36,11 @@ item countable noun prefix:some
 LOCATION
 location id:busytown
 location description:You are in a busy town. There is a clock tower to the north.
+EXIT
 exit label:North
 exit destination:clocktower
 exit direction hint:North
+EXIT
 exit label:South
 exit destination:startloc
 exit direction hint:South
@@ -47,9 +52,11 @@ item mid sentence cased name:Dust of the Ancients
 LOCATION
 location id:clocktower
 location description:You stand before a mighty clock tower. The clock goes TICK!
+EXIT
 exit label:South
 exit destination:busytown
 exit direction hint:South
+EXIT
 exit label:Clock tower door
 exit destination:groundfloorclocktower
 exit direction hint:North
@@ -74,18 +81,21 @@ item use action:make exit visible:clocktowerdoor
 LOCATION
 location id:groundfloorclocktower
 location description:You are inside the mighty clock tower. Sounds resonates around you as the clock ticks.
+EXIT
 exit label:Clock tower door
 exit destination:clocktower
 exit direction hint:South
 LOCATION
 location id:eastloc
 location description:You are in the middle of a vast and endless ocean. Of despair.
+EXIT
 exit label:West
 exit destination:startloc
 exit direction hint:West
 LOCATION
 location id:westloc
 location description:You are in the precise centre of the universe. You are disappointed to find there is nothing here.
+EXIT
 exit label:East
 exit destination:startloc
 exit direction hint:East

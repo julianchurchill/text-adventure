@@ -9,5 +9,6 @@ public interface Exit {
     public void setVisible();
     public String id();
     public void setID( String id );
+    public void deserialise( String content );
 }
 

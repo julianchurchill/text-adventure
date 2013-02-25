@@ -15,6 +15,7 @@ public class ModelLocationDeserialiser {
     private final String exitDirectionHintTag = "exit direction hint:";
     private final String exitIsNotVisibleTag = "exit is not visible:";
     private final String exitIDTag = "exit id:";
+    private final String exitTag = "EXIT\n";
     private final String itemTag = "ITEM\n";
     private String content;
     private int startOfLastFoundTag = -1;
@@ -69,19 +70,26 @@ public class ModelLocationDeserialiser {
     }
 
     private void deserialiseExits() {
-        String exitLabel;
-        while( (exitLabel=extractNewlineDelimitedValueFor( exitLabelTag )) != "" ) {
-            LocationExit exit =  new LocationExit(
-                    exitLabel,
-                    extractNewlineDelimitedValueFor( exitDestinationTag ),
-                    stringToDirectionHint(
-                        extractNewlineDelimitedValueFor( exitDirectionHintTag ) ) );
-
-            if( exitNotVisibleIsSpecifiedDiscardIt() )
-                exit.setInvisible();
-            exit.setID( extractExitID() );
-            location.addExit( exit );
+        if( exitFactory != null ) {
+            while( exitAvailable() ) {
+                int startOfExit = content.indexOf( exitTag, startOfLastFoundTag+1 );
+                int endOfExit = content.indexOf( exitTag, startOfExit+1 );
+                if( endOfExit == -1 ) {
+                    endOfExit = content.indexOf( locationIDTag, startOfExit+1 );
+                    if( endOfExit == -1 )
+                        endOfExit = content.length();
+                }
+                Exit exit = exitFactory.create();
+                exit.deserialise(
+                    content.substring( startOfExit + exitTag.length(), endOfExit ) );
+                location.addExit( exit );
+                startOfLastFoundTag = startOfExit;
+            }
         }
+    }
+
+    private boolean exitAvailable() {
+        return content.indexOf( exitTag, startOfLastFoundTag+1 ) != -1;
     }
 
     private boolean exitNotVisibleIsSpecifiedDiscardIt() {
