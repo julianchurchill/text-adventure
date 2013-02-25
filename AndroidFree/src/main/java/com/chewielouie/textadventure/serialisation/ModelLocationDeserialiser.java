@@ -10,11 +10,6 @@ import com.chewielouie.textadventure.LocationExit;
 public class ModelLocationDeserialiser {
     private final String locationIDTag = "location id:";
     private final String locationDescriptionTag = "location description:";
-    private final String exitLabelTag = "exit label:";
-    private final String exitDestinationTag = "exit destination:";
-    private final String exitDirectionHintTag = "exit direction hint:";
-    private final String exitIsNotVisibleTag = "exit is not visible:";
-    private final String exitIDTag = "exit id:";
     private final String exitTag = "EXIT\n";
     private final String itemTag = "ITEM\n";
     private String content;
@@ -71,83 +66,50 @@ public class ModelLocationDeserialiser {
 
     private void deserialiseExits() {
         if( exitFactory != null ) {
-            while( exitAvailable() ) {
-                int startOfExit = content.indexOf( exitTag, startOfLastFoundTag+1 );
-                int endOfExit = content.indexOf( exitTag, startOfExit+1 );
-                if( endOfExit == -1 ) {
-                    endOfExit = content.indexOf( locationIDTag, startOfExit+1 );
-                    if( endOfExit == -1 )
-                        endOfExit = content.length();
-                }
+            while( tagAvailable( exitTag ) ) {
+                int startOfTag = findStartOfTag( exitTag );
                 Exit exit = exitFactory.create();
-                exit.deserialise(
-                    content.substring( startOfExit + exitTag.length(), endOfExit ) );
+                exit.deserialise( extractContentForTag( exitTag ) );
                 location.addExit( exit );
-                startOfLastFoundTag = startOfExit;
+                startOfLastFoundTag = startOfTag;
             }
         }
     }
 
-    private boolean exitAvailable() {
-        return content.indexOf( exitTag, startOfLastFoundTag+1 ) != -1;
+    private String extractContentForTag( String tag ) {
+        int startOfTag = findStartOfTag( tag );
+        int endOfTag = findEndOfTag( tag, startOfTag );
+        return content.substring( startOfTag + tag.length(), endOfTag );
     }
 
-    private boolean exitNotVisibleIsSpecifiedDiscardIt() {
-        int startOfTag = content.indexOf( exitIsNotVisibleTag, startOfLastFoundTag + 1 );
-        if( indexIsInCurrentExit( startOfTag ) ) {
-            extractNewlineDelimitedValueFor( exitIsNotVisibleTag );
-            return true;
+    private boolean tagAvailable( String tag ) {
+        return content.indexOf( tag, startOfLastFoundTag+1 ) != -1;
+    }
+
+    private int findStartOfTag( String tag ) {
+        return content.indexOf( tag, startOfLastFoundTag+1 );
+    }
+
+    private int findEndOfTag( String tag, int startOfTag ) {
+        int endOfTag = content.indexOf( tag, startOfTag+1 );
+        if( endOfTag == -1 ) {
+            endOfTag = content.indexOf( locationIDTag, startOfTag+1 );
+            if( endOfTag == -1 )
+                endOfTag = content.length();
         }
-        return false;
-    }
-
-    private String extractExitID() {
-        int startOfTag = content.indexOf( exitIDTag, startOfLastFoundTag + 1 );
-        if( indexIsInCurrentExit( startOfTag ) )
-            return extractNewlineDelimitedValueFor( exitIDTag );
-        return "";
-    }
-
-    private boolean indexIsInCurrentExit( int index ) {
-        int nextExit = content.indexOf( exitLabelTag, startOfLastFoundTag + 1 );
-        if( index != -1 && ( nextExit == -1 || nextExit > index ) )
-            return true;
-        return false;
+        return endOfTag;
     }
 
     private void deserialiseItems() {
         if( itemFactory != null ) {
-            while( itemAvailable() ) {
-                int startOfItem = content.indexOf( itemTag, startOfLastFoundTag+1 );
-                int endOfItem = content.indexOf( itemTag, startOfItem+1 );
-                if( endOfItem == -1 ) {
-                    endOfItem = content.indexOf( locationIDTag, startOfItem+1 );
-                    if( endOfItem == -1 )
-                        endOfItem = content.length();
-                }
+            while( tagAvailable( itemTag ) ) {
+                int startOfTag = findStartOfTag( itemTag );
                 Item item = itemFactory.create();
-                item.deserialise(
-                        content.substring( startOfItem + itemTag.length(), endOfItem ) );
+                item.deserialise( extractContentForTag( itemTag ) );
                 location.addItem( item );
-                startOfLastFoundTag = startOfItem;
+                startOfLastFoundTag = startOfTag;
             }
         }
-    }
-
-    private boolean itemAvailable() {
-        return content.indexOf( itemTag, startOfLastFoundTag+1 ) != -1;
-    }
-
-    private Exit.DirectionHint stringToDirectionHint( String hint ) {
-        if( hint.equals( "North" ) )
-            return Exit.DirectionHint.North;
-        if( hint.equals( "South" ) )
-            return Exit.DirectionHint.South;
-        if( hint.equals( "East" ) )
-            return Exit.DirectionHint.East;
-        if( hint.equals( "West" ) )
-            return Exit.DirectionHint.West;
-        return Exit.DirectionHint.DontCare;
     }
 }
 
