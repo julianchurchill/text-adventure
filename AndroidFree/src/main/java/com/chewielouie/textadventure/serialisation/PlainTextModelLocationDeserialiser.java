@@ -5,9 +5,8 @@ import com.chewielouie.textadventure.ExitFactory;
 import com.chewielouie.textadventure.Item;
 import com.chewielouie.textadventure.ItemFactory;
 import com.chewielouie.textadventure.ModelLocation;
-import com.chewielouie.textadventure.LocationExit;
 
-public class ModelLocationDeserialiser {
+public class PlainTextModelLocationDeserialiser {
     private final String locationIDTag = "location id:";
     private final String locationDescriptionTag = "location description:";
     private final String exitTag = "EXIT\n";
@@ -18,7 +17,7 @@ public class ModelLocationDeserialiser {
     private ItemFactory itemFactory;
     private ExitFactory exitFactory;
 
-    public ModelLocationDeserialiser( ItemFactory itemFactory,
+    public PlainTextModelLocationDeserialiser( ItemFactory itemFactory,
                                       ExitFactory exitFactory ) {
         this.itemFactory = itemFactory;
         this.exitFactory = exitFactory;

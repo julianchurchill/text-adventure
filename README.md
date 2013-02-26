@@ -9,7 +9,6 @@ Backlog
 =======
 
 - [REFACTOR] Deserialisation should be pulled out into seperate classes
-  - Rename ModelLocationDeserialiser to PlainTextModelLocationDeserialiser
   - Write PlainTextItemDeserialiser
   - Switch NormalItem to use PlainTextItemDeserialiser
   - PlainTextModelLocationDeserialiser should take an Item and an Exit deserialiser
