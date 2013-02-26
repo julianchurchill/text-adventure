@@ -9,7 +9,7 @@ Backlog
 =======
 
 - [REFACTOR] Deserialisation should be pulled out into seperate classes
-  - Write PlainTextItemDeserialiser
+  - Extract PlainTextItemDeserialiser
   - Switch NormalItem to use PlainTextItemDeserialiser
   - PlainTextModelLocationDeserialiser should take an Item and an Exit deserialiser
   - PlainTextModelPopulator should use the Deserialisers and string them together

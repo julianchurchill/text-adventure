@@ -55,10 +55,18 @@ public class NormalItem implements Item {
         return countableNounPrefix;
     }
 
+    public void setCountableNounPrefix( String prefix ) {
+        this.countableNounPrefix = prefix;
+    }
+
     public String midSentenceCasedName() {
         if( midSentenceCasedName == null )
             return name().toLowerCase();
         return midSentenceCasedName;
+    }
+
+    public void setMidSentenceCasedName( String casedName ) {
+        this.midSentenceCasedName = casedName;
     }
 
     public void setName( String name ) {
@@ -75,6 +83,10 @@ public class NormalItem implements Item {
 
     public String id() {
         return id;
+    }
+
+    public void setId( String id ) {
+        this.id = id;
     }
 
     public boolean useIsRepeatable() {
@@ -105,12 +117,20 @@ public class NormalItem implements Item {
         return item.id().equals( canBeUsedWithTargetID );
     }
 
+    public void setCanBeUsedWith( String itemID ) {
+        this.canBeUsedWithTargetID = itemID;
+    }
+
     public void setUseIsNotRepeatable() {
         useIsRepeatable = false;
     }
 
     public String usedWithText() {
         return usedWithText;
+    }
+
+    public void setUsedWithText( String text ) {
+        this.usedWithText = text;
     }
 
     public void use() {
@@ -135,10 +155,10 @@ public class NormalItem implements Item {
     }
 
     public void deserialise( String content ) {
-        new Deserialiser().parse( content );
+        new PlainTextItemDeserialiser().deserialise( this, content );
     }
 
-    class Deserialiser {
+    class PlainTextItemDeserialiser {
         private final String itemNameTag = "item name:";
         private final String itemDescriptionTag = "item description:";
         private final String itemIDTag = "item id:";
@@ -149,10 +169,12 @@ public class NormalItem implements Item {
         private final String itemSuccessfulUseMessageTag = "item successful use message:";
         private final String itemUseIsNotRepeatableTag = "item use is not repeatable:";
         private final String itemUseActionTag = "item use action:";
-        private String content;
         private int startOfLastFoundTag = -1;
+        private Item item;
+        private String content;
 
-        public void parse( String content ) {
+        public void deserialise( Item item, String content ) {
+            this.item = item;
             this.content = content;
             startOfLastFoundTag = -1;
 
@@ -179,22 +201,22 @@ public class NormalItem implements Item {
         }
 
         private void deserialiseItems() {
-            name = extractNewlineDelimitedValueFor( itemNameTag );
-            description = extractNewlineDelimitedValueFor( itemDescriptionTag );
-            id = extractNewlineDelimitedValueFor( itemIDTag );
-            countableNounPrefix = extractNewlineDelimitedValueFor( itemCountableNounPrefixTag );
+            item.setName( extractNewlineDelimitedValueFor( itemNameTag ) );
+            item.setDescription( extractNewlineDelimitedValueFor( itemDescriptionTag ) );
+            item.setId( extractNewlineDelimitedValueFor( itemIDTag ) );
+            item.setCountableNounPrefix( extractNewlineDelimitedValueFor( itemCountableNounPrefixTag ) );
             String m = extractNewlineDelimitedValueFor( itemMidSentenceCasedNameTag );
             if( m != "" )
-                midSentenceCasedName = m;
+                item.setMidSentenceCasedName( m );
 
             if( findTagWithNoArgument( itemIsUntakeableTag ) )
-                takeable = false;
+                item.setUntakeable();
 
-            canBeUsedWithTargetID = extractNewlineDelimitedValueFor( itemCanBeUsedWithTag );
-            usedWithText = extractNewlineDelimitedValueFor( itemSuccessfulUseMessageTag );
+            item.setCanBeUsedWith( extractNewlineDelimitedValueFor( itemCanBeUsedWithTag ) );
+            item.setUsedWithText( extractNewlineDelimitedValueFor( itemSuccessfulUseMessageTag ) );
 
             if( findTagWithNoArgument( itemUseIsNotRepeatableTag ) )
-                useIsRepeatable = false;
+                item.setUseIsNotRepeatable();
 
             extractItemActions();
         }
@@ -206,8 +228,8 @@ public class NormalItem implements Item {
                         itemActionFactory.create(
                             extractValueUpToNewline( startOfLastFoundTag +
                                                      itemUseActionTag.length() ),
-                            NormalItem.this );
-                    addOnUseAction( action );
+                            item );
+                    item.addOnUseAction( action );
                 }
             }
         }
