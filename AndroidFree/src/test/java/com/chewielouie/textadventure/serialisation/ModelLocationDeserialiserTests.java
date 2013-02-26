@@ -20,25 +20,25 @@ public class ModelLocationDeserialiserTests {
     @Test
     public void deserialise_extracts_id_after_stripping_trailing_newlines() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
-        ModelLocationDeserialiser d = new ModelLocationDeserialiser( location, null, null );
+        ModelLocationDeserialiser d = new ModelLocationDeserialiser( null, null );
         mockery.checking( new Expectations() {{
             oneOf( location ).setId( "name" );
             ignoring( location );
         }});
-        d.deserialise( "location id:name\n" );
+        d.deserialise( location, "location id:name\n" );
     }
 
     @Test
     public void deserialise_finds_location_description() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
-        ModelLocationDeserialiser d = new ModelLocationDeserialiser( location, null, null );
+        ModelLocationDeserialiser d = new ModelLocationDeserialiser( null, null );
         mockery.checking( new Expectations() {{
             oneOf( location ).setLocationDescription(
                 "You are in a room.\n" +
                 "It is a bit untidy." );
             ignoring( location );
         }});
-        d.deserialise( "location id:name\n" +
+        d.deserialise( location, "location id:name\n" +
                  "location description:You are in a room.\n" +
                                       "It is a bit untidy." );
     }
@@ -46,14 +46,14 @@ public class ModelLocationDeserialiserTests {
     @Test
     public void deserialise_extracts_location_description_up_to_exit() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
-        ModelLocationDeserialiser d = new ModelLocationDeserialiser( location, null, null );
+        ModelLocationDeserialiser d = new ModelLocationDeserialiser( null, null );
         mockery.checking( new Expectations() {{
             oneOf( location ).setLocationDescription(
                 "You are in a room.\n" +
                 "It is a bit untidy.\n" );
             ignoring( location );
         }});
-        d.deserialise( "location id:name\n" +
+        d.deserialise( location, "location id:name\n" +
                  "location description:You are in a room.\n" +
                                       "It is a bit untidy.\n" +
                  "EXIT\n" );
@@ -62,14 +62,14 @@ public class ModelLocationDeserialiserTests {
     @Test
     public void deserialise_extracts_location_description_up_to_item() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
-        ModelLocationDeserialiser d = new ModelLocationDeserialiser( location, null, null );
+        ModelLocationDeserialiser d = new ModelLocationDeserialiser( null, null );
         mockery.checking( new Expectations() {{
             oneOf( location ).setLocationDescription(
                 "You are in a room.\n" +
                 "It is a bit untidy.\n" );
             ignoring( location );
         }});
-        d.deserialise( "location id:name\n" +
+        d.deserialise( location, "location id:name\n" +
                  "location description:You are in a room.\n" +
                                       "It is a bit untidy.\n" +
                  "ITEM\n" );
@@ -81,7 +81,7 @@ public class ModelLocationDeserialiserTests {
         final Exit exit = mockery.mock( Exit.class );
         final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
         ModelLocationDeserialiser d =
-            new ModelLocationDeserialiser( location, null, exitFactory );
+            new ModelLocationDeserialiser( null, exitFactory );
 
         mockery.checking( new Expectations() {{
             allowing( exitFactory ).create();
@@ -93,7 +93,7 @@ public class ModelLocationDeserialiserTests {
             ignoring( location );
         }});
 
-        d.deserialise( "location id:name\n" +
+        d.deserialise( location, "location id:name\n" +
                        "EXIT\nexit 1\n" +
                        "some more content" );
     }
@@ -105,7 +105,7 @@ public class ModelLocationDeserialiserTests {
         final Exit exit2 = mockery.mock( Exit.class, "exit2" );
         final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
         ModelLocationDeserialiser d =
-            new ModelLocationDeserialiser( location, null, exitFactory );
+            new ModelLocationDeserialiser( null, exitFactory );
 
         mockery.checking( new Expectations() {{
             atLeast( 1 ).of( exitFactory ).create();
@@ -122,7 +122,7 @@ public class ModelLocationDeserialiserTests {
             ignoring( location );
         }});
 
-        d.deserialise( "location id:name\n" +
+        d.deserialise( location, "location id:name\n" +
                        "EXIT\nexit 1 content\n" +
                        "some more content" +
                        "EXIT\nexit 2 content\n" +
@@ -136,7 +136,7 @@ public class ModelLocationDeserialiserTests {
         final Exit exit2 = mockery.mock( Exit.class, "exit2" );
         final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
         ModelLocationDeserialiser d =
-            new ModelLocationDeserialiser( location, null, exitFactory );
+            new ModelLocationDeserialiser( null, exitFactory );
 
         mockery.checking( new Expectations() {{
             atLeast( 1 ).of( exitFactory ).create();
@@ -151,7 +151,7 @@ public class ModelLocationDeserialiserTests {
             ignoring( location );
         }});
 
-        d.deserialise( "location id:name\n" +
+        d.deserialise( location, "location id:name\n" +
                        "EXIT\nexit 1 content\n" +
                        "and more exit content\n" +
                        "EXIT\nexit 2 content\n" +
@@ -164,7 +164,7 @@ public class ModelLocationDeserialiserTests {
         final Item item = mockery.mock( Item.class );
         final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
         ModelLocationDeserialiser d =
-            new ModelLocationDeserialiser( location, itemFactory, null );
+            new ModelLocationDeserialiser( itemFactory, null );
 
         mockery.checking( new Expectations() {{
             allowing( itemFactory ).create();
@@ -176,7 +176,7 @@ public class ModelLocationDeserialiserTests {
             ignoring( location );
         }});
 
-        d.deserialise( "location id:name\n" +
+        d.deserialise( location, "location id:name\n" +
                        "ITEM\nitem name:item content\n" +
                        "and more item content" );
     }
@@ -188,7 +188,7 @@ public class ModelLocationDeserialiserTests {
         final Item item2 = mockery.mock( Item.class, "item2" );
         final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
         ModelLocationDeserialiser d =
-            new ModelLocationDeserialiser( location, itemFactory, null );
+            new ModelLocationDeserialiser( itemFactory, null );
 
         mockery.checking( new Expectations() {{
             atLeast( 1 ).of( itemFactory ).create();
@@ -205,7 +205,7 @@ public class ModelLocationDeserialiserTests {
             ignoring( location );
         }});
 
-        d.deserialise( "location id:name\n" +
+        d.deserialise( location, "location id:name\n" +
                        "ITEM\nitem 1 content\n" +
                        "and more item content\n" +
                        "ITEM\nitem 2 content\n" +
@@ -219,7 +219,7 @@ public class ModelLocationDeserialiserTests {
         final Item item2 = mockery.mock( Item.class, "item2" );
         final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
         ModelLocationDeserialiser d =
-            new ModelLocationDeserialiser( location, itemFactory, null );
+            new ModelLocationDeserialiser( itemFactory, null );
 
         mockery.checking( new Expectations() {{
             atLeast( 1 ).of( itemFactory ).create();
@@ -234,7 +234,7 @@ public class ModelLocationDeserialiserTests {
             ignoring( location );
         }});
 
-        d.deserialise( "location id:name\n" +
+        d.deserialise( location, "location id:name\n" +
                        "ITEM\nitem 1 content\n" +
                        "and more item content\n" +
                        "ITEM\nitem 2 content\n" +

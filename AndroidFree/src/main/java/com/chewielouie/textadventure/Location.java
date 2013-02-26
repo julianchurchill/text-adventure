@@ -22,7 +22,7 @@ public class Location implements ModelLocation {
         this.description = description;
         this.inventory = inventory;
         this.itemFactory = itemFactory;
-        deserialiser = new ModelLocationDeserialiser( this, itemFactory,
+        deserialiser = new ModelLocationDeserialiser( itemFactory,
                new LocationExitFactory() );
     }
 
@@ -127,7 +127,7 @@ public class Location implements ModelLocation {
     }
 
     public void deserialise( String content ) {
-        deserialiser.deserialise( content );
+        deserialiser.deserialise( this, content );
     }
 }
 

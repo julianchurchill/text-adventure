@@ -18,14 +18,14 @@ public class ModelLocationDeserialiser {
     private ItemFactory itemFactory;
     private ExitFactory exitFactory;
 
-    public ModelLocationDeserialiser( ModelLocation location,
-           ItemFactory itemFactory, ExitFactory exitFactory ) {
-        this.location = location;
+    public ModelLocationDeserialiser( ItemFactory itemFactory,
+                                      ExitFactory exitFactory ) {
         this.itemFactory = itemFactory;
         this.exitFactory = exitFactory;
     }
 
-    public void deserialise( String content ) {
+    public void deserialise( ModelLocation location, String content ) {
+        this.location = location;
         this.content = content;
         startOfLastFoundTag = -1;
 
