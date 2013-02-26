@@ -6,6 +6,7 @@ public class LocationExit implements Exit {
     private DirectionHint directionHint = DirectionHint.DontCare;
     private boolean visible = true;
     private String id = "";
+    private Deserialiser deserialiser = new Deserialiser();
 
     public LocationExit() {
     }
@@ -28,12 +29,24 @@ public class LocationExit implements Exit {
         return this.label;
     }
 
+    public void setLabel( String label ) {
+        this.label = label;
+    }
+
     public String destination() {
         return this.destination;
     }
 
+    public void setDestination( String destination ) {
+        this.destination = destination;
+    }
+
     public DirectionHint directionHint() {
         return this.directionHint;
+    }
+
+    public void setDirectionHint( DirectionHint d ) {
+        this.directionHint = d;
     }
 
     public boolean visible() {
@@ -77,7 +90,7 @@ public class LocationExit implements Exit {
     }
 
     public void deserialise( String content ) {
-        new Deserialiser( content ).deserialise();
+        deserialiser.deserialise( this, content );
     }
 
     class Deserialiser {
@@ -89,18 +102,16 @@ public class LocationExit implements Exit {
         private int startOfLastFoundTag = -1;
         private String content;
 
-        public Deserialiser( String content ) {
+        public void deserialise( Exit exit, String content ) {
             this.content = content;
-        }
-
-        public void deserialise() {
-            label = extractNewlineDelimitedValueFor( exitLabelTag );
-            destination = extractNewlineDelimitedValueFor( exitDestinationTag );
-            directionHint = stringToDirectionHint(
-                extractNewlineDelimitedValueFor( exitDirectionHintTag ) );
+            exit.setLabel( extractNewlineDelimitedValueFor( exitLabelTag ) );
+            exit.setDestination(
+                    extractNewlineDelimitedValueFor( exitDestinationTag ) );
+            exit.setDirectionHint( stringToDirectionHint(
+                extractNewlineDelimitedValueFor( exitDirectionHintTag ) ) );
             if( exitNotVisibleIsSpecifiedDiscardIt() )
-                setInvisible();
-            setID( extractExitID() );
+                exit.setInvisible();
+            exit.setID( extractExitID() );
         }
 
         private String extractNewlineDelimitedValueFor( String tag ) {
