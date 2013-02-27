@@ -76,19 +76,49 @@ public class PlainTextModelLocationDeserialiserTests {
     }
 
     @Test
-    public void deserialise_extracts_exit() {
+    public void deserialise_uses_factory_for_new_exit_objects() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
         final Exit exit = mockery.mock( Exit.class );
         final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
+        final ExitDeserialiser exitDeserialiser =
+            mockery.mock( ExitDeserialiser.class );
         PlainTextModelLocationDeserialiser d =
-            new PlainTextModelLocationDeserialiser( null, exitFactory );
+            new PlainTextModelLocationDeserialiser( null, exitFactory, null,
+                   exitDeserialiser );
+
+        mockery.checking( new Expectations() {{
+            oneOf( exitFactory ).create();
+            will( returnValue( exit ) );
+            ignoring( exitFactory );
+            ignoring( exitDeserialiser );
+            ignoring( exit );
+            ignoring( location );
+        }});
+
+        d.deserialise( location, "location id:name\n" +
+                       "EXIT\nexit 1\n" +
+                       "some more content" );
+    }
+
+    @Test
+    public void deserialise_extracts_exit_content_using_exit_deserialiser() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final Exit exit = mockery.mock( Exit.class );
+        final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
+        final ExitDeserialiser exitDeserialiser =
+            mockery.mock( ExitDeserialiser.class );
+        PlainTextModelLocationDeserialiser d =
+            new PlainTextModelLocationDeserialiser( null, exitFactory, null,
+                   exitDeserialiser );
 
         mockery.checking( new Expectations() {{
             allowing( exitFactory ).create();
             will( returnValue( exit ) );
             ignoring( exitFactory );
-            oneOf( exit ).deserialise( "exit 1\n" +
-                                       "some more content" );
+            oneOf( exitDeserialiser ).deserialise( exit,
+                                        "exit 1\n" +
+                                        "some more content" );
+            ignoring( exitDeserialiser );
             ignoring( exit );
             ignoring( location );
         }});
@@ -104,8 +134,11 @@ public class PlainTextModelLocationDeserialiserTests {
         final Exit exit1 = mockery.mock( Exit.class, "exit1" );
         final Exit exit2 = mockery.mock( Exit.class, "exit2" );
         final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
+        final ExitDeserialiser exitDeserialiser =
+            mockery.mock( ExitDeserialiser.class );
         PlainTextModelLocationDeserialiser d =
-            new PlainTextModelLocationDeserialiser( null, exitFactory );
+            new PlainTextModelLocationDeserialiser( null, exitFactory, null,
+                   exitDeserialiser );
 
         mockery.checking( new Expectations() {{
             atLeast( 1 ).of( exitFactory ).create();
@@ -113,11 +146,14 @@ public class PlainTextModelLocationDeserialiserTests {
                       returnValue( exit1 ),
                       returnValue( exit2 ) ) );
             ignoring( exitFactory );
-            oneOf( exit1 ).deserialise( "exit 1 content\n" +
+            oneOf( exitDeserialiser ).deserialise( exit1,
+                                       "exit 1 content\n" +
                                        "some more content" );
+            oneOf( exitDeserialiser ).deserialise( exit2,
+                                       "exit 2 content\n" +
+                                       "some more content" );
+            ignoring( exitDeserialiser );
             ignoring( exit1 );
-            oneOf( exit2 ).deserialise( "exit 2 content\n" +
-                                       "some more content" );
             ignoring( exit2 );
             ignoring( location );
         }});
@@ -135,8 +171,11 @@ public class PlainTextModelLocationDeserialiserTests {
         final Exit exit1 = mockery.mock( Exit.class, "exit1" );
         final Exit exit2 = mockery.mock( Exit.class, "exit2" );
         final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
+        final ExitDeserialiser exitDeserialiser =
+            mockery.mock( ExitDeserialiser.class );
         PlainTextModelLocationDeserialiser d =
-            new PlainTextModelLocationDeserialiser( null, exitFactory );
+            new PlainTextModelLocationDeserialiser( null, exitFactory, null,
+                   exitDeserialiser );
 
         mockery.checking( new Expectations() {{
             atLeast( 1 ).of( exitFactory ).create();
@@ -144,6 +183,7 @@ public class PlainTextModelLocationDeserialiserTests {
                       returnValue( exit1 ),
                       returnValue( exit2 ) ) );
             ignoring( exitFactory );
+            ignoring( exitDeserialiser );
             ignoring( exit1 );
             ignoring( exit2 );
             oneOf( location ).addExit( exit1 );
@@ -159,7 +199,7 @@ public class PlainTextModelLocationDeserialiserTests {
     }
 
     @Test
-    public void deserialise_extracts_item() {
+    public void deserialise_uses_factory_for_new_item_objects() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
         final Item item = mockery.mock( Item.class );
         final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
@@ -167,11 +207,37 @@ public class PlainTextModelLocationDeserialiserTests {
             new PlainTextModelLocationDeserialiser( itemFactory, null );
 
         mockery.checking( new Expectations() {{
+            oneOf( itemFactory ).create();
+            will( returnValue( item ) );
+            ignoring( itemFactory );
+            ignoring( item );
+            ignoring( location );
+        }});
+
+        d.deserialise( location, "location id:name\n" +
+                       "ITEM\nitem name:item content\n" +
+                       "and more item content" );
+    }
+
+    @Test
+    public void deserialise_extracts_item_content_using_item_deserialiser() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final Item item = mockery.mock( Item.class );
+        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
+        final ItemDeserialiser itemDeserialiser =
+            mockery.mock( ItemDeserialiser.class );
+        PlainTextModelLocationDeserialiser d =
+            new PlainTextModelLocationDeserialiser( itemFactory, null,
+                   itemDeserialiser, null );
+
+        mockery.checking( new Expectations() {{
             allowing( itemFactory ).create();
             will( returnValue( item ) );
             ignoring( itemFactory );
-            oneOf( item ).deserialise( "item name:item content\n" +
+            oneOf( itemDeserialiser ).deserialise( item,
+                                       "item name:item content\n" +
                                        "and more item content" );
+            ignoring( itemDeserialiser );
             ignoring( item );
             ignoring( location );
         }});
@@ -187,8 +253,11 @@ public class PlainTextModelLocationDeserialiserTests {
         final Item item1 = mockery.mock( Item.class, "item1" );
         final Item item2 = mockery.mock( Item.class, "item2" );
         final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
+        final ItemDeserialiser itemDeserialiser =
+            mockery.mock( ItemDeserialiser.class );
         PlainTextModelLocationDeserialiser d =
-            new PlainTextModelLocationDeserialiser( itemFactory, null );
+            new PlainTextModelLocationDeserialiser( itemFactory, null,
+                   itemDeserialiser, null );
 
         mockery.checking( new Expectations() {{
             atLeast( 1 ).of( itemFactory ).create();
@@ -196,11 +265,14 @@ public class PlainTextModelLocationDeserialiserTests {
                       returnValue( item1 ),
                       returnValue( item2 ) ) );
             ignoring( itemFactory );
-            oneOf( item1 ).deserialise( "item 1 content\n" +
-                                        "and more item content\n" );
+            oneOf( itemDeserialiser ).deserialise( item1,
+                                       "item 1 content\n" +
+                                       "and more item content\n" );
+            oneOf( itemDeserialiser ).deserialise( item2,
+                                       "item 2 content\n" +
+                                       "and more item content\n" );
+            ignoring( itemDeserialiser );
             ignoring( item1 );
-            oneOf( item2 ).deserialise( "item 2 content\n" +
-                                        "and more item content\n" );
             ignoring( item2 );
             ignoring( location );
         }});

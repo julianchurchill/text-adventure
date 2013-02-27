@@ -16,11 +16,23 @@ public class PlainTextModelLocationDeserialiser {
     private ModelLocation location;
     private ItemFactory itemFactory;
     private ExitFactory exitFactory;
+    private ItemDeserialiser itemDeserialiser;
+    private ExitDeserialiser exitDeserialiser;
 
     public PlainTextModelLocationDeserialiser( ItemFactory itemFactory,
                                       ExitFactory exitFactory ) {
         this.itemFactory = itemFactory;
         this.exitFactory = exitFactory;
+    }
+
+    public PlainTextModelLocationDeserialiser( ItemFactory itemFactory,
+                  ExitFactory exitFactory,
+                  ItemDeserialiser itemDeserialiser,
+                  ExitDeserialiser exitDeserialiser ) {
+        this.itemFactory = itemFactory;
+        this.exitFactory = exitFactory;
+        this.itemDeserialiser = itemDeserialiser;
+        this.exitDeserialiser = exitDeserialiser;
     }
 
     public void deserialise( ModelLocation location, String content ) {
@@ -68,7 +80,9 @@ public class PlainTextModelLocationDeserialiser {
             while( tagAvailable( exitTag ) ) {
                 int startOfTag = findStartOfTag( exitTag );
                 Exit exit = exitFactory.create();
-                exit.deserialise( extractContentForTag( exitTag ) );
+                if( exitDeserialiser != null )
+                    exitDeserialiser.deserialise( exit,
+                                                  extractContentForTag( exitTag ) );
                 location.addExit( exit );
                 startOfLastFoundTag = startOfTag;
             }
@@ -104,7 +118,9 @@ public class PlainTextModelLocationDeserialiser {
             while( tagAvailable( itemTag ) ) {
                 int startOfTag = findStartOfTag( itemTag );
                 Item item = itemFactory.create();
-                item.deserialise( extractContentForTag( itemTag ) );
+                if( itemDeserialiser != null )
+                    itemDeserialiser.deserialise( item,
+                                                  extractContentForTag( itemTag ) );
                 location.addItem( item );
                 startOfLastFoundTag = startOfTag;
             }

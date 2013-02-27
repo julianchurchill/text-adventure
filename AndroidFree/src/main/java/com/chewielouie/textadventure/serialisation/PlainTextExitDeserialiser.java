@@ -2,7 +2,7 @@ package com.chewielouie.textadventure.serialisation;
 
 import com.chewielouie.textadventure.Exit;
 
-public class PlainTextExitDeserialiser {
+public class PlainTextExitDeserialiser implements ExitDeserialiser {
     private final String exitLabelTag = "exit label:";
     private final String exitDestinationTag = "exit destination:";
     private final String exitDirectionHintTag = "exit direction hint:";

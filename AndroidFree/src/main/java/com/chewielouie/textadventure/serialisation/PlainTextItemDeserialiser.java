@@ -4,7 +4,7 @@ import com.chewielouie.textadventure.Item;
 import com.chewielouie.textadventure.ItemAction;
 import com.chewielouie.textadventure.ItemActionFactory;
 
-public class PlainTextItemDeserialiser {
+public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private final String itemNameTag = "item name:";
     private final String itemDescriptionTag = "item description:";
     private final String itemIDTag = "item id:";
