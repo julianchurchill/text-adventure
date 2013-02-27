@@ -20,6 +20,5 @@ public interface Item {
     public void setUseIsNotRepeatable();
     public void addOnUseAction( ItemAction action );
     public void use();
-    public void deserialise( String content );
 }
 

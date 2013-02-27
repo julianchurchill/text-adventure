@@ -65,21 +65,6 @@ public class NormalItemTests {
     }
 
     @Test
-    public void a_target_item_needs_an_id_to_test_for_usability_even_after_deserialisation() {
-        final Item itemWithoutID = mockery.mock( Item.class );
-        mockery.checking( new Expectations() {{
-            allowing( itemWithoutID ).id();
-            will( returnValue( "" ) );
-            ignoring( itemWithoutID );
-        }});
-        NormalItem item = new NormalItem( "", "" );
-        item.deserialise( "item name:Name\n" +
-                          "item description:description\n" );
-
-        assertFalse( item.canBeUsedWith( itemWithoutID ) );
-    }
-
-    @Test
     public void used_with_text_is_blank_by_default() {
         NormalItem item = new NormalItem( "", "", "", "" );
         assertEquals( "", item.usedWithText() );

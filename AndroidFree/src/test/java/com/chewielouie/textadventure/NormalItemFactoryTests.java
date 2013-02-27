@@ -13,7 +13,7 @@ public class NormalItemFactoryTests {
     private Mockery mockery = new Mockery();
 
     NormalItemFactory createFactory() {
-        return new NormalItemFactory( null );
+        return new NormalItemFactory();
     }
 
     @Test
@@ -27,16 +27,6 @@ public class NormalItemFactoryTests {
         Item item = createFactory().create();
         item.setName( "Name" );
         assertEquals( "name", item.midSentenceCasedName() );
-    }
-
-    @Test
-    public void passes_ItemActionFactory_on_to_NormalItem_objects() {
-        final ItemActionFactory itemActionFactory =
-            mockery.mock( ItemActionFactory.class );
-        NormalItem item =
-            (NormalItem)new NormalItemFactory( itemActionFactory ).create();
-
-        assertEquals( itemActionFactory, item.itemActionFactory() );
     }
 }
 

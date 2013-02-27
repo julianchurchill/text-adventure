@@ -83,8 +83,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         BasicModel model = new BasicModel();
         UserInventory inventory = model;
         ItemActionFactory itemActionFactory = new NormalItemActionFactory( model );
-        ItemFactory itemFactory =
-            new NormalItemFactory( itemActionFactory );
+        ItemFactory itemFactory = new NormalItemFactory();
         ItemDeserialiser itemDeserialiser =
             new PlainTextItemDeserialiser( itemActionFactory );
         new PlainTextModelPopulator( model,

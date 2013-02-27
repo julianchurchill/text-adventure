@@ -2,7 +2,6 @@ package com.chewielouie.textadventure;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.chewielouie.textadventure.serialisation.PlainTextItemDeserialiser;
 
 public class NormalItem implements Item {
     private String name = "";
@@ -16,16 +15,10 @@ public class NormalItem implements Item {
     private boolean useIsRepeatable = true;
     private boolean used = false;
     private List<ItemAction> onUseActions = new ArrayList<ItemAction>();
-    private ItemActionFactory itemActionFactory = null;
 
     public NormalItem( String name, String description ) {
         this.name = name;
         this.description = description;
-    }
-
-    public NormalItem( String name, String description, ItemActionFactory f ) {
-        this( name, description );
-        this.itemActionFactory = f;
     }
 
     public NormalItem( String name, String description,
@@ -149,15 +142,6 @@ public class NormalItem implements Item {
 
     public void addOnUseAction( ItemAction action ) {
         onUseActions.add( action );
-    }
-
-    public ItemActionFactory itemActionFactory() {
-        return itemActionFactory;
-    }
-
-    public void deserialise( String content ) {
-        new PlainTextItemDeserialiser( itemActionFactory ).deserialise(
-                this, content );
     }
 }
 
