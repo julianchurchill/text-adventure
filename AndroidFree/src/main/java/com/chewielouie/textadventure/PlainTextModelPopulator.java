@@ -34,21 +34,6 @@ public class PlainTextModelPopulator {
         extractLocations();
     }
 
-    public PlainTextModelPopulator( TextAdventureModel model,
-                                    ModelLocationFactory locationFactory,
-                                    UserInventory inventory,
-                                    ItemFactory itemFactory,
-                                    String content ) {
-        this.model = model;
-        this.locationFactory = locationFactory;
-        this.inventory = inventory;
-        this.itemFactory = itemFactory;
-        this.content = content;
-
-        extractInventory();
-        extractLocations();
-    }
-
     private void extractInventory() {
         if( itemFactory != null ) {
             while( moreContentToParse() && nextSectionIsAnInventoryItem() ) {
