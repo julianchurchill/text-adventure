@@ -8,6 +8,7 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
+- [BUG] Post deserialisation refactoring the app blows up on using the first exit and exits are missing on the first location
 - [REFACTOR] Move items into their own namespace
 - [REFACTOR] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
