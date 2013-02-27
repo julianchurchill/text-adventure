@@ -1,5 +1,7 @@
 package com.chewielouie.textadventure;
 
+import com.chewielouie.textadventure.serialisation.ModelLocationDeserialiser;
+
 public class PlainTextModelPopulator {
     private final String locationNameTag = "LOCATION\n";
     private final String inventoryItemNameTag = "INVENTORY ITEM\n";
@@ -8,7 +10,25 @@ public class PlainTextModelPopulator {
     private ModelLocationFactory locationFactory = null;
     private UserInventory inventory = null;
     private ItemFactory itemFactory = null;
+    private ModelLocationDeserialiser locationDeserialiser;
     private String content;
+
+    public PlainTextModelPopulator( TextAdventureModel model,
+                                    ModelLocationFactory locationFactory,
+                                    UserInventory inventory,
+                                    ItemFactory itemFactory,
+                                    ModelLocationDeserialiser d,
+                                    String content ) {
+        this.model = model;
+        this.locationFactory = locationFactory;
+        this.inventory = inventory;
+        this.itemFactory = itemFactory;
+        this.locationDeserialiser = d;
+        this.content = content;
+
+        extractInventory();
+        extractLocations();
+    }
 
     public PlainTextModelPopulator( TextAdventureModel model,
                                     ModelLocationFactory locationFactory,
@@ -61,7 +81,9 @@ public class PlainTextModelPopulator {
         if( locationFactory != null ) {
             while( moreContentToParse() ) {
                 ModelLocation l = locationFactory.create();
-                l.deserialise( extractLocationContent() );
+                String content = extractLocationContent();
+                if( locationDeserialiser != null )
+                    locationDeserialiser.deserialise( l, content );
                 if( model != null )
                     model.addLocation( l );
             }

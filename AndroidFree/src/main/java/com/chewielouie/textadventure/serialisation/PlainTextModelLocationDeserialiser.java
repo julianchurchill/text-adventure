@@ -6,7 +6,7 @@ import com.chewielouie.textadventure.Item;
 import com.chewielouie.textadventure.ItemFactory;
 import com.chewielouie.textadventure.ModelLocation;
 
-public class PlainTextModelLocationDeserialiser {
+public class PlainTextModelLocationDeserialiser implements ModelLocationDeserialiser {
     private final String locationIDTag = "location id:";
     private final String locationDescriptionTag = "location description:";
     private final String exitTag = "EXIT\n";
