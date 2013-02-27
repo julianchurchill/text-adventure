@@ -7,6 +7,7 @@ import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.serialisation.ModelLocationDeserialiser;
+import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 
 @RunWith(JMock.class)
 public class PlainTextModelPopulatorTests {
@@ -19,18 +20,22 @@ public class PlainTextModelPopulatorTests {
         final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
         final ModelLocationDeserialiser locationDeserialiser =
             mockery.mock( ModelLocationDeserialiser.class );
+        final ItemDeserialiser itemDeserialiser =
+            mockery.mock( ItemDeserialiser.class );
 
         mockery.checking( new Expectations() {{
             allowing( itemFactory ).create();
             will( returnValue( item ) );
             ignoring( itemFactory );
-            oneOf( item ).deserialise( "inventory content" );
             ignoring( item );
             ignoring( locationDeserialiser );
+            oneOf( itemDeserialiser ).deserialise( item, "inventory content" );
+            ignoring( itemDeserialiser );
         }});
 
         new PlainTextModelPopulator( null, null, null, itemFactory,
                                      locationDeserialiser,
+                                     itemDeserialiser,
                                      "INVENTORY ITEM\ninventory content" );
     }
 
@@ -40,19 +45,23 @@ public class PlainTextModelPopulatorTests {
         final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
         final ModelLocationDeserialiser locationDeserialiser =
             mockery.mock( ModelLocationDeserialiser.class );
+        final ItemDeserialiser itemDeserialiser =
+            mockery.mock( ItemDeserialiser.class );
 
         mockery.checking( new Expectations() {{
             allowing( itemFactory ).create();
             will( returnValue( item ) );
             ignoring( itemFactory );
-            oneOf( item ).deserialise( "inventory item 1\n" );
-            oneOf( item ).deserialise( "inventory item 2\n" );
             ignoring( item );
             ignoring( locationDeserialiser );
+            oneOf( itemDeserialiser ).deserialise( item, "inventory item 1\n" );
+            oneOf( itemDeserialiser ).deserialise( item, "inventory item 2\n" );
+            ignoring( itemDeserialiser );
         }});
 
         new PlainTextModelPopulator( null, null, null, itemFactory,
                                      locationDeserialiser,
+                                     itemDeserialiser,
                                      "INVENTORY ITEM\ninventory item 1\n" +
                                      "INVENTORY ITEM\ninventory item 2\n" );
     }
@@ -78,6 +87,7 @@ public class PlainTextModelPopulatorTests {
         new PlainTextModelPopulator( null, null,
                                      inventory, itemFactory,
                                      locationDeserialiser,
+                                     null,
                                      "INVENTORY ITEM\ninventory content" );
     }
 
@@ -107,6 +117,7 @@ public class PlainTextModelPopulatorTests {
         new PlainTextModelPopulator( null, null,
                                      inventory, itemFactory,
                                      locationDeserialiser,
+                                     null,
                                      "INVENTORY ITEM\ninventory item 1\n" +
                                      "INVENTORY ITEM\ninventory item 2\n" );
     }
@@ -117,19 +128,23 @@ public class PlainTextModelPopulatorTests {
         final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
         final ModelLocationDeserialiser locationDeserialiser =
             mockery.mock( ModelLocationDeserialiser.class );
+        final ItemDeserialiser itemDeserialiser =
+            mockery.mock( ItemDeserialiser.class );
 
         mockery.checking( new Expectations() {{
             allowing( itemFactory ).create();
             will( returnValue( item ) );
             ignoring( itemFactory );
-            oneOf( item ).deserialise( "inventory content\n" );
             ignoring( item );
             ignoring( locationDeserialiser );
+            oneOf( itemDeserialiser ).deserialise( item, "inventory content\n" );
+            ignoring( itemDeserialiser );
         }});
 
         new PlainTextModelPopulator( null, null,
                                      null, itemFactory,
                                      locationDeserialiser,
+                                     itemDeserialiser,
                                      "INVENTORY ITEM\ninventory content\n" +
                                      "LOCATION\nlocation content\n" );
     }
@@ -152,6 +167,7 @@ public class PlainTextModelPopulatorTests {
 
         new PlainTextModelPopulator( null, locationFactory, null, null,
                                      locationDeserialiser,
+                                     null,
                                      "LOCATION\nlocation_name:name" );
     }
 
@@ -175,6 +191,7 @@ public class PlainTextModelPopulatorTests {
 
         new PlainTextModelPopulator( null, locationFactory, null, null,
                                      locationDeserialiser,
+                                     null,
                                      "LOCATION\nlocation_name:name" );
     }
 
@@ -199,6 +216,7 @@ public class PlainTextModelPopulatorTests {
         new PlainTextModelPopulator( null, locationFactory,
                                      null, null,
                                      locationDeserialiser,
+                                     null,
                                      "INVENTORY ITEM\ninventory content\n" +
                                      "LOCATION\nlocation content\n" );
     }
@@ -225,6 +243,7 @@ public class PlainTextModelPopulatorTests {
 
         new PlainTextModelPopulator( null, locationFactory, null, null,
                                      locationDeserialiser,
+                                     null,
                                      "LOCATION\nlocation_name:name\n" +
                                      "LOCATION\nlocation_name:name2\n" );
     }
@@ -250,6 +269,7 @@ public class PlainTextModelPopulatorTests {
 
         new PlainTextModelPopulator( model, locationFactory, null, null,
                                      locationDeserialiser,
+                                     null,
                                      "LOCATION\nlocation_name:name" );
     }
 
@@ -279,6 +299,7 @@ public class PlainTextModelPopulatorTests {
 
         new PlainTextModelPopulator( model, locationFactory, null, null,
                                      locationDeserialiser,
+                                     null,
                                      "LOCATION\nlocation_name:name1\n" +
                                      "LOCATION\nlocation_name:name2" );
     }

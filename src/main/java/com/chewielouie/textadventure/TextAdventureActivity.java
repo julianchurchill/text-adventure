@@ -20,6 +20,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextExitDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextModelLocationDeserialiser;
@@ -84,15 +85,17 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         ItemActionFactory itemActionFactory = new NormalItemActionFactory( model );
         ItemFactory itemFactory =
             new NormalItemFactory( itemActionFactory );
+        ItemDeserialiser itemDeserialiser =
+            new PlainTextItemDeserialiser( itemActionFactory );
         new PlainTextModelPopulator( model,
                                      new LocationFactory( inventory, itemFactory ),
                                      inventory,
                                      itemFactory,
                                      new PlainTextModelLocationDeserialiser(
                                          itemFactory, new LocationExitFactory(),
-                                         new PlainTextItemDeserialiser(
-                                             itemActionFactory ),
+                                         itemDeserialiser,
                                          new PlainTextExitDeserialiser() ),
+                                     itemDeserialiser,
                                      demoContent() );
         return model;
     }
