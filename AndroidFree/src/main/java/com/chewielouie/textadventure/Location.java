@@ -5,7 +5,6 @@ import java.util.List;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.TakeAnItem;
 import com.chewielouie.textadventure.action.ExamineAnItem;
-import com.chewielouie.textadventure.serialisation.PlainTextModelLocationDeserialiser;
 
 public class Location implements ModelLocation {
     private String id;
@@ -13,25 +12,16 @@ public class Location implements ModelLocation {
     private List<Exit> exits = new ArrayList<Exit>();
     private List<Item> items = new ArrayList<Item>();
     private UserInventory inventory;
-    private ItemFactory itemFactory = null;
-    private PlainTextModelLocationDeserialiser deserialiser;
 
     public Location( String locationId, String description,
-            UserInventory inventory, ItemFactory itemFactory ) {
+            UserInventory inventory ) {
         this.id = locationId;
         this.description = description;
         this.inventory = inventory;
-        this.itemFactory = itemFactory;
-        deserialiser = new PlainTextModelLocationDeserialiser( itemFactory,
-               new LocationExitFactory() );
     }
 
     public UserInventory inventory() {
         return inventory;
-    }
-
-    public ItemFactory itemFactory() {
-        return itemFactory;
     }
 
     public void addExit( Exit exit ) {
@@ -124,10 +114,6 @@ public class Location implements ModelLocation {
         if( items().size() > 0 )
             actions.add( new ExamineAnItem( items() ) );
         return actions;
-    }
-
-    public void deserialise( String content ) {
-        deserialiser.deserialise( this, content );
     }
 }
 

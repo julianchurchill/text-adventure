@@ -17,7 +17,6 @@ public interface ModelLocation {
     public List<Item> items();
     public void addItem( Item item );
     public void removeItem( Item item );
-    public void deserialise( String content );
 }
 
 

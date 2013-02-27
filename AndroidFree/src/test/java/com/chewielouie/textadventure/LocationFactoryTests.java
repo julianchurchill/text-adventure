@@ -14,25 +14,16 @@ public class LocationFactoryTests {
 
     @Test
     public void produces_Location_objects() {
-        ModelLocation location = new LocationFactory( null, null ).create();
+        ModelLocation location = new LocationFactory( null ).create();
         assertTrue( location instanceof Location );
     }
 
     @Test
     public void passes_UserInventory_to_created_object() {
         final UserInventory inventory = mockery.mock( UserInventory.class );
-        Location l = (Location)new LocationFactory( inventory, null ).create();
+        Location l = (Location)new LocationFactory( inventory ).create();
 
         assertEquals( inventory, l.inventory() );
     }
-
-    @Test
-    public void passes_ItemFactory_to_created_object() {
-        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
-        Location l = (Location)new LocationFactory( null, itemFactory ).create();
-
-        assertEquals( itemFactory, l.itemFactory() );
-    }
 }
-
 

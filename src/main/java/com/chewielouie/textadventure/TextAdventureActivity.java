@@ -88,7 +88,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         ItemDeserialiser itemDeserialiser =
             new PlainTextItemDeserialiser( itemActionFactory );
         new PlainTextModelPopulator( model,
-                                     new LocationFactory( inventory, itemFactory ),
+                                     new LocationFactory( inventory ),
                                      inventory,
                                      itemFactory,
                                      new PlainTextModelLocationDeserialiser(
