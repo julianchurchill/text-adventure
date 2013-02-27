@@ -9,12 +9,12 @@ Backlog
 =======
 
 - [REFACTOR] Deserialisation should be pulled out into seperate classes
-  - Remove Item, Exit deserialise methods
-  - Remove the extra NormalItem constructors so it only has one which takes an ItemActionFactory
+  - Remove the extra NormalItem constructors so it only has a blank one
+  - Remove the extra LocationExit constructors so it only has a blanke one
+- [REFACTOR] Move items into their own namespace
 - [REFACTOR] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
-- [REFACTOR] Moves item into their own namespace
 
-- [TEST] action view includes a cancel button to reset the actions and the title to the top level
+- [TEST] action view includes a cancel button to reset the actions to the top level
 
 - [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
 

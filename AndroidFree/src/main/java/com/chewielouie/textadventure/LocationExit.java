@@ -1,15 +1,11 @@
 package com.chewielouie.textadventure;
 
-import com.chewielouie.textadventure.serialisation.PlainTextExitDeserialiser;
-
 public class LocationExit implements Exit {
     private String label = new String();
     private String destination = new String();
     private DirectionHint directionHint = DirectionHint.DontCare;
     private boolean visible = true;
     private String id = "";
-    private PlainTextExitDeserialiser deserialiser =
-        new PlainTextExitDeserialiser();
 
     public LocationExit() {
     }
@@ -90,10 +86,6 @@ public class LocationExit implements Exit {
         result = prime * result + destination.hashCode();
         result = prime * result + directionHint.hashCode();
         return result;
-    }
-
-    public void deserialise( String content ) {
-        deserialiser.deserialise( this, content );
     }
 }
 
