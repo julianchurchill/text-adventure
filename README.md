@@ -9,10 +9,9 @@ Backlog
 =======
 
 - [REFACTOR] Deserialisation should be pulled out into seperate classes
-  - Extract PlainTextItemDeserialiser
-  - Switch NormalItem to use PlainTextItemDeserialiser
   - PlainTextModelLocationDeserialiser should take an Item and an Exit deserialiser
   - PlainTextModelPopulator should use the Deserialisers and string them together
+  - Remove the extra NormalItem constructors so it only has one which takes an ItemActionFactory
 - [REFACTOR] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
 - [REFACTOR] Moves item into their own namespace
 
