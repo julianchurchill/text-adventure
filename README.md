@@ -9,10 +9,10 @@ Backlog
 =======
 
 - [REFACTOR] Deserialisation should be pulled out into seperate classes
-  - Remove the extra NormalItem constructors so it only has a blank one
   - Remove the extra LocationExit constructors so it only has a blanke one
 - [REFACTOR] Move items into their own namespace
 - [REFACTOR] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
+- [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 
 - [TEST] action view includes a cancel button to reset the actions to the top level
 

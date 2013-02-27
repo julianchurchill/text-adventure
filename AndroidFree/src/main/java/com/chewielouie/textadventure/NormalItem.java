@@ -16,23 +16,6 @@ public class NormalItem implements Item {
     private boolean used = false;
     private List<ItemAction> onUseActions = new ArrayList<ItemAction>();
 
-    public NormalItem( String name, String description ) {
-        this.name = name;
-        this.description = description;
-    }
-
-    public NormalItem( String name, String description,
-           String countableNounPrefix ) {
-        this( name, description );
-        this.countableNounPrefix = countableNounPrefix;
-    }
-
-    public NormalItem( String name, String description,
-           String countableNounPrefix, String midSentenceCasedName ) {
-        this( name, description, countableNounPrefix );
-        this.midSentenceCasedName = midSentenceCasedName;
-    }
-
     public String description() {
         return description;
     }

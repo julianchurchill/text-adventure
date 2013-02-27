@@ -120,10 +120,10 @@ public class LocationTests {
     @Test
     public void added_items_are_retrieveable() {
         List<Item> items = new ArrayList<Item>();
-        items.add( new NormalItem( "name", "description" ) );
+        items.add( new NormalItem() );
 
         Location l = createLocation();
-        l.addItem( new NormalItem( "name", "description" ) );
+        l.addItem( new NormalItem() );
 
         assertEquals( items, l.items() );
     }
@@ -131,7 +131,7 @@ public class LocationTests {
     @Test
     public void location_actions_include_take_an_item_when_location_has_item() {
         Location l = createLocation();
-        l.addItem( new NormalItem( "name", "description" ) );
+        l.addItem( new NormalItem() );
 
         boolean actionsIncludeTakeAnItemAction = false;
         for( Action a : l.actions() )
@@ -143,9 +143,9 @@ public class LocationTests {
     @Test
     public void location_action_to_take_an_item_is_created_with_location_items() {
         Location l = createLocation();
-        l.addItem( new NormalItem( "name", "description" ) );
+        l.addItem( new NormalItem() );
         List<Item> items = new ArrayList<Item>();
-        items.add( new NormalItem( "name", "description" ) );
+        items.add( new NormalItem() );
 
         for( Action a : l.actions() )
             if( a instanceof TakeAnItem )
@@ -155,8 +155,8 @@ public class LocationTests {
     @Test
     public void location_action_to_take_an_item_does_not_include_untakeable_items() {
         Location l = createLocation();
-        NormalItem item1 = new NormalItem( "name", "description" );
-        NormalItem item2 = new NormalItem( "name", "description" );
+        NormalItem item1 = new NormalItem();
+        NormalItem item2 = new NormalItem();
         item1.setUntakeable();
         l.addItem( item1 );
         l.addItem( item2 );
@@ -169,7 +169,7 @@ public class LocationTests {
     @Test
     public void location_action_to_take_an_item_is_not_included_if_only_untakeable_items_available() {
         Location l = createLocation();
-        NormalItem item = new NormalItem( "name", "description" );
+        NormalItem item = new NormalItem();
         item.setUntakeable();
         l.addItem( item );
 
@@ -182,7 +182,7 @@ public class LocationTests {
     public void location_action_to_take_an_item_has_user_inventory_passed_to_it() {
         UserInventory inventory = mockery.mock( UserInventory.class );
         Location l = new Location( "", "", inventory );
-        l.addItem( new NormalItem( "name", "description" ) );
+        l.addItem( new NormalItem() );
 
         assertEquals( inventory, ((TakeAnItem)l.actions().get( 0 )).inventory() );
     }
@@ -191,7 +191,7 @@ public class LocationTests {
     public void location_action_to_take_an_item_has_location_passed_to_it() {
         UserInventory inventory = mockery.mock( UserInventory.class );
         Location l = new Location( "", "", inventory );
-        l.addItem( new NormalItem( "name", "description" ) );
+        l.addItem( new NormalItem() );
 
         assertEquals( l, ((TakeAnItem)l.actions().get( 0 )).location() );
     }
@@ -199,7 +199,7 @@ public class LocationTests {
     @Test
     public void location_actions_include_examine_an_item_when_location_has_item() {
         Location l = createLocation();
-        l.addItem( new NormalItem( "name", "description" ) );
+        l.addItem( new NormalItem() );
 
         boolean actionsIncludeExamineAnItemAction = false;
         for( Action a : l.actions() )
@@ -211,9 +211,9 @@ public class LocationTests {
     @Test
     public void location_action_to_examine_an_item_is_created_with_location_items() {
         Location l = createLocation();
-        l.addItem( new NormalItem( "name", "description" ) );
+        l.addItem( new NormalItem() );
         List<Item> items = new ArrayList<Item>();
-        items.add( new NormalItem( "name", "description" ) );
+        items.add( new NormalItem() );
 
         for( Action a : l.actions() )
             if( a instanceof ExamineAnItem )
@@ -223,16 +223,22 @@ public class LocationTests {
     @Test
     public void added_items_are_added_to_location_description() {
         Location l = new Location( "", "Location description.", null );
-        l.addItem( new NormalItem( "name", "description" ) );
-        l.addItem( new NormalItem( "name2", "description" ) );
-        l.addItem( new NormalItem( "name3", "description" ) );
+        NormalItem item1 = new NormalItem();
+        item1.setName( "name" );
+        l.addItem( item1 );
+        NormalItem item2 = new NormalItem();
+        item2.setName( "name2" );
+        l.addItem( item2 );
+        NormalItem item3 = new NormalItem();
+        item3.setName( "name3" );
+        l.addItem( item3 );
 
         assertEquals( "Location description.\nThere is a name, a name2 and a name3 here.", l.description() );
     }
 
     @Test
     public void removing_all_items_from_a_location_removes_TakeAnItem_action_from_action_list() {
-        Item item = new NormalItem( "name", "description" );
+        Item item = new NormalItem();
         Location l = createLocation();
         l.addItem( item );
         l.removeItem( item );
@@ -253,7 +259,7 @@ public class LocationTests {
 
     @Test
     public void removing_all_items_from_a_location_removes_ExamineAnItem_action_from_action_list() {
-        Item item = new NormalItem( "name", "description" );
+        Item item = new NormalItem();
         Location l = createLocation();
         l.addItem( item );
         l.removeItem( item );

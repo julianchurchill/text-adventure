@@ -56,7 +56,7 @@ public class TakeSpecificItemTests {
 
     @Test
     public void user_must_choose_follow_up_action_is_always_false() {
-        TakeSpecificItem object1 = createAction( new NormalItem( "", "" ) );
+        TakeSpecificItem object1 = createAction( new NormalItem() );
         assertFalse( object1.userMustChooseFollowUpAction() );
     }
 
@@ -94,15 +94,15 @@ public class TakeSpecificItemTests {
 
     @Test
     public void two_objects_with_the_same_value_should_be_equal() {
-        TakeSpecificItem object1 = createAction( new NormalItem( "", "" ) );
-        TakeSpecificItem object2 = createAction( new NormalItem( "", "" ) );
+        TakeSpecificItem object1 = createAction( new NormalItem() );
+        TakeSpecificItem object2 = createAction( new NormalItem() );
 
         assertEquals( object1, object2 );
     }
 
     @Test
     public void a_show_inventory_object_is_not_equal_to_a_non_object() {
-        TakeSpecificItem object = createAction( new NormalItem( "", "" ) );
+        TakeSpecificItem object = createAction( new NormalItem() );
         Object notATakeSpecificItem = new Object();
 
         assertNotEquals( object, notATakeSpecificItem );
@@ -110,8 +110,8 @@ public class TakeSpecificItemTests {
 
     @Test
     public void two_objects_with_the_same_value_should_have_the_same_hashcode() {
-        TakeSpecificItem object1 = createAction( new NormalItem( "", "" ) );
-        TakeSpecificItem object2 = createAction( new NormalItem( "", "" ) );
+        TakeSpecificItem object1 = createAction( new NormalItem() );
+        TakeSpecificItem object2 = createAction( new NormalItem() );
 
         assertEquals( object1.hashCode(), object2.hashCode() );
     }
