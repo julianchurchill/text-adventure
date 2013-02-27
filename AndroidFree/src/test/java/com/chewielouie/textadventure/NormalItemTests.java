@@ -99,19 +99,19 @@ public class NormalItemTests {
     }
 
     @Test
-    public void used_with_text_is_succesful_use_message_for_non_repeatable_use_item_before_being_used() {
+    public void used_with_text_is_correct_for_non_repeatable_use_item_before_being_used() {
         NormalItem item = new NormalItem( "", "", "", "" );
-        item.deserialise( "item name:Name\n" +
-                          "item successful use message:message\n" );
+        item.setUsedWithText( "message" );
+
         item.setUseIsNotRepeatable();
+
         assertEquals( "message", item.usedWithText() );
     }
 
     @Test
-    public void used_with_text_is_deserialised_message_for_non_repeatable_use_item_after_being_used_once() {
+    public void used_with_text_is_correct_for_non_repeatable_use_item_after_being_used_once() {
         NormalItem item = new NormalItem( "", "", "", "" );
-        item.deserialise( "item name:Name\n" +
-                          "item successful use message:message\n" );
+        item.setUsedWithText( "message" );
         item.setUseIsNotRepeatable();
 
         item.use();
@@ -122,8 +122,7 @@ public class NormalItemTests {
     @Test
     public void used_with_text_is_failure_message_for_non_repeatable_use_item_after_being_used_twice() {
         NormalItem item = new NormalItem( "", "", "", "" );
-        item.deserialise( "item name:Name\n" +
-                          "item successful use message:message\n" );
+        item.setUsedWithText( "message" );
         item.setUseIsNotRepeatable();
 
         item.use();
@@ -135,8 +134,7 @@ public class NormalItemTests {
     @Test
     public void used_with_text_is_successful_use_message_for_repeatable_use_item_after_being_used_twice() {
         NormalItem item = new NormalItem( "", "", "", "" );
-        item.deserialise( "item name:Name\n" +
-                          "item successful use message:message\n" );
+        item.setUsedWithText( "message" );
 
         item.use();
         item.use();

@@ -155,10 +155,10 @@ public class NormalItem implements Item {
     }
 
     public void deserialise( String content ) {
-        new PlainTextItemDeserialiser().deserialise( this, content );
+        new Deserialiser( itemActionFactory ).deserialise( this, content );
     }
 
-    class PlainTextItemDeserialiser {
+    class Deserialiser {
         private final String itemNameTag = "item name:";
         private final String itemDescriptionTag = "item description:";
         private final String itemIDTag = "item id:";
@@ -172,6 +172,11 @@ public class NormalItem implements Item {
         private int startOfLastFoundTag = -1;
         private Item item;
         private String content;
+        private ItemActionFactory itemActionFactory;
+
+        public Deserialiser( ItemActionFactory itemActionFactory ) {
+            this.itemActionFactory = itemActionFactory;
+        }
 
         public void deserialise( Item item, String content ) {
             this.item = item;
