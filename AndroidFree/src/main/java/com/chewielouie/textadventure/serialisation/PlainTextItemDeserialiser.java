@@ -15,7 +15,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private final String itemSuccessfulUseMessageTag = "item successful use message:";
     private final String itemUseIsNotRepeatableTag = "item use is not repeatable:";
     private final String itemUseActionTag = "item use action:";
-    private int startOfLastFoundTag = -1;
+    private int startOfLastFoundTag;
     private Item item;
     private String content;
     private ItemActionFactory itemActionFactory;

@@ -129,6 +129,35 @@ public class PlainTextModelLocationDeserialiserTests {
     }
 
     @Test
+    public void deserialise_extracts_exit_content_upto_ITEM() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final Exit exit = mockery.mock( Exit.class );
+        final ExitFactory exitFactory = mockery.mock( ExitFactory.class );
+        final ExitDeserialiser exitDeserialiser =
+            mockery.mock( ExitDeserialiser.class );
+        PlainTextModelLocationDeserialiser d =
+            new PlainTextModelLocationDeserialiser( null, exitFactory, null,
+                   exitDeserialiser );
+
+        mockery.checking( new Expectations() {{
+            allowing( exitFactory ).create();
+            will( returnValue( exit ) );
+            ignoring( exitFactory );
+            oneOf( exitDeserialiser ).deserialise( exit,
+                                        "exit 1\n" +
+                                        "some more content\n" );
+            ignoring( exitDeserialiser );
+            ignoring( exit );
+            ignoring( location );
+        }});
+
+        d.deserialise( location, "location id:name\n" +
+                       "EXIT\nexit 1\n" +
+                       "some more content\n" +
+                       "ITEM\n" );
+    }
+
+    @Test
     public void deserialise_extracts_multiple_exits() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
         final Exit exit1 = mockery.mock( Exit.class, "exit1" );

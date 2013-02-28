@@ -12,7 +12,7 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
     private final String exitTag = "EXIT\n";
     private final String itemTag = "ITEM\n";
     private String content;
-    private int startOfLastFoundTag = -1;
+    private int startOfLastFoundTag;
     private ModelLocation location;
     private ItemFactory itemFactory;
     private ExitFactory exitFactory;
@@ -106,7 +106,7 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
     private int findEndOfTag( String tag, int startOfTag ) {
         int endOfTag = content.indexOf( tag, startOfTag+1 );
         if( endOfTag == -1 ) {
-            endOfTag = content.indexOf( locationIDTag, startOfTag+1 );
+            endOfTag = content.indexOf( itemTag, startOfTag+1 );
             if( endOfTag == -1 )
                 endOfTag = content.length();
         }

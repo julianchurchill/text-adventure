@@ -8,10 +8,11 @@ public class PlainTextExitDeserialiser implements ExitDeserialiser {
     private final String exitDirectionHintTag = "exit direction hint:";
     private final String exitIsNotVisibleTag = "exit is not visible:";
     private final String exitIDTag = "exit id:";
-    private int startOfLastFoundTag = -1;
+    private int startOfLastFoundTag;
     private String content;
 
     public void deserialise( Exit exit, String content ) {
+        this.startOfLastFoundTag = -1;
         this.content = content;
         exit.setLabel( extractNewlineDelimitedValueFor( exitLabelTag ) );
         exit.setDestination(
