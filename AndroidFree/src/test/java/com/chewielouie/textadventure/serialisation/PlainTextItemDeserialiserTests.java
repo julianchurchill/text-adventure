@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.itemaction.ItemAction;
-import com.chewielouie.textadventure.ItemActionFactory;
+import com.chewielouie.textadventure.itemaction.ItemActionFactory;
 
 @RunWith(JMock.class)
 public class PlainTextItemDeserialiserTests {

@@ -2,7 +2,7 @@ package com.chewielouie.textadventure.serialisation;
 
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.itemaction.ItemAction;
-import com.chewielouie.textadventure.ItemActionFactory;
+import com.chewielouie.textadventure.itemaction.ItemActionFactory;
 
 public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private final String itemNameTag = "item name:";
