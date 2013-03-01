@@ -7,7 +7,7 @@ import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.item.Item;
 
 @RunWith(JMock.class)
 public class UseWithSpecificItemTests {

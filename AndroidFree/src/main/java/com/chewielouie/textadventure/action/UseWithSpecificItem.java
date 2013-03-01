@@ -2,7 +2,7 @@ package com.chewielouie.textadventure.action;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.item.Item;
 
 public class UseWithSpecificItem implements Action {
     private List<Action> followUpActions = new ArrayList<Action>();

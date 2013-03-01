@@ -2,7 +2,7 @@ package com.chewielouie.textadventure.action;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
 import com.chewielouie.textadventure.UserInventory;

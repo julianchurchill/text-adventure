@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.Exit;
 import com.chewielouie.textadventure.ExitFactory;
-import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.ItemFactory;
 import com.chewielouie.textadventure.ModelLocation;
 

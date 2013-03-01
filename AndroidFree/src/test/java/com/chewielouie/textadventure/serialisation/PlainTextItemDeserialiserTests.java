@@ -6,7 +6,7 @@ import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.chewielouie.textadventure.Item;
+import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.ItemAction;
 import com.chewielouie.textadventure.ItemActionFactory;
 
