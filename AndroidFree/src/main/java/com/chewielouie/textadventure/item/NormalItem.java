@@ -2,7 +2,7 @@ package com.chewielouie.textadventure.item;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.chewielouie.textadventure.ItemAction;
+import com.chewielouie.textadventure.item.ItemAction;
 
 public class NormalItem implements Item {
     private String name = "";

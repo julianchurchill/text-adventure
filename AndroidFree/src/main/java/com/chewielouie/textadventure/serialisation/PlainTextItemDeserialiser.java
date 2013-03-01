@@ -1,7 +1,7 @@
 package com.chewielouie.textadventure.serialisation;
 
 import com.chewielouie.textadventure.item.Item;
-import com.chewielouie.textadventure.ItemAction;
+import com.chewielouie.textadventure.item.ItemAction;
 import com.chewielouie.textadventure.ItemActionFactory;
 
 public class PlainTextItemDeserialiser implements ItemDeserialiser {
