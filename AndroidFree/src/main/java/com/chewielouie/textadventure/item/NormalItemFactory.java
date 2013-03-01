@@ -1,4 +1,4 @@
-package com.chewielouie.textadventure;
+package com.chewielouie.textadventure.item;
 
 public class NormalItemFactory implements ItemFactory {
     public Item create() {

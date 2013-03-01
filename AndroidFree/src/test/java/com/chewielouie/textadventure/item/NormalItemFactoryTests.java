@@ -1,4 +1,4 @@
-package com.chewielouie.textadventure;
+package com.chewielouie.textadventure.item;
 
 import static org.junit.Assert.*;
 

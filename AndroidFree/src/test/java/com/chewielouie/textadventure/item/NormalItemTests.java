@@ -1,4 +1,4 @@
-package com.chewielouie.textadventure;
+package com.chewielouie.textadventure.item;
 
 import static org.junit.Assert.*;
 
@@ -8,6 +8,7 @@ import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import com.chewielouie.textadventure.ItemAction;
 
 @RunWith(JMock.class)
 public class NormalItemTests {
