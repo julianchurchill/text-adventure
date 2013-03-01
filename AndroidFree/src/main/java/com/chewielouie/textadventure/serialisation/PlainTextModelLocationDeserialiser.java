@@ -3,7 +3,7 @@ package com.chewielouie.textadventure.serialisation;
 import com.chewielouie.textadventure.Exit;
 import com.chewielouie.textadventure.ExitFactory;
 import com.chewielouie.textadventure.item.Item;
-import com.chewielouie.textadventure.ItemFactory;
+import com.chewielouie.textadventure.item.ItemFactory;
 import com.chewielouie.textadventure.ModelLocation;
 
 public class PlainTextModelLocationDeserialiser implements ModelLocationDeserialiser {
