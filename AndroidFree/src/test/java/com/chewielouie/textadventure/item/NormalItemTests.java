@@ -8,7 +8,7 @@ import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.chewielouie.textadventure.item.ItemAction;
+import com.chewielouie.textadventure.itemaction.ItemAction;
 
 @RunWith(JMock.class)
 public class NormalItemTests {

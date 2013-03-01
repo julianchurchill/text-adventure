@@ -1,6 +1,6 @@
 package com.chewielouie.textadventure.item;
 
-import com.chewielouie.textadventure.item.ItemAction;
+import com.chewielouie.textadventure.itemaction.ItemAction;
 
 public interface Item {
     public String description();
