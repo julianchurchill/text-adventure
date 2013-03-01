@@ -1,5 +1,7 @@
 package com.chewielouie.textadventure;
 
+import com.chewielouie.textadventure.item.Item;
+
 public class NormalItemActionFactory implements ItemActionFactory {
     private String changeItemDescriptionTag = "change item description:";
     private String changeItemNameTag = "change item name:";

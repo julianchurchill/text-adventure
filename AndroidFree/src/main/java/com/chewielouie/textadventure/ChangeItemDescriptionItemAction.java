@@ -1,5 +1,7 @@
 package com.chewielouie.textadventure;
 
+import com.chewielouie.textadventure.item.Item;
+
 public class ChangeItemDescriptionItemAction implements ItemAction {
     private String description;
     private Item item;

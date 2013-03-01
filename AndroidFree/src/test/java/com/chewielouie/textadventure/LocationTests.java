@@ -11,6 +11,8 @@ import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.TakeAnItem;
 import com.chewielouie.textadventure.action.ExamineAnItem;
+import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.item.NormalItem;
 
 @RunWith(JMock.class)
 public class LocationTests {

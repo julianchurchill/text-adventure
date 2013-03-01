@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.serialisation.ModelLocationDeserialiser;
 import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
+import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.item.ItemFactory;
 
 @RunWith(JMock.class)
 public class PlainTextModelPopulatorTests {

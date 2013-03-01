@@ -1,5 +1,7 @@
 package com.chewielouie.textadventure;
 
+import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.item.ItemFactory;
 import com.chewielouie.textadventure.serialisation.ModelLocationDeserialiser;
 import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 

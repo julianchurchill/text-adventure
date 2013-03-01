@@ -5,6 +5,7 @@ import java.util.List;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.TakeAnItem;
 import com.chewielouie.textadventure.action.ExamineAnItem;
+import com.chewielouie.textadventure.item.Item;
 
 public class Location implements ModelLocation {
     private String id;

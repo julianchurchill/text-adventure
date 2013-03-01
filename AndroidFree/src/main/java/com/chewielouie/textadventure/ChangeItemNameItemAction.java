@@ -1,5 +1,7 @@
 package com.chewielouie.textadventure;
 
+import com.chewielouie.textadventure.item.Item;
+
 public class ChangeItemNameItemAction implements ItemAction {
     private String name;
     private Item item;

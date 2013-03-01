@@ -3,6 +3,7 @@ package com.chewielouie.textadventure;
 import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.item.Item;
 
 public class NullLocation implements ModelLocation {
     public void addExit( Exit exit ) {

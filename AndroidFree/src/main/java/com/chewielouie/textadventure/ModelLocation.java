@@ -2,6 +2,7 @@ package com.chewielouie.textadventure;
 
 import java.util.List;
 import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.item.Item;
 
 public interface ModelLocation {
     public void addExit( Exit exit );
