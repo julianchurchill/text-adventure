@@ -1,4 +1,4 @@
-package com.chewielouie.textadventure;
+package com.chewielouie.textadventure.itemaction;
 
 public interface ItemAction {
     public void enact();

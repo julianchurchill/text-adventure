@@ -1,4 +1,4 @@
-package com.chewielouie.textadventure;
+package com.chewielouie.textadventure.itemaction;
 
 import com.chewielouie.textadventure.item.Item;
 
