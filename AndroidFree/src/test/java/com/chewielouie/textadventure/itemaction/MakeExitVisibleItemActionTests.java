@@ -7,6 +7,8 @@ import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.Exit;
+import com.chewielouie.textadventure.TextAdventureModel;
 
 @RunWith(JMock.class)
 public class MakeExitVisibleItemActionTests {

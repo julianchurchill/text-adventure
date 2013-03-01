@@ -26,6 +26,8 @@ import com.chewielouie.textadventure.serialisation.PlainTextItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextModelLocationDeserialiser;
 import com.chewielouie.textadventure.item.ItemFactory;
 import com.chewielouie.textadventure.item.NormalItemFactory;
+import com.chewielouie.textadventure.itemaction.ItemActionFactory;
+import com.chewielouie.textadventure.itemaction.NormalItemActionFactory;
 
 public class TextAdventureActivity extends Activity implements TextAdventureView, OnClickListener {
     private RendersView rendersView;
