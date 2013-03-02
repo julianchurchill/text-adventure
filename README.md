@@ -9,6 +9,7 @@ Backlog
 =======
 
 - [REFACTOR] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
+    - Done for Exit deserialiser
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 
 - [TEST] action view includes a cancel button to reset the actions to the top level
