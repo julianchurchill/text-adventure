@@ -8,8 +8,6 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [REFACTOR] Consider making the order of statements in the model text irrelevant. Currently the deserialisation depends on a strict ordering - this might be a pain and lead to silly errors in the model text that are not obvious to find.
-    - Done for Exit and Item deserialisers
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 
 - [TEST] action view includes a cancel button to reset the actions to the top level
@@ -48,7 +46,6 @@ Backlog
 Done
 ====
 
-DONE - [REFACTOR] Deserialisation should be pulled out into seperate classes
 - [FEATURE] Items can be used with other items. This iteraction must be specified in the model content text and is limited to the following actions - change item name, change item description, make an exit visible
 - [FEATURE] New default action 'Examine some item' - can be used to look at items in the current location without picking it up
 - [FEATURE] Replaced long press context menu for actions with actions buttons

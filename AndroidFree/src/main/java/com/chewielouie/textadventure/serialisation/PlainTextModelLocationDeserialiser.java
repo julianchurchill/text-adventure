@@ -12,7 +12,6 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
     private final String exitTag = "EXIT\n";
     private final String itemTag = "ITEM\n";
     private String content;
-    private int startOfLastFoundTag;
     private ModelLocation location;
     private ItemFactory itemFactory;
     private ExitFactory exitFactory;
@@ -38,7 +37,6 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
     public void deserialise( ModelLocation location, String content ) {
         this.location = location;
         this.content = content;
-        startOfLastFoundTag = -1;
 
         location.setId( extractNewlineDelimitedValueFor( locationIDTag ) );
         deserialiseDescription();
@@ -47,10 +45,9 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
     }
 
     private String extractNewlineDelimitedValueFor( String tag ) {
-        int startOfTag = content.indexOf( tag, startOfLastFoundTag + 1 );
+        int startOfTag = content.indexOf( tag );
         if( startOfTag == -1 )
             return "";
-        startOfLastFoundTag = startOfTag;
         int endOfTag = content.indexOf( "\n", startOfTag );
         if( endOfTag == -1 )
             endOfTag = content.length();
@@ -77,30 +74,24 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
 
     private void deserialiseExits() {
         if( exitFactory != null ) {
-            while( tagAvailable( exitTag ) ) {
-                int startOfTag = findStartOfTag( exitTag );
+            int nextTag = -1;
+            while( (nextTag=findTagFrom( nextTag, exitTag )) != -1 ) {
                 Exit exit = exitFactory.create();
                 if( exitDeserialiser != null )
                     exitDeserialiser.deserialise( exit,
-                                                  extractContentForTag( exitTag ) );
+                                                  extractContentForTagFrom( nextTag, exitTag ) );
                 location.addExit( exit );
-                startOfLastFoundTag = startOfTag;
             }
         }
     }
 
-    private String extractContentForTag( String tag ) {
-        int startOfTag = findStartOfTag( tag );
-        int endOfTag = findEndOfTag( tag, startOfTag );
-        return content.substring( startOfTag + tag.length(), endOfTag );
+    private int findTagFrom( int start, String tag ) {
+        return content.indexOf( tag, start+1 );
     }
 
-    private boolean tagAvailable( String tag ) {
-        return content.indexOf( tag, startOfLastFoundTag+1 ) != -1;
-    }
-
-    private int findStartOfTag( String tag ) {
-        return content.indexOf( tag, startOfLastFoundTag+1 );
+    private String extractContentForTagFrom( int start, String tag ) {
+        int endOfTag = findEndOfTag( tag, start );
+        return content.substring( start + tag.length(), endOfTag );
     }
 
     private int findEndOfTag( String tag, int startOfTag ) {
@@ -115,14 +106,13 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
 
     private void deserialiseItems() {
         if( itemFactory != null ) {
-            while( tagAvailable( itemTag ) ) {
-                int startOfTag = findStartOfTag( itemTag );
+            int nextTag = -1;
+            while( (nextTag=findTagFrom( nextTag, itemTag )) != -1 ) {
                 Item item = itemFactory.create();
                 if( itemDeserialiser != null )
                     itemDeserialiser.deserialise( item,
-                                                  extractContentForTag( itemTag ) );
+                                                  extractContentForTagFrom( nextTag, itemTag ) );
                 location.addItem( item );
-                startOfLastFoundTag = startOfTag;
             }
         }
     }
