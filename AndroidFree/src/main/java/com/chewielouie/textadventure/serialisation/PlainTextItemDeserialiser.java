@@ -15,7 +15,6 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private final String itemSuccessfulUseMessageTag = "item successful use message:";
     private final String itemUseIsNotRepeatableTag = "item use is not repeatable:";
     private final String itemUseActionTag = "item use action:";
-    private int startOfLastFoundTag;
     private Item item;
     private String content;
     private ItemActionFactory itemActionFactory;
@@ -28,31 +27,6 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         this.item = item;
         this.content = content;
 
-        startOfLastFoundTag = -1;
-
-        deserialiseItems();
-    }
-
-    private int findTag( String tag ) {
-        return content.indexOf( tag, startOfLastFoundTag + 1 );
-    }
-
-    private String extractNewlineDelimitedValueFor( String tag ) {
-        int startOfTag = findTag( tag );
-        if( startOfTag == -1 )
-            return "";
-        startOfLastFoundTag = startOfTag;
-        return extractValueUpToNewline( startOfTag + tag.length() );
-    }
-
-    private String extractValueUpToNewline( int startOfValue ) {
-        int endOfTag = content.indexOf( "\n", startOfLastFoundTag );
-        if( endOfTag == -1 )
-            endOfTag = content.length();
-        return content.substring( startOfValue, endOfTag );
-    }
-
-    private void deserialiseItems() {
         item.setName( extractNewlineDelimitedValueFor( itemNameTag ) );
         item.setDescription( extractNewlineDelimitedValueFor( itemDescriptionTag ) );
         item.setId( extractNewlineDelimitedValueFor( itemIDTag ) );
@@ -73,30 +47,45 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         extractItemActions();
     }
 
+    private boolean findTagWithNoArgument( String tag ) {
+        return findTag( tag ) != -1;
+    }
+
+    private int findTag( String tag ) {
+        return content.indexOf( tag );
+    }
+
+    private String extractNewlineDelimitedValueFor( String tag ) {
+        int startOfTag = findTag( tag );
+        if( startOfTag == -1 )
+            return "";
+        return extractValueUpToNewline( startOfTag + tag.length() );
+    }
+
+    private String extractValueUpToNewline( int startOfValue ) {
+        int endOfTag = content.indexOf( "\n", startOfValue );
+        if( endOfTag == -1 )
+            endOfTag = content.length();
+        return content.substring( startOfValue, endOfTag );
+    }
+
     private void extractItemActions() {
         if( itemActionFactory != null ) {
-            while( findTagAndUpdatePosition( itemUseActionTag ) ) {
-                ItemAction action =
-                    itemActionFactory.create(
-                        extractValueUpToNewline( startOfLastFoundTag +
-                                                 itemUseActionTag.length() ),
-                        item );
-                item.addOnUseAction( action );
-            }
+            int nextTag = -1;
+            while( (nextTag=findTagFrom( nextTag, itemUseActionTag )) != -1 )
+                item.addOnUseAction( createAction( nextTag ) );
         }
     }
 
-    private boolean findTagAndUpdatePosition( String tag ) {
-        return findTagWithNoArgument( tag );
+    private ItemAction createAction( int startOfActionValue ) {
+        return itemActionFactory.create(
+                    extractValueUpToNewline( startOfActionValue +
+                                             itemUseActionTag.length() ),
+                    item );
     }
 
-    private boolean findTagWithNoArgument( String tag ) {
-        int startOfTag = findTag( tag );
-        if( startOfTag != -1 ) {
-            startOfLastFoundTag = startOfTag;
-            return true;
-        }
-        return false;
+    private int findTagFrom( int start, String tag ) {
+        return content.indexOf( tag, start + 1 );
     }
 }
 
