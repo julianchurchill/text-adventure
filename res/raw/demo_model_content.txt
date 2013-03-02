@@ -6,19 +6,19 @@ INVENTORY ITEM
 item name:Multitool
 item description:It's got a lot of tools on it. You feel like a man of the wilderness when you wield this formidable contraption.
 LOCATION
-location id:startloc
-location description:You are in an empty wasteland that stretches for miles and miles.
+location id:townentrance
+location description:You are standing outside a small town. The main street goes north, to the west there are some small out buildings and to the east you can see what looks like an abandoned mine shaft.
 EXIT
 exit label:North
-exit destination:busytown
+exit destination:mainstreettown
 exit direction hint:North
 EXIT
 exit label:East
-exit destination:eastloc
+exit destination:mineshaft
 exit direction hint:East
 EXIT
 exit label:West
-exit destination:westloc
+exit destination:townoutbuildings
 exit direction hint:West
 ITEM
 item name:Skeleton key
@@ -29,20 +29,16 @@ ITEM
 item name:Banana peel
 item description:It is yellow and a little moldy.
 item countable noun prefix:some
-ITEM
-item name:Sand
-item description:The fine grains run through your fingers, reminding you of passing time and an urgent task that must be done.
-item countable noun prefix:some
 LOCATION
-location id:busytown
-location description:You are in a busy town. There is a clock tower to the north.
+location id:mainstreettown
+location description:You are on the main street of the town. There is a clock tower to the north.
 EXIT
 exit label:North
 exit destination:clocktower
 exit direction hint:North
 EXIT
 exit label:South
-exit destination:startloc
+exit destination:townentrance
 exit direction hint:South
 ITEM
 item name:Dust of the Ancients
@@ -54,7 +50,7 @@ location id:clocktower
 location description:You stand before a mighty clock tower. The clock goes TICK!
 EXIT
 exit label:South
-exit destination:busytown
+exit destination:mainstreettown
 exit direction hint:South
 EXIT
 exit label:Clock tower door
@@ -86,17 +82,22 @@ exit label:Clock tower door
 exit destination:clocktower
 exit direction hint:South
 LOCATION
-location id:eastloc
-location description:You are in the middle of a vast and endless ocean. Of despair.
+location id:mineshaft
+location description:You stand before an old blocked up mine shaft, there are some dusty footprints in the dirt around the entrance however there is no obvious way in. A sign states "McCreedys Mine - Stay out or suffer the consequences!"
 EXIT
 exit label:West
-exit destination:startloc
+exit destination:townentrance
 exit direction hint:West
 LOCATION
-location id:westloc
-location description:You are in the precise centre of the universe. You are disappointed to find there is nothing here.
+location id:townoutbuildings
+location description:There are a number of small shack like structures here, fallen down and decrepit they haven't been used for years.
 EXIT
 exit label:East
-exit destination:startloc
+exit destination:townentrance
 exit direction hint:East
+ITEM
+item name:mound of earth
+item description:The mound of earth has recently been disturbed.
+item countable noun prefix:a
+item is untakeable:
 
