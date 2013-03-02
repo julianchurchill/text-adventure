@@ -80,7 +80,7 @@ item use action:change item name:unlocked door
 item use action:make exit visible:clocktowerdoor
 LOCATION
 location id:groundfloorclocktower
-location description:You are inside the mighty clock tower. Sounds resonates around you as the clock ticks.
+location description:You are inside the mighty clock tower. Sound resonates around you as the clock ticks.
 EXIT
 exit label:Clock tower door
 exit destination:clocktower
