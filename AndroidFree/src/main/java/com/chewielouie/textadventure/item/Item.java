@@ -1,6 +1,7 @@
 package com.chewielouie.textadventure.item;
 
 import com.chewielouie.textadventure.itemaction.ItemAction;
+import java.util.List;
 
 public interface Item {
     public String description();
@@ -22,5 +23,6 @@ public interface Item {
     public void setUseIsNotRepeatable();
     public void addOnUseAction( ItemAction action );
     public void use();
+    public List<ItemAction> actions();
 }
 

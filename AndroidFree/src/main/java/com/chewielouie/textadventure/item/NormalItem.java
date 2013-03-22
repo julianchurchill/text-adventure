@@ -127,5 +127,9 @@ public class NormalItem implements Item {
     public void addOnUseAction( ItemAction action ) {
         onUseActions.add( action );
     }
+
+    public List<ItemAction> actions() {
+        return onUseActions;
+    }
 }
 
