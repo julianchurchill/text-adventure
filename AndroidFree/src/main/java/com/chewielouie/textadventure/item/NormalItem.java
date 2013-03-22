@@ -99,6 +99,13 @@ public class NormalItem implements Item {
         this.canBeUsedWithTargetID = itemID;
     }
 
+    public List<String> canBeUsedWithItemIDs() {
+        List<String> ids = new ArrayList<String>();
+        if( this.canBeUsedWithTargetID != "" )
+            ids.add( this.canBeUsedWithTargetID );
+        return ids;
+    }
+
     public void setUseIsNotRepeatable() {
         useIsRepeatable = false;
     }

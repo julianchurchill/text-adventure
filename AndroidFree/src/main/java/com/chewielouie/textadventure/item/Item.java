@@ -18,6 +18,7 @@ public interface Item {
     public void setUntakeable();
     public boolean canBeUsedWith( Item item );
     public void setCanBeUsedWith( String itemID );
+    public List<String> canBeUsedWithItemIDs();
     public String usedWithText();
     public void setUsedWithText( String text );
     public void setUseIsNotRepeatable();
