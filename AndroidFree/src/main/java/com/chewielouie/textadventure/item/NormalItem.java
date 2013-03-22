@@ -110,6 +110,10 @@ public class NormalItem implements Item {
         useIsRepeatable = false;
     }
 
+    public boolean useIsNotRepeatable() {
+        return !this.useIsRepeatable;
+    }
+
     public String usedWithText() {
         return usedWithText;
     }

@@ -22,6 +22,7 @@ public interface Item {
     public String usedWithText();
     public void setUsedWithText( String text );
     public void setUseIsNotRepeatable();
+    public boolean useIsNotRepeatable();
     public void addOnUseAction( ItemAction action );
     public void use();
     public List<ItemAction> actions();
