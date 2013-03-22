@@ -1,6 +1,7 @@
 package com.chewielouie.textadventure;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +45,10 @@ public class BasicModel implements TextAdventureModel, UserInventory {
 
     public void addToInventory( Item item ) {
         inventoryItems.add( item );
+    }
+
+    public Collection<ModelLocation> locations() {
+        return locations.values();
     }
 
     public Exit findExitByID( String id ) {
