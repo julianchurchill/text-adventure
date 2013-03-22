@@ -18,7 +18,7 @@ public class ChangeItemDescriptionItemAction implements ItemAction {
     }
 
     public String name() {
-        return "ChangeItemDescription";
+        return "change item description";
     }
 
     public List<String> arguments() {

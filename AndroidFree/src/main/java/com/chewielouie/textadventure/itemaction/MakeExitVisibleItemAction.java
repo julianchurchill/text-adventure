@@ -23,7 +23,7 @@ public class MakeExitVisibleItemAction implements ItemAction {
     }
 
     public String name() {
-        return "MakeExitVisible";
+        return "make exit visible";
     }
 
     public List<String> arguments() {
