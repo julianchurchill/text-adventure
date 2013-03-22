@@ -36,6 +36,10 @@ public class NullLocation implements ModelLocation {
         return "";
     }
 
+    public String descriptionWithoutItems() {
+        return "";
+    }
+
     public void setLocationDescription( String description ) {
     }
 

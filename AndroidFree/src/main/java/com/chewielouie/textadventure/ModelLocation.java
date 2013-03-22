@@ -11,6 +11,7 @@ public interface ModelLocation {
     public String id();
     public void setId( String id );
     public String description();
+    public String descriptionWithoutItems();
     public void setLocationDescription( String description );
     public List<Exit> visibleExits();
     public List<Exit> exitsIncludingInvisibleOnes();

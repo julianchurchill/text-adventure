@@ -65,6 +65,10 @@ public class Location implements ModelLocation {
         return description + itemsPostAmble();
     }
 
+    public String descriptionWithoutItems() {
+        return description;
+    }
+
     public void setLocationDescription( String description ) {
         this.description = description;
     }
