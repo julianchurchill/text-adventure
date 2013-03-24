@@ -59,5 +59,19 @@ public class NullLocation implements ModelLocation {
     public List<Item> items() {
         return new ArrayList<Item>();
     }
+
+    public void setX( int x ) {
+    }
+
+    public void setY( int y ) {
+    }
+
+    public int x() {
+        return 0;
+    }
+
+    public int y() {
+        return 0;
+    }
 }
 

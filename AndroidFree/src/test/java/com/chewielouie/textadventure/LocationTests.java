@@ -279,5 +279,21 @@ public class LocationTests {
             if( a instanceof ExamineAnItem )
                 fail("ExamineAnItem action is not needed by this location as it has no items!");
     }
+
+    @Test
+    public void location_coordinates_defaults_to_0_0() {
+        Location l = createLocation();
+        assertEquals( 0, l.x() );
+        assertEquals( 0, l.y() );
+    }
+
+    @Test
+    public void location_coordinates_can_be_set() {
+        Location l = createLocation();
+        l.setX( 5 );
+        l.setY( 10 );
+        assertEquals( 5,  l.x() );
+        assertEquals( 10, l.y() );
+    }
 }
 

@@ -341,6 +341,36 @@ public class PlainTextModelLocationDeserialiserTests {
                        "ITEM\nitem 2 content\n" +
                        "and more item content\n" );
     }
+
+    @Test
+    public void location_may_have_optional_coordinates() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        PlainTextModelLocationDeserialiser d = new PlainTextModelLocationDeserialiser( null, null );
+        mockery.checking( new Expectations() {{
+            oneOf( location ).setX( 5 );
+            oneOf( location ).setY( 10 );
+            ignoring( location );
+        }});
+        d.deserialise( location, "x:5\n" +
+                                 "y:10\n" +
+                                 "location id:name\n" +
+                                 "location description:You are in a room.\n" +
+                                         "It is a bit untidy." );
+    }
+
+    @Test
+    public void deserialised_tags_should_be_taken_from_the_start_of_the_line() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        PlainTextModelLocationDeserialiser d = new PlainTextModelLocationDeserialiser( null, null );
+        mockery.checking( new Expectations() {{
+            never( location ).setX( with( any( Integer.class ) ) );
+            ignoring( location );
+        }});
+        d.deserialise( location, "location id:name\n" +
+                                 "location description:You are in a room.\n" +
+                                         "It is a bit untidy.\n" +
+                                 "a_tag_that_ends_with_another_tag____x:102020\n" );
+    }
 }
 
 

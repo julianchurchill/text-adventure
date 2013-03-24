@@ -19,6 +19,10 @@ public interface ModelLocation {
     public List<Item> items();
     public void addItem( Item item );
     public void removeItem( Item item );
+    public void setX( int x );
+    public void setY( int y );
+    public int x();
+    public int y();
 }
 
 

@@ -7,6 +7,8 @@ import com.chewielouie.textadventure.item.ItemFactory;
 import com.chewielouie.textadventure.ModelLocation;
 
 public class PlainTextModelLocationDeserialiser implements ModelLocationDeserialiser {
+    private final String xTag = "x:";
+    private final String yTag = "y:";
     private final String locationIDTag = "location id:";
     private final String locationDescriptionTag = "location description:";
     private final String exitTag = "EXIT\n";
@@ -38,6 +40,7 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
         this.location = location;
         this.content = content;
 
+        deserialiseCoordinates();
         location.setId( extractNewlineDelimitedValueFor( locationIDTag ) );
         deserialiseDescription();
         deserialiseExits();
@@ -46,12 +49,27 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
 
     private String extractNewlineDelimitedValueFor( String tag ) {
         int startOfTag = content.indexOf( tag );
-        if( startOfTag == -1 )
+        //if( startOfTag == -1 )
+        if( startOfTag == -1 || isStartOfALine( startOfTag ) == false )
             return "";
         int endOfTag = content.indexOf( "\n", startOfTag );
         if( endOfTag == -1 )
             endOfTag = content.length();
         return content.substring( startOfTag + tag.length(), endOfTag );
+    }
+
+    private boolean isStartOfALine( int index ) {
+        return index == 0 ||
+               (index > 0 && content.charAt( index-1 ) == '\n');
+    }
+
+    private void deserialiseCoordinates() {
+        String x = extractNewlineDelimitedValueFor( xTag );
+        if( x != "" )
+            location.setX( Integer.parseInt( x ) );
+        String y = extractNewlineDelimitedValueFor( yTag );
+        if( y != "" )
+            location.setY( Integer.parseInt( y ) );
     }
 
     private void deserialiseDescription() {

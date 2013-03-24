@@ -13,6 +13,8 @@ public class Location implements ModelLocation {
     private List<Exit> exits = new ArrayList<Exit>();
     private List<Item> items = new ArrayList<Item>();
     private UserInventory inventory;
+    private int x = 0;
+    private int y = 0;
 
     public Location( String locationId, String description,
             UserInventory inventory ) {
@@ -119,6 +121,22 @@ public class Location implements ModelLocation {
         if( items().size() > 0 )
             actions.add( new ExamineAnItem( items() ) );
         return actions;
+    }
+
+    public void setX( int x ) {
+        this.x = x;
+    }
+
+    public void setY( int y ) {
+        this.y = y;
+    }
+
+    public int x() {
+        return this.x;
+    }
+
+    public int y() {
+        return this.y;
     }
 }
 
