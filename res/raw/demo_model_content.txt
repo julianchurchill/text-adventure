@@ -6,52 +6,67 @@ INVENTORY ITEM
 item name:Multitool
 item description:It's got a lot of tools on it. You feel like a man of the wilderness when you wield this formidable contraption.
 LOCATION
+x:300
+y:360
 location id:townentrance
 location description:You are standing outside a small town. The main street goes north, to the west there are some small out buildings and to the east you can see what looks like an abandoned mine shaft.
 EXIT
 exit label:North
 exit destination:mainstreettown
 exit direction hint:North
+exit id:
 EXIT
 exit label:East
 exit destination:mineshaft
 exit direction hint:East
+exit id:
 EXIT
 exit label:West
 exit destination:townoutbuildings
 exit direction hint:West
+exit id:
 ITEM
 item name:Skeleton key
 item description:It is rather dirty and has clearly been carved from some poor unfortunates metacarpal.
 item id:clocktowerskeletonkey
 item countable noun prefix:a
+item mid sentence cased name:skeleton key
 ITEM
 item name:Banana peel
 item description:It is yellow and a little moldy.
+item id:
 item countable noun prefix:some
+item mid sentence cased name:banana peel
 LOCATION
-location id:mainstreettown
-location description:You are on the main street of the town. There is a clock tower to the north.
+x:300
+y:0
+location id:groundfloorclocktower
+location description:You are inside the mighty clock tower. Sound resonates around you as the clock ticks.
 EXIT
-exit label:North
+exit label:Clock tower door
 exit destination:clocktower
-exit direction hint:North
-EXIT
-exit label:South
-exit destination:townentrance
 exit direction hint:South
-ITEM
-item name:Dust of the Ancients
-item description:This dust looks pretty powerful, for dust.
-item countable noun prefix:some
-item mid sentence cased name:Dust of the Ancients
+exit id:
 LOCATION
+x:420
+y:360
+location id:mineshaft
+location description:You stand before an old blocked up mine shaft, there are some dusty footprints in the dirt around the entrance however there is no obvious way in. A sign states "McCreedys Mine - Stay out or suffer the consequences!"
+EXIT
+exit label:West
+exit destination:townentrance
+exit direction hint:West
+exit id:
+LOCATION
+x:300
+y:120
 location id:clocktower
 location description:You stand before a mighty clock tower. The clock goes TICK!
 EXIT
 exit label:South
 exit destination:mainstreettown
 exit direction hint:South
+exit id:
 EXIT
 exit label:Clock tower door
 exit destination:groundfloorclocktower
@@ -61,12 +76,15 @@ exit id:clocktowerdoor
 ITEM
 item name:Minute Hand of the Clock Tower
 item description:It is quite heavy, ornate and made of iron.
+item id:
 item countable noun prefix:a
 item mid sentence cased name:Minute Hand of the Clock Tower
 ITEM
 item name:locked door
 item description:It is locked and looks impenetrable. It appears to allow access to the clock tower itself.
+item id:
 item countable noun prefix:a
+item mid sentence cased name:locked door
 item is untakeable:
 item can be used with:clocktowerskeletonkey
 item successful use message:You hear a click and the door springs open.
@@ -75,29 +93,39 @@ item use action:change item description:It is unlocked. It appears to allow acce
 item use action:change item name:unlocked door
 item use action:make exit visible:clocktowerdoor
 LOCATION
-location id:groundfloorclocktower
-location description:You are inside the mighty clock tower. Sound resonates around you as the clock ticks.
+x:300
+y:240
+location id:mainstreettown
+location description:You are on the main street of the town. There is a clock tower to the north.
 EXIT
-exit label:Clock tower door
+exit label:North
 exit destination:clocktower
-exit direction hint:South
-LOCATION
-location id:mineshaft
-location description:You stand before an old blocked up mine shaft, there are some dusty footprints in the dirt around the entrance however there is no obvious way in. A sign states "McCreedys Mine - Stay out or suffer the consequences!"
+exit direction hint:North
+exit id:
 EXIT
-exit label:West
+exit label:South
 exit destination:townentrance
-exit direction hint:West
+exit direction hint:South
+exit id:
+ITEM
+item name:Dust of the Ancients
+item description:This dust looks pretty powerful, for dust.
+item id:
+item countable noun prefix:some
+item mid sentence cased name:Dust of the Ancients
 LOCATION
+x:180
+y:360
 location id:townoutbuildings
 location description:There are a number of small shack like structures here, fallen down and decrepit they haven't been used for years.
 EXIT
 exit label:East
 exit destination:townentrance
 exit direction hint:East
+exit id:
 ITEM
 item name:mound of earth
 item description:The mound of earth has recently been disturbed.
+item id:
 item countable noun prefix:a
 item is untakeable:
-
