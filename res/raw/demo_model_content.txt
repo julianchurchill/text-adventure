@@ -51,12 +51,32 @@ LOCATION
 x:420
 y:360
 location id:mineshaft
-location description:You stand before an old blocked up mine shaft, there are some dusty footprints in the dirt around the entrance however there is no obvious way in. A sign states "McCreedys Mine - Stay out or suffer the consequences!"
+location description:You stand before an old blocked up mine shaft, there are some dusty footprints in the dirt around the entrance however there is no obvious way in. A sign states "McCreedys Mine - Stay out or suffer the consequences!". To the east is a old ramshackle shed.
 EXIT
 exit label:West
 exit destination:townentrance
 exit direction hint:West
-exit id:
+EXIT
+exit label:Ramshackle Shed
+exit destination:smallshed
+exit direction hint:East
+LOCATION
+x:480
+y:360
+location id:smallshed
+location description:You are standing inside a small shed. It is dusty and dirty and a variety of mining tools rest against the walls.
+EXIT
+exit label:West
+exit destination:mineshaft
+exit direction hint:West
+ITEM
+item name:Spade
+item description:It is a wooden handled spade. It looks like it has seen quite a lot of use and might not be good for much.
+item countable noun prefix:a
+item can be used with:moundofearth
+item successful use message:You dig deep into the dirt, sweat dripping from your brow in the dry heat. Clank! The spade strikes something metallic. You brush the earth away to reveal a old clock face, with out minute or hour hands. It looks sad.
+item use action:change item visibility:clockface:visible
+item use action:destroy item:moundofearth
 LOCATION
 x:300
 y:120
@@ -124,7 +144,7 @@ exit direction hint:East
 exit id:
 ITEM
 item name:mound of earth
-item description:The mound of earth has recently been disturbed.
-item id:
+item description:It has recently been disturbed.
+item id:moundofearth
 item countable noun prefix:a
 item is untakeable:

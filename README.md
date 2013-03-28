@@ -10,7 +10,8 @@ Backlog
 
 - [STORY] Find a spade in a shed.
 - [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
-  - [TEST] New ItemAction ChangeItemVisibility (clock face), DestroyItem (mound)
+  - [TEST] New ItemAction DestroyItem (mound)
+  - [TEST] New ItemAction ChangeItemVisibility (clock face)
 - [STORY] Find clock hour hand in untakeable bags of junk somewhere.
   - [TEST] New trigger ItemAction on examine, MakeItemVisible( clock hour hand )
 - [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some points or money or something and maybe a quest/hint as to what to do next - open up a new area.
