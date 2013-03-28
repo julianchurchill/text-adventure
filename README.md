@@ -8,7 +8,6 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [STORY] Find a spade in a shed.
 - [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
   - [TEST] New ItemAction DestroyItem (mound)
   - [TEST] New ItemAction ChangeItemVisibility (clock face)
