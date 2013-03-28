@@ -8,7 +8,6 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [BUG] Using key on the door doesn't change door name from locked to unlocked...
 - [STORY] Find a spade in a shed.
 - [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
   - [TEST] New ItemAction ChangeItemVisibility (clock face), DestroyItem (mound)
@@ -47,6 +46,8 @@ Backlog
 Done
 ====
 
+- [BUG] Using key on the door doesn't change door name from locked to unlocked...
+  - [FIX] Mid-sentence cased name was being set in the demo content and overriding the new name
 - [FEATURE] Items can be used with other items. This iteraction must be specified in the model content text and is limited to the following actions - change item name, change item description, make an exit visible
 - [FEATURE] New default action 'Examine some item' - can be used to look at items in the current location without picking it up
 - [FEATURE] Replaced long press context menu for actions with actions buttons

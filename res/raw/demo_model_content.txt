@@ -84,7 +84,6 @@ item name:locked door
 item description:It is locked and looks impenetrable. It appears to allow access to the clock tower itself.
 item id:
 item countable noun prefix:a
-item mid sentence cased name:locked door
 item is untakeable:
 item can be used with:clocktowerskeletonkey
 item successful use message:You hear a click and the door springs open.
