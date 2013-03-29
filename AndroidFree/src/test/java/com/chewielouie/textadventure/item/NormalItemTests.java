@@ -168,6 +168,26 @@ public class NormalItemTests {
     }
 
     @Test
+    public void item_is_visible_by_default() {
+        NormalItem item = new NormalItem();
+        assertTrue( item.visible() );
+    }
+
+    @Test
+    public void setting_item_to_visible_makes_it_visible() {
+        NormalItem item = new NormalItem();
+        item.setVisible( true );
+        assertTrue( item.visible() );
+    }
+
+    @Test
+    public void setting_item_to_invisible_makes_it_not_visible() {
+        NormalItem item = new NormalItem();
+        item.setVisible( false );
+        assertFalse( item.visible() );
+    }
+
+    @Test
     public void two_objects_with_the_same_value_should_be_equal() {
         NormalItem object1 = new NormalItem();
         object1.setName( "name" );

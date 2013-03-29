@@ -10,7 +10,6 @@ Backlog
 
 - [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
   - [TEST] New ItemAction ChangeItemVisibility (clock face)
-     - NormalItem needs to implement setVisibility() and visible()
      - Location needs to hide items that are not visible
 - [STORY] Find clock hour hand in untakeable bags of junk somewhere.
   - [TEST] New trigger ItemAction on examine, ChangeItemVisibility( clock hour hand )

@@ -16,6 +16,7 @@ public class NormalItem implements Item {
     private boolean useIsRepeatable = true;
     private boolean used = false;
     private List<ItemAction> onUseActions = new ArrayList<ItemAction>();
+    private boolean visible = true;
 
     public String description() {
         return description;
@@ -144,6 +145,11 @@ public class NormalItem implements Item {
     }
 
     public void setVisible( boolean visible ) {
+        this.visible = visible;
+    }
+
+    public boolean visible() {
+        return visible;
     }
 }
 

@@ -27,5 +27,6 @@ public interface Item {
     public void use();
     public List<ItemAction> actions();
     public void setVisible( boolean visible );
+    public boolean visible();
 }
 
