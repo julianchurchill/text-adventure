@@ -60,6 +60,12 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public void destroyItem( String id ) {
+        for( Item item : inventoryItems ) {
+            if( item.id() == id ) {
+                inventoryItems.remove( item );
+                break;
+            }
+        }
     }
 }
 

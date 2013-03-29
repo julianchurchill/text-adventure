@@ -159,5 +159,30 @@ public class BasicModelTests {
 
         assertEquals( null, model.findExitByID( "exit id" ) );
     }
+
+    @Test
+    public void destroy_item_removes_it_from_the_inventory() {
+        final Item itemToDestroy = mockery.mock( Item.class, "item to destroy" );
+        final Item itemToLeave = mockery.mock( Item.class, "item to leave" );
+        mockery.checking( new Expectations() {{
+            allowing( itemToDestroy ).id();
+            will( returnValue( "itemid" ) );
+            ignoring( itemToDestroy );
+            allowing( itemToLeave ).id();
+            will( returnValue( "otheritemid" ) );
+            ignoring( itemToLeave );
+        }});
+        BasicModel model = new BasicModel();
+        model.addToInventory( itemToDestroy );
+        model.addToInventory( itemToLeave );
+
+        model.destroyItem( "itemid" );
+
+        assertEquals( 1, model.inventoryItems().size() );
+        assertEquals( itemToLeave, model.inventoryItems().get( 0 ) );
+    }
+
+    //public void destroy_item_removes_it_from_the_current_location() {
+    //public void destroy_item_removes_it_from_any_location() {
 }
 
