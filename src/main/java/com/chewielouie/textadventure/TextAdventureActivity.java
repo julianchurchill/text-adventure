@@ -28,6 +28,7 @@ import com.chewielouie.textadventure.item.ItemFactory;
 import com.chewielouie.textadventure.item.NormalItemFactory;
 import com.chewielouie.textadventure.itemaction.ItemActionFactory;
 import com.chewielouie.textadventure.itemaction.NormalItemActionFactory;
+import com.chewielouie.textadventure.itemaction.LoggableNormalItemActionFactory;
 
 public class TextAdventureActivity extends Activity implements TextAdventureView, OnClickListener {
     private RendersView rendersView;
@@ -86,7 +87,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private BasicModel createModel() {
         BasicModel model = new BasicModel();
         UserInventory inventory = model;
-        ItemActionFactory itemActionFactory = new NormalItemActionFactory( model );
+        Logger logger = new StdoutLogger();
+        ItemActionFactory itemActionFactory = new LoggableNormalItemActionFactory( logger, model );
         ItemFactory itemFactory = new NormalItemFactory();
         ItemDeserialiser itemDeserialiser =
             new PlainTextItemDeserialiser( itemActionFactory );
