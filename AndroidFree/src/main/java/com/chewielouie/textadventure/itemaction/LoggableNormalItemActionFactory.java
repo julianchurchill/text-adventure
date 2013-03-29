@@ -18,9 +18,7 @@ public class LoggableNormalItemActionFactory implements ItemActionFactory {
         ItemAction action = factory.create( content, item );
         if( action instanceof NullItemAction )
             return new LoggableNullItemAction( logger, content );
-        return action;
+        return new LoggableItemAction( action, logger, content, item );
     }
 }
-
-
 

@@ -13,7 +13,6 @@ Backlog
      - Deserialised needs to recognise 'item visibility:[visible|invisible]' property
      - NormalItem needs to implement setVisible()
      - Location needs to hide items that are not visible
-- [FEATURE] Change LoggableNormalItemFactory to wrap all item actions in a LoggableItemAction for default logging
 - [STORY] Find clock hour hand in untakeable bags of junk somewhere.
   - [TEST] New trigger ItemAction on examine, ChangeItemVisibility( clock hour hand )
 - [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some points or money or something and maybe a quest/hint as to what to do next - open up a new area.
