@@ -32,7 +32,7 @@ public class NormalItemActionFactory implements ItemActionFactory {
             return new DestroyItemItemAction(
                        content.substring( destroyItemTag.length() ),
                        model );
-        return new NullItemAction();
+        return new NullItemAction( content );
     }
 }
 
