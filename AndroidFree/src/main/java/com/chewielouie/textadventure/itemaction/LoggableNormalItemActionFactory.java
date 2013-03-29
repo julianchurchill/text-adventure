@@ -5,10 +5,6 @@ import com.chewielouie.textadventure.TextAdventureModel;
 import com.chewielouie.textadventure.item.Item;
 
 public class LoggableNormalItemActionFactory implements ItemActionFactory {
-    private String changeItemDescriptionTag = "change item description:";
-    private String changeItemNameTag = "change item name:";
-    private String makeExitVisibleTag = "make exit visible:";
-    private String destroyItemTag = "destroy item:";
     private Logger logger;
     private TextAdventureModel model;
 
@@ -18,24 +14,11 @@ public class LoggableNormalItemActionFactory implements ItemActionFactory {
     }
 
     public ItemAction create( String content, Item item ) {
-        if( content.startsWith( changeItemDescriptionTag ) )
-            return new ChangeItemDescriptionItemAction(
-                       content.substring( changeItemDescriptionTag.length() ),
-                       item );
-        else if( content.startsWith( changeItemNameTag ) )
-            return new ChangeItemNameItemAction(
-                       content.substring( changeItemNameTag.length() ),
-                       item );
-        else if( content.startsWith( makeExitVisibleTag ) )
-            return new MakeExitVisibleItemAction(
-                       content.substring( makeExitVisibleTag.length() ),
-                       item,
-                       model );
-        else if( content.startsWith( destroyItemTag ) )
-            return new DestroyItemItemAction(
-                       content.substring( destroyItemTag.length() ),
-                       model );
-        return new LoggableNullItemAction( logger, content );
+        NormalItemActionFactory factory = new NormalItemActionFactory( model );
+        ItemAction action = factory.create( content, item );
+        if( action instanceof NullItemAction )
+            return new LoggableNullItemAction( logger, content );
+        return action;
     }
 }
 
