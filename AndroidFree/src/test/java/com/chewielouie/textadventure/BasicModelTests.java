@@ -182,7 +182,50 @@ public class BasicModelTests {
         assertEquals( itemToLeave, model.inventoryItems().get( 0 ) );
     }
 
-    //public void destroy_item_removes_it_from_the_current_location() {
-    //public void destroy_item_removes_it_from_any_location() {
+    @Test
+    public void destroy_item_removes_it_from_the_current_location() {
+        final Item itemToDestroy = mockery.mock( Item.class, "item to destroy" );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final ArrayList<Item> items = new ArrayList<Item>();
+        items.add( itemToDestroy );
+        mockery.checking( new Expectations() {{
+            allowing( itemToDestroy ).id();
+            will( returnValue( "itemid" ) );
+            ignoring( itemToDestroy );
+            allowing( location ).items();
+            will( returnValue( items ) );
+            oneOf( location ).removeItem( itemToDestroy );
+            ignoring( location );
+        }});
+        BasicModel model = new BasicModel();
+        model.addLocation( location );
+
+        model.destroyItem( "itemid" );
+    }
+
+    @Test
+    public void destroy_item_removes_it_from_any_location() {
+        final Item itemToDestroy = mockery.mock( Item.class, "item to destroy" );
+        final ModelLocation currentLocation =
+            mockery.mock( ModelLocation.class, "loc1" );
+        final ModelLocation location2 = mockery.mock( ModelLocation.class, "loc2" );
+        final ArrayList<Item> items = new ArrayList<Item>();
+        items.add( itemToDestroy );
+        mockery.checking( new Expectations() {{
+            allowing( itemToDestroy ).id();
+            will( returnValue( "itemid" ) );
+            ignoring( itemToDestroy );
+            ignoring( currentLocation );
+            allowing( location2 ).items();
+            will( returnValue( items ) );
+            oneOf( location2 ).removeItem( itemToDestroy );
+            ignoring( location2 );
+        }});
+        BasicModel model = new BasicModel();
+        model.addLocation( currentLocation );
+        model.addLocation( location2 );
+
+        model.destroyItem( "itemid" );
+    }
 }
 

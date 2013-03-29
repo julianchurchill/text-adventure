@@ -73,10 +73,7 @@ ITEM
 item name:Spade
 item description:It is a wooden handled spade. It looks like it has seen quite a lot of use and might not be good for much.
 item countable noun prefix:a
-item can be used with:moundofearth
-item successful use message:You dig deep into the dirt, sweat dripping from your brow in the dry heat. Clank! The spade strikes something metallic. You brush the earth away to reveal a old clock face, with out minute or hour hands. It looks sad.
-item use action:change item visibility:clockface:visible
-item use action:destroy item:moundofearth
+item id:spade
 LOCATION
 x:300
 y:120
@@ -148,3 +145,6 @@ item description:It has recently been disturbed.
 item id:moundofearth
 item countable noun prefix:a
 item is untakeable:
+item can be used with:spade
+item successful use message:You dig deep into the dirt, sweat dripping from your brow in the dry heat. Clank! The spade strikes something metallic. You brush the earth away to reveal an old clock face, without a minute or an hour hand. It looks sad.
+item use action:destroy item:moundofearth

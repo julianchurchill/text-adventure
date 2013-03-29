@@ -60,13 +60,40 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public void destroyItem( String id ) {
+        if( removeItemFromInventory( id ) == false )
+            if( removeItemFromCurrentLocation( id ) == false )
+                removeItemFromAnyLocation( id );
+    }
+
+    private boolean removeItemFromInventory( String id ) {
         for( Item item : inventoryItems ) {
             if( item.id() == id ) {
                 inventoryItems.remove( item );
-                break;
+                return true;
             }
         }
+        return false;
+    }
+
+    private boolean removeItemFromCurrentLocation( String id ) {
+        return removeItemFromLocation( id, currentLocation );
+    }
+
+    private boolean removeItemFromAnyLocation( String id ) {
+        for( ModelLocation loc : locations.values() )
+            if( removeItemFromLocation( id, loc ) )
+                return true;
+        return false;
+    }
+
+    private boolean removeItemFromLocation( String id, ModelLocation loc ) {
+        for( Item item : loc.items() ) {
+            if( item.id() == id ) {
+                loc.removeItem( item );
+                return true;
+            }
+        }
+        return false;
     }
 }
-
 
