@@ -148,3 +148,4 @@ item is untakeable:
 item can be used with:spade
 item successful use message:You dig deep into the dirt, sweat dripping from your brow in the dry heat. Clank! The spade strikes something metallic. You brush the earth away to reveal an old clock face, without a minute or an hour hand. It looks sad.
 item use action:destroy item:moundofearth
+item use action:change item visibility:clockface:visible

@@ -12,5 +12,6 @@ public interface TextAdventureModel {
     public ModelLocation currentLocation();
     public Exit findExitByID( String id );
     public void destroyItem( String id );
+    public Item findItemByID( String id );
 }
 

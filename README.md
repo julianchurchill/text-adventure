@@ -10,12 +10,15 @@ Backlog
 
 - [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
   - [TEST] New ItemAction ChangeItemVisibility (clock face)
-        'item use action:change item visibility:clockface:visible'
+     - BasicModel needs to implement findItemByID(). Return a NullItem if not found. Remove if null clause from ChangeItemVisibilityItemAction.enact().
+     - NormalItem needs to implement setVisible()
+     - Location needs to hide items that are not visible
+- [FEATURE] Change LoggableNormalItemFactory to wrap all item actions in a LoggableItemAction for default logging
 - [STORY] Find clock hour hand in untakeable bags of junk somewhere.
-  - [TEST] New trigger ItemAction on examine, MakeItemVisible( clock hour hand )
+  - [TEST] New trigger ItemAction on examine, ChangeItemVisibility( clock hour hand )
 - [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some points or money or something and maybe a quest/hint as to what to do next - open up a new area.
   - [TEST] ItemAction DestroyItem (clock face, minute hand, hour hand)
-  - [TEST] ItemAction ShowUserText "You fit the final piece of the clock. The air stirs around you as you slide it gently into place. blah blah you get some rubies"
+  - [TEST] Succesful use text "You fit the final piece of the clock. The air stirs around you as you slide it gently into place. blah blah you get some rubies"
   - [TEST] New ItemAction something like AwardRubies
 
 - [FEATURE] Show a ruby counter at the top of the screen. Also have a nice little ruby graphic.

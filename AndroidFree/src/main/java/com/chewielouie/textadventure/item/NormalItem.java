@@ -142,5 +142,8 @@ public class NormalItem implements Item {
     public List<ItemAction> actions() {
         return onUseActions;
     }
+
+    public void setVisible( boolean visible ) {
+    }
 }
 

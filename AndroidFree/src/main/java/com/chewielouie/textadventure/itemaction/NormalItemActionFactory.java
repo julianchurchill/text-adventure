@@ -8,6 +8,7 @@ public class NormalItemActionFactory implements ItemActionFactory {
     private String changeItemNameTag = "change item name:";
     private String makeExitVisibleTag = "make exit visible:";
     private String destroyItemTag = "destroy item:";
+    private String changeItemVisibilityTag = "change item visibility:";
     private TextAdventureModel model;
 
     public NormalItemActionFactory( TextAdventureModel model ) {
@@ -31,6 +32,10 @@ public class NormalItemActionFactory implements ItemActionFactory {
         else if( content.startsWith( destroyItemTag ) )
             return new DestroyItemItemAction(
                        content.substring( destroyItemTag.length() ),
+                       model );
+        else if( content.startsWith( changeItemVisibilityTag ) )
+            return new ChangeItemVisibilityItemAction(
+                       content.substring( changeItemVisibilityTag.length() ),
                        model );
         return new NullItemAction( content );
     }

@@ -49,5 +49,16 @@ public class NormalItemActionFactoryTests {
 
         assertTrue( action instanceof DestroyItemItemAction );
     }
+
+    @Test
+    public void creates_ChangeItemVisibilityItemActions() {
+        NormalItemActionFactory factory = new NormalItemActionFactory( null );
+
+        ItemAction action = factory.create(
+               "change item visibility:itemid:visible",
+               null );
+
+        assertTrue( action instanceof ChangeItemVisibilityItemAction );
+    }
 }
 

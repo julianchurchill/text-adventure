@@ -95,5 +95,9 @@ public class BasicModel implements TextAdventureModel, UserInventory {
         }
         return false;
     }
+
+    public Item findItemByID( String id ) {
+        return null;
+    }
 }
 
