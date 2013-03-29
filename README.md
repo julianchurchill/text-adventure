@@ -25,6 +25,8 @@ Backlog
 - [FEATURE] Ruby counter should show how many out of how many achieved - e.g. 10/100
 
 - [FEATURE] Direction navigator - instead of top, bottom, right, left clickable labels use a compass with small labels.
+- [FEATURE] Diagnostic logging... to help debug issues once out in the wild
+
 - [FEATURE] In model content txt items can only be used in one direction, e.g. a spade with a mound of earth and the target item has to include the definition of what happens. If the original item (e.g. spade) includes this information it is ignored. Should this be changed to be bi-directional? It would make writing content easier but needs considering as it might not always be appropriate.
 
 - [FEATURE] Action navigator - instead of long click context menu sequence use a sidebar which either expands or gets replaced (with a title to preserve context e.g. 'Show inventory...', 'Take an item...').
