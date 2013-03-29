@@ -227,5 +227,64 @@ public class BasicModelTests {
 
         model.destroyItem( "itemid" );
     }
+
+    @Test
+    public void find_item_by_id_finds_items_in_inventory() {
+        final Item item = mockery.mock( Item.class );
+        mockery.checking( new Expectations() {{
+            allowing( item ).id();
+            will( returnValue( "itemid" ) );
+            ignoring( item );
+        }});
+        BasicModel model = new BasicModel();
+        model.addToInventory( item );
+
+        assertEquals( item, model.findItemByID( "itemid" ) );
+    }
+
+    @Test
+    public void find_item_by_id_finds_items_in_current_location() {
+        final Item item = mockery.mock( Item.class );
+        final ModelLocation currentLocation =
+            mockery.mock( ModelLocation.class, "loc1" );
+        final ArrayList<Item> items = new ArrayList<Item>();
+        items.add( item );
+        mockery.checking( new Expectations() {{
+            allowing( item ).id();
+            will( returnValue( "itemid" ) );
+            ignoring( item );
+            allowing( currentLocation ).items();
+            will( returnValue( items ) );
+            ignoring( currentLocation );
+        }});
+        BasicModel model = new BasicModel();
+        model.addLocation( currentLocation );
+
+        assertEquals( item, model.findItemByID( "itemid" ) );
+    }
+
+    @Test
+    public void find_item_by_id_finds_items_in_any_location() {
+        final Item item = mockery.mock( Item.class );
+        final ModelLocation currentLocation =
+            mockery.mock( ModelLocation.class, "loc1" );
+        final ModelLocation location2 = mockery.mock( ModelLocation.class, "loc2" );
+        final ArrayList<Item> items = new ArrayList<Item>();
+        items.add( item );
+        mockery.checking( new Expectations() {{
+            allowing( item ).id();
+            will( returnValue( "itemid" ) );
+            ignoring( item );
+            ignoring( currentLocation );
+            allowing( location2 ).items();
+            will( returnValue( items ) );
+            ignoring( location2 );
+        }});
+        BasicModel model = new BasicModel();
+        model.addLocation( currentLocation );
+        model.addLocation( location2 );
+
+        assertEquals( item, model.findItemByID( "itemid" ) );
+    }
 }
 

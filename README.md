@@ -10,7 +10,7 @@ Backlog
 
 - [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
   - [TEST] New ItemAction ChangeItemVisibility (clock face)
-     - BasicModel needs to implement findItemByID(). Return a NullItem if not found. Remove if null clause from ChangeItemVisibilityItemAction.enact().
+     - Deserialised needs to recognise 'item visibility:[visible|invisible]' property
      - NormalItem needs to implement setVisible()
      - Location needs to hide items that are not visible
 - [FEATURE] Change LoggableNormalItemFactory to wrap all item actions in a LoggableItemAction for default logging

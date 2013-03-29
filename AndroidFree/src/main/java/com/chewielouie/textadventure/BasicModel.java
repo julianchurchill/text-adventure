@@ -66,11 +66,10 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     private boolean removeItemFromInventory( String id ) {
-        for( Item item : inventoryItems ) {
-            if( item.id().equals( id ) ) {
-                inventoryItems.remove( item );
-                return true;
-            }
+        Item item = findItemInInventory( id );
+        if( item != null ) {
+            inventoryItems.remove( item );
+            return true;
         }
         return false;
     }
@@ -97,6 +96,24 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public Item findItemByID( String id ) {
+        Item item = findItemInInventory( id );
+        if( item != null )
+            return item;
+        return findItemInAnyLocation( id );
+    }
+
+    private Item findItemInInventory( String id ) {
+        for( Item item : inventoryItems )
+            if( item.id().equals( id ) )
+                return item;
+        return null;
+    }
+
+    private Item findItemInAnyLocation( String id ) {
+        for( ModelLocation loc : locations.values() )
+            for( Item item : loc.items() )
+                if( item.id().equals( id ) )
+                    return item;
         return null;
     }
 }
