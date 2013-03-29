@@ -8,7 +8,6 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [BUG] - mound of earth is not destroyed when used with the spade
 - [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
   - [TEST] New ItemAction ChangeItemVisibility (clock face)
         'item use action:change item visibility:clockface:visible'

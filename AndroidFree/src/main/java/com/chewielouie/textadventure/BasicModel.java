@@ -67,7 +67,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
 
     private boolean removeItemFromInventory( String id ) {
         for( Item item : inventoryItems ) {
-            if( item.id() == id ) {
+            if( item.id().equals( id ) ) {
                 inventoryItems.remove( item );
                 return true;
             }
@@ -88,7 +88,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
 
     private boolean removeItemFromLocation( String id, ModelLocation loc ) {
         for( Item item : loc.items() ) {
-            if( item.id() == id ) {
+            if( item.id().equals( id ) ) {
                 loc.removeItem( item );
                 return true;
             }
