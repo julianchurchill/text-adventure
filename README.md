@@ -10,8 +10,7 @@ Backlog
 
 - [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
   - [TEST] New ItemAction ChangeItemVisibility (clock face)
-     - Deserialised needs to recognise 'item visibility:[visible|invisible]' property
-     - NormalItem needs to implement setVisible()
+     - NormalItem needs to implement setVisibility() and visible()
      - Location needs to hide items that are not visible
 - [STORY] Find clock hour hand in untakeable bags of junk somewhere.
   - [TEST] New trigger ItemAction on examine, ChangeItemVisibility( clock hour hand )
@@ -19,6 +18,8 @@ Backlog
   - [TEST] ItemAction DestroyItem (clock face, minute hand, hour hand)
   - [TEST] Succesful use text "You fit the final piece of the clock. The air stirs around you as you slide it gently into place. blah blah you get some rubies"
   - [TEST] New ItemAction something like AwardRubies
+
+- [FEATURE-EDITOR] Update webapp editor to [de]serialise visibility and allow setting of visibility
 
 - [FEATURE] Show a ruby counter at the top of the screen. Also have a nice little ruby graphic.
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks

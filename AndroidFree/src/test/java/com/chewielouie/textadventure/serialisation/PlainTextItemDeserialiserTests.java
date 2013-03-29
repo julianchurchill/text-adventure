@@ -217,5 +217,50 @@ public class PlainTextItemDeserialiserTests {
                        "item description:description\n" +
                        "item use action:action:action arguments\n" );
     }
+
+    @Test
+    public void deserialise_extracts_item_visibility_and_sets_visible() {
+        final Item item = mockery.mock( Item.class );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+        mockery.checking( new Expectations() {{
+            oneOf( item ).setVisible( true );
+            ignoring( item );
+        }});
+
+        d.deserialise( item,
+                       "item name:Name\n" +
+                       "item description:description\n" +
+                       "item visibility:visible\n" );
+    }
+
+    @Test
+    public void deserialise_extracts_item_visibility_and_sets_invisible() {
+        final Item item = mockery.mock( Item.class );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+        mockery.checking( new Expectations() {{
+            oneOf( item ).setVisible( false );
+            ignoring( item );
+        }});
+
+        d.deserialise( item,
+                       "item name:Name\n" +
+                       "item description:description\n" +
+                       "item visibility:invisible\n" );
+    }
+
+    @Test
+    public void deserialise_extracts_item_visibility_and_sets_visible_by_default() {
+        final Item item = mockery.mock( Item.class );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+        mockery.checking( new Expectations() {{
+            oneOf( item ).setVisible( true );
+            ignoring( item );
+        }});
+
+        d.deserialise( item,
+                       "item name:Name\n" +
+                       "item description:description\n" +
+                       "item visibility:unknown\n" );
+    }
 }
 

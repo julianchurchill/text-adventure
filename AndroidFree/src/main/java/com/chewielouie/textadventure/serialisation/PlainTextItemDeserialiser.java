@@ -15,6 +15,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private final String itemSuccessfulUseMessageTag = "item successful use message:";
     private final String itemUseIsNotRepeatableTag = "item use is not repeatable:";
     private final String itemUseActionTag = "item use action:";
+    private final String itemVisibilityTag = "item visibility:";
     private Item item;
     private String content;
     private ItemActionFactory itemActionFactory;
@@ -45,6 +46,12 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
             item.setUseIsNotRepeatable();
 
         extractItemActions();
+
+        String visibility = extractNewlineDelimitedValueFor( itemVisibilityTag );
+        if( visibility.equals( "invisible" ) )
+            item.setVisible( false );
+        else
+            item.setVisible( true );
     }
 
     private boolean findTagWithNoArgument( String tag ) {
