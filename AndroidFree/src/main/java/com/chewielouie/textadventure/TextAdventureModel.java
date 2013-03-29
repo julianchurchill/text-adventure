@@ -11,5 +11,6 @@ public interface TextAdventureModel {
     public List<Item> inventoryItems();
     public ModelLocation currentLocation();
     public Exit findExitByID( String id );
+    public void destroyItem( String id );
 }
 

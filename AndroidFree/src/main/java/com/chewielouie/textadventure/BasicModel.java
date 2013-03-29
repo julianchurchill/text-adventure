@@ -58,6 +58,9 @@ public class BasicModel implements TextAdventureModel, UserInventory {
                     return exit;
         return null;
     }
+
+    public void destroyItem( String id ) {
+    }
 }
 
 

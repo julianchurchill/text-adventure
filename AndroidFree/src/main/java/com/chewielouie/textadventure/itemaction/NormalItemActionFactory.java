@@ -30,7 +30,8 @@ public class NormalItemActionFactory implements ItemActionFactory {
                        model );
         else if( content.startsWith( destroyItemTag ) )
             return new DestroyItemItemAction(
-                       content.substring( destroyItemTag.length() ) );
+                       content.substring( destroyItemTag.length() ),
+                       model );
         return new NullItemAction();
     }
 }

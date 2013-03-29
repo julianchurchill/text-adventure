@@ -1,17 +1,20 @@
 package com.chewielouie.textadventure.itemaction;
 
-import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.TextAdventureModel;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DestroyItemItemAction implements ItemAction {
     private String itemID;
+    private TextAdventureModel model;
 
-    public DestroyItemItemAction( String itemID ) {
+    public DestroyItemItemAction( String itemID, TextAdventureModel model ) {
         this.itemID = itemID;
+        this.model = model;
     }
 
     public void enact() {
+        model.destroyItem( itemID );
     }
 
     public String name() {

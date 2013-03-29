@@ -10,6 +10,8 @@ Backlog
 
 - [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
   - [TEST] New ItemAction DestroyItem (mound)
+    - BasicModel destroyItem() removes item from inventory
+    - BasicModel destroyItem() removes item from location
   - [TEST] New ItemAction ChangeItemVisibility (clock face)
 - [STORY] Find clock hour hand in untakeable bags of junk somewhere.
   - [TEST] New trigger ItemAction on examine, MakeItemVisible( clock hour hand )
