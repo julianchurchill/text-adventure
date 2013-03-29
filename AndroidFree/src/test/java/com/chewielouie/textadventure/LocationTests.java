@@ -169,6 +169,30 @@ public class LocationTests {
     }
 
     @Test
+    public void location_action_to_take_an_item_does_not_include_invisible_items() {
+        final Item visibleItem = mockery.mock( Item.class, "visible item" );
+        final Item invisibleItem = mockery.mock( Item.class, "invisible item" );
+        mockery.checking( new Expectations() {{
+            allowing( visibleItem ).visible();
+            will( returnValue( true ) );
+            ignoring( visibleItem );
+            allowing( invisibleItem ).visible();
+            will( returnValue( false ) );
+            ignoring( invisibleItem );
+        }});
+        Location l = createLocation();
+        l.addItem( visibleItem );
+        l.addItem( invisibleItem );
+
+        List<Item> items = new ArrayList<Item>();
+        items.add( visibleItem );
+
+        for( Action a : l.actions() )
+            if( a instanceof TakeAnItem )
+                assertEquals( items, ((TakeAnItem)a).items() );
+    }
+
+    @Test
     public void location_action_to_take_an_item_is_not_included_if_only_untakeable_items_available() {
         Location l = createLocation();
         NormalItem item = new NormalItem();
@@ -223,6 +247,30 @@ public class LocationTests {
     }
 
     @Test
+    public void examinable_items_only_include_visible_items() {
+        final Item visibleItem = mockery.mock( Item.class, "visible item" );
+        final Item invisibleItem = mockery.mock( Item.class, "invisible item" );
+        mockery.checking( new Expectations() {{
+            allowing( visibleItem ).visible();
+            will( returnValue( true ) );
+            ignoring( visibleItem );
+            allowing( invisibleItem ).visible();
+            will( returnValue( false ) );
+            ignoring( invisibleItem );
+        }});
+        Location l = createLocation();
+        l.addItem( visibleItem );
+        l.addItem( invisibleItem );
+
+        List<Item> items = new ArrayList<Item>();
+        items.add( visibleItem );
+
+        for( Action a : l.actions() )
+            if( a instanceof ExamineAnItem )
+                assertEquals( items, ((ExamineAnItem)a).items() );
+    }
+
+    @Test
     public void added_items_are_added_to_location_description() {
         Location l = new Location( "", "Location description.", null );
         NormalItem item1 = new NormalItem();
@@ -236,6 +284,31 @@ public class LocationTests {
         l.addItem( item3 );
 
         assertEquals( "Location description.\nThere is a name, a name2 and a name3 here.", l.description() );
+    }
+
+    @Test
+    public void description_includes_only_visible_items() {
+        final Item visibleItem = mockery.mock( Item.class, "visible item" );
+        final Item invisibleItem = mockery.mock( Item.class, "invisible item" );
+        mockery.checking( new Expectations() {{
+            allowing( visibleItem ).visible();
+            will( returnValue( true ) );
+            allowing( visibleItem ).countableNounPrefix();
+            will( returnValue( "a" ) );
+            allowing( visibleItem ).midSentenceCasedName();
+            will( returnValue( "visible item" ) );
+            ignoring( visibleItem );
+            allowing( invisibleItem ).visible();
+            will( returnValue( false ) );
+            allowing( invisibleItem ).midSentenceCasedName();
+            will( returnValue( "invisible item" ) );
+            ignoring( invisibleItem );
+        }});
+        Location l = new Location( "", "Location description.", null );
+        l.addItem( visibleItem );
+        l.addItem( invisibleItem );
+
+        assertEquals( "Location description.\nThere is a visible item here.", l.description() );
     }
 
     @Test

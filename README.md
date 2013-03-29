@@ -8,9 +8,6 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
-  - [TEST] New ItemAction ChangeItemVisibility (clock face)
-     - Location needs to hide items that are not visible
 - [STORY] Find clock hour hand in untakeable bags of junk somewhere.
   - [TEST] New trigger ItemAction on examine, ChangeItemVisibility( clock hour hand )
 - [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some points or money or something and maybe a quest/hint as to what to do next - open up a new area.
@@ -50,9 +47,8 @@ Backlog
 Done
 ====
 
+- [FEATURE] New ItemAction ChangeItemVisibility
 - [FEATURE] New ItemAction DestroyItem
-- [BUG] Using key on the door doesn't change door name from locked to unlocked...
-  - [FIX] Mid-sentence cased name was being set in the demo content and overriding the new name
 - [FEATURE] Items can be used with other items. This iteraction must be specified in the model content text and is limited to the following actions - change item name, change item description, make an exit visible
 - [FEATURE] New default action 'Examine some item' - can be used to look at items in the current location without picking it up
 - [FEATURE] Replaced long press context menu for actions with actions buttons
@@ -63,3 +59,7 @@ Done
 - [FEATURE] Add ability to show inventory
 - [FEATURE] Add ability navigate between locations using the four edges of the screen
 
+- [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
+
+- [BUG] Using key on the door doesn't change door name from locked to unlocked...
+  - [FIX] Mid-sentence cased name was being set in the demo content and overriding the new name

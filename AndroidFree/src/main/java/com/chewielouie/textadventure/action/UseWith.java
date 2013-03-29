@@ -21,7 +21,8 @@ public class UseWith implements Action {
                 followUpActions.add( new UseWithSpecificItem( item, target ) );
         if( location != null )
             for( Item target : location.items() )
-                followUpActions.add( new UseWithSpecificItem( item, target ) );
+                if( target.visible() )
+                    followUpActions.add( new UseWithSpecificItem( item, target ) );
     }
 
     public Item item() {

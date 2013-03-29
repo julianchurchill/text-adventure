@@ -48,6 +48,10 @@ public class UseWithTests {
             allowing( inventory ).inventoryItems();
             will( returnValue( inventoryItems ) );
             ignoring( inventory );
+            ignoring( inventoryItem );
+            allowing( locationItem ).visible();
+            will( returnValue( true ) );
+            ignoring( locationItem );
         }});
         UseWith action = new UseWith( null, inventory, location );
 
@@ -69,6 +73,9 @@ public class UseWithTests {
             allowing( location ).items();
             will( returnValue( locationItems ) );
             ignoring( location );
+            allowing( locationItem ).visible();
+            will( returnValue( true ) );
+            ignoring( locationItem );
         }});
         UseWith action = new UseWith( null, null, location );
 
@@ -76,6 +83,33 @@ public class UseWithTests {
         assertEquals( 1, actions.size() );
         assertTrue( actions.get(0) instanceof UseWithSpecificItem );
         assertEquals( locationItem, ((UseWithSpecificItem)actions.get(0)).targetItem() );
+    }
+
+    @Test
+    public void UseWithSpecificItem_actions_contain_only_visible_location_items() {
+        final Item visibleItem = mockery.mock( Item.class, "visible item" );
+        final Item invisibleItem = mockery.mock( Item.class, "invisible item" );
+        final List<Item> locationItems = new ArrayList<Item>();
+        locationItems.add( visibleItem );
+        locationItems.add( invisibleItem );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            allowing( location ).items();
+            will( returnValue( locationItems ) );
+            ignoring( location );
+            allowing( visibleItem ).visible();
+            will( returnValue( true ) );
+            ignoring( visibleItem );
+            allowing( invisibleItem ).visible();
+            will( returnValue( false ) );
+            ignoring( invisibleItem );
+        }});
+        UseWith action = new UseWith( null, null, location );
+
+        List<Action> actions = action.followUpActions();
+        assertEquals( 1, actions.size() );
+        assertTrue( actions.get(0) instanceof UseWithSpecificItem );
+        assertEquals( visibleItem, ((UseWithSpecificItem)actions.get(0)).targetItem() );
     }
 
     @Test
@@ -88,6 +122,7 @@ public class UseWithTests {
             allowing( inventory ).inventoryItems();
             will( returnValue( inventoryItems ) );
             ignoring( inventory );
+            ignoring( inventoryItem );
         }});
         UseWith action = new UseWith( null, inventory, null );
 
@@ -107,6 +142,9 @@ public class UseWithTests {
             allowing( location ).items();
             will( returnValue( locationItems ) );
             ignoring( location );
+            allowing( locationItem ).visible();
+            will( returnValue( true ) );
+            ignoring( locationItem );
         }});
         Item originalItem = mockery.mock( Item.class, "item being used" );
         UseWith action = new UseWith( originalItem, null, location );
@@ -127,6 +165,7 @@ public class UseWithTests {
             allowing( inventory ).inventoryItems();
             will( returnValue( inventoryItems ) );
             ignoring( inventory );
+            ignoring( inventoryItem );
         }});
         Item originalItem = mockery.mock( Item.class, "item being used" );
         UseWith action = new UseWith( originalItem, inventory, null );
