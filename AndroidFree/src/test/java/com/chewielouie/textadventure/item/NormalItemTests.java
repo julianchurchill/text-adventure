@@ -253,6 +253,33 @@ public class NormalItemTests {
     }
 
     @Test
+    public void on_examine_actions_are_enacted_only_once_for_not_repeatable_examine() {
+        final ItemAction action = mockery.mock( ItemAction.class );
+        mockery.checking( new Expectations() {{
+            oneOf( action ).enact();
+        }});
+        NormalItem item = new NormalItem();
+        item.setExamineActionIsNotRepeatable();
+        item.addOnExamineAction( action );
+
+        item.examine();
+        item.examine();
+    }
+
+    @Test
+    public void on_examine_actions_are_enacted_repeatedly_for_repeatable_examine() {
+        final ItemAction action = mockery.mock( ItemAction.class );
+        mockery.checking( new Expectations() {{
+            exactly( 2 ).of( action ).enact();
+        }});
+        NormalItem item = new NormalItem();
+        item.addOnExamineAction( action );
+
+        item.examine();
+        item.examine();
+    }
+
+    @Test
     public void two_objects_with_the_same_value_should_be_equal() {
         NormalItem object1 = new NormalItem();
         object1.setName( "name" );

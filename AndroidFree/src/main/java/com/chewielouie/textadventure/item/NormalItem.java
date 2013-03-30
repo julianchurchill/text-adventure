@@ -137,7 +137,7 @@ public class NormalItem implements Item {
     }
 
     private boolean itemCanBeUsedNow() {
-        return !used || (used && useIsRepeatable);
+        return !used || useIsRepeatable;
     }
 
     public void addOnUseAction( ItemAction action ) {
@@ -157,11 +157,16 @@ public class NormalItem implements Item {
     }
 
     public void examine() {
-        for( ItemAction action : onExamineActions )
-            action.enact();
-        if( examined && examineActionIsNotRepeatable() )
+        if( itemCanBeExaminedNow() )
+            for( ItemAction action : onExamineActions )
+                action.enact();
+        else
             examineText = "";
         examined = true;
+    }
+
+    private boolean itemCanBeExaminedNow() {
+        return !examined || examineActionIsRepeatable;
     }
 
     public void addOnExamineAction( ItemAction action ) {
