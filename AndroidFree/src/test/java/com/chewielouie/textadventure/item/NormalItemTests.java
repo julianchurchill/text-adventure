@@ -205,6 +205,13 @@ public class NormalItemTests {
     }
 
     @Test
+    public void set_examine_text_gets_returned() {
+        NormalItem item = new NormalItem();
+        item.setExamineText( "some examine text" );
+        assertEquals( "some examine text", item.examineText() );
+    }
+
+    @Test
     public void two_objects_with_the_same_value_should_be_equal() {
         NormalItem object1 = new NormalItem();
         object1.setName( "name" );

@@ -13,7 +13,7 @@ Backlog
     DONE - Examine.trigger() needs to call Item.examine() and add Item.examineText() to the normal output for examine.
     DONE - [Normal]Item needs to implement examine() to call examine actions
     DONE - [Normal]Item needs to implement addOnExamineAction()
-    - [Normal]Item needs to implement examineText()
+    DONE - [Normal]Item needs to implement examineText()
     - [Normal]Item needs to implement setExamineActionIsNotRepeatable() and examineActionIsNotRepeatable()
     - [Normal]Item needs to return a blank examineText() after examine() if examine action is not repeatable
     - [Normal]Item needs to not repeat on examine actions if examine action is not repeatable
