@@ -28,5 +28,7 @@ public interface Item {
     public List<ItemAction> actions();
     public void setVisible( boolean visible );
     public boolean visible();
+    public void examine();
+    public String examineText();
 }
 

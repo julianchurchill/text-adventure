@@ -63,6 +63,33 @@ public class ExamineTests {
 
         assertEquals( 0, action.followUpActions().size() );
     }
+
+    @Test
+    public void on_trigger_item_is_notified() {
+        final Item item = mockery.mock( Item.class );
+        Examine action = new Examine( item );
+        mockery.checking( new Expectations() {{
+            oneOf( item ).examine();
+            ignoring( item );
+        }});
+
+        action.trigger();
+    }
+
+    @Test
+    public void user_text_includes_examine_text_from_item() {
+        final Item item = mockery.mock( Item.class );
+        Examine action = new Examine( item );
+        mockery.checking( new Expectations() {{
+            allowing( item ).examineText();
+            will( returnValue( "examine text" ) );
+            ignoring( item );
+        }});
+
+        action.trigger();
+
+        assertTrue( action.userText().endsWith( "\n\nexamine text" ) );
+    }
 }
 
 

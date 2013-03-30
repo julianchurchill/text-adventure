@@ -16,6 +16,7 @@ public class Examine implements Action {
     }
 
     public void trigger() {
+        item.examine();
     }
 
     public boolean userMustChooseFollowUpAction() {
@@ -31,7 +32,10 @@ public class Examine implements Action {
     }
 
     public String userText() {
-        return "You examine the " + item.midSentenceCasedName() + ". " + item.description();
+        String text = "You examine the " + item.midSentenceCasedName() + ". " + item.description();
+        if( item.examineText().length() != 0 )
+            text = text + "\n\n" + item.examineText();
+        return text;
     }
 
     public boolean userTextAvailable() {

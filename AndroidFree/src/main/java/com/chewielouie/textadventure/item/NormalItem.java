@@ -151,5 +151,12 @@ public class NormalItem implements Item {
     public boolean visible() {
         return visible;
     }
+
+    public void examine() {
+    }
+
+    public String examineText() {
+        return "";
+    }
 }
 

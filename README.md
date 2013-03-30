@@ -10,7 +10,7 @@ Backlog
 
 - [STORY] Find clock hour hand in untakeable bags of junk somewhere.
   - [TEST] New trigger ItemAction on examine, ChangeItemVisibility( clock hour hand )
-    - Examine.trigger() needs to call Item.examine() and add Item.examineText() to the normal output for examine.
+    DONE - Examine.trigger() needs to call Item.examine() and add Item.examineText() to the normal output for examine.
     - [Normal]Item needs to implement examine() to call examine actions
     - [Normal]Item needs to implement addOnExamineAction()
     - Deserialiser needs to parse 'item on examine action:action name:parameters'
@@ -25,6 +25,8 @@ Backlog
 
 - [FEATURE-EDITOR] Update webapp editor to [de]serialise visibility and allow setting of visibility
 - [FEATURE-EDITOR] Update webapp editor to allow adding/deletion of on examine actions to items
+
+- [REFACTOR] Item interface is getting fat. Can 'use' and 'examine' be split off, perhaps Examinable, Usable? Is there any benefit?
 
 - [FEATURE] Show a ruby counter at the top of the screen. Also have a nice little ruby graphic.
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
