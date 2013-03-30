@@ -10,12 +10,21 @@ Backlog
 
 - [STORY] Find clock hour hand in untakeable bags of junk somewhere.
   - [TEST] New trigger ItemAction on examine, ChangeItemVisibility( clock hour hand )
+    - Examine.trigger() needs to call Item.examine() and add Item.examineText() to the normal output for examine.
+    - [Normal]Item needs to implement examine() to call examine actions
+    - [Normal]Item needs to implement addOnExamineAction()
+    - Deserialiser needs to parse 'item on examine action:action name:parameters'
+    - [Normal]Item needs to implement examineText()
+    - Deserialiser needs to parse 'item examine message:You look closer and see a ... It drops at your feet.'
+    - [Normal]Item needs to return a blank examineText() after examine() if examine action is not repeatable
+    - Deserialiser needs to parse 'item examine action is not repeatable:'
 - [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some points or money or something and maybe a quest/hint as to what to do next - open up a new area.
   - [TEST] ItemAction DestroyItem (clock face, minute hand, hour hand)
   - [TEST] Succesful use text "You fit the final piece of the clock. The air stirs around you as you slide it gently into place. blah blah you get some rubies"
   - [TEST] New ItemAction something like AwardRubies
 
 - [FEATURE-EDITOR] Update webapp editor to [de]serialise visibility and allow setting of visibility
+- [FEATURE-EDITOR] Update webapp editor to allow adding/deletion of on examine actions to items
 
 - [FEATURE] Show a ruby counter at the top of the screen. Also have a nice little ruby graphic.
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
