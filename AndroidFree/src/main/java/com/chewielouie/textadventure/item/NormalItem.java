@@ -19,6 +19,7 @@ public class NormalItem implements Item {
     private boolean visible = true;
     private List<ItemAction> onExamineActions = new ArrayList<ItemAction>();
     private String examineText = "";
+    private boolean examineActionIsRepeatable = true;
 
     public String description() {
         return description;
@@ -169,6 +170,14 @@ public class NormalItem implements Item {
 
     public void setExamineText( String text ) {
         this.examineText = text;
+    }
+
+    public void setExamineActionIsNotRepeatable() {
+        examineActionIsRepeatable = false;
+    }
+
+    public boolean examineActionIsNotRepeatable() {
+        return !examineActionIsRepeatable;
     }
 }
 

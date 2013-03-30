@@ -212,6 +212,25 @@ public class NormalItemTests {
     }
 
     @Test
+    public void examine_text_is_blank_by_default() {
+        NormalItem item = new NormalItem();
+        assertEquals( "", item.examineText() );
+    }
+
+    @Test
+    public void set_examine_action_is_not_repeatable_gets_returned() {
+        NormalItem item = new NormalItem();
+        item.setExamineActionIsNotRepeatable();
+        assertTrue( item.examineActionIsNotRepeatable() );
+    }
+
+    @Test
+    public void examine_action_is_repeatable_by_default() {
+        NormalItem item = new NormalItem();
+        assertFalse( item.examineActionIsNotRepeatable() );
+    }
+
+    @Test
     public void two_objects_with_the_same_value_should_be_equal() {
         NormalItem object1 = new NormalItem();
         object1.setName( "name" );
