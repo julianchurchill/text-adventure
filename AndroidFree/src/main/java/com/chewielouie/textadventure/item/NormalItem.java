@@ -17,6 +17,7 @@ public class NormalItem implements Item {
     private boolean used = false;
     private List<ItemAction> onUseActions = new ArrayList<ItemAction>();
     private boolean visible = true;
+    private List<ItemAction> onExamineActions = new ArrayList<ItemAction>();
 
     public String description() {
         return description;
@@ -153,10 +154,16 @@ public class NormalItem implements Item {
     }
 
     public void examine() {
+        for( ItemAction action : onExamineActions )
+            action.enact();
     }
 
     public String examineText() {
         return "";
+    }
+
+    public void addOnExamineAction( ItemAction action ) {
+        onExamineActions.add( action );
     }
 }
 

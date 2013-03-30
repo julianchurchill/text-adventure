@@ -30,5 +30,6 @@ public interface Item {
     public boolean visible();
     public void examine();
     public String examineText();
+    public void addOnExamineAction( ItemAction action );
 }
 

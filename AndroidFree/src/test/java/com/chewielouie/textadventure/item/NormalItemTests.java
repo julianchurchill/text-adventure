@@ -188,6 +188,23 @@ public class NormalItemTests {
     }
 
     @Test
+    public void examine_enacts_all_on_examine_actions() {
+        final ItemAction action1 = mockery.mock( ItemAction.class, "act1" );
+        final ItemAction action2 = mockery.mock( ItemAction.class, "act2" );
+        mockery.checking( new Expectations() {{
+            oneOf( action1 ).enact();
+            ignoring( action1 );
+            oneOf( action2 ).enact();
+            ignoring( action2 );
+        }});
+        NormalItem item = new NormalItem();
+        item.addOnExamineAction( action1 );
+        item.addOnExamineAction( action2 );
+
+        item.examine();
+    }
+
+    @Test
     public void two_objects_with_the_same_value_should_be_equal() {
         NormalItem object1 = new NormalItem();
         object1.setName( "name" );
