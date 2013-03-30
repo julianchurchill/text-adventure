@@ -15,7 +15,7 @@ Backlog
     DONE - [Normal]Item needs to implement addOnExamineAction()
     DONE - [Normal]Item needs to implement examineText()
     DONE - [Normal]Item needs to implement setExamineActionIsNotRepeatable() and examineActionIsNotRepeatable()
-    - [Normal]Item needs to return a blank examineText() after examine() if examine action is not repeatable
+    DONE - [Normal]Item needs to return a blank examineText() after examine() if examine action is not repeatable
     - [Normal]Item needs to not repeat on examine actions if examine action is not repeatable
     - Deserialiser needs to parse 'item on examine action:action name:parameters'
     - Deserialiser needs to parse 'item examine message:You look closer and see a ... It drops at your feet.'

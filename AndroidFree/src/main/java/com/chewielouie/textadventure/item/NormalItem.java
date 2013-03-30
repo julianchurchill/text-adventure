@@ -20,6 +20,7 @@ public class NormalItem implements Item {
     private List<ItemAction> onExamineActions = new ArrayList<ItemAction>();
     private String examineText = "";
     private boolean examineActionIsRepeatable = true;
+    private boolean examined = false;
 
     public String description() {
         return description;
@@ -158,6 +159,9 @@ public class NormalItem implements Item {
     public void examine() {
         for( ItemAction action : onExamineActions )
             action.enact();
+        if( examined && examineActionIsNotRepeatable() )
+            examineText = "";
+        examined = true;
     }
 
     public void addOnExamineAction( ItemAction action ) {
