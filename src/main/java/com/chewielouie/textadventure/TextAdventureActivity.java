@@ -25,7 +25,6 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextExitDeserialiser;
@@ -41,10 +40,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private RendersView rendersView;
     private UserActionHandler userActionHandler;
     private List<Exit> exits = new ArrayList<Exit>();
-    private TextView top_direction_label;
-    private TextView bottom_direction_label;
-    private TextView right_direction_label;
-    private TextView left_direction_label;
     private TextView main_text_output;
     private String mainTextContent = "";
     private Map<TextView,Exit> directions_and_exits =
@@ -72,14 +67,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        top_direction_label = findTextView( R.id.top_direction_label );
-        top_direction_label.setOnClickListener( this );
-        bottom_direction_label = findTextView( R.id.bottom_direction_label );
-        bottom_direction_label.setOnClickListener( this );
-        right_direction_label = findTextView( R.id.right_direction_label );
-        right_direction_label.setOnClickListener( this );
-        left_direction_label = findTextView( R.id.left_direction_label );
-        left_direction_label.setOnClickListener( this );
         main_text_output = findTextView( R.id.main_text_output );
         available_actions_view = (LinearLayout)findViewById( R.id.available_actions );
 
@@ -167,29 +154,28 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         else
             text.append( "\n\nThere are no visible exits." );
 
-        String prefix = "";
         int color = Color.GREEN;
+        String prefix = "";
         for( Exit exit : exits ) {
             int startIndex = text.length() + prefix.length();
             int endIndex = startIndex + exit.label().length();
             text.append( prefix + exit.label() );
-            addClickableSpan( text, startIndex, endIndex, exit );
-            text.setSpan( new ForegroundColorSpan( color ), startIndex,
-                          endIndex, 0 );
+            addExitActionHandler( text, startIndex, endIndex, exit );
+            text.setSpan( new ForegroundColorSpan( color ),
+                          startIndex, endIndex, 0 );
             color = rotateExitColor( color );
             prefix = ", ";
         }
     }
 
-    private void addClickableSpan( SpannableStringBuilder text,
+    private void addExitActionHandler( SpannableStringBuilder text,
             int startIndex, int endIndex, Exit exit ) {
-        final Context context = this;
-        final String exitString = exit.label();
+        final Exit finalExit = exit;
+        final UserActionHandler finalUserActionHandler = userActionHandler;
         ClickableSpan c = new ClickableSpan() {
             @Override
             public void onClick( View view ) {
-                Toast.makeText( context, exitString, Toast.LENGTH_LONG )
-                     .show();
+                finalUserActionHandler.moveThroughExit( finalExit );
             }
         };
         text.setSpan( c, startIndex, endIndex, 0 );
@@ -220,53 +206,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         this.exits = exits;
 
         updateMainText();
-
-        Exit northExit = findExitWithDirectionHint( Exit.DirectionHint.North );
-        Exit southExit = findExitWithDirectionHint( Exit.DirectionHint.South );
-        Exit eastExit = findExitWithDirectionHint( Exit.DirectionHint.East );
-        Exit westExit = findExitWithDirectionHint( Exit.DirectionHint.West );
-
-        int exitWithNoDirHintIndex = setDirectionLabel( top_direction_label,
-                northExit, 0 );
-        exitWithNoDirHintIndex = setDirectionLabel( bottom_direction_label,
-                southExit, exitWithNoDirHintIndex );
-        exitWithNoDirHintIndex = setDirectionLabel( right_direction_label,
-                eastExit, exitWithNoDirHintIndex );
-        exitWithNoDirHintIndex = setDirectionLabel( left_direction_label,
-                westExit, exitWithNoDirHintIndex );
-    }
-
-    private Exit findExitWithDirectionHint( Exit.DirectionHint d ) {
-        for( Exit e : exits )
-            if( e.directionHint() == d )
-                return e;
-        return null;
-    }
-
-    private int setDirectionLabel( TextView dir_label, Exit directionExit,
-           int indexToStartLookingForUndirectedExits ) {
-        int exitWithNoDirHintIndex = nextExitWithoutADirectionHint(
-                indexToStartLookingForUndirectedExits );
-        String label = "";
-        directions_and_exits.remove( dir_label );
-        if( directionExit != null )
-            directions_and_exits.put( dir_label, directionExit );
-        else if( exitWithNoDirHintIndex < exits.size() ) {
-            directions_and_exits.put( dir_label, exits.get( exitWithNoDirHintIndex ) );
-            exitWithNoDirHintIndex++;
-        }
-        if( directions_and_exits.containsKey( dir_label ) )
-            label = directions_and_exits.get( dir_label ).label();
-        dir_label.setText( label );
-        return exitWithNoDirHintIndex;
-    }
-
-    private int nextExitWithoutADirectionHint( int startAt ) {
-        int i = startAt;
-        for( ; i < exits.size(); i++ )
-            if( exits.get( i ).directionHint() == Exit.DirectionHint.DontCare )
-                break;
-        return i;
     }
 
     public void setActions( List<Action> actions ) {
@@ -287,23 +226,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     public void onClick( View v ) {
-        if( v == top_direction_label )
-            deliverExitActionFor( top_direction_label );
-        else if( v == bottom_direction_label )
-            deliverExitActionFor( bottom_direction_label );
-        else if( v == right_direction_label )
-            deliverExitActionFor( right_direction_label );
-        else if( v == left_direction_label )
-            deliverExitActionFor( left_direction_label );
-        else if( v instanceof Button && actionButtons.containsKey( (Button)v ) )
+        if( v instanceof Button && actionButtons.containsKey( (Button)v ) )
             userActionHandler.enact( actionButtons.get( (Button)v ) );
-    }
-
-    private void deliverExitActionFor( TextView dir_label ) {
-        if( exits.size() > 0 )
-            if( directions_and_exits.get( dir_label ) != null )
-                userActionHandler.moveThroughExit(
-                   directions_and_exits.get( dir_label ) );
     }
 }
 

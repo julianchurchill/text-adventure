@@ -13,58 +13,12 @@
     android:gravity="center"
     android:background="#660055"
     />
-<TextView
-    android:id="@+id/top_direction_label"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
-    android:gravity="center"
-    android:background="#660000"
-    android:textSize="20sp"
-    android:text="North"
-    />
-<TextView
-    android:id="@+id/left_direction_label"
-    android:layout_width="wrap_content"
-    android:layout_height="fill_parent"
-    android:layout_above="@id/available_actions"
-    android:layout_alignParentLeft="true"
-    android:layout_below="@id/top_direction_label"
-    android:gravity="center"
-    android:background="#660000"
-    android:textSize="20sp"
-    android:text="West"
-    />
-<TextView
-    android:id="@+id/right_direction_label"
-    android:layout_width="wrap_content"
-    android:layout_height="fill_parent"
-    android:layout_above="@id/available_actions"
-    android:layout_alignParentRight="true"
-    android:layout_below="@id/top_direction_label"
-    android:gravity="center"
-    android:background="#660000"
-    android:textSize="20sp"
-    android:text="East"
-    />
-<TextView
-    android:id="@+id/bottom_direction_label"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_above="@id/available_actions"
-    android:gravity="center"
-    android:background="#660000"
-    android:textSize="20sp"
-    android:text="South"
-    />
 <ScrollView
         android:id="@+id/main_text_output_scroll_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/top_direction_label"
-        android:layout_above="@id/bottom_direction_label"
-        android:layout_toRightOf="@id/left_direction_label"
-        android:layout_toLeftOf="@id/right_direction_label"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/available_actions"
         android:scrollbars="vertical">
     <TextView
         android:id="@+id/main_text_output"

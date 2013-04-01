@@ -8,8 +8,6 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [FEATURE] Instead of direction navigator use hyper-text in description...
-- [FEATURE] ... or direction navigator - instead of top, bottom, right, left clickable labels use a compass with small labels.
 
 - [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some points or money or something and maybe a quest/hint as to what to do next - open up a new area.
   - [TEST] ItemAction DestroyItem (clock face, minute hand, hour hand)
@@ -49,6 +47,7 @@ Backlog
 Done
 ====
 
+- [FEATURE] Direction label buttons are replaced with hyper-text exits in description
 - [FEATURE] New event 'on examine' for ItemActions to be trigger upon
 - [FEATURE] New ItemAction ChangeItemVisibility
 - [FEATURE] New ItemAction DestroyItem
