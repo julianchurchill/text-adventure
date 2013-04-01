@@ -262,5 +262,89 @@ public class PlainTextItemDeserialiserTests {
                        "item description:description\n" +
                        "item visibility:unknown\n" );
     }
+
+    @Test
+    public void deserialise_extracts_item_examine_text() {
+        final Item item = mockery.mock( Item.class );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+        mockery.checking( new Expectations() {{
+            oneOf( item ).setExamineText( "message" );
+            ignoring( item );
+        }});
+
+        d.deserialise( item,
+                       "item name:Name\n" +
+                       "item description:description\n" +
+                       "item examine message:message\n" );
+    }
+
+    //@Test
+    //public void deserialise_extracts_item_examine_action_is_not_repeatable() {
+
+    //@Test
+    //public void deserialise_extracts_multiple_item_examine_actions_with_ItemAction_factory() {
+        //final Item item = mockery.mock( Item.class );
+        //final ItemActionFactory itemActionFactory =
+            //mockery.mock( ItemActionFactory.class );
+        //PlainTextItemDeserialiser d =
+            //new PlainTextItemDeserialiser( itemActionFactory );
+        //mockery.checking( new Expectations() {{
+            //ignoring( item );
+            //exactly( 2 ).of( itemActionFactory ).create( with( any( String.class ) ),
+               //with( any( Item.class ) ) );
+            //ignoring( itemActionFactory );
+        //}});
+
+        //d.deserialise( item,
+                       //"item name:Name\n" +
+                       //"item description:description\n" +
+                       //"item use action:action:action arguments\n" +
+                       //"item use action:action:action arguments\n" );
+    //}
+
+    //@Test
+    //public void deserialise_extracts_item_examine_action_into_ItemAction_object() {
+        //final Item item = mockery.mock( Item.class );
+        //final ItemActionFactory itemActionFactory =
+            //mockery.mock( ItemActionFactory.class );
+        //final ItemAction action = mockery.mock( ItemAction.class );
+        //PlainTextItemDeserialiser d =
+            //new PlainTextItemDeserialiser( itemActionFactory );
+        //mockery.checking( new Expectations() {{
+            //ignoring( item );
+            //oneOf( itemActionFactory ).create( "action:action arguments", item );
+            //will( returnValue( action ) );
+            //ignoring( itemActionFactory );
+        //}});
+
+        //d.deserialise( item,
+                       //"item name:Name\n" +
+                       //"item description:description\n" +
+                       //"item use action:action:action arguments\n" );
+    //}
+
+    //@Test
+    //public void deserialise_adds_item_examine_action_to_item() {
+        //final Item item = mockery.mock( Item.class );
+        //final ItemActionFactory itemActionFactory =
+            //mockery.mock( ItemActionFactory.class );
+        //final ItemAction action = mockery.mock( ItemAction.class );
+        //PlainTextItemDeserialiser d =
+            //new PlainTextItemDeserialiser( itemActionFactory );
+        //mockery.checking( new Expectations() {{
+            //oneOf( item ).addOnUseAction( action );
+            //ignoring( item );
+            //allowing( itemActionFactory ).create( with( any( String.class ) ),
+               //with( any( Item.class ) ) );
+            //will( returnValue( action ) );
+            //ignoring( itemActionFactory );
+            //ignoring( action );
+        //}});
+
+        //d.deserialise( item,
+                       //"item name:Name\n" +
+                       //"item description:description\n" +
+                       //"item use action:action:action arguments\n" );
+    //}
 }
 

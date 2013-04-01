@@ -74,6 +74,22 @@ item name:Spade
 item description:It is a wooden handled spade. It looks like it has seen quite a lot of use and might not be good for much.
 item countable noun prefix:a
 item id:spade
+ITEM
+item name:Bags of junk
+item description:They are full of rubbish, there might be something of interest here but it is hard to tell.
+item countable noun prefix:some
+item mid sentence cased name:bags of junk
+item is untakeable:
+item examine action is not repeatable:
+item examine message:You look closer and see something glinting in the darkness. You scramble around in the bag trying to reach it, grasping with your finger tips pulling it out and dropping it at your feet.
+item on examine action:change item visibility:clockhourhand:visible
+ITEM
+item name:Clock hour hand
+item description:It is the hour hand from a clock. The clock to which it belongs is not here.
+item countable noun prefix:a
+item id:clockhourhand
+item visibility:invisible
+item mid sentence cased name:clock hour hand
 LOCATION
 x:300
 y:120
