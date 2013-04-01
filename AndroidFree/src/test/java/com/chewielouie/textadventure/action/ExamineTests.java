@@ -27,6 +27,7 @@ public class ExamineTests {
             ignoring( item );
         }});
 
+        action.trigger();
         assertEquals( "You examine the name. description", action.userText() );
     }
 
@@ -90,6 +91,42 @@ public class ExamineTests {
 
         assertTrue( action.userText().endsWith( "\n\nexamine text" ) );
     }
+
+    @Test
+    public void on_examine_triggers_are_run_after_saving_name_and_description() {
+        final Item item = mockery.mock( Item.class );
+        Examine action = new Examine( item );
+        final Sequence actions_after_description =
+            mockery.sequence( "actions_after_description" );
+        mockery.checking( new Expectations() {{
+            oneOf( item ).midSentenceCasedName();
+            inSequence( actions_after_description );
+            oneOf( item ).description();
+            inSequence( actions_after_description );
+            oneOf( item ).examine();
+            inSequence( actions_after_description );
+            ignoring( item );
+        }});
+
+        action.trigger();
+    }
+
+    //@Test
+    //public void on_examine_text_os_gathered_after_actions() {
+        //final Item item = mockery.mock( Item.class );
+        //Examine action = new Examine( item );
+        //final Sequence examine_text_after_actions =
+            //mockery.sequence( "examine_text_after_actions" );
+        //mockery.checking( new Expectations() {{
+            //oneOf( item ).examine();
+            //inSequence( examine_text_after_actions );
+            //oneOf( item ).examineText();
+            //inSequence( examine_text_after_actions );
+            //ignoring( item );
+        //}});
+
+        //action.trigger();
+    //}
 }
 
 

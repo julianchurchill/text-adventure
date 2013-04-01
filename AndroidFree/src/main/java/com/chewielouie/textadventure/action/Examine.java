@@ -6,6 +6,7 @@ import com.chewielouie.textadventure.item.Item;
 
 public class Examine implements Action {
     private Item item = null;
+    private String userText = "";
 
     public Examine( Item item ) {
         this.item = item;
@@ -16,7 +17,10 @@ public class Examine implements Action {
     }
 
     public void trigger() {
+        userText = "You examine the " + item.midSentenceCasedName() + ". " + item.description();
         item.examine();
+        if( item.examineText().length() != 0 )
+            userText = userText + "\n\n" + item.examineText();
     }
 
     public boolean userMustChooseFollowUpAction() {
@@ -32,10 +36,7 @@ public class Examine implements Action {
     }
 
     public String userText() {
-        String text = "You examine the " + item.midSentenceCasedName() + ". " + item.description();
-        if( item.examineText().length() != 0 )
-            text = text + "\n\n" + item.examineText();
-        return text;
+        return userText;
     }
 
     public boolean userTextAvailable() {

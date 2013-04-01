@@ -8,19 +8,6 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [STORY] Find clock hour hand in untakeable bags of junk somewhere.
-  - [TEST] New trigger ItemAction on examine, ChangeItemVisibility( clock hour hand )
-    DONE - Examine.trigger() needs to call Item.examine() and add Item.examineText() to the normal output for examine.
-    DONE - [Normal]Item needs to implement examine() to call examine actions
-    DONE - [Normal]Item needs to implement addOnExamineAction()
-    DONE - [Normal]Item needs to implement examineText()
-    DONE - [Normal]Item needs to implement setExamineActionIsNotRepeatable() and examineActionIsNotRepeatable()
-    DONE - [Normal]Item needs to return a blank examineText() after examine() if examine action is not repeatable
-    DONE - [Normal]Item needs to not repeat on examine actions if examine action is not repeatable
-    DONE - Deserialiser needs to parse 'item examine message:You look closer and see a ... It drops at your feet.'
-    DONE - Deserialiser needs to parse 'item examine action is not repeatable:'
-    DONE - Deserialiser needs to parse 'item on examine action:action name:parameters'
-    - Examine trigger() should gather item name and description _before_ enacting the actions (since they might change the name/description for future examines).
 - [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some points or money or something and maybe a quest/hint as to what to do next - open up a new area.
   - [TEST] ItemAction DestroyItem (clock face, minute hand, hour hand)
   - [TEST] Succesful use text "You fit the final piece of the clock. The air stirs around you as you slide it gently into place. blah blah you get some rubies"
@@ -37,7 +24,8 @@ Backlog
 - [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
 - [FEATURE] Ruby counter should show how many out of how many achieved - e.g. 10/100
 
-- [FEATURE] Direction navigator - instead of top, bottom, right, left clickable labels use a compass with small labels.
+- [FEATURE] Instead of direction navigator use hyper-text in description...
+- [FEATURE] ... or direction navigator - instead of top, bottom, right, left clickable labels use a compass with small labels.
 
 - [FEATURE] In model content txt items can only be used in one direction, e.g. a spade with a mound of earth and the target item has to include the definition of what happens. If the original item (e.g. spade) includes this information it is ignored. Should this be changed to be bi-directional? It would make writing content easier but needs considering as it might not always be appropriate.
 
@@ -61,6 +49,7 @@ Backlog
 Done
 ====
 
+- [FEATURE] New event 'on examine' for ItemActions to be trigger upon
 - [FEATURE] New ItemAction ChangeItemVisibility
 - [FEATURE] New ItemAction DestroyItem
 - [FEATURE] Items can be used with other items. This iteraction must be specified in the model content text and is limited to the following actions - change item name, change item description, make an exit visible
@@ -74,6 +63,7 @@ Done
 - [FEATURE] Add ability navigate between locations using the four edges of the screen
 
 - [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
+- [STORY] Find clock hour hand in untakeable bags of junk somewhere.
 
 - [BUG] Using key on the door doesn't change door name from locked to unlocked...
   - [FIX] Mid-sentence cased name was being set in the demo content and overriding the new name
