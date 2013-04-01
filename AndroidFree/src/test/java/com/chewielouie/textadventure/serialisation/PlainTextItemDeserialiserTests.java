@@ -278,8 +278,20 @@ public class PlainTextItemDeserialiserTests {
                        "item examine message:message\n" );
     }
 
-    //@Test
-    //public void deserialise_extracts_item_examine_action_is_not_repeatable() {
+    @Test
+    public void deserialise_extracts_item_examine_action_is_not_repeatable() {
+        final Item item = mockery.mock( Item.class );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+        mockery.checking( new Expectations() {{
+            oneOf( item ).setExamineActionIsNotRepeatable();
+            ignoring( item );
+        }});
+
+        d.deserialise( item,
+                       "item name:Name\n" +
+                       "item description:description\n" +
+                       "item examine action is not repeatable:\n" );
+    }
 
     //@Test
     //public void deserialise_extracts_multiple_item_examine_actions_with_ItemAction_factory() {

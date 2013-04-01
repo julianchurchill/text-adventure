@@ -32,5 +32,7 @@ public interface Item {
     public void addOnExamineAction( ItemAction action );
     public String examineText();
     public void setExamineText( String text );
+    public void setExamineActionIsNotRepeatable();
+    public boolean examineActionIsNotRepeatable();
 }
 

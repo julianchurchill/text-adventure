@@ -18,7 +18,7 @@ Backlog
     DONE - [Normal]Item needs to return a blank examineText() after examine() if examine action is not repeatable
     DONE - [Normal]Item needs to not repeat on examine actions if examine action is not repeatable
     DONE - Deserialiser needs to parse 'item examine message:You look closer and see a ... It drops at your feet.'
-    - Deserialiser needs to parse 'item examine action is not repeatable:'
+    DONE - Deserialiser needs to parse 'item examine action is not repeatable:'
     - Deserialiser needs to parse 'item on examine action:action name:parameters'
 - [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some points or money or something and maybe a quest/hint as to what to do next - open up a new area.
   - [TEST] ItemAction DestroyItem (clock face, minute hand, hour hand)

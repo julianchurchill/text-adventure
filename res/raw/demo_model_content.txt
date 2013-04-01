@@ -82,6 +82,7 @@ item mid sentence cased name:bags of junk
 item is untakeable:
 item examine action is not repeatable:
 item examine message:You look closer and see something glinting in the darkness. You scramble around in the bag trying to reach it, grasping with your finger tips pulling it out and dropping it at your feet.
+item on examine action:change item description:They are full of rubbish. Nothing else.
 item on examine action:change item visibility:clockhourhand:visible
 ITEM
 item name:Clock hour hand

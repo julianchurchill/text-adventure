@@ -17,6 +17,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private final String itemUseActionTag = "item use action:";
     private final String itemVisibilityTag = "item visibility:";
     private final String itemExamineMessageTag = "item examine message:";
+    private final String itemExamineActionIsNotRepeatableTag = "item examine action is not repeatable:";
     private Item item;
     private String content;
     private ItemActionFactory itemActionFactory;
@@ -44,6 +45,8 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         extractItemVisibilityProperties();
 
         item.setExamineText( extractNewlineDelimitedValueFor( itemExamineMessageTag ) );
+        if( findTagWithNoArgument( itemExamineActionIsNotRepeatableTag ) )
+            item.setExamineActionIsNotRepeatable();
     }
 
     private void extractItemUseProperties() {
