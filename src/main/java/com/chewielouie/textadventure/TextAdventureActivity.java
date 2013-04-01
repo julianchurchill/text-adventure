@@ -10,7 +10,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
@@ -19,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextExitDeserialiser;
@@ -39,6 +46,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private TextView right_direction_label;
     private TextView left_direction_label;
     private TextView main_text_output;
+    private String mainTextContent = "";
     private Map<TextView,Exit> directions_and_exits =
         new HashMap<TextView,Exit>();
     private Map<Button,Action> actionButtons = new HashMap<Button,Action>();
@@ -139,8 +147,63 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     public void showMainText( String s ) {
-        main_text_output.setText( s );
+        mainTextContent = s;
+        updateMainText();
         scrollToBottomOfMainText();
+    }
+
+    private void updateMainText() {
+        SpannableStringBuilder text = new SpannableStringBuilder(
+                mainTextContent );
+        addHyperLinkExits( text );
+
+        enableClickableLinkCallbacks();
+        main_text_output.setText( text, TextView.BufferType.SPANNABLE );
+    }
+
+    private void addHyperLinkExits( SpannableStringBuilder text ) {
+        if( exits.size() > 0 )
+            text.append( "\n\nThe following exits are visible: " );
+        else
+            text.append( "\n\nThere are no visible exits." );
+
+        String prefix = "";
+        int color = Color.GREEN;
+        for( Exit exit : exits ) {
+            int startIndex = text.length() + prefix.length();
+            int endIndex = startIndex + exit.label().length();
+            text.append( prefix + exit.label() );
+            addClickableSpan( text, startIndex, endIndex, exit );
+            text.setSpan( new ForegroundColorSpan( color ), startIndex,
+                          endIndex, 0 );
+            color = rotateExitColor( color );
+            prefix = ", ";
+        }
+    }
+
+    private void addClickableSpan( SpannableStringBuilder text,
+            int startIndex, int endIndex, Exit exit ) {
+        final Context context = this;
+        final String exitString = exit.label();
+        ClickableSpan c = new ClickableSpan() {
+            @Override
+            public void onClick( View view ) {
+                Toast.makeText( context, exitString, Toast.LENGTH_LONG )
+                     .show();
+            }
+        };
+        text.setSpan( c, startIndex, endIndex, 0 );
+    }
+
+    private int rotateExitColor( int currentColor ) {
+        if( currentColor == Color.GREEN ) return Color.BLUE;
+        else if( currentColor == Color.BLUE ) return Color.RED;
+        else if( currentColor == Color.RED ) return Color.GREEN;
+        return Color.GREEN;
+    }
+
+    private void enableClickableLinkCallbacks() {
+        main_text_output.setMovementMethod( LinkMovementMethod.getInstance() );
     }
 
     private void scrollToBottomOfMainText() {
@@ -155,6 +218,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     public void showLocationExits( List<Exit> exits ) {
         this.exits = exits;
+
+        updateMainText();
 
         Exit northExit = findExitWithDirectionHint( Exit.DirectionHint.North );
         Exit southExit = findExitWithDirectionHint( Exit.DirectionHint.South );

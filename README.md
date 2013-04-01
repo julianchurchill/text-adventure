@@ -8,15 +8,13 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
+- [FEATURE] Instead of direction navigator use hyper-text in description...
+- [FEATURE] ... or direction navigator - instead of top, bottom, right, left clickable labels use a compass with small labels.
+
 - [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some points or money or something and maybe a quest/hint as to what to do next - open up a new area.
   - [TEST] ItemAction DestroyItem (clock face, minute hand, hour hand)
   - [TEST] Succesful use text "You fit the final piece of the clock. The air stirs around you as you slide it gently into place. blah blah you get some rubies"
   - [TEST] New ItemAction something like AwardRubies
-
-- [FEATURE-EDITOR] Update webapp editor to [de]serialise visibility and allow setting of visibility
-- [FEATURE-EDITOR] Update webapp editor to allow adding/deletion of on examine actions to items
-
-- [REFACTOR] Item interface is getting fat. Can 'use' and 'examine' be split off, perhaps Examinable, Usable? Is there any benefit?
 
 - [FEATURE] Show a ruby counter at the top of the screen. Also have a nice little ruby graphic.
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
@@ -24,8 +22,10 @@ Backlog
 - [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
 - [FEATURE] Ruby counter should show how many out of how many achieved - e.g. 10/100
 
-- [FEATURE] Instead of direction navigator use hyper-text in description...
-- [FEATURE] ... or direction navigator - instead of top, bottom, right, left clickable labels use a compass with small labels.
+- [FEATURE-EDITOR] Update webapp editor to [de]serialise visibility and allow setting of visibility
+- [FEATURE-EDITOR] Update webapp editor to allow adding/deletion of on examine actions to items
+
+- [REFACTOR] Item interface is getting fat. Can 'use' and 'examine' be split off, perhaps Examinable, Usable? Is there any benefit?
 
 - [FEATURE] In model content txt items can only be used in one direction, e.g. a spade with a mound of earth and the target item has to include the definition of what happens. If the original item (e.g. spade) includes this information it is ignored. Should this be changed to be bi-directional? It would make writing content easier but needs considering as it might not always be appropriate.
 
