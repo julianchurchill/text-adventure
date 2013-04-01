@@ -1,5 +1,7 @@
 package com.chewielouie.textadventure.serialisation;
 
+import java.util.ArrayList;
+import java.util.List;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.itemaction.ItemAction;
 import com.chewielouie.textadventure.itemaction.ItemActionFactory;
@@ -18,6 +20,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private final String itemVisibilityTag = "item visibility:";
     private final String itemExamineMessageTag = "item examine message:";
     private final String itemExamineActionIsNotRepeatableTag = "item examine action is not repeatable:";
+    private final String itemOnExamineActionTag = "item on examine action:";
     private Item item;
     private String content;
     private ItemActionFactory itemActionFactory;
@@ -30,6 +33,13 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         this.item = item;
         this.content = content;
 
+        extractBasicProperties();
+        extractItemUseProperties();
+        extractItemVisibilityProperties();
+        extractItemExamineProperties();
+    }
+
+    private void extractBasicProperties() {
         item.setName( extractNewlineDelimitedValueFor( itemNameTag ) );
         item.setDescription( extractNewlineDelimitedValueFor( itemDescriptionTag ) );
         item.setId( extractNewlineDelimitedValueFor( itemIDTag ) );
@@ -40,13 +50,6 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
 
         if( findTagWithNoArgument( itemIsUntakeableTag ) )
             item.setUntakeable();
-
-        extractItemUseProperties();
-        extractItemVisibilityProperties();
-
-        item.setExamineText( extractNewlineDelimitedValueFor( itemExamineMessageTag ) );
-        if( findTagWithNoArgument( itemExamineActionIsNotRepeatableTag ) )
-            item.setExamineActionIsNotRepeatable();
     }
 
     private void extractItemUseProperties() {
@@ -56,7 +59,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         if( findTagWithNoArgument( itemUseIsNotRepeatableTag ) )
             item.setUseIsNotRepeatable();
 
-        extractItemActions();
+        extractItemUseActions();
     }
 
     private void extractItemVisibilityProperties() {
@@ -65,6 +68,20 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
             item.setVisible( false );
         else
             item.setVisible( true );
+    }
+
+    private void extractItemExamineProperties() {
+        item.setExamineText( extractNewlineDelimitedValueFor( itemExamineMessageTag ) );
+        if( findTagWithNoArgument( itemExamineActionIsNotRepeatableTag ) )
+            item.setExamineActionIsNotRepeatable();
+        extractItemOnExamineActions();
+    }
+
+    private void extractItemOnExamineActions() {
+        List<ItemAction> actions =
+            extractMultipleActions( itemOnExamineActionTag );
+        for( ItemAction action : actions )
+            item.addOnExamineAction( action );
     }
 
     private boolean findTagWithNoArgument( String tag ) {
@@ -89,18 +106,27 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         return content.substring( startOfValue, endOfTag );
     }
 
-    private void extractItemActions() {
-        if( itemActionFactory != null ) {
-            int nextTag = -1;
-            while( (nextTag=findTagFrom( nextTag, itemUseActionTag )) != -1 )
-                item.addOnUseAction( createAction( nextTag ) );
-        }
+    private void extractItemUseActions() {
+        List<ItemAction> actions = extractMultipleActions( itemUseActionTag );
+        for( ItemAction action : actions )
+            item.addOnUseAction( action );
     }
 
-    private ItemAction createAction( int startOfActionValue ) {
+    private List<ItemAction> extractMultipleActions( String triggerEventTag ) {
+        List<ItemAction> actions = new ArrayList<ItemAction>();
+        if( itemActionFactory != null ) {
+            int nextTag = -1;
+            while( (nextTag=findTagFrom( nextTag, triggerEventTag )) != -1 )
+                actions.add( createAction( nextTag, triggerEventTag ) );
+        }
+        return actions;
+    }
+
+    private ItemAction createAction( int startOfAction,
+            String triggerEventTag ) {
         return itemActionFactory.create(
-                    extractValueUpToNewline( startOfActionValue +
-                                             itemUseActionTag.length() ),
+                    extractValueUpToNewline( startOfAction +
+                                             triggerEventTag.length() ),
                     item );
     }
 
