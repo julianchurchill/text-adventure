@@ -7,7 +7,7 @@ item name:Multitool
 item description:It's got a lot of tools on it. You feel like a man of the wilderness when you wield this formidable contraption.
 LOCATION
 x:300
-y:360
+y:480
 location id:townentrance
 location description:You are standing outside a small town. The main street goes north, to the west there are some small out buildings and to the east you can see what looks like an abandoned mine shaft.
 EXIT
@@ -40,16 +40,87 @@ item mid sentence cased name:banana peel
 LOCATION
 x:300
 y:0
+location id:secondfloorclocktower
+location description:You are at the top of the clock tower standing in front of the clock mechanism.
+EXIT
+exit label:Down
+exit destination:firstfloorclocktower
+exit direction hint:South
+ITEM
+item name:Clock mechanism
+item description:It is missing a clock face and both hands. Looking at it you decide the face would be best placed upon the mechanism before the hands.
+item countable noun prefix:a
+item mid sentence cased name:clock mechanism
+item id:clockmechanism
+item is untakeable:
+item can be used with:clockface
+item successful use message:You place the clock face onto the front of the mechanism and it clicks gently into place.
+item use action:change item visibility:clockmechanismwithface:visible
+item use action:destroy item:clockface
+item use action:destroy item:clockmechanism
+ITEM
+item name:Clock mechanism
+item description:It has an engraved clock face but is missing its hands. It looks like it needs to have the hour hand fitted first.
+item countable noun prefix:a
+item mid sentence cased name:clock mechanism
+item id:clockmechanismwithface
+item is untakeable:
+item visibility:invisible
+item can be used with:clockhourhand
+item successful use message:You push the hour hand onto the spindle in the centre of the clock face.
+item use action:change item visibility:clockmechanismwithfaceandhourhand:visible
+item use action:destroy item:clockhourhand
+item use action:destroy item:clockmechanismwithface
+ITEM
+item name:Clock mechanism
+item description:It has an engraved clock face but is missing its minute hand. The hour hand has been expertly placed upon the central spindle.
+item countable noun prefix:a
+item mid sentence cased name:clock mechanism
+item id:clockmechanismwithfaceandhourhand
+item is untakeable:
+item visibility:invisible
+item can be used with:clockminutehand
+item successful use message:You push the minute hand on top of the hour hand already attached to the spindle in the centre of the clock face.
+item use action:change item visibility:clockmechanismwithfaceandhourhandandminutehand:visible
+item use action:destroy item:clockminutehand
+item use action:destroy item:clockmechanismwithfaceandhourhand
+ITEM
+item name:Clock mechanism
+item description:It has an engraved clock face and both hands. It ticks gently.
+item countable noun prefix:a
+item mid sentence cased name:clock mechanism
+item id:clockmechanismwithfaceandhourhandandminutehand
+item is untakeable:
+item visibility:invisible
+LOCATION
+x:300
+y:60
+location id:firstfloorclocktower
+location description:You are standing on the first floor of the clock tower. The wooden floorboards creak and groan as you tread across them.
+EXIT
+exit label:Up
+exit destination:secondfloorclocktower
+exit direction hint:North
+EXIT
+exit label:Down
+exit destination:groundfloorclocktower
+exit direction hint:South
+LOCATION
+x:300
+y:120
 location id:groundfloorclocktower
 location description:You are inside the mighty clock tower. Sound resonates around you as the clock ticks.
+EXIT
+exit label:Up
+exit destination:firstfloorclocktower
+exit direction hint:North
 EXIT
 exit label:Clock tower door
 exit destination:clocktower
 exit direction hint:South
-exit id:
 LOCATION
 x:420
-y:360
+y:480
 location id:mineshaft
 location description:You stand before an old blocked up mine shaft, there are some dusty footprints in the dirt around the entrance however there is no obvious way in. A sign states "McCreedys Mine - Stay out or suffer the consequences!". To the east is a old ramshackle shed.
 EXIT
@@ -62,7 +133,7 @@ exit destination:smallshed
 exit direction hint:East
 LOCATION
 x:480
-y:360
+y:480
 location id:smallshed
 location description:You are standing inside a small shed. It is dusty and dirty and a variety of mining tools rest against the walls.
 EXIT
@@ -86,14 +157,14 @@ item on examine action:change item description:They are full of rubbish. Nothing
 item on examine action:change item visibility:clockhourhand:visible
 ITEM
 item name:Clock hour hand
-item description:It is the hour hand from a clock. The clock to which it belongs is not here.
+item description:It is the hour hand from a clock.
 item countable noun prefix:a
 item id:clockhourhand
 item visibility:invisible
 item mid sentence cased name:clock hour hand
 LOCATION
 x:300
-y:120
+y:240
 location id:clocktower
 location description:You stand before a mighty clock tower. The clock goes TICK!
 EXIT
@@ -108,11 +179,11 @@ exit direction hint:North
 exit is not visible:
 exit id:clocktowerdoor
 ITEM
-item name:Minute Hand of the Clock Tower
+item name:Clock minute hand
 item description:It is quite heavy, ornate and made of iron.
-item id:
+item id:clockminutehand
 item countable noun prefix:a
-item mid sentence cased name:Minute Hand of the Clock Tower
+item mid sentence cased name:clock minute hand
 ITEM
 item name:locked door
 item description:It is locked and looks impenetrable. It appears to allow access to the clock tower itself.
@@ -127,7 +198,7 @@ item use action:change item name:unlocked door
 item use action:make exit visible:clocktowerdoor
 LOCATION
 x:300
-y:240
+y:360
 location id:mainstreettown
 location description:You are on the main street of the town. There is a clock tower to the north.
 EXIT
@@ -148,7 +219,7 @@ item countable noun prefix:some
 item mid sentence cased name:Dust of the Ancients
 LOCATION
 x:180
-y:360
+y:480
 location id:townoutbuildings
 location description:There are a number of small shack like structures here, fallen down and decrepit they haven't been used for years.
 EXIT

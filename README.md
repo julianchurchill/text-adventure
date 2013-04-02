@@ -8,13 +8,14 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-
 - [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some points or money or something and maybe a quest/hint as to what to do next - open up a new area.
-  - [TEST] ItemAction DestroyItem (clock face, minute hand, hour hand)
   - [TEST] Succesful use text "You fit the final piece of the clock. The air stirs around you as you slide it gently into place. blah blah you get some rubies"
   - [TEST] New ItemAction something like AwardRubies
+        - [FEATURE] Show a ruby counter at the top of the screen. Also have a nice little ruby graphic.
 
-- [FEATURE] Show a ruby counter at the top of the screen. Also have a nice little ruby graphic.
+- [FEATURE] Autosave upon leaving the app (with the back key usually) so upon returning the user can continue their game.
+- [FEATURE] Restart game - resets everything
+
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 - [TEST] action view includes a cancel button to reset the actions to the top level
 - [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
@@ -27,20 +28,12 @@ Backlog
 
 - [FEATURE] In model content txt items can only be used in one direction, e.g. a spade with a mound of earth and the target item has to include the definition of what happens. If the original item (e.g. spade) includes this information it is ignored. Should this be changed to be bi-directional? It would make writing content easier but needs considering as it might not always be appropriate.
 
-- [FEATURE] Action navigator - instead of long click context menu sequence use a sidebar which either expands or gets replaced (with a title to preserve context e.g. 'Show inventory...', 'Take an item...').
-  - [TEST] action view title defaults to 'Actions...'
-  - [TEST] activity sets action view title when user selects an action
-
 - [REFACTOR]
   - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
 
 - Add monsters, npcs
 
 - Add other verbs - attack, eat, drink, dance, take, drop, give, talk
-
-- Save progress
-  - Add a menu on the Android menu key so the user can select 'save'.
-  - Autosave
 
 - Optional images to go with text?
 
