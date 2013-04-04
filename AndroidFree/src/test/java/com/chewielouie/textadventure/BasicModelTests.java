@@ -286,5 +286,21 @@ public class BasicModelTests {
 
         assertEquals( item, model.findItemByID( "itemid" ) );
     }
+
+    @Test
+    public void setting_the_current_score_allows_it_to_be_retrieved() {
+        BasicModel model = new BasicModel();
+        model.setCurrentScore( 23 );
+
+        assertEquals( 23, model.currentScore() );
+    }
+
+    @Test
+    public void setting_the_maximum_score_allows_it_to_be_retrieved() {
+        BasicModel model = new BasicModel();
+        model.setMaximumScore( 286 );
+
+        assertEquals( 286, model.maximumScore() );
+    }
 }
 

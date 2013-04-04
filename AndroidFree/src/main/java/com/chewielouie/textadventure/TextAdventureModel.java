@@ -15,5 +15,7 @@ public interface TextAdventureModel {
     public Item findItemByID( String id );
     public int currentScore();
     public int maximumScore();
+    public void setCurrentScore( int score );
+    public void setMaximumScore( int score );
 }
 

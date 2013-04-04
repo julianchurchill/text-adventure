@@ -11,6 +11,8 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     Map<String,ModelLocation> locations = new HashMap<String,ModelLocation>();
     ModelLocation currentLocation = new NullLocation();
     private List<Item> inventoryItems = new ArrayList<Item>();
+    private int currentScore = 0;
+    private int maximumScore = 0;
 
     public BasicModel() {
     }
@@ -118,11 +120,19 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public int currentScore() {
-        return 0;
+        return currentScore;
     }
 
     public int maximumScore() {
-        return 0;
+        return maximumScore;
+    }
+
+    public void setCurrentScore( int score ) {
+        currentScore = score;
+    }
+
+    public void setMaximumScore( int score ) {
+        maximumScore = score;
     }
 }
 
