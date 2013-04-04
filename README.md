@@ -14,7 +14,6 @@ Backlog
   - [TEST] Succesful use text "You fit the final piece of the clock. The air stirs around you as you slide it gently into place. blah blah you get some rubies"
   - [TEST] New ItemAction something like AwardRubies
 
-- [FEATURE] About dialog available from main menu.
 - [FEATURE] Autosave upon leaving the app (with the back key usually) so upon returning the user can continue their game.
 - [FEATURE] Restart game - resets everything. Available in the main menu.
 
@@ -42,6 +41,10 @@ Backlog
 Done
 ====
 
+1.0
+---
+
+- [FEATURE] About dialog available from main menu.
 - [FEATURE] Direction label buttons are replaced with hyper-text exits in description
 - [FEATURE] New event 'on examine' for ItemActions to be trigger upon
 - [FEATURE] New ItemAction ChangeItemVisibility

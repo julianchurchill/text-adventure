@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Text Adventure</string>
+    <string name="about">About</string>
+    <string name="aboutDialogText">For any support issues please use the email address below. Thanks for playing!</string>
+    <string name="email">chewielouie+textadventure@gmail.com</string>
+    <string name="copyright">Copyright 2013 Julian Churchill</string>
 </resources>

@@ -10,13 +10,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import android.app.Activity;
-import android.content.Context;
+import android.app.Dialog;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
@@ -37,6 +40,9 @@ import com.chewielouie.textadventure.itemaction.NormalItemActionFactory;
 import com.chewielouie.textadventure.itemaction.LoggableNormalItemActionFactory;
 
 public class TextAdventureActivity extends Activity implements TextAdventureView, OnClickListener {
+
+    private static final int ABOUT_MENU_ITEM = 0;
+
     private RendersView rendersView;
     private UserActionHandler userActionHandler;
     private List<Exit> exits = new ArrayList<Exit>();
@@ -228,6 +234,46 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void onClick( View v ) {
         if( v instanceof Button && actionButtons.containsKey( (Button)v ) )
             userActionHandler.enact( actionButtons.get( (Button)v ) );
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu( Menu menu )
+    {
+        menu.clear();
+        menu.add( Menu.NONE, ABOUT_MENU_ITEM, Menu.NONE, getText( R.string.about ) );
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item )
+    {
+        boolean retVal = true;
+        switch( item.getItemId() )
+        {
+            case ABOUT_MENU_ITEM:
+                showAboutDialog();
+                break;
+            default:
+                retVal = super.onOptionsItemSelected( item );
+                break;
+        }
+        return retVal;
+    }
+
+    private void showAboutDialog() {
+        Dialog dialog = new Dialog( this );
+        dialog.setContentView( R.layout.about_dialog );
+
+        String versionName = "";
+        try {
+            versionName = getPackageManager().getPackageInfo( getPackageName(), 0 ).versionName;
+        }
+        catch ( PackageManager.NameNotFoundException e ) {
+        }
+        dialog.setTitle( getResources().getString( R.string.app_name ) +
+                         " " + versionName );
+
+        dialog.show();
     }
 }
 
