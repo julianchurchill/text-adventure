@@ -23,6 +23,8 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
         view.showMainText( model.currentLocationDescription() );
         view.showLocationExits( model.currentLocationExits() );
         notifyViewOfAvailableActions();
+        view.currentScore( model.currentScore() );
+        view.maximumScore( model.maximumScore() );
     }
 
     private void notifyViewOfAvailableActions() {
@@ -49,6 +51,8 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
             view.setActions( action.followUpActions() );
         else
             notifyViewOfAvailableActions();
+        view.currentScore( model.currentScore() );
+        view.maximumScore( model.maximumScore() );
     }
 
     public List<Action> defaultActions() {

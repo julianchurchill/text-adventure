@@ -13,5 +13,7 @@ public interface TextAdventureModel {
     public Exit findExitByID( String id );
     public void destroyItem( String id );
     public Item findItemByID( String id );
+    public int currentScore();
+    public int maximumScore();
 }
 

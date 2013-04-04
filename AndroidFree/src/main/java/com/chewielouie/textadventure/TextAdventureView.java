@@ -7,5 +7,7 @@ public interface TextAdventureView {
     public void showMainText( String s );
     public void showLocationExits( List<Exit> exits );
     public void setActions( List<Action> actions );
+    public void currentScore( int score );
+    public void maximumScore( int score );
 }
 

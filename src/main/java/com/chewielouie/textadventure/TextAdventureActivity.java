@@ -275,5 +275,11 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
         dialog.show();
     }
+
+    public void currentScore( int score ) {
+    }
+
+    public void maximumScore( int score ) {
+    }
 }
 

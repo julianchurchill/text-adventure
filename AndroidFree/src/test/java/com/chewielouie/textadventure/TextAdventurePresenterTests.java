@@ -346,5 +346,45 @@ public class TextAdventurePresenterTests {
 
         p.enact( action );
     }
+
+    @Test
+    public void score_is_retrieved_from_model_and_passed_to_view_on_enact() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        final Action action = mockery.mock( Action.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
+        mockery.checking( new Expectations() {{
+            oneOf( view ).currentScore( 42 );
+            oneOf( view ).maximumScore( 137 );
+            ignoring( view );
+            oneOf( model ).currentScore();
+            will( returnValue( 42 ) );
+            oneOf( model ).maximumScore();
+            will( returnValue( 137 ) );
+            ignoring( model );
+            ignoring( action );
+        }});
+
+        p.enact( action );
+    }
+
+    @Test
+    public void ruby_count_is_retrieved_from_model_and_passed_to_view_on_render() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
+        mockery.checking( new Expectations() {{
+            oneOf( view ).currentScore( 42 );
+            oneOf( view ).maximumScore( 137 );
+            ignoring( view );
+            oneOf( model ).currentScore();
+            will( returnValue( 42 ) );
+            oneOf( model ).maximumScore();
+            will( returnValue( 137 ) );
+            ignoring( model );
+        }});
+
+        p.render();
+    }
 }
 

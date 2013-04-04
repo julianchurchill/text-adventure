@@ -116,5 +116,13 @@ public class BasicModel implements TextAdventureModel, UserInventory {
                     return item;
         return null;
     }
+
+    public int currentScore() {
+        return 0;
+    }
+
+    public int maximumScore() {
+        return 1;
+    }
 }
 
