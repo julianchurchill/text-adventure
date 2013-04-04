@@ -122,7 +122,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public int maximumScore() {
-        return 1;
+        return 0;
     }
 }
 

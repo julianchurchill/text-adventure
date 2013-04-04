@@ -152,5 +152,17 @@ public class TextAdventureActivityTests {
     //public void action_view_title_changes_when_action_chosen() {
     //@Test
     //public void action_view_title_resets_to_Actions_when_action_chain_is_completed() {
+
+    @Test
+    public void current_score_updates_the_acquired_ruby_count() {
+        TextAdventureActivity activity = new TextAdventureActivity();
+        activity.onCreate( null );
+
+        activity.currentScore( 5 );
+        activity.maximumScore( 23 );
+
+        final TextView t = (TextView)activity.findViewById( R.id.ruby_count );
+        assertEquals( "5/23", t.getText().toString() );
+    }
 }
 

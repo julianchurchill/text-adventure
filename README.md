@@ -8,10 +8,10 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some points or money or something and maybe a quest/hint as to what to do next - open up a new area.
+- [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some rubies as points and a hint as to what to do next - open up a new area near the mine.
   DONE - [TEST] Show a ruby counter at the top of the screen. Also have a nice little ruby graphic.
   DONE - [TEST] The presenter should get the value from the model. The presenter needs to advertise at the same time as the description and exits, e.g. after actions are performed.
-  - [TEST] The ruby counter should show what the presenter gives the activity.
+  DONE - [TEST] The ruby counter should show what the presenter gives the activity.
   - [TEST] Succesful use text "You fit the final piece of the clock. The air stirs around you as you slide it gently into place. blah blah you get some rubies"
   - [TEST] New ItemAction something like AwardRubies. Updates the model score.
 

@@ -47,11 +47,14 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private UserActionHandler userActionHandler;
     private List<Exit> exits = new ArrayList<Exit>();
     private TextView main_text_output;
+    private TextView score_text_view;
     private String mainTextContent = "";
     private Map<TextView,Exit> directions_and_exits =
         new HashMap<TextView,Exit>();
     private Map<Button,Action> actionButtons = new HashMap<Button,Action>();
     private LinearLayout available_actions_view;
+    private int currentScore = 0;
+    private int maximumScore = 0;
 
     public TextAdventureActivity() {
     }
@@ -74,6 +77,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         main_text_output = findTextView( R.id.main_text_output );
+        score_text_view = findTextView( R.id.ruby_count );
         available_actions_view = (LinearLayout)findViewById( R.id.available_actions );
 
         BasicModel model = createModel();
@@ -277,9 +281,18 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     public void currentScore( int score ) {
+        currentScore = score;
+        updateScore();
+    }
+
+    private void updateScore() {
+        score_text_view.setText( Integer.toString( currentScore ) + "/" +
+                                 Integer.toString( maximumScore ) );
     }
 
     public void maximumScore( int score ) {
+        maximumScore = score;
+        updateScore();
     }
 }
 
