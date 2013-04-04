@@ -10,6 +10,7 @@ public class NormalItemActionFactory implements ItemActionFactory {
     private String destroyItemTag = "destroy item:";
     private String changeItemVisibilityTag = "change item visibility:";
     private String incrementScoreTag = "increment score:";
+    private String changeLocationDescriptionTag = "change location description:";
     private TextAdventureModel model;
 
     public NormalItemActionFactory( TextAdventureModel model ) {
@@ -40,6 +41,10 @@ public class NormalItemActionFactory implements ItemActionFactory {
                        model );
         else if( content.startsWith( incrementScoreTag ) )
             return new IncrementScoreItemAction( model );
+        else if( content.startsWith( changeLocationDescriptionTag ) )
+            return new ChangeLocationDescriptionItemAction(
+                       content.substring( changeLocationDescriptionTag.length() ),
+                       model );
         return new NullItemAction( content );
     }
 }

@@ -8,20 +8,13 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some rubies as points and a hint as to what to do next - open up a new area near the mine.
-  DONE - [TEST] Show a ruby counter at the top of the screen. Also have a nice little ruby graphic.
-  DONE - [TEST] The presenter should get the value from the model. The presenter needs to advertise at the same time as the description and exits, e.g. after actions are performed.
-  DONE - [TEST] The ruby counter should show what the presenter gives the activity.
-  DONE - [TEST] New ItemAction increment score. Updates the model score.
-  - [TEST] New ItemAction change location description. Use it to change the outsideaminshaft location description after the entrance is revealed.
-
 - [FEATURE] Autosave upon leaving the app (with the back key usually) so upon returning the user can continue their game.
 - [FEATURE] Restart game - resets everything. Available in the main menu.
 
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 - [TEST] action view includes a cancel button to reset the actions to the top level
 - [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
-- [FEATURE] Ruby counter should show how many out of how many achieved - e.g. 10/100
+- [FEATURE] Ruby counter should show how many out of how many achieved - e.g. 10/100 - this needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 
 - [FEATURE-EDITOR] Update webapp editor to [de]serialise visibility and allow setting of visibility
 - [FEATURE-EDITOR] Update webapp editor to allow adding/deletion of on examine actions to items
@@ -45,6 +38,8 @@ Done
 1.0
 ---
 
+- [FEATURE] New ItemAction increment score.
+- [FEATURE] New ItemAction change location description.
 - [FEATURE] About dialog available from main menu.
 - [FEATURE] Direction label buttons are replaced with hyper-text exits in description
 - [FEATURE] New event 'on examine' for ItemActions to be trigger upon
@@ -60,6 +55,9 @@ Done
 - [FEATURE] Add ability to show inventory
 - [FEATURE] Add ability navigate between locations using the four edges of the screen
 
+- [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some rubies as points and a hint as to what to do next - opens up a new area near the mine.
+- [STORY] Use the skeleton key to unlock the clock tower.
+- [STORY] Pick up minute hand from outside the clock tower.
 - [STORY] Use spade on mound of dirt outside the town to uncover a clock face.
 - [STORY] Find clock hour hand in untakeable bags of junk somewhere.
 

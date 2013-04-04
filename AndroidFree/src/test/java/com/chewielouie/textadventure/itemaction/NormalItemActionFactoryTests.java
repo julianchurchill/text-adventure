@@ -71,5 +71,16 @@ public class NormalItemActionFactoryTests {
 
         assertTrue( action instanceof IncrementScoreItemAction );
     }
+
+    @Test
+    public void creates_ChangeLocationDescriptionItemActions() {
+        NormalItemActionFactory factory = new NormalItemActionFactory( null );
+
+        ItemAction action = factory.create(
+               "change location description:locid:new description",
+               null );
+
+        assertTrue( action instanceof ChangeLocationDescriptionItemAction );
+    }
 }
 
