@@ -17,7 +17,7 @@ exit direction hint:North
 exit id:
 EXIT
 exit label:East
-exit destination:mineshaft
+exit destination:outsideamineshaft
 exit direction hint:East
 exit id:
 EXIT
@@ -80,7 +80,9 @@ item id:clockmechanismwithfaceandhourhand
 item is untakeable:
 item visibility:invisible
 item can be used with:clockminutehand
-item successful use message:You push the minute hand on top of the hour hand already attached to the spindle in the centre of the clock face.
+item successful use message:You push the minute hand on top of the hour hand already attached to the spindle in the centre of the clock face. It clips in place with a satisfying click. The mechanism starts to whir and the hands begin to gently jerk with the movement of the mechanism inside. The air stirs around you and you feel slightly wealthier. In the distance you hear what sounds like a rock slide and you take a mental note to investigate this further.
+item use action:make exit visible:mineshaftentrance
+item use action:increment score:
 item use action:change item visibility:clockmechanismwithfaceandhourhandandminutehand:visible
 item use action:destroy item:clockminutehand
 item use action:destroy item:clockmechanismwithfaceandhourhand
@@ -121,7 +123,7 @@ exit direction hint:South
 LOCATION
 x:420
 y:480
-location id:mineshaft
+location id:outsideamineshaft
 location description:You stand before an old blocked up mine shaft, there are some dusty footprints in the dirt around the entrance however there is no obvious way in. A sign states "McCreedys Mine - Stay out or suffer the consequences!". To the east is a old ramshackle shed.
 EXIT
 exit label:West
@@ -131,6 +133,21 @@ EXIT
 exit label:Ramshackle Shed
 exit destination:smallshed
 exit direction hint:East
+EXIT
+exit label:Mineshaft entrance
+exit destination:mineshaftchamber1
+exit direction hint:South
+exit id:mineshaftentrance
+exit is not visible:
+LOCATION
+x:420
+y:540
+location id:mineshaftchamber1
+location description:You stand just inside a dusty mineshaft. It looks like it has been abandoned and not used for many years. Until recently the entrance was blocked by a large rock fall.
+EXIT
+exit label:Outside
+exit destination:outsideamineshaft
+exit direction hint:North
 LOCATION
 x:480
 y:480
@@ -138,7 +155,7 @@ location id:smallshed
 location description:You are standing inside a small shed. It is dusty and dirty and a variety of mining tools rest against the walls.
 EXIT
 exit label:West
-exit destination:mineshaft
+exit destination:outsideamineshaft
 exit direction hint:West
 ITEM
 item name:Spade

@@ -60,5 +60,16 @@ public class NormalItemActionFactoryTests {
 
         assertTrue( action instanceof ChangeItemVisibilityItemAction );
     }
+
+    @Test
+    public void creates_IncrementScoreItemActions() {
+        NormalItemActionFactory factory = new NormalItemActionFactory( null );
+
+        ItemAction action = factory.create(
+               "increment score:",
+               null );
+
+        assertTrue( action instanceof IncrementScoreItemAction );
+    }
 }
 
