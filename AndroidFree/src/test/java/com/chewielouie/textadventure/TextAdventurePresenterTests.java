@@ -386,5 +386,122 @@ public class TextAdventurePresenterTests {
 
         p.render();
     }
+
+    @Test
+    public void in_an_action_chain_if_follow_up_action_must_be_chosen() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
+        final Action action = mockery.mock( Action.class, "original action" );
+        final List<Action> actions = new ArrayList<Action>();
+        actions.add( mockery.mock( Action.class, "follow up action" ) );
+        mockery.checking( new Expectations() {{
+            ignoring( view );
+            ignoring( model );
+            allowing( action ).userMustChooseFollowUpAction();
+            will( returnValue( true ) );
+            allowing( action ).followUpActions();
+            will( returnValue( actions ) );
+            ignoring( action );
+        }});
+
+        p.enact( action );
+        assertTrue( p.inAnActionChain() );
+    }
+
+    @Test
+    public void not_in_an_action_chain_if_no_follow_up_action_must_be_chosen() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
+        final Action action = mockery.mock( Action.class, "original action" );
+        mockery.checking( new Expectations() {{
+            ignoring( view );
+            ignoring( model );
+            allowing( action ).userMustChooseFollowUpAction();
+            will( returnValue( false ) );
+            ignoring( action );
+        }});
+
+        p.enact( action );
+        assertFalse( p.inAnActionChain() );
+    }
+
+    @Test
+    public void not_in_an_action_chain_if_no_follow_up_actions_at_the_end_of_a_chain() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
+        final Action action = mockery.mock( Action.class, "original action" );
+        final List<Action> actions = new ArrayList<Action>();
+        final Action followUpAction = mockery.mock( Action.class, "follow up action" );
+        actions.add( followUpAction );
+        mockery.checking( new Expectations() {{
+            ignoring( view );
+            ignoring( model );
+            allowing( action ).userMustChooseFollowUpAction();
+            will( returnValue( true ) );
+            allowing( action ).followUpActions();
+            will( returnValue( actions ) );
+            ignoring( action );
+            allowing( followUpAction ).userMustChooseFollowUpAction();
+            will( returnValue( false ) );
+            ignoring( followUpAction );
+        }});
+
+        p.enact( action );
+        p.enact( followUpAction );
+
+        assertFalse( p.inAnActionChain() );
+    }
+
+    @Test
+    public void cancel_action_chain_causes_view_to_be_notified_of_default_and_location_actions() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
+        Action action = mockery.mock( Action.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final List<Action> locationActions = new ArrayList<Action>();
+        locationActions.add( action );
+        final List<Action> actions = new ArrayList<Action>( p.defaultActions() );
+        actions.add( action );
+        mockery.checking( new Expectations() {{
+            allowing( model ).currentLocation();
+            will( returnValue( location ) );
+            ignoring( model );
+            allowing( location ).actions();
+            will( returnValue( locationActions ) );
+            ignoring( location );
+            oneOf( view ).setActions( actions );
+            ignoring( view );
+        }});
+
+        p.cancelActionChain();
+    }
+
+    @Test
+    public void no_longer_in_an_action_chain_after_cancel_action_chain_whilst_in_an_action_chain() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null );
+        final Action action = mockery.mock( Action.class, "original action" );
+        final List<Action> actions = new ArrayList<Action>();
+        actions.add( mockery.mock( Action.class, "follow up action" ) );
+        mockery.checking( new Expectations() {{
+            ignoring( view );
+            ignoring( model );
+            allowing( action ).userMustChooseFollowUpAction();
+            will( returnValue( true ) );
+            allowing( action ).followUpActions();
+            will( returnValue( actions ) );
+            ignoring( action );
+        }});
+
+        p.enact( action );
+
+        p.cancelActionChain();
+        assertFalse( p.inAnActionChain() );
+    }
 }
 

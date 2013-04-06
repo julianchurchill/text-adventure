@@ -8,9 +8,6 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [FEATURE] Respond to the 'Back' button by cancelling the actions if in the middle of an action, quit game otherwise
-  - [TEST] Implement TextAdventurePresenter inAnActionChain() and cancelActionChain()
-
 - [FEATURE] Autosave upon leaving the app (with the back key usually) so upon returning the user can continue their game.
   - http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
   - http://developer.android.com/reference/android/app/Activity.html#SavingPersistentState
@@ -19,6 +16,9 @@ Backlog
   - http://developer.android.com/reference/android/app/Activity.html#ActivityLifecycle
 - [FEATURE] Restart game - resets everything. Available in the main menu.
 
+- [REFACTOR] Consider using https://code.google.com/p/json-io/ instead of custom de/serializer code
+  - To get the current model content just load in code and dump to JSON
+  - Would require substantial rework of webapp editor
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 - [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
 - [FEATURE] Ruby counter should show how many out of how many achieved - e.g. 10/100 - this needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
@@ -45,6 +45,7 @@ Done
 1.0
 ---
 
+- [FEATURE] Respond to the 'Back' button by cancelling the action chain if in the middle of an action chain, quit game otherwise.
 - [FEATURE] New ItemAction increment score.
 - [FEATURE] New ItemAction change location description.
 - [FEATURE] About dialog available from main menu.

@@ -11,6 +11,7 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
     private final TextAdventureModel model;
     private List<Action> defaultActions = new ArrayList<Action>();
     private String actionText = "";
+    private boolean inAnActionChain = false;
 
     public TextAdventurePresenter( TextAdventureView v,
            TextAdventureModel m, UserInventory inventory ) {
@@ -22,9 +23,14 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
     public void render() {
         view.showMainText( model.currentLocationDescription() );
         view.showLocationExits( model.currentLocationExits() );
-        notifyViewOfAvailableActions();
+        resetActionsToStartOfChain();
         view.currentScore( model.currentScore() );
         view.maximumScore( model.maximumScore() );
+    }
+
+    private void resetActionsToStartOfChain() {
+        inAnActionChain = false;
+        notifyViewOfAvailableActions();
     }
 
     private void notifyViewOfAvailableActions() {
@@ -48,11 +54,16 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
                     + "\n\n" + actionText );
         }
         if( action.userMustChooseFollowUpAction() )
-            view.setActions( action.followUpActions() );
+            continueActionChain( action );
         else
-            notifyViewOfAvailableActions();
+            resetActionsToStartOfChain();
         view.currentScore( model.currentScore() );
         view.maximumScore( model.maximumScore() );
+    }
+
+    private void continueActionChain( Action action ) {
+        inAnActionChain = true;
+        view.setActions( action.followUpActions() );
     }
 
     public List<Action> defaultActions() {
@@ -60,10 +71,11 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
     }
 
     public boolean inAnActionChain() {
-        return false;
+        return inAnActionChain;
     }
 
     public void cancelActionChain() {
+        resetActionsToStartOfChain();
     }
 }
 
