@@ -9,11 +9,13 @@ Backlog
 =======
 
 - [FEATURE] Autosave upon leaving the app (with the back key usually) so upon returning the user can continue their game.
+  - [REFACTOR] Consider using https://code.google.com/p/json-io/ instead of custom de/serializer code
   - http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
   - http://developer.android.com/reference/android/app/Activity.html#SavingPersistentState
   - http://developer.android.com/reference/android/app/Activity.html#onPause()
   - http://developer.android.com/reference/android/app/Activity.html#onResume()
   - http://developer.android.com/reference/android/app/Activity.html#ActivityLifecycle
+
 - [FEATURE] Restart game - resets everything. Available in the main menu.
 
 - [REFACTOR] Consider using https://code.google.com/p/json-io/ instead of custom de/serializer code

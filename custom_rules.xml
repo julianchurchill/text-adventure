@@ -6,6 +6,7 @@
 
     <property name="businesslogic.root" value="AndroidFree"/>
     <property name="android.businesslogic.lib" value="libs/textadventure.businesslogic.jar"/>
+    <property name="android.libs" value="/libs"/>
     <property name="android.libs.test" value="libs/test"/>
     <property name="android.src.test" value="src/test/java"/>
     <property name="android.test.output" value="bin/test/classes"/>
@@ -20,6 +21,7 @@
     <import file="AndroidFree/build_rules.xml" />
 
     <path id="classpath.android.base">
+        <pathelement location="${android.libs}/json-io-2.0.1.jar"/>
         <pathelement path="${java.class.path}"/>
         <pathelement path="${android.main.output}"/>
     </path>

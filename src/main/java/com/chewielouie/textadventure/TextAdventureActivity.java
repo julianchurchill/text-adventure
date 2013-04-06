@@ -1,6 +1,8 @@
 package com.chewielouie.textadventure;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -11,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -29,6 +32,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import com.cedarsoftware.util.io.JsonWriter;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextExitDeserialiser;
@@ -56,6 +60,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private LinearLayout available_actions_view;
     private int currentScore = 0;
     private int maximumScore = 0;
+    private BasicModel model;
 
     public TextAdventureActivity() {
     }
@@ -81,7 +86,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         score_text_view = findTextView( R.id.ruby_count );
         available_actions_view = (LinearLayout)findViewById( R.id.available_actions );
 
-        BasicModel model = createModel();
+        createModel();
         TextAdventurePresenter p = new TextAdventurePresenter( this, model,
                (UserInventory)model );
         if( this.rendersView == null )
@@ -90,8 +95,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             this.userActionHandler = p;
     }
 
-    private BasicModel createModel() {
-        BasicModel model = new BasicModel();
+    private void createModel() {
+        model = new BasicModel();
         UserInventory inventory = model;
         Logger logger = new StdoutLogger();
         ItemActionFactory itemActionFactory = new LoggableNormalItemActionFactory( logger, model );
@@ -108,7 +113,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
                                          new PlainTextExitDeserialiser() ),
                                      itemDeserialiser,
                                      demoContent() );
-        return model;
     }
 
     private String demoContent() {
@@ -316,6 +320,20 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             userActionHandler.cancelActionChain();
         else
             finish();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        try {
+            FileOutputStream outputStream = openFileOutput("JSON_test", Context.MODE_PRIVATE);
+            JsonWriter jw = new JsonWriter(outputStream);
+            jw.write( model );
+            jw.close();
+        } catch( FileNotFoundException e ) {
+        } catch( IOException e ) {
+        }
     }
 }
 
