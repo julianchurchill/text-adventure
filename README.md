@@ -8,11 +8,17 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
+- [FEATURE] Action view should include a cancel/back button to reset the actions to the top level
+  - Would it be better to simply respond to the 'Back' button by cancelling the actions instead of an explicit cancel/back button?
 - [FEATURE] Autosave upon leaving the app (with the back key usually) so upon returning the user can continue their game.
+  - http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
+  - http://developer.android.com/reference/android/app/Activity.html#SavingPersistentState
+  - http://developer.android.com/reference/android/app/Activity.html#onPause()
+  - http://developer.android.com/reference/android/app/Activity.html#onResume()
+  - http://developer.android.com/reference/android/app/Activity.html#ActivityLifecycle
 - [FEATURE] Restart game - resets everything. Available in the main menu.
 
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
-- [TEST] action view includes a cancel button to reset the actions to the top level
 - [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
 - [FEATURE] Ruby counter should show how many out of how many achieved - e.g. 10/100 - this needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 
