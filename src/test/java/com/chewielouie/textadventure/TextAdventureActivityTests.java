@@ -164,5 +164,76 @@ public class TextAdventureActivityTests {
         final TextView t = (TextView)activity.findViewById( R.id.ruby_count );
         assertEquals( "5/23", t.getText().toString() );
     }
+
+    @Test
+    public void pressing_back_finishes_the_activity_when_not_in_an_action_chain() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+        mockery.checking( new Expectations() {{
+            allowing( handler ).inAnActionChain();
+            will( returnValue( false ) );
+            ignoring( handler );
+        }});
+
+        activity.onBackPressed();
+        assertTrue( activity.isFinishing() );
+    }
+
+    @Test
+    public void pressing_back_whilst_in_an_action_chain_does_not_finish_the_activity() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+        final Action action = mockery.mock( Action.class, "action" );
+        final Action newAction = mockery.mock( Action.class, "new action" );
+        mockery.checking( new Expectations() {{
+            allowing( handler ).inAnActionChain();
+            will( returnValue( true ) );
+            ignoring( handler );
+            ignoring( action );
+            ignoring( newAction );
+        }});
+
+        enterActionChain( activity, action, newAction );
+        activity.onBackPressed();
+
+        assertFalse( activity.isFinishing() );
+    }
+
+    private void enterActionChain( TextAdventureActivity activity, Action action, Action newAction ) {
+        List<Action> actions = new ArrayList<Action>();
+        actions.add( action );
+        activity.setActions( actions );
+
+        ViewGroup actionView = (ViewGroup)activity.findViewById( R.id.available_actions );
+        Button button = (Button)actionView.getChildAt(0);
+        button.performClick();
+        List<Action> newActions = new ArrayList<Action>();
+        newActions.add( newAction );
+        activity.setActions( newActions );
+    }
+
+    @Test
+    public void pressing_back_whilst_in_an_action_chain_cancels_the_chain_on_the_user_action_handler() {
+        final UserActionHandler handler = mockery.mock( UserActionHandler.class );
+        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        activity.onCreate( null );
+        final Action action = mockery.mock( Action.class, "action" );
+        final Action newAction = mockery.mock( Action.class, "new action" );
+        mockery.checking( new Expectations() {{
+            oneOf( handler ).cancelActionChain();
+            allowing( handler ).inAnActionChain();
+            will( returnValue( true ) );
+            ignoring( handler );
+            ignoring( action );
+            ignoring( newAction );
+        }});
+
+        enterActionChain( activity, action, newAction );
+        activity.onBackPressed();
+
+        mockery.assertIsSatisfied();
+    }
 }
 

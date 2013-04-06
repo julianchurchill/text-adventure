@@ -58,5 +58,12 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
     public List<Action> defaultActions() {
         return defaultActions;
     }
+
+    public boolean inAnActionChain() {
+        return false;
+    }
+
+    public void cancelActionChain() {
+    }
 }
 

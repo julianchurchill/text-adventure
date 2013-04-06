@@ -8,8 +8,9 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [FEATURE] Action view should include a cancel/back button to reset the actions to the top level
-  - Would it be better to simply respond to the 'Back' button by cancelling the actions instead of an explicit cancel/back button?
+- [FEATURE] Respond to the 'Back' button by cancelling the actions if in the middle of an action, quit game otherwise
+  - [TEST] Implement TextAdventurePresenter inAnActionChain() and cancelActionChain()
+
 - [FEATURE] Autosave upon leaving the app (with the back key usually) so upon returning the user can continue their game.
   - http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
   - http://developer.android.com/reference/android/app/Activity.html#SavingPersistentState

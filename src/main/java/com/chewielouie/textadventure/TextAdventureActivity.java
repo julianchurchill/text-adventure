@@ -18,6 +18,7 @@ import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -293,6 +294,28 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void maximumScore( int score ) {
         maximumScore = score;
         updateScore();
+    }
+
+    // @See http://stackoverflow.com/questions/3988478/block-back-button-in-android?lq=1
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (  Integer.valueOf(android.os.Build.VERSION.SDK) < 7 //Instead use android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.ECLAIR
+                && keyCode == KeyEvent.KEYCODE_BACK
+                && event.getRepeatCount() == 0) {
+            // Take care of calling this method on earlier versions of
+            // the platform where it doesn't exist.
+            onBackPressed();
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if( userActionHandler.inAnActionChain() )
+            userActionHandler.cancelActionChain();
+        else
+            finish();
     }
 }
 
