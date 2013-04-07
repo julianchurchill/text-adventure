@@ -1,6 +1,7 @@
 package com.chewielouie.textadventure;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -32,6 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import com.cedarsoftware.util.io.JsonReader;
 import com.cedarsoftware.util.io.JsonWriter;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
@@ -47,6 +49,7 @@ import com.chewielouie.textadventure.itemaction.LoggableNormalItemActionFactory;
 public class TextAdventureActivity extends Activity implements TextAdventureView, OnClickListener {
 
     private static final int ABOUT_MENU_ITEM = 0;
+    private static String saveFileName = "save_file_1";
 
     private RendersView rendersView;
     private UserActionHandler userActionHandler;
@@ -85,17 +88,48 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         main_text_output = findTextView( R.id.main_text_output );
         score_text_view = findTextView( R.id.ruby_count );
         available_actions_view = (LinearLayout)findViewById( R.id.available_actions );
-
-        createModel();
-        TextAdventurePresenter p = new TextAdventurePresenter( this, model,
-               (UserInventory)model );
-        if( this.rendersView == null )
-            this.rendersView = p;
-        if( this.userActionHandler == null )
-            this.userActionHandler = p;
     }
 
-    private void createModel() {
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if( saveFileExists() )
+            loadGame();
+        else
+            createNewGame();
+
+        rendersView.render();
+    }
+
+    private boolean saveFileExists() {
+        String[] files = fileList();
+        for( String file : files )
+            if( file.equals( saveFileName ) )
+                return true;
+        return false;
+    }
+
+    private void loadGame() {
+        try {
+            FileInputStream inputStream = openFileInput( saveFileName );
+            JsonReader jr = new JsonReader( inputStream );
+            model = (BasicModel) jr.readObject();
+            jr.close();
+        } catch( FileNotFoundException e ) {
+            System.err.println("exception thrown: " + e.toString() );
+        } catch( IOException e ) {
+            System.err.println("exception thrown: " + e.toString() );
+        }
+        setupPresenter();
+    }
+
+    private void createNewGame() {
+        createNewGameModel();
+        setupPresenter();
+    }
+
+    private void createNewGameModel() {
         model = new BasicModel();
         UserInventory inventory = model;
         Logger logger = new StdoutLogger();
@@ -138,14 +172,17 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         return text.toString();
     }
 
-    private TextView findTextView( int id ) {
-        return (TextView)findViewById( id );
+    private void setupPresenter() {
+        TextAdventurePresenter p = new TextAdventurePresenter( this, model,
+               (UserInventory)model );
+        //if( this.rendersView == null )
+            this.rendersView = p;
+        //if( this.userActionHandler == null )
+            this.userActionHandler = p;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        rendersView.render();
+    private TextView findTextView( int id ) {
+        return (TextView)findViewById( id );
     }
 
     public void showMainText( String s ) {
@@ -327,8 +364,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         super.onPause();
 
         try {
-            FileOutputStream outputStream = openFileOutput("JSON_test", Context.MODE_PRIVATE);
-            JsonWriter jw = new JsonWriter(outputStream);
+            FileOutputStream outputStream = openFileOutput( saveFileName, Context.MODE_PRIVATE );
+            JsonWriter jw = new JsonWriter( outputStream );
             jw.write( model );
             jw.close();
         } catch( FileNotFoundException e ) {

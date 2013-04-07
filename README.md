@@ -10,6 +10,8 @@ Backlog
 
 - [FEATURE] Autosave upon leaving the app (with the back key usually) so upon returning the user can continue their game.
   - [REFACTOR] Consider using https://code.google.com/p/json-io/ instead of custom de/serializer code
+    - Current error in adb logcat upon onResume with save file:
+      "W/System.err(  399): exception thrown: java.io.IOException: Could not instantiate com.chewielouie.textadventure.itemaction.ChangeItemVisibilityItemAction using any constructor"
   - http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
   - http://developer.android.com/reference/android/app/Activity.html#SavingPersistentState
   - http://developer.android.com/reference/android/app/Activity.html#onPause()
