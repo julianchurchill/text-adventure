@@ -52,7 +52,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private static String saveFileName = "save_file_1";
 
     private RendersView rendersView;
+    private boolean externallySuppliedViewRenderer = false;
     private UserActionHandler userActionHandler;
+    private boolean externallySuppliedUserActionHandler = false;
     private List<Exit> exits = new ArrayList<Exit>();
     private TextView main_text_output;
     private TextView score_text_view;
@@ -71,12 +73,13 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public TextAdventureActivity( RendersView r ) {
         this();
         this.rendersView = r;
+        this.externallySuppliedViewRenderer = true;
     }
 
     public TextAdventureActivity( UserActionHandler u ) {
         this();
         this.userActionHandler = u;
-
+        this.externallySuppliedUserActionHandler = true;
     }
 
     /** Called when the activity is first created. */
@@ -175,9 +178,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private void setupPresenter() {
         TextAdventurePresenter p = new TextAdventurePresenter( this, model,
                (UserInventory)model );
-        //if( this.rendersView == null )
+        if( externallySuppliedViewRenderer == false )
             this.rendersView = p;
-        //if( this.userActionHandler == null )
+        if( externallySuppliedUserActionHandler == false )
             this.userActionHandler = p;
     }
 
