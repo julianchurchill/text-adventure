@@ -12,6 +12,7 @@ Backlog
   - [REFACTOR] Consider using https://code.google.com/p/json-io/ instead of custom de/serializer code
     - Current error in adb logcat upon onResume with save file:
       "W/System.err(  399): exception thrown: java.io.IOException: Could not instantiate com.chewielouie.textadventure.itemaction.ChangeItemVisibilityItemAction using any constructor"
+    - [FIX] Be defensive in constructors as JSON-io will pass 'null' for String on first instantiation of objects
   - http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
   - http://developer.android.com/reference/android/app/Activity.html#SavingPersistentState
   - http://developer.android.com/reference/android/app/Activity.html#onPause()
