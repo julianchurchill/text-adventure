@@ -5,4 +5,9 @@
     <string name="aboutDialogText">For any support issues please use the email address below. Thanks for playing!</string>
     <string name="email">chewielouie+textadventure@gmail.com</string>
     <string name="copyright">Copyright 2013 Julian Churchill</string>
+    <string name="new_game">New Game</string>
+    <string name="new_game_title">New Game</string>
+    <string name="new_game_confirmation_dialog_text">All progress will be lost. Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

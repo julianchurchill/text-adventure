@@ -13,9 +13,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
@@ -49,6 +52,7 @@ import com.chewielouie.textadventure.itemaction.LoggableNormalItemActionFactory;
 public class TextAdventureActivity extends Activity implements TextAdventureView, OnClickListener {
 
     private static final int ABOUT_MENU_ITEM = 0;
+    private static final int NEW_GAME_MENU_ITEM = 1;
     private static String saveFileName = "save_file_1";
 
     private RendersView rendersView;
@@ -101,8 +105,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             loadGame();
         else
             createNewGame();
-
-        rendersView.render();
     }
 
     private boolean saveFileExists() {
@@ -182,6 +184,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             this.rendersView = p;
         if( externallySuppliedUserActionHandler == false )
             this.userActionHandler = p;
+
+        rendersView.render();
     }
 
     private TextView findTextView( int id ) {
@@ -290,6 +294,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     {
         menu.clear();
         menu.add( Menu.NONE, ABOUT_MENU_ITEM, Menu.NONE, getText( R.string.about ) );
+        menu.add( Menu.NONE, NEW_GAME_MENU_ITEM, Menu.NONE, getText( R.string.new_game ) );
         return true;
     }
 
@@ -301,6 +306,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         {
             case ABOUT_MENU_ITEM:
                 showAboutDialog();
+                break;
+            case NEW_GAME_MENU_ITEM:
+                showNewGameConfirmationDialog();
                 break;
             default:
                 retVal = super.onOptionsItemSelected( item );
@@ -323,6 +331,22 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
                          " " + versionName );
 
         dialog.show();
+    }
+
+    private void showNewGameConfirmationDialog() {
+        new AlertDialog.Builder( this )
+            .setIcon( android.R.drawable.ic_dialog_alert )
+            .setTitle( R.string.new_game_title )
+            .setMessage( R.string.new_game_confirmation_dialog_text )
+            .setPositiveButton( R.string.yes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick( DialogInterface dialog, int which ) {
+                    createNewGame();
+                }
+
+            })
+            .setNegativeButton( R.string.no, null )
+            .show();
     }
 
     public void currentScore( int score ) {
