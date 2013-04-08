@@ -13,8 +13,10 @@ public class ChangeLocationDescriptionItemAction implements ItemAction {
     public ChangeLocationDescriptionItemAction( String arguments,
                                                 TextAdventureModel model ) {
         this.model = model;
-        extractLocationID( arguments );
-        extractDescription( arguments );
+        if( arguments != null ) {
+            extractLocationID( arguments );
+            extractDescription( arguments );
+        }
     }
 
     private void extractLocationID( String arguments ) {

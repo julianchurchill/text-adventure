@@ -7,13 +7,15 @@ import java.util.List;
 
 public class ChangeItemVisibilityItemAction implements ItemAction {
     private TextAdventureModel model;
-    private String itemID;
-    private boolean visibility;
+    private String itemID = "";
+    private boolean visibility = true;
 
     public ChangeItemVisibilityItemAction( String arguments, TextAdventureModel model ) {
         this.model = model;
-        this.itemID = extractItemID( arguments );
-        this.visibility = extractVisibility( arguments );
+        if( arguments != null ) {
+            this.itemID = extractItemID( arguments );
+            this.visibility = extractVisibility( arguments );
+        }
     }
 
     private String extractItemID( String arguments ) {
