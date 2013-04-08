@@ -8,17 +8,6 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [FEATURE] Autosave upon leaving the app (with the back key usually) so upon returning the user can continue their game.
-  - [REFACTOR] Consider using https://code.google.com/p/json-io/ instead of custom de/serializer code
-    - Current error in adb logcat upon onResume with save file:
-      "W/System.err(  399): exception thrown: java.io.IOException: Could not instantiate com.chewielouie.textadventure.itemaction.ChangeItemVisibilityItemAction using any constructor"
-    - [FIX] Be defensive in constructors as JSON-io will pass 'null' for String on first instantiation of objects
-  - http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
-  - http://developer.android.com/reference/android/app/Activity.html#SavingPersistentState
-  - http://developer.android.com/reference/android/app/Activity.html#onPause()
-  - http://developer.android.com/reference/android/app/Activity.html#onResume()
-  - http://developer.android.com/reference/android/app/Activity.html#ActivityLifecycle
-
 - [FEATURE] Restart game - resets everything. Available in the main menu.
 
 - [REFACTOR] Consider using https://code.google.com/p/json-io/ instead of custom de/serializer code
@@ -50,6 +39,7 @@ Done
 1.0
 ---
 
+- [FEATURE] Autosave upon leaving the app (with the back key usually) so upon returning the user can continue their game.
 - [FEATURE] Respond to the 'Back' button by cancelling the action chain if in the middle of an action chain, quit game otherwise.
 - [FEATURE] New ItemAction increment score.
 - [FEATURE] New ItemAction change location description.
