@@ -8,6 +8,15 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
+- [STORY] More locations in the mine.
+   - Find a man manacled to a rock. If you use the multitool and the man, the man reacts and cowers.
+   - Find a blunt pick axe.
+   - Find an axe sharpener, use it on the pick axe.
+   - Use the pick axe to chip away at the rock and free the man.
+   - Get another ruby and reveal a new location - a shop in the town. The man reveals he was a shop keeper.
+
+- [FEATURE] Current method of saving progress means that if new content is provided the only way to reach it is to start a new game and repeat eveything. Can the save game be updated with the new content on an upgrade?
+
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 - [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
 - [FEATURE] Ruby counter should show how many out of how many achieved - e.g. 10/100 - this needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.

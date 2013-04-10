@@ -5,6 +5,7 @@ item countable noun prefix:some
 INVENTORY ITEM
 item name:Multitool
 item description:It's got a lot of tools on it. You feel like a man of the wilderness when you wield this formidable contraption.
+item id:multitool
 LOCATION
 x:300
 y:480
@@ -122,34 +123,6 @@ exit label:Clock tower door
 exit destination:clocktower
 exit direction hint:South
 LOCATION
-x:420
-y:480
-location id:outsideamineshaft
-location description:You stand before an old blocked up mine shaft, there are some dusty footprints in the dirt around the entrance however there is no obvious way in. A sign states "McCreedys Mine - Stay out or suffer the consequences!". To the east is an old ramshackle shed.
-EXIT
-exit label:West
-exit destination:townentrance
-exit direction hint:West
-EXIT
-exit label:Ramshackle Shed
-exit destination:smallshed
-exit direction hint:East
-EXIT
-exit label:Mineshaft entrance
-exit destination:mineshaftchamber1
-exit direction hint:South
-exit id:mineshaftentrance
-exit is not visible:
-LOCATION
-x:420
-y:540
-location id:mineshaftchamber1
-location description:You stand just inside a dusty mineshaft. It looks like it has been abandoned and not used for many years. Until recently the entrance was blocked by a large rock fall.
-EXIT
-exit label:Outside
-exit destination:outsideamineshaft
-exit direction hint:North
-LOCATION
 x:480
 y:480
 location id:smallshed
@@ -262,3 +235,92 @@ item id:clockface
 item countable noun prefix:a
 item visibility:invisible
 item mid sentence cased name:clock face
+LOCATION
+x:420
+y:480
+location id:outsideamineshaft
+location description:You stand before an old blocked up mine shaft, there are some dusty footprints in the dirt around the entrance however there is no obvious way in. A sign states "McCreedys Mine - Stay out or suffer the consequences!". To the east is an old ramshackle shed.
+EXIT
+exit label:West
+exit destination:townentrance
+exit direction hint:West
+EXIT
+exit label:Ramshackle Shed
+exit destination:smallshed
+exit direction hint:East
+EXIT
+exit label:Mineshaft entrance
+exit destination:mineshaftchamber1
+exit direction hint:South
+exit id:mineshaftentrance
+exit is not visible:
+LOCATION
+x:420
+y:540
+location id:mineshaftchamber1
+location description:You stand just inside a dusty mineshaft. It looks like it has been abandoned and not used for many years. Until recently the entrance was blocked by a large rock fall. There are footprints leading down a small dark tunnel and there is a dimly lit annex to the right.
+EXIT
+exit label:Outside
+exit destination:outsideamineshaft
+exit direction hint:North
+EXIT
+exit label:Dark tunnel
+exit destination:darktunnel1
+exit direction hint:South
+EXIT
+exit label:Dimly lit annex
+exit destination:dimlylitannex
+exit direction hint:West
+LOCATION
+x:420
+y:600
+location id:darktunnel1
+location description:You are in a dark tunnel with a trail of scuffed footprints leading deeper into the mine. You think you can make out two sets of prints in the dirt. The mine entrance lies to the north and the tunnel continues south.
+EXIT
+exit label:North
+exit destination:mineshaftchamber1
+exit direction hint:North
+EXIT
+exit label:South
+exit destination:darktunnel2
+exit direction hint:South
+LOCATION
+x:420
+y:660
+location id:darktunnel2
+location description:The footprints continue further south where you can see a dim light burning. The air down here is dank and you feel a little claustrophobic.
+EXIT
+exit label:North
+exit destination:darktunnel1
+exit direction hint:North
+EXIT
+exit label:South
+exit destination:smallminechamber
+exit direction hint:South
+LOCATION
+x:420
+y:720
+location id:smallminechamber
+location description:You enter the chamber and although it is lit by a candle burning gently in an alcove you strain your eyes to peer into the shadows. Out shuffles a man, bedraggled and somber, head down muttering to himself. You notice he has a manacle around his ankle, chained to a nearby rock. Approaching him you say softly 'Hello? Who are you? What's happened here?'. The man replies 'I was taken, I don't know who it was. They hit me from behind and I woke up here, like this.' gesturing to the chain at his feet. 'Help me, please.' splutters the man as he gasps for breath. He is clearly suffering from his circumstances and you feel inclined to find a way to help him out of his predicament.
+EXIT
+exit label:North
+exit destination:darktunnel2
+exit direction hint:North
+ITEM
+item name:Imprisoned man
+item description:He is dirty and looks exhausted. Chained to a nearby rock you see no easy way to free him.
+item id:imprisonedman
+item countable noun prefix:an
+item mid sentence cased name:imprisoned man
+item is untakeable:
+item can be used with:multitool
+item successful use message:The man cowers away from you and you feel foolish for threatening the poor man with your impressive multitool.
+LOCATION
+x:480
+y:600
+location id:dimlylitannex
+location description:This annex is carved out of the rock face with several indentations holding a variety of items including bones, a burnt out candle, some old torn paper and a metal ring.
+EXIT
+exit label:East
+exit destination:mineshaftchamber1
+exit direction hint:East
