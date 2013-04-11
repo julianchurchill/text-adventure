@@ -253,7 +253,7 @@ exit label:Mineshaft entrance
 exit destination:mineshaftchamber1
 exit direction hint:South
 exit id:mineshaftentrance
-t is not visible:
+exit is not visible:
 LOCATION
 x:420
 y:540
