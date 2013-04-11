@@ -8,13 +8,6 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-- [STORY] More locations in the mine.
-   - Find a man manacled to a rock. If you use the multitool and the man, the man reacts and cowers.
-   - Find a blunt pick axe.
-   - Find an axe sharpener, use it on the pick axe.
-   - Use the pick axe to chip away at the rock and free the man.
-   - Get another ruby and reveal a new location - a shop in the town. The man reveals he was a shop keeper.
-
 - [FEATURE] Current method of saving progress means that if new content is provided the only way to reach it is to start a new game and repeat eveything. Can the save game be updated with the new content on an upgrade?
 
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
@@ -63,6 +56,12 @@ Done
 - [FEATURE] Add ability to show inventory
 - [FEATURE] Add ability navigate between locations using the four edges of the screen
 
+- [STORY] Find a man manacled to a rock. If you use the multitool and the man, the man reacts and cowers.
+   - Find an axe handle and an axe head. Use with each other to make a blunt pick axe.
+   - Find an axe sharpener, use it on the pick axe.
+   - Use the pick axe to chip away at the rock and free the man.
+   - Man is free but looks lost, you must give him a map found by examining a table in a nearby room to help him get back to town.
+   - Get another ruby.
 - [STORY] Take clock face to top of clock tower and use with clock mechanism and minute hand and hour hand. Get some rubies as points and a hint as to what to do next - opens up a new area near the mine.
 - [STORY] Use the skeleton key to unlock the clock tower.
 - [STORY] Pick up minute hand from outside the clock tower.

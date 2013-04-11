@@ -253,7 +253,7 @@ exit label:Mineshaft entrance
 exit destination:mineshaftchamber1
 exit direction hint:South
 exit id:mineshaftentrance
-exit is not visible:
+t is not visible:
 LOCATION
 x:420
 y:540
@@ -288,7 +288,7 @@ LOCATION
 x:420
 y:660
 location id:darktunnel2
-location description:The footprints continue further south where you can see a dim light burning. The air down here is dank and you feel a little claustrophobic.
+location description:The footprints continue further south where you can see a dim light burning. The air down here is dank and you feel a little claustrophobic. Off to the east is a candle lit chamber.
 EXIT
 exit label:North
 exit destination:darktunnel1
@@ -297,6 +297,10 @@ EXIT
 exit label:South
 exit destination:smallminechamber
 exit direction hint:South
+EXIT
+exit label:Candle lit chamber
+exit destination:candlelitchamber
+exit direction hint:East
 LOCATION
 x:420
 y:720
@@ -311,10 +315,34 @@ item name:Imprisoned man
 item description:He is dirty and looks exhausted. Chained to a nearby rock you see no easy way to free him.
 item id:imprisonedman
 item countable noun prefix:an
-item mid sentence cased name:imprisoned man
 item is untakeable:
 item can be used with:multitool
 item successful use message:The man cowers away from you and you feel foolish for threatening the poor man with your impressive multitool.
+ITEM
+item name:Rock
+item description:It looks to be softer than the surrounding walls, particularly where the chain link has been pinned to it. You wonder if there might be a way to lever or pick the pin out from the rock.
+item id:rock
+item countable noun prefix:a
+item is untakeable:
+item use is not repeatable:
+item can be used with:pickaxe
+item successful use message:You swing the pick axe high above your head and bring it hard down upon the rock, pin and chain. The links shatter into pieces and scatter across the floor, freeing the man who jumps to his feet with joy. 'Oh thank you good sir - I can return to my shop at last, if there's anything left to return to.' he says.
+item use action:change item description:It looks to be softer than the surrounding walls. There is a hole where a chain pin used to be embedded in the rock.
+item use action:change location description:smallminechamber:You enter the chamber and although it is lit by a candle burning gently in an alcove you strain your eyes to peer into the shadows. This room looks lived in, of a sort. You notice shattered chain links on the floor.
+item use action:change item visibility:imprisonedman:invisible
+item use action:change item visibility:shopkeeper:visible
+ITEM
+item name:Shop keeper
+item description:He is dirty and looks exhausted but has the light of hope in his eyes now that he is free. He also looks a little lost.
+item id:shopkeeper
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item use is not repeatable:
+item can be used with:minemap
+item successful use message:You hand the map to the shop keeper who smiles and nods at you with gratitude. 'Thank you, very kind. For your help have a ruby and come by my shop in town anytime - I'm sure I can arrange a favourable discount on anything that takes your eye.'. With that the man walks out leaving you alone. The air stirs around you and you feel slightly wealthier.
+item use action:change item visibility:shopkeeper:invisible
+item use action:increment score:
 LOCATION
 x:480
 y:600
@@ -324,3 +352,106 @@ EXIT
 exit label:East
 exit destination:mineshaftchamber1
 exit direction hint:East
+EXIT
+exit label:Even smaller annex
+exit destination:evensmallerannex
+exit direction hint:South
+ITEM
+item name:Chunk of metal
+item description:This is a sizeable chunk of metal, pointy at two ends with a notch in the center. It looks like it could be fitted onto something but it is wedged in a crack in the wall.
+item id:axehead
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:Upon further consideration you see it is shaped like an axe head. No wait, it is an axe head.
+item on examine action:change item description:This is quite clearly an axe head. You are however missing a means to wield it and it is wedged in a crack in the wall.
+item on examine action:change item name:Axe head
+item can be used with:woodenpole
+item successful use message:The wooden pole slots perfectly into the axe head allowing you to apply your weight to the end of the pole causing the axe to pop out of the crack in the wall like a lollipop from a babies mouth. It is quite a hefty mining implement and is well weighted. You feel you could move a substantial amount of rock with this if it were but a touch sharper.
+item use action:change item visibility:bluntpickaxe:visible
+item use action:destroy item:axehead
+item use action:destroy item:woodenpole
+ITEM
+item name:Blunt pick axe
+item description:It looks rather blunt. You can probably bludgeon some small rocks into shards with it given a few hours and some angry words but not much else.
+item id:bluntpickaxe
+item countable noun prefix:a
+item visibility:invisible
+LOCATION
+x:480
+y:660
+location id:evensmallerannex
+location description:This is an even smaller annex attached to a larger better lit one. There is straw on the floor and it looks like someone has been sleeping here.
+EXIT
+exit label:Dimly lit annex
+exit destination:dimlylitannex
+exit direction hint:North
+ITEM
+item name:Pile of straw
+item description:It still has the indentation of a sleeping body although the body does not appear to still be here.
+item id:pileofstraw
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:You delve deeply into the pile of straw and unearth a variety of delightful things, mostly ticks and beetles, as well as some unspeakable left overs. At the very bottom of the pile you find a wooden pole. You wish the owner was around so you could beat them with it for having left their bedroom in such a disgraceful state.
+item on examine action:change item visibility:woodenpole:visible
+ITEM
+item name:Wooden pole
+item description:It looks like it was attached to something at one end. Perhaps it was a tool of some sort.
+item id:woodenpole
+item countable noun prefix:a
+item visibility:invisible
+LOCATION
+x:480
+y:660
+location id:candlelitchamber
+location description:You stand in a circular chamber with candles lining the walls in metal brakets. There is a table in the centre of the room and an exit leading deeper into the mine to what looks like a smithy. To the west a tunnel meanders back through the darkness.
+EXIT
+exit label:Dark tunnel
+exit destination:darktunnel2
+exit direction hint:West
+EXIT
+exit label:Smithy
+exit destination:minesmithy
+exit direction hint:South
+ITEM
+item name:Table
+item description:It is covered with papers.
+item id:table
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:You're not sure how anyone found anything in this mess but a particular sheet of paper catches your eye. As you reach to pick it up it falls to the ground.
+item on examine action:change item visibility:minemap:visible
+item on examine action:change item description:It is covered with papers. Boring, uninteresting papers.
+ITEM
+item name:Map
+item description:This is a map of the mine tunnels - useful in case you get lost.
+item id:minemap
+item countable noun prefix:a
+item visibility:invisible
+LOCATION
+x:480
+y:720
+location id:minesmithy
+location description:This is the mine smithy, used for emergency tool repair to save the workers from trekking back into town. There are a selection of tools lying around, none of which catch your eye.
+EXIT
+exit label:Candle lit chamber
+exit destination:candlelitchamber
+exit direction hint:North
+ITEM
+item name:Sharpening wheel
+item description:This is used to sharpen blunted mining tools.
+item id:sharpeningwheel
+item countable noun prefix:a
+item is untakeable:
+item can be used with:bluntpickaxe
+item successful use message:You sit down at the wheel and place the blunted axe head against the sharpening stone, pumping the pedal to turn the wheel with such vigour that sparks fly across the room. If only you applied yourself with such energy to all your endeavours you might see sparks more often.
+item use action:destroy item:bluntpickaxe
+item use action:change item visibility:pickaxe:visible
+ITEM
+item name:Pick axe
+item description:This is a typical miners pick axe and has been recently sharpened.
+item id:pickaxe
+item countable noun prefix:a
+item visibility:invisible
