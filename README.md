@@ -8,7 +8,12 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
+- [BUG] User still has map after giving it to the shopkeeper!
+- [FEATURE] Exits should have consistent colours for direction hints - e.g. all North should be green
+- [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
+- [FEATURE] Let user change the font size on an options screen
 - [FEATURE] Current method of saving progress means that if new content is provided the only way to reach it is to start a new game and repeat eveything. Can the save game be updated with the new content on an upgrade?
+- [FEATURE] Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
 
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 - [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
