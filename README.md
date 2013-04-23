@@ -8,11 +8,35 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
+* [FEATURE] Save file backwards compatibility
+  * [TASK] Game world must be serialised and saved to a file - this is the new save game scheme
+    * [TEST] Activity uses PlainTextSerialiser onPause to save game to a file
+    * [TEST] PlainTextSerialiser should save a version number for the file/model format
+    * [TEST] PlainTextDeserialiser should read an optional version number for the file/model format
+    * [TEST] PlainTextSerialiser for Model
+    * [TEST] PlainTextSerialiser for Exits
+    * [TEST] PlainTextSerialiser for Locations
+    * [TEST] PlainTextSerialiser for Items/ItemActions
+  * [TASK] ModelMerger needs implementing
+    * [TEST] ModelMerger adds new locations from input to target
+    * [TEST] ModelMerger adds new exits from input to target
+    * [TEST] ModelMerger adds new items from input to target
+    * [TEST] ModelMerger removes missing locations from target that are not longer in input
+    * [TEST] ModelMerger removes missing exits from target that are not longer in input
+    * [TEST] ModelMerger removes missing items from target that are not longer in input
+    * [TEST] ModelMerger modifies properties of locations that have changed in input compared to target
+    * [TEST] ModelMerger modifies properties of exits that have changed in input compared to target
+    * [TEST] ModelMerger modifies properties of items that have changed in input compared to target
+  * [TASK] Activity save file logic as above needs implementing
+    * [TEST] On startup activity loads the base content into a model object.
+    * [TEST] If a new save file is available the activity loads it in another model object.
+    * [TEST] If not then if an old save file is available the activity loads it in another model object.
+    * [TEST] Finally the activity merges the save file model into the base content model and uses the result as the current world.
+
 - [BUG] User still has map after giving it to the shopkeeper!
 - [FEATURE] Exits should have consistent colours for direction hints - e.g. all North should be green
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
 - [FEATURE] Let user change the font size on an options screen
-- [FEATURE] Current method of saving progress means that if new content is provided the only way to reach it is to start a new game and repeat eveything. Can the save game be updated with the new content on an upgrade?
 - [FEATURE] Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
 
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
@@ -37,6 +61,9 @@ Backlog
 
 Done
 ====
+
+2.0
+---
 
 1.0
 ---
