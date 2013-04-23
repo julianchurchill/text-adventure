@@ -43,6 +43,7 @@ import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextExitDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextModelLocationDeserialiser;
+import com.chewielouie.textadventure.serialisation.PlainTextModelSerialiser;
 import com.chewielouie.textadventure.item.ItemFactory;
 import com.chewielouie.textadventure.item.NormalItemFactory;
 import com.chewielouie.textadventure.itemaction.ItemActionFactory;
@@ -54,6 +55,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private static final int ABOUT_MENU_ITEM = 0;
     private static final int NEW_GAME_MENU_ITEM = 1;
     private static String saveFileName = "save_file_1";
+    private static String plainTextSaveFileName = "plain_text_save_file_1";
 
     private RendersView rendersView;
     private boolean externallySuppliedViewRenderer = false;
@@ -389,12 +391,26 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     @Override
     public void onPause() {
         super.onPause();
+        writeJSONModelSaveFile();
+        writePlainTextSaveFile();
+    }
 
+    private void writeJSONModelSaveFile() {
         try {
             FileOutputStream outputStream = openFileOutput( saveFileName, Context.MODE_PRIVATE );
             JsonWriter jw = new JsonWriter( outputStream );
             jw.write( model );
             jw.close();
+        } catch( FileNotFoundException e ) {
+        } catch( IOException e ) {
+        }
+    }
+
+    private void writePlainTextSaveFile() {
+        PlainTextModelSerialiser serialiser = new PlainTextModelSerialiser( model );
+        try {
+            FileOutputStream outputStream = openFileOutput( plainTextSaveFileName, Context.MODE_PRIVATE );
+            serialiser.write( outputStream );
         } catch( FileNotFoundException e ) {
         } catch( IOException e ) {
         }

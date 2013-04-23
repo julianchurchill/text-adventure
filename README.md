@@ -10,13 +10,14 @@ Backlog
 
 * [FEATURE] Save file backwards compatibility
   * [TASK] Game world must be serialised and saved to a file - this is the new save game scheme
-    * [TEST] Activity uses PlainTextSerialiser onPause to save game to a file
+    * DONE - [TEST] Activity uses PlainTextSerialiser onPause to save game to a file
     * [TEST] PlainTextSerialiser should save a version number for the file/model format
     * [TEST] PlainTextDeserialiser should read an optional version number for the file/model format
     * [TEST] PlainTextSerialiser for Model - including private info e.g. current score
     * [TEST] PlainTextSerialiser for Exits - including visibility
     * [TEST] PlainTextSerialiser for Locations
     * [TEST] PlainTextSerialiser for Items/ItemActions - including whether item has been used or examined
+    * ??? How do we ensure compatibility between Serialiser and Deserialiser as development continues?
   * [TASK] ModelMerger needs implementing
     * [TEST] ModelMerger adds new locations from input to target
     * [TEST] ModelMerger adds new exits from input to target
