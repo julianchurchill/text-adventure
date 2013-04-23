@@ -12,12 +12,18 @@ Backlog
   * [TASK] Game world must be serialised and saved to a file - this is the new save game scheme
     * DONE - [TEST] Activity uses PlainTextSerialiser onPause to save game to a file
     * [TEST] PlainTextSerialiser for Model - including private info e.g. current score
+    * [TEST] PlainTextModelSerialiser should save a version number for the file/model format
     * [TEST] Collate de/serialise constant strings in a common class
-    * [TEST] PlainTextSerialiser should save a version number for the file/model format
-    * [TEST] PlainTextDeserialiser should read an optional version number for the file/model format
-    * [TEST] PlainTextSerialiser for Exits - including visibility
-    * [TEST] PlainTextSerialiser for Locations
-    * [TEST] PlainTextSerialiser for Items/ItemActions - including whether item has been used or examined
+    * [TEST] PlainTextModelPopulator should read an optional version number for the file/model format
+    * [TEST] PlainTextExitSerialiser for Exits - including visibility
+    * [TEST] PlainTextExitSerialiser should save a version number for the serialisation format
+    * [TEST] PlainTextExitDeserialiser should read an optional version number for the serialisation format
+    * [TEST] PlainTextLocationSerialiser for Locations
+    * [TEST] PlainTextLocationSerialiser should save a version number for the serialisation format
+    * [TEST] PlainTextLocationDeserialiser should read an optional version number for the serialisation format
+    * [TEST] PlainTextItemSerialiser for Items/ItemActions - including whether item has been used or examined
+    * [TEST] PlainTextItemSerialiser should save a version number for the serialisation format
+    * [TEST] PlainTextItemDeserialiser should read an optional version number for the serialisation format
     * ??? How do we ensure compatibility between Serialiser and Deserialiser as development continues?
   * [TASK] ModelMerger needs implementing
     * [TEST] ModelMerger adds new locations from input to target
