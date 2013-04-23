@@ -43,7 +43,9 @@ import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextExitDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextModelLocationDeserialiser;
+import com.chewielouie.textadventure.serialisation.ItemSerialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextModelSerialiser;
+import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.item.ItemFactory;
 import com.chewielouie.textadventure.item.NormalItemFactory;
 import com.chewielouie.textadventure.itemaction.ItemActionFactory;
@@ -402,17 +404,27 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             jw.write( model );
             jw.close();
         } catch( FileNotFoundException e ) {
+            e.printStackTrace();
         } catch( IOException e ) {
+            e.printStackTrace();
         }
     }
 
     private void writePlainTextSaveFile() {
-        PlainTextModelSerialiser serialiser = new PlainTextModelSerialiser( model );
+        PlainTextModelSerialiser serialiser = new PlainTextModelSerialiser(
+                new ItemSerialiser() {
+                    public String serialise( Item item ) {
+                        return "";
+                    }
+                });
         try {
             FileOutputStream outputStream = openFileOutput( plainTextSaveFileName, Context.MODE_PRIVATE );
-            serialiser.write( outputStream );
+            outputStream.write( serialiser.serialise( model ).getBytes() );
+            outputStream.close();
         } catch( FileNotFoundException e ) {
+            e.printStackTrace();
         } catch( IOException e ) {
+            e.printStackTrace();
         }
     }
 }

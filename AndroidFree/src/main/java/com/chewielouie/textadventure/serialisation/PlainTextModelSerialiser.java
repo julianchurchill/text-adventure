@@ -1,14 +1,22 @@
 package com.chewielouie.textadventure.serialisation;
 
-import java.io.FileOutputStream;
+import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.TextAdventureModel;
 
 public class PlainTextModelSerialiser {
+    private ItemSerialiser itemSerialiser;
 
-    public PlainTextModelSerialiser( TextAdventureModel model ) {
+    public PlainTextModelSerialiser( ItemSerialiser itemSerialiser ) {
+        this.itemSerialiser = itemSerialiser;
     }
 
-    public void write( FileOutputStream outputStream ) {
+    public String serialise( TextAdventureModel model ) {
+        StringBuffer text = new StringBuffer();
+        for( Item item : model.inventoryItems() ) {
+            text.append( "INVENTORY ITEM\n" );
+            text.append( itemSerialiser.serialise( item ) );
+        }
+        return text.toString();
     }
 }
 

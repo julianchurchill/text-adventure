@@ -11,9 +11,11 @@ Backlog
 * [FEATURE] Save file backwards compatibility
   * [TASK] Game world must be serialised and saved to a file - this is the new save game scheme
     * DONE - [TEST] Activity uses PlainTextSerialiser onPause to save game to a file
+    * [TEST] PlainTextSerialiser for Model - including private info e.g. current score
+    * [TEST] Use hamcrest matchers
+    * [TEST] Collate de/serialise constant strings in a common class
     * [TEST] PlainTextSerialiser should save a version number for the file/model format
     * [TEST] PlainTextDeserialiser should read an optional version number for the file/model format
-    * [TEST] PlainTextSerialiser for Model - including private info e.g. current score
     * [TEST] PlainTextSerialiser for Exits - including visibility
     * [TEST] PlainTextSerialiser for Locations
     * [TEST] PlainTextSerialiser for Items/ItemActions - including whether item has been used or examined
