@@ -1,6 +1,7 @@
 package com.chewielouie.textadventure.serialisation;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
@@ -59,8 +60,8 @@ public class PlainTextModelSerialiserTests {
         }});
         PlainTextModelSerialiser s = new PlainTextModelSerialiser( itemSerialiser );
 
-        assertEquals( s.serialise( model ), "INVENTORY ITEM\nitem1\nINVENTORY ITEM\nitem2\n" );
-        //assertThat( s.serialise( model ), is( "INVENTORY ITEM\nitem1\nINVENTORY ITEM\nitem2\n" ) );
+        //assertEquals( s.serialise( model ), "INVENTORY ITEM\nitem1\nINVENTORY ITEM\nitem2\n" );
+        assertThat( s.serialise( model ), is( "INVENTORY ITEM\nitem1\nINVENTORY ITEM\nitem2\n" ) );
     }
 
 }
