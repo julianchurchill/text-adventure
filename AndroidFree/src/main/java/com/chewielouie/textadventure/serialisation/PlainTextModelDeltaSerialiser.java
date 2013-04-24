@@ -4,11 +4,11 @@ import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
 
-public class PlainTextModelSerialiser {
+public class PlainTextModelDeltaSerialiser {
     private ItemSerialiser itemSerialiser;
     private LocationSerialiser locationSerialiser;
 
-    public PlainTextModelSerialiser( ItemSerialiser itemSerialiser,
+    public PlainTextModelDeltaSerialiser( ItemSerialiser itemSerialiser,
            LocationSerialiser locationSerialiser ) {
         this.itemSerialiser = itemSerialiser;
         this.locationSerialiser = locationSerialiser;

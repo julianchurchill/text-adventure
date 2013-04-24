@@ -15,7 +15,7 @@ import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
 
 @RunWith(JMock.class)
-public class PlainTextModelSerialiserTests {
+public class PlainTextModelDeltaSerialiserTests {
 
     private Mockery mockery = new Mockery();
 
@@ -36,8 +36,8 @@ public class PlainTextModelSerialiserTests {
             oneOf( itemSerialiser ).serialise( item2 );
             ignoring( itemSerialiser );
         }});
-        PlainTextModelSerialiser s =
-            new PlainTextModelSerialiser( itemSerialiser, null );
+        PlainTextModelDeltaSerialiser s =
+            new PlainTextModelDeltaSerialiser( itemSerialiser, null );
 
         s.serialise( model );
     }
@@ -61,8 +61,8 @@ public class PlainTextModelSerialiserTests {
             will( returnValue( "item2\n" ) );
             ignoring( itemSerialiser );
         }});
-        PlainTextModelSerialiser s =
-            new PlainTextModelSerialiser( itemSerialiser, null );
+        PlainTextModelDeltaSerialiser s =
+            new PlainTextModelDeltaSerialiser( itemSerialiser, null );
 
         assertThat( s.serialise( model ), is( "INVENTORY ITEM\nitem1\nINVENTORY ITEM\nitem2\n" ) );
     }
@@ -84,8 +84,8 @@ public class PlainTextModelSerialiserTests {
             oneOf( locationSerialiser ).serialise( location2 );
             ignoring( locationSerialiser );
         }});
-        PlainTextModelSerialiser s =
-            new PlainTextModelSerialiser( null, locationSerialiser );
+        PlainTextModelDeltaSerialiser s =
+            new PlainTextModelDeltaSerialiser( null, locationSerialiser );
 
         s.serialise( model );
     }
@@ -109,8 +109,8 @@ public class PlainTextModelSerialiserTests {
             will( returnValue( "location2\n" ) );
             ignoring( locationSerialiser );
         }});
-        PlainTextModelSerialiser s =
-            new PlainTextModelSerialiser( null, locationSerialiser );
+        PlainTextModelDeltaSerialiser s =
+            new PlainTextModelDeltaSerialiser( null, locationSerialiser );
 
         assertThat( s.serialise( model ), is( "LOCATION\nlocation1\nLOCATION\nlocation2\n" ) );
     }

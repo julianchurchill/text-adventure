@@ -10,7 +10,7 @@ Backlog
 
 * [FEATURE] Save file backwards compatibility alternative
   * Save current score, inventory content, exits visibility, item visibility, examined and used states, changed item descriptions and names, changed location descriptions and names, save file format version number
-    * [TEST] Rename PlainTextModelSerialiser to PlainTextModelDeltaSerialiser
+    * DONE [TEST] Rename PlainTextModelSerialiser to PlainTextModelDeltaSerialiser
     * [TEST] PlainTextModelDeltaSerialiser saves current score, location id and version number for serialisation format
     * [TEST] PlainTextExitDeltaSerialiser for Exits - including visibility
     * [TEST] PlainTextExitDeltaSerialiser should save a version number for the serialisation format

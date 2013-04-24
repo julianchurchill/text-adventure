@@ -44,7 +44,8 @@ import com.chewielouie.textadventure.serialisation.PlainTextExitDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextModelLocationDeserialiser;
 import com.chewielouie.textadventure.serialisation.ItemSerialiser;
-import com.chewielouie.textadventure.serialisation.PlainTextModelSerialiser;
+import com.chewielouie.textadventure.serialisation.LocationSerialiser;
+import com.chewielouie.textadventure.serialisation.PlainTextModelDeltaSerialiser;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.item.ItemFactory;
 import com.chewielouie.textadventure.item.NormalItemFactory;
@@ -411,9 +412,16 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void writePlainTextSaveFile() {
-        PlainTextModelSerialiser serialiser = new PlainTextModelSerialiser(
+        PlainTextModelDeltaSerialiser serialiser = new PlainTextModelDeltaSerialiser(
                 new ItemSerialiser() {
+                    @Override
                     public String serialise( Item item ) {
+                        return "";
+                    }
+                },
+                new LocationSerialiser() {
+                    @Override
+                    public String serialise( ModelLocation location ) {
                         return "";
                     }
                 });
