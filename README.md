@@ -12,7 +12,7 @@ Backlog
   * Save current score, inventory content, exits visibility, item visibility, examined and used states, changed item descriptions and names, changed location descriptions and names, save file format version number
   * Save destroyed item ids so items can be removed upon load - these can be saved as a list in the model for version 2.0
   * On load read in base world content first then replace corresponding world data with the saved items. Remove destroyed items.
-  * For backwards compatibility with version 1.0 if save file detected load 1.0 save file as new world, figure out what items have been destroyed and add to destroyed list in model, trigger an immediate save, then reload base world content and new save file. Delete old 1.0 save file.
+  * For backwards compatibility with version 1.0 if save file detected load 1.0 save file as new world, figure out what items have been destroyed (by scanning items for 'used' state and 'destroy item' action) and add to destroyed list in model, trigger an immediate save, then reload base world content and new save file. Delete old 1.0 save file.
   * In future expansion of world be careful to only add new exits, locations, items and actions, not modify existing exits, locations, items or actions.
 
 * [FEATURE] Save file backwards compatibility
