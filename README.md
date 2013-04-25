@@ -10,14 +10,18 @@ Backlog
 
 * [FEATURE] Third save file alternative
   * ActionRecorder, ActionReplayer, ActionHistory, ActionHistory[De]Serialiser
-  * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
-  * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
+  * An ActionFactory is needed for user actions like Examine, TakeAnItem, ShowInventory. This needs to be passed to the Presenter and the other Actions that create actions.
+    * DONE [TEST] Presenter should use an ActionFactory
+    * [TEST] ActionFactory needs to implement createShowInventoryAction()
+    * [TEST] Activity should give the presenter an ActionFactory
+    * [TEST] Actions that create actions need an ActionFactory reference
   * On create ActionHistory and AcionRecorder are created and the ActionHistory is passed to the ActionRecorder which uses it to store the actions that occur.
   * The ActionRecorder is passed to the ItemActionFactory which uses it to getRecordableItem(), getRecordableModel(), getRecordableLocation(), getRecordableExit(), getRecordableUserInventory() to wrap Items, and the Model before passing to the ItemActions it creates.
   * A RecordableItem implements Item interface. It takes the Item to delegate to in the constructor along with the ActionRecorder. When changes are made to the Item it uses the ActionRecorder to record the details.
   * The RecordableModel, Location, Exit and UserInventory work the same. RecordableModel also will return Locations wrapped in a RecordableLocation object after retrieving from the real Model. RecordableLocation likewise does the same for Exits.
-  * An ActionFactory is needed for user actions like Examine, TakeAnItem, ShowInventory. This needs to be passed to the Presenter and the other Actions that create actions.
   * The ActionRecorder is passed to the ActionFactory to getRecordableItem(), getRecordableModel(), getRecordableLocation(), getRecordableExit(), getRecordableUserInventory() to wrap Items, and the Model before passing to the Actions it creates.
+  * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
+  * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
 
 * [FEATURE] Save file backwards compatibility alternative
   * Save current score, inventory content, exits visibility, item visibility, examined and used states, changed item descriptions and names, changed location descriptions and names, save file format version number

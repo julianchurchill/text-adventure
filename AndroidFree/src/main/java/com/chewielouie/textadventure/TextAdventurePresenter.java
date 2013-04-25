@@ -3,7 +3,7 @@ package com.chewielouie.textadventure;
 import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.action.Action;
-import com.chewielouie.textadventure.action.ShowInventory;
+import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.action.TakeAnItem;
 
 public class TextAdventurePresenter implements RendersView, UserActionHandler {
@@ -14,10 +14,12 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
     private boolean inAnActionChain = false;
 
     public TextAdventurePresenter( TextAdventureView v,
-           TextAdventureModel m, UserInventory inventory ) {
+           TextAdventureModel m, UserInventory inventory,
+           ActionFactory a ) {
         this.view = v;
         this.model = m;
-        defaultActions.add( new ShowInventory( inventory, m ) );
+        if( a != null )
+            defaultActions.add( a.createShowInventoryAction( inventory, m ) );
     }
 
     public void render() {

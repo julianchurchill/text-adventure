@@ -184,7 +184,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private void setupPresenter() {
         TextAdventurePresenter p = new TextAdventurePresenter( this, model,
-               (UserInventory)model );
+               (UserInventory)model, null );
         if( externallySuppliedViewRenderer == false )
             this.rendersView = p;
         if( externallySuppliedUserActionHandler == false )
