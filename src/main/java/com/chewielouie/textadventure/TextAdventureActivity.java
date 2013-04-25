@@ -39,6 +39,7 @@ import android.widget.TextView;
 import com.cedarsoftware.util.io.JsonReader;
 import com.cedarsoftware.util.io.JsonWriter;
 import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.action.UserActionFactory;
 import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextExitDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextItemDeserialiser;
@@ -184,7 +185,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private void setupPresenter() {
         TextAdventurePresenter p = new TextAdventurePresenter( this, model,
-               (UserInventory)model, null );
+               (UserInventory)model, new UserActionFactory() );
         if( externallySuppliedViewRenderer == false )
             this.rendersView = p;
         if( externallySuppliedUserActionHandler == false )
