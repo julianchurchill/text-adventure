@@ -67,7 +67,7 @@
         <junit printsummary="yes" haltonfailure="yes" showoutput="yes" failureproperty="test.failure">
             <formatter type="plain" usefile="false"/>
             <classpath refid="classpath.businesslogic.test"/>
-            <batchtest fork="yes">
+            <batchtest>
                 <fileset dir="${businesslogic.src.test}">
                     <include name="**/*Tests.java"/>
                 </fileset>

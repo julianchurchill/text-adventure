@@ -75,11 +75,10 @@
     </target>
 
     <target name="android-unittest" description="Execute the android specific unit tests" depends="compile-android-tests">
-        <junit printsummary="yes" haltonfailure="no" showoutput="yes" failureproperty="test.failure" fork="true" forkmode="perBatch">
+        <junit printsummary="yes" haltonfailure="no" showoutput="yes" failureproperty="test.failure">
             <formatter type="plain" usefile="false"/>
-            <!--<bootclasspath refid="${android.project.classpath}"/>-->
             <classpath refid="classpath.android.test"/>
-            <batchtest fork="yes">
+            <batchtest>
                 <fileset dir="${android.src.test}">
                     <include name="**/*.java"/>
                 </fileset>
