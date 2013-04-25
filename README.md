@@ -14,8 +14,6 @@ Backlog
     * DONE [TEST] Presenter should use an ActionFactory
     * DONE [TEST] UserActionFactory needs to implement createShowInventoryAction()
     * DONE [TEST] Activity should give the presenter a UserActionFactory
-    * [TEST] UserActionFactory needs to pass itself to ShowInventory objects
-    * [TEST] UserActionFactory needs to implement createInventoryItemAction()
     * [TEST] Actions that create actions need an ActionFactory reference:
       * DONE ShowInventory creates InventoryItem actions
       * InventoryItem creates Examine and UseWith actions

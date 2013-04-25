@@ -12,10 +12,6 @@ public class ShowInventory implements Action {
     private ActionFactory actionFactory;
     private List<Item> items = null;
 
-    public ShowInventory( UserInventory inventory, TextAdventureModel model ) {
-        this( inventory, model, null );
-    }
-
     public ShowInventory( UserInventory inventory, TextAdventureModel model,
            ActionFactory factory ) {
         this.inventory = inventory;

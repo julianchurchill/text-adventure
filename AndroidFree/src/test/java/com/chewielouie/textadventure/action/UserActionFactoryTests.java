@@ -3,6 +3,8 @@ package com.chewielouie.textadventure.action;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
+import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
 import com.chewielouie.textadventure.UserInventory;
 import org.jmock.*;
@@ -24,6 +26,24 @@ public class UserActionFactoryTests {
         Action action = factory.createShowInventoryAction( inventory, model );
 
         assertThat( action, is( instanceOf( ShowInventory.class ) ) );
+    }
+
+    @Test
+    public void create_inventory_item_action_makes_right_action() {
+        final Item item = mockery.mock( Item.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            ignoring( item );
+            ignoring( inventory );
+            ignoring( location );
+        }});
+        UserActionFactory factory = new UserActionFactory();
+
+        Action action = factory.createInventoryItemAction( item, inventory,
+                                                           location );
+
+        assertThat( action, is( instanceOf( InventoryItem.class ) ) );
     }
 }
 
