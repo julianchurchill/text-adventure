@@ -9,9 +9,15 @@ Backlog
 =======
 
 * [FEATURE] Third save file alternative
-  * Actions (user and Item) use an ActionRecorder
-  * On pause the ActionRecorder is serialised
-  * On resume the base model is loaded and the ActionRecorder serialisation is loadedinto an ActionReplayer which acts on the base model
+  * ActionRecorder, ActionReplayer, ActionHistory, ActionHistory[De]Serialiser
+  * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
+  * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
+  * On create ActionHistory and AcionRecorder are created and the ActionHistory is passed to the ActionRecorder which uses it to store the actions that occur.
+  * The ActionRecorder is passed to the ItemActionFactory which uses it to getRecordableItem(), getRecordableModel(), getRecordableLocation(), getRecordableExit(), getRecordableUserInventory() to wrap Items, and the Model before passing to the ItemActions it creates.
+  * A RecordableItem implements Item interface. It takes the Item to delegate to in the constructor along with the ActionRecorder. When changes are made to the Item it uses the ActionRecorder to record the details.
+  * The RecordableModel, Location, Exit and UserInventory work the same. RecordableModel also will return Locations wrapped in a RecordableLocation object after retrieving from the real Model. RecordableLocation likewise does the same for Exits.
+  * An ActionFactory is needed for user actions like Examine, TakeAnItem, ShowInventory. This needs to be passed to the Presenter and the other Actions that create actions.
+  * The ActionRecorder is passed to the ActionFactory to getRecordableItem(), getRecordableModel(), getRecordableLocation(), getRecordableExit(), getRecordableUserInventory() to wrap Items, and the Model before passing to the Actions it creates.
 
 * [FEATURE] Save file backwards compatibility alternative
   * Save current score, inventory content, exits visibility, item visibility, examined and used states, changed item descriptions and names, changed location descriptions and names, save file format version number
@@ -78,6 +84,8 @@ Backlog
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
 - [FEATURE] Let user change the font size on an options screen
 - [FEATURE] Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
+
+- [STORY] Chase someone - perhaps examining them causes them to move to new locations
 
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 - [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
