@@ -1,6 +1,8 @@
 package com.chewielouie.textadventure.action;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,59 +52,24 @@ public class ShowInventoryTests {
     }
 
     @Test
-    public void follow_up_actions_contains_InventoryItem_actions_for_each_inventory_item() {
+    public void follow_up_actions_use_action_factory_to_get_inventory_item_actions() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         final UserInventory inventory = mockery.mock( UserInventory.class );
-        ShowInventory action = new ShowInventory( inventory, null );
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        final Action action1 = mockery.mock( Action.class, "action 1" );
+        final Action action2 = mockery.mock( Action.class, "action 2" );
+        final Item item1 = mockery.mock( Item.class, "item 1" );
+        final Item item2 = mockery.mock( Item.class, "item 2" );
         final List<Item> items = new ArrayList<Item>();
-        Item item1 = mockery.mock( Item.class, "item 1" );
-        Item item2 = mockery.mock( Item.class, "item 2" );
         items.add( item1 );
         items.add( item2 );
         mockery.checking( new Expectations() {{
-            oneOf( inventory ).inventoryItems();
-            will( returnValue( items ) );
-            ignoring( inventory );
-        }});
-
-        action.trigger();
-        List<Action> actions = action.followUpActions();
-        assertEquals( 2, actions.size() );
-        assertTrue( actions.get(0) instanceof InventoryItem );
-        assertEquals( item1, ((InventoryItem)actions.get(0)).item() );
-        assertTrue( actions.get(1) instanceof InventoryItem );
-        assertEquals( item2, ((InventoryItem)actions.get(1)).item() );
-    }
-
-    @Test
-    public void follow_up_actions_contains_InventoryItem_actions_which_are_constructed_with_the_inventory() {
-        final UserInventory inventory = mockery.mock( UserInventory.class );
-        ShowInventory action = new ShowInventory( inventory, null );
-        final List<Item> items = new ArrayList<Item>();
-        Item item = mockery.mock( Item.class );
-        items.add( item );
-        mockery.checking( new Expectations() {{
-            allowing( inventory ).inventoryItems();
-            will( returnValue( items ) );
-            ignoring( inventory );
-        }});
-
-        action.trigger();
-        List<Action> actions = action.followUpActions();
-        assertTrue( actions.size() > 0 );
-        assertTrue( actions.get(0) instanceof InventoryItem );
-        assertEquals( inventory, ((InventoryItem)actions.get(0)).inventory() );
-    }
-
-    @Test
-    public void follow_up_actions_contains_InventoryItem_actions_which_are_constructed_with_the_current_location_from_the_model() {
-        final UserInventory inventory = mockery.mock( UserInventory.class );
-        final ModelLocation location = mockery.mock( ModelLocation.class );
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        ShowInventory action = new ShowInventory( inventory, model );
-        final List<Item> items = new ArrayList<Item>();
-        Item item = mockery.mock( Item.class );
-        items.add( item );
-        mockery.checking( new Expectations() {{
+            oneOf( actionFactory ).createInventoryItemAction( item1, inventory, location );
+            will( returnValue( action1 ) );
+            oneOf( actionFactory ).createInventoryItemAction( item2, inventory, location );
+            will( returnValue( action2 ) );
+            ignoring( actionFactory );
             allowing( inventory ).inventoryItems();
             will( returnValue( items ) );
             ignoring( inventory );
@@ -111,12 +78,15 @@ public class ShowInventoryTests {
             ignoring( model );
             ignoring( location );
         }});
+        ShowInventory showInventory =
+            new ShowInventory( inventory, model, actionFactory );
 
-        action.trigger();
-        List<Action> actions = action.followUpActions();
-        assertTrue( actions.size() > 0 );
-        assertTrue( actions.get(0) instanceof InventoryItem );
-        assertEquals( location, ((InventoryItem)actions.get(0)).location() );
+        showInventory.trigger();
+
+        List<Action> actions = showInventory.followUpActions();
+        assertThat( actions.size(), is( 2 ) );
+        assertThat( actions.get( 0 ), is( action1 ) );
+        assertThat( actions.get( 1 ), is( action2 ) );
     }
 
     @Test

@@ -9,11 +9,18 @@ import com.chewielouie.textadventure.TextAdventureModel;
 public class ShowInventory implements Action {
     private TextAdventureModel model;
     private UserInventory inventory;
+    private ActionFactory actionFactory;
     private List<Item> items = null;
 
     public ShowInventory( UserInventory inventory, TextAdventureModel model ) {
+        this( inventory, model, null );
+    }
+
+    public ShowInventory( UserInventory inventory, TextAdventureModel model,
+           ActionFactory factory ) {
         this.inventory = inventory;
         this.model = model;
+        this.actionFactory = factory;
     }
 
     public String label() {
@@ -31,10 +38,11 @@ public class ShowInventory implements Action {
 
     public List<Action> followUpActions() {
         List<Action> actions = new ArrayList<Action>();
-        for( Item item : items )
-            actions.add(
-                new InventoryItem( item, inventory,
-                    (model != null ? model.currentLocation() : null ) ) );
+        if( actionFactory != null )
+            for( Item item : items )
+                actions.add(
+                    actionFactory.createInventoryItemAction( item, inventory,
+                        (model != null ? model.currentLocation() : null ) ) );
         return actions;
     }
 
