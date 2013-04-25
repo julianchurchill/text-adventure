@@ -8,10 +8,16 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
+* [FEATURE] Third save file alternative
+  * Actions (user and Item) use an ActionRecorder
+  * On pause the ActionRecorder is serialised
+  * On resume the base model is loaded and the ActionRecorder serialisation is loadedinto an ActionReplayer which acts on the base model
+
 * [FEATURE] Save file backwards compatibility alternative
   * Save current score, inventory content, exits visibility, item visibility, examined and used states, changed item descriptions and names, changed location descriptions and names, save file format version number
     * DONE [TEST] Rename PlainTextModelSerialiser to PlainTextModelDeltaSerialiser
-    * [TEST] PlainTextModelDeltaSerialiser saves current score, location id and version number for serialisation format
+    * [TEST] Rename PlainTextModelDeltaSerialiser to PlainTextModelStateSerialiser ???  because we're talking about state here, rather than a delta from the model or static properties (e.g. id).
+    * [TEST] PlainTextModelDeltaSerialiser saves current score, current location id and version number for serialisation format
     * [TEST] PlainTextExitDeltaSerialiser for Exits - including visibility
     * [TEST] PlainTextExitDeltaSerialiser should save a version number for the serialisation format
     * [TEST] PlainTextLocationDeltaSerialiser for Locations - including changed description and name
