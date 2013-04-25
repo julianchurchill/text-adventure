@@ -5,20 +5,17 @@ import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
 
 public class PlainTextModelDeltaSerialiser {
-    private ItemSerialiser itemSerialiser;
     private LocationSerialiser locationSerialiser;
 
-    public PlainTextModelDeltaSerialiser( ItemSerialiser itemSerialiser,
-           LocationSerialiser locationSerialiser ) {
-        this.itemSerialiser = itemSerialiser;
+    public PlainTextModelDeltaSerialiser( LocationSerialiser locationSerialiser ) {
         this.locationSerialiser = locationSerialiser;
     }
 
     public String serialise( TextAdventureModel model ) {
         StringBuffer text = new StringBuffer();
         for( Item item : model.inventoryItems() ) {
-            text.append( "INVENTORY ITEM\n" );
-            text.append( itemSerialiser.serialise( item ) );
+            text.append( "inventory item:" );
+            text.append( item.id() );
         }
         for( ModelLocation location : model.locations() ) {
             text.append( "LOCATION\n" );

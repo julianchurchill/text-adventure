@@ -413,12 +413,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private void writePlainTextSaveFile() {
         PlainTextModelDeltaSerialiser serialiser = new PlainTextModelDeltaSerialiser(
-                new ItemSerialiser() {
-                    @Override
-                    public String serialise( Item item ) {
-                        return "";
-                    }
-                },
                 new LocationSerialiser() {
                     @Override
                     public String serialise( ModelLocation location ) {

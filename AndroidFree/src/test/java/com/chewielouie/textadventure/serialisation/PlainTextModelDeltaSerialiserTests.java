@@ -20,51 +20,27 @@ public class PlainTextModelDeltaSerialiserTests {
     private Mockery mockery = new Mockery();
 
     @Test
-    public void uses_item_serialiser_for_all_inventory_items_in_model() {
+    public void concatenates_inventory_item_ids_to_output() {
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         final Item item1 = mockery.mock( Item.class, "item1" );
         final Item item2 = mockery.mock( Item.class, "item2" );
         final List<Item> inventoryItems = new ArrayList<Item>();
         inventoryItems.add( item1 );
         inventoryItems.add( item2 );
-        final ItemSerialiser itemSerialiser = mockery.mock( ItemSerialiser.class );
-        mockery.checking( new Expectations() {{
-            oneOf( model ).inventoryItems();
-            will( returnValue( inventoryItems ) );
-            ignoring( model );
-            oneOf( itemSerialiser ).serialise( item1 );
-            oneOf( itemSerialiser ).serialise( item2 );
-            ignoring( itemSerialiser );
-        }});
-        PlainTextModelDeltaSerialiser s =
-            new PlainTextModelDeltaSerialiser( itemSerialiser, null );
-
-        s.serialise( model );
-    }
-
-    @Test
-    public void concatenates_serialised_inventory_items_to_output() {
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
-        final Item item1 = mockery.mock( Item.class, "item1" );
-        final Item item2 = mockery.mock( Item.class, "item2" );
-        final List<Item> inventoryItems = new ArrayList<Item>();
-        inventoryItems.add( item1 );
-        inventoryItems.add( item2 );
-        final ItemSerialiser itemSerialiser = mockery.mock( ItemSerialiser.class );
         mockery.checking( new Expectations() {{
             allowing( model ).inventoryItems();
             will( returnValue( inventoryItems ) );
             ignoring( model );
-            allowing( itemSerialiser ).serialise( item1 );
-            will( returnValue( "item1\n" ) );
-            allowing( itemSerialiser ).serialise( item2 );
-            will( returnValue( "item2\n" ) );
-            ignoring( itemSerialiser );
+            allowing( item1 ).id();
+            will( returnValue( "itemid1\n" ) );
+            ignoring( item1 );
+            allowing( item2 ).id();
+            will( returnValue( "itemid2\n" ) );
+            ignoring( item2 );
         }});
-        PlainTextModelDeltaSerialiser s =
-            new PlainTextModelDeltaSerialiser( itemSerialiser, null );
+        PlainTextModelDeltaSerialiser s = new PlainTextModelDeltaSerialiser( null );
 
-        assertThat( s.serialise( model ), is( "INVENTORY ITEM\nitem1\nINVENTORY ITEM\nitem2\n" ) );
+        assertThat( s.serialise( model ), is( "inventory item:itemid1\ninventory item:itemid2\n" ) );
     }
 
     @Test
@@ -85,7 +61,7 @@ public class PlainTextModelDeltaSerialiserTests {
             ignoring( locationSerialiser );
         }});
         PlainTextModelDeltaSerialiser s =
-            new PlainTextModelDeltaSerialiser( null, locationSerialiser );
+            new PlainTextModelDeltaSerialiser( locationSerialiser );
 
         s.serialise( model );
     }
@@ -110,7 +86,7 @@ public class PlainTextModelDeltaSerialiserTests {
             ignoring( locationSerialiser );
         }});
         PlainTextModelDeltaSerialiser s =
-            new PlainTextModelDeltaSerialiser( null, locationSerialiser );
+            new PlainTextModelDeltaSerialiser( locationSerialiser );
 
         assertThat( s.serialise( model ), is( "LOCATION\nlocation1\nLOCATION\nlocation2\n" ) );
     }
