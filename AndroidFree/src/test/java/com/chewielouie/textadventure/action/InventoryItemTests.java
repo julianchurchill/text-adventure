@@ -1,6 +1,8 @@
 package com.chewielouie.textadventure.action;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import java.util.List;
 import org.jmock.*;
@@ -17,7 +19,7 @@ public class InventoryItemTests {
     private Mockery mockery = new Mockery();
 
     InventoryItem createAction() {
-        return new InventoryItem( null, null, null );
+        return new InventoryItem( null, null, null, null );
     }
 
     @Test
@@ -28,7 +30,7 @@ public class InventoryItemTests {
             will( returnValue( "Item name" ) );
             ignoring( item );
         }});
-        InventoryItem action = new InventoryItem( item, null, null );
+        InventoryItem action = new InventoryItem( item, null, null, null );
 
         assertEquals( "Item name", action.label() );
     }
@@ -39,34 +41,42 @@ public class InventoryItemTests {
     }
 
     @Test
-    public void follow_up_actions_contains_Examine_action_for_item() {
-        Item item = mockery.mock( Item.class );
-        InventoryItem action = new InventoryItem( item, null, null );
+    public void follow_up_actions_use_action_factory_to_get_Examine_action() {
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        final Action examineAction = mockery.mock( Action.class );
+        final Item item = mockery.mock( Item.class );
+        mockery.checking( new Expectations() {{
+            oneOf( actionFactory ).createExamineAction( item );
+            will( returnValue( examineAction ) );
+            ignoring( actionFactory );
+            ignoring( examineAction );
+        }});
+        InventoryItem action = new InventoryItem( item, null, null, actionFactory );
 
         List<Action> actions = action.followUpActions();
-        assertTrue( actions.size() > 0 );
-        assertTrue( actions.get(0) instanceof Examine );
-        assertEquals( item, ((Examine)actions.get(0)).item() );
+        assertTrue( actions.size() > 1 );
+        assertThat( actions.get( 0 ), is( examineAction ) );
     }
 
     @Test
-    public void follow_up_actions_contains_UseWith_action_for_item() {
+    public void follow_up_actions_use_action_factory_to_get_UseWith_action() {
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        final Action useWithAction = mockery.mock( Action.class );
         final Item item = mockery.mock( Item.class );
         final UserInventory inventory = mockery.mock( UserInventory.class );
         final ModelLocation location = mockery.mock( ModelLocation.class );
         mockery.checking( new Expectations() {{
-            ignoring( item );
-            ignoring( inventory );
-            ignoring( location );
+            oneOf( actionFactory ).createUseWithAction( item, inventory, location );
+            will( returnValue( useWithAction ) );
+            ignoring( actionFactory );
+            ignoring( useWithAction );
         }});
-        InventoryItem action = new InventoryItem( item, inventory, location );
+        InventoryItem action = new InventoryItem( item, inventory,
+                                                  location, actionFactory );
 
         List<Action> actions = action.followUpActions();
         assertTrue( actions.size() > 1 );
-        assertTrue( actions.get(1) instanceof UseWith );
-        assertEquals( item, ((UseWith)actions.get(1)).item() );
-        assertEquals( inventory, ((UseWith)actions.get(1)).inventory() );
-        assertEquals( location, ((UseWith)actions.get(1)).location() );
+        assertThat( actions.get( 1 ), is( useWithAction ) );
     }
 
     @Test

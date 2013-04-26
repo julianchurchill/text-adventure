@@ -14,7 +14,17 @@ public class UserActionFactory implements ActionFactory {
     public Action createInventoryItemAction( Item item,
                                              UserInventory inventory,
                                              ModelLocation location ) {
-        return new InventoryItem( item, inventory, location );
+        return new InventoryItem( item, inventory, location, this );
+    }
+
+    public Action createExamineAction( Item item ) {
+        return null;
+    }
+
+    public Action createUseWithAction( Item item,
+                                       UserInventory inventory,
+                                       ModelLocation location ) {
+        return null;
     }
 }
 

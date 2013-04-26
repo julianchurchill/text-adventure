@@ -12,12 +12,16 @@ public class InventoryItem implements Action {
     private UserInventory inventory;
     private ModelLocation location;
 
-    public InventoryItem( Item item, UserInventory inventory, ModelLocation location ) {
+    public InventoryItem( Item item, UserInventory inventory,
+                          ModelLocation location, ActionFactory factory ) {
         this.item = item;
         this.inventory = inventory;
         this.location = location;
-        followUpActions.add( new Examine( item ) );
-        followUpActions.add( new UseWith( item, inventory, location ) );
+        if( factory != null ) {
+            followUpActions.add( factory.createExamineAction( item ) );
+            followUpActions.add(
+                factory.createUseWithAction( item, inventory, location ) );
+        }
     }
 
     public UserInventory inventory() {

@@ -12,8 +12,12 @@ Backlog
   * ActionRecorder, ActionReplayer, ActionHistory, ActionHistory[De]Serialiser
   * An ActionFactory is needed for user actions like Examine, TakeAnItem, ShowInventory. This needs to be passed to the Presenter and the other Actions that create actions.
     * DONE [TEST] Presenter should use an ActionFactory
-    * DONE [TEST] UserActionFactory needs to implement createShowInventoryAction()
+    * DONE [TEST] UserActionFactory should implement createShowInventoryAction()
     * DONE [TEST] Activity should give the presenter a UserActionFactory
+    * DONE [TEST] ShowInventory should use an ActionFactory
+    * DONE [TEST] InventoryItem should use an ActionFactory
+    * [TEST] UserActionFactory should implement createExamineAction()
+    * [TEST] UserActionFactory should implement createUseWithAction()
     * [TEST] Actions that create actions need an ActionFactory reference:
       * DONE ShowInventory creates InventoryItem actions
       * InventoryItem creates Examine and UseWith actions
