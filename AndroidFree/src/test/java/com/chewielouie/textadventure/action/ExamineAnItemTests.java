@@ -1,6 +1,8 @@
 package com.chewielouie.textadventure.action;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,7 @@ public class ExamineAnItemTests {
     private Mockery mockery = new Mockery();
 
     ExamineAnItem createAction() {
-        return new ExamineAnItem( new ArrayList<Item>() );
+        return new ExamineAnItem( new ArrayList<Item>(), null );
     }
 
     @Test
@@ -32,20 +34,28 @@ public class ExamineAnItemTests {
     }
 
     @Test
-    public void follow_up_actions_contains_Examine_actions_for_each_location_item() {
+    public void follow_up_actions_use_action_factory_to_get_Examine_action() {
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        final Action examineAction1 = mockery.mock( Action.class, "action 1" );
+        final Action examineAction2 = mockery.mock( Action.class, "action 2" );
         final List<Item> items = new ArrayList<Item>();
-        Item item1 = mockery.mock( Item.class, "item 1" );
-        Item item2 = mockery.mock( Item.class, "item 2" );
+        final Item item1 = mockery.mock( Item.class, "item 1" );
+        final Item item2 = mockery.mock( Item.class, "item 2" );
         items.add( item1 );
         items.add( item2 );
-        ExamineAnItem action = new ExamineAnItem( items );
+        mockery.checking( new Expectations() {{
+            oneOf( actionFactory ).createExamineAction( item1 );
+            will( returnValue( examineAction1 ) );
+            oneOf( actionFactory ).createExamineAction( item2 );
+            will( returnValue( examineAction2 ) );
+            ignoring( actionFactory );
+        }});
+        ExamineAnItem action = new ExamineAnItem( items, actionFactory );
 
         List<Action> actions = action.followUpActions();
-        assertEquals( 2, actions.size() );
-        assertTrue( actions.get(0) instanceof Examine );
-        assertEquals( item1, ((Examine)actions.get(0)).item() );
-        assertTrue( actions.get(1) instanceof Examine );
-        assertEquals( item2, ((Examine)actions.get(1)).item() );
+        assertTrue( actions.size() > 1 );
+        assertThat( actions.get( 0 ), is( examineAction1 ) );
+        assertThat( actions.get( 1 ), is( examineAction2 ) );
     }
 
     @Test

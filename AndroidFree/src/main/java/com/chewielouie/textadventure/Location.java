@@ -112,7 +112,7 @@ public class Location implements ModelLocation {
         if( takeableItems().size() > 0 )
             actions.add( new TakeAnItem( takeableItems(), inventory, this ) );
         if( visibleItems().size() > 0 )
-            actions.add( new ExamineAnItem( visibleItems() ) );
+            actions.add( new ExamineAnItem( visibleItems(), null ) );
         return actions;
     }
 

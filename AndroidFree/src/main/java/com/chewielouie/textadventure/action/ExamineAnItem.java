@@ -8,10 +8,11 @@ public class ExamineAnItem implements Action {
     private List<Action> followUpActions = new ArrayList<Action>();
     private List<Item> items = new ArrayList<Item>();
 
-    public ExamineAnItem( List<Item> items ) {
+    public ExamineAnItem( List<Item> items, ActionFactory factory ) {
         this.items = items;
-        for( Item item : items )
-            followUpActions.add( new Examine( item ) );
+        if( factory != null )
+            for( Item item : items )
+                followUpActions.add( factory.createExamineAction( item ) );
     }
 
     public List<Item> items() {

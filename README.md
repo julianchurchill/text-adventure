@@ -18,10 +18,16 @@ Backlog
     * DONE [TEST] InventoryItem should use an ActionFactory
     * DONE [TEST] UserActionFactory should implement createExamineAction()
     * DONE [TEST] UserActionFactory should implement createUseWithAction()
+    * DONE [TEST] ExamineAnItem should use an ActionFactory
+    * [TEST] Location needs to pass ActionFactory to ExamineAnItem
+    * [TEST] Location needs to use ActionFactory to create ExamineAnItem action
+    * [TEST] UserActionFactory should implement createExamineAnItemAction()
     * [TEST] Actions that create actions need an ActionFactory reference:
       * DONE ShowInventory creates InventoryItem actions
       * DONE InventoryItem creates Examine and UseWith actions
-      * ExamineAnItem creates Examine actions
+      * DONE ExamineAnItem creates Examine actions
+      * Location creates ExamineAnItem actions
+      * Location creates TakeAnItem actions
       * TakeAnItem creates TakeSpecificItem actions
       * UseWith creates UseWithSpecificItem actions
   * On create ActionHistory and AcionRecorder are created and the ActionHistory is passed to the ActionRecorder which uses it to store the actions that occur.
