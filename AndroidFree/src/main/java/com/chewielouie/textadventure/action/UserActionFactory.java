@@ -18,13 +18,13 @@ public class UserActionFactory implements ActionFactory {
     }
 
     public Action createExamineAction( Item item ) {
-        return null;
+        return new Examine( item );
     }
 
     public Action createUseWithAction( Item item,
                                        UserInventory inventory,
                                        ModelLocation location ) {
-        return null;
+        return new UseWith( item, inventory, location );
     }
 }
 

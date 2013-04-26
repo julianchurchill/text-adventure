@@ -45,5 +45,40 @@ public class UserActionFactoryTests {
 
         assertThat( action, is( instanceOf( InventoryItem.class ) ) );
     }
+
+    @Test
+    public void create_examine_action_makes_right_action() {
+        final Item item = mockery.mock( Item.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            ignoring( item );
+            ignoring( inventory );
+            ignoring( location );
+        }});
+        UserActionFactory factory = new UserActionFactory();
+
+        Action action = factory.createExamineAction( item );
+
+        assertThat( action, is( instanceOf( Examine.class ) ) );
+    }
+
+    @Test
+    public void create_use_with_action_makes_right_action() {
+        final Item item = mockery.mock( Item.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            ignoring( item );
+            ignoring( inventory );
+            ignoring( location );
+        }});
+        UserActionFactory factory = new UserActionFactory();
+
+        Action action = factory.createUseWithAction( item, inventory,
+                                                           location );
+
+        assertThat( action, is( instanceOf( UseWith.class ) ) );
+    }
 }
 

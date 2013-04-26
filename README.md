@@ -16,11 +16,11 @@ Backlog
     * DONE [TEST] Activity should give the presenter a UserActionFactory
     * DONE [TEST] ShowInventory should use an ActionFactory
     * DONE [TEST] InventoryItem should use an ActionFactory
-    * [TEST] UserActionFactory should implement createExamineAction()
-    * [TEST] UserActionFactory should implement createUseWithAction()
+    * DONE [TEST] UserActionFactory should implement createExamineAction()
+    * DONE [TEST] UserActionFactory should implement createUseWithAction()
     * [TEST] Actions that create actions need an ActionFactory reference:
       * DONE ShowInventory creates InventoryItem actions
-      * InventoryItem creates Examine and UseWith actions
+      * DONE InventoryItem creates Examine and UseWith actions
       * ExamineAnItem creates Examine actions
       * TakeAnItem creates TakeSpecificItem actions
       * UseWith creates UseWithSpecificItem actions
