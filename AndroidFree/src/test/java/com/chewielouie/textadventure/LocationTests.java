@@ -1,6 +1,8 @@
 package com.chewielouie.textadventure;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +11,8 @@ import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.action.TakeAnItem;
-import com.chewielouie.textadventure.action.ExamineAnItem;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.item.NormalItem;
 
@@ -223,51 +225,29 @@ public class LocationTests {
     }
 
     @Test
-    public void location_actions_include_examine_an_item_when_location_has_item() {
-        Location l = createLocation();
-        l.addItem( new NormalItem() );
-
-        boolean actionsIncludeExamineAnItemAction = false;
-        for( Action a : l.actions() )
-            if( a instanceof ExamineAnItem )
-                actionsIncludeExamineAnItemAction = true;
-        assertTrue( actionsIncludeExamineAnItemAction );
-    }
-
-    @Test
-    public void location_action_to_examine_an_item_is_created_with_location_items() {
-        Location l = createLocation();
-        l.addItem( new NormalItem() );
-        List<Item> items = new ArrayList<Item>();
-        items.add( new NormalItem() );
-
-        for( Action a : l.actions() )
-            if( a instanceof ExamineAnItem )
-                assertEquals( items, ((ExamineAnItem)a).items() );
-    }
-
-    @Test
-    public void examinable_items_only_include_visible_items() {
+    public void actions_uses_action_factory_to_create_ExamineAnItem_action_for_all_visible_items() {
         final Item visibleItem = mockery.mock( Item.class, "visible item" );
         final Item invisibleItem = mockery.mock( Item.class, "invisible item" );
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        final Action examineAnItemAction = mockery.mock( Action.class );
+        final List<Item> visibleItems = new ArrayList<Item>();
+        visibleItems.add( visibleItem );
         mockery.checking( new Expectations() {{
-            allowing( visibleItem ).visible();
-            will( returnValue( true ) );
+            allowing( visibleItem ).visible(); will( returnValue( true ) );
             ignoring( visibleItem );
-            allowing( invisibleItem ).visible();
-            will( returnValue( false ) );
+            allowing( invisibleItem ).visible(); will( returnValue( false ) );
             ignoring( invisibleItem );
+            oneOf( actionFactory ).createExamineAnItemAction( with( equal( visibleItems ) ) );
+            will( returnValue( examineAnItemAction ) );
+            ignoring( actionFactory );
         }});
-        Location l = createLocation();
+        Location l = new Location( "", "", null, actionFactory );
         l.addItem( visibleItem );
         l.addItem( invisibleItem );
 
-        List<Item> items = new ArrayList<Item>();
-        items.add( visibleItem );
-
-        for( Action a : l.actions() )
-            if( a instanceof ExamineAnItem )
-                assertEquals( items, ((ExamineAnItem)a).items() );
+        List<Action> actions = l.actions();
+        assertTrue( actions.size() > 0 );
+        assertThat( actions.get( 0 ), is( examineAnItemAction ) );
     }
 
     @Test
@@ -330,27 +310,6 @@ public class LocationTests {
         for( Action a : l.actions() )
             if( a instanceof TakeAnItem )
                 fail("TakeAnItem action is not needed by this location as it has no items!");
-    }
-
-    @Test
-    public void removing_all_items_from_a_location_removes_ExamineAnItem_action_from_action_list() {
-        Item item = new NormalItem();
-        Location l = createLocation();
-        l.addItem( item );
-        l.removeItem( item );
-
-        for( Action a : l.actions() )
-            if( a instanceof ExamineAnItem )
-                fail("ExamineAnItem action is not needed by this location as it has no items!");
-    }
-
-    @Test
-    public void a_location_without_items_does_not_need_a_ExamineAnItem_action() {
-        Location l = createLocation();
-
-        for( Action a : l.actions() )
-            if( a instanceof ExamineAnItem )
-                fail("ExamineAnItem action is not needed by this location as it has no items!");
     }
 
     @Test

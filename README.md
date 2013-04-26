@@ -19,9 +19,9 @@ Backlog
     * DONE [TEST] UserActionFactory should implement createExamineAction()
     * DONE [TEST] UserActionFactory should implement createUseWithAction()
     * DONE [TEST] ExamineAnItem should use an ActionFactory
-    * [TEST] Location needs to pass ActionFactory to ExamineAnItem
-    * [TEST] Location needs to use ActionFactory to create ExamineAnItem action
+    * DONE [TEST] Location needs to use ActionFactory to create ExamineAnItem action
     * [TEST] UserActionFactory should implement createExamineAnItemAction()
+    * [TEST] Remove Location constructor that does not take an ActionFactory
     * [TEST] Actions that create actions need an ActionFactory reference:
       * DONE ShowInventory creates InventoryItem actions
       * DONE InventoryItem creates Examine and UseWith actions

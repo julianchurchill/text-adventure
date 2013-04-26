@@ -3,8 +3,8 @@ package com.chewielouie.textadventure;
 import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.action.TakeAnItem;
-import com.chewielouie.textadventure.action.ExamineAnItem;
 import com.chewielouie.textadventure.item.Item;
 
 public class Location implements ModelLocation {
@@ -13,14 +13,21 @@ public class Location implements ModelLocation {
     private List<Exit> exits = new ArrayList<Exit>();
     private List<Item> items = new ArrayList<Item>();
     private UserInventory inventory;
+    private ActionFactory actionFactory;
     private int x = 0;
     private int y = 0;
 
     public Location( String locationId, String description,
             UserInventory inventory ) {
+        this( locationId, description, inventory, null );
+    }
+
+    public Location( String locationId, String description,
+            UserInventory inventory, ActionFactory factory ) {
         this.id = locationId;
         this.description = description;
         this.inventory = inventory;
+        this.actionFactory = factory;
     }
 
     public UserInventory inventory() {
@@ -112,7 +119,8 @@ public class Location implements ModelLocation {
         if( takeableItems().size() > 0 )
             actions.add( new TakeAnItem( takeableItems(), inventory, this ) );
         if( visibleItems().size() > 0 )
-            actions.add( new ExamineAnItem( visibleItems(), null ) );
+            if( actionFactory != null )
+                actions.add( actionFactory.createExamineAnItemAction( visibleItems() ) );
         return actions;
     }
 

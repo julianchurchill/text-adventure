@@ -1,5 +1,6 @@
 package com.chewielouie.textadventure.action;
 
+import java.util.List;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
@@ -25,6 +26,11 @@ public class UserActionFactory implements ActionFactory {
                                        UserInventory inventory,
                                        ModelLocation location ) {
         return new UseWith( item, inventory, location );
+    }
+
+    public Action createExamineAnItemAction( List<Item> items ) {
+        return null;
+        //return new ExamineAnItem( items, this );
     }
 }
 
