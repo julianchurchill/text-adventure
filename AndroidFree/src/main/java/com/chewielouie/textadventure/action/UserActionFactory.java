@@ -29,8 +29,7 @@ public class UserActionFactory implements ActionFactory {
     }
 
     public Action createExamineAnItemAction( List<Item> items ) {
-        return null;
-        //return new ExamineAnItem( items, this );
+        return new ExamineAnItem( items, this );
     }
 }
 

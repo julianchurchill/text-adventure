@@ -3,6 +3,8 @@ package com.chewielouie.textadventure.action;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
@@ -79,6 +81,24 @@ public class UserActionFactoryTests {
                                                            location );
 
         assertThat( action, is( instanceOf( UseWith.class ) ) );
+    }
+
+    @Test
+    public void create_examine_an_item_action_makes_right_action() {
+        final Item item = mockery.mock( Item.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            ignoring( item );
+            ignoring( inventory );
+            ignoring( location );
+        }});
+        UserActionFactory factory = new UserActionFactory();
+
+        List<Item> items = new ArrayList<Item>();
+        Action action = factory.createExamineAnItemAction( items );
+
+        assertThat( action, is( instanceOf( ExamineAnItem.class ) ) );
     }
 }
 
