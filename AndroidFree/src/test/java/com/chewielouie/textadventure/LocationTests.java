@@ -22,18 +22,18 @@ public class LocationTests {
     private Mockery mockery = new Mockery();
 
     Location createLocation() {
-        return new Location( "", "", null );
+        return new Location( "", "", null, null );
     }
 
     @Test
     public void id_is_set_on_construction() {
-        Location l = new Location( "id", "", null );
+        Location l = new Location( "id", "", null, null );
         assertEquals( "id", l.id() );
     }
 
     @Test
     public void description_is_set_on_construction() {
-        Location l = new Location( "", "description", null );
+        Location l = new Location( "", "description", null, null );
         assertEquals( "description", l.description() );
     }
 
@@ -209,7 +209,7 @@ public class LocationTests {
     @Test
     public void location_action_to_take_an_item_has_user_inventory_passed_to_it() {
         UserInventory inventory = mockery.mock( UserInventory.class );
-        Location l = new Location( "", "", inventory );
+        Location l = new Location( "", "", inventory, null );
         l.addItem( new NormalItem() );
 
         assertEquals( inventory, ((TakeAnItem)l.actions().get( 0 )).inventory() );
@@ -218,7 +218,7 @@ public class LocationTests {
     @Test
     public void location_action_to_take_an_item_has_location_passed_to_it() {
         UserInventory inventory = mockery.mock( UserInventory.class );
-        Location l = new Location( "", "", inventory );
+        Location l = new Location( "", "", inventory, null );
         l.addItem( new NormalItem() );
 
         assertEquals( l, ((TakeAnItem)l.actions().get( 0 )).location() );
@@ -252,7 +252,7 @@ public class LocationTests {
 
     @Test
     public void added_items_are_added_to_location_description() {
-        Location l = new Location( "", "Location description.", null );
+        Location l = new Location( "", "Location description.", null, null );
         NormalItem item1 = new NormalItem();
         item1.setName( "name" );
         l.addItem( item1 );
@@ -284,7 +284,7 @@ public class LocationTests {
             will( returnValue( "invisible item" ) );
             ignoring( invisibleItem );
         }});
-        Location l = new Location( "", "Location description.", null );
+        Location l = new Location( "", "Location description.", null, null );
         l.addItem( visibleItem );
         l.addItem( invisibleItem );
 
