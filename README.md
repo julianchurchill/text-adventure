@@ -21,12 +21,15 @@ Backlog
     * DONE [TEST] ExamineAnItem should use an ActionFactory
     * DONE [TEST] Location needs to use ActionFactory to create ExamineAnItem action
     * DONE [TEST] UserActionFactory should implement createExamineAnItemAction()
-    * [TEST] Remove Location constructor that does not take an ActionFactory
+    * DONE [TEST] Remove Location constructor that does not take an ActionFactory
+    * DONE [TEST] Remove LocationFactory constructor that does not take an ActionFactory
+    * [TEST] Location needs to use ActionFactory to create TakeAnItem action
+    * [TEST] UserActionFactory should implement createTakeAnItemAction()
     * [TEST] Actions that create actions need an ActionFactory reference:
       * DONE ShowInventory creates InventoryItem actions
       * DONE InventoryItem creates Examine and UseWith actions
       * DONE ExamineAnItem creates Examine actions
-      * Location creates ExamineAnItem actions
+      * DONE Location creates ExamineAnItem actions
       * Location creates TakeAnItem actions
       * TakeAnItem creates TakeSpecificItem actions
       * UseWith creates UseWithSpecificItem actions
@@ -34,7 +37,7 @@ Backlog
   * The ActionRecorder is passed to the ItemActionFactory which uses it to getRecordableItem(), getRecordableModel(), getRecordableLocation(), getRecordableExit(), getRecordableUserInventory() to wrap Items, and the Model before passing to the ItemActions it creates.
   * A RecordableItem implements Item interface. It takes the Item to delegate to in the constructor along with the ActionRecorder. When changes are made to the Item it uses the ActionRecorder to record the details.
   * The RecordableModel, Location, Exit and UserInventory work the same. RecordableModel also will return Locations wrapped in a RecordableLocation object after retrieving from the real Model. RecordableLocation likewise does the same for Exits.
-  * The ActionRecorder is passed to the ActionFactory to getRecordableItem(), getRecordableModel(), getRecordableLocation(), getRecordableExit(), getRecordableUserInventory() to wrap Items, and the Model before passing to the Actions it creates.
+  * The ActionRecorder is passed to the ActionFactory (in both createNewGameModel() and setupPresenter()) to getRecordableItem(), getRecordableModel(), getRecordableLocation(), getRecordableExit(), getRecordableUserInventory() to wrap Items, and the Model before passing to the Actions it creates.
   * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
   * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
 

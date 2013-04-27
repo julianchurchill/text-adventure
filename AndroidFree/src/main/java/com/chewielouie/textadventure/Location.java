@@ -18,11 +18,6 @@ public class Location implements ModelLocation {
     private int y = 0;
 
     public Location( String locationId, String description,
-            UserInventory inventory ) {
-        this( locationId, description, inventory, null );
-    }
-
-    public Location( String locationId, String description,
             UserInventory inventory, ActionFactory factory ) {
         this.id = locationId;
         this.description = description;
