@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
-import com.chewielouie.textadventure.action.TakeAnItem;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.item.NormalItem;
 
@@ -133,95 +132,58 @@ public class LocationTests {
     }
 
     @Test
-    public void location_actions_include_take_an_item_when_location_has_item() {
-        Location l = createLocation();
-        l.addItem( new NormalItem() );
-
-        boolean actionsIncludeTakeAnItemAction = false;
-        for( Action a : l.actions() )
-            if( a instanceof TakeAnItem )
-                actionsIncludeTakeAnItemAction = true;
-        assertTrue( actionsIncludeTakeAnItemAction );
-    }
-
-    @Test
-    public void location_action_to_take_an_item_is_created_with_location_items() {
-        Location l = createLocation();
-        l.addItem( new NormalItem() );
-        List<Item> items = new ArrayList<Item>();
-        items.add( new NormalItem() );
-
-        for( Action a : l.actions() )
-            if( a instanceof TakeAnItem )
-                assertEquals( items, ((TakeAnItem)a).items() );
-    }
-
-    @Test
-    public void location_action_to_take_an_item_does_not_include_untakeable_items() {
-        Location l = createLocation();
-        NormalItem item1 = new NormalItem();
-        NormalItem item2 = new NormalItem();
-        item1.setUntakeable();
-        l.addItem( item1 );
-        l.addItem( item2 );
-
-        for( Action a : l.actions() )
-            if( a instanceof TakeAnItem )
-                assertEquals( 1, ((TakeAnItem)a).items().size() );
-    }
-
-    @Test
-    public void location_action_to_take_an_item_does_not_include_invisible_items() {
+    public void actions_uses_action_factory_to_create_TakeAnItem_action_for_all_visible_takeable_items() {
         final Item visibleItem = mockery.mock( Item.class, "visible item" );
+        final Item visibleUntakeableItem = mockery.mock( Item.class, "visible untakeable item" );
         final Item invisibleItem = mockery.mock( Item.class, "invisible item" );
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        final Action takeAnItemAction = mockery.mock( Action.class );
+        final List<Item> takeableItems = new ArrayList<Item>();
+        takeableItems.add( visibleItem );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final Location l = new Location( "", "", inventory, actionFactory );
         mockery.checking( new Expectations() {{
-            allowing( visibleItem ).visible();
-            will( returnValue( true ) );
+            allowing( visibleItem ).visible(); will( returnValue( true ) );
+            allowing( visibleItem ).takeable(); will( returnValue( true ) );
             ignoring( visibleItem );
-            allowing( invisibleItem ).visible();
-            will( returnValue( false ) );
+            allowing( visibleUntakeableItem ).visible(); will( returnValue( true ) );
+            allowing( visibleUntakeableItem ).takeable(); will( returnValue( false ) );
+            ignoring( visibleUntakeableItem );
+            allowing( invisibleItem ).visible(); will( returnValue( false ) );
+            allowing( invisibleItem ).takeable(); will( returnValue( false ) );
             ignoring( invisibleItem );
+            oneOf( actionFactory ).createTakeAnItemAction(
+                with( equal( takeableItems ) ),
+                with( equal( inventory ) ),
+                with( equal( l ) ) );
+            will( returnValue( takeAnItemAction ) );
+            ignoring( actionFactory );
         }});
-        Location l = createLocation();
         l.addItem( visibleItem );
         l.addItem( invisibleItem );
 
-        List<Item> items = new ArrayList<Item>();
-        items.add( visibleItem );
-
-        for( Action a : l.actions() )
-            if( a instanceof TakeAnItem )
-                assertEquals( items, ((TakeAnItem)a).items() );
+        List<Action> actions = l.actions();
+        assertTrue( actions.size() > 0 );
+        assertThat( actions.get( 0 ), is( takeAnItemAction ) );
     }
 
     @Test
     public void location_action_to_take_an_item_is_not_included_if_only_untakeable_items_available() {
-        Location l = createLocation();
-        NormalItem item = new NormalItem();
-        item.setUntakeable();
-        l.addItem( item );
-
-        for( Action a : l.actions() )
-            if( a instanceof TakeAnItem )
-                fail("TakeAnItem action is not needed by this location as it has no takeable items!");
-    }
-
-    @Test
-    public void location_action_to_take_an_item_has_user_inventory_passed_to_it() {
-        UserInventory inventory = mockery.mock( UserInventory.class );
-        Location l = new Location( "", "", inventory, null );
-        l.addItem( new NormalItem() );
-
-        assertEquals( inventory, ((TakeAnItem)l.actions().get( 0 )).inventory() );
-    }
-
-    @Test
-    public void location_action_to_take_an_item_has_location_passed_to_it() {
-        UserInventory inventory = mockery.mock( UserInventory.class );
-        Location l = new Location( "", "", inventory, null );
-        l.addItem( new NormalItem() );
-
-        assertEquals( l, ((TakeAnItem)l.actions().get( 0 )).location() );
+        final Item untakeableItem = mockery.mock( Item.class, "untakeable item" );
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        final Location l = new Location( "", "", null, actionFactory );
+        mockery.checking( new Expectations() {{
+            allowing( untakeableItem ).visible(); will( returnValue( true ) );
+            allowing( untakeableItem ).takeable(); will( returnValue( false ) );
+            ignoring( untakeableItem );
+            never( actionFactory ).createTakeAnItemAction(
+                with( any( List.class ) ),
+                with( any( UserInventory.class ) ),
+                with( any( ModelLocation.class ) ) );
+            ignoring( actionFactory );
+        }});
+        l.addItem( untakeableItem );
+        l.actions();
     }
 
     @Test
@@ -293,23 +255,36 @@ public class LocationTests {
 
     @Test
     public void removing_all_items_from_a_location_removes_TakeAnItem_action_from_action_list() {
-        Item item = new NormalItem();
-        Location l = createLocation();
-        l.addItem( item );
-        l.removeItem( item );
-
-        for( Action a : l.actions() )
-            if( a instanceof TakeAnItem )
-                fail("TakeAnItem action is not needed by this location as it has no items!");
+        final Item takeableItem = mockery.mock( Item.class );
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        final Location l = new Location( "", "", null, actionFactory );
+        mockery.checking( new Expectations() {{
+            allowing( takeableItem ).visible(); will( returnValue( true ) );
+            allowing( takeableItem ).takeable(); will( returnValue( true ) );
+            ignoring( takeableItem );
+            never( actionFactory ).createTakeAnItemAction(
+                with( any( List.class ) ),
+                with( any( UserInventory.class ) ),
+                with( any( ModelLocation.class ) ) );
+            ignoring( actionFactory );
+        }});
+        l.addItem( takeableItem );
+        l.removeItem( takeableItem );
+        l.actions();
     }
 
     @Test
     public void a_location_without_items_does_not_need_a_TakeAnItem_action() {
-        Location l = createLocation();
-
-        for( Action a : l.actions() )
-            if( a instanceof TakeAnItem )
-                fail("TakeAnItem action is not needed by this location as it has no items!");
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        final Location l = new Location( "", "", null, actionFactory );
+        mockery.checking( new Expectations() {{
+            never( actionFactory ).createTakeAnItemAction(
+                with( any( List.class ) ),
+                with( any( UserInventory.class ) ),
+                with( any( ModelLocation.class ) ) );
+            ignoring( actionFactory );
+        }});
+        l.actions();
     }
 
     @Test

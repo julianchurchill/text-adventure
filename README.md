@@ -23,14 +23,14 @@ Backlog
     * DONE [TEST] UserActionFactory should implement createExamineAnItemAction()
     * DONE [TEST] Remove Location constructor that does not take an ActionFactory
     * DONE [TEST] Remove LocationFactory constructor that does not take an ActionFactory
-    * [TEST] Location needs to use ActionFactory to create TakeAnItem action
+    * DONE [TEST] Location needs to use ActionFactory to create TakeAnItem action
     * [TEST] UserActionFactory should implement createTakeAnItemAction()
     * [TEST] Actions that create actions need an ActionFactory reference:
       * DONE ShowInventory creates InventoryItem actions
       * DONE InventoryItem creates Examine and UseWith actions
       * DONE ExamineAnItem creates Examine actions
       * DONE Location creates ExamineAnItem actions
-      * Location creates TakeAnItem actions
+      * DONE Location creates TakeAnItem actions
       * TakeAnItem creates TakeSpecificItem actions
       * UseWith creates UseWithSpecificItem actions
   * On create ActionHistory and AcionRecorder are created and the ActionHistory is passed to the ActionRecorder which uses it to store the actions that occur.

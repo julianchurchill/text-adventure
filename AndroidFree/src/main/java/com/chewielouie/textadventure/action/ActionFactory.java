@@ -17,5 +17,8 @@ public interface ActionFactory {
                                        UserInventory inventory,
                                        ModelLocation location );
     public Action createExamineAnItemAction( List<Item> items );
+    public Action createTakeAnItemAction( List<Item> items,
+                                          UserInventory inventory,
+                                          ModelLocation location );
 }
 

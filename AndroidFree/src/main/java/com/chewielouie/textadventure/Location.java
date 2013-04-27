@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
-import com.chewielouie.textadventure.action.TakeAnItem;
 import com.chewielouie.textadventure.item.Item;
 
 public class Location implements ModelLocation {
@@ -111,11 +110,12 @@ public class Location implements ModelLocation {
 
     public List<Action> actions() {
         List<Action> actions = new ArrayList<Action>();
-        if( takeableItems().size() > 0 )
-            actions.add( new TakeAnItem( takeableItems(), inventory, this ) );
-        if( visibleItems().size() > 0 )
-            if( actionFactory != null )
+        if( actionFactory != null ) {
+            if( takeableItems().size() > 0 )
+                actions.add( actionFactory.createTakeAnItemAction( takeableItems(), inventory, this ) );
+            if( visibleItems().size() > 0 )
                 actions.add( actionFactory.createExamineAnItemAction( visibleItems() ) );
+        }
         return actions;
     }
 
