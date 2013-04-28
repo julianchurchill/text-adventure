@@ -27,7 +27,7 @@ Backlog
     * DONE [TEST] UserActionFactory should implement createTakeAnItemAction()
     * DONE [TEST] TakeAnItem should use an ActionFactory
     * DONE [TEST] Remove TakeAnItem constructor that does not use an ActionFactory
-    * [TEST] UserActionFactory should implement createTakeSpecificItemAction()
+    * DONE [TEST] UserActionFactory should implement createTakeSpecificItemAction()
     * [TEST] Actions that create actions need an ActionFactory reference:
       * DONE ShowInventory creates InventoryItem actions
       * DONE InventoryItem creates Examine and UseWith actions

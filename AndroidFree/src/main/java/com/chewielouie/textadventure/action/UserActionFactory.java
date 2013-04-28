@@ -41,6 +41,6 @@ public class UserActionFactory implements ActionFactory {
     public Action createTakeSpecificItemAction( Item item,
                                           UserInventory inventory,
                                           ModelLocation location ) {
-        return null;
+        return new TakeSpecificItem( item, inventory, location );
     }
 }

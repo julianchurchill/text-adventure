@@ -115,4 +115,22 @@ public class UserActionFactoryTests {
 
         assertThat( action, is( instanceOf( TakeAnItem.class ) ) );
     }
+
+    @Test
+    public void create_take_specific_item_action_makes_right_action() {
+        final Item item = mockery.mock( Item.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            ignoring( item );
+            ignoring( inventory );
+            ignoring( location );
+        }});
+        UserActionFactory factory = new UserActionFactory();
+
+        Action action = factory.createTakeSpecificItemAction( item,
+                                            inventory, location );
+
+        assertThat( action, is( instanceOf( TakeSpecificItem.class ) ) );
+    }
 }
