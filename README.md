@@ -44,8 +44,10 @@ Backlog
   * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
   * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
   * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.
-    * Implementation is simple - iterate through locations, items, exits and copy names and descriptions, used and examined flags.
-    * Difficult bit is converting this into an action history to be saved as the new save file format...
+    * Implement as n hard coded rules to translate from 1.0 to 2.0 models:
+      * If the bagsofjunk have been examined run Examine on them
+      * If the moundofearth has been used run UseWith on the spade and moundofearth and _also_ add the spade to the inventory
+      * If clockface has been used then run UseWith on the clockface and the clockmechanism
   * Remove PlainTextModelSerialiser created for rejected save proposal
 
 - [BUG] User still has map after giving it to the shopkeeper!
@@ -54,7 +56,10 @@ Backlog
 - [FEATURE] Let user change the font size on an options screen
 - [FEATURE] Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
 
-- [STORY] Chase someone - perhaps examining them causes them to move to new locations
+- [STORY] Shopkeeper directs you to investigate strange goings on in the graveyard, gives you some item to use later
+- [STORY] On entering teh grave yard there is a mysterious presence, when you examine it it moves to a different location. If you keep following/examining it it leads you to a particular grave where an encoded inscription is writte on the headstone. Use the thing from the shopkeeper to read the inscription which directs yuo inside the church to the back of the altar.
+- [STORY] On examining the '8th' candlestick on the altar a trapdoor opens. Going below you are blocked by a ravenous wolf guarding a door. You must use an old leg bone from the graveyard to placate it. An exit is then accesible behind the wolf.
+- [STORY] Passing the wolf there is a complex of rooms, there are voices and locked doors. One room deep within has a brigand blocking your way, you must fight and defeat him to continue.
 
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 - [FEATURE] Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height
