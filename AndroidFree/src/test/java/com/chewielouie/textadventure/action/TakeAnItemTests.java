@@ -20,7 +20,7 @@ public class TakeAnItemTests {
     private Mockery mockery = new Mockery();
 
     TakeAnItem createAction() {
-        return new TakeAnItem( new ArrayList<Item>(), null, null );
+        return new TakeAnItem( new ArrayList<Item>(), null, null, null );
     }
 
     @Test

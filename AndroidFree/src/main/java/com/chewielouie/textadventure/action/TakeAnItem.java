@@ -14,11 +14,6 @@ public class TakeAnItem implements Action {
     private ModelLocation location;
 
     public TakeAnItem( List<Item> items, UserInventory inventory,
-           ModelLocation location ) {
-        this( items, inventory, location, null );
-    }
-
-    public TakeAnItem( List<Item> items, UserInventory inventory,
            ModelLocation location, ActionFactory factory ) {
         this.items = items;
         this.inventory = inventory;

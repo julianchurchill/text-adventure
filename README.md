@@ -26,7 +26,7 @@ Backlog
     * DONE [TEST] Location needs to use ActionFactory to create TakeAnItem action
     * DONE [TEST] UserActionFactory should implement createTakeAnItemAction()
     * DONE [TEST] TakeAnItem should use an ActionFactory
-    * [TEST] Remove TakeAnItem constructor that does not use an ActionFactory
+    * DONE [TEST] Remove TakeAnItem constructor that does not use an ActionFactory
     * [TEST] UserActionFactory should implement createTakeSpecificItemAction()
     * [TEST] Actions that create actions need an ActionFactory reference:
       * DONE ShowInventory creates InventoryItem actions
@@ -34,7 +34,7 @@ Backlog
       * DONE ExamineAnItem creates Examine actions
       * DONE Location creates ExamineAnItem actions
       * DONE Location creates TakeAnItem actions
-      * TakeAnItem creates TakeSpecificItem actions
+      * DONE TakeAnItem creates TakeSpecificItem actions
       * UseWith creates UseWithSpecificItem actions
   * On create ActionHistory and AcionRecorder are created and the ActionHistory is passed to the ActionRecorder which uses it to store the actions that occur.
   * The ActionRecorder is passed to the ItemActionFactory which uses it to getRecordableItem(), getRecordableModel(), getRecordableLocation(), getRecordableExit(), getRecordableUserInventory() to wrap Items, and the Model before passing to the ItemActions it creates.

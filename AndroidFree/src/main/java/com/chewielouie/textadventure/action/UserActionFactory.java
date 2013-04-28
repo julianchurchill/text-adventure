@@ -35,7 +35,7 @@ public class UserActionFactory implements ActionFactory {
     public Action createTakeAnItemAction( List<Item> items,
                                           UserInventory inventory,
                                           ModelLocation location ) {
-        return new TakeAnItem( items, inventory, location );
+        return new TakeAnItem( items, inventory, location, this );
     }
 
     public Action createTakeSpecificItemAction( Item item,
