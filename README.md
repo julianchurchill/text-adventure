@@ -29,8 +29,8 @@ Backlog
     * DONE [TEST] Remove TakeAnItem constructor that does not use an ActionFactory
     * DONE [TEST] UserActionFactory should implement createTakeSpecificItemAction()
     * DONE [TEST] UseWith should use an ActionFactory
-    * [TEST] Remove UseWith constructor that does not use an ActionFactory
-    * [TEST] UserActionFactory should implement createUseWithSpecificItemAction()
+    * DONE [TEST] Remove UseWith constructor that does not use an ActionFactory
+    * DONE [TEST] UserActionFactory should implement createUseWithSpecificItemAction()
     * [TEST] Actions that create actions need an ActionFactory reference:
       * DONE ShowInventory creates InventoryItem actions
       * DONE InventoryItem creates Examine and UseWith actions
@@ -38,7 +38,7 @@ Backlog
       * DONE Location creates ExamineAnItem actions
       * DONE Location creates TakeAnItem actions
       * DONE TakeAnItem creates TakeSpecificItem actions
-      * UseWith creates UseWithSpecificItem actions
+      * DONE UseWith creates UseWithSpecificItem actions
   * On create ActionHistory and AcionRecorder are created and the ActionHistory is passed to the ActionRecorder which uses it to store the actions that occur.
   * The ActionRecorder is passed to the ItemActionFactory which uses it to getRecordableItem(), getRecordableModel(), getRecordableLocation(), getRecordableExit(), getRecordableUserInventory() to wrap Items, and the Model before passing to the ItemActions it creates.
   * A RecordableItem implements Item interface. It takes the Item to delegate to in the constructor along with the ActionRecorder. When changes are made to the Item it uses the ActionRecorder to record the details.

@@ -25,7 +25,7 @@ public class UserActionFactory implements ActionFactory {
     public Action createUseWithAction( Item item,
                                        UserInventory inventory,
                                        ModelLocation location ) {
-        return new UseWith( item, inventory, location );
+        return new UseWith( item, inventory, location, this );
     }
 
     public Action createExamineAnItemAction( List<Item> items ) {
@@ -46,6 +46,6 @@ public class UserActionFactory implements ActionFactory {
 
     public Action createUseWithSpecificItemAction( Item actionOwner,
                                                    Item target ) {
-        return null;
+        return new UseWithSpecificItem( actionOwner, target );
     }
 }

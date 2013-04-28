@@ -14,11 +14,6 @@ public class UseWith implements Action {
     private ActionFactory actionFactory;
 
     public UseWith( Item item, UserInventory inventory,
-                    ModelLocation location ) {
-        this( item, inventory, location, null );
-    }
-
-    public UseWith( Item item, UserInventory inventory,
                     ModelLocation location, ActionFactory factory ) {
         this.item = item;
         this.inventory = inventory;

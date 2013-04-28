@@ -6,9 +6,6 @@ import static org.hamcrest.Matchers.*;
 import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.item.Item;
-import com.chewielouie.textadventure.ModelLocation;
-import com.chewielouie.textadventure.TextAdventureModel;
-import com.chewielouie.textadventure.UserInventory;
 import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
@@ -21,74 +18,44 @@ public class UserActionFactoryTests {
 
     @Test
     public void create_show_inventory_action_makes_right_action() {
-        final UserInventory inventory = mockery.mock( UserInventory.class );
-        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         UserActionFactory factory = new UserActionFactory();
 
-        Action action = factory.createShowInventoryAction( inventory, model );
+        Action action = factory.createShowInventoryAction( null, null );
 
         assertThat( action, is( instanceOf( ShowInventory.class ) ) );
     }
 
     @Test
     public void create_inventory_item_action_makes_right_action() {
-        final Item item = mockery.mock( Item.class );
-        final UserInventory inventory = mockery.mock( UserInventory.class );
-        final ModelLocation location = mockery.mock( ModelLocation.class );
-        mockery.checking( new Expectations() {{
-            ignoring( item );
-            ignoring( inventory );
-            ignoring( location );
-        }});
         UserActionFactory factory = new UserActionFactory();
 
-        Action action = factory.createInventoryItemAction( item, inventory,
-                                                           location );
+        Action action = factory.createInventoryItemAction( null, null,
+                                                           null );
 
         assertThat( action, is( instanceOf( InventoryItem.class ) ) );
     }
 
     @Test
     public void create_examine_action_makes_right_action() {
-        final Item item = mockery.mock( Item.class );
-        final UserInventory inventory = mockery.mock( UserInventory.class );
-        final ModelLocation location = mockery.mock( ModelLocation.class );
-        mockery.checking( new Expectations() {{
-            ignoring( item );
-            ignoring( inventory );
-            ignoring( location );
-        }});
         UserActionFactory factory = new UserActionFactory();
 
-        Action action = factory.createExamineAction( item );
+        Action action = factory.createExamineAction( null );
 
         assertThat( action, is( instanceOf( Examine.class ) ) );
     }
 
     @Test
     public void create_use_with_action_makes_right_action() {
-        final Item item = mockery.mock( Item.class );
-        final UserInventory inventory = mockery.mock( UserInventory.class );
-        final ModelLocation location = mockery.mock( ModelLocation.class );
-        mockery.checking( new Expectations() {{
-            ignoring( item );
-            ignoring( inventory );
-            ignoring( location );
-        }});
         UserActionFactory factory = new UserActionFactory();
 
-        Action action = factory.createUseWithAction( item, inventory,
-                                                           location );
+        Action action = factory.createUseWithAction( null, null,
+                                                     null );
 
         assertThat( action, is( instanceOf( UseWith.class ) ) );
     }
 
     @Test
     public void create_examine_an_item_action_makes_right_action() {
-        final Item item = mockery.mock( Item.class );
-        mockery.checking( new Expectations() {{
-            ignoring( item );
-        }});
         UserActionFactory factory = new UserActionFactory();
 
         List<Item> items = new ArrayList<Item>();
@@ -99,38 +66,31 @@ public class UserActionFactoryTests {
 
     @Test
     public void create_take_an_item_action_makes_right_action() {
-        final Item item = mockery.mock( Item.class );
-        final UserInventory inventory = mockery.mock( UserInventory.class );
-        final ModelLocation location = mockery.mock( ModelLocation.class );
-        mockery.checking( new Expectations() {{
-            ignoring( item );
-            ignoring( inventory );
-            ignoring( location );
-        }});
         UserActionFactory factory = new UserActionFactory();
 
         List<Item> items = new ArrayList<Item>();
-        Action action = factory.createTakeAnItemAction( items, inventory,
-                                                        location );
+        Action action = factory.createTakeAnItemAction( items, null,
+                                                        null );
 
         assertThat( action, is( instanceOf( TakeAnItem.class ) ) );
     }
 
     @Test
     public void create_take_specific_item_action_makes_right_action() {
-        final Item item = mockery.mock( Item.class );
-        final UserInventory inventory = mockery.mock( UserInventory.class );
-        final ModelLocation location = mockery.mock( ModelLocation.class );
-        mockery.checking( new Expectations() {{
-            ignoring( item );
-            ignoring( inventory );
-            ignoring( location );
-        }});
         UserActionFactory factory = new UserActionFactory();
 
-        Action action = factory.createTakeSpecificItemAction( item,
-                                            inventory, location );
+        Action action = factory.createTakeSpecificItemAction( null,
+                                            null, null );
 
         assertThat( action, is( instanceOf( TakeSpecificItem.class ) ) );
+    }
+
+    @Test
+    public void create_use_with_specific_item_action_makes_right_action() {
+        UserActionFactory factory = new UserActionFactory();
+
+        Action action = factory.createUseWithSpecificItemAction( null, null );
+
+        assertThat( action, is( instanceOf( UseWithSpecificItem.class ) ) );
     }
 }
