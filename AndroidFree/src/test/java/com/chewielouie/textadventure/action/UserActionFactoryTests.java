@@ -86,6 +86,20 @@ public class UserActionFactoryTests {
     @Test
     public void create_examine_an_item_action_makes_right_action() {
         final Item item = mockery.mock( Item.class );
+        mockery.checking( new Expectations() {{
+            ignoring( item );
+        }});
+        UserActionFactory factory = new UserActionFactory();
+
+        List<Item> items = new ArrayList<Item>();
+        Action action = factory.createExamineAnItemAction( items );
+
+        assertThat( action, is( instanceOf( ExamineAnItem.class ) ) );
+    }
+
+    @Test
+    public void create_take_an_item_action_makes_right_action() {
+        final Item item = mockery.mock( Item.class );
         final UserInventory inventory = mockery.mock( UserInventory.class );
         final ModelLocation location = mockery.mock( ModelLocation.class );
         mockery.checking( new Expectations() {{
@@ -96,9 +110,9 @@ public class UserActionFactoryTests {
         UserActionFactory factory = new UserActionFactory();
 
         List<Item> items = new ArrayList<Item>();
-        Action action = factory.createExamineAnItemAction( items );
+        Action action = factory.createTakeAnItemAction( items, inventory,
+                                                        location );
 
-        assertThat( action, is( instanceOf( ExamineAnItem.class ) ) );
+        assertThat( action, is( instanceOf( TakeAnItem.class ) ) );
     }
 }
-

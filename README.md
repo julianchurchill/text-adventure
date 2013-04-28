@@ -24,7 +24,7 @@ Backlog
     * DONE [TEST] Remove Location constructor that does not take an ActionFactory
     * DONE [TEST] Remove LocationFactory constructor that does not take an ActionFactory
     * DONE [TEST] Location needs to use ActionFactory to create TakeAnItem action
-    * [TEST] UserActionFactory should implement createTakeAnItemAction()
+    * DONE [TEST] UserActionFactory should implement createTakeAnItemAction()
     * [TEST] Actions that create actions need an ActionFactory reference:
       * DONE ShowInventory creates InventoryItem actions
       * DONE InventoryItem creates Examine and UseWith actions
