@@ -8,7 +8,7 @@ Don't forget to drive the development by producing value - the value is game con
 Backlog
 =======
 
-* [FEATURE] Third save file alternative
+* [FEATURE] Save file new format
   * ActionRecorder, ActionReplayer, ActionHistory, ActionHistory[De]Serialiser
   * An ActionFactory is needed for user actions like Examine, TakeAnItem, ShowInventory. This needs to be passed to the Presenter and the other Actions that create actions.
     * DONE [TEST] Presenter should use an ActionFactory
@@ -43,66 +43,10 @@ Backlog
   * The ActionRecorder is passed to the ActionFactory (in both createNewGameModel() and setupPresenter()) to getRecordableItem(), getRecordableModel(), getRecordableLocation(), getRecordableExit(), getRecordableUserInventory() to wrap Items, and the Model before passing to the Actions it creates.
   * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
   * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
-
-* [FEATURE] Save file backwards compatibility alternative
-  * Save current score, inventory content, exits visibility, item visibility, examined and used states, changed item descriptions and names, changed location descriptions and names, save file format version number
-    * DONE [TEST] Rename PlainTextModelSerialiser to PlainTextModelDeltaSerialiser
-    * [TEST] Rename PlainTextModelDeltaSerialiser to PlainTextModelStateSerialiser ???  because we're talking about state here, rather than a delta from the model or static properties (e.g. id).
-    * [TEST] PlainTextModelDeltaSerialiser saves current score, current location id and version number for serialisation format
-    * [TEST] PlainTextExitDeltaSerialiser for Exits - including visibility
-    * [TEST] PlainTextExitDeltaSerialiser should save a version number for the serialisation format
-    * [TEST] PlainTextLocationDeltaSerialiser for Locations - including changed description and name
-    * [TEST] PlainTextLocationDeltaSerialiser should save a version number for the serialisation format
-    * [TEST] PlainTextItemDeltaSerialiser for Items/ItemActions - including whether item has been used or examined and changed description and name
-    * [TEST] PlainTextItemDeltaSerialiser should save a version number for the serialisation format
-  * Save destroyed item ids so items can be removed upon load - these can be saved as a list in the model for version 2.0
-    * [TEST] Model must save destroyed item ids for retrieval
-    * [TEST] PlainTextModelDeltaSerialiser serialises destroyed item id list
-  * On load read in base world content first then replace corresponding world data with the saved items. Remove destroyed items.
-    * [TEST] Create a PlainTextModelDeltaDeserialiser to write to an existing model with the delta save file content
-    * [TEST] PlainTextModelDeltaDeserialiser removes destroyed items from existing model
-    * [TEST] PlainTextExitDeltaDeserialiser should update exit visibility
-    * [TEST] PlainTextExitDeltaDeserialiser should read a version number for the serialisation format
-    * [TEST] PlainTextLocationDeltaDeserialiser updates changed description and name
-    * [TEST] PlainTextLocationDeltaDeserialiser should read a version number for the serialisation format
-    * [TEST] PlainTextItemDeltaDeserialiser updates whether item has been used or examined and changed description and name
-    * [TEST] PlainTextItemDeltaDeserialiser should read a version number for the serialisation format
-  * For backwards compatibility with version 1.0 if save file detected load 1.0 save file as new world, figure out what items have been destroyed (by scanning items for 'used' state and 'destroy item' action) and add to destroyed list in model, trigger an immediate save, then reload base world content and new save file. Delete old 1.0 save file.
-  * In future expansion of world be careful to only add new exits, locations, items and actions, not modify existing exits, locations, items or actions.
-
-* Put this on hold in favour of the alternative above...
-* [FEATURE] Save file backwards compatibility
-  * [TASK] Game world must be serialised and saved to a file - this is the new save game scheme
-    * DONE - [TEST] Activity uses PlainTextModelSerialiser onPause to save game to a file
-    * [TEST] PlainTextModelSerialiser for Model - including private info e.g. current score
-    * [TEST] PlainTextModelSerialiser should save a version number for the file/model format
-    * [TEST] Collate de/serialise constant strings in a common class
-    * [TEST] PlainTextModelPopulator should read an optional version number for the file/model format
-    * [TEST] PlainTextExitSerialiser for Exits - including visibility
-    * [TEST] PlainTextExitSerialiser should save a version number for the serialisation format
-    * [TEST] PlainTextExitDeserialiser should read an optional version number for the serialisation format
-    * [TEST] PlainTextLocationSerialiser for Locations
-    * [TEST] PlainTextLocationSerialiser should save a version number for the serialisation format
-    * [TEST] PlainTextLocationDeserialiser should read an optional version number for the serialisation format
-    * [TEST] PlainTextItemSerialiser for Items/ItemActions - including whether item has been used or examined
-    * [TEST] PlainTextItemSerialiser should save a version number for the serialisation format
-    * [TEST] PlainTextItemDeserialiser should read an optional version number for the serialisation format
-    * ??? How do we ensure compatibility between Serialiser and Deserialiser as development continues?
-  * [TASK] ModelMerger needs implementing
-    * [TEST] ModelMerger adds new locations from input to target
-    * [TEST] ModelMerger adds new exits from input to target
-    * [TEST] ModelMerger adds new items from input to target
-    * [TEST] ModelMerger removes missing locations from target that are not longer in input
-    * [TEST] ModelMerger removes missing exits from target that are not longer in input
-    * [TEST] ModelMerger removes missing items from target that are not longer in input
-    * [TEST] ModelMerger modifies properties of locations that have changed in input compared to target
-    * [TEST] ModelMerger modifies properties of exits that have changed in input compared to target
-    * [TEST] ModelMerger modifies properties of items that have changed in input compared to target
-  * [TASK] Activity save file logic as above needs implementing
-    * [TEST] On startup activity loads the base content into a model object.
-    * [TEST] If a new save file is available the activity loads it in another model object.
-    * [TEST] If not then if an old save file is available the activity loads it in another model object.
-    * [TEST] Finally the activity merges the save file model into the base content model and uses the result as the current world.
+  * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.
+    * Implementation is simple - iterate through locations, items, exits and copy names and descriptions, used and examined flags.
+    * Difficult bit is converting this into an action history to be saved as the new save file format...
+  * Remove PlainTextModelSerialiser created for rejected save proposal
 
 - [BUG] User still has map after giving it to the shopkeeper!
 - [FEATURE] Exits should have consistent colours for direction hints - e.g. all North should be green
