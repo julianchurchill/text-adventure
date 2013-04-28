@@ -1,6 +1,8 @@
 package com.chewielouie.textadventure.action;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,45 +34,30 @@ public class TakeAnItemTests {
     }
 
     @Test
-    public void follow_up_actions_contains_TakeSpecificItem_actions_for_each_location_item() {
+    public void follow_up_actions_use_action_factory_to_get_TakeSpecificItem_action_for_each_item() {
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        final Action takeAction1 = mockery.mock( Action.class, "action 1" );
+        final Action takeAction2 = mockery.mock( Action.class, "action 2" );
         final List<Item> items = new ArrayList<Item>();
-        Item item1 = mockery.mock( Item.class, "item 1" );
-        Item item2 = mockery.mock( Item.class, "item 2" );
+        final Item item1 = mockery.mock( Item.class, "item 1" );
+        final Item item2 = mockery.mock( Item.class, "item 2" );
         items.add( item1 );
         items.add( item2 );
-        TakeAnItem action = new TakeAnItem( items, null, null );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            oneOf( actionFactory ).createTakeSpecificItemAction( item1, inventory, location );
+            will( returnValue( takeAction1 ) );
+            oneOf( actionFactory ).createTakeSpecificItemAction( item2, inventory, location );
+            will( returnValue( takeAction2 ) );
+            ignoring( actionFactory );
+        }});
+        TakeAnItem action = new TakeAnItem( items, inventory, location, actionFactory );
 
         List<Action> actions = action.followUpActions();
-        assertEquals( 2, actions.size() );
-        assertTrue( actions.get(0) instanceof TakeSpecificItem );
-        assertEquals( item1, ((TakeSpecificItem)actions.get(0)).item() );
-        assertTrue( actions.get(1) instanceof TakeSpecificItem );
-        assertEquals( item2, ((TakeSpecificItem)actions.get(1)).item() );
-    }
-
-    @Test
-    public void user_inventory_is_passed_to_TakeSpecificItem_follow_up_actions() {
-        final List<Item> items = new ArrayList<Item>();
-        Item item = mockery.mock( Item.class, "item 1" );
-        items.add( item );
-        UserInventory inventory = mockery.mock( UserInventory.class );
-        TakeAnItem action = new TakeAnItem( items, inventory, null );
-
-        List<Action> actions = action.followUpActions();
-        assertEquals( inventory, ((TakeSpecificItem)actions.get(0)).inventory() );
-    }
-
-    @Test
-    public void location_is_passed_to_TakeSpecificItem_follow_up_actions() {
-        final List<Item> items = new ArrayList<Item>();
-        Item item = mockery.mock( Item.class, "item 1" );
-        items.add( item );
-        UserInventory inventory = mockery.mock( UserInventory.class );
-        ModelLocation location = mockery.mock( ModelLocation.class );
-        TakeAnItem action = new TakeAnItem( items, inventory, location );
-
-        List<Action> actions = action.followUpActions();
-        assertEquals( location, ((TakeSpecificItem)actions.get(0)).location() );
+        assertTrue( actions.size() > 1 );
+        assertThat( actions.get( 0 ), is( takeAction1 ) );
+        assertThat( actions.get( 1 ), is( takeAction2 ) );
     }
 
     @Test

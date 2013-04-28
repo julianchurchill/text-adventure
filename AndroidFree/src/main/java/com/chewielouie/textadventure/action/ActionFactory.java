@@ -20,5 +20,8 @@ public interface ActionFactory {
     public Action createTakeAnItemAction( List<Item> items,
                                           UserInventory inventory,
                                           ModelLocation location );
+    public Action createTakeSpecificItemAction( Item item,
+                                          UserInventory inventory,
+                                          ModelLocation location );
 }
 
