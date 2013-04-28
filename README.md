@@ -28,6 +28,9 @@ Backlog
     * DONE [TEST] TakeAnItem should use an ActionFactory
     * DONE [TEST] Remove TakeAnItem constructor that does not use an ActionFactory
     * DONE [TEST] UserActionFactory should implement createTakeSpecificItemAction()
+    * DONE [TEST] UseWith should use an ActionFactory
+    * [TEST] Remove UseWith constructor that does not use an ActionFactory
+    * [TEST] UserActionFactory should implement createUseWithSpecificItemAction()
     * [TEST] Actions that create actions need an ActionFactory reference:
       * DONE ShowInventory creates InventoryItem actions
       * DONE InventoryItem creates Examine and UseWith actions
@@ -52,6 +55,7 @@ Backlog
 
 - [BUG] User still has map after giving it to the shopkeeper!
 - [FEATURE] Exits should have consistent colours for direction hints - e.g. all North should be green
+- [FEATURE] Tell the user when they have reached the end of the available content! Perhaps a popup saying look out for new content in the next update?
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
 - [FEATURE] Let user change the font size on an options screen
 - [FEATURE] Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?

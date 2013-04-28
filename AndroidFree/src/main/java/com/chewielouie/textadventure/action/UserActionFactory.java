@@ -43,4 +43,9 @@ public class UserActionFactory implements ActionFactory {
                                           ModelLocation location ) {
         return new TakeSpecificItem( item, inventory, location );
     }
+
+    public Action createUseWithSpecificItemAction( Item actionOwner,
+                                                   Item target ) {
+        return null;
+    }
 }

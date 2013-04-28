@@ -11,18 +11,38 @@ public class UseWith implements Action {
     private Item item;
     private UserInventory inventory;
     private ModelLocation location;
+    private ActionFactory actionFactory;
 
-    public UseWith( Item item, UserInventory inventory, ModelLocation location ) {
+    public UseWith( Item item, UserInventory inventory,
+                    ModelLocation location ) {
+        this( item, inventory, location, null );
+    }
+
+    public UseWith( Item item, UserInventory inventory,
+                    ModelLocation location, ActionFactory factory ) {
         this.item = item;
         this.inventory = inventory;
         this.location = location;
+        this.actionFactory = factory;
+        if( factory != null ) {
+            extractActionsForInventoryItems();
+            extractActionsForLocationItems();
+        }
+    }
+
+    private void extractActionsForInventoryItems() {
         if( inventory != null )
             for( Item target : inventory.inventoryItems() )
-                followUpActions.add( new UseWithSpecificItem( item, target ) );
+                followUpActions.add(
+                    actionFactory.createUseWithSpecificItemAction( item, target ) );
+    }
+
+    private void extractActionsForLocationItems() {
         if( location != null )
             for( Item target : location.items() )
                 if( target.visible() )
-                    followUpActions.add( new UseWithSpecificItem( item, target ) );
+                    followUpActions.add(
+                        actionFactory.createUseWithSpecificItemAction( item, target ) );
     }
 
     public Item item() {

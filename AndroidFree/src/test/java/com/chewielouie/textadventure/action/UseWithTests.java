@@ -1,6 +1,9 @@
 package com.chewielouie.textadventure.action;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static java.util.Arrays.asList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +21,7 @@ public class UseWithTests {
     private Mockery mockery = new Mockery();
 
     UseWith createAction() {
-        return new UseWith( null, null, null );
+        return new UseWith( null, null, null, null );
     }
 
     @Test
@@ -32,148 +35,72 @@ public class UseWithTests {
     }
 
     @Test
-    public void follow_up_actions_contains_UseWithSpecificItem_actions_for_each_item_from_model_and_inventory() {
-        final Item inventoryItem = mockery.mock( Item.class, "inv item" );
-        final List<Item> inventoryItems = new ArrayList<Item>();
-        inventoryItems.add( inventoryItem );
-        final Item locationItem = mockery.mock( Item.class, "loc item" );
-        final List<Item> locationItems = new ArrayList<Item>();
-        locationItems.add( locationItem );
-        final ModelLocation location = mockery.mock( ModelLocation.class );
-        final UserInventory inventory = mockery.mock( UserInventory.class );
-        mockery.checking( new Expectations() {{
-            allowing( location ).items();
-            will( returnValue( locationItems ) );
-            ignoring( location );
-            allowing( inventory ).inventoryItems();
-            will( returnValue( inventoryItems ) );
-            ignoring( inventory );
-            ignoring( inventoryItem );
-            allowing( locationItem ).visible();
-            will( returnValue( true ) );
-            ignoring( locationItem );
-        }});
-        UseWith action = new UseWith( null, inventory, location );
-
-        List<Action> actions = action.followUpActions();
-        assertEquals( 2, actions.size() );
-        assertTrue( actions.get(0) instanceof UseWithSpecificItem );
-        assertEquals( inventoryItem, ((UseWithSpecificItem)actions.get(0)).targetItem() );
-        assertTrue( actions.get(1) instanceof UseWithSpecificItem );
-        assertEquals( locationItem, ((UseWithSpecificItem)actions.get(1)).targetItem() );
-    }
-
-    @Test
-    public void follow_up_actions_contains_UseWithSpecificItem_actions_for_each_item_from_location() {
-        final Item locationItem = mockery.mock( Item.class, "loc item" );
-        final List<Item> locationItems = new ArrayList<Item>();
-        locationItems.add( locationItem );
+    public void follow_up_actions_use_action_factory_to_get_UseWithSpecificItem_action_for_each_item_from_location() {
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        final Action locationAction = mockery.mock( Action.class );
+        final Item item = mockery.mock( Item.class, "item" );
+        final Item locationItem = mockery.mock( Item.class, "location item" );
         final ModelLocation location = mockery.mock( ModelLocation.class );
         mockery.checking( new Expectations() {{
             allowing( location ).items();
-            will( returnValue( locationItems ) );
+            will( returnValue( asList( locationItem ) ) );
             ignoring( location );
-            allowing( locationItem ).visible();
-            will( returnValue( true ) );
+            allowing( locationItem ).visible(); will( returnValue( true ) );
             ignoring( locationItem );
+            oneOf( actionFactory ).createUseWithSpecificItemAction( item, locationItem );
+            will( returnValue( locationAction ) );
+            ignoring( actionFactory );
         }});
-        UseWith action = new UseWith( null, null, location );
+        UseWith action = new UseWith( item, null, location, actionFactory );
 
         List<Action> actions = action.followUpActions();
-        assertEquals( 1, actions.size() );
-        assertTrue( actions.get(0) instanceof UseWithSpecificItem );
-        assertEquals( locationItem, ((UseWithSpecificItem)actions.get(0)).targetItem() );
+        assertThat( actions.size(), is( greaterThan( 0 ) ) );
+        assertThat( actions.get( 0 ), is( locationAction ) );
     }
 
     @Test
-    public void UseWithSpecificItem_actions_contain_only_visible_location_items() {
-        final Item visibleItem = mockery.mock( Item.class, "visible item" );
+    public void follow_up_actions_include_only_visible_items_from_location() {
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        final Action locationAction = mockery.mock( Action.class );
+        final Item item = mockery.mock( Item.class, "item" );
         final Item invisibleItem = mockery.mock( Item.class, "invisible item" );
-        final List<Item> locationItems = new ArrayList<Item>();
-        locationItems.add( visibleItem );
-        locationItems.add( invisibleItem );
+        final Item visibleItem = mockery.mock( Item.class, "visible item" );
         final ModelLocation location = mockery.mock( ModelLocation.class );
         mockery.checking( new Expectations() {{
             allowing( location ).items();
-            will( returnValue( locationItems ) );
+            will( returnValue( asList( invisibleItem, visibleItem ) ) );
             ignoring( location );
-            allowing( visibleItem ).visible();
-            will( returnValue( true ) );
-            ignoring( visibleItem );
-            allowing( invisibleItem ).visible();
-            will( returnValue( false ) );
+            allowing( invisibleItem ).visible(); will( returnValue( false ) );
             ignoring( invisibleItem );
+            allowing( visibleItem ).visible(); will( returnValue( true ) );
+            ignoring( visibleItem );
+            oneOf( actionFactory ).createUseWithSpecificItemAction( item, visibleItem );
+            will( returnValue( locationAction ) );
+            ignoring( actionFactory );
         }});
-        UseWith action = new UseWith( null, null, location );
-
-        List<Action> actions = action.followUpActions();
-        assertEquals( 1, actions.size() );
-        assertTrue( actions.get(0) instanceof UseWithSpecificItem );
-        assertEquals( visibleItem, ((UseWithSpecificItem)actions.get(0)).targetItem() );
+        new UseWith( item, null, location, actionFactory ).followUpActions();
     }
 
     @Test
-    public void follow_up_actions_contains_UseWithSpecificItem_actions_for_each_item_from_inventory() {
-        final Item inventoryItem = mockery.mock( Item.class, "inv item" );
-        final List<Item> inventoryItems = new ArrayList<Item>();
-        inventoryItems.add( inventoryItem );
+    public void follow_up_actions_use_action_factory_to_get_UseWithSpecificItem_action_for_each_item_from_inventory() {
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        final Action inventoryAction = mockery.mock( Action.class );
+        final Item item = mockery.mock( Item.class, "item" );
+        final Item inventoryItem = mockery.mock( Item.class, "inventory item" );
         final UserInventory inventory = mockery.mock( UserInventory.class );
         mockery.checking( new Expectations() {{
             allowing( inventory ).inventoryItems();
-            will( returnValue( inventoryItems ) );
+            will( returnValue( asList( inventoryItem ) ) );
             ignoring( inventory );
-            ignoring( inventoryItem );
+            oneOf( actionFactory ).createUseWithSpecificItemAction( item, inventoryItem );
+            will( returnValue( inventoryAction ) );
+            ignoring( actionFactory );
         }});
-        UseWith action = new UseWith( null, inventory, null );
+        UseWith action = new UseWith( item, inventory, null, actionFactory );
 
         List<Action> actions = action.followUpActions();
-        assertEquals( 1, actions.size() );
-        assertTrue( actions.get(0) instanceof UseWithSpecificItem );
-        assertEquals( inventoryItem, ((UseWithSpecificItem)actions.get(0)).targetItem() );
-    }
-
-    @Test
-    public void UseWithSpecificItem_location_actions_are_created_with_original_item() {
-        final Item locationItem = mockery.mock( Item.class, "loc item" );
-        final List<Item> locationItems = new ArrayList<Item>();
-        locationItems.add( locationItem );
-        final ModelLocation location = mockery.mock( ModelLocation.class );
-        mockery.checking( new Expectations() {{
-            allowing( location ).items();
-            will( returnValue( locationItems ) );
-            ignoring( location );
-            allowing( locationItem ).visible();
-            will( returnValue( true ) );
-            ignoring( locationItem );
-        }});
-        Item originalItem = mockery.mock( Item.class, "item being used" );
-        UseWith action = new UseWith( originalItem, null, location );
-
-        List<Action> actions = action.followUpActions();
-        assertEquals( 1, actions.size() );
-        assertTrue( actions.get(0) instanceof UseWithSpecificItem );
-        assertEquals( originalItem, ((UseWithSpecificItem)actions.get(0)).itemBeingUsed() );
-    }
-
-    @Test
-    public void UseWithSpecificItem_inventory_actions_are_created_with_original_item() {
-        final Item inventoryItem = mockery.mock( Item.class, "inv item" );
-        final List<Item> inventoryItems = new ArrayList<Item>();
-        inventoryItems.add( inventoryItem );
-        final UserInventory inventory = mockery.mock( UserInventory.class );
-        mockery.checking( new Expectations() {{
-            allowing( inventory ).inventoryItems();
-            will( returnValue( inventoryItems ) );
-            ignoring( inventory );
-            ignoring( inventoryItem );
-        }});
-        Item originalItem = mockery.mock( Item.class, "item being used" );
-        UseWith action = new UseWith( originalItem, inventory, null );
-
-        List<Action> actions = action.followUpActions();
-        assertEquals( 1, actions.size() );
-        assertTrue( actions.get(0) instanceof UseWithSpecificItem );
-        assertEquals( originalItem, ((UseWithSpecificItem)actions.get(0)).itemBeingUsed() );
+        assertThat( actions.size(), is( greaterThan( 0 ) ) );
+        assertThat( actions.get( 0 ), is( inventoryAction ) );
     }
 
     @Test
@@ -200,5 +127,3 @@ public class UseWithTests {
         assertEquals( object1.hashCode(), object2.hashCode() );
     }
 }
-
-

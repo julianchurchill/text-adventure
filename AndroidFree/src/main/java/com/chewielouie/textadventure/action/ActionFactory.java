@@ -23,5 +23,7 @@ public interface ActionFactory {
     public Action createTakeSpecificItemAction( Item item,
                                           UserInventory inventory,
                                           ModelLocation location );
+    public Action createUseWithSpecificItemAction( Item actionOwner,
+                                                   Item target );
 }
 
