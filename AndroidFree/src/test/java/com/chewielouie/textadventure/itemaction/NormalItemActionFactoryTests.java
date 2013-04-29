@@ -1,10 +1,19 @@
 package com.chewielouie.textadventure.itemaction;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
+import org.jmock.*;
+import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.item.ItemDecorator;
 
 public class NormalItemActionFactoryTests {
+
+    private Mockery mockery = new Mockery();
 
     @Test
     public void creates_ChangeItemDescriptionItemActions() {
@@ -18,6 +27,26 @@ public class NormalItemActionFactoryTests {
     }
 
     @Test
+    public void ChangeItemDescriptionItemAction_has_item_decorated() {    
+        final ItemDecorator decorator = mockery.mock( ItemDecorator.class );
+        final Item item = mockery.mock( Item.class, "item" );
+        final Item decoratedItem = mockery.mock( Item.class, "decorated item" );
+        mockery.checking( new Expectations() {{
+            allowing( decorator ).decorate( item ); will( returnValue( decoratedItem ) );
+            ignoring( decorator );
+            ignoring( item );
+            ignoring( decoratedItem );
+        }});
+        NormalItemActionFactory factory = new NormalItemActionFactory( null );
+        factory.setItemDecorator( decorator );
+
+        ChangeItemDescriptionItemAction action =
+            (ChangeItemDescriptionItemAction )factory.create(
+               "change item description:new description", item );
+        assertThat( action.item(), is( decoratedItem ) );
+    }
+
+    @Test
     public void creates_ChangeItemNameItemActions() {
         NormalItemActionFactory factory = new NormalItemActionFactory( null );
 
@@ -26,6 +55,26 @@ public class NormalItemActionFactoryTests {
                null );
 
         assertTrue( action instanceof ChangeItemNameItemAction );
+    }
+
+    @Test
+    public void ChangeItemNameItemAction_has_item_decorated() {    
+        final ItemDecorator decorator = mockery.mock( ItemDecorator.class );
+        final Item item = mockery.mock( Item.class, "item" );
+        final Item decoratedItem = mockery.mock( Item.class, "decorated item" );
+        mockery.checking( new Expectations() {{
+            allowing( decorator ).decorate( item ); will( returnValue( decoratedItem ) );
+            ignoring( decorator );
+            ignoring( item );
+            ignoring( decoratedItem );
+        }});
+        NormalItemActionFactory factory = new NormalItemActionFactory( null );
+        factory.setItemDecorator( decorator );
+
+        ChangeItemNameItemAction action =
+            (ChangeItemNameItemAction )factory.create(
+               "change item name:new name", item );
+        assertThat( action.item(), is( decoratedItem ) );
     }
 
     @Test

@@ -13,6 +13,10 @@ public class ChangeItemDescriptionItemAction implements ItemAction {
         this.item = item;
     }
 
+    public Item item() {
+        return item;
+    }
+
     public void enact() {
         item.setDescription( description );
     }
