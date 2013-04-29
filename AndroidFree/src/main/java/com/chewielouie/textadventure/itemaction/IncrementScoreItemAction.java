@@ -11,6 +11,10 @@ public class IncrementScoreItemAction implements ItemAction {
         this.model = model;
     }
 
+    public TextAdventureModel model() {
+        return model;
+    }
+
     public void enact() {
         model.setCurrentScore( model.currentScore() + 1 );
     }

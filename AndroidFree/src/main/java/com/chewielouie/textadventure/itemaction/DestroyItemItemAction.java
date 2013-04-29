@@ -13,6 +13,10 @@ public class DestroyItemItemAction implements ItemAction {
         this.model = model;
     }
 
+    public TextAdventureModel model() {
+        return model;
+    }
+
     public void enact() {
         model.destroyItem( itemID );
     }

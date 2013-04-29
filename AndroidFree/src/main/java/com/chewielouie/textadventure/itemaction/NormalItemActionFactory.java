@@ -3,6 +3,8 @@ package com.chewielouie.textadventure.itemaction;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.item.ItemDecorator;
 import com.chewielouie.textadventure.item.NullItemDecorator;
+import com.chewielouie.textadventure.ModelDecorator;
+import com.chewielouie.textadventure.NullModelDecorator;
 import com.chewielouie.textadventure.TextAdventureModel;
 
 public class NormalItemActionFactory implements ItemActionFactory {
@@ -15,6 +17,7 @@ public class NormalItemActionFactory implements ItemActionFactory {
     private String changeLocationDescriptionTag = "change location description:";
     private TextAdventureModel model;
     private ItemDecorator itemDecorator = new NullItemDecorator();
+    private ModelDecorator modelDecorator = new NullModelDecorator();
 
     public NormalItemActionFactory( TextAdventureModel model ) {
         this.model = model;
@@ -22,6 +25,10 @@ public class NormalItemActionFactory implements ItemActionFactory {
 
     public void setItemDecorator( ItemDecorator d ) {
         this.itemDecorator = d;
+    }
+
+    public void setModelDecorator( ModelDecorator d ) {
+        this.modelDecorator = d;
     }
 
     public ItemAction create( String content, Item item ) {
@@ -36,21 +43,21 @@ public class NormalItemActionFactory implements ItemActionFactory {
         else if( content.startsWith( makeExitVisibleTag ) )
             return new MakeExitVisibleItemAction(
                        content.substring( makeExitVisibleTag.length() ),
-                       model );
+                       modelDecorator.decorate( model ) );
         else if( content.startsWith( destroyItemTag ) )
             return new DestroyItemItemAction(
                        content.substring( destroyItemTag.length() ),
-                       model );
+                       modelDecorator.decorate( model ) );
         else if( content.startsWith( changeItemVisibilityTag ) )
             return new ChangeItemVisibilityItemAction(
                        content.substring( changeItemVisibilityTag.length() ),
-                       model );
+                       modelDecorator.decorate( model ) );
         else if( content.startsWith( incrementScoreTag ) )
-            return new IncrementScoreItemAction( model );
+            return new IncrementScoreItemAction( modelDecorator.decorate( model ) );
         else if( content.startsWith( changeLocationDescriptionTag ) )
             return new ChangeLocationDescriptionItemAction(
                        content.substring( changeLocationDescriptionTag.length() ),
-                       model );
+                       modelDecorator.decorate( model ) );
         return new NullItemAction( content );
     }
 }

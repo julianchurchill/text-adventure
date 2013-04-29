@@ -31,6 +31,10 @@ public class ChangeLocationDescriptionItemAction implements ItemAction {
             newDescription = arguments.substring( endOfID+1 );
     }
 
+    public TextAdventureModel model() {
+        return model;
+    }
+
     public void enact() {
         for( ModelLocation loc : model.locations() ) {
             if( loc.id().equals( locationID ) ) {

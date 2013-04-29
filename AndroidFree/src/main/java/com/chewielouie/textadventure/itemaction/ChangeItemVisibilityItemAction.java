@@ -35,6 +35,10 @@ public class ChangeItemVisibilityItemAction implements ItemAction {
         return true;
     }
 
+    public TextAdventureModel model() {
+        return model;
+    }
+
     public void enact() {
         Item item = model.findItemByID( itemID );
         if( item != null )

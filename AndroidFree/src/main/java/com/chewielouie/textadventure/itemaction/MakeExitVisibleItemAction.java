@@ -15,6 +15,10 @@ public class MakeExitVisibleItemAction implements ItemAction {
         this.model = model;
     }
 
+    public TextAdventureModel model() {
+        return model;
+    }
+
     public void enact() {
         Exit exit = model.findExitByID( exitID );
         if( exit != null )
