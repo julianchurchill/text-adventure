@@ -1,6 +1,5 @@
 package com.chewielouie.textadventure.itemaction;
 
-import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.Exit;
 import com.chewielouie.textadventure.TextAdventureModel;
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ public class MakeExitVisibleItemAction implements ItemAction {
     private String exitID;
     private TextAdventureModel model;
 
-    public MakeExitVisibleItemAction( String exitID, Item item,
+    public MakeExitVisibleItemAction( String exitID, 
            TextAdventureModel model ) {
         this.exitID = exitID;
         this.model = model;

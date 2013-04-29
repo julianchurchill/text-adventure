@@ -36,7 +36,6 @@ public class NormalItemActionFactory implements ItemActionFactory {
         else if( content.startsWith( makeExitVisibleTag ) )
             return new MakeExitVisibleItemAction(
                        content.substring( makeExitVisibleTag.length() ),
-                       item,
                        model );
         else if( content.startsWith( destroyItemTag ) )
             return new DestroyItemItemAction(

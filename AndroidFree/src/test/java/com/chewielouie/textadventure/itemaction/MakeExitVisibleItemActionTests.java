@@ -17,11 +17,10 @@ public class MakeExitVisibleItemActionTests {
 
     @Test
     public void enact_makes_named_exit_visible() {
-        final Item item = mockery.mock( Item.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         final Exit exit = mockery.mock( Exit.class );
         MakeExitVisibleItemAction action =
-            new MakeExitVisibleItemAction( "exit id", item, model );
+            new MakeExitVisibleItemAction( "exit id", model );
         mockery.checking( new Expectations() {{
             oneOf( model ).findExitByID( "exit id" );
             will( returnValue( exit ) );
@@ -35,10 +34,9 @@ public class MakeExitVisibleItemActionTests {
 
     @Test
     public void enact_fails_gracefully_when_it_cant_find_the_exit() {
-        final Item item = mockery.mock( Item.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         MakeExitVisibleItemAction action =
-            new MakeExitVisibleItemAction( "exit id", item, model );
+            new MakeExitVisibleItemAction( "exit id", model );
         mockery.checking( new Expectations() {{
             oneOf( model ).findExitByID( "exit id" );
             will( returnValue( null ) );
