@@ -132,7 +132,7 @@ public class NormalItem implements Item {
             for( ItemAction action : onUseActions )
                 action.enact();
         else
-            usedWithText = "You have already done that.";
+            setUsedWithText( "You have already done that." );
         used = true;
     }
 
@@ -161,7 +161,7 @@ public class NormalItem implements Item {
             for( ItemAction action : onExamineActions )
                 action.enact();
         else
-            examineText = "";
+            setExamineText( "" );
         examined = true;
     }
 

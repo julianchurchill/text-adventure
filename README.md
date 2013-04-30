@@ -45,7 +45,9 @@ Backlog
   * DONE On create RecordableItemDecorator is created with an ActionHistory
   * DONE On create RecordableItemDecorator is passed to the ItemActionFactory in createNewGameModel()
   * DONE [TEST] Implement RecordableItemDecorator, wraps item in new RecordableItem object
-  * A RecordableItem implements Item interface. It takes the Item to delegate to in the constructor along with the ActionHistory. When changes are made to the Item it uses the ActionHistory to record the details.
+  * A RecordableItem implements Item interface.
+    * DONE [TEST] It delegates all calls to the target Item.
+    * [TEST] It records all changes made to the Item in the ActionHistory.
   * On create RecordableModelDecorator is created with an ActionHistory
   * On create RecordableModelDecorator is passed to the ItemActionFactory in createNewGameModel()
   * [TEST] Implement RecordableModelDecorator, wraps model in new RecordableModel created with ActionHistory object
@@ -56,6 +58,7 @@ Backlog
   * Implement ActionHistory
   * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
   * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
+    * How to handle replay of Item.use()/examine() which enact all the registered ItemActions? (therefore causing name, description changes etc... which the ActionReplayed will already be doing itself...)
   * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.
     * Implement as n hard coded rules to translate from 1.0 to 2.0 models:
       * If the bagsofjunk have been examined run Examine on them

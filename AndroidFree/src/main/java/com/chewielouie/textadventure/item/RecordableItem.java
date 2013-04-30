@@ -21,34 +21,123 @@ public class RecordableItem implements Item {
         return actionHistory;
     }
 
-    public String description() {return "";}
-    public void setDescription( String description ) {}
-    public String name() {return "";}
-    public void setName( String name ) {}
-    public String id() {return "";}
-    public void setId( String id ) {}
-    public String countableNounPrefix() {return "";}
-    public void setCountableNounPrefix( String prefix ) {}
-    public String midSentenceCasedName() {return "";}
-    public void setMidSentenceCasedName( String casedName ) {}
-    public boolean takeable() {return false;}
-    public void setUntakeable() {}
-    public boolean canBeUsedWith( Item item ) {return false;};
-    public void setCanBeUsedWith( String itemID ) {}
-    public List<String> canBeUsedWithItemIDs() {return null;}
-    public String usedWithText() {return "";}
-    public void setUsedWithText( String text ) {}
-    public void setUseIsNotRepeatable() {}
-    public boolean useIsNotRepeatable() {return false;}
-    public void addOnUseAction( ItemAction action ) {}
-    public void use() {}
-    public List<ItemAction> actions() {return null;}
-    public void setVisible( boolean visible ) {}
-    public boolean visible() {return false;}
-    public void examine() {}
-    public void addOnExamineAction( ItemAction action ) {}
-    public String examineText() {return "";}
-    public void setExamineText( String text ) {}
-    public void setExamineActionIsNotRepeatable() {}
-    public boolean examineActionIsNotRepeatable() {return false;}
+    public String description() {
+        return itemToRecord.description();
+    }
+
+    public void setDescription( String description ) {
+        itemToRecord.setDescription( description );
+    }
+
+    public String name() {
+        return itemToRecord.name();
+    }
+
+    public void setName( String name ) {
+        itemToRecord.setName( name );
+    }
+
+    public String id() {
+        return itemToRecord.id();
+    }
+
+    public void setId( String id ) {
+        itemToRecord.setId( id );
+    }
+
+    public String countableNounPrefix() {
+        return itemToRecord.countableNounPrefix();
+    }
+
+    public void setCountableNounPrefix( String prefix ) {
+        itemToRecord.setCountableNounPrefix( prefix );
+    }
+
+    public String midSentenceCasedName() {
+        return itemToRecord.midSentenceCasedName();
+    }
+
+    public void setMidSentenceCasedName( String casedName ) {
+        itemToRecord.setMidSentenceCasedName( casedName );
+    }
+
+    public boolean takeable() {
+        return itemToRecord.takeable();
+    }
+
+    public void setUntakeable() {
+        itemToRecord.setUntakeable();
+    }
+
+    public boolean canBeUsedWith( Item item ) {
+        return itemToRecord.canBeUsedWith( item );
+    }
+
+    public void setCanBeUsedWith( String itemID ) {
+        itemToRecord.setCanBeUsedWith( itemID );
+    }
+
+    public List<String> canBeUsedWithItemIDs() {
+        return itemToRecord.canBeUsedWithItemIDs();
+    }
+
+    public String usedWithText() {
+        return itemToRecord.usedWithText();
+    }
+
+    public void setUsedWithText( String text ) {
+        itemToRecord.setUsedWithText( text );
+    }
+
+    public void setUseIsNotRepeatable() {
+        itemToRecord.setUseIsNotRepeatable();
+    }
+
+    public boolean useIsNotRepeatable() {
+        return itemToRecord.useIsNotRepeatable();
+    }
+
+    public void addOnUseAction( ItemAction action ) {
+        itemToRecord.addOnUseAction( action );
+    }
+
+    public void use() {
+        itemToRecord.use();
+    }
+
+    public List<ItemAction> actions() {
+        return itemToRecord.actions();
+    }
+
+    public void setVisible( boolean visible ) {
+        itemToRecord.setVisible( visible );
+    }
+
+    public boolean visible() {
+        return itemToRecord.visible();
+    }
+
+    public void examine() {
+        itemToRecord.examine();
+    }
+
+    public void addOnExamineAction( ItemAction action ) {
+        itemToRecord.addOnExamineAction( action );
+    }
+
+    public String examineText() {
+        return itemToRecord.examineText();
+    }
+
+    public void setExamineText( String text ) {
+        itemToRecord.setExamineText( text );
+    }
+
+    public void setExamineActionIsNotRepeatable() {
+        itemToRecord.setExamineActionIsNotRepeatable();
+    }
+
+    public boolean examineActionIsNotRepeatable() {
+        return itemToRecord.examineActionIsNotRepeatable();
+    }
 }
