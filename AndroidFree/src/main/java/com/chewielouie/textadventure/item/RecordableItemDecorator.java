@@ -7,6 +7,6 @@ public class RecordableItemDecorator implements ItemDecorator {
 	}
 
     public Item decorate( Item item ) {
-    	return item;
+    	return new RecordableItem( null, null );
     }
 }
