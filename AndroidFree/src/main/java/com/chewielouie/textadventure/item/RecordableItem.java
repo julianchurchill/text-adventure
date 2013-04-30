@@ -5,8 +5,21 @@ import com.chewielouie.textadventure.ActionHistory;
 import com.chewielouie.textadventure.itemaction.ItemAction;
 
 public class RecordableItem implements Item {
+    private Item itemToRecord;
+    private ActionHistory actionHistory;
+
 	public RecordableItem( Item itemToRecord, ActionHistory history ) {
+        this.itemToRecord = itemToRecord;
+        this.actionHistory = history;
 	}
+
+    public Item item() {
+        return itemToRecord;
+    }
+
+    public ActionHistory actionHistory() {
+        return actionHistory;
+    }
 
     public String description() {return "";}
     public void setDescription( String description ) {}

@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.*;
 
 import org.jmock.*;
 import org.junit.Test;
-// import com.chewielouie.textadventure.TextAdventureModel;
+import com.chewielouie.textadventure.ActionHistory;
 
 public class RecordableItemDecoratorTests {
 
@@ -23,24 +23,26 @@ public class RecordableItemDecoratorTests {
     	assertThat( decoratedItem, is( instanceOf( RecordableItem.class ) ) );
     }
 
-    // @Test
-    // public void decorator_passes_wrapped_item_to_new_item() {    
-    	// RecordableItemDecorator decorator =
-    	// 		new RecordableItemDecorator( null );
+    @Test
+    public void decorator_passes_wrapped_item_to_new_item() {    
+    	RecordableItemDecorator decorator =
+    			new RecordableItemDecorator( null );
 
-    // 	Item item = mockery.mock( Item.class );
-    // 	Item decoratedItem = decorator.decorate( item );
+    	Item item = mockery.mock( Item.class );
+    	RecordableItem decoratedItem = (RecordableItem)decorator.decorate( item );
 
-    // 	assertThat( decoratedItem.item(), is( item ) );
-    // }
+    	assertThat( decoratedItem.item(), is( item ) );
+    }
 
-    // @Test
-    // public void decorator_passes_action_history_to_new_item() {    
-    // 	RecordableItemDecorator decorator =
-    // 			new RecordableItemDecorator( actionHistory );
+    @Test
+    public void decorator_passes_action_history_to_new_item() {    
+    	ActionHistory actionHistory = mockery.mock( ActionHistory.class );
+    	RecordableItemDecorator decorator =
+    			new RecordableItemDecorator( actionHistory );
 	
-    // 	Item decoratedItem = decorator.decorate( item );
+    	Item item = mockery.mock( Item.class );
+    	RecordableItem decoratedItem = (RecordableItem)decorator.decorate( item );
 
-    // 	assertThat( decoratedItem.actionHistory(), is( actionHistory ) );
-    // }
+    	assertThat( decoratedItem.actionHistory(), is( actionHistory ) );
+    }
 }
