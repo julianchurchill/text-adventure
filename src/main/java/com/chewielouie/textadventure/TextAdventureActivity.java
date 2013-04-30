@@ -50,6 +50,7 @@ import com.chewielouie.textadventure.serialisation.PlainTextModelDeltaSerialiser
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.item.ItemFactory;
 import com.chewielouie.textadventure.item.NormalItemFactory;
+import com.chewielouie.textadventure.item.RecordableItemDecorator;
 import com.chewielouie.textadventure.itemaction.ItemActionFactory;
 import com.chewielouie.textadventure.itemaction.NormalItemActionFactory;
 import com.chewielouie.textadventure.itemaction.LoggableNormalItemActionFactory;
@@ -145,6 +146,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         UserInventory inventory = model;
         Logger logger = new StdoutLogger();
         ItemActionFactory itemActionFactory = new LoggableNormalItemActionFactory( logger, model );
+        BasicActionHistory actionHistory = new BasicActionHistory();
+        RecordableItemDecorator itemDecorator = new RecordableItemDecorator( actionHistory );
+        itemActionFactory.setItemDecorator( itemDecorator );
         ItemFactory itemFactory = new NormalItemFactory();
         ItemDeserialiser itemDeserialiser =
             new PlainTextItemDeserialiser( itemActionFactory );

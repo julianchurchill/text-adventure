@@ -41,15 +41,22 @@ Backlog
   * DONE An ItemDecorator and ModelDecorator can be passed to the ItemActionFactory which uses it to wrap Item and Model in RecordableItem and RecordableModel objects before passing to the ItemActions it creates.
     * DONE [TEST] ItemDecorator is used by ItemActionFactory
     * DONE [TEST] ModelDecorator is used by ItemActionFactory
+  * DONE On create ActionHistory is created and used to store the actions that occur.
+  * DONE On create RecordableItemDecorator is created with an ActionHistory
+  * DONE On create RecordableItemDecorator is passed to the ItemActionFactory in createNewGameModel()
+  * [TEST] Implement RecordableItemDecorator, wraps item in new RecordableItem object
+  * On create RecordableModelDecorator is created with an ActionHistory
+  * On create RecordableModelDecorator is passed to the ItemActionFactory in createNewGameModel()
+  * [TEST] Implement RecordableModelDecorator, wraps model in new RecordableModel created with ActionHistory object
   * A RecordableItem implements Item interface. It takes the Item to delegate to in the constructor along with the ActionHistory. When changes are made to the Item it uses the ActionHistory to record the details.
   * The RecordableModel, Location, Exit and UserInventory work the same. RecordableModel also will return Locations wrapped in a RecordableLocation object after retrieving from the real Model. RecordableLocation likewise does the same for Exits.
-  * [TEST] Implement RecordableItemDecorator, wraps item in new RecordableItem created with ActionHistory object
-  * [TEST] Implement RecordableModelDecorator, wraps model in new RecordableModel created with ActionHistory object
   * The ItemDecorator and ModelDecorator can be passed to the ActionFactory to wrap Item and Model in RecordableItem and RecordableModel objects before passing to the Actions it creates.
-  * On create ActionHistory is created and used to store the actions that occur.
-  * On create RecordableItemDecorator is created with an ActionHistory and passed to the ItemActionFactory and the ActionFactory in both createNewGameModel() and setupPresenter()
+  * On create RecordableItemDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
+  * On create RecordableModelDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
+  * Implement ActionHistory
   * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
   * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
+
   * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.
     * Implement as n hard coded rules to translate from 1.0 to 2.0 models:
       * If the bagsofjunk have been examined run Examine on them
