@@ -67,11 +67,13 @@ Backlog
   * A RecordableUserInventory implements UserInventory interface.
     * [TEST] It delegates all calls to the target UserInventory.
     * [TEST] It records 'addToInventory' events on the UserInventory in the ActionHistory. All other events are not triggered by user action and therefore do not need recording.
-  * Should the decorators be passed _solely_ through the ActionFactory and not the ItemActionFactory at all?
+  * Should the decorators be passed _solely_ through the ActionFactory and not the ItemActionFactory at all? It makes conceptual sense.
   * On create RecordableItemDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
     * Used by the ActionFactory to decorate Items that it passes to Actions it creates.
   * On create RecordableModelDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
     * Used by the ActionFactory to decorate Models that it passes to Actions it creates.
+  * On create RecordableLocationDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
+    * Used by the ActionFactory to decorate Locations that it passes to Actions it creates.
   * On create RecordableUserInventoryDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
     * Used by the ActionFactory to decorate UserInventorys that it passes to Actions it creates.
 
