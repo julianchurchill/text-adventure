@@ -47,18 +47,18 @@ Backlog
   * DONE [TEST] Implement RecordableItemDecorator, wraps item in new RecordableItem object
   * A RecordableItem implements Item interface.
     * DONE [TEST] It delegates all calls to the target Item.
-    * [TEST] It records all changes made to the Item in the ActionHistory.
+    * DONE [TEST] It records 'use' and 'examine' actions on the Item in the ActionHistory.
   * On create RecordableModelDecorator is created with an ActionHistory
   * On create RecordableModelDecorator is passed to the ItemActionFactory in createNewGameModel()
   * [TEST] Implement RecordableModelDecorator, wraps model in new RecordableModel created with ActionHistory object
-  * The RecordableModel, Location, Exit and UserInventory work the same. RecordableModel also will return Locations wrapped in a RecordableLocation object after retrieving from the real Model. RecordableLocation likewise does the same for Exits.
+  * The RecordableModel, Location, Exit and UserInventory work like RecordableItem. RecordableModel also will return Locations wrapped in a RecordableLocation object after retrieving from the real Model. RecordableLocation likewise does the same for Exits.
   * The ItemDecorator and ModelDecorator can be passed to the ActionFactory to wrap Item and Model in RecordableItem and RecordableModel objects before passing to the Actions it creates.
   * On create RecordableItemDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
   * On create RecordableModelDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
   * Implement ActionHistory
   * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
   * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
-    * How to handle replay of Item.use()/examine() which enact all the registered ItemActions? (therefore causing name, description changes etc... which the ActionReplayed will already be doing itself...)
+    * How to handle replay of Item.use()/examine() which enact all the registered ItemActions? (therefore causing name, description changes etc... which the ActionReplayed will already be doing itself...) - could just call 'setUsedFlag()' to set the fact that it has been used without running the actions
   * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.
     * Implement as n hard coded rules to translate from 1.0 to 2.0 models:
       * If the bagsofjunk have been examined run Examine on them

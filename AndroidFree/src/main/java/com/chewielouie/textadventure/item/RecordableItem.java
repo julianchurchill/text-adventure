@@ -2,6 +2,7 @@ package com.chewielouie.textadventure.item;
 
 import java.util.List;
 import com.chewielouie.textadventure.ActionHistory;
+import com.chewielouie.textadventure.ActionHistoryAction;
 import com.chewielouie.textadventure.itemaction.ItemAction;
 
 public class RecordableItem implements Item {
@@ -103,6 +104,7 @@ public class RecordableItem implements Item {
 
     public void use() {
         itemToRecord.use();
+        actionHistory().addAction( id(), ActionHistoryAction.ITEM_USED );
     }
 
     public List<ItemAction> actions() {
@@ -119,6 +121,7 @@ public class RecordableItem implements Item {
 
     public void examine() {
         itemToRecord.examine();
+        actionHistory().addAction( id(), ActionHistoryAction.ITEM_EXAMINED );
     }
 
     public void addOnExamineAction( ItemAction action ) {
