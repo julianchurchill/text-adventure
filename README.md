@@ -47,22 +47,38 @@ Backlog
   * DONE [TEST] Implement RecordableItemDecorator, wraps item in new RecordableItem object
   * A RecordableItem implements Item interface.
     * DONE [TEST] It delegates all calls to the target Item.
-    * DONE [TEST] It records 'use' and 'examine' actions on the Item in the ActionHistory.
+    * DONE [TEST] It records 'use' and 'examine' events on the Item in the ActionHistory. All other events are not triggered by user action.
   * DONE On create RecordableModelDecorator is created with an ActionHistory
   * DONE On create RecordableModelDecorator is passed to the ItemActionFactory in createNewGameModel()
   * DONE [TEST] Implement RecordableModelDecorator, wraps model in new RecordableModel created with ActionHistory object
   * A RecordableModel implements TextAdventureModel interface.
     * [TEST] It delegates all calls to the target Model.
-    * [TEST] It returns Locations wrapped in RecordableLocation objects after retrieving from the real model.
-    * [TEST] It records actions on the Model in the ActionHistory.
-  * The RecordableLocation, Exit and UserInventory work like RecordableItem. RecordableLocation wraps Exits in RecordableExit objects.
-  * The ItemDecorator and ModelDecorator can be passed to the ActionFactory to wrap Item and Model in RecordableItem and RecordableModel objects before passing to the Actions it creates.
+    * [TEST] It records 'moveThroughExit' events on the Model in the ActionHistory. All other events are not triggered by user action and therefore do not need recording.
+
+  * On create RecordableLocationDecorator is created with an ActionHistory
+  * On create RecordableLocationDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
+  * [TEST] Implement RecordableLocationDecorator, wraps model in new RecordableLocation created with ActionHistory object
+  * A RecordableLocation implements ModelLocation interface.
+    * [TEST] It delegates all calls to the target Location.
+    * [TEST] It records 'removeItem' events on the Location in the ActionHistory. All other events are not triggered by user action and therefore do not need recording.
+  * On create RecordableUserInventoryDecorator is created with an ActionHistory
+  * On create RecordableUserInventoryDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
+  * [TEST] Implement RecordableUserInventoryDecorator, wraps model in new RecordableUserInventory created with ActionHistory object
+  * A RecordableUserInventory implements UserInventory interface.
+    * [TEST] It delegates all calls to the target UserInventory.
+    * [TEST] It records 'addToInventory' events on the UserInventory in the ActionHistory. All other events are not triggered by user action and therefore do not need recording.
+  * Should the decorators be passed _solely_ through the ActionFactory and not the ItemActionFactory at all?
   * On create RecordableItemDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
+    * Used by the ActionFactory to decorate Items that it passes to Actions it creates.
   * On create RecordableModelDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
+    * Used by the ActionFactory to decorate Models that it passes to Actions it creates.
+  * On create RecordableUserInventoryDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
+    * Used by the ActionFactory to decorate UserInventorys that it passes to Actions it creates.
+
   * Implement ActionHistory
+    * ActionHistory allows recording of all 'events' that occur on Model/Location/Item objects due to 'Action's being 'triggered'. These actions are User level activities such as examine, use, take.
   * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
   * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
-    * How to handle replay of Item.use()/examine() which enact all the registered ItemActions? (therefore causing name, description changes etc... which the ActionReplayed will already be doing itself...) - could just call 'setUsedFlag()' to set the fact that it has been used without running the actions
   * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.
     * Implement as n hard coded rules to translate from 1.0 to 2.0 models:
       * If the bagsofjunk have been examined run Examine on them
