@@ -149,6 +149,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         BasicActionHistory actionHistory = new BasicActionHistory();
         RecordableItemDecorator itemDecorator = new RecordableItemDecorator( actionHistory );
         itemActionFactory.setItemDecorator( itemDecorator );
+        RecordableModelDecorator modelDecorator = new RecordableModelDecorator( actionHistory );
+        itemActionFactory.setModelDecorator( modelDecorator );
         ItemFactory itemFactory = new NormalItemFactory();
         ItemDeserialiser itemDeserialiser =
             new PlainTextItemDeserialiser( itemActionFactory );

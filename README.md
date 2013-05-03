@@ -48,10 +48,14 @@ Backlog
   * A RecordableItem implements Item interface.
     * DONE [TEST] It delegates all calls to the target Item.
     * DONE [TEST] It records 'use' and 'examine' actions on the Item in the ActionHistory.
-  * On create RecordableModelDecorator is created with an ActionHistory
-  * On create RecordableModelDecorator is passed to the ItemActionFactory in createNewGameModel()
-  * [TEST] Implement RecordableModelDecorator, wraps model in new RecordableModel created with ActionHistory object
-  * The RecordableModel, Location, Exit and UserInventory work like RecordableItem. RecordableModel also will return Locations wrapped in a RecordableLocation object after retrieving from the real Model. RecordableLocation likewise does the same for Exits.
+  * DONE On create RecordableModelDecorator is created with an ActionHistory
+  * DONE On create RecordableModelDecorator is passed to the ItemActionFactory in createNewGameModel()
+  * DONE [TEST] Implement RecordableModelDecorator, wraps model in new RecordableModel created with ActionHistory object
+  * A RecordableModel implements TextAdventureModel interface.
+    * [TEST] It delegates all calls to the target Model.
+    * [TEST] It returns Locations wrapped in RecordableLocation objects after retrieving from the real model.
+    * [TEST] It records actions on the Model in the ActionHistory.
+  * The RecordableLocation, Exit and UserInventory work like RecordableItem. RecordableLocation wraps Exits in RecordableExit objects.
   * The ItemDecorator and ModelDecorator can be passed to the ActionFactory to wrap Item and Model in RecordableItem and RecordableModel objects before passing to the Actions it creates.
   * On create RecordableItemDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
   * On create RecordableModelDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
