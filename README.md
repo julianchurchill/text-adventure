@@ -40,7 +40,7 @@ Backlog
       * DONE UseWith creates UseWithSpecificItem actions
 
   * DONE Remove Recordable[Item|Model] and Recordable[Item|Model]Decorator, ItemDecorator, ModelDecorator, NullModelDecorator, changes in Activity and all related tests
-  * Remove PlainTextModelSerialiser created for rejected save proposal
+  * DONE Remove PlainTextModelSerialiser created for rejected save proposal
   * [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
   * In activity RecordableActionFactory wraps the UserActionFactory in both createNewGameModel() and setupPresenter() and passes an ActionHistory to it
   * RecordableActionFactory delegates all public methods to UserActionFactory

@@ -44,9 +44,6 @@ import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextExitDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextModelLocationDeserialiser;
-import com.chewielouie.textadventure.serialisation.ItemSerialiser;
-import com.chewielouie.textadventure.serialisation.LocationSerialiser;
-import com.chewielouie.textadventure.serialisation.PlainTextModelDeltaSerialiser;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.item.ItemFactory;
 import com.chewielouie.textadventure.item.NormalItemFactory;
@@ -398,7 +395,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void onPause() {
         super.onPause();
         writeJSONModelSaveFile();
-        writePlainTextSaveFile();
     }
 
     private void writeJSONModelSaveFile() {
@@ -407,25 +403,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             JsonWriter jw = new JsonWriter( outputStream );
             jw.write( model );
             jw.close();
-        } catch( FileNotFoundException e ) {
-            e.printStackTrace();
-        } catch( IOException e ) {
-            e.printStackTrace();
-        }
-    }
-
-    private void writePlainTextSaveFile() {
-        PlainTextModelDeltaSerialiser serialiser = new PlainTextModelDeltaSerialiser(
-                new LocationSerialiser() {
-                    @Override
-                    public String serialise( ModelLocation location ) {
-                        return "";
-                    }
-                });
-        try {
-            FileOutputStream outputStream = openFileOutput( plainTextSaveFileName, Context.MODE_PRIVATE );
-            outputStream.write( serialiser.serialise( model ).getBytes() );
-            outputStream.close();
         } catch( FileNotFoundException e ) {
             e.printStackTrace();
         } catch( IOException e ) {
