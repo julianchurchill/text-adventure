@@ -98,7 +98,7 @@ public class UserActionFactoryTests {
     public void create_exit_action_makes_right_action() {
         UserActionFactory factory = new UserActionFactory();
 
-        Action action = factory.createExitAction( null );
+        Action action = factory.createExitAction( null, null );
 
         assertThat( action, is( instanceOf( ExitAction.class ) ) );
     }

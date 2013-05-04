@@ -3,12 +3,15 @@ package com.chewielouie.textadventure.action;
 import java.util.ArrayList;
 import java.util.List;
 import com.chewielouie.textadventure.Exit;
+import com.chewielouie.textadventure.TextAdventureModel;
 
 public class ExitAction implements Action {
     private Exit exit;
+    private TextAdventureModel model;
 
-    public ExitAction( Exit exit ) {
+    public ExitAction( Exit exit, TextAdventureModel model ) {
         this.exit = exit;
+        this.model = model;
     }
 
     public String label() {
@@ -16,10 +19,8 @@ public class ExitAction implements Action {
     }
 
     public void trigger() {
-        // userText = "You examine the " + item.midSentenceCasedName() + ". " + item.description();
-        // item.examine();
-        // if( item.examineText().length() != 0 )
-        //     userText = userText + "\n\n" + item.examineText();
+        if( model != null )
+            model.moveThroughExit( exit );
     }
 
     public boolean userMustChooseFollowUpAction() {
@@ -31,7 +32,6 @@ public class ExitAction implements Action {
     }
 
     public String userText() {
-        // return userText;
         return "";
     }
 

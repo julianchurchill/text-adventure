@@ -46,9 +46,11 @@ Backlog
   * View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
     * DONE [TEST] Activity should call userActionHandler.enact() with an ExitAction retrieved from the ActionFactory
     * DONE [TEST] UserActionFactory needs to create Exit actions
-    * [TEST] ExitAction must call model.moveThroughExit( exit )
-    * [TEST] Remove Presenter.moveThroughExit interface but Presenter must still clear actionText and call render() when enacting an Exit action...
-      * Perhaps Action can have an additional interface - boolean resetUserView() - that Presenter::enact() checks and calls view.showMainText() if true. False by default, true for ExitAction.
+    * DONE [TEST] ExitAction must call model.moveThroughExit( exit )
+    * [TEST] Presenter must subscribe for model events
+    * [TEST] BasicModel must publish when it changes location
+    * [TEST] Presenter on location change in model clears actionText and calls render()
+    * [TEST] Remove Presenter.moveThroughExit interface
   * In activity RecordableActionFactory wraps the UserActionFactory in createNewGameModel(), setupPresenter() and addExitActionHandler() and passes an ActionHistory to it
   * RecordableActionFactory delegates all public methods to UserActionFactory
   * RecordableActionFactory wraps returned Action objects from UserActionFactory in RecordableAction which requires an ActionHistory on construction.

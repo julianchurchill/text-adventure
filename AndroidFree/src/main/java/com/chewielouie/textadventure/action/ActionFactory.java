@@ -26,6 +26,6 @@ public interface ActionFactory {
                                           ModelLocation location );
     public Action createUseWithSpecificItemAction( Item actionOwner,
                                                    Item target );
-    public Action createExitAction( Exit exit );
+    public Action createExitAction( Exit exit, TextAdventureModel model );
 }
 

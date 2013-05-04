@@ -50,7 +50,7 @@ public class UserActionFactory implements ActionFactory {
         return new UseWithSpecificItem( actionOwner, target );
     }
 
-    public Action createExitAction( Exit exit ) {
-      return new ExitAction( exit );
+    public Action createExitAction( Exit exit, TextAdventureModel model ) {
+      return new ExitAction( exit, model );
     }
 }
