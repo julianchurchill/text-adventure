@@ -93,4 +93,13 @@ public class UserActionFactoryTests {
 
         assertThat( action, is( instanceOf( UseWithSpecificItem.class ) ) );
     }
+
+    @Test
+    public void create_exit_action_makes_right_action() {
+        UserActionFactory factory = new UserActionFactory();
+
+        Action action = factory.createExitAction( null );
+
+        assertThat( action, is( instanceOf( ExitAction.class ) ) );
+    }
 }

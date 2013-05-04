@@ -51,6 +51,6 @@ public class UserActionFactory implements ActionFactory {
     }
 
     public Action createExitAction( Exit exit ) {
-      return null;
+      return new ExitAction( exit );
     }
 }

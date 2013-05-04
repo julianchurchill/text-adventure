@@ -45,7 +45,7 @@ Backlog
   * DONE Remove PlainTextModelSerialiser created for rejected save proposal
   * View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
     * DONE [TEST] Activity should call userActionHandler.enact() with an ExitAction retrieved from the ActionFactory
-    * [TEST] UserActionFactory needs to create Exit actions
+    * DONE [TEST] UserActionFactory needs to create Exit actions
     * [TEST] ExitAction must call model.moveThroughExit( exit )
     * [TEST] Remove Presenter.moveThroughExit interface but Presenter must still clear actionText and call render() when enacting an Exit action...
       * Perhaps Action can have an additional interface - boolean resetUserView() - that Presenter::enact() checks and calls view.showMainText() if true. False by default, true for ExitAction.
