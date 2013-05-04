@@ -43,12 +43,6 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler, M
         view.setActions( availableActions );
     }
 
-    public void moveThroughExit( Exit exit ) {
-        model.moveThroughExit( exit );
-        actionText = "";
-        render();
-    }
-
     public void enact( Action action ) {
         action.trigger();
         view.showLocationExits( model.currentLocationExits() );

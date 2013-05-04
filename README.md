@@ -14,14 +14,14 @@ Backlog
   * DONE Turn off JSON save format file writing - this allows us to make the Presenter be a Model observer and have a cyclic dependency (only cyclic in real objects, the interface keep it all seperate). This cycle causes JSON-IO to crash on saving.
   * DONE Remove Recordable[Item|Model] and Recordable[Item|Model]Decorator, ItemDecorator, ModelDecorator, NullModelDecorator, changes in Activity and all related tests
   * DONE Remove PlainTextModelSerialiser created for rejected save proposal
-  * View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
+  * DONE View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
     * DONE [TEST] Activity should call userActionHandler.enact() with an ExitAction retrieved from the ActionFactory
     * DONE [TEST] UserActionFactory needs to create Exit actions
     * DONE [TEST] ExitAction must call model.moveThroughExit( exit )
     * DONE [TEST] BasicModel must publish when it changes location
     * DONE [TEST] Presenter must subscribe for model events
     * DONE [TEST] Presenter on location change in model clears actionText and calls render()
-    * [TEST] Remove Presenter.moveThroughExit interface
+    * DONE [TEST] Remove Presenter.moveThroughExit interface
   * In activity RecordableActionFactory wraps the UserActionFactory in createNewGameModel(), setupPresenter() and addExitActionHandler() and passes an ActionHistory to it
   * RecordableActionFactory delegates all public methods to UserActionFactory
   * RecordableActionFactory wraps returned Action objects from UserActionFactory in RecordableAction which requires an ActionHistory on construction.
@@ -44,6 +44,7 @@ Backlog
   * Defensive loading... if an old JSON file doesn't load capture the exception and recover gracefully, start a clean new game
 
 - [BUG] User still has map after giving it to the shopkeeper!
+- [BUG] Double blank line after item actions - clarify need for '\n\n' in Presenter.enact()
 - [FEATURE] Exits should have consistent colours for direction hints - e.g. all North should be green
 - [FEATURE] Tell the user when they have reached the end of the available content! Perhaps a popup saying look out for new content in the next update?
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
