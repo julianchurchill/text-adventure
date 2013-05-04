@@ -11,36 +11,7 @@ Backlog
 =======
 
 * [FEATURE] Save file new format
-  * An ActionFactory is needed for user actions like Examine, TakeAnItem, ShowInventory. This needs to be passed to the Presenter and the other Actions that create actions.
-    * DONE [TEST] Presenter should use an ActionFactory
-    * DONE [TEST] UserActionFactory should implement createShowInventoryAction()
-    * DONE [TEST] Activity should give the presenter a UserActionFactory
-    * DONE [TEST] ShowInventory should use an ActionFactory
-    * DONE [TEST] InventoryItem should use an ActionFactory
-    * DONE [TEST] UserActionFactory should implement createExamineAction()
-    * DONE [TEST] UserActionFactory should implement createUseWithAction()
-    * DONE [TEST] ExamineAnItem should use an ActionFactory
-    * DONE [TEST] Location needs to use ActionFactory to create ExamineAnItem action
-    * DONE [TEST] UserActionFactory should implement createExamineAnItemAction()
-    * DONE [TEST] Remove Location constructor that does not take an ActionFactory
-    * DONE [TEST] Remove LocationFactory constructor that does not take an ActionFactory
-    * DONE [TEST] Location needs to use ActionFactory to create TakeAnItem action
-    * DONE [TEST] UserActionFactory should implement createTakeAnItemAction()
-    * DONE [TEST] TakeAnItem should use an ActionFactory
-    * DONE [TEST] Remove TakeAnItem constructor that does not use an ActionFactory
-    * DONE [TEST] UserActionFactory should implement createTakeSpecificItemAction()
-    * DONE [TEST] UseWith should use an ActionFactory
-    * DONE [TEST] Remove UseWith constructor that does not use an ActionFactory
-    * DONE [TEST] UserActionFactory should implement createUseWithSpecificItemAction()
-    * [TEST] Actions that create actions need an ActionFactory reference:
-      * DONE ShowInventory creates InventoryItem actions
-      * DONE InventoryItem creates Examine and UseWith actions
-      * DONE ExamineAnItem creates Examine actions
-      * DONE Location creates ExamineAnItem actions
-      * DONE Location creates TakeAnItem actions
-      * DONE TakeAnItem creates TakeSpecificItem actions
-      * DONE UseWith creates UseWithSpecificItem actions
-
+  * Turn off JSON save format file writing - this allows us to make the Presenter be a Model observer and have a cyclic dependency (only cyclic in real objects, the interface keep it all seperate). This cycle causes JSON-IO to crash on saving.
   * DONE Remove Recordable[Item|Model] and Recordable[Item|Model]Decorator, ItemDecorator, ModelDecorator, NullModelDecorator, changes in Activity and all related tests
   * DONE Remove PlainTextModelSerialiser created for rejected save proposal
   * View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
@@ -67,47 +38,10 @@ Backlog
       * If the bagsofjunk have been examined run Examine on them
       * If the moundofearth has been used run UseWith on the spade and moundofearth and _also_ add the spade to the inventory
       * If clockface has been used then run UseWith on the clockface and the clockmechanism
+    * Delete old JSON based save file
   * Acceptance tests for pause/resume action save and replay?
   * Acceptance tests for backwards compatibility with JSON for v1.0 being loaded and transformed for v2.0?
-
-* The following is on hold whilst an approach with recordable actions via ActionFactory only is investigated
-  * DONE An ItemDecorator and ModelDecorator can be passed to the ItemActionFactory which uses it to wrap Item and Model in RecordableItem and RecordableModel objects before passing to the ItemActions it creates.
-    * DONE [TEST] ItemDecorator is used by ItemActionFactory
-    * DONE [TEST] ModelDecorator is used by ItemActionFactory
-  * DONE On create ActionHistory is created and used to store the actions that occur.
-  * DONE On create RecordableItemDecorator is created with an ActionHistory
-  * DONE On create RecordableItemDecorator is passed to the ItemActionFactory in createNewGameModel()
-  * DONE [TEST] Implement RecordableItemDecorator, wraps item in new RecordableItem object
-  * A RecordableItem implements Item interface.
-    * DONE [TEST] It delegates all calls to the target Item.
-    * DONE [TEST] It records 'use' and 'examine' events on the Item in the ActionHistory. All other events are not triggered by user action.
-  * DONE On create RecordableModelDecorator is created with an ActionHistory
-  * DONE On create RecordableModelDecorator is passed to the ItemActionFactory in createNewGameModel()
-  * DONE [TEST] Implement RecordableModelDecorator, wraps model in new RecordableModel created with ActionHistory object
-  * A RecordableModel implements TextAdventureModel interface.
-    * [TEST] It delegates all calls to the target Model.
-    * [TEST] It records 'moveThroughExit' events on the Model in the ActionHistory. All other events are not triggered by user action and therefore do not need recording.
-  * On create RecordableLocationDecorator is created with an ActionHistory
-  * On create RecordableLocationDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
-  * [TEST] Implement RecordableLocationDecorator, wraps model in new RecordableLocation created with ActionHistory object
-  * A RecordableLocation implements ModelLocation interface.
-    * [TEST] It delegates all calls to the target Location.
-    * [TEST] It records 'removeItem' events on the Location in the ActionHistory. All other events are not triggered by user action and therefore do not need recording.
-  * On create RecordableUserInventoryDecorator is created with an ActionHistory
-  * On create RecordableUserInventoryDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
-  * [TEST] Implement RecordableUserInventoryDecorator, wraps model in new RecordableUserInventory created with ActionHistory object
-  * A RecordableUserInventory implements UserInventory interface.
-    * [TEST] It delegates all calls to the target UserInventory.
-    * [TEST] It records 'addToInventory' events on the UserInventory in the ActionHistory. All other events are not triggered by user action and therefore do not need recording.
-  * Should the decorators be passed _solely_ through the ActionFactory and not the ItemActionFactory at all? It makes conceptual sense.
-  * On create RecordableItemDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
-    * Used by the ActionFactory to decorate Items that it passes to Actions it creates.
-  * On create RecordableModelDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
-    * Used by the ActionFactory to decorate Models that it passes to Actions it creates.
-  * On create RecordableLocationDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
-    * Used by the ActionFactory to decorate Locations that it passes to Actions it creates.
-  * On create RecordableUserInventoryDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
-    * Used by the ActionFactory to decorate UserInventorys that it passes to Actions it creates.
+  * Defensive loading... if an old JSON file doesn't load capture the exception and recover gracefully, start a clean new game
 
 - [BUG] User still has map after giving it to the shopkeeper!
 - [FEATURE] Exits should have consistent colours for direction hints - e.g. all North should be green
@@ -144,6 +78,8 @@ Done
 
 2.0
 ---
+
+* [TECHNICAL FEATURE] An ActionFactory is needed for user actions like Examine, TakeAnItem, ShowInventory. This needs to be passed to the Presenter and the other Actions that create actions.
 
 1.0
 ---
