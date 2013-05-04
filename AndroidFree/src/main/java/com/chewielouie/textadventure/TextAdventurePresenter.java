@@ -6,7 +6,7 @@ import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.action.TakeAnItem;
 
-public class TextAdventurePresenter implements RendersView, UserActionHandler {
+public class TextAdventurePresenter implements RendersView, UserActionHandler, ModelEventSubscriber {
     private final TextAdventureView view;
     private final TextAdventureModel model;
     private List<Action> defaultActions = new ArrayList<Action>();
@@ -18,6 +18,8 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
            ActionFactory a ) {
         this.view = v;
         this.model = m;
+        if( model != null )
+            model.subscribeForEvents( this );
         if( a != null )
             defaultActions.add( a.createShowInventoryAction( inventory, m ) );
     }
@@ -78,6 +80,15 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler {
 
     public void cancelActionChain() {
         resetActionsToStartOfChain();
+    }
+
+    public void currentLocationChanged() {
+        actionText = "";
+        render();
+    }
+
+    public void clearDefaultActions() {
+        defaultActions = new ArrayList<Action>();
     }
 }
 
