@@ -39,8 +39,9 @@ Backlog
       * DONE TakeAnItem creates TakeSpecificItem actions
       * DONE UseWith creates UseWithSpecificItem actions
 
-  * Remove Recordable[Item|Model] etc work
+  * DONE Remove Recordable[Item|Model] and Recordable[Item|Model]Decorator, ItemDecorator, ModelDecorator, NullModelDecorator, changes in Activity and all related tests
   * Remove PlainTextModelSerialiser created for rejected save proposal
+  * [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
   * In activity RecordableActionFactory wraps the UserActionFactory in both createNewGameModel() and setupPresenter() and passes an ActionHistory to it
   * RecordableActionFactory delegates all public methods to UserActionFactory
   * RecordableActionFactory wraps returned Action objects from UserActionFactory in RecordableAction which requires an ActionHistory on construction.
@@ -122,8 +123,6 @@ Backlog
 
 - [FEATURE] In model content txt items can only be used in one direction, e.g. a spade with a mound of earth and the target item has to include the definition of what happens. If the original item (e.g. spade) includes this information it is ignored. Should this be changed to be bi-directional? It would make writing content easier but needs considering as it might not always be appropriate.
 
-- [REFACTOR]
-  - [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
 
 - Add monsters, npcs
 
