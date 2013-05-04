@@ -38,6 +38,29 @@ Backlog
       * DONE Location creates TakeAnItem actions
       * DONE TakeAnItem creates TakeSpecificItem actions
       * DONE UseWith creates UseWithSpecificItem actions
+
+  * Remove Recordable[Item|Model] etc work
+  * Remove PlainTextModelSerialiser created for rejected save proposal
+  * In activity RecordableActionFactory wraps the UserActionFactory in both createNewGameModel() and setupPresenter() and passes an ActionHistory to it
+  * RecordableActionFactory delegates all public methods to UserActionFactory
+  * RecordableActionFactory wraps returned Action objects from UserActionFactory in RecordableAction which requires an ActionHistory on construction.
+  * RecordableActionFactory also set relevant Location and Items on RecordableAction
+  * RecordableAction delegates all public methods to wrapped Action
+  * RecordableAction stores relevant Location and Items ids
+  * RecordableAction on trigger records action in ActionHistory along with Location and Item ids
+  * Implement ActionHistory
+    * ActionHistory allows recording of all 'events' that occur on Model/Location/Item objects due to 'Action's being 'triggered'. These actions are User level activities such as examine, use, take.
+  * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
+  * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
+  * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.
+    * Implement as n hard coded rules to translate from 1.0 to 2.0 models:
+      * If the bagsofjunk have been examined run Examine on them
+      * If the moundofearth has been used run UseWith on the spade and moundofearth and _also_ add the spade to the inventory
+      * If clockface has been used then run UseWith on the clockface and the clockmechanism
+  * Acceptance tests for pause/resume action save and replay?
+  * Acceptance tests for backwards compatibility with JSON for v1.0 being loaded and transformed for v2.0?
+
+* The following is on hold whilst an approach with recordable actions via ActionFactory only is investigated
   * DONE An ItemDecorator and ModelDecorator can be passed to the ItemActionFactory which uses it to wrap Item and Model in RecordableItem and RecordableModel objects before passing to the ItemActions it creates.
     * DONE [TEST] ItemDecorator is used by ItemActionFactory
     * DONE [TEST] ModelDecorator is used by ItemActionFactory
@@ -54,7 +77,6 @@ Backlog
   * A RecordableModel implements TextAdventureModel interface.
     * [TEST] It delegates all calls to the target Model.
     * [TEST] It records 'moveThroughExit' events on the Model in the ActionHistory. All other events are not triggered by user action and therefore do not need recording.
-
   * On create RecordableLocationDecorator is created with an ActionHistory
   * On create RecordableLocationDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
   * [TEST] Implement RecordableLocationDecorator, wraps model in new RecordableLocation created with ActionHistory object
@@ -76,19 +98,6 @@ Backlog
     * Used by the ActionFactory to decorate Locations that it passes to Actions it creates.
   * On create RecordableUserInventoryDecorator is passed to the ActionFactory in both createNewGameModel() and setupPresenter()
     * Used by the ActionFactory to decorate UserInventorys that it passes to Actions it creates.
-
-  * Implement ActionHistory
-    * ActionHistory allows recording of all 'events' that occur on Model/Location/Item objects due to 'Action's being 'triggered'. These actions are User level activities such as examine, use, take.
-  * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
-  * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
-  * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.
-    * Implement as n hard coded rules to translate from 1.0 to 2.0 models:
-      * If the bagsofjunk have been examined run Examine on them
-      * If the moundofearth has been used run UseWith on the spade and moundofearth and _also_ add the spade to the inventory
-      * If clockface has been used then run UseWith on the clockface and the clockmechanism
-  * Remove PlainTextModelSerialiser created for rejected save proposal
-  * Acceptance tests for pause/resume action save and replay?
-  * Acceptance tests for backwards compatibility with JSON for v1.0 being loaded and transformed for v2.0?
 
 - [BUG] User still has map after giving it to the shopkeeper!
 - [FEATURE] Exits should have consistent colours for direction hints - e.g. all North should be green
