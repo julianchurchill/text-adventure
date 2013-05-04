@@ -47,8 +47,8 @@ Backlog
     * DONE [TEST] Activity should call userActionHandler.enact() with an ExitAction retrieved from the ActionFactory
     * DONE [TEST] UserActionFactory needs to create Exit actions
     * DONE [TEST] ExitAction must call model.moveThroughExit( exit )
+    * DONE [TEST] BasicModel must publish when it changes location
     * [TEST] Presenter must subscribe for model events
-    * [TEST] BasicModel must publish when it changes location
     * [TEST] Presenter on location change in model clears actionText and calls render()
     * [TEST] Remove Presenter.moveThroughExit interface
   * In activity RecordableActionFactory wraps the UserActionFactory in createNewGameModel(), setupPresenter() and addExitActionHandler() and passes an ActionHistory to it
