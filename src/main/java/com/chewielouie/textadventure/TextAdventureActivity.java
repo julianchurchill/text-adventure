@@ -398,20 +398,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     @Override
     public void onPause() {
         super.onPause();
-        writeJSONModelSaveFile();
-    }
-
-    private void writeJSONModelSaveFile() {
-        try {
-            FileOutputStream outputStream = openFileOutput( saveFileName, Context.MODE_PRIVATE );
-            JsonWriter jw = new JsonWriter( outputStream );
-            jw.write( model );
-            jw.close();
-        } catch( FileNotFoundException e ) {
-            e.printStackTrace();
-        } catch( IOException e ) {
-            e.printStackTrace();
-        }
     }
 }
 
