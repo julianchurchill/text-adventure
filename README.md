@@ -43,14 +43,19 @@ Backlog
 
   * DONE Remove Recordable[Item|Model] and Recordable[Item|Model]Decorator, ItemDecorator, ModelDecorator, NullModelDecorator, changes in Activity and all related tests
   * DONE Remove PlainTextModelSerialiser created for rejected save proposal
-  * [TEST] View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
-  * In activity RecordableActionFactory wraps the UserActionFactory in both createNewGameModel() and setupPresenter() and passes an ActionHistory to it
+  * View/Presenter moveThroughExit interface should use 'Exit' actions instead of Exit objects directly and should use a common 'UserActionHandler::handleAction' interface
+    * DONE [TEST] Activity should call userActionHandler.enact() with an ExitAction retrieved from the ActionFactory
+    * [TEST] UserActionFactory needs to create Exit actions
+    * [TEST] ExitAction must call model.moveThroughExit( exit )
+    * [TEST] Remove Presenter.moveThroughExit interface but Presenter must still clear actionText and call render() when enacting an Exit action...
+      * Perhaps Action can have an additional interface - boolean resetUserView() - that Presenter::enact() checks and calls view.showMainText() if true. False by default, true for ExitAction.
+  * In activity RecordableActionFactory wraps the UserActionFactory in createNewGameModel(), setupPresenter() and addExitActionHandler() and passes an ActionHistory to it
   * RecordableActionFactory delegates all public methods to UserActionFactory
   * RecordableActionFactory wraps returned Action objects from UserActionFactory in RecordableAction which requires an ActionHistory on construction.
-  * RecordableActionFactory also set relevant Location and Items on RecordableAction
+  * RecordableActionFactory also set relevant Location, Items and Exit on RecordableAction
   * RecordableAction delegates all public methods to wrapped Action
-  * RecordableAction stores relevant Location and Items ids
-  * RecordableAction on trigger records action in ActionHistory along with Location and Item ids
+  * RecordableAction stores relevant Location, Items and Exit ids
+  * RecordableAction on trigger records action in ActionHistory along with Location, Item and Exit ids
   * Implement ActionHistory
     * ActionHistory allows recording of all 'events' that occur on Model/Location/Item objects due to 'Action's being 'triggered'. These actions are User level activities such as examine, use, take.
   * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file

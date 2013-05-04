@@ -236,10 +236,12 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             int startIndex, int endIndex, Exit exit ) {
         final Exit finalExit = exit;
         final UserActionHandler finalUserActionHandler = userActionHandler;
+        final UserActionFactory factory = new UserActionFactory();
         ClickableSpan c = new ClickableSpan() {
             @Override
             public void onClick( View view ) {
                 finalUserActionHandler.moveThroughExit( finalExit );
+                finalUserActionHandler.enact( factory.createExitAction( finalExit ) );
             }
         };
         text.setSpan( c, startIndex, endIndex, 0 );

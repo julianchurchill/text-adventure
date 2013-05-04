@@ -2,6 +2,7 @@ package com.chewielouie.textadventure.action;
 
 import java.util.List;
 import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.Exit;
 import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
 import com.chewielouie.textadventure.UserInventory;
@@ -25,5 +26,6 @@ public interface ActionFactory {
                                           ModelLocation location );
     public Action createUseWithSpecificItemAction( Item actionOwner,
                                                    Item target );
+    public Action createExitAction( Exit exit );
 }
 
