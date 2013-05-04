@@ -5,6 +5,8 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 
 Don't forget to drive the development by producing value - the value is game content and this should drive the development of functionality to support it.
 
+To run the emulator - run 'android list avd' to get all the configured virtual devices, then 'emulator @<device-name>' to run the chosen device in the emulator.
+
 Backlog
 =======
 
