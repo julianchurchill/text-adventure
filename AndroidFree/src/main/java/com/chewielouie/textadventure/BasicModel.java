@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.ModelEventSubscriber;
 
 public class BasicModel implements TextAdventureModel, UserInventory {
     Map<String,ModelLocation> locations = new HashMap<String,ModelLocation>();
@@ -13,6 +14,8 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     private List<Item> inventoryItems = new ArrayList<Item>();
     private int currentScore = 0;
     private int maximumScore = 2;
+    private List<ModelEventSubscriber> eventSubscribers =
+                                    new ArrayList<ModelEventSubscriber>();
 
     public BasicModel() {
     }
@@ -28,9 +31,12 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public void moveThroughExit( Exit exit ) {
-        if( currentLocation.exitable( exit ) )
+        if( currentLocation.exitable( exit ) ) {
             currentLocation = locations.get(
                     currentLocation.exitDestinationFor( exit ) );
+            for( ModelEventSubscriber s : eventSubscribers )
+                s.currentLocationChanged();
+        }
     }
 
     public ModelLocation currentLocation() {
@@ -133,6 +139,10 @@ public class BasicModel implements TextAdventureModel, UserInventory {
 
     public void setMaximumScore( int score ) {
         maximumScore = score;
+    }
+
+    public void subscribeForEvents( ModelEventSubscriber subscriber ) {
+        eventSubscribers.add( subscriber );
     }
 }
 

@@ -302,5 +302,47 @@ public class BasicModelTests {
 
         assertEquals( 286, model.maximumScore() );
     }
+
+    @Test
+    public void subscribers_receive_current_location_change_events() {
+        final ModelLocation loc1 = mockery.mock( ModelLocation.class, "loc1" );
+        final ModelLocation loc2 = mockery.mock( ModelLocation.class, "loc2" );
+        final Exit north = mockery.mock( Exit.class );
+        final ModelEventSubscriber modelEventSubscriber =
+            mockery.mock( ModelEventSubscriber.class );
+        mockery.checking( new Expectations() {{
+            allowing( loc1 ).exitable( north );
+            will( returnValue( true ) );
+            allowing( loc1 ).exitDestinationFor( north );
+            will( returnValue( "loc2" ) );
+            ignoring( loc1 );
+            allowing( loc2 ).id();
+            will( returnValue( "loc2" ) );
+            ignoring( loc2 );
+            ignoring( north );
+            oneOf( modelEventSubscriber ).currentLocationChanged();
+            ignoring( modelEventSubscriber );
+        }});
+        BasicModel model = new BasicModel();
+        model.addLocation( loc1 );
+        model.addLocation( loc2 );
+        model.subscribeForEvents( modelEventSubscriber );
+
+        model.moveThroughExit( north );
+    }
+
+    @Test
+    public void subscribers_do_not_receive_current_location_change_event_on_failed_exit() {
+        final Exit north = mockery.mock( Exit.class );
+        final ModelEventSubscriber modelEventSubscriber =
+            mockery.mock( ModelEventSubscriber.class );
+        mockery.checking( new Expectations() {{
+            never( modelEventSubscriber ).currentLocationChanged();
+        }});
+        BasicModel model = new BasicModel();
+        model.subscribeForEvents( modelEventSubscriber );
+
+        model.moveThroughExit( north );
+    }
 }
 
