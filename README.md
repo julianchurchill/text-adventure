@@ -23,7 +23,7 @@ Backlog
     * DONE [TEST] Presenter on location change in model clears actionText and calls render()
     * DONE [TEST] Remove Presenter.moveThroughExit interface
   * DONE In activity RecordableActionFactory wraps the UserActionFactory in createNewGameModel(), setupPresenter() and addExitActionHandler() and passes an ActionHistory to it
-  * RecordableActionFactory delegates all public methods to UserActionFactory
+  * DONE RecordableActionFactory delegates all public methods to UserActionFactory
   * UserActionFactory should accept an ActionFactory for other Actions to use to create new Actions which does _not_ have to an UserActionFactory
   * RecordableActionFactory wraps returned Action objects from UserActionFactory in RecordableAction which requires an ActionHistory on construction.
   * RecordableActionFactory also set relevant Location, Items and Exit on RecordableAction

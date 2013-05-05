@@ -3,7 +3,10 @@ package com.chewielouie.textadventure.action;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-// import com.chewielouie.textadventure.item.Item;
+import java.util.List;
+import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.Exit;
+import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
 import com.chewielouie.textadventure.UserInventory;
 import org.jmock.*;
@@ -29,81 +32,109 @@ public class RecordableActionFactoryTests {
                 .createShowInventoryAction( inventory, model );
     }
 
-    // @Test
-    // public void create_inventory_item_action_makes_right_action() {
-    //     RecordableActionFactory factory = new RecordableActionFactory();
+    @Test
+    public void create_inventory_item_action_delegates_to_wrapped_factory() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final Item item = mockery.mock( Item.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            oneOf( wrappedFactory ).createInventoryItemAction( item, inventory, location );
+            ignoring( wrappedFactory );
+        }});
+        new RecordableActionFactory( wrappedFactory, null )
+                .createInventoryItemAction( item, inventory, location );
+    }
 
-    //     Action action = factory.createInventoryItemAction( null, null,
-    //                                                        null );
+    @Test
+    public void create_examine_action_delegates_to_wrapped_factory() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final Item item = mockery.mock( Item.class );
+        mockery.checking( new Expectations() {{
+            oneOf( wrappedFactory ).createExamineAction( item );
+            ignoring( wrappedFactory );
+        }});
+        new RecordableActionFactory( wrappedFactory, null )
+                .createExamineAction( item );
+    }
 
-    //     assertThat( action, is( instanceOf( InventoryItem.class ) ) );
-    // }
+    @Test
+    public void create_use_with_action_delegates_to_wrapped_factory() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final Item item = mockery.mock( Item.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            oneOf( wrappedFactory ).createUseWithAction( item, inventory, location );
+            ignoring( wrappedFactory );
+        }});
+        new RecordableActionFactory( wrappedFactory, null )
+                .createUseWithAction( item, inventory, location );
+    }
 
-    // @Test
-    // public void create_examine_action_makes_right_action() {
-    //     RecordableActionFactory factory = new RecordableActionFactory();
+    @Test
+    public void create_examine_an_item_action_delegates_to_wrapped_factory() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final List<Item> items = mockery.mock( List.class );
+        mockery.checking( new Expectations() {{
+            oneOf( wrappedFactory ).createExamineAnItemAction( items );
+            ignoring( wrappedFactory );
+        }});
+        new RecordableActionFactory( wrappedFactory, null )
+                .createExamineAnItemAction( items );
+    }
 
-    //     Action action = factory.createExamineAction( null );
+    @Test
+    public void create_take_an_item_action_delegates_to_wrapped_factory() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final List<Item> items = mockery.mock( List.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            oneOf( wrappedFactory ).createTakeAnItemAction( items, inventory, location );
+            ignoring( wrappedFactory );
+        }});
+        new RecordableActionFactory( wrappedFactory, null )
+                .createTakeAnItemAction( items, inventory, location );
+    }
 
-    //     assertThat( action, is( instanceOf( Examine.class ) ) );
-    // }
+    @Test
+    public void create_take_specific_item_action_delegates_to_wrapped_factory() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final Item item = mockery.mock( Item.class );
+        final UserInventory inventory = mockery.mock( UserInventory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            oneOf( wrappedFactory ).createTakeSpecificItemAction( item, inventory, location );
+            ignoring( wrappedFactory );
+        }});
+        new RecordableActionFactory( wrappedFactory, null )
+                .createTakeSpecificItemAction( item, inventory, location );
+    }
 
-    // @Test
-    // public void create_use_with_action_makes_right_action() {
-    //     RecordableActionFactory factory = new RecordableActionFactory();
+    @Test
+    public void create_use_with_specific_item_action_delegates_to_wrapped_factory() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final Item actionOwner = mockery.mock( Item.class, "action owner" );
+        final Item target = mockery.mock( Item.class, "target" );
+        mockery.checking( new Expectations() {{
+            oneOf( wrappedFactory ).createUseWithSpecificItemAction( actionOwner, target );
+            ignoring( wrappedFactory );
+        }});
+        new RecordableActionFactory( wrappedFactory, null )
+                .createUseWithSpecificItemAction( actionOwner, target );
+    }
 
-    //     Action action = factory.createUseWithAction( null, null,
-    //                                                  null );
-
-    //     assertThat( action, is( instanceOf( UseWith.class ) ) );
-    // }
-
-    // @Test
-    // public void create_examine_an_item_action_makes_right_action() {
-    //     RecordableActionFactory factory = new RecordableActionFactory();
-
-    //     List<Item> items = new ArrayList<Item>();
-    //     Action action = factory.createExamineAnItemAction( items );
-
-    //     assertThat( action, is( instanceOf( ExamineAnItem.class ) ) );
-    // }
-
-    // @Test
-    // public void create_take_an_item_action_makes_right_action() {
-    //     RecordableActionFactory factory = new RecordableActionFactory();
-
-    //     List<Item> items = new ArrayList<Item>();
-    //     Action action = factory.createTakeAnItemAction( items, null,
-    //                                                     null );
-
-    //     assertThat( action, is( instanceOf( TakeAnItem.class ) ) );
-    // }
-
-    // @Test
-    // public void create_take_specific_item_action_makes_right_action() {
-    //     RecordableActionFactory factory = new RecordableActionFactory();
-
-    //     Action action = factory.createTakeSpecificItemAction( null,
-    //                                         null, null );
-
-    //     assertThat( action, is( instanceOf( TakeSpecificItem.class ) ) );
-    // }
-
-    // @Test
-    // public void create_use_with_specific_item_action_makes_right_action() {
-    //     RecordableActionFactory factory = new RecordableActionFactory();
-
-    //     Action action = factory.createUseWithSpecificItemAction( null, null );
-
-    //     assertThat( action, is( instanceOf( UseWithSpecificItem.class ) ) );
-    // }
-
-    // @Test
-    // public void create_exit_action_makes_right_action() {
-    //     RecordableActionFactory factory = new RecordableActionFactory();
-
-    //     Action action = factory.createExitAction( null, null );
-
-    //     assertThat( action, is( instanceOf( ExitAction.class ) ) );
-    // }
+    @Test
+    public void create_exit_action_delegates_to_wrapped_factory() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final Exit exit = mockery.mock( Exit.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        mockery.checking( new Expectations() {{
+            oneOf( wrappedFactory ).createExitAction( exit, model );
+            ignoring( wrappedFactory );
+        }});
+        new RecordableActionFactory( wrappedFactory, null )
+                .createExitAction( exit, model );
+    }
 }

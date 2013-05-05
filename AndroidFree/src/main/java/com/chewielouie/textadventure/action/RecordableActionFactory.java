@@ -24,49 +24,41 @@ public class RecordableActionFactory implements ActionFactory {
     public Action createInventoryItemAction( Item item,
                                              UserInventory inventory,
                                              ModelLocation location ) {
-        // return new InventoryItem( item, inventory, location, this );
-        return null;
+        return wrappedFactory.createInventoryItemAction( item, inventory, location );
     }
 
     public Action createExamineAction( Item item ) {
-        // return new Examine( item );
-        return null;
+        return wrappedFactory.createExamineAction( item );
     }
 
     public Action createUseWithAction( Item item,
                                        UserInventory inventory,
                                        ModelLocation location ) {
-        // return new UseWith( item, inventory, location, this );
-        return null;
+        return wrappedFactory.createUseWithAction( item, inventory, location );
     }
 
     public Action createExamineAnItemAction( List<Item> items ) {
-        // return new ExamineAnItem( items, this );
-        return null;
+        return wrappedFactory.createExamineAnItemAction( items );
     }
 
     public Action createTakeAnItemAction( List<Item> items,
                                           UserInventory inventory,
                                           ModelLocation location ) {
-        // return new TakeAnItem( items, inventory, location, this );
-        return null;
+        return wrappedFactory.createTakeAnItemAction( items, inventory, location );
     }
 
     public Action createTakeSpecificItemAction( Item item,
                                           UserInventory inventory,
                                           ModelLocation location ) {
-        // return new TakeSpecificItem( item, inventory, location );
-        return null;
+        return wrappedFactory.createTakeSpecificItemAction( item, inventory, location );
     }
 
     public Action createUseWithSpecificItemAction( Item actionOwner,
                                                    Item target ) {
-        // return new UseWithSpecificItem( actionOwner, target );
-        return null;
+        return wrappedFactory.createUseWithSpecificItemAction( actionOwner, target );
     }
 
     public Action createExitAction( Exit exit, TextAdventureModel model ) {
-        // return new ExitAction( exit, model );
-        return null;
+        return wrappedFactory.createExitAction( exit, model );
     }
 }
