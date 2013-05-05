@@ -39,7 +39,9 @@ import android.widget.TextView;
 import com.cedarsoftware.util.io.JsonReader;
 import com.cedarsoftware.util.io.JsonWriter;
 import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.action.UserActionFactory;
+import com.chewielouie.textadventure.action.RecordableActionFactory;
 import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextExitDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextItemDeserialiser;
@@ -73,6 +75,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private int currentScore = 0;
     private int maximumScore = 0;
     private BasicModel model;
+    private ActionFactory actionFactory = null;
 
     public TextAdventureActivity() {
     }
@@ -142,13 +145,11 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         UserInventory inventory = model;
         Logger logger = new StdoutLogger();
         ItemActionFactory itemActionFactory = new LoggableNormalItemActionFactory( logger, model );
-        BasicActionHistory actionHistory = new BasicActionHistory();
         ItemFactory itemFactory = new NormalItemFactory();
         ItemDeserialiser itemDeserialiser =
             new PlainTextItemDeserialiser( itemActionFactory );
-        UserActionFactory actionFactory = new UserActionFactory();
         new PlainTextModelPopulator( model,
-                                     new LocationFactory( inventory, actionFactory ),
+                                     new LocationFactory( inventory, actionFactory() ),
                                      inventory,
                                      itemFactory,
                                      new PlainTextModelLocationDeserialiser(
@@ -157,6 +158,15 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
                                          new PlainTextExitDeserialiser() ),
                                      itemDeserialiser,
                                      demoContent() );
+    }
+
+    private ActionFactory actionFactory() {
+        if( actionFactory == null ) {
+            BasicActionHistory actionHistory = new BasicActionHistory();
+            actionFactory = new RecordableActionFactory( new UserActionFactory(),
+                                                         actionHistory );
+        }
+        return actionFactory;
     }
 
     private String demoContent() {
@@ -184,7 +194,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private void setupPresenter() {
         TextAdventurePresenter p = new TextAdventurePresenter( this, model,
-               (UserInventory)model, new UserActionFactory() );
+               (UserInventory)model, actionFactory() );
         if( externallySuppliedViewRenderer == false )
             this.rendersView = p;
         if( externallySuppliedUserActionHandler == false )
@@ -236,7 +246,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             int startIndex, int endIndex, Exit exit ) {
         final Exit finalExit = exit;
         final UserActionHandler finalUserActionHandler = userActionHandler;
-        final UserActionFactory factory = new UserActionFactory();
+        final ActionFactory factory = actionFactory();
         final TextAdventureModel finalModel = model;
         ClickableSpan c = new ClickableSpan() {
             @Override
