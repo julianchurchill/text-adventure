@@ -26,6 +26,24 @@ public class UserActionFactoryTests {
     }
 
     @Test
+    public void show_inventory_action_gets_this_as_its_action_factory() {
+        ActionFactory factory = new UserActionFactory();
+        Action action = factory.createShowInventoryAction( null, null );
+        assertThat( action.actionFactory(), is( factory ) );
+    }
+
+    @Test
+    public void show_inventory_action_gets_configured_factory_as_its_action_factory() {
+        ActionFactory factory = new UserActionFactory();
+        ActionFactory otherFactory = mockery.mock( ActionFactory.class );
+
+        factory.setFactoryForChildActionsToUse( otherFactory );
+        Action action = factory.createShowInventoryAction( null, null );
+
+        assertThat( action.actionFactory(), is( otherFactory ) );
+    }
+
+    @Test
     public void create_inventory_item_action_makes_right_action() {
         UserActionFactory factory = new UserActionFactory();
 
@@ -33,6 +51,27 @@ public class UserActionFactoryTests {
                                                            null );
 
         assertThat( action, is( instanceOf( InventoryItem.class ) ) );
+    }
+
+    @Test
+    public void inventory_item_action_gets_this_as_its_action_factory() {
+        ActionFactory factory = new UserActionFactory();
+        Action action = factory.createInventoryItemAction( null, null, null );
+        assertThat( action.actionFactory(), is( factory ) );
+    }
+
+    @Test
+    public void inventory_item_action_gets_configured_factory_as_its_action_factory() {
+        ActionFactory factory = new UserActionFactory();
+        final ActionFactory otherFactory = mockery.mock( ActionFactory.class );
+        mockery.checking( new Expectations() {{
+            ignoring( otherFactory );
+        }});
+
+        factory.setFactoryForChildActionsToUse( otherFactory );
+        Action action = factory.createInventoryItemAction( null, null, null );
+
+        assertThat( action.actionFactory(), is( otherFactory ) );
     }
 
     @Test
@@ -55,6 +94,27 @@ public class UserActionFactoryTests {
     }
 
     @Test
+    public void use_with_action_gets_this_as_its_action_factory() {
+        ActionFactory factory = new UserActionFactory();
+        Action action = factory.createUseWithAction( null, null, null );
+        assertThat( action.actionFactory(), is( factory ) );
+    }
+
+    @Test
+    public void use_with_action_gets_configured_factory_as_its_action_factory() {
+        ActionFactory factory = new UserActionFactory();
+        final ActionFactory otherFactory = mockery.mock( ActionFactory.class );
+        mockery.checking( new Expectations() {{
+            ignoring( otherFactory );
+        }});
+
+        factory.setFactoryForChildActionsToUse( otherFactory );
+        Action action = factory.createUseWithAction( null, null, null );
+
+        assertThat( action.actionFactory(), is( otherFactory ) );
+    }
+
+    @Test
     public void create_examine_an_item_action_makes_right_action() {
         UserActionFactory factory = new UserActionFactory();
 
@@ -62,6 +122,27 @@ public class UserActionFactoryTests {
         Action action = factory.createExamineAnItemAction( items );
 
         assertThat( action, is( instanceOf( ExamineAnItem.class ) ) );
+    }
+
+    @Test
+    public void examine_an_item_action_gets_this_as_its_action_factory() {
+        ActionFactory factory = new UserActionFactory();
+        Action action = factory.createExamineAnItemAction( null );
+        assertThat( action.actionFactory(), is( factory ) );
+    }
+
+    @Test
+    public void examine_an_item_action_gets_configured_factory_as_its_action_factory() {
+        ActionFactory factory = new UserActionFactory();
+        final ActionFactory otherFactory = mockery.mock( ActionFactory.class );
+        mockery.checking( new Expectations() {{
+            ignoring( otherFactory );
+        }});
+
+        factory.setFactoryForChildActionsToUse( otherFactory );
+        Action action = factory.createExamineAnItemAction( null );
+
+        assertThat( action.actionFactory(), is( otherFactory ) );
     }
 
     @Test
@@ -73,6 +154,27 @@ public class UserActionFactoryTests {
                                                         null );
 
         assertThat( action, is( instanceOf( TakeAnItem.class ) ) );
+    }
+
+    @Test
+    public void take_an_item_action_gets_this_as_its_action_factory() {
+        ActionFactory factory = new UserActionFactory();
+        Action action = factory.createTakeAnItemAction( null, null, null );
+        assertThat( action.actionFactory(), is( factory ) );
+    }
+
+    @Test
+    public void take_an_item_action_gets_configured_factory_as_its_action_factory() {
+        ActionFactory factory = new UserActionFactory();
+        final ActionFactory otherFactory = mockery.mock( ActionFactory.class );
+        mockery.checking( new Expectations() {{
+            ignoring( otherFactory );
+        }});
+
+        factory.setFactoryForChildActionsToUse( otherFactory );
+        Action action = factory.createTakeAnItemAction( null, null, null );
+
+        assertThat( action.actionFactory(), is( otherFactory ) );
     }
 
     @Test

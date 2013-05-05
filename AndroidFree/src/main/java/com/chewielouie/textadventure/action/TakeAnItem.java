@@ -12,15 +12,22 @@ public class TakeAnItem implements Action {
     private List<Item> items;
     private UserInventory inventory;
     private ModelLocation location;
+    private ActionFactory actionFactory;
 
     public TakeAnItem( List<Item> items, UserInventory inventory,
            ModelLocation location, ActionFactory factory ) {
         this.items = items;
         this.inventory = inventory;
         this.location = location;
-        for( Item item : items )
-            followUpActions.add( factory.createTakeSpecificItemAction(
-                                            item, inventory, location ) );
+        this.actionFactory = factory;
+        if( items != null )
+            for( Item item : items )
+                followUpActions.add( factory.createTakeSpecificItemAction(
+                                                item, inventory, location ) );
+    }
+
+    public ActionFactory actionFactory() {
+        return actionFactory;
     }
 
     public List<Item> items() {

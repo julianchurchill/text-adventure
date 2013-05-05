@@ -25,7 +25,7 @@ Backlog
   * DONE In activity RecordableActionFactory wraps the UserActionFactory in createNewGameModel(), setupPresenter() and addExitActionHandler() and passes an ActionHistory to it
   * DONE RecordableActionFactory delegates all public methods to UserActionFactory
   * DONE RecordableActionFactory sets itself on the wrapped factory as the ActionFactory to pass to child Actions so they can create Actions.
-  * UserActionFactory passes the set ActionFactory for other Actions to use to create new Actions to the Actions it creates.
+  * DONE UserActionFactory passes the set ActionFactory for other Actions to use to create new Actions to the Actions it creates.
   * RecordableActionFactory wraps returned Action objects from UserActionFactory in RecordableAction which requires an ActionHistory on construction.
   * RecordableActionFactory also set relevant Location, Items and Exit on RecordableAction
   * RecordableAction delegates all public methods to wrapped Action

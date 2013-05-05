@@ -19,6 +19,10 @@ public class ShowInventory implements Action {
         this.actionFactory = factory;
     }
 
+    public ActionFactory actionFactory() {
+        return actionFactory;
+    }
+
     public String label() {
         return "Show inventory";
     }

@@ -16,6 +16,10 @@ public class UseWithSpecificItem implements Action {
         this.targetItem = target;
     }
 
+    public ActionFactory actionFactory() {
+        return null;
+    }
+
     public Item targetItem() {
         return targetItem;
     }

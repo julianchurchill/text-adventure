@@ -8,18 +8,25 @@ import com.chewielouie.textadventure.TextAdventureModel;
 import com.chewielouie.textadventure.UserInventory;
 
 public class UserActionFactory implements ActionFactory {
+    private ActionFactory factoryForChildActionsToUse = this;
+
     public void setFactoryForChildActionsToUse( ActionFactory f ) {
+        this.factoryForChildActionsToUse = f;
+    }
+
+    private ActionFactory factoryForChildActionsToUse() {
+        return factoryForChildActionsToUse;
     }
 
     public Action createShowInventoryAction( UserInventory inventory,
                                              TextAdventureModel model ) {
-        return new ShowInventory( inventory, model, this );
+        return new ShowInventory( inventory, model, factoryForChildActionsToUse() );
     }
 
     public Action createInventoryItemAction( Item item,
                                              UserInventory inventory,
                                              ModelLocation location ) {
-        return new InventoryItem( item, inventory, location, this );
+        return new InventoryItem( item, inventory, location, factoryForChildActionsToUse() );
     }
 
     public Action createExamineAction( Item item ) {
@@ -29,17 +36,17 @@ public class UserActionFactory implements ActionFactory {
     public Action createUseWithAction( Item item,
                                        UserInventory inventory,
                                        ModelLocation location ) {
-        return new UseWith( item, inventory, location, this );
+        return new UseWith( item, inventory, location, factoryForChildActionsToUse() );
     }
 
     public Action createExamineAnItemAction( List<Item> items ) {
-        return new ExamineAnItem( items, this );
+        return new ExamineAnItem( items, factoryForChildActionsToUse() );
     }
 
     public Action createTakeAnItemAction( List<Item> items,
                                           UserInventory inventory,
                                           ModelLocation location ) {
-        return new TakeAnItem( items, inventory, location, this );
+        return new TakeAnItem( items, inventory, location, factoryForChildActionsToUse() );
     }
 
     public Action createTakeSpecificItemAction( Item item,

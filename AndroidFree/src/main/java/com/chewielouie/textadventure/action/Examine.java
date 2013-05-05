@@ -12,6 +12,10 @@ public class Examine implements Action {
         this.item = item;
     }
 
+    public ActionFactory actionFactory() {
+        return null;
+    }
+
     public String label() {
         return "Examine " + item.midSentenceCasedName();
     }

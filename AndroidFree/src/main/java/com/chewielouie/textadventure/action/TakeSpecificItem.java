@@ -18,6 +18,10 @@ public class TakeSpecificItem implements Action {
         this.location = location;
     }
 
+    public ActionFactory actionFactory() {
+        return null;
+    }
+
     public String label() {
         return "Take " + item.midSentenceCasedName();
     }

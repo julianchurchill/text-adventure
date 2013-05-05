@@ -14,6 +14,10 @@ public class ExitAction implements Action {
         this.model = model;
     }
 
+    public ActionFactory actionFactory() {
+        return null;
+    }
+
     public String label() {
         return exit.label();
     }

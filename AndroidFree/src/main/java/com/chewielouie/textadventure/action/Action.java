@@ -9,5 +9,6 @@ public interface Action {
     public List<Action> followUpActions();
     public boolean userTextAvailable();
     public String userText();
+    public ActionFactory actionFactory();
 }
 

@@ -25,6 +25,10 @@ public class UseWith implements Action {
         }
     }
 
+    public ActionFactory actionFactory() {
+        return actionFactory;
+    }
+
     private void extractActionsForInventoryItems() {
         if( inventory != null )
             for( Item target : inventory.inventoryItems() )
