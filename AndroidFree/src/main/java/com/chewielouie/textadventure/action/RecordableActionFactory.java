@@ -14,6 +14,11 @@ public class RecordableActionFactory implements ActionFactory {
     public RecordableActionFactory( ActionFactory factoryToWrap,
                                     ActionHistory actionHistory ) {
         this.wrappedFactory = factoryToWrap;
+        this.wrappedFactory.setFactoryForChildActionsToUse( this );
+    }
+
+    public void setFactoryForChildActionsToUse( ActionFactory f ) {
+        wrappedFactory.setFactoryForChildActionsToUse( f );
     }
 
     public Action createShowInventoryAction( UserInventory inventory,

@@ -137,4 +137,28 @@ public class RecordableActionFactoryTests {
         new RecordableActionFactory( wrappedFactory, null )
                 .createExitAction( exit, model );
     }
+
+    // Don't know how to write this in JMock - Expectations need to be set before
+    // constructing RecordableActionFactory but the factory is needed for the Expectations!
+    // @Test
+    // public void sets_self_as_factory_for_child_actions_on_wrapped_factory() {
+    //     final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+    //     final RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
+    //     mockery.checking( new Expectations() {{
+    //         oneOf( wrappedFactory ).setFactoryForChildActionsToUse( f );
+    //         ignoring( wrappedFactory );
+    //     }});
+    // }
+
+    @Test
+    public void sets_factory_for_child_actions_on_wrapped_factory() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class, "wrapped" );
+        final ActionFactory otherFactory = mockery.mock( ActionFactory.class, "other" );
+        mockery.checking( new Expectations() {{
+            oneOf( wrappedFactory ).setFactoryForChildActionsToUse( otherFactory );
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
+        f.setFactoryForChildActionsToUse( otherFactory );
+    }
 }

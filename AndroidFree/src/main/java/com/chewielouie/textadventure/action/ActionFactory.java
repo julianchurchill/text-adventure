@@ -8,6 +8,7 @@ import com.chewielouie.textadventure.TextAdventureModel;
 import com.chewielouie.textadventure.UserInventory;
 
 public interface ActionFactory {
+    public void setFactoryForChildActionsToUse( ActionFactory f );
     public Action createShowInventoryAction( UserInventory inventory,
                                              TextAdventureModel model );
     public Action createInventoryItemAction( Item item,
