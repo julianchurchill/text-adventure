@@ -9,15 +9,16 @@ import com.chewielouie.textadventure.TextAdventureModel;
 import com.chewielouie.textadventure.UserInventory;
 
 public class RecordableActionFactory implements ActionFactory {
+    private ActionFactory wrappedFactory;
 
     public RecordableActionFactory( ActionFactory factoryToWrap,
                                     ActionHistory actionHistory ) {
+        this.wrappedFactory = factoryToWrap;
     }
 
     public Action createShowInventoryAction( UserInventory inventory,
                                              TextAdventureModel model ) {
-        // return new ShowInventory( inventory, model, this );
-        return null;
+        return wrappedFactory.createShowInventoryAction( inventory, model );
     }
 
     public Action createInventoryItemAction( Item item,
