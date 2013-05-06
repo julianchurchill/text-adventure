@@ -27,7 +27,7 @@ Backlog
   * DONE RecordableActionFactory sets itself on the wrapped factory as the ActionFactory to pass to child Actions so they can create Actions.
   * DONE UserActionFactory passes the set ActionFactory for other Actions to use to create new Actions to the Actions it creates.
   * DONE RecordableActionFactory wraps returned Action objects from UserActionFactory in RecordableAction.
-  * RecordableActionFactory passes ActionHistory to RecordableAction objects on construction.
+  * DONE RecordableActionFactory passes ActionHistory to RecordableAction objects on construction.
   * RecordableActionFactory also set relevant Location, Items and Exit on RecordableAction
   * RecordableAction delegates all public methods to wrapped Action
   * RecordableAction stores relevant Location, Items and Exit ids

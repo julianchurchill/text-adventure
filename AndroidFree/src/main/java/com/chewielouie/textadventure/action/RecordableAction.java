@@ -1,9 +1,16 @@
 package com.chewielouie.textadventure.action;
 
 import java.util.List;
+import com.chewielouie.textadventure.ActionHistory;
 
 public class RecordableAction implements Action {
+    private ActionHistory actionHistory;
+
     public RecordableAction( Action toWrap ) {
+    }
+
+    public RecordableAction( Action toWrap, ActionHistory actionHistory ) {
+        this.actionHistory = actionHistory;
     }
 
     public String label() {
@@ -32,5 +39,8 @@ public class RecordableAction implements Action {
     public ActionFactory actionFactory() {
         return null;
     }
-}
 
+    public ActionHistory actionHistory() {
+        return actionHistory;
+    }
+}
