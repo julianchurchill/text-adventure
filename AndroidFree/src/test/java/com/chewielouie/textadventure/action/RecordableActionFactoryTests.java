@@ -33,6 +33,17 @@ public class RecordableActionFactoryTests {
     }
 
     @Test
+    public void wraps_Action_in_RecordableAction_for_ShowInventory() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class, "wrapped" );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
+        assertThat( f.createShowInventoryAction( null, null ),
+                    is( instanceOf( RecordableAction.class ) ) );
+    }
+
+    @Test
     public void create_inventory_item_action_delegates_to_wrapped_factory() {
         final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
         final Item item = mockery.mock( Item.class );
@@ -47,6 +58,17 @@ public class RecordableActionFactoryTests {
     }
 
     @Test
+    public void wraps_Action_in_RecordableAction_for_InventoryItem() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class, "wrapped" );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
+        assertThat( f.createInventoryItemAction( null, null, null ),
+                    is( instanceOf( RecordableAction.class ) ) );
+    }
+
+    @Test
     public void create_examine_action_delegates_to_wrapped_factory() {
         final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
         final Item item = mockery.mock( Item.class );
@@ -56,6 +78,17 @@ public class RecordableActionFactoryTests {
         }});
         new RecordableActionFactory( wrappedFactory, null )
                 .createExamineAction( item );
+    }
+
+    @Test
+    public void wraps_Action_in_RecordableAction_for_Examine() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class, "wrapped" );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
+        assertThat( f.createExamineAction( null ),
+                    is( instanceOf( RecordableAction.class ) ) );
     }
 
     @Test
@@ -73,6 +106,17 @@ public class RecordableActionFactoryTests {
     }
 
     @Test
+    public void wraps_Action_in_RecordableAction_for_UseWith() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class, "wrapped" );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
+        assertThat( f.createUseWithAction( null, null, null ),
+                    is( instanceOf( RecordableAction.class ) ) );
+    }
+
+    @Test
     public void create_examine_an_item_action_delegates_to_wrapped_factory() {
         final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
         final List<Item> items = mockery.mock( List.class );
@@ -82,6 +126,17 @@ public class RecordableActionFactoryTests {
         }});
         new RecordableActionFactory( wrappedFactory, null )
                 .createExamineAnItemAction( items );
+    }
+
+    @Test
+    public void wraps_Action_in_RecordableAction_for_ExamineAnItem() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class, "wrapped" );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
+        assertThat( f.createExamineAnItemAction( null ),
+                    is( instanceOf( RecordableAction.class ) ) );
     }
 
     @Test
@@ -99,6 +154,17 @@ public class RecordableActionFactoryTests {
     }
 
     @Test
+    public void wraps_Action_in_RecordableAction_for_TakeAnItem() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class, "wrapped" );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
+        assertThat( f.createTakeAnItemAction( null, null, null ),
+                    is( instanceOf( RecordableAction.class ) ) );
+    }
+
+    @Test
     public void create_take_specific_item_action_delegates_to_wrapped_factory() {
         final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
         final Item item = mockery.mock( Item.class );
@@ -110,6 +176,17 @@ public class RecordableActionFactoryTests {
         }});
         new RecordableActionFactory( wrappedFactory, null )
                 .createTakeSpecificItemAction( item, inventory, location );
+    }
+
+    @Test
+    public void wraps_Action_in_RecordableAction_for_TakeSpecificItem() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class, "wrapped" );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
+        assertThat( f.createTakeSpecificItemAction( null, null, null ),
+                    is( instanceOf( RecordableAction.class ) ) );
     }
 
     @Test
@@ -126,6 +203,17 @@ public class RecordableActionFactoryTests {
     }
 
     @Test
+    public void wraps_Action_in_RecordableAction_for_UseWithSpecificItem() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class, "wrapped" );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
+        assertThat( f.createUseWithSpecificItemAction( null, null ),
+                    is( instanceOf( RecordableAction.class ) ) );
+    }
+
+    @Test
     public void create_exit_action_delegates_to_wrapped_factory() {
         final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
         final Exit exit = mockery.mock( Exit.class );
@@ -136,6 +224,17 @@ public class RecordableActionFactoryTests {
         }});
         new RecordableActionFactory( wrappedFactory, null )
                 .createExitAction( exit, model );
+    }
+
+    @Test
+    public void wraps_Action_in_RecordableAction_for_Exit() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class, "wrapped" );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
+        assertThat( f.createExitAction( null, null ),
+                    is( instanceOf( RecordableAction.class ) ) );
     }
 
     // Don't know how to write this in JMock - Expectations need to be set before
