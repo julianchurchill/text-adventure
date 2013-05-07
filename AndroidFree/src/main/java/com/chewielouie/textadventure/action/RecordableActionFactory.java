@@ -33,22 +33,28 @@ public class RecordableActionFactory implements ActionFactory {
     public Action createInventoryItemAction( Item item,
                                              UserInventory inventory,
                                              ModelLocation location ) {
-        return new RecordableAction(
+        RecordableAction action = new RecordableAction(
             wrappedFactory.createInventoryItemAction( item, inventory, location ),
             actionHistory );
+        action.setItem( item );
+        return action;
     }
 
     public Action createExamineAction( Item item ) {
-        return new RecordableAction( wrappedFactory.createExamineAction( item ),
-                                     actionHistory );
+        RecordableAction action = new RecordableAction(
+            wrappedFactory.createExamineAction( item ), actionHistory );
+        action.setItem( item );
+        return action;
     }
 
     public Action createUseWithAction( Item item,
                                        UserInventory inventory,
                                        ModelLocation location ) {
-        return new RecordableAction(
+        RecordableAction action = new RecordableAction(
             wrappedFactory.createUseWithAction( item, inventory, location ),
             actionHistory );
+        action.setItem( item );
+        return action;
     }
 
     public Action createExamineAnItemAction( List<Item> items ) {
@@ -68,20 +74,27 @@ public class RecordableActionFactory implements ActionFactory {
     public Action createTakeSpecificItemAction( Item item,
                                           UserInventory inventory,
                                           ModelLocation location ) {
-        return new RecordableAction(
+        RecordableAction action = new RecordableAction(
             wrappedFactory.createTakeSpecificItemAction( item, inventory, location ),
             actionHistory );
+        action.setItem( item );
+        return action;
     }
 
     public Action createUseWithSpecificItemAction( Item actionOwner,
                                                    Item target ) {
-        return new RecordableAction(
+        RecordableAction action = new RecordableAction(
             wrappedFactory.createUseWithSpecificItemAction( actionOwner, target ),
             actionHistory );
+        action.setItem( actionOwner );
+        action.setTargetItem( target );
+        return action;
     }
 
     public Action createExitAction( Exit exit, TextAdventureModel model ) {
-        return new RecordableAction( wrappedFactory.createExitAction( exit, model ),
-                                     actionHistory );
+        RecordableAction action = new RecordableAction(
+            wrappedFactory.createExitAction( exit, model ), actionHistory );
+        action.setExit( exit );
+        return action;
     }
 }
