@@ -12,9 +12,6 @@ public class RecordableAction implements Action {
     private Item targetItem;
     private Exit exit;
 
-    public RecordableAction( Action toWrap ) {
-    }
-
     public RecordableAction( Action toWrap, ActionHistory actionHistory ) {
         this.wrappedAction = toWrap;
         this.actionHistory = actionHistory;
