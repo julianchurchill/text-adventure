@@ -29,8 +29,8 @@ Backlog
   * DONE RecordableActionFactory wraps returned Action objects from UserActionFactory in RecordableAction.
   * DONE RecordableActionFactory passes ActionHistory to RecordableAction objects on construction.
   * DONE RecordableActionFactory also set relevant Items and Exits on RecordableAction
-  * RecordableAction delegates all public methods to wrapped Action
-  * RecordableAction on trigger records action and associated Item and Exit ids in ActionHistory along with Location, Item and Exit ids
+  * DONE RecordableAction delegates all public methods to wrapped Action
+  * RecordableAction on trigger records action and associated Items and Exits in ActionHistory
   * Implement ActionHistory
     * ActionHistory allows recording of all 'events' that occur on Model/Location/Item objects due to 'Action's being 'triggered'. These actions are User level activities such as examine, use, take.
   * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file

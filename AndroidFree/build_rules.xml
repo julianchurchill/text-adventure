@@ -21,6 +21,7 @@
         <pathelement location="${businesslogic.libs.test}/junit-4.11.jar"/>
         <pathelement location="${businesslogic.libs.test}/jmock-2.6.0-RC2/jmock-2.6.0-RC2.jar"/>
         <pathelement location="${businesslogic.libs.test}/jmock-2.6.0-RC2/jmock-junit4-2.6.0-RC2.jar"/>
+        <pathelement location="${businesslogic.libs.test}/mockito-all-1.9.5.jar"/>
         <pathelement path="${businesslogic.test.output}"/>
         <path refid="classpath.businesslogic.base"/>
     </path>

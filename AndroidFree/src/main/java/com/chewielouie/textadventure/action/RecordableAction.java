@@ -6,6 +6,7 @@ import com.chewielouie.textadventure.ActionHistory;
 import com.chewielouie.textadventure.Exit;
 
 public class RecordableAction implements Action {
+    private Action wrappedAction;
     private ActionHistory actionHistory;
     private Item item;
     private Item targetItem;
@@ -15,34 +16,36 @@ public class RecordableAction implements Action {
     }
 
     public RecordableAction( Action toWrap, ActionHistory actionHistory ) {
+        this.wrappedAction = toWrap;
         this.actionHistory = actionHistory;
     }
 
     public String label() {
-        return "";
+        return wrappedAction.label();
     }
 
     public void trigger() {
+        wrappedAction.trigger();
     }
 
     public boolean userMustChooseFollowUpAction() {
-        return false;
+        return wrappedAction.userMustChooseFollowUpAction();
     }
 
     public List<Action> followUpActions() {
-        return null;
+        return wrappedAction.followUpActions();
     }
 
     public boolean userTextAvailable() {
-        return false;
+        return wrappedAction.userTextAvailable();
     }
 
     public String userText() {
-        return "";
+        return wrappedAction.userText();
     }
 
     public ActionFactory actionFactory() {
-        return null;
+        return wrappedAction.actionFactory();
     }
 
     public ActionHistory actionHistory() {
