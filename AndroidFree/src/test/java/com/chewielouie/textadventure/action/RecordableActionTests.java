@@ -5,12 +5,9 @@ import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import java.util.List;
-// import com.chewielouie.textadventure.item.Item;
-// import com.chewielouie.textadventure.ActionHistory;
-// import com.chewielouie.textadventure.Exit;
-// import com.chewielouie.textadventure.ModelLocation;
-// import com.chewielouie.textadventure.TextAdventureModel;
-// import com.chewielouie.textadventure.UserInventory;
+import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.ActionHistory;
+import com.chewielouie.textadventure.Exit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -89,5 +86,23 @@ public class RecordableActionTests {
             new RecordableAction( wrappedAction, null ).actionFactory(),
             is( actionFactory ) );
         verify( wrappedAction ).actionFactory();
+    }
+
+    @Test
+    public void on_trigger_records_action_with_parameters_in_history() {
+        ActionHistory actionHistory = mock( ActionHistory.class );
+        Action wrappedAction = mock( Action.class );
+        Item item = mock( Item.class );
+        Item targetItem = mock( Item.class );
+        Exit exit = mock( Exit.class );
+
+        RecordableAction a = new RecordableAction( wrappedAction, actionHistory );
+        a.setItem( item );
+        a.setTargetItem( targetItem );
+        a.setExit( exit );
+        a.trigger();
+
+        verify( actionHistory ).addActionWithParameters( wrappedAction, item,
+                                                         targetItem, exit );
     }
 }

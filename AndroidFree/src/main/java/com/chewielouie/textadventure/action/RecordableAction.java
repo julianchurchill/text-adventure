@@ -22,6 +22,9 @@ public class RecordableAction implements Action {
     }
 
     public void trigger() {
+        if( actionHistory != null )
+            actionHistory.addActionWithParameters( wrappedAction, item,
+                                                   targetItem, exit );
         wrappedAction.trigger();
     }
 
