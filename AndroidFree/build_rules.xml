@@ -64,7 +64,7 @@
     </target>
 
     <target name="unittest" description="Execute unit tests" depends="compile-tests">
-        <junit printsummary="yes" haltonfailure="yes" showoutput="yes" failureproperty="test.failure">
+        <junit haltonfailure="yes">
             <formatter type="plain" usefile="false"/>
             <classpath refid="classpath.businesslogic.test"/>
             <batchtest>
@@ -73,7 +73,6 @@
                 </fileset>
             </batchtest>
         </junit>
-        <fail if="test.failure"/>
     </target>
 
     <target name="all-businesslogic" depends="unittest"/>

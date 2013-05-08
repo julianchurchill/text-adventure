@@ -75,7 +75,7 @@
     </target>
 
     <target name="android-unittest" description="Execute the android specific unit tests" depends="compile-android-tests">
-        <junit printsummary="yes" haltonfailure="no" showoutput="yes" failureproperty="test.failure">
+        <junit haltonfailure="yes">
             <formatter type="plain" usefile="false"/>
             <classpath refid="classpath.android.test"/>
             <batchtest>
@@ -84,7 +84,6 @@
                 </fileset>
             </batchtest>
         </junit>
-        <fail if="test.failure"/>
     </target>
 
 </project>
