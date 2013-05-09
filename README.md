@@ -37,13 +37,14 @@ Backlog
     * ActionHistory allows recording of all 'events' that occur on Model/Location/Item objects due to 'Action's being 'triggered'. These actions are User level activities such as examine, use, take.
   * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
   * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
+  * Acceptance tests for pause/resume action save and replay?
+  * Merge recordable_actions branch to main line
   * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.
     * Implement as n hard coded rules to translate from 1.0 to 2.0 models:
       * If the bagsofjunk have been examined run Examine on them
       * If the moundofearth has been used run UseWith on the spade and moundofearth and _also_ add the spade to the inventory
       * If clockface has been used then run UseWith on the clockface and the clockmechanism
     * Delete old JSON based save file
-  * Acceptance tests for pause/resume action save and replay?
   * Acceptance tests for backwards compatibility with JSON for v1.0 being loaded and transformed for v2.0?
   * Defensive loading... if an old JSON file doesn't load capture the exception and recover gracefully, start a clean new game
 
