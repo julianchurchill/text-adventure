@@ -33,9 +33,10 @@ Backlog
   * DONE RecordableAction on trigger records action and associated Items and Exits in ActionHistory
   * DONE Add ActionParameters to RecordableAction and RecordableActionFactory to hide details.
   * DONE Move ActionHistory and BasicHistory to action namespace.
-  * Implement BasicActionHistory
-    * ActionHistory allows recording of all 'events' that occur on Model/Location/Item objects due to 'Action's being 'triggered'. These actions are User level activities such as examine, use, take.
+  * DONE Implement BasicActionHistory
+  * Implement ActionHistorySerialiser
   * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
+  * Implement ActionHistoryDeserialiser
   * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
   * Acceptance tests for pause/resume action save and replay?
   * Merge recordable_actions branch to main line
