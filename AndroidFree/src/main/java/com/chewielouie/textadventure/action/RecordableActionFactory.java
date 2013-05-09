@@ -2,7 +2,6 @@ package com.chewielouie.textadventure.action;
 
 import java.util.List;
 import com.chewielouie.textadventure.item.Item;
-import com.chewielouie.textadventure.ActionHistory;
 import com.chewielouie.textadventure.Exit;
 import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;

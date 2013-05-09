@@ -1,7 +1,6 @@
 package com.chewielouie.textadventure.action;
 
 import java.util.List;
-import com.chewielouie.textadventure.ActionHistory;
 
 public class RecordableAction implements Action {
     private Action wrappedAction;

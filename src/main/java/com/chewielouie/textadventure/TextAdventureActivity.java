@@ -40,6 +40,7 @@ import com.cedarsoftware.util.io.JsonReader;
 import com.cedarsoftware.util.io.JsonWriter;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
+import com.chewielouie.textadventure.action.BasicActionHistory;
 import com.chewielouie.textadventure.action.UserActionFactory;
 import com.chewielouie.textadventure.action.RecordableActionFactory;
 import com.chewielouie.textadventure.serialisation.ItemDeserialiser;

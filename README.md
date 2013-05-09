@@ -32,7 +32,7 @@ Backlog
   * DONE RecordableAction delegates all public methods to wrapped Action
   * DONE RecordableAction on trigger records action and associated Items and Exits in ActionHistory
   * DONE Add ActionParameters to RecordableAction and RecordableActionFactory to hide details.
-  * Move ActionHistory and BasicHistory to action namespace.
+  * DONE Move ActionHistory and BasicHistory to action namespace.
   * Implement BasicActionHistory
     * ActionHistory allows recording of all 'events' that occur on Model/Location/Item objects due to 'Action's being 'triggered'. These actions are User level activities such as examine, use, take.
   * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file

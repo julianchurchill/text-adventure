@@ -5,8 +5,6 @@ import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import java.util.List;
-import com.chewielouie.textadventure.action.ActionParameters;
-import com.chewielouie.textadventure.ActionHistory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
