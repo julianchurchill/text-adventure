@@ -1,16 +1,12 @@
 package com.chewielouie.textadventure.action;
 
 import java.util.List;
-import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.ActionHistory;
-import com.chewielouie.textadventure.Exit;
 
 public class RecordableAction implements Action {
     private Action wrappedAction;
     private ActionHistory actionHistory;
-    private Item item;
-    private Item targetItem;
-    private Exit exit;
+    private ActionParameters params;
 
     public RecordableAction( Action toWrap, ActionHistory actionHistory ) {
         this.wrappedAction = toWrap;
@@ -23,8 +19,7 @@ public class RecordableAction implements Action {
 
     public void trigger() {
         if( actionHistory != null )
-            actionHistory.addActionWithParameters( wrappedAction, item,
-                                                   targetItem, exit );
+            actionHistory.addActionWithParameters( wrappedAction, params );
         wrappedAction.trigger();
     }
 
@@ -52,27 +47,11 @@ public class RecordableAction implements Action {
         return actionHistory;
     }
 
-    public void setItem( Item item ) {
-        this.item = item;
+    public void setActionParameters( ActionParameters params ) {
+        this.params = params;
     }
 
-    public Item item() {
-        return item;
-    }
-
-    public void setTargetItem( Item item ) {
-        this.targetItem = item;
-    }
-
-    public Item targetItem() {
-        return targetItem;
-    }
-
-    public void setExit( Exit exit ) {
-        this.exit = exit;
-    }
-
-    public Exit exit() {
-        return exit;
+    public ActionParameters actionParameters() {
+        return params;
     }
 }

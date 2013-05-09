@@ -5,9 +5,8 @@ import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import java.util.List;
-import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.action.ActionParameters;
 import com.chewielouie.textadventure.ActionHistory;
-import com.chewielouie.textadventure.Exit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -92,17 +91,12 @@ public class RecordableActionTests {
     public void on_trigger_records_action_with_parameters_in_history() {
         ActionHistory actionHistory = mock( ActionHistory.class );
         Action wrappedAction = mock( Action.class );
-        Item item = mock( Item.class );
-        Item targetItem = mock( Item.class );
-        Exit exit = mock( Exit.class );
 
         RecordableAction a = new RecordableAction( wrappedAction, actionHistory );
-        a.setItem( item );
-        a.setTargetItem( targetItem );
-        a.setExit( exit );
+        ActionParameters params = mock( ActionParameters.class );
+        a.setActionParameters( params );
         a.trigger();
 
-        verify( actionHistory ).addActionWithParameters( wrappedAction, item,
-                                                         targetItem, exit );
+        verify( actionHistory ).addActionWithParameters( wrappedAction, params );
     }
 }

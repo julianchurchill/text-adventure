@@ -36,14 +36,14 @@ public class RecordableActionFactory implements ActionFactory {
         RecordableAction action = new RecordableAction(
             wrappedFactory.createInventoryItemAction( item, inventory, location ),
             actionHistory );
-        action.setItem( item );
+        action.setActionParameters( new ActionParameters( item ) );
         return action;
     }
 
     public Action createExamineAction( Item item ) {
         RecordableAction action = new RecordableAction(
             wrappedFactory.createExamineAction( item ), actionHistory );
-        action.setItem( item );
+        action.setActionParameters( new ActionParameters( item ) );
         return action;
     }
 
@@ -53,7 +53,7 @@ public class RecordableActionFactory implements ActionFactory {
         RecordableAction action = new RecordableAction(
             wrappedFactory.createUseWithAction( item, inventory, location ),
             actionHistory );
-        action.setItem( item );
+        action.setActionParameters( new ActionParameters( item ) );
         return action;
     }
 
@@ -77,7 +77,7 @@ public class RecordableActionFactory implements ActionFactory {
         RecordableAction action = new RecordableAction(
             wrappedFactory.createTakeSpecificItemAction( item, inventory, location ),
             actionHistory );
-        action.setItem( item );
+        action.setActionParameters( new ActionParameters( item ) );
         return action;
     }
 
@@ -86,15 +86,14 @@ public class RecordableActionFactory implements ActionFactory {
         RecordableAction action = new RecordableAction(
             wrappedFactory.createUseWithSpecificItemAction( actionOwner, target ),
             actionHistory );
-        action.setItem( actionOwner );
-        action.setTargetItem( target );
+        action.setActionParameters( new ActionParameters( actionOwner, target ) );
         return action;
     }
 
     public Action createExitAction( Exit exit, TextAdventureModel model ) {
         RecordableAction action = new RecordableAction(
             wrappedFactory.createExitAction( exit, model ), actionHistory );
-        action.setExit( exit );
+        action.setActionParameters( new ActionParameters( exit ) );
         return action;
     }
 }

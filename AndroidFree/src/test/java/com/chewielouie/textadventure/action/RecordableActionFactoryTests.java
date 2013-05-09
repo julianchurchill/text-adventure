@@ -108,7 +108,7 @@ public class RecordableActionFactoryTests {
         RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
                                                                  null );
         RecordableAction a = (RecordableAction)f.createInventoryItemAction( item, null, null );
-        assertThat( a.item(), is( item ) );
+        assertThat( a.actionParameters().item(), is( item ) );
     }
 
     @Test
@@ -159,7 +159,7 @@ public class RecordableActionFactoryTests {
         RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
                                                                  null );
         RecordableAction a = (RecordableAction)f.createExamineAction( item );
-        assertThat( a.item(), is( item ) );
+        assertThat( a.actionParameters().item(), is( item ) );
     }
 
     @Test
@@ -212,7 +212,7 @@ public class RecordableActionFactoryTests {
         RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
                                                                  null );
         RecordableAction a = (RecordableAction)f.createUseWithAction( item, null, null );
-        assertThat( a.item(), is( item ) );
+        assertThat( a.actionParameters().item(), is( item ) );
     }
 
     @Test
@@ -341,7 +341,7 @@ public class RecordableActionFactoryTests {
         RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
                                                                  null );
         RecordableAction a = (RecordableAction)f.createTakeSpecificItemAction( item, null, null );
-        assertThat( a.item(), is( item ) );
+        assertThat( a.actionParameters().item(), is( item ) );
     }
 
     @Test
@@ -396,8 +396,8 @@ public class RecordableActionFactoryTests {
                                                                  null );
         RecordableAction a = (RecordableAction)f.createUseWithSpecificItemAction(
             actionOwner, target );
-        assertThat( a.item(), is( actionOwner ) );
-        assertThat( a.targetItem(), is( target ) );
+        assertThat( a.actionParameters().item(), is( actionOwner ) );
+        assertThat( a.actionParameters().extraItem(), is( target ) );
     }
 
     @Test
@@ -449,7 +449,7 @@ public class RecordableActionFactoryTests {
         RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
                                                                  null );
         RecordableAction a = (RecordableAction)f.createExitAction( exit, null );
-        assertThat( a.exit(), is( exit ) );
+        assertThat( a.actionParameters().exit(), is( exit ) );
     }
 
     // Don't know how to write this in JMock - Expectations need to be set before
