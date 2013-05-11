@@ -40,9 +40,11 @@ import com.cedarsoftware.util.io.JsonReader;
 import com.cedarsoftware.util.io.JsonWriter;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
+import com.chewielouie.textadventure.action.ActionHistory;
 import com.chewielouie.textadventure.action.BasicActionHistory;
-import com.chewielouie.textadventure.action.UserActionFactory;
 import com.chewielouie.textadventure.action.RecordableActionFactory;
+import com.chewielouie.textadventure.action.UserActionFactory;
+import com.chewielouie.textadventure.serialisation.ActionHistorySerialiser;
 import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextExitDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextItemDeserialiser;
@@ -59,7 +61,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private static final int ABOUT_MENU_ITEM = 0;
     private static final int NEW_GAME_MENU_ITEM = 1;
     private static String saveFileName = "save_file_1";
-    private static String plainTextSaveFileName = "plain_text_save_file_1";
+    private static String actionHistorySaveFileName = "action_history_save_file_1";
 
     private RendersView rendersView;
     private boolean externallySuppliedViewRenderer = false;
@@ -77,6 +79,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private int maximumScore = 0;
     private BasicModel model;
     private ActionFactory actionFactory = null;
+    private ActionHistory actionHistory = null;
 
     public TextAdventureActivity() {
     }
@@ -163,7 +166,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private ActionFactory actionFactory() {
         if( actionFactory == null ) {
-            BasicActionHistory actionHistory = new BasicActionHistory();
+            actionHistory = new BasicActionHistory();
             actionFactory = new RecordableActionFactory( new UserActionFactory(),
                                                          actionHistory );
         }
@@ -408,6 +411,21 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     @Override
     public void onPause() {
         super.onPause();
+        writeActionHistorySaveFile();
+    }
+
+    private void writeActionHistorySaveFile() {
+        try {
+            FileOutputStream outputStream = openFileOutput( actionHistorySaveFileName,
+                                                            Context.MODE_PRIVATE );
+            outputStream.write(
+                new ActionHistorySerialiser( actionHistory ).serialise().getBytes() );
+            outputStream.close();
+        } catch( FileNotFoundException e ) {
+            e.printStackTrace();
+        } catch( IOException e ) {
+            e.printStackTrace();
+        }
     }
 }
 

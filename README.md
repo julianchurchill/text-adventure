@@ -35,9 +35,10 @@ Backlog
   * DONE Move ActionHistory and BasicHistory to action namespace.
   * DONE Implement BasicActionHistory
   * DONE Implement ActionHistorySerialiser
-  * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
+  * DONE On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
   * Implement ActionHistoryDeserialiser
-  * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.
+  * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory into the current actionHistory.
+  * On resume an ActionReplayer is used to re-run the ActionHistory on the Model.
   * Acceptance tests for pause/resume action save and replay?
   * Merge recordable_actions branch to main line
   * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.
