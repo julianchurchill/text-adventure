@@ -35,9 +35,6 @@ Backlog
   * DONE Move ActionHistory and BasicHistory to action namespace.
   * DONE Implement BasicActionHistory
   * DONE Implement ActionHistorySerialiser
-  * All Exits need IDs in the model - make it mandatory for deserialisation
-  * All Locations need IDs in the model - make it mandatory for deserialisation
-  * All Items need IDs in the model - make it mandatory for deserialisation
   * On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
   * Implement ActionHistoryDeserialiser
   * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory. An ActionReplayer is used to re-run the ActionHistory on the Model.

@@ -15,17 +15,17 @@ EXIT
 exit label:North
 exit destination:mainstreettown
 exit direction hint:North
-exit id:
+exit id:townentrancenorth
 EXIT
 exit label:East
 exit destination:outsideamineshaft
 exit direction hint:East
-exit id:
+exit id:townentranceeast
 EXIT
 exit label:West
 exit destination:townoutbuildings
 exit direction hint:West
-exit id:
+exit id:townentrancewest
 ITEM
 item name:Skeleton key
 item description:It is rather dirty and has clearly been carved from some poor unfortunates metacarpal.
@@ -35,7 +35,7 @@ item mid sentence cased name:skeleton key
 ITEM
 item name:Banana peel
 item description:It is yellow and a little moldy.
-item id:
+item id:bananapeel
 item countable noun prefix:some
 item mid sentence cased name:banana peel
 LOCATION
@@ -47,6 +47,7 @@ EXIT
 exit label:Down
 exit destination:firstfloorclocktower
 exit direction hint:South
+exit id:secondfloorclocktowerdown
 ITEM
 item name:Clock mechanism
 item description:It is missing a clock face and both hands. Looking at it you decide the face would be best placed upon the mechanism before the hands.
@@ -105,10 +106,12 @@ EXIT
 exit label:Up
 exit destination:secondfloorclocktower
 exit direction hint:North
+exit id:firstfloorclocktowerup
 EXIT
 exit label:Down
 exit destination:groundfloorclocktower
 exit direction hint:South
+exit id:firstfloorclocktowerdown
 LOCATION
 x:300
 y:120
@@ -118,10 +121,12 @@ EXIT
 exit label:Up
 exit destination:firstfloorclocktower
 exit direction hint:North
+exit id:groundfloorclocktowerup
 EXIT
 exit label:Clock tower door
 exit destination:clocktower
 exit direction hint:South
+exit id:groundfloorclocktowerdoor
 LOCATION
 x:480
 y:480
@@ -131,6 +136,7 @@ EXIT
 exit label:West
 exit destination:outsideamineshaft
 exit direction hint:West
+exit id:smallshedwest
 ITEM
 item name:Spade
 item description:It is a wooden handled spade. It looks like it has seen quite a lot of use and might not be good for much.
@@ -140,6 +146,7 @@ ITEM
 item name:Bags of junk
 item description:They are full of rubbish, there might be something of interest here but it is hard to tell.
 item countable noun prefix:some
+item id:bagsofjunk
 item mid sentence cased name:bags of junk
 item is untakeable:
 item examine action is not repeatable:
@@ -162,7 +169,7 @@ EXIT
 exit label:South
 exit destination:mainstreettown
 exit direction hint:South
-exit id:
+exit id:clocktowersouth
 EXIT
 exit label:Clock tower door
 exit destination:groundfloorclocktower
@@ -178,7 +185,7 @@ item mid sentence cased name:clock minute hand
 ITEM
 item name:locked door
 item description:It is locked and looks impenetrable. It appears to allow access to the clock tower itself.
-item id:
+item id:lockeddoor
 item countable noun prefix:a
 item is untakeable:
 item can be used with:clocktowerskeletonkey
@@ -196,16 +203,16 @@ EXIT
 exit label:North
 exit destination:clocktower
 exit direction hint:North
-exit id:
+exit id:mainstreettownnorth
 EXIT
 exit label:South
 exit destination:townentrance
 exit direction hint:South
-exit id:
+exit id:mainstreettownsouth
 ITEM
 item name:Dust of the Ancients
 item description:This dust looks pretty powerful, for dust.
-item id:
+item id:dustoftheancients
 item countable noun prefix:some
 item mid sentence cased name:Dust of the Ancients
 LOCATION
@@ -217,7 +224,7 @@ EXIT
 exit label:East
 exit destination:townentrance
 exit direction hint:East
-exit id:
+exit id:townoutbuildingseast
 ITEM
 item name:mound of earth
 item description:It has recently been disturbed.
@@ -244,10 +251,12 @@ EXIT
 exit label:West
 exit destination:townentrance
 exit direction hint:West
+exit id:outsideamineshaftwest
 EXIT
 exit label:Ramshackle Shed
 exit destination:smallshed
 exit direction hint:East
+exit id:outsideamineshafteast
 EXIT
 exit label:Mineshaft entrance
 exit destination:mineshaftchamber1
@@ -263,14 +272,17 @@ EXIT
 exit label:Outside
 exit destination:outsideamineshaft
 exit direction hint:North
+exit id:mineshaftchamber1outside
 EXIT
 exit label:Dark tunnel
 exit destination:darktunnel1
 exit direction hint:South
+exit id:mineshaftchamber1darktunnel
 EXIT
 exit label:Dimly lit annex
 exit destination:dimlylitannex
 exit direction hint:West
+exit id:mineshaftchamber1annex
 LOCATION
 x:420
 y:600
@@ -280,10 +292,12 @@ EXIT
 exit label:North
 exit destination:mineshaftchamber1
 exit direction hint:North
+exit id:darktunnel1north
 EXIT
 exit label:South
 exit destination:darktunnel2
 exit direction hint:South
+exit id:darktunnel1south
 LOCATION
 x:420
 y:660
@@ -293,14 +307,17 @@ EXIT
 exit label:North
 exit destination:darktunnel1
 exit direction hint:North
+exit id:darktunnel2north
 EXIT
 exit label:South
 exit destination:smallminechamber
 exit direction hint:South
+exit id:darktunnel2south
 EXIT
 exit label:Candle lit chamber
 exit destination:candlelitchamber
 exit direction hint:East
+exit id:darktunnel2candlelitchamber
 LOCATION
 x:420
 y:720
@@ -310,6 +327,7 @@ EXIT
 exit label:North
 exit destination:darktunnel2
 exit direction hint:North
+exit id:smallminechambernorth
 ITEM
 item name:Imprisoned man
 item description:He is dirty and looks exhausted. Chained to a nearby rock you see no easy way to free him.
@@ -352,10 +370,12 @@ EXIT
 exit label:East
 exit destination:mineshaftchamber1
 exit direction hint:East
+exit id:dimlylitannexeast
 EXIT
 exit label:Even smaller annex
 exit destination:evensmallerannex
 exit direction hint:South
+exit id:dimlylitannexevensmallerannex
 ITEM
 item name:Chunk of metal
 item description:This is a sizeable chunk of metal, pointy at two ends with a notch in the center. It looks like it could be fitted onto something but it is wedged in a crack in the wall.
@@ -386,6 +406,7 @@ EXIT
 exit label:Dimly lit annex
 exit destination:dimlylitannex
 exit direction hint:North
+exit id:evensmallerannexdimlylitannex
 ITEM
 item name:Pile of straw
 item description:It still has the indentation of a sleeping body although the body does not appear to still be here.
@@ -410,10 +431,12 @@ EXIT
 exit label:Dark tunnel
 exit destination:darktunnel2
 exit direction hint:West
+exit id:candlelitchamberdarktunnel
 EXIT
 exit label:Smithy
 exit destination:minesmithy
 exit direction hint:South
+exit id:candlelitchambersmithy
 ITEM
 item name:Table
 item description:It is covered with papers.
@@ -439,6 +462,7 @@ EXIT
 exit label:Candle lit chamber
 exit destination:candlelitchamber
 exit direction hint:North
+exit id:minesmithycandlelitchamber
 ITEM
 item name:Sharpening wheel
 item description:This is used to sharpen blunted mining tools.
