@@ -37,7 +37,11 @@ Backlog
   * DONE Implement ActionHistorySerialiser
   * DONE On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
   * Implement ActionHistoryDeserialiser
-  * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory into the current actionHistory.
+    * Modifies passed in ActionHistory - clears it to start with
+    * Creates appropriate action object types based on name
+    * Retrieves Exit mentioned by id from a model
+    * Retrieves Items mentioned by id from a model
+  * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory save file contents into the current ActionHistory.
   * On resume an ActionReplayer is used to re-run the ActionHistory on the Model.
   * Acceptance tests for pause/resume action save and replay?
   * Merge recordable_actions branch to main line
