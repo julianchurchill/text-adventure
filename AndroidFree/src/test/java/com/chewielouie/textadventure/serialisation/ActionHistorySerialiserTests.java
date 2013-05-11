@@ -6,8 +6,11 @@ import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import com.chewielouie.textadventure.Exit;
+import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionHistory;
+import com.chewielouie.textadventure.action.ActionParameters;
 import com.chewielouie.textadventure.action.ActionRecord;
 
 public class ActionHistorySerialiserTests {
@@ -23,7 +26,7 @@ public class ActionHistorySerialiserTests {
     @Test
     public void serialises_action_name() {
         Action action = mock( Action.class );
-        when( action.name() ).thenReturn( "action name" );
+        when( action.name() ).thenReturn( "name" );
         ActionRecord actionRecord = mock( ActionRecord.class );
         when( actionRecord.action() ).thenReturn( action );
         ActionHistory history = mock( ActionHistory.class );
@@ -31,15 +34,95 @@ public class ActionHistorySerialiserTests {
         when( history.getRecord( 0 ) ).thenReturn( actionRecord );
 
         assertThat( new ActionHistorySerialiser( history ).serialise(),
-                    is( "action name\n" ) );
+                    is( "action name:name:\n" ) );
     }
 
-    // @Test
-    // public void serialises_item_parameter_if_present() {
+    @Test
+    public void serialises_item_parameter_if_present() {
+        Item item = mock( Item.class );
+        when( item.id() ).thenReturn( "itemid" );
+        ActionParameters params = mock( ActionParameters.class );
+        when( params.item() ).thenReturn( item );
+        ActionRecord actionRecord = mock( ActionRecord.class );
+        when( actionRecord.params() ).thenReturn( params );
+        ActionHistory history = mock( ActionHistory.class );
+        when( history.size() ).thenReturn( 1 );
+        when( history.getRecord( 0 ) ).thenReturn( actionRecord );
 
-    // @Test
-    // public void serialises_extra_item_parameter_if_present() {
+        assertThat( new ActionHistorySerialiser( history ).serialise(),
+                    is( "item id:itemid:\n" ) );
+    }
 
-    // @Test
-    // public void serialises_exit_parameter_if_present() {
+    @Test
+    public void serialises_extra_item_parameter_if_present() {
+        Item item = mock( Item.class );
+        when( item.id() ).thenReturn( "extraitemid" );
+        ActionParameters params = mock( ActionParameters.class );
+        when( params.extraItem() ).thenReturn( item );
+        ActionRecord actionRecord = mock( ActionRecord.class );
+        when( actionRecord.params() ).thenReturn( params );
+        ActionHistory history = mock( ActionHistory.class );
+        when( history.size() ).thenReturn( 1 );
+        when( history.getRecord( 0 ) ).thenReturn( actionRecord );
+
+        assertThat( new ActionHistorySerialiser( history ).serialise(),
+                    is( "extra item id:extraitemid:\n" ) );
+    }
+
+    @Test
+    public void serialises_exit_parameter_if_present() {
+        Exit exit = mock( Exit.class );
+        when( exit.id() ).thenReturn( "exitid" );
+        ActionParameters params = mock( ActionParameters.class );
+        when( params.exit() ).thenReturn( exit );
+        ActionRecord actionRecord = mock( ActionRecord.class );
+        when( actionRecord.params() ).thenReturn( params );
+        ActionHistory history = mock( ActionHistory.class );
+        when( history.size() ).thenReturn( 1 );
+        when( history.getRecord( 0 ) ).thenReturn( actionRecord );
+
+        assertThat( new ActionHistorySerialiser( history ).serialise(),
+                    is( "exit id:exitid:\n" ) );
+    }
+
+    @Test
+    public void serialises_all_parameters_at_the_same_time() {
+        Item item = mock( Item.class );
+        when( item.id() ).thenReturn( "itemid" );
+        Item extraItem = mock( Item.class );
+        when( extraItem.id() ).thenReturn( "extraitemid" );
+        Exit exit = mock( Exit.class );
+        when( exit.id() ).thenReturn( "exitid" );
+        ActionParameters params = mock( ActionParameters.class );
+        when( params.item() ).thenReturn( item );
+        when( params.extraItem() ).thenReturn( extraItem );
+        when( params.exit() ).thenReturn( exit );
+        ActionRecord actionRecord = mock( ActionRecord.class );
+        when( actionRecord.params() ).thenReturn( params );
+        ActionHistory history = mock( ActionHistory.class );
+        when( history.size() ).thenReturn( 1 );
+        when( history.getRecord( 0 ) ).thenReturn( actionRecord );
+
+        assertThat( new ActionHistorySerialiser( history ).serialise(),
+                    is( "item id:itemid:extra item id:extraitemid:exit id:exitid:\n" ) );
+    }
+
+    @Test
+    public void serialises_parameters_and_action_type_together() {
+        Action action = mock( Action.class );
+        when( action.name() ).thenReturn( "name" );
+        Item item = mock( Item.class );
+        when( item.id() ).thenReturn( "itemid" );
+        ActionParameters params = mock( ActionParameters.class );
+        when( params.item() ).thenReturn( item );
+        ActionRecord actionRecord = mock( ActionRecord.class );
+        when( actionRecord.action() ).thenReturn( action );
+        when( actionRecord.params() ).thenReturn( params );
+        ActionHistory history = mock( ActionHistory.class );
+        when( history.size() ).thenReturn( 1 );
+        when( history.getRecord( 0 ) ).thenReturn( actionRecord );
+
+        assertThat( new ActionHistorySerialiser( history ).serialise(),
+                    is( "action name:name:item id:itemid:\n" ) );
+    }
 }
