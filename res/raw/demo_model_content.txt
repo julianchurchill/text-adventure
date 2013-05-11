@@ -2,6 +2,7 @@ INVENTORY ITEM
 item name:Pocket lint
 item description:It's fluffy and shaped like an inverted belly button.
 item countable noun prefix:some
+item id:pocketlint
 INVENTORY ITEM
 item name:Multitool
 item description:It's got a lot of tools on it. You feel like a man of the wilderness when you wield this formidable contraption.
