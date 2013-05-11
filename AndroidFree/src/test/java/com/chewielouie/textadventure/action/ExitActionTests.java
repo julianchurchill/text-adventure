@@ -16,6 +16,11 @@ public class ExitActionTests {
     private Mockery mockery = new Mockery();
 
     @Test
+    public void name_is_correct() {
+        assertThat( "exit", is( new ExitAction( null, null ).name() ) );
+    }
+
+    @Test
     public void user_text_is_empty() {
         ExitAction action = new ExitAction( null, null );
         action.trigger();

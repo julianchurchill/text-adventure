@@ -46,5 +46,9 @@ public class Examine implements Action {
     public boolean userTextAvailable() {
         return true;
     }
+
+    public String name() {
+        return "examine";
+    }
 }
 

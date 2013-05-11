@@ -59,6 +59,10 @@ public class UseWithSpecificItem implements Action {
         return userText;
     }
 
+    public String name() {
+        return "use with specific item";
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof UseWithSpecificItem) )

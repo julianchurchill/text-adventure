@@ -65,6 +65,10 @@ public class TakeAnItem implements Action {
         return "";
     }
 
+    public String name() {
+        return "take an item";
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof TakeAnItem) )

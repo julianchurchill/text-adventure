@@ -47,6 +47,10 @@ public class TakeSpecificItem implements Action {
         return "You take the " + item.midSentenceCasedName() + ".";
     }
 
+    public String name() {
+        return "take specific item";
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof TakeSpecificItem) )

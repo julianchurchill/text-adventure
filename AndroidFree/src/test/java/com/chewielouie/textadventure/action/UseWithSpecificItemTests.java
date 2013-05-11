@@ -19,6 +19,11 @@ public class UseWithSpecificItemTests {
     }
 
     @Test
+    public void name_is_correct() {
+        assertEquals( "use with specific item", createAction().name() );
+    }
+
+    @Test
     public void label_is_target_item_name() {
         final Item item = mockery.mock( Item.class );
         mockery.checking( new Expectations() {{

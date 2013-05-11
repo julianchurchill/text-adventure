@@ -21,6 +21,11 @@ public class ShowInventoryTests {
     private Mockery mockery = new Mockery();
 
     @Test
+    public void name_is_correct() {
+        assertEquals( "show inventory", new ShowInventory( null, null, null ).name() );
+    }
+
+    @Test
     public void two_objects_with_the_same_value_should_be_equal() {
         ShowInventory object1 = new ShowInventory( null, null, null );
         ShowInventory object2 = new ShowInventory( null, null, null );

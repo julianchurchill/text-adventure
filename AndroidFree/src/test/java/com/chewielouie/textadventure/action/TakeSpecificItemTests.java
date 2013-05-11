@@ -23,6 +23,11 @@ public class TakeSpecificItemTests {
     }
 
     @Test
+    public void name_is_correct() {
+        assertEquals( "take specific item", createAction( null ).name() );
+    }
+
+    @Test
     public void label_includes_item_name() {
         final Item item = mockery.mock( Item.class );
         TakeSpecificItem action = createAction( item );

@@ -79,6 +79,10 @@ public class UseWith implements Action {
         return "";
     }
 
+    public String name() {
+        return "use with";
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof UseWith) )

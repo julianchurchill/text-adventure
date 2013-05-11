@@ -48,6 +48,10 @@ public class ExamineAnItem implements Action {
         return "";
     }
 
+    public String name() {
+        return "examine an item";
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof ExamineAnItem) )

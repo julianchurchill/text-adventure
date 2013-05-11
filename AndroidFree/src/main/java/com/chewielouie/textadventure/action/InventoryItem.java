@@ -65,6 +65,10 @@ public class InventoryItem implements Action {
         return "";
     }
 
+    public String name() {
+        return "inventory item";
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof InventoryItem) )

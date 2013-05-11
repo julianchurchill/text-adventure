@@ -10,5 +10,6 @@ public interface Action {
     public boolean userTextAvailable();
     public String userText();
     public ActionFactory actionFactory();
+    public String name();
 }
 

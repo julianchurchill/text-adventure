@@ -6,9 +6,9 @@ import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionHistory;
 import com.chewielouie.textadventure.action.ActionRecord;
-import com.chewielouie.textadventure.action.ShowInventory;
 
 public class ActionHistorySerialiserTests {
 
@@ -21,17 +21,25 @@ public class ActionHistorySerialiserTests {
     }
 
     @Test
-    public void serialises_ShowInventory_action_type() {
+    public void serialises_action_name() {
+        Action action = mock( Action.class );
+        when( action.name() ).thenReturn( "action name" );
         ActionRecord actionRecord = mock( ActionRecord.class );
-        when( actionRecord.action() ).thenReturn( new ShowInventory( null, null, null ) );
+        when( actionRecord.action() ).thenReturn( action );
         ActionHistory history = mock( ActionHistory.class );
         when( history.size() ).thenReturn( 1 );
         when( history.getRecord( 0 ) ).thenReturn( actionRecord );
 
         assertThat( new ActionHistorySerialiser( history ).serialise(),
-                    is( "show inventory\n" ) );
+                    is( "action name\n" ) );
     }
 
     // @Test
-    // public void serialises_xxx_action_type() {
+    // public void serialises_item_parameter_if_present() {
+
+    // @Test
+    // public void serialises_extra_item_parameter_if_present() {
+
+    // @Test
+    // public void serialises_exit_parameter_if_present() {
 }

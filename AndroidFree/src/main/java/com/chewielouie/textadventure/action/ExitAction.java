@@ -42,5 +42,9 @@ public class ExitAction implements Action {
     public boolean userTextAvailable() {
         return false;
     }
+
+    public String name() {
+        return "exit";
+    }
 }
 

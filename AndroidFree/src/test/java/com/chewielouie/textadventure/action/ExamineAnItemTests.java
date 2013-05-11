@@ -24,6 +24,11 @@ public class ExamineAnItemTests {
     }
 
     @Test
+    public void name_is_correct() {
+        assertEquals( "examine an item", createAction().name() );
+    }
+
+    @Test
     public void label_is_examine_an_item() {
         assertEquals( "Examine an item", createAction().label() );
     }

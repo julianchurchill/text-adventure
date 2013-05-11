@@ -16,6 +16,11 @@ public class ExamineTests {
     private Mockery mockery = new Mockery();
 
     @Test
+    public void name_is_correct() {
+        assertEquals( "examine", new Examine( null ).name() );
+    }
+
+    @Test
     public void user_text_contains_item_description() {
         final Item item = mockery.mock( Item.class );
         Examine action = new Examine( item );

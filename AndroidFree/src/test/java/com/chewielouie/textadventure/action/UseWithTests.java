@@ -25,6 +25,11 @@ public class UseWithTests {
     }
 
     @Test
+    public void name_is_correct() {
+        assertEquals( "use with", createAction().name() );
+    }
+
+    @Test
     public void label_is_use_with() {
         assertEquals( "Use with", createAction().label() );
     }

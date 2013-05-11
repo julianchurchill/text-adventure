@@ -23,6 +23,11 @@ public class InventoryItemTests {
     }
 
     @Test
+    public void name_is_correct() {
+        assertEquals( "inventory item", createAction().name() );
+    }
+
+    @Test
     public void label_is_item_name() {
         final Item item = mockery.mock( Item.class );
         mockery.checking( new Expectations() {{
