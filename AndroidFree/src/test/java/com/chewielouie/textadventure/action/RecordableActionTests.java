@@ -74,6 +74,15 @@ public class RecordableActionTests {
     }
 
     @Test
+    public void name_delegates_to_wrapped_action() {
+        Action wrappedAction = mock( Action.class );
+        when( wrappedAction.name() ).thenReturn( "name" );
+
+        assertThat( new RecordableAction( wrappedAction, null ).name(), is( "name" ) );
+        verify( wrappedAction ).name();
+    }
+
+    @Test
     public void actionFactory_delegates_to_wrapped_action() {
         ActionFactory actionFactory = mock( ActionFactory.class );
         Action wrappedAction = mock( Action.class );

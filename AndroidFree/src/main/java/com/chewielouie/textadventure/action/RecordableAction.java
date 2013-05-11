@@ -38,6 +38,10 @@ public class RecordableAction implements Action {
         return wrappedAction.userText();
     }
 
+    public String name() {
+        return wrappedAction.name();
+    }
+
     public ActionFactory actionFactory() {
         return wrappedAction.actionFactory();
     }
