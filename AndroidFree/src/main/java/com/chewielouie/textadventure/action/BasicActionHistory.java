@@ -17,4 +17,8 @@ public class BasicActionHistory implements ActionHistory {
     public ActionRecord getRecord( int index ) {
         return history.get( index );
     }
+
+    public void clear() {
+        history.clear();
+    }
 }

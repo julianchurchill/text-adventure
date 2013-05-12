@@ -45,4 +45,14 @@ public class BasicActionHistoryTests {
         assertThat( history.getRecord( 2 ).action(), is( action3 ) );
         assertThat( history.getRecord( 2 ).params(), is( params3 ) );
     }
+
+    @Test
+    public void clear_empties_the_history() {
+        BasicActionHistory history = new BasicActionHistory();
+        history.addActionWithParameters( null, null );
+
+        history.clear();
+
+        assertThat( history.size(), is( 0 ) );
+    }
 }
