@@ -26,12 +26,12 @@ public class ActionHistoryDeserialiser {
         if( factory != null ) {
             Scanner scanner = new Scanner( input );
             while( scanner.hasNextLine() )
-                extractActionFromLine( scanner.nextLine(), actions );
+                createActionFromLine( scanner.nextLine(), actions );
         }
         return actions;
     }
 
-    private void extractActionFromLine( String input, List<Action> actions ) {
+    private void createActionFromLine( String input, List<Action> actions ) {
         int current = input.indexOf( ":" );
         if( current != -1 ) {
             int startOfActionName = current + 1;
@@ -39,8 +39,23 @@ public class ActionHistoryDeserialiser {
             if( endOfActionName != -1 ) {
                 String actionName = input.substring( startOfActionName,
                                                      endOfActionName );
-                actions.add( factory.createShowInventoryAction( inventory, model ) );
+                actions.add( makeActionByName( actionName ) );
             }
         }
+    }
+
+    private Action makeActionByName( String actionName ) {
+        Action action = null;
+        if( actionName.equals( "show inventory" ) )
+            action = factory.createShowInventoryAction( inventory, model );
+        else if( actionName.equals( "examine an item" ) )
+            action = factory.createExamineAnItemAction( null );
+        else if( actionName.equals( "examine" ) )
+            action = factory.createExamineAction( null );
+        else if( actionName.equals( "exit" ) )
+            action = factory.createExitAction( null, model );
+        else if( actionName.equals( "inventory item" ) )
+            action = factory.createInventoryItemAction( null, inventory, null );
+        return action;
     }
 }
