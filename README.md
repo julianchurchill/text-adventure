@@ -36,14 +36,15 @@ Backlog
   * DONE Implement BasicActionHistory
   * DONE Implement ActionHistorySerialiser
   * DONE On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
-  * Implement ActionHistoryDeserialiser
+  * DONE Implement ActionHistoryDeserialiser
     * DONE Return a list of actions
     * DONE Creates appropriate action object types from factory based on name
-    * Retrieves Exit mentioned by id from a model
-    * Retrieves Items mentioned by id from a model
+    * DONE Retrieves Exit mentioned by id from a model
+    * DONE Retrieves Items mentioned by id from a model
   * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory save file contents into a list of actions
   * On resume the ActionHistory is cleared by the activity
   * On resume the activity is used to re-run the list of actions from the deserialiser
+    * Call Presenter.enact() or Action.trigger()? If Presenter.enact() then how to handle view callbacks?  Do we need it for the score for example?
   * Acceptance tests for pause/resume action save and replay?
   * Merge recordable_actions branch to main line
   * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.

@@ -1,17 +1,24 @@
 package com.chewielouie.textadventure.serialisation;
 
+import static com.chewielouie.textadventure.serialisation.ActionHistoryTextFormat.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import com.chewielouie.textadventure.Exit;
 import com.chewielouie.textadventure.TextAdventureModel;
 import com.chewielouie.textadventure.UserInventory;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
+import com.chewielouie.textadventure.item.Item;
 
 public class ActionHistoryDeserialiser {
     private ActionFactory factory;
     private UserInventory inventory;
     private TextAdventureModel model;
+    private Item item;
+    private Item extraItem;
+    private Exit exit;
 
     public ActionHistoryDeserialiser( ActionFactory factory,
                                       UserInventory inventory,
@@ -31,39 +38,70 @@ public class ActionHistoryDeserialiser {
         return actions;
     }
 
-    private void createActionFromLine( String input, List<Action> actions ) {
-        int current = input.indexOf( ":" );
-        if( current != -1 ) {
-            int startOfActionName = current + 1;
-            int endOfActionName = input.indexOf( ":", startOfActionName );
-            if( endOfActionName != -1 ) {
-                String actionName = input.substring( startOfActionName,
-                                                     endOfActionName );
-                actions.add( makeActionByName( actionName ) );
-            }
+    private void createActionFromLine( String line, List<Action> actions ) {
+        extractItem( line );
+        extractExtraItem( line );
+        extractExit( line );
+        String actionName = findTagValue( line, ACTION_NAME_TAG );
+        if( actionName != "" )
+            actions.add( makeActionByName( actionName ) );
+    }
+
+    private void extractItem( String line ) {
+        String id = findTagValue( line, ITEM_ID_TAG );
+        if( id != "" )
+            item = model.findItemByID( id );
+        else
+            item = null;
+    }
+
+    private void extractExtraItem( String line ) {
+        String id = findTagValue( line, EXTRA_ITEM_ID_TAG );
+        if( id != "" )
+            extraItem = model.findItemByID( id );
+        else
+            extraItem = null;
+    }
+
+    private void extractExit( String line ) {
+        String id = findTagValue( line, EXIT_ID_TAG );
+        if( id != "" )
+            exit = model.findExitByID( id );
+        else
+            exit = null;
+    }
+
+    private String findTagValue( String line, String tag ) {
+        int startOfTag = line.indexOf( tag );
+        if( startOfTag != -1 ) {
+            int startOfActionName = startOfTag + tag.length() + SEPERATOR.length();
+            int endOfActionName = line.indexOf( SEPERATOR, startOfActionName );
+            if( endOfActionName != -1 )
+                return line.substring( startOfActionName, endOfActionName );
         }
+        return "";
     }
 
     private Action makeActionByName( String actionName ) {
         Action action = null;
-        if( actionName.equals( "examine an item" ) )
+        if( actionName.equals( ACTION_NAME_EXAMINE_AN_ITEM ) )
             action = factory.createExamineAnItemAction( null );
-        else if( actionName.equals( "examine" ) )
-            action = factory.createExamineAction( null );
-        else if( actionName.equals( "exit" ) )
-            action = factory.createExitAction( null, model );
-        else if( actionName.equals( "inventory item" ) )
-            action = factory.createInventoryItemAction( null, inventory, null );
-        else if( actionName.equals( "show inventory" ) )
+        else if( actionName.equals( ACTION_NAME_EXAMINE ) )
+            action = factory.createExamineAction( item );
+        else if( actionName.equals( ACTION_NAME_EXIT ) )
+            action = factory.createExitAction( exit, model );
+        else if( actionName.equals( ACTION_NAME_INVENTORY_ITEM ) )
+            action = factory.createInventoryItemAction( item, inventory, null );
+        else if( actionName.equals( ACTION_NAME_SHOW_INVENTORY ) )
             action = factory.createShowInventoryAction( inventory, model );
-        else if( actionName.equals( "take an item" ) )
+        else if( actionName.equals( ACTION_NAME_TAKE_AN_ITEM ) )
             action = factory.createTakeAnItemAction( null, inventory, null );
-        else if( actionName.equals( "take specific item" ) )
-            action = factory.createTakeSpecificItemAction( null, inventory, null );
-        else if( actionName.equals( "use with specific item" ) )
-            action = factory.createUseWithSpecificItemAction( null, null );
-        else if( actionName.equals( "use with" ) )
-            action = factory.createUseWithAction( null, inventory, null );
+        else if( actionName.equals( ACTION_NAME_TAKE_SPECIFIC_ITEM ) )
+            action = factory.createTakeSpecificItemAction( item, inventory, null );
+        else if( actionName.equals( ACTION_NAME_USE_WITH_SPECIFIC_ITEM ) )
+            action = factory.createUseWithSpecificItemAction( item, extraItem );
+        else if( actionName.equals( ACTION_NAME_USE_WITH ) )
+            action = factory.createUseWithAction( item, inventory, null );
         return action;
     }
 }

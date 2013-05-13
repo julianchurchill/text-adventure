@@ -1,5 +1,7 @@
 package com.chewielouie.textadventure.serialisation;
 
+import static com.chewielouie.textadventure.serialisation.ActionHistoryTextFormat.*;
+
 import com.chewielouie.textadventure.Exit;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionHistory;
@@ -8,7 +10,6 @@ import com.chewielouie.textadventure.action.ActionRecord;
 import com.chewielouie.textadventure.item.Item;
 
 public class ActionHistorySerialiser {
-    private static final String SEPERATOR = ":";
     private ActionHistory history;
 
     public ActionHistorySerialiser( ActionHistory history ) {
@@ -28,7 +29,7 @@ public class ActionHistorySerialiser {
 
     private String serialiseActionType( Action action ) {
         if( action != null )
-            return "action name" + SEPERATOR + action.name() + SEPERATOR;
+            return ACTION_NAME_TAG + SEPERATOR + action.name() + SEPERATOR;
         return "";
     }
 
@@ -44,19 +45,19 @@ public class ActionHistorySerialiser {
 
     private String serialiseItemParam( Item item ) {
         if( item != null )
-            return "item id" + SEPERATOR + item.id() + SEPERATOR;
+            return ITEM_ID_TAG + SEPERATOR + item.id() + SEPERATOR;
         return "";
     }
 
     private String serialiseExtraItemParam( Item item ) {
         if( item != null )
-            return "extra item id" + SEPERATOR + item.id() + SEPERATOR;
+            return EXTRA_ITEM_ID_TAG + SEPERATOR + item.id() + SEPERATOR;
         return "";
     }
 
     private String serialiseExitParam( Exit exit ) {
         if( exit != null )
-            return "exit id" + SEPERATOR + exit.id() + SEPERATOR;
+            return EXIT_ID_TAG + SEPERATOR + exit.id() + SEPERATOR;
         return "";
     }
 }
