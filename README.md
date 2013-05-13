@@ -37,8 +37,8 @@ Backlog
   * DONE Implement ActionHistorySerialiser
   * DONE On pause the ActionHistorySerialiser is used to serialise the ActionHistory and the result is written to a file
   * Implement ActionHistoryDeserialiser
-    * Return a list of actions
-    * Creates appropriate action object types from factory based on name
+    * DONE Return a list of actions
+    * DONE Creates appropriate action object types from factory based on name
     * Retrieves Exit mentioned by id from a model
     * Retrieves Items mentioned by id from a model
   * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory save file contents into a list of actions

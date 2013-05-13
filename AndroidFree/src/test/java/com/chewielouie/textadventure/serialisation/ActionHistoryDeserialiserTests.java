@@ -45,9 +45,7 @@ public class ActionHistoryDeserialiserTests {
     @Test
     public void deserialises_ExamineAnItem_action_type() {
         ActionFactory factory = mock( ActionFactory.class );
-        UserInventory inventory = mock( UserInventory.class );
-        TextAdventureModel model = mock( TextAdventureModel.class );
-        new ActionHistoryDeserialiser( factory, inventory, model ).deserialise(
+        new ActionHistoryDeserialiser( factory, null, null ).deserialise(
             "action name:examine an item:\n" );
 
         verify( factory ).createExamineAnItemAction( Mockito.anyListOf( Item.class ) );
@@ -56,9 +54,7 @@ public class ActionHistoryDeserialiserTests {
     @Test
     public void deserialises_Examine_action_type() {
         ActionFactory factory = mock( ActionFactory.class );
-        UserInventory inventory = mock( UserInventory.class );
-        TextAdventureModel model = mock( TextAdventureModel.class );
-        new ActionHistoryDeserialiser( factory, inventory, model ).deserialise(
+        new ActionHistoryDeserialiser( factory, null, null ).deserialise(
             "action name:examine:\n" );
 
         verify( factory ).createExamineAction( Mockito.any( Item.class ) );
@@ -67,9 +63,8 @@ public class ActionHistoryDeserialiserTests {
     @Test
     public void deserialises_Exit_action_type_using_factory() {
         ActionFactory factory = mock( ActionFactory.class );
-        UserInventory inventory = mock( UserInventory.class );
         TextAdventureModel model = mock( TextAdventureModel.class );
-        new ActionHistoryDeserialiser( factory, inventory, model ).deserialise(
+        new ActionHistoryDeserialiser( factory, null, model ).deserialise(
             "action name:exit:\n" );
 
         verify( factory ).createExitAction( Mockito.any( Exit.class ),
@@ -80,8 +75,7 @@ public class ActionHistoryDeserialiserTests {
     public void deserialises_InventoryItem_action_type_using_factory() {
         ActionFactory factory = mock( ActionFactory.class );
         UserInventory inventory = mock( UserInventory.class );
-        TextAdventureModel model = mock( TextAdventureModel.class );
-        new ActionHistoryDeserialiser( factory, inventory, model ).deserialise(
+        new ActionHistoryDeserialiser( factory, inventory, null ).deserialise(
             "action name:inventory item:\n" );
 
         verify( factory ).createInventoryItemAction( Mockito.any( Item.class ),
@@ -100,28 +94,51 @@ public class ActionHistoryDeserialiserTests {
         verify( factory ).createShowInventoryAction( inventory, model );
     }
 
-    // @Test
-    // public void deserialises_TakeAnItem_action_type_using_factory() {
-    //     ActionFactory factory = mock( ActionFactory.class );
-    //     UserInventory inventory = mock( UserInventory.class );
-    //     TextAdventureModel model = mock( TextAdventureModel.class );
-    //     new ActionHistoryDeserialiser( factory, inventory, model ).deserialise(
-    //         "action name:take an item:\n" );
+    @Test
+    public void deserialises_TakeAnItem_action_type_using_factory() {
+        ActionFactory factory = mock( ActionFactory.class );
+        UserInventory inventory = mock( UserInventory.class );
+        new ActionHistoryDeserialiser( factory, inventory, null ).deserialise(
+            "action name:take an item:\n" );
 
-    //     verify( factory ).createTakeAnItemAction( Mockito.anyListOf( Item.class ),
-    //                                               Mockito.eq( inventory ),
-    //                                               Mockito.isNull() );
-    // }
+        verify( factory ).createTakeAnItemAction( Mockito.anyListOf( Item.class ),
+                                                  Mockito.eq( inventory ),
+                                                  Mockito.any( ModelLocation.class ) );
+    }
 
+    @Test
+    public void deserialises_TakeSpecificItem_action_type_using_factory() {
+        ActionFactory factory = mock( ActionFactory.class );
+        UserInventory inventory = mock( UserInventory.class );
+        new ActionHistoryDeserialiser( factory, inventory, null ).deserialise(
+            "action name:take specific item:\n" );
 
-    // @Test
-    // public void deserialises_TakeSpecificItem_action_type_using_factory() {
+        verify( factory ).createTakeSpecificItemAction( Mockito.any( Item.class ),
+                                                        Mockito.eq( inventory ),
+                                                        Mockito.any( ModelLocation.class ) );
+    }
 
-    // @Test
-    // public void deserialises_UseWithSpecificItem_action_type_using_factory() {
+    @Test
+    public void deserialises_UseWithSpecificItem_action_type_using_factory() {
+        ActionFactory factory = mock( ActionFactory.class );
+        new ActionHistoryDeserialiser( factory, null, null ).deserialise(
+            "action name:use with specific item:\n" );
 
-    // @Test
-    // public void deserialises_UseWith_action_type_using_factory() {
+        verify( factory ).createUseWithSpecificItemAction( Mockito.any( Item.class ),
+                                                           Mockito.any( Item.class ) );
+    }
+
+    @Test
+    public void deserialises_UseWith_action_type_using_factory() {
+        ActionFactory factory = mock( ActionFactory.class );
+        UserInventory inventory = mock( UserInventory.class );
+        new ActionHistoryDeserialiser( factory, inventory, null ).deserialise(
+            "action name:use with:\n" );
+
+        verify( factory ).createUseWithAction( Mockito.any( Item.class ),
+                                               Mockito.eq( inventory ),
+                                               Mockito.any( ModelLocation.class ) );
+    }
 
     // @Test
     // public void deserialises_action_item_parameter() {
