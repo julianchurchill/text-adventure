@@ -41,6 +41,9 @@ Backlog
     * DONE Creates appropriate action object types from factory based on name
     * DONE Retrieves Exit mentioned by id from a model
     * DONE Retrieves Items mentioned by id from a model
+  * RecordableActionFactory needs to add ModelLocations by id to actions parameters.
+  * ActionHistorySerialiser needs to record ModelLocations by id for actions that use them.
+  * ActionHistoryDeserialser needs to find ModelLocations by id from the model for those actions that need them.
   * On resume the base model is loaded and the ActionHistoryDeserialiser is used to load the ActionHistory save file contents into a list of actions
   * On resume the ActionHistory is cleared by the activity
   * On resume the activity is used to re-run the list of actions from the deserialiser

@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.lang.StringBuilder;
+import java.lang.StringBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +45,7 @@ import com.chewielouie.textadventure.action.ActionHistory;
 import com.chewielouie.textadventure.action.BasicActionHistory;
 import com.chewielouie.textadventure.action.RecordableActionFactory;
 import com.chewielouie.textadventure.action.UserActionFactory;
+import com.chewielouie.textadventure.serialisation.ActionHistoryDeserialiser;
 import com.chewielouie.textadventure.serialisation.ActionHistorySerialiser;
 import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 import com.chewielouie.textadventure.serialisation.PlainTextExitDeserialiser;
@@ -60,7 +62,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private static final int ABOUT_MENU_ITEM = 0;
     private static final int NEW_GAME_MENU_ITEM = 1;
-    private static String saveFileName = "save_file_1";
+    private static String oldJSONFormatSaveFileName = "save_file_1";
     private static String actionHistorySaveFileName = "action_history_save_file_1";
 
     private RendersView rendersView;
@@ -77,7 +79,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private LinearLayout available_actions_view;
     private int currentScore = 0;
     private int maximumScore = 0;
-    private BasicModel model;
+    private BasicModel model = null;
+    private UserInventory inventory = null;
     private ActionFactory actionFactory = null;
     private ActionHistory actionHistory = null;
 
@@ -120,23 +123,38 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private boolean saveFileExists() {
         String[] files = fileList();
         for( String file : files )
-            if( file.equals( saveFileName ) )
+            if( file.equals( actionHistorySaveFileName ) )
                 return true;
         return false;
     }
 
     private void loadGame() {
+        createNewGame();
+
+        StringBuffer serialisedHistory = new StringBuffer("");
         try {
-            FileInputStream inputStream = openFileInput( saveFileName );
-            JsonReader jr = new JsonReader( inputStream );
-            model = (BasicModel) jr.readObject();
-            jr.close();
+            FileInputStream inputStream = openFileInput( actionHistorySaveFileName );
+// Uncomment this to enable loading from saved action history
+            // byte[] buffer = new byte[1024];
+            // while( inputStream.read( buffer ) != -1 ) {
+            //     serialisedHistory.append( new String( buffer ) );
+            // }
         } catch( FileNotFoundException e ) {
             System.err.println("exception thrown: " + e.toString() );
         } catch( IOException e ) {
             System.err.println("exception thrown: " + e.toString() );
         }
-        setupPresenter();
+
+        List<Action> actions =
+            new ActionHistoryDeserialiser( actionFactory, inventory, model )
+                .deserialise( serialisedHistory.toString() );
+        // presenter.removeView( this );
+        actionHistory.clear();
+        for( Action action : actions )
+            userActionHandler.enact( action );
+        // presenter.addView( this );
+
+        rendersView.render();
     }
 
     private void createNewGame() {
@@ -146,7 +164,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private void createNewGameModel() {
         model = new BasicModel();
-        UserInventory inventory = model;
+        inventory = model;
         Logger logger = new StdoutLogger();
         ItemActionFactory itemActionFactory = new LoggableNormalItemActionFactory( logger, model );
         ItemFactory itemFactory = new NormalItemFactory();
