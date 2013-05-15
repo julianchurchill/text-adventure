@@ -111,6 +111,21 @@ public class RecordableActionFactoryTests {
     }
 
     @Test
+    public void adds_Location_to_RecordableAction_for_InventoryItem() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+            ignoring( location );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
+                                                                 null );
+        RecordableAction a = (RecordableAction)f.createInventoryItemAction( null,
+                                                            null, location );
+        assertThat( a.actionParameters().location(), is( location ) );
+    }
+
+    @Test
     public void create_examine_action_delegates_to_wrapped_factory() {
         final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
         final Item item = mockery.mock( Item.class );
@@ -215,6 +230,20 @@ public class RecordableActionFactoryTests {
     }
 
     @Test
+    public void adds_Location_to_RecordableAction_for_UseWith() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+            ignoring( location );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
+                                                                 null );
+        RecordableAction a = (RecordableAction)f.createUseWithAction( null, null, location );
+        assertThat( a.actionParameters().location(), is( location ) );
+    }
+
+    @Test
     public void create_examine_an_item_action_delegates_to_wrapped_factory() {
         final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
         final List<Item> items = mockery.mock( List.class );
@@ -291,6 +320,20 @@ public class RecordableActionFactoryTests {
     }
 
     @Test
+    public void adds_Location_to_RecordableAction_for_TakeAnItem() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+            ignoring( location );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
+                                                                 null );
+        RecordableAction a = (RecordableAction)f.createTakeAnItemAction( null, null, location );
+        assertThat( a.actionParameters().location(), is( location ) );
+    }
+
+    @Test
     public void create_take_specific_item_action_delegates_to_wrapped_factory() {
         final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
         final Item item = mockery.mock( Item.class );
@@ -341,6 +384,21 @@ public class RecordableActionFactoryTests {
                                                                  null );
         RecordableAction a = (RecordableAction)f.createTakeSpecificItemAction( item, null, null );
         assertThat( a.actionParameters().item(), is( item ) );
+    }
+
+    @Test
+    public void adds_Location_to_RecordableAction_for_TakeSpecificItem() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+            ignoring( location );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
+                                                                 null );
+        RecordableAction a = (RecordableAction)f.createTakeSpecificItemAction( null,
+                                                            null, location );
+        assertThat( a.actionParameters().location(), is( location ) );
     }
 
     @Test

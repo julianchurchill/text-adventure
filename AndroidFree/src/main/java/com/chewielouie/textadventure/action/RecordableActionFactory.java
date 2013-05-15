@@ -35,7 +35,7 @@ public class RecordableActionFactory implements ActionFactory {
         RecordableAction action = new RecordableAction(
             wrappedFactory.createInventoryItemAction( item, inventory, location ),
             actionHistory );
-        action.setActionParameters( new ActionParameters( item ) );
+        action.setActionParameters( new ActionParameters( item, location ) );
         return action;
     }
 
@@ -52,7 +52,7 @@ public class RecordableActionFactory implements ActionFactory {
         RecordableAction action = new RecordableAction(
             wrappedFactory.createUseWithAction( item, inventory, location ),
             actionHistory );
-        action.setActionParameters( new ActionParameters( item ) );
+        action.setActionParameters( new ActionParameters( item, location ) );
         return action;
     }
 
@@ -65,9 +65,11 @@ public class RecordableActionFactory implements ActionFactory {
     public Action createTakeAnItemAction( List<Item> items,
                                           UserInventory inventory,
                                           ModelLocation location ) {
-        return new RecordableAction(
+        RecordableAction action = new RecordableAction(
             wrappedFactory.createTakeAnItemAction( items, inventory, location ),
             actionHistory );
+        action.setActionParameters( new ActionParameters( location ) );
+        return action;
     }
 
     public Action createTakeSpecificItemAction( Item item,
@@ -76,7 +78,7 @@ public class RecordableActionFactory implements ActionFactory {
         RecordableAction action = new RecordableAction(
             wrappedFactory.createTakeSpecificItemAction( item, inventory, location ),
             actionHistory );
-        action.setActionParameters( new ActionParameters( item ) );
+        action.setActionParameters( new ActionParameters( item, location ) );
         return action;
     }
 
