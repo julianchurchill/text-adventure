@@ -46,6 +46,17 @@ public class InventoryItemTests {
     }
 
     @Test
+    public void follow_up_actions_are_empty_if_item_is_null() {
+        final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
+        mockery.checking( new Expectations() {{
+            ignoring( actionFactory );
+        }});
+        InventoryItem action = new InventoryItem( null, null, null, actionFactory );
+
+        assertEquals( 0, action.followUpActions().size() );
+    }
+
+    @Test
     public void follow_up_actions_use_action_factory_to_get_Examine_action() {
         final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
         final Action examineAction = mockery.mock( Action.class );

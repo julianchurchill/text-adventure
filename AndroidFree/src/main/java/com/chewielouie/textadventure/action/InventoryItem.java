@@ -19,7 +19,7 @@ public class InventoryItem implements Action {
         this.inventory = inventory;
         this.location = location;
         this.actionFactory = factory;
-        if( factory != null ) {
+        if( factory != null && item != null ) {
             followUpActions.add( factory.createExamineAction( item ) );
             followUpActions.add(
                 factory.createUseWithAction( item, inventory, location ) );

@@ -134,11 +134,10 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         StringBuffer serialisedHistory = new StringBuffer("");
         try {
             FileInputStream inputStream = openFileInput( actionHistorySaveFileName );
-// Uncomment this to enable loading from saved action history
-            // byte[] buffer = new byte[1024];
-            // while( inputStream.read( buffer ) != -1 ) {
-            //     serialisedHistory.append( new String( buffer ) );
-            // }
+            byte[] buffer = new byte[1024];
+            while( inputStream.read( buffer ) != -1 ) {
+                serialisedHistory.append( new String( buffer ) );
+            }
         } catch( FileNotFoundException e ) {
             System.err.println("exception thrown: " + e.toString() );
         } catch( IOException e ) {
