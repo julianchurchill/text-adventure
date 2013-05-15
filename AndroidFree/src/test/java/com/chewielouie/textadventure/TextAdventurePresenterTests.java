@@ -239,6 +239,29 @@ public class TextAdventurePresenterTests {
     }
 
     @Test
+    public void if_text_is_available_for_display_after_enacting_an_action_remind_the_view_upon_render() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        final Action action = mockery.mock( Action.class );
+        mockery.checking( new Expectations() {{
+            allowing( action ).trigger();
+            allowing( action ).userTextAvailable();
+            will( returnValue( true ) );
+            allowing( action ).userText();
+            will( returnValue( "some user text" ) );
+            ignoring( action );
+            allowing( model ).currentLocationDescription();
+            will( returnValue( "location description" ) );
+            ignoring( model );
+            exactly( 2 ).of( view ).showMainText( "location description\n\nsome user text\n\n" );
+            ignoring( view );
+        }});
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null, null );
+        p.enact( action );
+        p.render();
+    }
+
+    @Test
     public void actions_are_updated_on_view_after_enacting_any_action() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );

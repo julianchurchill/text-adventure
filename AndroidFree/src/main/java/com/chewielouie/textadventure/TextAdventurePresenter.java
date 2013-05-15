@@ -25,9 +25,17 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler, M
     }
 
     public void render() {
-        view.showMainText( model.currentLocationDescription() );
-        view.showLocationExits( model.currentLocationExits() );
         resetActionsToStartOfChain();
+        updateView();
+    }
+
+    private void updateView() {
+        if( actionText != "" )
+            view.showMainText( model.currentLocationDescription()
+                    + "\n\n" + actionText );
+        else
+            view.showMainText( model.currentLocationDescription() );
+        view.showLocationExits( model.currentLocationExits() );
         view.currentScore( model.currentScore() );
         view.maximumScore( model.maximumScore() );
     }
@@ -45,18 +53,16 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler, M
 
     public void enact( Action action ) {
         action.trigger();
-        view.showLocationExits( model.currentLocationExits() );
-        if( action.userTextAvailable() ) {
+
+        if( action.userTextAvailable() )
             actionText += action.userText() + "\n\n";
-            view.showMainText( model.currentLocationDescription()
-                    + "\n\n" + actionText );
-        }
+
         if( action.userMustChooseFollowUpAction() )
             continueActionChain( action );
         else
             resetActionsToStartOfChain();
-        view.currentScore( model.currentScore() );
-        view.maximumScore( model.maximumScore() );
+
+        updateView();
     }
 
     private void continueActionChain( Action action ) {
