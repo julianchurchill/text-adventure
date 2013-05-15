@@ -7,6 +7,7 @@ import static org.mockito.Mockito.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.Exit;
+import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionHistory;
@@ -83,6 +84,22 @@ public class ActionHistorySerialiserTests {
 
         assertThat( new ActionHistorySerialiser( history ).serialise(),
                     is( "exit id:exitid:\n" ) );
+    }
+
+    @Test
+    public void serialises_location_parameter_if_present() {
+        ModelLocation location = mock( ModelLocation.class );
+        when( location.id() ).thenReturn( "locationid" );
+        ActionParameters params = mock( ActionParameters.class );
+        when( params.location() ).thenReturn( location );
+        ActionRecord actionRecord = mock( ActionRecord.class );
+        when( actionRecord.params() ).thenReturn( params );
+        ActionHistory history = mock( ActionHistory.class );
+        when( history.size() ).thenReturn( 1 );
+        when( history.getRecord( 0 ) ).thenReturn( actionRecord );
+
+        assertThat( new ActionHistorySerialiser( history ).serialise(),
+                    is( "location id:locationid:\n" ) );
     }
 
     @Test

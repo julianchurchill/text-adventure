@@ -3,6 +3,7 @@ package com.chewielouie.textadventure.serialisation;
 import static com.chewielouie.textadventure.serialisation.ActionHistoryTextFormat.*;
 
 import com.chewielouie.textadventure.Exit;
+import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionHistory;
 import com.chewielouie.textadventure.action.ActionParameters;
@@ -39,6 +40,7 @@ public class ActionHistorySerialiser {
             output += serialiseItemParam( params.item() );
             output += serialiseExtraItemParam( params.extraItem() );
             output += serialiseExitParam( params.exit() );
+            output += serialiseLocationParam( params.location() );
         }
         return output;
     }
@@ -58,6 +60,12 @@ public class ActionHistorySerialiser {
     private String serialiseExitParam( Exit exit ) {
         if( exit != null )
             return EXIT_ID_TAG + SEPERATOR + exit.id() + SEPERATOR;
+        return "";
+    }
+
+    private String serialiseLocationParam( ModelLocation location ) {
+        if( location != null )
+            return LOCATION_ID_TAG + SEPERATOR + location.id() + SEPERATOR;
         return "";
     }
 }

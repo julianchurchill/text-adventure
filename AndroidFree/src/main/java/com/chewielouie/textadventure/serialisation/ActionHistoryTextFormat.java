@@ -6,6 +6,7 @@ public class ActionHistoryTextFormat {
     public static final String ITEM_ID_TAG = "item id";
     public static final String EXTRA_ITEM_ID_TAG = "extra item id";
     public static final String EXIT_ID_TAG = "exit id";
+    public static final String LOCATION_ID_TAG = "location id";
 
     public static final String ACTION_NAME_EXAMINE_AN_ITEM = "examine an item";
     public static final String ACTION_NAME_EXAMINE = "examine";
