@@ -144,5 +144,9 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     public void subscribeForEvents( ModelEventSubscriber subscriber ) {
         eventSubscribers.add( subscriber );
     }
+
+    public ModelLocation findLocationByID( String id ) {
+        return locations.get( id );
+    }
 }
 

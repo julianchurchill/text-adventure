@@ -21,5 +21,6 @@ public interface TextAdventureModel {
     public void setCurrentScore( int score );
     public void setMaximumScore( int score );
     public void subscribeForEvents( ModelEventSubscriber subscriber );
+    public ModelLocation findLocationByID( String id );
 }
 

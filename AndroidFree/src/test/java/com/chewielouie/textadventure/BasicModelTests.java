@@ -161,6 +161,27 @@ public class BasicModelTests {
     }
 
     @Test
+    public void find_location_by_id_finds_the_location() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        mockery.checking( new Expectations() {{
+            oneOf( location ).id();
+            will( returnValue( "location id" ) );
+            ignoring( location );
+        }});
+        BasicModel model = new BasicModel();
+        model.addLocation( location );
+
+        assertEquals( location, model.findLocationByID( "location id" ) );
+    }
+
+    @Test
+    public void find_location_by_id_returns_null_if_it_cant_find_the_location() {
+        BasicModel model = new BasicModel();
+
+        assertEquals( null, model.findLocationByID( "location id" ) );
+    }
+
+    @Test
     public void destroy_item_removes_it_from_the_inventory() {
         final Item itemToDestroy = mockery.mock( Item.class, "item to destroy" );
         final Item itemToLeave = mockery.mock( Item.class, "item to leave" );
