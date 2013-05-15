@@ -83,27 +83,27 @@ public class ActionHistoryDeserialiserTests {
         verify( factory ).createExitAction( exit, model );
     }
 
-    // @Test
-    // public void deserialises_InventoryItem_action_type_using_factory() {
-    //     ActionFactory factory = mock( ActionFactory.class );
-    //     UserInventory inventory = mock( UserInventory.class );
-    //     TextAdventureModel model = mock( TextAdventureModel.class );
-    //     Item item = mock( Item.class );
-    //     when( model.findItemByID( "itemid" ) ).thenReturn( item );
-    //     ModelLocation location = mock( ModelLocation.class );
-    //     when( model.findLocationByID( "locationid" ) ).thenReturn( location );
+    @Test
+    public void deserialises_InventoryItem_action_type_using_factory() {
+        ActionFactory factory = mock( ActionFactory.class );
+        UserInventory inventory = mock( UserInventory.class );
+        TextAdventureModel model = mock( TextAdventureModel.class );
+        Item item = mock( Item.class );
+        when( model.findItemByID( "itemid" ) ).thenReturn( item );
+        ModelLocation location = mock( ModelLocation.class );
+        when( model.findLocationByID( "locationid" ) ).thenReturn( location );
 
-    //     new ActionHistoryDeserialiser( factory, inventory, model ).deserialise(
-    //         ACTION_NAME_TAG + SEPERATOR + "inventory item" + SEPERATOR +
-    //         ITEM_ID_TAG + SEPERATOR + "itemid" + SEPERATOR +
-    //         LOCATION_ID_TAG + SEPERATOR + "locationid" + SEPERATOR + "\n" );
+        new ActionHistoryDeserialiser( factory, inventory, model ).deserialise(
+            ACTION_NAME_TAG + SEPERATOR + "inventory item" + SEPERATOR +
+            ITEM_ID_TAG + SEPERATOR + "itemid" + SEPERATOR +
+            LOCATION_ID_TAG + SEPERATOR + "locationid" + SEPERATOR + "\n" );
 
-    //     verify( model ).findItemByID( "itemid" );
-    //     verify( model ).findLocationByID( "locationid" );
-    //     verify( factory ).createInventoryItemAction( Mockito.eq( item ),
-    //                                                  Mockito.eq( inventory ),
-    //                                                  Mockito.eq( location ) );
-    // }
+        verify( model ).findItemByID( "itemid" );
+        verify( model ).findLocationByID( "locationid" );
+        verify( factory ).createInventoryItemAction( Mockito.eq( item ),
+                                                     Mockito.eq( inventory ),
+                                                     Mockito.eq( location ) );
+    }
 
     @Test
     public void deserialises_ShowInventory_action_type_using_factory() {
@@ -121,13 +121,18 @@ public class ActionHistoryDeserialiserTests {
     public void deserialises_TakeAnItem_action_type_using_factory() {
         ActionFactory factory = mock( ActionFactory.class );
         UserInventory inventory = mock( UserInventory.class );
+        TextAdventureModel model = mock( TextAdventureModel.class );
+        ModelLocation location = mock( ModelLocation.class );
+        when( model.findLocationByID( "locationid" ) ).thenReturn( location );
 
-        new ActionHistoryDeserialiser( factory, inventory, null ).deserialise(
-            ACTION_NAME_TAG + SEPERATOR + "take an item" + SEPERATOR + "\n" );
+        new ActionHistoryDeserialiser( factory, inventory, model ).deserialise(
+            ACTION_NAME_TAG + SEPERATOR + "take an item" + SEPERATOR +
+            LOCATION_ID_TAG + SEPERATOR + "locationid" + SEPERATOR + "\n" );
 
+        verify( model ).findLocationByID( "locationid" );
         verify( factory ).createTakeAnItemAction( Mockito.anyListOf( Item.class ),
                                                   Mockito.eq( inventory ),
-                                                  Mockito.any( ModelLocation.class ) );
+                                                  Mockito.eq( location ) );
     }
 
     @Test
@@ -137,15 +142,19 @@ public class ActionHistoryDeserialiserTests {
         TextAdventureModel model = mock( TextAdventureModel.class );
         Item item = mock( Item.class );
         when( model.findItemByID( "itemid" ) ).thenReturn( item );
+        ModelLocation location = mock( ModelLocation.class );
+        when( model.findLocationByID( "locationid" ) ).thenReturn( location );
 
         new ActionHistoryDeserialiser( factory, inventory, model ).deserialise(
             ACTION_NAME_TAG + SEPERATOR + "take specific item" + SEPERATOR +
-            ITEM_ID_TAG + SEPERATOR + "itemid" + SEPERATOR + "\n" );
+            ITEM_ID_TAG + SEPERATOR + "itemid" + SEPERATOR +
+            LOCATION_ID_TAG + SEPERATOR + "locationid" + SEPERATOR + "\n" );
 
         verify( model ).findItemByID( "itemid" );
+        verify( model ).findLocationByID( "locationid" );
         verify( factory ).createTakeSpecificItemAction( Mockito.eq( item ),
                                                         Mockito.eq( inventory ),
-                                                        Mockito.any( ModelLocation.class ) );
+                                                        Mockito.eq( location ) );
     }
 
     @Test
@@ -174,14 +183,18 @@ public class ActionHistoryDeserialiserTests {
         TextAdventureModel model = mock( TextAdventureModel.class );
         Item item = mock( Item.class );
         when( model.findItemByID( "itemid" ) ).thenReturn( item );
+        ModelLocation location = mock( ModelLocation.class );
+        when( model.findLocationByID( "locationid" ) ).thenReturn( location );
 
         new ActionHistoryDeserialiser( factory, inventory, model ).deserialise(
             ACTION_NAME_TAG + SEPERATOR + "use with" + SEPERATOR +
-            ITEM_ID_TAG + SEPERATOR + "itemid" + SEPERATOR + "\n" );
+            ITEM_ID_TAG + SEPERATOR + "itemid" + SEPERATOR +
+            LOCATION_ID_TAG + SEPERATOR + "locationid" + SEPERATOR + "\n" );
 
         verify( model ).findItemByID( "itemid" );
+        verify( model ).findLocationByID( "locationid" );
         verify( factory ).createUseWithAction( Mockito.eq( item ),
                                                Mockito.eq( inventory ),
-                                               Mockito.any( ModelLocation.class ) );
+                                               Mockito.eq( location ) );
     }
 }
