@@ -84,6 +84,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private ActionFactory actionFactory = null;
     private ActionHistory actionHistory = null;
     private ViewDisabler viewDisabler = null;
+    private BasicModelFactory externalModelFactory = null;
+    private BasicModelFactory internalModelFactory = null;
 
     public TextAdventureActivity() {
     }
@@ -92,6 +94,13 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         this();
         this.rendersView = r;
         this.externallySuppliedViewRenderer = true;
+    }
+
+    public TextAdventureActivity( RendersView r, BasicModelFactory modelFactory ) {
+        this();
+        this.rendersView = r;
+        this.externallySuppliedViewRenderer = true;
+        this.externalModelFactory = modelFactory;
     }
 
     public TextAdventureActivity( UserActionHandler u ) {
@@ -165,7 +174,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void createNewGameModel() {
-        model = new BasicModel();
+        model = (BasicModel)modelFactory().createModel();
         inventory = model;
         Logger logger = new StdoutLogger();
         ItemActionFactory itemActionFactory = new LoggableNormalItemActionFactory( logger, model );
@@ -182,6 +191,14 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
                                          new PlainTextExitDeserialiser() ),
                                      itemDeserialiser,
                                      demoContent() );
+    }
+
+    public BasicModelFactory modelFactory() {
+        if( externalModelFactory != null )
+            return externalModelFactory;
+        else if( internalModelFactory == null )
+            internalModelFactory = new BasicModelFactory();
+        return internalModelFactory;
     }
 
     private ActionFactory actionFactory() {

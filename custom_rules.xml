@@ -42,6 +42,7 @@
         <pathelement location="${android.libs.test}/jmock-2.6.0-RC2/jmock-legacy-2.6.0-RC2.jar"/>
         <pathelement location="${android.libs.test}/jmock-2.6.0-RC2/cglib-nodep-2.2.jar"/>
         <pathelement location="${android.libs.test}/jmock-2.6.0-RC2/objenesis-1.0.jar"/>
+        <pathelement location="${android.libs.test}/mockito-all-1.9.5.jar"/>
         <!-- Google APIs maps.jar included to satisfy robolectrics Shadow bindings -->
         <path location="${env.ANDROID_HOME}/add-ons/addon-google_apis-google-17/libs/maps.jar"/>
     </path>

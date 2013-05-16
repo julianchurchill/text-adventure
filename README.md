@@ -50,7 +50,8 @@ Backlog
   * DONE [BUG] Clock minute hand and skeleton key appear twice in the inventory after load - why?
     * Fix was to read in the save file properly - was using a 1024 buffer so getting a lot of left over rubbish.
   * DONE On resume and re-run of saved actions activity needs to pause responding to view updates, pauseViewUpdates(), continueViewUpdates()
-  * Acceptance tests for pause/resume action save and replay?
+  * DONE Acceptance test for resume action save and replay
+  * Acceptance test for pause action save
   * Merge recordable_actions branch to main line
   * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.
     * Implement as n hard coded rules to translate from 1.0 to 2.0 models:
