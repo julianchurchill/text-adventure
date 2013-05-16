@@ -49,7 +49,7 @@ Backlog
   * DONE On resume the activity is used to re-run the list of actions from the deserialiser from the action history save file
   * DONE [BUG] Clock minute hand and skeleton key appear twice in the inventory after load - why?
     * Fix was to read in the save file properly - was using a 1024 buffer so getting a lot of left over rubbish.
-  * On resume and re-run of saved actions activity needs to pause responding to view updates, pauseViewUpdates(), continueViewUpdates()
+  * DONE On resume and re-run of saved actions activity needs to pause responding to view updates, pauseViewUpdates(), continueViewUpdates()
   * Acceptance tests for pause/resume action save and replay?
   * Merge recordable_actions branch to main line
   * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.

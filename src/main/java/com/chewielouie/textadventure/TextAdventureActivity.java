@@ -83,6 +83,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private UserInventory inventory = null;
     private ActionFactory actionFactory = null;
     private ActionHistory actionHistory = null;
+    private ViewDisabler viewDisabler = null;
 
     public TextAdventureActivity() {
     }
@@ -130,7 +131,11 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private void loadGame() {
         createNewGame();
+        replayActions( new ActionHistoryDeserialiser( actionFactory, inventory, model )
+                            .deserialise( loadSerialisedActionHistory() ) );
+    }
 
+    private String loadSerialisedActionHistory() {
         StringBuffer serialisedHistory = new StringBuffer("");
         try {
             FileInputStream inputStream = openFileInput( actionHistorySaveFileName );
@@ -142,16 +147,15 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         } catch( IOException e ) {
             System.err.println("exception thrown: " + e.toString() );
         }
+        return serialisedHistory.toString();
+    }
 
-        List<Action> actions =
-            new ActionHistoryDeserialiser( actionFactory, inventory, model )
-                .deserialise( serialisedHistory.toString() );
-        // presenter.removeView( this );
+    private void replayActions( List<Action> actions ) {
+        viewDisabler.on();
         actionHistory.clear();
         for( Action action : actions )
             userActionHandler.enact( action );
-        // presenter.addView( this );
-
+        viewDisabler.off();
         rendersView.render();
     }
 
@@ -213,8 +217,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void setupPresenter() {
-        TextAdventurePresenter p = new TextAdventurePresenter( this, model,
-               (UserInventory)model, actionFactory() );
+        viewDisabler = new ViewDisabler( this );
+        TextAdventurePresenter p = new TextAdventurePresenter(
+            viewDisabler, model, (UserInventory)model, actionFactory() );
         if( externallySuppliedViewRenderer == false )
             this.rendersView = p;
         if( externallySuppliedUserActionHandler == false )
