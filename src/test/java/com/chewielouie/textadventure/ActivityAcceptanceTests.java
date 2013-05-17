@@ -20,7 +20,9 @@ public class ActivityAcceptanceTests {
 
     private final String action_history =
         "action name:take specific item:item id:clocktowerskeletonkey:location id:townentrance:\n" +
-        "action name:exit:exit id:townentrancenorth:\n";
+        "action name:exit:exit id:townentrancenorth:\n" +
+        "action name:exit:exit id:mainstreettownnorth:\n" +
+        "action name:use with specific item:item id:clocktowerskeletonkey:extra item id:lockeddoor:\n";
 
     private void prepareActionHistorySaveFile( Context context ) {
         try {
@@ -52,8 +54,10 @@ public class ActivityAcceptanceTests {
         Item skeletonKey = model.findItemByID( "clocktowerskeletonkey" );
         assertThat( townEntrance.items(), not( hasItem( skeletonKey ) ) );
         assertThat( model.inventoryItems(), hasItem( skeletonKey ) );
-        ModelLocation mainStreetTown = model.findLocationByID( "mainstreettown" );
-        assertThat( model.currentLocation(), is( mainStreetTown ) );
+        ModelLocation clocktower = model.findLocationByID( "clocktower" );
+        assertThat( model.currentLocation(), is( clocktower ) );
+        Exit unlockedDoor = model.findExitByID( "clocktowerdoor" );
+        assertThat( unlockedDoor.visible(), is( true ) );
     }
 
     // @Test
