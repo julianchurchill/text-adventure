@@ -312,6 +312,10 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         return Color.GREEN;
     }
 
+    public void useExit( Exit exit ) {
+        userActionHandler.enact( actionFactory().createExitAction( exit, model ) );
+    }
+
     private void enableClickableLinkCallbacks() {
         main_text_output.setMovementMethod( LinkMovementMethod.getInstance() );
     }
