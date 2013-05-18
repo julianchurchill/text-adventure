@@ -96,6 +96,11 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         this.externallySuppliedViewRenderer = true;
     }
 
+    public TextAdventureActivity( BasicModelFactory modelFactory ) {
+        this();
+        this.externalModelFactory = modelFactory;
+    }
+
     public TextAdventureActivity( RendersView r, BasicModelFactory modelFactory ) {
         this();
         this.rendersView = r;
@@ -342,6 +347,10 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         available_actions_view.addView( button, lp );
 
         actionButtons.put( button, action );
+    }
+
+    public Map<Button,Action> actionButtons() {
+        return actionButtons;
     }
 
     public void onClick( View v ) {
