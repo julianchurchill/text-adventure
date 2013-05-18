@@ -134,4 +134,44 @@ public class ActivityAcceptanceTests {
         }
         return serialisedHistory.toString();
     }
+
+    @Test
+    public void on_resume_reads_a_json_file_and_saves_as_an_action_history_file() {
+        BasicModel model = new BasicModel();
+        BasicModelFactory modelFactory = mock( BasicModelFactory.class );
+        when( modelFactory.createModel() ).thenReturn( model );
+        TextAdventureActivity activity = new TextAdventureActivity( modelFactory );
+        activity.deleteFile( actionHistorySaveFileName );
+        // prepareJSONSaveFile( activity );
+        activity.onCreate( null );
+
+        activity.onResume();
+
+        String savedHistory = loadSerialisedActionHistory( activity );
+        // String expected_action_history =
+            // "action name:take an item:location id:townentrance:\n" +
+            // "action name:take specific item:item id:clocktowerskeletonkey:location id:townentrance:\n" +
+            // "action name:exit:exit id:townentrancenorth:\n" +
+            // "action name:exit:exit id:mainstreettownnorth:\n" +
+            // "action name:show inventory:\n" +
+            // "action name:inventory item:item id:clocktowerskeletonkey:location id:clocktower:\n" +
+            // "action name:use with:item id:clocktowerskeletonkey:location id:clocktower:\n" +
+            // "action name:use with specific item:item id:clocktowerskeletonkey:extra item id:lockeddoor:\n";
+        // assertThat( savedHistory, is( expected_action_history ) );
+    }
+
+    private final String json_model = "";
+
+    private void prepareJSONSaveFile( Context context ) {
+        try {
+            FileOutputStream outputStream = context.openFileOutput(
+                "save_file_1", Context.MODE_PRIVATE );
+            outputStream.write( json_model.getBytes() );
+            outputStream.close();
+        } catch( FileNotFoundException e ) {
+            e.printStackTrace();
+        } catch( IOException e ) {
+            e.printStackTrace();
+        }
+    }
 }
