@@ -21,8 +21,5 @@ public class JSONToActionHistoryConverterTests {
 
         assertThat( converter.convert(), is( nullValue() ) );
     }
-
-    // @Test
-    // public void if_skeleton_key_has_been_picked_up_add_take_action() {
 }
 
