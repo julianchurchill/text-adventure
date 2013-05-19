@@ -56,10 +56,14 @@ public class ActivityAcceptanceTests {
     }
 
     private void prepareActionHistorySaveFile( Context context ) {
+        writeFile( "action_history_save_file_1", action_history, context );
+    }
+
+    private void writeFile( String filename, String content, Context context ) {
         try {
             FileOutputStream outputStream = context.openFileOutput(
-                "action_history_save_file_1", Context.MODE_PRIVATE );
-            outputStream.write( action_history.getBytes() );
+                filename, Context.MODE_PRIVATE );
+            outputStream.write( content.getBytes() );
             outputStream.close();
         } catch( FileNotFoundException e ) {
             e.printStackTrace();
@@ -143,35 +147,29 @@ public class ActivityAcceptanceTests {
         TextAdventureActivity activity = new TextAdventureActivity( modelFactory );
         activity.deleteFile( actionHistorySaveFileName );
         // prepareJSONSaveFile( activity );
+            // take key, north, north, use key with door, examine door
         activity.onCreate( null );
 
         activity.onResume();
 
         String savedHistory = loadSerialisedActionHistory( activity );
-        // String expected_action_history =
-            // "action name:take an item:location id:townentrance:\n" +
+        String expected_action_history =
+            "action name:take an item:location id:townentrance:\n";
             // "action name:take specific item:item id:clocktowerskeletonkey:location id:townentrance:\n" +
             // "action name:exit:exit id:townentrancenorth:\n" +
             // "action name:exit:exit id:mainstreettownnorth:\n" +
             // "action name:show inventory:\n" +
             // "action name:inventory item:item id:clocktowerskeletonkey:location id:clocktower:\n" +
             // "action name:use with:item id:clocktowerskeletonkey:location id:clocktower:\n" +
-            // "action name:use with specific item:item id:clocktowerskeletonkey:extra item id:lockeddoor:\n";
-        // assertThat( savedHistory, is( expected_action_history ) );
+            // "action name:use with specific item:item id:clocktowerskeletonkey:extra item id:lockeddoor:\n" +
+            // "action name:examine an item:\n" +
+            // "action name:examine:item id:lockeddoor:\n";
+        assertThat( savedHistory, is( expected_action_history ) );
     }
 
     private final String json_model = "";
 
     private void prepareJSONSaveFile( Context context ) {
-        try {
-            FileOutputStream outputStream = context.openFileOutput(
-                "save_file_1", Context.MODE_PRIVATE );
-            outputStream.write( json_model.getBytes() );
-            outputStream.close();
-        } catch( FileNotFoundException e ) {
-            e.printStackTrace();
-        } catch( IOException e ) {
-            e.printStackTrace();
-        }
+        writeFile( "save_file_1", json_model, context );
     }
 }
