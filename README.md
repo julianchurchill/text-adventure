@@ -59,8 +59,10 @@ Backlog
       * If the bagsofjunk have been examined run Examine on them
       * If the moundofearth has been used run UseWith on the spade and moundofearth and _also_ add the spade to the inventory
       * If clockface has been used then run UseWith on the clockface and the clockmechanism
+    * Implement JSONToActionHistoryConverter::convert()
     * Delete old JSON based save file
     * Check acceptance tests work
+    * Uncomment Activity::onResume() history replacement and history save file writing if JSON converter is successful
   * Defensive loading... if an old JSON file doesn't load capture the exception and recover gracefully, start a clean new game
 
 - [BUG] User still has map after giving it to the shopkeeper!

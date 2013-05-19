@@ -129,18 +129,36 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void onResume() {
         super.onResume();
 
+        if( saveJSONFileExists() ) {
+            ActionHistory newHistory =
+                new JSONToActionHistoryConverter( this, oldJSONFormatSaveFileName )
+                    .convert();
+            // if( newHistory != null ) {
+                // actionHistory = newHistory;
+                // writeActionHistorySaveFile();
+            // }
+        }
+
         if( saveFileExists() )
             loadGame();
         else
             createNewGame();
     }
 
-    private boolean saveFileExists() {
+    private boolean saveJSONFileExists() {
+        return fileExists( oldJSONFormatSaveFileName );
+    }
+
+    private boolean fileExists( String filename ) {
         String[] files = fileList();
         for( String file : files )
-            if( file.equals( actionHistorySaveFileName ) )
+            if( file.equals( filename ) )
                 return true;
         return false;
+    }
+
+    private boolean saveFileExists() {
+        return fileExists( actionHistorySaveFileName );
     }
 
     private void loadGame() {

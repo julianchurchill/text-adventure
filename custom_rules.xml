@@ -6,7 +6,7 @@
 
     <property name="businesslogic.root" value="AndroidFree"/>
     <property name="android.businesslogic.lib" value="libs/textadventure.businesslogic.jar"/>
-    <property name="android.libs" value="/libs"/>
+    <property name="android.libs" value="libs"/>
     <property name="android.libs.test" value="libs/test"/>
     <property name="android.src.test" value="src/test/java"/>
     <property name="android.test.output" value="bin/test/classes"/>
