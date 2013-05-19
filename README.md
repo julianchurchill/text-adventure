@@ -53,13 +53,14 @@ Backlog
   * DONE Acceptance test for resume action save and replay
   * DONE Acceptance test for pause action save
   * DONE Merge recordable_actions branch to main line
-  * Acceptance tests for backwards compatibility with JSON for v1.0 being loaded and transformed for v2.0?
+  * Acceptance tests for backwards compatibility with JSON for v1.0 being loaded and transformed for v2.0
   * For backwards compatibility with JSON save file from version 1.0 a ModelMerger is needed - load the JSON model, load the base model and merge the JSON one into the base model.
     * Implement as n hard coded rules to translate from 1.0 to 2.0 models:
       * If the bagsofjunk have been examined run Examine on them
       * If the moundofearth has been used run UseWith on the spade and moundofearth and _also_ add the spade to the inventory
       * If clockface has been used then run UseWith on the clockface and the clockmechanism
     * Delete old JSON based save file
+    * Check acceptance tests work
   * Defensive loading... if an old JSON file doesn't load capture the exception and recover gracefully, start a clean new game
 
 - [BUG] User still has map after giving it to the shopkeeper!
