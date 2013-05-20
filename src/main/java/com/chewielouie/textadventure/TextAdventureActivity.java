@@ -143,6 +143,14 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             loadGame();
         else
             createNewGame();
+
+        // Or instead of converting JSON to action history as above do this:
+        // if( saveJSONFileExists() ) {
+            // replayActions(
+                // new JSONToActionConverter( this, oldJSONFormatSaveFileName, model ) );
+            // save action history
+            // delete oldJSONFormatSaveFileName;
+        // }
     }
 
     private boolean saveJSONFileExists() {

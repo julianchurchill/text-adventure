@@ -17,13 +17,13 @@ public class JSONToActionHistoryConverter {
     }
 
     public ActionHistory convert() {
-        BasicModel jsonBasedModel = loadJSONModel();
+        // BasicModel jsonBasedModel = loadJSONModel();
 
-        if( jsonBasedModel != null ) {
-            BasicModelV1_0ToActionHistoryConverter converter =
-                new BasicModelV1_0ToActionHistoryConverter( jsonBasedModel );
-            return converter.actionHistory();
-        }
+        // if( jsonBasedModel != null ) {
+        //     BasicModelV1_0ToActionHistoryConverter converter =
+        //         new BasicModelV1_0ToActionHistoryConverter( jsonBasedModel );
+        //     return converter.actionHistory();
+        // }
         return null;
     }
 
