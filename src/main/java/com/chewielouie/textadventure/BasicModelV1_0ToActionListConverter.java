@@ -1,16 +1,25 @@
 package com.chewielouie.textadventure;
 
+import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.action.ActionFactory;
+import com.chewielouie.textadventure.item.Item;
 import java.util.ArrayList;
 import java.util.List;
-import com.chewielouie.textadventure.action.Action;
-import com.chewielouie.textadventure.action.TakeSpecificItem;
-import com.chewielouie.textadventure.item.Item;
 
 public class BasicModelV1_0ToActionListConverter {
-    private TextAdventureModel model;
+    private TextAdventureModel oldModel;
+    private TextAdventureModel newModel;
+    private UserInventory inventory;
+    private ActionFactory actionFactory;
+    private List<Action> actions;
 
-    public BasicModelV1_0ToActionListConverter( TextAdventureModel model ) {
-        this.model = model;
+    public BasicModelV1_0ToActionListConverter( TextAdventureModel oldModel,
+                TextAdventureModel newModel, UserInventory inventory,
+                ActionFactory factory ) {
+        this.oldModel = oldModel;
+        this.newModel = newModel;
+        this.inventory = inventory;
+        this.actionFactory = factory;
     }
 
     public List<Action> actions() {
@@ -21,14 +30,35 @@ public class BasicModelV1_0ToActionListConverter {
             // 2. Figure out what has been used
             // 3. Figure out what has been examined
             // 4. Figure out where the player is and get them there by using exits
-        List<Action> actions = new ArrayList<Action>();
-        Item skeletonKey = null;
-        for( Item item : model.inventoryItems() )
-            if( item.id().equals( "clocktowerskeletonkey" ) )
-                skeletonKey = item;
-        ModelLocation townEntrance = model.findLocationByID( "townentrance" );
-        actions.add( new TakeSpecificItem( skeletonKey, null, townEntrance ) );
+        actions = new ArrayList<Action>();
+
+        addTakeActionForInventoryItem( "clocktowerskeletonkey", "townentrance" );
+        addTakeActionForInventoryItem( "bananapeel", "townentrance" );
+
         return actions;
+    }
+
+    private void addTakeActionForInventoryItem( String itemId, String locationId ) {
+        if( itemIsInOldInventory( itemId ) )
+            actions.add( actionFactory.createTakeSpecificItemAction(
+                                            findNewModelItem( itemId ),
+                                            inventory,
+                                            findNewModelLocation( locationId ) ) );
+    }
+
+    private Item findNewModelItem( String id ) {
+        return newModel.findItemByID( id );
+    }
+
+    private ModelLocation findNewModelLocation( String id ) {
+        return newModel.findLocationByID( id );
+    }
+
+    private boolean itemIsInOldInventory( String id ) {
+        for( Item item : oldModel.inventoryItems() )
+            if( item.id().equals( id ) )
+                return true;
+        return false;
     }
 }
 
