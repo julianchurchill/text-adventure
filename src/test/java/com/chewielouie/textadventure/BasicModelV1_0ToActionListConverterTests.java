@@ -81,5 +81,161 @@ public class BasicModelV1_0ToActionListConverterTests {
 
     // @Test
     // public void if_dust_of_the_ancients_has_been_picked_up_add_take_action() {
+
+    // @Test
+    // public void if_spade_has_been_picked_up_add_take_action() {
+
+    // @Test
+    // public void if_locked_door_name_is_unlocked_add_use_key_and_door_action() {
+
+// Clock face lifetime
+    // @Test
+    // public void if_clock_face_is_on_floor_add_use_spade_and_mound_of_earth_action() {
+
+    // @Test
+    // public void if_clock_face_has_been_picked_up_add_use_spade_and_mound_of_earth_action() {
+
+    // @Test
+    // public void if_clock_face_has_been_picked_up_add_take_action() {
+
+    // @Test
+    // public void if_clock_mechanism_description_includes__has_an_engraved_face__add_use_spade_and_mound_action() {
+
+    // @Test
+    // public void if_clock_mechanism_description_includes__has_an_engraved_face__add_take_face_action() {
+
+    // @Test
+    // public void if_clock_mechanism_description_includes__has_an_engraved_face__add_use_face_and_mechanism_action() {
+
+// Clock hour hand lifetime
+    // @Test
+    // public void if_clock_hour_hand_is_on_shed_floor_add_examine_bags_of_junk_action() {
+
+    // @Test
+    // public void if_clock_hour_hand_has_been_picked_up_add_examine_bags_of_junk_action() {
+
+    // @Test
+    // public void if_clock_hour_hand_has_been_picked_up_add_take_action() {
+
+    // @Test
+    // public void if_clock_mechanism_description_includes__missing_its_minute_hand__add_examine_bags_of_junk_action() {
+
+    // @Test
+    // public void if_clock_mechanism_description_includes__missing_its_minute_hand__add_take_hour_hand_action() {
+
+    // @Test
+    // public void if_clock_mechanism_description_includes__missing_its_minute_hand__add_use_hour_hand_and_mechanism_action() {
+
+// Clock minute hand lifetime
+    // @Test
+    // public void if_clock_minute_hand_has_been_picked_up_add_take_action() {
+
+    // @Test
+    // public void if_clock_mechanism_description_includes__and_both_hands__add_take_minute_hand_action() {
+
+    // @Test
+    // public void if_clock_mechanism_description_includes__and_both_hands__add_use_minute_hand_and_mechanism_action() {
+
+////// End of clock face story //////
+////// Start of mine rescue story //////
+
+// Axe head lifetime
+    // @Test
+    // public void if_axe_head_is_on_floor_of_annex_add_examine_chunk_of_metal_action() {
+
+// Wooden pole lifetime
+    // @Test
+    // public void if_wooden_pole_is_on_floor_of_smaller_annex_add_examine_straw_action() {
+
+    // @Test
+    // public void if_wooden_pole_has_been_picked_up_add_take_action() {
+
+// Blunt pick axe lifetime
+    // @Test
+    // public void if_blunt_pick_axe_is_on_floor_of_annex_add_examine_chunk_of_metal_action() {
+
+    // @Test
+    // public void if_blunt_pick_axe_is_on_floor_of_annex_add_examine_straw_action() {
+
+    // @Test
+    // public void if_blunt_pick_axe_is_on_floor_of_annex_add_take_wooden_pole_action() {
+
+    // @Test
+    // public void if_blunt_pick_axe_is_on_floor_of_annex_add_use_wooden_pole_and_axe_head_action() {
+
+    // @Test
+    // public void if_blunt_pick_axe_has_been_picked_up_add_examine_chunk_of_metal_action() {
+
+    // @Test
+    // public void if_blunt_pick_axe_has_been_picked_up_add_examine_straw_action() {
+
+    // @Test
+    // public void if_blunt_pick_axe_has_been_picked_up_add_take_wooden_pole_action() {
+
+    // @Test
+    // public void if_blunt_pick_axe_has_been_picked_up_add_use_wooden_pole_and_axe_head_action() {
+
+    // @Test
+    // public void if_blunt_pick_axe_has_been_picked_up_add_take_action() {
+
+// Pick axe lifetime
+    // @Test
+    // public void if_pick_axe_is_on_floor_of_smithy_add_examine_chunk_of_metal_action() {
+
+    // @Test
+    // public void if_pick_axe_is_on_floor_of_smithy_add_examine_straw_action() {
+
+    // @Test
+    // public void if_pick_axe_is_on_floor_of_smithy_add_take_wooden_pole_action() {
+
+    // @Test
+    // public void if_pick_axe_is_on_floor_of_smithy_add_use_wooden_pole_and_axe_head_action() {
+
+    // @Test
+    // public void if_pick_axe_is_on_floor_of_smithy_add_take_blunt_axe_action() {
+
+    // @Test
+    // public void if_pick_axe_is_on_floor_of_smithy_add_use_blunt_pick_axe_and_wheel_action() {
+
+    // @Test
+    // public void if_pick_axe_has_been_picked_up_add_examine_chunk_of_metal_action() {
+
+    // @Test
+    // public void if_pick_axe_has_been_picked_up_add_examine_straw_action() {
+
+    // @Test
+    // public void if_pick_axe_has_been_picked_up_add_take_wooden_pole_action() {
+
+    // @Test
+    // public void if_pick_axe_has_been_picked_up_add_use_wooden_pole_and_axe_head_action() {
+
+    // @Test
+    // public void if_pick_axe_has_been_picked_up_add_take_blunt_axe_action() {
+
+    // @Test
+    // public void if_pick_axe_has_been_picked_up_add_use_blunt_pick_axe_and_wheel_action() {
+
+    // @Test
+    // public void if_pick_axe_has_been_picked_up_add_take_pick_axe_action() {
+
+// Map lifetime
+    // @Test
+    // public void if_map_is_on_floor_of_chamber_add_examine_table_action() {
+
+    // @Test
+    // public void if_map_has_been_picked_up_add_examine_table_action() {
+
+    // @Test
+    // public void if_map_has_been_picked_up_add_take_action() {
+
+// Shopkeeper lifetime
+    // @Test
+    // public void if_shop_keeper_is_in_cave_add_use_pick_axe_with_rock_action() {
+
+    // @Test
+    // public void if_ruby_count_is_2_add_use_pick_axe_with_rock_action() {
+
+    // @Test
+    // public void if_ruby_count_is_2_add_use_map_with_shop_keeper_action() {
 }
 
