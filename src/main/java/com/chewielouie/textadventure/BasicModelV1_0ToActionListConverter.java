@@ -7,6 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BasicModelV1_0ToActionListConverter {
+    private static final String KEY = "clocktowerskeletonkey";
+    private static final String ENTRANCE = "townentrance";
+    private static final String BANANA_PEEL = "bananapeel";
+    private static final String DUST = "dustoftheancients";
+    private static final String MAIN_STREET = "mainstreettown";
+    private static final String SPADE = "spade";
+    private static final String SHED = "smallshed";
+    private static final String LOCKED_DOOR = "lockeddoor";
+    private static final String OUT_BUILDINGS = "townoutbuildings";
+    private static final String MOUND = "moundofearth";
+    private static final String CLOCK_FACE = "clockface";
+    private static final String MECHANISM = "clockmechanism";
+    private static final String MECHANISM_WITH_FACE = "clockmechanismwithface";
+
     private TextAdventureModel oldModel;
     private TextAdventureModel newModel;
     private UserInventory inventory;
@@ -40,10 +54,10 @@ public class BasicModelV1_0ToActionListConverter {
     }
 
     private void analyseImmediatelyTakeableItems() {
-        addTakeActionIfItemHasBeenPickedUp( "clocktowerskeletonkey", "townentrance" );
-        addTakeActionIfItemHasBeenPickedUp( "bananapeel", "townentrance" );
-        addTakeActionIfItemHasBeenPickedUp( "dustoftheancients", "mainstreettown" );
-        addTakeActionIfItemHasBeenPickedUp( "spade", "smallshed" );
+        addTakeActionIfItemHasBeenPickedUp( KEY, ENTRANCE );
+        addTakeActionIfItemHasBeenPickedUp( BANANA_PEEL, ENTRANCE );
+        addTakeActionIfItemHasBeenPickedUp( DUST, MAIN_STREET );
+        addTakeActionIfItemHasBeenPickedUp( SPADE, SHED );
     }
 
     private void addTakeActionIfItemHasBeenPickedUp( String itemId, String locationId ) {
@@ -52,25 +66,25 @@ public class BasicModelV1_0ToActionListConverter {
     }
 
     private void addUseKeyActionIfDoorIsUnlocked() {
-        Item lockedDoor = oldModel.findItemByID( "lockeddoor" );
+        Item lockedDoor = oldModel.findItemByID( LOCKED_DOOR );
         if( lockedDoor != null && lockedDoor.name().equals( "unlocked door" ) )
-            addUseAction( "lockeddoor", "clocktowerskeletonkey" );
+            addUseAction( LOCKED_DOOR, KEY );
     }
 
     private void generateClockFaceLifetimeActions() {
-        if( itemIsInLocation( "clockface", "townoutbuildings" ) )
-            addUseAction( "moundofearth", "spade" );
+        if( itemIsInLocation( CLOCK_FACE, OUT_BUILDINGS ) )
+            addUseAction( MOUND, SPADE );
 
-        if( itemIsInOldInventory( "clockface" ) ) {
-            addUseAction( "moundofearth", "spade" );
-            addTakeAction( "clockface", "townoutbuildings" );
+        if( itemIsInOldInventory( CLOCK_FACE ) ) {
+            addUseAction( MOUND, SPADE );
+            addTakeAction( CLOCK_FACE, OUT_BUILDINGS );
         }
 
-        Item mechanism = oldModel.findItemByID( "clockmechanismwithface" );
+        Item mechanism = oldModel.findItemByID( MECHANISM_WITH_FACE );
         if( mechanism != null && mechanism.visible() ) {
-            addUseAction( "moundofearth", "spade" );
-            addTakeAction( "clockface", "townoutbuildings" );
-            addUseAction( "clockmechanism", "clockface" );
+            addUseAction( MOUND, SPADE );
+            addTakeAction( CLOCK_FACE, OUT_BUILDINGS );
+            addUseAction( MECHANISM, CLOCK_FACE );
         }
     }
 
