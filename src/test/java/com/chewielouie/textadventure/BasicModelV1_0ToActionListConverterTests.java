@@ -29,6 +29,12 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Mock
     ActionFactory actionFactory;
 
+    private ModelLocation addMockLocationToOldModel( String id ) {
+        ModelLocation loc = mock( ModelLocation.class );
+        when( oldModel.findLocationByID( id ) ).thenReturn( loc );
+        return loc;
+    }
+
     private ModelLocation addMockLocationToNewModel( String id ) {
         ModelLocation loc = mock( ModelLocation.class );
         when( newModel.findLocationByID( id ) ).thenReturn( loc );
@@ -41,6 +47,24 @@ public class BasicModelV1_0ToActionListConverterTests {
         return item;
     }
 
+    private void addItemToOldModelInventory( String id ) {
+        Item item = makeItemMock( id );
+        when( oldModel.inventoryItems() )
+            .thenReturn( new ArrayList<Item>( Arrays.asList( item ) ) );
+    }
+
+    private Item addItemToOldModel( String id ) {
+        Item item = makeItemMock( id );
+        when( oldModel.findItemByID( id ) ).thenReturn( item );
+        return item;
+    }
+
+    private Item addItemToNewModel( String id ) {
+        Item item = makeItemMock( id );
+        when( newModel.findItemByID( id ) ).thenReturn( item );
+        return item;
+    }
+
     private BasicModelV1_0ToActionListConverter newConverter() {
         return new BasicModelV1_0ToActionListConverter( oldModel, newModel,
                                                         inventory, actionFactory );
@@ -48,11 +72,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
     @Test
     public void if_banana_peel_has_been_picked_up_add_take_action() {
-        Item oldBananaPeel = makeItemMock( "bananapeel" );
-        when( oldModel.inventoryItems() )
-            .thenReturn( new ArrayList<Item>( Arrays.asList( oldBananaPeel ) ) );
-        Item newBananaPeel = makeItemMock( "bananapeel" );
-        when( newModel.findItemByID( "bananapeel" ) ).thenReturn( newBananaPeel );
+        addItemToOldModelInventory( "bananapeel" );
+        Item newBananaPeel = addItemToNewModel( "bananapeel" );
         ModelLocation townEntrance = addMockLocationToNewModel( "townentrance" );
 
         newConverter().actions();
@@ -64,11 +85,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
     @Test
     public void if_dust_of_the_ancients_has_been_picked_up_add_take_action() {
-        Item oldItem = makeItemMock( "dustoftheancients" );
-        when( oldModel.inventoryItems() )
-            .thenReturn( new ArrayList<Item>( Arrays.asList( oldItem ) ) );
-        Item newItem = makeItemMock( "dustoftheancients" );
-        when( newModel.findItemByID( "dustoftheancients" ) ).thenReturn( newItem );
+        addItemToOldModelInventory( "dustoftheancients" );
+        Item newItem = addItemToNewModel( "dustoftheancients" );
         ModelLocation itemLocation = addMockLocationToNewModel( "mainstreettown" );
 
         newConverter().actions();
@@ -80,11 +98,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
     @Test
     public void if_spade_has_been_picked_up_add_take_action() {
-        Item oldItem = makeItemMock( "spade" );
-        when( oldModel.inventoryItems() )
-            .thenReturn( new ArrayList<Item>( Arrays.asList( oldItem ) ) );
-        Item newItem = makeItemMock( "spade" );
-        when( newModel.findItemByID( "spade" ) ).thenReturn( newItem );
+        addItemToOldModelInventory( "spade" );
+        Item newItem = addItemToNewModel( "spade" );
         ModelLocation itemLocation = addMockLocationToNewModel( "smallshed" );
 
         newConverter().actions();
@@ -96,12 +111,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
     @Test
     public void if_skeleton_key_has_been_picked_up_add_take_action() {
-        Item oldSkeletonKey = makeItemMock( "clocktowerskeletonkey" );
-        when( oldModel.inventoryItems() )
-            .thenReturn( new ArrayList<Item>( Arrays.asList( oldSkeletonKey ) ) );
-        Item newSkeletonKey = makeItemMock( "clocktowerskeletonkey" );
-        when( newModel.findItemByID( "clocktowerskeletonkey" ) )
-            .thenReturn( newSkeletonKey );
+        addItemToOldModelInventory( "clocktowerskeletonkey" );
+        Item newSkeletonKey = addItemToNewModel( "clocktowerskeletonkey" );
         ModelLocation townEntrance = addMockLocationToNewModel( "townentrance" );
 
         newConverter().actions();
@@ -113,14 +124,10 @@ public class BasicModelV1_0ToActionListConverterTests {
 
     @Test
     public void if_locked_door_name_is_unlocked_add_use_key_and_door_action() {
-        Item lockedDoor = makeItemMock( "lockeddoor" );
+        Item lockedDoor = addItemToOldModel( "lockeddoor" );
         when( lockedDoor.name() ).thenReturn( "unlocked door" );
-        when( oldModel.findItemByID( "lockeddoor" ) ).thenReturn( lockedDoor );
-        Item newLockedDoor = makeItemMock( "lockeddoor" );
-        when( newModel.findItemByID( "lockeddoor" ) ).thenReturn( newLockedDoor );
-        Item newSkeletonKey = makeItemMock( "clocktowerskeletonkey" );
-        when( newModel.findItemByID( "clocktowerskeletonkey" ) )
-            .thenReturn( newSkeletonKey );
+        Item newLockedDoor = addItemToNewModel( "lockeddoor" );
+        Item newSkeletonKey = addItemToNewModel( "clocktowerskeletonkey" );
 
         newConverter().actions();
 
@@ -129,23 +136,80 @@ public class BasicModelV1_0ToActionListConverterTests {
     }
 
 // Clock face lifetime
-    // @Test
-    // public void if_clock_face_is_on_floor_add_use_spade_and_mound_of_earth_action() {
+    @Test
+    public void if_clock_face_is_on_floor_add_use_spade_and_mound_of_earth_action() {
+        Item clockFace = addItemToOldModel( "clockface" );
+        ModelLocation location = addMockLocationToOldModel( "townoutbuildings" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( clockFace ) ) );
+        Item mound = addItemToNewModel( "moundofearth" );
+        Item spade = addItemToNewModel( "spade" );
 
-    // @Test
-    // public void if_clock_face_has_been_picked_up_add_use_spade_and_mound_of_earth_action() {
+        newConverter().actions();
 
-    // @Test
-    // public void if_clock_face_has_been_picked_up_add_take_action() {
+        verify( actionFactory ).createUseWithSpecificItemAction( mound, spade );
+    }
 
-    // @Test
-    // public void if_clock_mechanism_description_includes__has_an_engraved_face__add_use_spade_and_mound_action() {
+    @Test
+    public void if_clock_face_has_been_picked_up_add_use_spade_and_mound_of_earth_action() {
+        addItemToOldModelInventory( "clockface" );
+        Item mound = addItemToNewModel( "moundofearth" );
+        Item spade = addItemToNewModel( "spade" );
 
-    // @Test
-    // public void if_clock_mechanism_description_includes__has_an_engraved_face__add_take_face_action() {
+        newConverter().actions();
 
-    // @Test
-    // public void if_clock_mechanism_description_includes__has_an_engraved_face__add_use_face_and_mechanism_action() {
+        verify( actionFactory ).createUseWithSpecificItemAction( mound, spade );
+    }
+
+    @Test
+    public void if_clock_face_has_been_picked_up_add_take_action() {
+        addItemToOldModelInventory( "clockface" );
+        Item newItem = addItemToNewModel( "clockface" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "townoutbuildings" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_face_is_visible_add_use_spade_and_mound_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithface" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item mound = addItemToNewModel( "moundofearth" );
+        Item spade = addItemToNewModel( "spade" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createUseWithSpecificItemAction( mound, spade );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_face_is_visible_add_take_face_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithface" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item newItem = addItemToNewModel( "clockface" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "townoutbuildings" );
+
+        newConverter().actions();
+
+       verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_face_is_visible_add_use_face_and_mechanism_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithface" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item newMechanism = addItemToNewModel( "clockmechanism" );
+        Item clockFace = addItemToNewModel( "clockface" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createUseWithSpecificItemAction( newMechanism, clockFace );
+    }
 
 // Clock hour hand lifetime
     // @Test

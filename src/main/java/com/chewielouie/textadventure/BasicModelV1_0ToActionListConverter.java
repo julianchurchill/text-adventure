@@ -32,24 +32,53 @@ public class BasicModelV1_0ToActionListConverter {
             // 4. Figure out where the player is and get them there by using exits
         actions = new ArrayList<Action>();
 
-        addTakeActionForInventoryItem( "clocktowerskeletonkey", "townentrance" );
-        addTakeActionForInventoryItem( "bananapeel", "townentrance" );
-        addTakeActionForInventoryItem( "dustoftheancients", "mainstreettown" );
-        addTakeActionForInventoryItem( "spade", "smallshed" );
-
-        Item lockedDoor = oldModel.findItemByID( "lockeddoor" );
-        if( lockedDoor != null && lockedDoor.name().equals( "unlocked door" ) )
-            addUseAction( "lockeddoor", "clocktowerskeletonkey" );
+        analyseImmediatelyTakeableItems();
+        addUseKeyActionIfDoorIsUnlocked();
+        generateClockFaceLifetimeActions();
 
         return actions;
     }
 
-    private void addTakeActionForInventoryItem( String itemId, String locationId ) {
+    private void analyseImmediatelyTakeableItems() {
+        addTakeActionIfItemHasBeenPickedUp( "clocktowerskeletonkey", "townentrance" );
+        addTakeActionIfItemHasBeenPickedUp( "bananapeel", "townentrance" );
+        addTakeActionIfItemHasBeenPickedUp( "dustoftheancients", "mainstreettown" );
+        addTakeActionIfItemHasBeenPickedUp( "spade", "smallshed" );
+    }
+
+    private void addTakeActionIfItemHasBeenPickedUp( String itemId, String locationId ) {
         if( itemIsInOldInventory( itemId ) )
-            actions.add( actionFactory.createTakeSpecificItemAction(
-                                            findNewModelItem( itemId ),
-                                            inventory,
-                                            findNewModelLocation( locationId ) ) );
+            addTakeAction( itemId, locationId );
+    }
+
+    private void addUseKeyActionIfDoorIsUnlocked() {
+        Item lockedDoor = oldModel.findItemByID( "lockeddoor" );
+        if( lockedDoor != null && lockedDoor.name().equals( "unlocked door" ) )
+            addUseAction( "lockeddoor", "clocktowerskeletonkey" );
+    }
+
+    private void generateClockFaceLifetimeActions() {
+        if( itemIsInLocation( "clockface", "townoutbuildings" ) )
+            addUseAction( "moundofearth", "spade" );
+
+        if( itemIsInOldInventory( "clockface" ) ) {
+            addUseAction( "moundofearth", "spade" );
+            addTakeAction( "clockface", "townoutbuildings" );
+        }
+
+        Item mechanism = oldModel.findItemByID( "clockmechanismwithface" );
+        if( mechanism != null && mechanism.visible() ) {
+            addUseAction( "moundofearth", "spade" );
+            addTakeAction( "clockface", "townoutbuildings" );
+            addUseAction( "clockmechanism", "clockface" );
+        }
+    }
+
+    private void addTakeAction( String itemId, String locationId ) {
+        actions.add( actionFactory.createTakeSpecificItemAction(
+                                        findNewModelItem( itemId ),
+                                        inventory,
+                                        findNewModelLocation( locationId ) ) );
     }
 
     private void addUseAction( String actionOwnerItemID, String targetItemID ) {
@@ -70,6 +99,14 @@ public class BasicModelV1_0ToActionListConverter {
         for( Item item : oldModel.inventoryItems() )
             if( item.id().equals( id ) )
                 return true;
+        return false;
+    }
+
+    private boolean itemIsInLocation( String itemID, String locationID ) {
+        Item item = oldModel.findItemByID( itemID );
+        ModelLocation location = oldModel.findLocationByID( locationID );
+        if( location != null && item != null && location.items().contains( item ) )
+            return true;
         return false;
     }
 }
