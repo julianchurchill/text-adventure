@@ -47,6 +47,54 @@ public class BasicModelV1_0ToActionListConverterTests {
     }
 
     @Test
+    public void if_banana_peel_has_been_picked_up_add_take_action() {
+        Item oldBananaPeel = makeItemMock( "bananapeel" );
+        when( oldModel.inventoryItems() )
+            .thenReturn( new ArrayList<Item>( Arrays.asList( oldBananaPeel ) ) );
+        Item newBananaPeel = makeItemMock( "bananapeel" );
+        when( newModel.findItemByID( "bananapeel" ) ).thenReturn( newBananaPeel );
+        ModelLocation townEntrance = addMockLocationToNewModel( "townentrance" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createTakeSpecificItemAction( newBananaPeel,
+                                                              inventory,
+                                                              townEntrance );
+    }
+
+    @Test
+    public void if_dust_of_the_ancients_has_been_picked_up_add_take_action() {
+        Item oldItem = makeItemMock( "dustoftheancients" );
+        when( oldModel.inventoryItems() )
+            .thenReturn( new ArrayList<Item>( Arrays.asList( oldItem ) ) );
+        Item newItem = makeItemMock( "dustoftheancients" );
+        when( newModel.findItemByID( "dustoftheancients" ) ).thenReturn( newItem );
+        ModelLocation itemLocation = addMockLocationToNewModel( "mainstreettown" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
+
+    @Test
+    public void if_spade_has_been_picked_up_add_take_action() {
+        Item oldItem = makeItemMock( "spade" );
+        when( oldModel.inventoryItems() )
+            .thenReturn( new ArrayList<Item>( Arrays.asList( oldItem ) ) );
+        Item newItem = makeItemMock( "spade" );
+        when( newModel.findItemByID( "spade" ) ).thenReturn( newItem );
+        ModelLocation itemLocation = addMockLocationToNewModel( "smallshed" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
+
+    @Test
     public void if_skeleton_key_has_been_picked_up_add_take_action() {
         Item oldSkeletonKey = makeItemMock( "clocktowerskeletonkey" );
         when( oldModel.inventoryItems() )
@@ -64,29 +112,21 @@ public class BasicModelV1_0ToActionListConverterTests {
     }
 
     @Test
-    public void if_banana_peel_has_been_picked_up_add_take_action() {
-        Item oldBananaPeel = makeItemMock( "bananapeel" );
-        when( oldModel.inventoryItems() )
-            .thenReturn( new ArrayList<Item>( Arrays.asList( oldBananaPeel ) ) );
-        Item newBananaPeel = makeItemMock( "bananapeel" );
-        when( newModel.findItemByID( "bananapeel" ) ).thenReturn( newBananaPeel );
-        ModelLocation townEntrance = addMockLocationToNewModel( "townentrance" );
+    public void if_locked_door_name_is_unlocked_add_use_key_and_door_action() {
+        Item lockedDoor = makeItemMock( "lockeddoor" );
+        when( lockedDoor.name() ).thenReturn( "unlocked door" );
+        when( oldModel.findItemByID( "lockeddoor" ) ).thenReturn( lockedDoor );
+        Item newLockedDoor = makeItemMock( "lockeddoor" );
+        when( newModel.findItemByID( "lockeddoor" ) ).thenReturn( newLockedDoor );
+        Item newSkeletonKey = makeItemMock( "clocktowerskeletonkey" );
+        when( newModel.findItemByID( "clocktowerskeletonkey" ) )
+            .thenReturn( newSkeletonKey );
 
         newConverter().actions();
 
-        verify( actionFactory ).createTakeSpecificItemAction( newBananaPeel,
-                                                              inventory,
-                                                              townEntrance );
+        verify( actionFactory ).createUseWithSpecificItemAction( newLockedDoor,
+                                                                 newSkeletonKey );
     }
-
-    // @Test
-    // public void if_dust_of_the_ancients_has_been_picked_up_add_take_action() {
-
-    // @Test
-    // public void if_spade_has_been_picked_up_add_take_action() {
-
-    // @Test
-    // public void if_locked_door_name_is_unlocked_add_use_key_and_door_action() {
 
 // Clock face lifetime
     // @Test

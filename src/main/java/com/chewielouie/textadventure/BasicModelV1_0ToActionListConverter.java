@@ -34,6 +34,12 @@ public class BasicModelV1_0ToActionListConverter {
 
         addTakeActionForInventoryItem( "clocktowerskeletonkey", "townentrance" );
         addTakeActionForInventoryItem( "bananapeel", "townentrance" );
+        addTakeActionForInventoryItem( "dustoftheancients", "mainstreettown" );
+        addTakeActionForInventoryItem( "spade", "smallshed" );
+
+        Item lockedDoor = oldModel.findItemByID( "lockeddoor" );
+        if( lockedDoor != null && lockedDoor.name().equals( "unlocked door" ) )
+            addUseAction( "lockeddoor", "clocktowerskeletonkey" );
 
         return actions;
     }
@@ -44,6 +50,12 @@ public class BasicModelV1_0ToActionListConverter {
                                             findNewModelItem( itemId ),
                                             inventory,
                                             findNewModelLocation( locationId ) ) );
+    }
+
+    private void addUseAction( String actionOwnerItemID, String targetItemID ) {
+        actions.add( actionFactory.createUseWithSpecificItemAction(
+                                        findNewModelItem( actionOwnerItemID ),
+                                        findNewModelItem( targetItemID ) ) );
     }
 
     private Item findNewModelItem( String id ) {
