@@ -194,7 +194,7 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().actions();
 
-       verify( actionFactory ).createTakeSpecificItemAction( newItem,
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
                                                               itemLocation );
     }
@@ -212,14 +212,40 @@ public class BasicModelV1_0ToActionListConverterTests {
     }
 
 // Clock hour hand lifetime
-    // @Test
-    // public void if_clock_hour_hand_is_on_shed_floor_add_examine_bags_of_junk_action() {
+    @Test
+    public void if_clock_hour_hand_is_on_shed_floor_add_examine_bags_of_junk_action() {
+        Item clockHourHand = addItemToOldModel( "clockhourhand" );
+        ModelLocation location = addMockLocationToOldModel( "smallshed" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( clockHourHand ) ) );
+        Item bagsOfJunk = addItemToNewModel( "bagsofjunk" );
 
-    // @Test
-    // public void if_clock_hour_hand_has_been_picked_up_add_examine_bags_of_junk_action() {
+        newConverter().actions();
 
-    // @Test
-    // public void if_clock_hour_hand_has_been_picked_up_add_take_action() {
+        verify( actionFactory ).createExamineAction( bagsOfJunk );
+    }
+
+    @Test
+    public void if_clock_hour_hand_has_been_picked_up_add_examine_bags_of_junk_action() {
+        addItemToOldModelInventory( "clockhourhand" );
+        Item bagsOfJunk = addItemToNewModel( "bagsofjunk" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createExamineAction( bagsOfJunk );
+    }
+
+    @Test
+    public void if_clock_hour_hand_has_been_picked_up_add_take_action() {
+        addItemToOldModelInventory( "clockhourhand" );
+        Item newItem = addItemToNewModel( "clockhourhand" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "smallshed" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
 
     // @Test
     // public void if_clock_mechanism_description_includes__missing_its_minute_hand__add_examine_bags_of_junk_action() {

@@ -17,7 +17,9 @@ public class BasicModelV1_0ToActionListConverter {
     private static final String LOCKED_DOOR = "lockeddoor";
     private static final String OUT_BUILDINGS = "townoutbuildings";
     private static final String MOUND = "moundofearth";
+    private static final String BAGS_OF_JUNK = "bagsofjunk";
     private static final String CLOCK_FACE = "clockface";
+    private static final String CLOCK_HOUR_HAND = "clockhourhand";
     private static final String MECHANISM = "clockmechanism";
     private static final String MECHANISM_WITH_FACE = "clockmechanismwithface";
 
@@ -49,6 +51,7 @@ public class BasicModelV1_0ToActionListConverter {
         analyseImmediatelyTakeableItems();
         addUseKeyActionIfDoorIsUnlocked();
         generateClockFaceLifetimeActions();
+        generateClockHourHandLifetimeActions();
 
         return actions;
     }
@@ -88,6 +91,16 @@ public class BasicModelV1_0ToActionListConverter {
         }
     }
 
+    private void generateClockHourHandLifetimeActions() {
+        if( itemIsInLocation( CLOCK_HOUR_HAND, SHED ) )
+            addExamineAction( BAGS_OF_JUNK );
+
+        if( itemIsInOldInventory( CLOCK_HOUR_HAND ) ) {
+            addExamineAction( BAGS_OF_JUNK );
+            addTakeAction( CLOCK_HOUR_HAND, SHED );
+        }
+    }
+
     private void addTakeAction( String itemId, String locationId ) {
         actions.add( actionFactory.createTakeSpecificItemAction(
                                         findNewModelItem( itemId ),
@@ -99,6 +112,10 @@ public class BasicModelV1_0ToActionListConverter {
         actions.add( actionFactory.createUseWithSpecificItemAction(
                                         findNewModelItem( actionOwnerItemID ),
                                         findNewModelItem( targetItemID ) ) );
+    }
+
+    private void addExamineAction( String itemID ) {
+        actions.add( actionFactory.createExamineAction( findNewModelItem( itemID ) ) );
     }
 
     private Item findNewModelItem( String id ) {
