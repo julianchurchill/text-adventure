@@ -31,6 +31,7 @@ public class BasicModelV1_0ToActionListConverter {
     private static final String EVEN_SMALLER_ANNEX = "evensmallerannex";
     private static final String WOODEN_POLE = "woodenpole";
     private static final String PILE_OF_STRAW = "pileofstraw";
+    private static final String BLUNT_PICK_AXE = "bluntpickaxe";
 
     private TextAdventureModel oldModel;
     private TextAdventureModel newModel;
@@ -64,6 +65,7 @@ public class BasicModelV1_0ToActionListConverter {
         generateClockMinuteHandLifetimeActions();
         generateAxeHeadLifetimeActions();
         generateWoodenPoleLifetimeActions();
+        generateBluntPickAxeLifetimeActions();
 
         return actions;
     }
@@ -142,6 +144,18 @@ public class BasicModelV1_0ToActionListConverter {
 
         if( itemIsInOldInventory( WOODEN_POLE ) )
             addTakeAction( WOODEN_POLE, EVEN_SMALLER_ANNEX );
+    }
+
+    private void generateBluntPickAxeLifetimeActions() {
+        if( itemIsInLocation( BLUNT_PICK_AXE, DIMLY_LIT_ANNEX ) ) {
+            addExamineAction( AXE_HEAD );
+            addExamineAction( PILE_OF_STRAW );
+            addTakeAction( WOODEN_POLE, EVEN_SMALLER_ANNEX );
+            addUseAction( AXE_HEAD, WOODEN_POLE );
+        }
+
+        if( itemIsInOldInventory( BLUNT_PICK_AXE ) )
+            addExamineAction( AXE_HEAD );
     }
 
     private void addTakeAction( String itemId, String locationId ) {

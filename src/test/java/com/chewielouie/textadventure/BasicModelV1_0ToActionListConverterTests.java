@@ -369,20 +369,68 @@ public class BasicModelV1_0ToActionListConverterTests {
     }
 
 // Blunt pick axe lifetime
-    // @Test
-    // public void if_blunt_pick_axe_is_on_floor_of_annex_add_examine_chunk_of_metal_action() {
+    @Test
+    public void if_blunt_pick_axe_is_on_floor_of_annex_add_examine_chunk_of_metal_action() {
+        Item bluntPickAxe = addItemToOldModel( "bluntpickaxe" );
+        ModelLocation location = addMockLocationToOldModel( "dimlylitannex" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( bluntPickAxe ) ) );
+        Item newAxeHead = addItemToNewModel( "axehead" );
 
-    // @Test
-    // public void if_blunt_pick_axe_is_on_floor_of_annex_add_examine_straw_action() {
+        newConverter().actions();
 
-    // @Test
-    // public void if_blunt_pick_axe_is_on_floor_of_annex_add_take_wooden_pole_action() {
+        verify( actionFactory ).createExamineAction( newAxeHead );
+    }
 
-    // @Test
-    // public void if_blunt_pick_axe_is_on_floor_of_annex_add_use_wooden_pole_and_axe_head_action() {
+    @Test
+    public void if_blunt_pick_axe_is_on_floor_of_annex_add_examine_straw_action() {
+        Item bluntPickAxe = addItemToOldModel( "bluntpickaxe" );
+        ModelLocation location = addMockLocationToOldModel( "dimlylitannex" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( bluntPickAxe ) ) );
+        Item pileOfStraw = addItemToNewModel( "pileofstraw" );
 
-    // @Test
-    // public void if_blunt_pick_axe_has_been_picked_up_add_examine_chunk_of_metal_action() {
+        newConverter().actions();
+
+        verify( actionFactory ).createExamineAction( pileOfStraw );
+    }
+
+    @Test
+    public void if_blunt_pick_axe_is_on_floor_of_annex_add_take_wooden_pole_action() {
+        Item bluntPickAxe = addItemToOldModel( "bluntpickaxe" );
+        ModelLocation location = addMockLocationToOldModel( "dimlylitannex" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( bluntPickAxe ) ) );
+        Item newItem = addItemToNewModel( "woodenpole" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "evensmallerannex" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
+
+    @Test
+    public void if_blunt_pick_axe_is_on_floor_of_annex_add_use_wooden_pole_and_axe_head_action() {
+        Item bluntPickAxe = addItemToOldModel( "bluntpickaxe" );
+        ModelLocation location = addMockLocationToOldModel( "dimlylitannex" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( bluntPickAxe ) ) );
+        Item axeHead = addItemToNewModel( "axehead" );
+        Item woodenPole = addItemToNewModel( "woodenpole" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createUseWithSpecificItemAction( axeHead,
+                                                                 woodenPole );
+    }
+
+    @Test
+    public void if_blunt_pick_axe_has_been_picked_up_add_examine_chunk_of_metal_action() {
+        addItemToOldModelInventory( "bluntpickaxe" );
+        Item newAxeHead = addItemToNewModel( "axehead" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createExamineAction( newAxeHead );
+    }
 
     // @Test
     // public void if_blunt_pick_axe_has_been_picked_up_add_examine_straw_action() {
