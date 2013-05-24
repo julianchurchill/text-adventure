@@ -22,6 +22,7 @@ public class BasicModelV1_0ToActionListConverter {
     private static final String CLOCK_HOUR_HAND = "clockhourhand";
     private static final String MECHANISM = "clockmechanism";
     private static final String MECHANISM_WITH_FACE = "clockmechanismwithface";
+    private static final String MECHANISM_WITH_HOUR_HAND = "clockmechanismwithfaceandhourhand";
 
     private TextAdventureModel oldModel;
     private TextAdventureModel newModel;
@@ -98,6 +99,13 @@ public class BasicModelV1_0ToActionListConverter {
         if( itemIsInOldInventory( CLOCK_HOUR_HAND ) ) {
             addExamineAction( BAGS_OF_JUNK );
             addTakeAction( CLOCK_HOUR_HAND, SHED );
+        }
+
+        Item mechanism = oldModel.findItemByID( MECHANISM_WITH_HOUR_HAND );
+        if( mechanism != null && mechanism.visible() ) {
+            addExamineAction( BAGS_OF_JUNK );
+            addTakeAction( CLOCK_HOUR_HAND, SHED );
+            addUseAction( MECHANISM_WITH_FACE, CLOCK_HOUR_HAND );
         }
     }
 

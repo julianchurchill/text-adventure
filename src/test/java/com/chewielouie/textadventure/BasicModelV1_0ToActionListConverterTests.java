@@ -247,14 +247,43 @@ public class BasicModelV1_0ToActionListConverterTests {
                                                               itemLocation );
     }
 
-    // @Test
-    // public void if_clock_mechanism_description_includes__missing_its_minute_hand__add_examine_bags_of_junk_action() {
+    @Test
+    public void if_clock_mechanism_with_hour_hand_is_visible_add_examine_bags_of_junk_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item bagsOfJunk = addItemToNewModel( "bagsofjunk" );
 
-    // @Test
-    // public void if_clock_mechanism_description_includes__missing_its_minute_hand__add_take_hour_hand_action() {
+        newConverter().actions();
 
-    // @Test
-    // public void if_clock_mechanism_description_includes__missing_its_minute_hand__add_use_hour_hand_and_mechanism_action() {
+        verify( actionFactory ).createExamineAction( bagsOfJunk );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_hour_hand_is_visible_add_take_hour_hand_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item newItem = addItemToNewModel( "clockhourhand" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "smallshed" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_hour_hand_is_visible_add_use_hour_hand_and_mechanism_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item newMechanism = addItemToNewModel( "clockmechanismwithface" );
+        Item clockHourHand = addItemToNewModel( "clockhourhand" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createUseWithSpecificItemAction( newMechanism,
+                                                                 clockHourHand );
+    }
 
 // Clock minute hand lifetime
     // @Test
