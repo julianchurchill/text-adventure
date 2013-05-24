@@ -286,14 +286,45 @@ public class BasicModelV1_0ToActionListConverterTests {
     }
 
 // Clock minute hand lifetime
-    // @Test
-    // public void if_clock_minute_hand_has_been_picked_up_add_take_action() {
+    @Test
+    public void if_clock_minute_hand_has_been_picked_up_add_take_action() {
+        addItemToOldModelInventory( "clockminutehand" );
+        Item newItem = addItemToNewModel( "clockminutehand" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "clocktower" );
 
-    // @Test
-    // public void if_clock_mechanism_description_includes__and_both_hands__add_take_minute_hand_action() {
+        newConverter().actions();
 
-    // @Test
-    // public void if_clock_mechanism_description_includes__and_both_hands__add_use_minute_hand_and_mechanism_action() {
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_minute_hand_is_visible_add_take_minute_hand_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhandandminutehand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item newItem = addItemToNewModel( "clockminutehand" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "clocktower" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_minute_hand_is_visible_add_use_minute_hand_and_mechanism_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhandandminutehand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item newMechanism = addItemToNewModel( "clockmechanismwithfaceandhourhand" );
+        Item clockMinuteHand = addItemToNewModel( "clockminutehand" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createUseWithSpecificItemAction( newMechanism,
+                                                                 clockMinuteHand );
+    }
 
 ////// End of clock face story //////
 ////// Start of mine rescue story //////

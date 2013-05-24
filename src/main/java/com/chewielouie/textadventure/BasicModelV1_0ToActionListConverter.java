@@ -16,13 +16,16 @@ public class BasicModelV1_0ToActionListConverter {
     private static final String SHED = "smallshed";
     private static final String LOCKED_DOOR = "lockeddoor";
     private static final String OUT_BUILDINGS = "townoutbuildings";
+    private static final String CLOCK_TOWER = "clocktower";
     private static final String MOUND = "moundofearth";
     private static final String BAGS_OF_JUNK = "bagsofjunk";
     private static final String CLOCK_FACE = "clockface";
     private static final String CLOCK_HOUR_HAND = "clockhourhand";
+    private static final String CLOCK_MINUTE_HAND = "clockminutehand";
     private static final String MECHANISM = "clockmechanism";
     private static final String MECHANISM_WITH_FACE = "clockmechanismwithface";
     private static final String MECHANISM_WITH_HOUR_HAND = "clockmechanismwithfaceandhourhand";
+    private static final String MECHANISM_WITH_MINUTE_HAND = "clockmechanismwithfaceandhourhandandminutehand";
 
     private TextAdventureModel oldModel;
     private TextAdventureModel newModel;
@@ -53,6 +56,7 @@ public class BasicModelV1_0ToActionListConverter {
         addUseKeyActionIfDoorIsUnlocked();
         generateClockFaceLifetimeActions();
         generateClockHourHandLifetimeActions();
+        generateClockMinuteHandLifetimeActions();
 
         return actions;
     }
@@ -106,6 +110,17 @@ public class BasicModelV1_0ToActionListConverter {
             addExamineAction( BAGS_OF_JUNK );
             addTakeAction( CLOCK_HOUR_HAND, SHED );
             addUseAction( MECHANISM_WITH_FACE, CLOCK_HOUR_HAND );
+        }
+    }
+
+    private void generateClockMinuteHandLifetimeActions() {
+        if( itemIsInOldInventory( CLOCK_MINUTE_HAND ) )
+            addTakeAction( CLOCK_MINUTE_HAND, CLOCK_TOWER );
+
+        Item mechanism = oldModel.findItemByID( MECHANISM_WITH_MINUTE_HAND );
+        if( mechanism != null && mechanism.visible() ) {
+            addTakeAction( CLOCK_MINUTE_HAND, CLOCK_TOWER );
+            addUseAction( MECHANISM_WITH_HOUR_HAND, CLOCK_MINUTE_HAND );
         }
     }
 
