@@ -26,6 +26,11 @@ public class BasicModelV1_0ToActionListConverter {
     private static final String MECHANISM_WITH_FACE = "clockmechanismwithface";
     private static final String MECHANISM_WITH_HOUR_HAND = "clockmechanismwithfaceandhourhand";
     private static final String MECHANISM_WITH_MINUTE_HAND = "clockmechanismwithfaceandhourhandandminutehand";
+    private static final String AXE_HEAD = "axehead";
+    private static final String DIMLY_LIT_ANNEX = "dimlylitannex";
+    private static final String EVEN_SMALLER_ANNEX = "evensmallerannex";
+    private static final String WOODEN_POLE = "woodenpole";
+    private static final String PILE_OF_STRAW = "pileofstraw";
 
     private TextAdventureModel oldModel;
     private TextAdventureModel newModel;
@@ -57,6 +62,8 @@ public class BasicModelV1_0ToActionListConverter {
         generateClockFaceLifetimeActions();
         generateClockHourHandLifetimeActions();
         generateClockMinuteHandLifetimeActions();
+        generateAxeHeadLifetimeActions();
+        generateWoodenPoleLifetimeActions();
 
         return actions;
     }
@@ -122,6 +129,19 @@ public class BasicModelV1_0ToActionListConverter {
             addTakeAction( CLOCK_MINUTE_HAND, CLOCK_TOWER );
             addUseAction( MECHANISM_WITH_HOUR_HAND, CLOCK_MINUTE_HAND );
         }
+    }
+
+    private void generateAxeHeadLifetimeActions() {
+        if( itemIsInLocation( AXE_HEAD, DIMLY_LIT_ANNEX ) )
+            addExamineAction( AXE_HEAD );
+    }
+
+    private void generateWoodenPoleLifetimeActions() {
+        if( itemIsInLocation( WOODEN_POLE, EVEN_SMALLER_ANNEX ) )
+            addExamineAction( PILE_OF_STRAW );
+
+        if( itemIsInOldInventory( WOODEN_POLE ) )
+            addTakeAction( WOODEN_POLE, EVEN_SMALLER_ANNEX );
     }
 
     private void addTakeAction( String itemId, String locationId ) {

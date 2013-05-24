@@ -330,15 +330,43 @@ public class BasicModelV1_0ToActionListConverterTests {
 ////// Start of mine rescue story //////
 
 // Axe head lifetime
-    // @Test
-    // public void if_axe_head_is_on_floor_of_annex_add_examine_chunk_of_metal_action() {
+    @Test
+    public void if_axe_head_is_on_floor_of_annex_add_examine_chunk_of_metal_action() {
+        Item axeHead = addItemToOldModel( "axehead" );
+        ModelLocation location = addMockLocationToOldModel( "dimlylitannex" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( axeHead ) ) );
+        Item newAxeHead = addItemToNewModel( "axehead" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createExamineAction( newAxeHead );
+    }
 
 // Wooden pole lifetime
-    // @Test
-    // public void if_wooden_pole_is_on_floor_of_smaller_annex_add_examine_straw_action() {
+    @Test
+    public void if_wooden_pole_is_on_floor_of_smaller_annex_add_examine_straw_action() {
+        Item woodenPole = addItemToOldModel( "woodenpole" );
+        ModelLocation location = addMockLocationToOldModel( "evensmallerannex" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( woodenPole ) ) );
+        Item pileOfStraw = addItemToNewModel( "pileofstraw" );
 
-    // @Test
-    // public void if_wooden_pole_has_been_picked_up_add_take_action() {
+        newConverter().actions();
+
+        verify( actionFactory ).createExamineAction( pileOfStraw );
+    }
+
+    @Test
+    public void if_wooden_pole_has_been_picked_up_add_take_action() {
+        addItemToOldModelInventory( "woodenpole" );
+        Item newItem = addItemToNewModel( "woodenpole" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "evensmallerannex" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
 
 // Blunt pick axe lifetime
     // @Test
