@@ -19,7 +19,7 @@ public class JSONToActionHistoryConverterTests {
         JSONToActionHistoryConverter converter =
             new JSONToActionHistoryConverter( context, "any old file" );
 
-        assertThat( converter.convert(), is( nullValue() ) );
+        assertThat( converter.actions(), is( nullValue() ) );
     }
 }
 

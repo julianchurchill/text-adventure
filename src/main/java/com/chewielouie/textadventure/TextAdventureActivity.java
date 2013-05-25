@@ -129,16 +129,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void onResume() {
         super.onResume();
 
-        if( saveJSONFileExists() ) {
-            ActionHistory newHistory =
-                new JSONToActionHistoryConverter( this, oldJSONFormatSaveFileName )
-                    .convert();
-            // if( newHistory != null ) {
-                // actionHistory = newHistory;
-                // writeActionHistorySaveFile();
-            // }
-        }
-
         if( saveFileExists() )
             loadGame();
         else
@@ -147,7 +137,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         // Or instead of converting JSON to action history as above do this:
         // if( saveJSONFileExists() ) {
             // replayActions(
-                // new JSONToActionConverter( this, oldJSONFormatSaveFileName, model ) );
+                // new JSONToActionListConverter( this, oldJSONFormatSaveFileName,
+                                    // model, inventory, actionFactory ) );
             // save action history
             // delete oldJSONFormatSaveFileName;
         // }

@@ -68,6 +68,7 @@ Backlog
     * Delete old JSON based save file
     * Check acceptance tests work
     * Uncomment Activity::onResume() history replacement and history save file writing if JSON converter is successful
+    * Merge feature branch
   * Defensive loading... if an old JSON file doesn't load capture the exception and recover gracefully, start a clean new game
 
 - [BUG] User still has map after giving it to the shopkeeper!

@@ -3,9 +3,11 @@ package com.chewielouie.textadventure;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import android.content.Context;
 import com.cedarsoftware.util.io.JsonReader;
-import com.chewielouie.textadventure.action.ActionHistory;
+import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.action.ActionFactory;
 
 public class JSONToActionHistoryConverter {
     private Context context;
@@ -16,13 +18,14 @@ public class JSONToActionHistoryConverter {
         this.jsonFileName = jsonFileName;
     }
 
-    public ActionHistory convert() {
+    public List<Action> actions() {
         // BasicModel jsonBasedModel = loadJSONModel();
 
         // if( jsonBasedModel != null ) {
         //     BasicModelV1_0ToActionHistoryConverter converter =
-        //         new BasicModelV1_0ToActionHistoryConverter( jsonBasedModel );
-        //     return converter.actionHistory();
+        //         new BasicModelV1_0ToActionHistoryConverter( jsonBasedModelx
+                            // newModel, inventory, actionfactory );
+        //     return converter.actions();
         // }
         return null;
     }
