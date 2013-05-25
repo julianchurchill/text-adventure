@@ -35,6 +35,12 @@ public class BasicModelV1_0ToActionListConverter {
     private static final String PICK_AXE = "pickaxe";
     private static final String MINE_SMITHY = "minesmithy";
     private static final String SHARPENING_WHEEL = "sharpeningwheel";
+    private static final String MAP = "minemap";
+    private static final String TABLE = "table";
+    private static final String CANDLE_LIT_CHAMBER = "candlelitchamber";
+    private static final String SHOP_KEEPER = "shopkeeper";
+    private static final String SMALL_MINE_CHAMBER = "smallminechamber";
+    private static final String ROCK = "rock";
 
     private TextAdventureModel oldModel;
     private TextAdventureModel newModel;
@@ -70,6 +76,8 @@ public class BasicModelV1_0ToActionListConverter {
         generateWoodenPoleLifetimeActions();
         generateBluntPickAxeLifetimeActions();
         generatePickAxeLifetimeActions();
+        generateMapLifetimeActions();
+        generateShopKeeperLifetimeActions();
 
         return actions;
     }
@@ -170,6 +178,24 @@ public class BasicModelV1_0ToActionListConverter {
 
         if( itemIsInInventory( PICK_AXE ) )
             addTakeAction( PICK_AXE, MINE_SMITHY );
+    }
+
+    private void generateMapLifetimeActions() {
+        if( itemIsInLocationOrInventory( MAP, CANDLE_LIT_CHAMBER ) )
+            addExamineAction( TABLE );
+
+        if( itemIsInInventory( MAP ) )
+            addTakeAction( MAP, CANDLE_LIT_CHAMBER );
+    }
+
+    private void generateShopKeeperLifetimeActions() {
+        if( itemIsInLocation( SHOP_KEEPER, SMALL_MINE_CHAMBER ) )
+            addUseAction( ROCK, PICK_AXE );
+
+        if( oldModel.currentScore() == 2 ) {
+            addUseAction( ROCK, PICK_AXE );
+            addUseAction( SHOP_KEEPER, MAP );
+        }
     }
 
     private void addTakeAction( String itemId, String locationId ) {

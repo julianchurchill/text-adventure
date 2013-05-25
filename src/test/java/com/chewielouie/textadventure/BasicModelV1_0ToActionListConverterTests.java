@@ -658,32 +658,78 @@ public class BasicModelV1_0ToActionListConverterTests {
     }
 
 // Map lifetime
-    // @Test
-    // public void if_map_is_on_floor_of_chamber_add_examine_table_action() {
-    //     Item map = addItemToOldModel( "minemap" );
-    //     ModelLocation location = addMockLocationToOldModel( "candlelitchamber" );
-    //     when( location.items() ).thenReturn( new ArrayList( Arrays.asList( map ) ) );
-    //     Item newMap = addItemToNewModel( "minemap" );
+    @Test
+    public void if_map_is_on_floor_of_chamber_add_examine_table_action() {
+        Item map = addItemToOldModel( "minemap" );
+        ModelLocation location = addMockLocationToOldModel( "candlelitchamber" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( map ) ) );
+        Item table = addItemToNewModel( "table" );
 
-    //     newConverter().actions();
+        newConverter().actions();
 
-    //     verify( actionFactory ).createExamineAction( newMap );
-    // }
+        verify( actionFactory ).createExamineAction( table );
+    }
 
-    // @Test
-    // public void if_map_has_been_picked_up_add_examine_table_action() {
+    @Test
+    public void if_map_has_been_picked_up_add_examine_table_action() {
+        addItemToOldModelInventory( "minemap" );
+        Item table = addItemToNewModel( "table" );
 
-    // @Test
-    // public void if_map_has_been_picked_up_add_take_action() {
+        newConverter().actions();
+
+        verify( actionFactory ).createExamineAction( table );
+    }
+
+    @Test
+    public void if_map_has_been_picked_up_add_take_action() {
+        addItemToOldModelInventory( "minemap" );
+        Item newItem = addItemToNewModel( "minemap" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "candlelitchamber" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
 
 // Shopkeeper lifetime
-    // @Test
-    // public void if_shop_keeper_is_in_cave_add_use_pick_axe_with_rock_action() {
+    @Test
+    public void if_shop_keeper_is_in_cave_add_use_pick_axe_with_rock_action() {
+        Item shopKeeper = addItemToOldModel( "shopkeeper" );
+        ModelLocation location = addMockLocationToOldModel( "smallminechamber" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( shopKeeper ) ) );
+        Item rock = addItemToNewModel( "rock" );
+        Item pickAxe = addItemToNewModel( "pickaxe" );
 
-    // @Test
-    // public void if_ruby_count_is_2_add_use_pick_axe_with_rock_action() {
+        newConverter().actions();
 
-    // @Test
-    // public void if_ruby_count_is_2_add_use_map_with_shop_keeper_action() {
+        verify( actionFactory ).createUseWithSpecificItemAction( rock,
+                                                                 pickAxe );
+    }
+
+    @Test
+    public void if_ruby_count_is_2_add_use_pick_axe_with_rock_action() {
+        when( oldModel.currentScore() ).thenReturn( 2 );
+        Item rock = addItemToNewModel( "rock" );
+        Item pickAxe = addItemToNewModel( "pickaxe" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createUseWithSpecificItemAction( rock,
+                                                                 pickAxe );
+    }
+
+    @Test
+    public void if_ruby_count_is_2_add_use_map_with_shop_keeper_action() {
+        when( oldModel.currentScore() ).thenReturn( 2 );
+        Item shopKeeper = addItemToNewModel( "shopkeeper" );
+        Item map = addItemToNewModel( "minemap" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createUseWithSpecificItemAction( shopKeeper,
+                                                                 map );
+    }
 }
 
