@@ -584,82 +584,91 @@ public class BasicModelV1_0ToActionListConverterTests {
         verify( actionFactory ).createExamineAction( newAxeHead );
     }
 
-    // @Test
-    // public void if_pick_axe_has_been_picked_up_add_examine_straw_action() {
-        // addItemToOldModelInventory( "pickaxe" );
-    //     Item pileOfStraw = addItemToNewModel( "pileofstraw" );
+    @Test
+    public void if_pick_axe_has_been_picked_up_add_examine_straw_action() {
+        addItemToOldModelInventory( "pickaxe" );
+        Item pileOfStraw = addItemToNewModel( "pileofstraw" );
 
-    //     newConverter().actions();
+        newConverter().actions();
 
-    //     verify( actionFactory ).createExamineAction( pileOfStraw );
-    // }
+        verify( actionFactory ).createExamineAction( pileOfStraw );
+    }
 
-    // @Test
-    // public void if_pick_axe_has_been_picked_up_add_take_wooden_pole_action() {
-        // addItemToOldModelInventory( "pickaxe" );
-    //     Item newItem = addItemToNewModel( "woodenpole" );
-    //     ModelLocation itemLocation = addMockLocationToNewModel( "evensmallerannex" );
+    @Test
+    public void if_pick_axe_has_been_picked_up_add_take_wooden_pole_action() {
+        addItemToOldModelInventory( "pickaxe" );
+        Item newItem = addItemToNewModel( "woodenpole" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "evensmallerannex" );
 
-    //     newConverter().actions();
+        newConverter().actions();
 
-    //     verify( actionFactory ).createTakeSpecificItemAction( newItem,
-    //                                                           inventory,
-    //                                                           itemLocation );
-    // }
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
 
-    // @Test
-    // public void if_pick_axe_has_been_picked_up_add_use_wooden_pole_and_axe_head_action() {
-        // addItemToOldModelInventory( "pickaxe" );
-    //     Item axeHead = addItemToNewModel( "axehead" );
-    //     Item woodenPole = addItemToNewModel( "woodenpole" );
+    @Test
+    public void if_pick_axe_has_been_picked_up_add_use_wooden_pole_and_axe_head_action() {
+        addItemToOldModelInventory( "pickaxe" );
+        Item axeHead = addItemToNewModel( "axehead" );
+        Item woodenPole = addItemToNewModel( "woodenpole" );
 
-    //     newConverter().actions();
+        newConverter().actions();
 
-    //     verify( actionFactory ).createUseWithSpecificItemAction( axeHead,
-    //                                                              woodenPole );
-    // }
+        verify( actionFactory ).createUseWithSpecificItemAction( axeHead,
+                                                                 woodenPole );
+    }
 
-    // @Test
-    // public void if_pick_axe_has_been_picked_up_add_take_blunt_axe_action() {
-        // addItemToOldModelInventory( "pickaxe" );
-    //     Item newItem = addItemToNewModel( "bluntpickaxe" );
-    //     ModelLocation itemLocation = addMockLocationToNewModel( "dimlylitannex" );
+    @Test
+    public void if_pick_axe_has_been_picked_up_add_take_blunt_axe_action() {
+        addItemToOldModelInventory( "pickaxe" );
+        Item newItem = addItemToNewModel( "bluntpickaxe" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "dimlylitannex" );
 
-    //     newConverter().actions();
+        newConverter().actions();
 
-    //     verify( actionFactory ).createTakeSpecificItemAction( newItem,
-    //                                                           inventory,
-    //                                                           itemLocation );
-    // }
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
 
-    // @Test
-    // public void if_pick_axe_has_been_picked_up_add_use_blunt_pick_axe_and_wheel_action() {
-        // addItemToOldModelInventory( "pickaxe" );
-    //     Item wheel = addItemToNewModel( "sharpeningwheel" );
-    //     Item bluntPickAxe = addItemToNewModel( "bluntpickkaxe" );
+    @Test
+    public void if_pick_axe_has_been_picked_up_add_use_blunt_pick_axe_and_wheel_action() {
+        addItemToOldModelInventory( "pickaxe" );
+        Item wheel = addItemToNewModel( "sharpeningwheel" );
+        Item bluntPickAxe = addItemToNewModel( "bluntpickaxe" );
 
-    //     newConverter().actions();
+        newConverter().actions();
 
-    //     verify( actionFactory ).createUseWithSpecificItemAction( wheel,
-    //                                                              bluntPickAxe );
-    // }
+        verify( actionFactory ).createUseWithSpecificItemAction( wheel,
+                                                                 bluntPickAxe );
+    }
 
-    // @Test
-    // public void if_pick_axe_has_been_picked_up_add_take_pick_axe_action() {
-        // addItemToOldModelInventory( "pickaxe" );
-    //     Item newItem = addItemToNewModel( "pickaxe" );
-    //     ModelLocation itemLocation = addMockLocationToNewModel( "minesmithy" );
+    @Test
+    public void if_pick_axe_has_been_picked_up_add_take_pick_axe_action() {
+        addItemToOldModelInventory( "pickaxe" );
+        Item newItem = addItemToNewModel( "pickaxe" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "minesmithy" );
 
-    //     newConverter().actions();
+        newConverter().actions();
 
-    //     verify( actionFactory ).createTakeSpecificItemAction( newItem,
-    //                                                           inventory,
-    //                                                           itemLocation );
-    // }
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
 
 // Map lifetime
     // @Test
     // public void if_map_is_on_floor_of_chamber_add_examine_table_action() {
+    //     Item map = addItemToOldModel( "minemap" );
+    //     ModelLocation location = addMockLocationToOldModel( "candlelitchamber" );
+    //     when( location.items() ).thenReturn( new ArrayList( Arrays.asList( map ) ) );
+    //     Item newMap = addItemToNewModel( "minemap" );
+
+    //     newConverter().actions();
+
+    //     verify( actionFactory ).createExamineAction( newMap );
+    // }
 
     // @Test
     // public void if_map_has_been_picked_up_add_examine_table_action() {

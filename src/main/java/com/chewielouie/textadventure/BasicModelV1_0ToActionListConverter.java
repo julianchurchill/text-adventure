@@ -159,7 +159,7 @@ public class BasicModelV1_0ToActionListConverter {
     }
 
     private void generatePickAxeLifetimeActions() {
-        if( itemIsInLocation( PICK_AXE, MINE_SMITHY ) ) {
+        if( itemIsInLocationOrInventory( PICK_AXE, MINE_SMITHY ) ) {
             addExamineAction( AXE_HEAD );
             addExamineAction( PILE_OF_STRAW );
             addTakeAction( WOODEN_POLE, EVEN_SMALLER_ANNEX );
@@ -168,9 +168,8 @@ public class BasicModelV1_0ToActionListConverter {
             addUseAction( SHARPENING_WHEEL, BLUNT_PICK_AXE );
         }
 
-        if( itemIsInInventory( PICK_AXE ) ) {
-            addExamineAction( AXE_HEAD );
-        }
+        if( itemIsInInventory( PICK_AXE ) )
+            addTakeAction( PICK_AXE, MINE_SMITHY );
     }
 
     private void addTakeAction( String itemId, String locationId ) {
