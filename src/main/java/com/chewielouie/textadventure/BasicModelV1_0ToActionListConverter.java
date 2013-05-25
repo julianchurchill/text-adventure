@@ -142,8 +142,10 @@ public class BasicModelV1_0ToActionListConverter {
         if( itemIsInLocation( WOODEN_POLE, EVEN_SMALLER_ANNEX ) )
             addExamineAction( PILE_OF_STRAW );
 
-        if( itemIsInOldInventory( WOODEN_POLE ) )
+        if( itemIsInOldInventory( WOODEN_POLE ) ) {
+            addExamineAction( PILE_OF_STRAW );
             addTakeAction( WOODEN_POLE, EVEN_SMALLER_ANNEX );
+        }
     }
 
     private void generateBluntPickAxeLifetimeActions() {
@@ -154,8 +156,13 @@ public class BasicModelV1_0ToActionListConverter {
             addUseAction( AXE_HEAD, WOODEN_POLE );
         }
 
-        if( itemIsInOldInventory( BLUNT_PICK_AXE ) )
+        if( itemIsInOldInventory( BLUNT_PICK_AXE ) ) {
             addExamineAction( AXE_HEAD );
+            addExamineAction( PILE_OF_STRAW );
+            addTakeAction( WOODEN_POLE, EVEN_SMALLER_ANNEX );
+            addUseAction( AXE_HEAD, WOODEN_POLE );
+            addTakeAction( BLUNT_PICK_AXE, DIMLY_LIT_ANNEX );
+        }
     }
 
     private void addTakeAction( String itemId, String locationId ) {

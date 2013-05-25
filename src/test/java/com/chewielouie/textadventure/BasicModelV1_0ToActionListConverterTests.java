@@ -356,6 +356,16 @@ public class BasicModelV1_0ToActionListConverterTests {
     }
 
     @Test
+    public void if_wooden_pole_has_been_picked_up_add_examine_straw_action() {
+        addItemToOldModelInventory( "woodenpole" );
+        Item pileOfStraw = addItemToNewModel( "pileofstraw" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createExamineAction( pileOfStraw );
+    }
+
+    @Test
     public void if_wooden_pole_has_been_picked_up_add_take_action() {
         addItemToOldModelInventory( "woodenpole" );
         Item newItem = addItemToNewModel( "woodenpole" );
@@ -432,17 +442,54 @@ public class BasicModelV1_0ToActionListConverterTests {
         verify( actionFactory ).createExamineAction( newAxeHead );
     }
 
-    // @Test
-    // public void if_blunt_pick_axe_has_been_picked_up_add_examine_straw_action() {
+    @Test
+    public void if_blunt_pick_axe_has_been_picked_up_add_examine_straw_action() {
+        addItemToOldModelInventory( "bluntpickaxe" );
+        Item pileOfStraw = addItemToNewModel( "pileofstraw" );
 
-    // @Test
-    // public void if_blunt_pick_axe_has_been_picked_up_add_take_wooden_pole_action() {
+        newConverter().actions();
 
-    // @Test
-    // public void if_blunt_pick_axe_has_been_picked_up_add_use_wooden_pole_and_axe_head_action() {
+        verify( actionFactory ).createExamineAction( pileOfStraw );
+    }
 
-    // @Test
-    // public void if_blunt_pick_axe_has_been_picked_up_add_take_action() {
+
+    @Test
+    public void if_blunt_pick_axe_has_been_picked_up_add_take_wooden_pole_action() {
+        addItemToOldModelInventory( "bluntpickaxe" );
+        Item newItem = addItemToNewModel( "woodenpole" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "evensmallerannex" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
+
+    @Test
+    public void if_blunt_pick_axe_has_been_picked_up_add_use_wooden_pole_and_axe_head_action() {
+        addItemToOldModelInventory( "bluntpickaxe" );
+        Item axeHead = addItemToNewModel( "axehead" );
+        Item woodenPole = addItemToNewModel( "woodenpole" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createUseWithSpecificItemAction( axeHead,
+                                                                 woodenPole );
+    }
+
+    @Test
+    public void if_blunt_pick_axe_has_been_picked_up_add_take_action() {
+        addItemToOldModelInventory( "bluntpickaxe" );
+        Item newItem = addItemToNewModel( "bluntpickaxe" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "dimlylitannex" );
+
+        newConverter().actions();
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
 
 // Pick axe lifetime
     // @Test
