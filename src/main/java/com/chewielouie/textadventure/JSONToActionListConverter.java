@@ -9,11 +9,11 @@ import com.cedarsoftware.util.io.JsonReader;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
 
-public class JSONToActionHistoryConverter {
+public class JSONToActionListConverter {
     private Context context;
     private String jsonFileName;
 
-    public JSONToActionHistoryConverter( Context context, String jsonFileName ) {
+    public JSONToActionListConverter( Context context, String jsonFileName ) {
         this.context = context;
         this.jsonFileName = jsonFileName;
     }
@@ -23,7 +23,7 @@ public class JSONToActionHistoryConverter {
 
         // if( jsonBasedModel != null ) {
         //     BasicModelV1_0ToActionHistoryConverter converter =
-        //         new BasicModelV1_0ToActionHistoryConverter( jsonBasedModelx
+        //         new BasicModelV1_0ToActionHistoryConverter( jsonBasedModel,
                             // newModel, inventory, actionfactory );
         //     return converter.actions();
         // }
