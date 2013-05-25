@@ -78,7 +78,7 @@ public class BasicModelV1_0ToActionListConverter {
     }
 
     private void addTakeActionIfItemHasBeenPickedUp( String itemId, String locationId ) {
-        if( itemIsInOldInventory( itemId ) )
+        if( itemIsInInventory( itemId ) )
             addTakeAction( itemId, locationId );
     }
 
@@ -89,13 +89,11 @@ public class BasicModelV1_0ToActionListConverter {
     }
 
     private void generateClockFaceLifetimeActions() {
-        if( itemIsInLocation( CLOCK_FACE, OUT_BUILDINGS ) )
+        if( itemIsInLocationOrInventory( CLOCK_FACE, OUT_BUILDINGS ) )
             addUseAction( MOUND, SPADE );
 
-        if( itemIsInOldInventory( CLOCK_FACE ) ) {
-            addUseAction( MOUND, SPADE );
+        if( itemIsInInventory( CLOCK_FACE ) )
             addTakeAction( CLOCK_FACE, OUT_BUILDINGS );
-        }
 
         Item mechanism = oldModel.findItemByID( MECHANISM_WITH_FACE );
         if( mechanism != null && mechanism.visible() ) {
@@ -106,13 +104,11 @@ public class BasicModelV1_0ToActionListConverter {
     }
 
     private void generateClockHourHandLifetimeActions() {
-        if( itemIsInLocation( CLOCK_HOUR_HAND, SHED ) )
+        if( itemIsInLocationOrInventory( CLOCK_HOUR_HAND, SHED ) )
             addExamineAction( BAGS_OF_JUNK );
 
-        if( itemIsInOldInventory( CLOCK_HOUR_HAND ) ) {
-            addExamineAction( BAGS_OF_JUNK );
+        if( itemIsInInventory( CLOCK_HOUR_HAND ) )
             addTakeAction( CLOCK_HOUR_HAND, SHED );
-        }
 
         Item mechanism = oldModel.findItemByID( MECHANISM_WITH_HOUR_HAND );
         if( mechanism != null && mechanism.visible() ) {
@@ -123,7 +119,7 @@ public class BasicModelV1_0ToActionListConverter {
     }
 
     private void generateClockMinuteHandLifetimeActions() {
-        if( itemIsInOldInventory( CLOCK_MINUTE_HAND ) )
+        if( itemIsInInventory( CLOCK_MINUTE_HAND ) )
             addTakeAction( CLOCK_MINUTE_HAND, CLOCK_TOWER );
 
         Item mechanism = oldModel.findItemByID( MECHANISM_WITH_MINUTE_HAND );
@@ -139,30 +135,23 @@ public class BasicModelV1_0ToActionListConverter {
     }
 
     private void generateWoodenPoleLifetimeActions() {
-        if( itemIsInLocation( WOODEN_POLE, EVEN_SMALLER_ANNEX ) )
+        if( itemIsInLocationOrInventory( WOODEN_POLE, EVEN_SMALLER_ANNEX ) )
             addExamineAction( PILE_OF_STRAW );
 
-        if( itemIsInOldInventory( WOODEN_POLE ) ) {
-            addExamineAction( PILE_OF_STRAW );
+        if( itemIsInInventory( WOODEN_POLE ) )
             addTakeAction( WOODEN_POLE, EVEN_SMALLER_ANNEX );
-        }
     }
 
     private void generateBluntPickAxeLifetimeActions() {
-        if( itemIsInLocation( BLUNT_PICK_AXE, DIMLY_LIT_ANNEX ) ) {
+        if( itemIsInLocationOrInventory( BLUNT_PICK_AXE, DIMLY_LIT_ANNEX ) ) {
             addExamineAction( AXE_HEAD );
             addExamineAction( PILE_OF_STRAW );
             addTakeAction( WOODEN_POLE, EVEN_SMALLER_ANNEX );
             addUseAction( AXE_HEAD, WOODEN_POLE );
         }
 
-        if( itemIsInOldInventory( BLUNT_PICK_AXE ) ) {
-            addExamineAction( AXE_HEAD );
-            addExamineAction( PILE_OF_STRAW );
-            addTakeAction( WOODEN_POLE, EVEN_SMALLER_ANNEX );
-            addUseAction( AXE_HEAD, WOODEN_POLE );
+        if( itemIsInInventory( BLUNT_PICK_AXE ) )
             addTakeAction( BLUNT_PICK_AXE, DIMLY_LIT_ANNEX );
-        }
     }
 
     private void addTakeAction( String itemId, String locationId ) {
@@ -190,7 +179,7 @@ public class BasicModelV1_0ToActionListConverter {
         return newModel.findLocationByID( id );
     }
 
-    private boolean itemIsInOldInventory( String id ) {
+    private boolean itemIsInInventory( String id ) {
         for( Item item : oldModel.inventoryItems() )
             if( item.id().equals( id ) )
                 return true;
@@ -204,5 +193,10 @@ public class BasicModelV1_0ToActionListConverter {
             return true;
         return false;
     }
+
+    private boolean itemIsInLocationOrInventory( String itemId, String locationId ) {
+        return itemIsInLocation( itemId, locationId ) ||
+               itemIsInInventory( itemId );
+   }
 }
 
