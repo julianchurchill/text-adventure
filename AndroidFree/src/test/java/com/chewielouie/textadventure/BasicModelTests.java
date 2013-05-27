@@ -383,5 +383,22 @@ public class BasicModelTests {
 
         model.moveThroughExit( north );
     }
+
+    @Test
+    public void subscribers_get_change_location_event_on_set_current_location() {
+        ModelLocation loc1 = mock( ModelLocation.class );
+        when( loc1.id() ).thenReturn( "loc1id" );
+        ModelLocation loc2 = mock( ModelLocation.class );
+        when( loc2.id() ).thenReturn( "loc2id" );
+        ModelEventSubscriber modelEventSubscriber = mock( ModelEventSubscriber.class );
+        BasicModel model = new BasicModel();
+        model.addLocation( loc1 );
+        model.addLocation( loc2 );
+        model.subscribeForEvents( modelEventSubscriber );
+
+        model.setCurrentLocation( "loc2id" );
+
+        verify( modelEventSubscriber ).currentLocationChanged();
+    }
 }
 
