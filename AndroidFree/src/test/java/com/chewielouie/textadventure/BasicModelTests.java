@@ -1,5 +1,8 @@
 package com.chewielouie.textadventure;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -20,6 +23,21 @@ public class BasicModelTests {
         BasicModel model = new BasicModel();
 
         assertTrue( model.currentLocation() instanceof NullLocation );
+    }
+
+    @Test
+    public void set_current_location_by_id_changes_the_current_location() {
+        ModelLocation loc1 = mock( ModelLocation.class );
+        when( loc1.id() ).thenReturn( "loc1id" );
+        ModelLocation loc2 = mock( ModelLocation.class );
+        when( loc2.id() ).thenReturn( "loc2id" );
+        BasicModel model = new BasicModel();
+        model.addLocation( loc1 );
+        model.addLocation( loc2 );
+
+        model.setCurrentLocation( "loc2id" );
+
+        assertThat( model.currentLocation(), is( loc2 ) );
     }
 
     @Test
