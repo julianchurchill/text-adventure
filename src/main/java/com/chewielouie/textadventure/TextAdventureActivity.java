@@ -86,6 +86,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private ViewDisabler viewDisabler = null;
     private BasicModelFactory externalModelFactory = null;
     private BasicModelFactory internalModelFactory = null;
+    private Logger logger = new StdoutLogger();
 
     public TextAdventureActivity() {
     }
@@ -137,13 +138,13 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         if( saveJSONFileExists() ) {
             BasicModelV1_0ToActionListConverter c
                 = new BasicModelV1_0ToActionListConverter( model, inventory,
-                                                           actionFactory );
+                                                           actionFactory(), logger );
             JSONToActionListConverter j
                 = new JSONToActionListConverter( this, oldJSONFormatSaveFileName, c );
-            // List<Action> actions = j.actions;
-            // if( actions != null )
-                // replayActions( j.actions() );
-            // model.setCurrentLocation( j.model().currentLocation().id() );
+            List<Action> actions = j.actions();
+            if( actions != null )
+                replayActions( j.actions() );
+            model.setCurrentLocation( j.model().currentLocation().id() );
         }
     }
 
@@ -201,7 +202,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private void createNewGameModel() {
         model = (BasicModel)modelFactory().createModel();
         inventory = model;
-        Logger logger = new StdoutLogger();
         ItemActionFactory itemActionFactory = new LoggableNormalItemActionFactory( logger, model );
         ItemFactory itemFactory = new NormalItemFactory();
         ItemDeserialiser itemDeserialiser =

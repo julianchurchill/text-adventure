@@ -61,7 +61,11 @@ Backlog
         * If the moundofearth has been used run UseWith on the spade and moundofearth and _also_ add the spade to the inventory
         * If clockface has been used then run UseWith on the clockface and the clockmechanism
     * DONE Implement JSONToActionListConverter::actions()
-    * Set the current location in the new model to match the old JSON saved location
+    * DONE Set the current location in the new model to match the old JSON saved location
+    * Issues after converting a JSON model to an action list:
+      * Make sure the main text is re-presented to the user cleanly - no remanants of all the actions ocurring during load, just a fresh location description
+      * Current score is not shown correctly (or not updated in the model)
+      * Inventory has 3 wooden poles, a clock minute hand and a blunt pick axe (shouldn't have any of these.. were they 'destroy item' targets?)
     * Delete old JSON based save file in onPause if it still exists
     * Check acceptance tests work
     * Merge feature branch

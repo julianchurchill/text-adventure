@@ -47,6 +47,7 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
     private UserInventory inventory;
     private ActionFactory actionFactory;
     private List<Action> actions;
+    private Logger logger = new NullLogger();
 
     public BasicModelV1_0ToActionListConverter( TextAdventureModel newModel,
                                                 UserInventory inventory,
@@ -54,6 +55,14 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
         this.newModel = newModel;
         this.inventory = inventory;
         this.actionFactory = factory;
+    }
+
+    public BasicModelV1_0ToActionListConverter( TextAdventureModel newModel,
+                                                UserInventory inventory,
+                                                ActionFactory factory,
+                                                Logger logger ) {
+        this( newModel, inventory, factory );
+        this.logger = logger;
     }
 
     public List<Action> inferActionsFrom( TextAdventureModel model ) {
@@ -217,10 +226,14 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
     }
 
     private Item findNewModelItem( String id ) {
+        if( newModel.findItemByID( id ) == null )
+            logger.log( "item not found in new model '" + id + "'" );
         return newModel.findItemByID( id );
     }
 
     private ModelLocation findNewModelLocation( String id ) {
+        if( newModel.findLocationByID( id ) == null )
+            logger.log( "location not found in new model '" + id + "'" );
         return newModel.findLocationByID( id );
     }
 
