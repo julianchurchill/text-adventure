@@ -6,7 +6,7 @@ import com.chewielouie.textadventure.item.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasicModelV1_0ToActionListConverter {
+public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
     private static final String KEY = "clocktowerskeletonkey";
     private static final String ENTRANCE = "townentrance";
     private static final String BANANA_PEEL = "bananapeel";
@@ -48,16 +48,17 @@ public class BasicModelV1_0ToActionListConverter {
     private ActionFactory actionFactory;
     private List<Action> actions;
 
-    public BasicModelV1_0ToActionListConverter( TextAdventureModel oldModel,
-                TextAdventureModel newModel, UserInventory inventory,
-                ActionFactory factory ) {
-        this.oldModel = oldModel;
+    public BasicModelV1_0ToActionListConverter( TextAdventureModel newModel,
+                                                UserInventory inventory,
+                                                ActionFactory factory ) {
         this.newModel = newModel;
         this.inventory = inventory;
         this.actionFactory = factory;
     }
 
-    public List<Action> actions() {
+    public List<Action> inferActionsFrom( TextAdventureModel model ) {
+        this.oldModel = model;
+
         // inspect the state of the model and fill in the action history with guesses
             // 1. Figure out what has been picked up
                 // a. if skeleton key is in inventory do 'take specific item:clocktowerskeletonkey:townentrance'

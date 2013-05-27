@@ -66,7 +66,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     }
 
     private BasicModelV1_0ToActionListConverter newConverter() {
-        return new BasicModelV1_0ToActionListConverter( oldModel, newModel,
+        return new BasicModelV1_0ToActionListConverter( newModel,
                                                         inventory, actionFactory );
     }
 
@@ -76,7 +76,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newBananaPeel = addItemToNewModel( "bananapeel" );
         ModelLocation townEntrance = addMockLocationToNewModel( "townentrance" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newBananaPeel,
                                                               inventory,
@@ -89,7 +89,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "dustoftheancients" );
         ModelLocation itemLocation = addMockLocationToNewModel( "mainstreettown" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -102,7 +102,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "spade" );
         ModelLocation itemLocation = addMockLocationToNewModel( "smallshed" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -115,7 +115,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newSkeletonKey = addItemToNewModel( "clocktowerskeletonkey" );
         ModelLocation townEntrance = addMockLocationToNewModel( "townentrance" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newSkeletonKey,
                                                               inventory,
@@ -129,7 +129,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newLockedDoor = addItemToNewModel( "lockeddoor" );
         Item newSkeletonKey = addItemToNewModel( "clocktowerskeletonkey" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( newLockedDoor,
                                                                  newSkeletonKey );
@@ -144,7 +144,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item mound = addItemToNewModel( "moundofearth" );
         Item spade = addItemToNewModel( "spade" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( mound, spade );
     }
@@ -155,7 +155,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item mound = addItemToNewModel( "moundofearth" );
         Item spade = addItemToNewModel( "spade" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( mound, spade );
     }
@@ -166,7 +166,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "clockface" );
         ModelLocation itemLocation = addMockLocationToNewModel( "townoutbuildings" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -180,7 +180,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item mound = addItemToNewModel( "moundofearth" );
         Item spade = addItemToNewModel( "spade" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( mound, spade );
     }
@@ -192,7 +192,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "clockface" );
         ModelLocation itemLocation = addMockLocationToNewModel( "townoutbuildings" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -206,7 +206,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newMechanism = addItemToNewModel( "clockmechanism" );
         Item clockFace = addItemToNewModel( "clockface" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( newMechanism, clockFace );
     }
@@ -219,7 +219,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( clockHourHand ) ) );
         Item bagsOfJunk = addItemToNewModel( "bagsofjunk" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( bagsOfJunk );
     }
@@ -229,7 +229,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         addItemToOldModelInventory( "clockhourhand" );
         Item bagsOfJunk = addItemToNewModel( "bagsofjunk" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( bagsOfJunk );
     }
@@ -240,7 +240,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "clockhourhand" );
         ModelLocation itemLocation = addMockLocationToNewModel( "smallshed" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -253,7 +253,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         when( mechanism.visible() ).thenReturn( true );
         Item bagsOfJunk = addItemToNewModel( "bagsofjunk" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( bagsOfJunk );
     }
@@ -265,7 +265,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "clockhourhand" );
         ModelLocation itemLocation = addMockLocationToNewModel( "smallshed" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -279,7 +279,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newMechanism = addItemToNewModel( "clockmechanismwithface" );
         Item clockHourHand = addItemToNewModel( "clockhourhand" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( newMechanism,
                                                                  clockHourHand );
@@ -292,7 +292,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "clockminutehand" );
         ModelLocation itemLocation = addMockLocationToNewModel( "clocktower" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -306,7 +306,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "clockminutehand" );
         ModelLocation itemLocation = addMockLocationToNewModel( "clocktower" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -320,7 +320,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newMechanism = addItemToNewModel( "clockmechanismwithfaceandhourhand" );
         Item clockMinuteHand = addItemToNewModel( "clockminutehand" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( newMechanism,
                                                                  clockMinuteHand );
@@ -337,7 +337,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( axeHead ) ) );
         Item newAxeHead = addItemToNewModel( "axehead" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( newAxeHead );
     }
@@ -350,7 +350,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( woodenPole ) ) );
         Item pileOfStraw = addItemToNewModel( "pileofstraw" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( pileOfStraw );
     }
@@ -360,7 +360,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         addItemToOldModelInventory( "woodenpole" );
         Item pileOfStraw = addItemToNewModel( "pileofstraw" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( pileOfStraw );
     }
@@ -371,7 +371,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "woodenpole" );
         ModelLocation itemLocation = addMockLocationToNewModel( "evensmallerannex" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -386,7 +386,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( bluntPickAxe ) ) );
         Item newAxeHead = addItemToNewModel( "axehead" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( newAxeHead );
     }
@@ -398,7 +398,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( bluntPickAxe ) ) );
         Item pileOfStraw = addItemToNewModel( "pileofstraw" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( pileOfStraw );
     }
@@ -411,7 +411,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "woodenpole" );
         ModelLocation itemLocation = addMockLocationToNewModel( "evensmallerannex" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -426,7 +426,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item axeHead = addItemToNewModel( "axehead" );
         Item woodenPole = addItemToNewModel( "woodenpole" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( axeHead,
                                                                  woodenPole );
@@ -437,7 +437,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         addItemToOldModelInventory( "bluntpickaxe" );
         Item newAxeHead = addItemToNewModel( "axehead" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( newAxeHead );
     }
@@ -447,7 +447,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         addItemToOldModelInventory( "bluntpickaxe" );
         Item pileOfStraw = addItemToNewModel( "pileofstraw" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( pileOfStraw );
     }
@@ -459,7 +459,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "woodenpole" );
         ModelLocation itemLocation = addMockLocationToNewModel( "evensmallerannex" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -472,7 +472,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item axeHead = addItemToNewModel( "axehead" );
         Item woodenPole = addItemToNewModel( "woodenpole" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( axeHead,
                                                                  woodenPole );
@@ -484,7 +484,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "bluntpickaxe" );
         ModelLocation itemLocation = addMockLocationToNewModel( "dimlylitannex" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -499,7 +499,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( pickAxe ) ) );
         Item newAxeHead = addItemToNewModel( "axehead" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( newAxeHead );
     }
@@ -511,7 +511,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( pickAxe ) ) );
         Item pileOfStraw = addItemToNewModel( "pileofstraw" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( pileOfStraw );
     }
@@ -524,7 +524,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "woodenpole" );
         ModelLocation itemLocation = addMockLocationToNewModel( "evensmallerannex" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -539,7 +539,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item axeHead = addItemToNewModel( "axehead" );
         Item woodenPole = addItemToNewModel( "woodenpole" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( axeHead,
                                                                  woodenPole );
@@ -553,7 +553,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "bluntpickaxe" );
         ModelLocation itemLocation = addMockLocationToNewModel( "dimlylitannex" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -568,7 +568,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item wheel = addItemToNewModel( "sharpeningwheel" );
         Item bluntPickAxe = addItemToNewModel( "bluntpickaxe" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( wheel,
                                                                  bluntPickAxe );
@@ -579,7 +579,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         addItemToOldModelInventory( "pickaxe" );
         Item newAxeHead = addItemToNewModel( "axehead" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( newAxeHead );
     }
@@ -589,7 +589,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         addItemToOldModelInventory( "pickaxe" );
         Item pileOfStraw = addItemToNewModel( "pileofstraw" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( pileOfStraw );
     }
@@ -600,7 +600,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "woodenpole" );
         ModelLocation itemLocation = addMockLocationToNewModel( "evensmallerannex" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -613,7 +613,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item axeHead = addItemToNewModel( "axehead" );
         Item woodenPole = addItemToNewModel( "woodenpole" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( axeHead,
                                                                  woodenPole );
@@ -625,7 +625,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "bluntpickaxe" );
         ModelLocation itemLocation = addMockLocationToNewModel( "dimlylitannex" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -638,7 +638,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item wheel = addItemToNewModel( "sharpeningwheel" );
         Item bluntPickAxe = addItemToNewModel( "bluntpickaxe" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( wheel,
                                                                  bluntPickAxe );
@@ -650,7 +650,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "pickaxe" );
         ModelLocation itemLocation = addMockLocationToNewModel( "minesmithy" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -665,7 +665,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( map ) ) );
         Item table = addItemToNewModel( "table" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( table );
     }
@@ -675,7 +675,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         addItemToOldModelInventory( "minemap" );
         Item table = addItemToNewModel( "table" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( table );
     }
@@ -686,7 +686,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item newItem = addItemToNewModel( "minemap" );
         ModelLocation itemLocation = addMockLocationToNewModel( "candlelitchamber" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
@@ -702,7 +702,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item rock = addItemToNewModel( "rock" );
         Item pickAxe = addItemToNewModel( "pickaxe" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( rock,
                                                                  pickAxe );
@@ -714,7 +714,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item rock = addItemToNewModel( "rock" );
         Item pickAxe = addItemToNewModel( "pickaxe" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( rock,
                                                                  pickAxe );
@@ -726,7 +726,7 @@ public class BasicModelV1_0ToActionListConverterTests {
         Item shopKeeper = addItemToNewModel( "shopkeeper" );
         Item map = addItemToNewModel( "minemap" );
 
-        newConverter().actions();
+        newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( shopKeeper,
                                                                  map );
