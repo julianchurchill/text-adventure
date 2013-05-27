@@ -136,9 +136,12 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
         // Or instead of converting JSON to action history as above do this:
         // if( saveJSONFileExists() ) {
-            // replayActions(
-                // new JSONToActionListConverter( this, oldJSONFormatSaveFileName,
-                                    // model, inventory, actionFactory ) );
+            // BasicModelV1_0ToActionListConverter c
+                // = new BasicModelV1_0ToActionListConverter( model, inventory,
+                                                              // actionFactory ) );
+            // JSONToActionListConverter j
+                // = new JSONToActionListConverter( this, oldJSONFormatSaveFileName, c ) );
+            // replayActions( j.actions() );
             // save action history
             // delete oldJSONFormatSaveFileName;
         // }

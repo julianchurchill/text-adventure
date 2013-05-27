@@ -60,7 +60,7 @@ Backlog
         * If the bagsofjunk have been examined run Examine on them
         * If the moundofearth has been used run UseWith on the spade and moundofearth and _also_ add the spade to the inventory
         * If clockface has been used then run UseWith on the clockface and the clockmechanism
-    * Implement JSONToActionListConverter::actions()
+    * DONE Implement JSONToActionListConverter::actions()
     * Should Activity convert JSON model to action list, then trigger all the actions to update the new model, rather than generating an action history?
       * Make sure Activity gives BasicModelV1_0ToActionListConverter a RecordableActionFactory - otherwise actions won't get into the action history
     * Set the current location in the new model to match the old JSON saved location

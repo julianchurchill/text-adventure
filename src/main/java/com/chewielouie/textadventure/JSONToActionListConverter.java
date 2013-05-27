@@ -12,21 +12,19 @@ import com.chewielouie.textadventure.action.ActionFactory;
 public class JSONToActionListConverter {
     private Context context;
     private String jsonFileName;
+    private BasicModelConverter converter;
 
-    public JSONToActionListConverter( Context context, String jsonFileName ) {
+    public JSONToActionListConverter( Context context, String jsonFileName,
+                                      BasicModelConverter converter ) {
         this.context = context;
         this.jsonFileName = jsonFileName;
+        this.converter = converter;
     }
 
     public List<Action> actions() {
-        // BasicModel jsonBasedModel = loadJSONModel();
-
-        // if( jsonBasedModel != null ) {
-        //     BasicModelV1_0ToActionHistoryConverter converter =
-        //         new BasicModelV1_0ToActionHistoryConverter( jsonBasedModel,
-                            // newModel, inventory, actionfactory );
-        //     return converter.actions();
-        // }
+        BasicModel jsonBasedModel = loadJSONModel();
+        if( jsonBasedModel != null && converter != null )
+            return converter.inferActionsFrom( jsonBasedModel );
         return null;
     }
 
