@@ -61,13 +61,9 @@ Backlog
         * If the moundofearth has been used run UseWith on the spade and moundofearth and _also_ add the spade to the inventory
         * If clockface has been used then run UseWith on the clockface and the clockmechanism
     * DONE Implement JSONToActionListConverter::actions()
-    * Should Activity convert JSON model to action list, then trigger all the actions to update the new model, rather than generating an action history?
-      * Make sure Activity gives BasicModelV1_0ToActionListConverter a RecordableActionFactory - otherwise actions won't get into the action history
     * Set the current location in the new model to match the old JSON saved location
-    * Save current action history file
-    * Delete old JSON based save file
+    * Delete old JSON based save file in onPause if it still exists
     * Check acceptance tests work
-    * Uncomment Activity::onResume() history replacement and history save file writing if JSON converter is successful
     * Merge feature branch
   * Defensive loading... if an old JSON file doesn't load capture the exception and recover gracefully, start a clean new game
 

@@ -134,17 +134,17 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         else
             createNewGame();
 
-        // Or instead of converting JSON to action history as above do this:
-        // if( saveJSONFileExists() ) {
-            // BasicModelV1_0ToActionListConverter c
-                // = new BasicModelV1_0ToActionListConverter( model, inventory,
-                                                              // actionFactory ) );
-            // JSONToActionListConverter j
-                // = new JSONToActionListConverter( this, oldJSONFormatSaveFileName, c ) );
-            // replayActions( j.actions() );
-            // save action history
-            // delete oldJSONFormatSaveFileName;
-        // }
+        if( saveJSONFileExists() ) {
+            BasicModelV1_0ToActionListConverter c
+                = new BasicModelV1_0ToActionListConverter( model, inventory,
+                                                           actionFactory );
+            JSONToActionListConverter j
+                = new JSONToActionListConverter( this, oldJSONFormatSaveFileName, c );
+            // List<Action> actions = j.actions;
+            // if( actions != null )
+                // replayActions( j.actions() );
+            // model.setCurrentLocation( j.model().currentLocation().id() );
+        }
     }
 
     private boolean saveJSONFileExists() {
@@ -483,6 +483,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void onPause() {
         super.onPause();
         writeActionHistorySaveFile();
+        // if( saveJSONFileExists() )
+            // delete oldJSONFormatSaveFileName;
     }
 
     private void writeActionHistorySaveFile() {
