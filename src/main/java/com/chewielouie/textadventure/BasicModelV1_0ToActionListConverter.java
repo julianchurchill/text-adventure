@@ -105,7 +105,8 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
     }
 
     private void addUseKeyActionIfDoorIsUnlocked() {
-        Item lockedDoor = oldModel.findItemByID( LOCKED_DOOR );
+        Item lockedDoor = findOldModelItem( LOCKED_DOOR );
+// #error the old model does not have an id for the lockeddoor :(, either find it by another means or patch the ids into the old model before processing here
         if( lockedDoor != null && lockedDoor.name().equals( "unlocked door" ) )
             addUseAction( LOCKED_DOOR, KEY );
     }
@@ -117,7 +118,7 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
         if( itemIsInInventory( CLOCK_FACE ) )
             addTakeAction( CLOCK_FACE, OUT_BUILDINGS );
 
-        Item mechanism = oldModel.findItemByID( MECHANISM_WITH_FACE );
+        Item mechanism = findOldModelItem( MECHANISM_WITH_FACE );
         if( mechanism != null && mechanism.visible() ) {
             addUseAction( MOUND, SPADE );
             addTakeAction( CLOCK_FACE, OUT_BUILDINGS );
@@ -144,7 +145,7 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
         if( itemIsInInventory( CLOCK_MINUTE_HAND ) )
             addTakeAction( CLOCK_MINUTE_HAND, CLOCK_TOWER );
 
-        Item mechanism = oldModel.findItemByID( MECHANISM_WITH_MINUTE_HAND );
+        Item mechanism = findOldModelItem( MECHANISM_WITH_MINUTE_HAND );
         if( mechanism != null && mechanism.visible() ) {
             addTakeAction( CLOCK_MINUTE_HAND, CLOCK_TOWER );
             addUseAction( MECHANISM_WITH_HOUR_HAND, CLOCK_MINUTE_HAND );
@@ -237,6 +238,12 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
         return newModel.findLocationByID( id );
     }
 
+    private Item findOldModelItem( String id ) {
+        if( oldModel.findItemByID( id ) == null )
+            logger.log( "item not found in old model '" + id + "'" );
+        return oldModel.findItemByID( id );
+    }
+
     private boolean itemIsInInventory( String id ) {
         for( Item item : oldModel.inventoryItems() )
             if( item.id().equals( id ) )
@@ -245,8 +252,10 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
     }
 
     private boolean itemIsInLocation( String itemID, String locationID ) {
-        Item item = oldModel.findItemByID( itemID );
+        Item item = findOldModelItem( itemID );
         ModelLocation location = oldModel.findLocationByID( locationID );
+        if( location == null )
+            logger.log( "location not found in old model '" + locationID + "'" );
         if( location != null && item != null && location.items().contains( item ) )
             return true;
         return false;

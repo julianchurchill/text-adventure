@@ -64,8 +64,9 @@ Backlog
     * DONE Set the current location in the new model to match the old JSON saved location
     * Issues after converting a JSON model to an action list:
       * DONE Make sure the main text is re-presented to the user cleanly - no remanants of all the actions ocurring during load, just a fresh location description
-      * Current score is not shown correctly (or not updated in the model)
       * Inventory has 3 wooden poles, a clock minute hand and a blunt pick axe (shouldn't have any of these.. were they 'destroy item' targets?)
+        * POSSIBLE FIX: Some items in the old JSON save format may not have IDs, can we patch up the old model after loading with the missing IDs?
+      * Current score is not shown correctly (or not updated in the model)
     * Delete old JSON based save file in onPause if it still exists
     * Check acceptance tests work
     * Merge feature branch
