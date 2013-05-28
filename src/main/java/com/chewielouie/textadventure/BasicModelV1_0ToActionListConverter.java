@@ -67,14 +67,6 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
 
     public List<Action> inferActionsFrom( TextAdventureModel model ) {
         this.oldModel = model;
-
-        // inspect the state of the model and fill in the action history with guesses
-            // 1. Figure out what has been picked up
-                // a. if skeleton key is in inventory do 'take specific item:clocktowerskeletonkey:townentrance'
-                // b... if xxx is in inventory do 'take specific item:item id:location id'
-            // 2. Figure out what has been used
-            // 3. Figure out what has been examined
-            // 4. Figure out where the player is and get them there by using exits
         actions = new ArrayList<Action>();
 
         analyseImmediatelyTakeableItems();
