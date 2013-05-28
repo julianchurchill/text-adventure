@@ -130,8 +130,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void onResume() {
         super.onResume();
 
-        logger.log( "onResume called" );
-
         if( saveFileExists() )
             loadGame();
         else
@@ -143,9 +141,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
                                                            actionFactory(), logger );
             JSONToActionListConverter j
                 = new JSONToActionListConverter( this, oldJSONFormatSaveFileName, c );
-            List<Action> actions = j.actions();
-            if( actions != null )
-                replayActions( j.actions() );
+            replayActions( j.actions() );
             model.setCurrentLocation( j.model().currentLocation().id() );
         }
     }
@@ -188,12 +184,14 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void replayActions( List<Action> actions ) {
-        viewDisabler.on();
-        actionHistory.clear();
-        for( Action action : actions )
-            userActionHandler.enact( action );
-        viewDisabler.off();
-        rendersView.render();
+        if( actions != null ) {
+            viewDisabler.on();
+            actionHistory.clear();
+            for( Action action : actions )
+                userActionHandler.enact( action );
+            viewDisabler.off();
+            rendersView.render();
+        }
     }
 
     private void createNewGame() {
