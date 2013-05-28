@@ -144,7 +144,6 @@ public class ActivityAcceptanceTests {
         return content.toString();
     }
 
-    @Ignore("Acceptance test should pass once implemented")
     @Test
     public void on_resume_reads_a_json_file_and_saves_as_an_action_history_file() {
         TextAdventureActivity activity = new TextAdventureActivity();
@@ -157,20 +156,11 @@ public class ActivityAcceptanceTests {
 
         String savedHistory = loadSerialisedActionHistory( activity );
         String expected_action_history =
-            "action name:take an item:location id:townentrance:\n" +
             "action name:take specific item:item id:clocktowerskeletonkey:location id:townentrance:\n" +
-            "action name:exit:exit id:townentrancenorth:\n" +
-            "action name:exit:exit id:mainstreettownnorth:\n" +
-            "action name:show inventory:\n" +
-            "action name:inventory item:item id:clocktowerskeletonkey:location id:clocktower:\n" +
-            "action name:use with:item id:clocktowerskeletonkey:location id:clocktower:\n" +
-            "action name:use with specific item:item id:clocktowerskeletonkey:extra item id:lockeddoor:\n" +
-            "action name:examine an item:\n" +
-            "action name:examine:item id:lockeddoor:\n";
+            "action name:use with specific item:item id:clocktowerskeletonkey:extra item id:lockeddoor:\n";
         assertThat( savedHistory, is( expected_action_history ) );
     }
 
-    @Ignore("Acceptance test should pass once implemented")
     @Test
     public void on_resume_reads_a_json_file_and_replays_actions() {
         RendersView renderer = mock( RendersView.class );
@@ -181,6 +171,7 @@ public class ActivityAcceptanceTests {
             modelFactory );
         activity.deleteFile( actionHistorySaveFileName );
         prepareJSONSaveFile( activity );
+        activity.onCreate( null );
 
         activity.onResume();
 

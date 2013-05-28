@@ -69,8 +69,8 @@ Backlog
       * DONE generateClockHourHandLifetimeActions() must include clock face lifetime actions
       * DONE generateClockMinuteHandLifetimeActions() must include clock hour hand lifetime actions
       * DONE When checking for item changes visibility was not taken into account, therefore all conditions were always positive. Fixed to take visibility into account.
+    * DONE Check acceptance tests work
     * Delete old JSON based save file in onPause if it still exists
-    * Check acceptance tests work
     * Merge feature branch
   * Defensive loading... if an old JSON file doesn't load capture the exception and recover gracefully, start a clean new game
 
