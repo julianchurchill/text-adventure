@@ -13,6 +13,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -139,6 +140,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_clock_face_is_on_floor_add_use_spade_and_mound_of_earth_action() {
         Item clockFace = addItemToOldModel( "clockface" );
+        when( clockFace.visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "townoutbuildings" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( clockFace ) ) );
         Item mound = addItemToNewModel( "moundofearth" );
@@ -147,6 +149,20 @@ public class BasicModelV1_0ToActionListConverterTests {
         newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createUseWithSpecificItemAction( spade, mound );
+    }
+
+    @Test
+    public void if_clock_face_is_not_visible_do_not_add_use_spade_and_mound_of_earth_action() {
+        Item clockFace = addItemToOldModel( "clockface" );
+        when( clockFace.visible() ).thenReturn( false );
+        ModelLocation location = addMockLocationToOldModel( "townoutbuildings" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( clockFace ) ) );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory, never() ).createUseWithSpecificItemAction(
+                                                Mockito.any( Item.class ),
+                                                Mockito.any( Item.class ) );
     }
 
     @Test
@@ -215,6 +231,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_clock_hour_hand_is_on_shed_floor_add_examine_bags_of_junk_action() {
         Item clockHourHand = addItemToOldModel( "clockhourhand" );
+        when( clockHourHand.visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "smallshed" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( clockHourHand ) ) );
         Item bagsOfJunk = addItemToNewModel( "bagsofjunk" );
@@ -222,6 +239,18 @@ public class BasicModelV1_0ToActionListConverterTests {
         newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( bagsOfJunk );
+    }
+
+    @Test
+    public void if_clock_hour_hand_is_not_visible_do_not_add_examine_bags_of_junk_action() {
+        Item clockHourHand = addItemToOldModel( "clockhourhand" );
+        when( clockHourHand.visible() ).thenReturn( false );
+        ModelLocation location = addMockLocationToOldModel( "smallshed" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( clockHourHand ) ) );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory, never() ).createExamineAction( Mockito.any( Item.class ) );
     }
 
     @Test
@@ -445,8 +474,9 @@ public class BasicModelV1_0ToActionListConverterTests {
 
 // Axe head lifetime
     @Test
-    public void if_axe_head_is_on_floor_of_annex_add_examine_chunk_of_metal_action() {
+    public void if_axe_head_name_has_changed_add_examine_chunk_of_metal_action() {
         Item axeHead = addItemToOldModel( "axehead" );
+        when( axeHead.name() ).thenReturn( "Axe head" );
         ModelLocation location = addMockLocationToOldModel( "dimlylitannex" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( axeHead ) ) );
         Item newAxeHead = addItemToNewModel( "axehead" );
@@ -456,10 +486,24 @@ public class BasicModelV1_0ToActionListConverterTests {
         verify( actionFactory ).createExamineAction( newAxeHead );
     }
 
+    @Test
+    public void if_axe_head_name_has_not_changed_do_not_add_examine_chunk_of_metal_action() {
+        Item axeHead = addItemToOldModel( "axehead" );
+        when( axeHead.name() ).thenReturn( "Chunk of metal" );
+        ModelLocation location = addMockLocationToOldModel( "dimlylitannex" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( axeHead ) ) );
+        Item newAxeHead = addItemToNewModel( "axehead" );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory, never() ).createExamineAction( newAxeHead );
+    }
+
 // Wooden pole lifetime
     @Test
     public void if_wooden_pole_is_on_floor_of_smaller_annex_add_examine_straw_action() {
         Item woodenPole = addItemToOldModel( "woodenpole" );
+        when( woodenPole.visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "evensmallerannex" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( woodenPole ) ) );
         Item pileOfStraw = addItemToNewModel( "pileofstraw" );
@@ -467,6 +511,18 @@ public class BasicModelV1_0ToActionListConverterTests {
         newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( pileOfStraw );
+    }
+
+    @Test
+    public void if_wooden_pole_is_not_visible_do_not_add_examine_straw_action() {
+        Item woodenPole = addItemToOldModel( "woodenpole" );
+        when( woodenPole.visible() ).thenReturn( false );
+        ModelLocation location = addMockLocationToOldModel( "evensmallerannex" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( woodenPole ) ) );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory, never() ).createExamineAction( Mockito.any( Item.class ) );
     }
 
     @Test
@@ -496,6 +552,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_blunt_pick_axe_is_on_floor_of_annex_add_examine_chunk_of_metal_action() {
         Item bluntPickAxe = addItemToOldModel( "bluntpickaxe" );
+        when( bluntPickAxe .visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "dimlylitannex" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( bluntPickAxe ) ) );
         Item newAxeHead = addItemToNewModel( "axehead" );
@@ -508,6 +565,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_blunt_pick_axe_is_on_floor_of_annex_add_examine_straw_action() {
         Item bluntPickAxe = addItemToOldModel( "bluntpickaxe" );
+        when( bluntPickAxe .visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "dimlylitannex" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( bluntPickAxe ) ) );
         Item pileOfStraw = addItemToNewModel( "pileofstraw" );
@@ -520,6 +578,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_blunt_pick_axe_is_on_floor_of_annex_add_take_wooden_pole_action() {
         Item bluntPickAxe = addItemToOldModel( "bluntpickaxe" );
+        when( bluntPickAxe .visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "dimlylitannex" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( bluntPickAxe ) ) );
         Item newItem = addItemToNewModel( "woodenpole" );
@@ -535,6 +594,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_blunt_pick_axe_is_on_floor_of_annex_add_use_wooden_pole_and_axe_head_action() {
         Item bluntPickAxe = addItemToOldModel( "bluntpickaxe" );
+        when( bluntPickAxe .visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "dimlylitannex" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( bluntPickAxe ) ) );
         Item axeHead = addItemToNewModel( "axehead" );
@@ -544,6 +604,25 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         verify( actionFactory ).createUseWithSpecificItemAction( woodenPole,
                                                                  axeHead);
+    }
+
+    @Test
+    public void if_blunt_pick_axe_is_not_visible_do_not_add_any_actions() {
+        Item bluntPickAxe = addItemToOldModel( "bluntpickaxe" );
+        when( bluntPickAxe.visible() ).thenReturn( false );
+        ModelLocation location = addMockLocationToOldModel( "dimlylitannex" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( bluntPickAxe ) ) );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory, never() ).createExamineAction( Mockito.any( Item.class ) );
+        verify( actionFactory, never() ).createTakeSpecificItemAction(
+                                                            Mockito.any( Item.class ),
+                                                            Mockito.any( UserInventory.class ),
+                                                            Mockito.any( ModelLocation.class ) );
+        verify( actionFactory, never() ).createUseWithSpecificItemAction(
+                                                            Mockito.any( Item.class ),
+                                                            Mockito.any( Item.class ) );
     }
 
     @Test
@@ -609,6 +688,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_pick_axe_is_on_floor_of_smithy_add_examine_chunk_of_metal_action() {
         Item pickAxe = addItemToOldModel( "pickaxe" );
+        when( pickAxe .visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "minesmithy" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( pickAxe ) ) );
         Item newAxeHead = addItemToNewModel( "axehead" );
@@ -621,6 +701,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_pick_axe_is_on_floor_of_smithy_add_examine_straw_action() {
         Item pickAxe = addItemToOldModel( "pickaxe" );
+        when( pickAxe .visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "minesmithy" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( pickAxe ) ) );
         Item pileOfStraw = addItemToNewModel( "pileofstraw" );
@@ -633,6 +714,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_pick_axe_is_on_floor_of_smithy_add_take_wooden_pole_action() {
         Item pickAxe = addItemToOldModel( "pickaxe" );
+        when( pickAxe .visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "minesmithy" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( pickAxe ) ) );
         Item newItem = addItemToNewModel( "woodenpole" );
@@ -648,6 +730,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_pick_axe_is_on_floor_of_smithy_add_use_wooden_pole_and_axe_head_action() {
         Item pickAxe = addItemToOldModel( "pickaxe" );
+        when( pickAxe .visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "minesmithy" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( pickAxe ) ) );
         Item axeHead = addItemToNewModel( "axehead" );
@@ -662,6 +745,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_pick_axe_is_on_floor_of_smithy_add_take_blunt_axe_action() {
         Item pickAxe = addItemToOldModel( "pickaxe" );
+        when( pickAxe .visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "minesmithy" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( pickAxe ) ) );
         Item newItem = addItemToNewModel( "bluntpickaxe" );
@@ -677,6 +761,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_pick_axe_is_on_floor_of_smithy_add_use_blunt_pick_axe_and_wheel_action() {
         Item pickAxe = addItemToOldModel( "pickaxe" );
+        when( pickAxe .visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "minesmithy" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( pickAxe ) ) );
         Item wheel = addItemToNewModel( "sharpeningwheel" );
@@ -686,6 +771,27 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         verify( actionFactory ).createUseWithSpecificItemAction( bluntPickAxe,
                                                                  wheel);
+    }
+
+    @Test
+    public void if_pick_axe_is_not_visible_do_not_add_any_actions() {
+        Item pickAxe = addItemToOldModel( "pickaxe" );
+        when( pickAxe.visible() ).thenReturn( false );
+        ModelLocation location = addMockLocationToOldModel( "minesmithy" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( pickAxe ) ) );
+        Item wheel = addItemToNewModel( "sharpeningwheel" );
+        Item bluntPickAxe = addItemToNewModel( "bluntpickaxe" );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory, never() ).createExamineAction( Mockito.any( Item.class ) );
+        verify( actionFactory, never() ).createTakeSpecificItemAction(
+                                                            Mockito.any( Item.class ),
+                                                            Mockito.any( UserInventory.class ),
+                                                            Mockito.any( ModelLocation.class ) );
+        verify( actionFactory, never() ).createUseWithSpecificItemAction(
+                                                            Mockito.any( Item.class ),
+                                                            Mockito.any( Item.class ) );
     }
 
     @Test
@@ -775,6 +881,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_map_is_on_floor_of_chamber_add_examine_table_action() {
         Item map = addItemToOldModel( "minemap" );
+        when( map.visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "candlelitchamber" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( map ) ) );
         Item table = addItemToNewModel( "table" );
@@ -782,6 +889,19 @@ public class BasicModelV1_0ToActionListConverterTests {
         newConverter().inferActionsFrom( oldModel );
 
         verify( actionFactory ).createExamineAction( table );
+    }
+
+    @Test
+    public void if_map_is_not_visible_do_not_add_examine_table_action() {
+        Item map = addItemToOldModel( "minemap" );
+        when( map.visible() ).thenReturn( false );
+        ModelLocation location = addMockLocationToOldModel( "candlelitchamber" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( map ) ) );
+        Item table = addItemToNewModel( "table" );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory, never() ).createExamineAction( table );
     }
 
     @Test
@@ -811,6 +931,7 @@ public class BasicModelV1_0ToActionListConverterTests {
     @Test
     public void if_shop_keeper_is_in_cave_add_use_pick_axe_with_rock_action() {
         Item shopKeeper = addItemToOldModel( "shopkeeper" );
+        when( shopKeeper.visible() ).thenReturn( true );
         ModelLocation location = addMockLocationToOldModel( "smallminechamber" );
         when( location.items() ).thenReturn( new ArrayList( Arrays.asList( shopKeeper ) ) );
         Item rock = addItemToNewModel( "rock" );
@@ -820,6 +941,20 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         verify( actionFactory ).createUseWithSpecificItemAction( pickAxe,
                                                                  rock );
+    }
+
+    @Test
+    public void if_shop_keeper_is_not_visible_do_not_add_use_pick_axe_with_rock_action() {
+        Item shopKeeper = addItemToOldModel( "shopkeeper" );
+        when( shopKeeper.visible() ).thenReturn( false );
+        ModelLocation location = addMockLocationToOldModel( "smallminechamber" );
+        when( location.items() ).thenReturn( new ArrayList( Arrays.asList( shopKeeper ) ) );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory, never() ).createUseWithSpecificItemAction(
+                                                                Mockito.any( Item.class ),
+                                                                Mockito.any( Item.class ) );
     }
 
     @Test

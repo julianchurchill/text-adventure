@@ -68,8 +68,7 @@ Backlog
         * FIXED: Some items in the old JSON save format may not have IDs, patch up the old model after loading with the missing IDs. Missing ids are pocket lint, banana peel, bags of junk, locked door, dust of the ancients.
       * DONE generateClockHourHandLifetimeActions() must include clock face lifetime actions
       * DONE generateClockMinuteHandLifetimeActions() must include clock hour hand lifetime actions
-      * Inventory has a wooden pole despite it being used
-        * All axe/wooden pole related stuff seems to happen three times...
+      * DONE When checking for item changes visibility was not taken into account, therefore all conditions were always positive. Fixed to take visibility into account.
     * Delete old JSON based save file in onPause if it still exists
     * Check acceptance tests work
     * Merge feature branch

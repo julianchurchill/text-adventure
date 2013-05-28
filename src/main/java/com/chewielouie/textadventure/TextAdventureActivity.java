@@ -130,6 +130,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void onResume() {
         super.onResume();
 
+        logger.log( "onResume called" );
+
         if( saveFileExists() )
             loadGame();
         else

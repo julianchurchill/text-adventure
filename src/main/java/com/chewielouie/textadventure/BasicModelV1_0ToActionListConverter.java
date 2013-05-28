@@ -162,7 +162,8 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
     }
 
     private void generateAxeHeadLifetimeActions() {
-        if( itemIsInLocation( AXE_HEAD, DIMLY_LIT_ANNEX ) )
+        Item axeHead = findOldModelItem( AXE_HEAD );
+        if( axeHead != null && axeHead.name().equals( "Axe head" ) )
             addExamineAction( AXE_HEAD );
     }
 
@@ -270,7 +271,8 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
         ModelLocation location = oldModel.findLocationByID( locationID );
         if( location == null )
             logger.log( "location not found in old model '" + locationID + "'" );
-        if( location != null && item != null && location.items().contains( item ) )
+        if( location != null && item != null
+            && location.items().contains( item ) && item.visible() )
             return true;
         return false;
     }
