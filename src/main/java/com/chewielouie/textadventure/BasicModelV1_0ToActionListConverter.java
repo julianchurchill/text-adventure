@@ -106,7 +106,6 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
 
     private void addUseKeyActionIfDoorIsUnlocked() {
         Item lockedDoor = findOldModelItem( LOCKED_DOOR );
-// #error the old model does not have an id for the lockeddoor :(, either find it by another means or patch the ids into the old model before processing here
         if( lockedDoor != null && lockedDoor.name().equals( "unlocked door" ) )
             addUseAction( LOCKED_DOOR, KEY );
     }

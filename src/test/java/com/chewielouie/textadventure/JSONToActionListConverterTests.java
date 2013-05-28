@@ -42,6 +42,8 @@ public class JSONToActionListConverterTests {
                                         Mockito.any( TextAdventureModel.class ) );
     }
 
+    private final String tinyJSONModelContent = "{\"@id\":1,\"@type\":\"com.chewielouie.textadventure.BasicModel\"}";
+
     private void writeFile( String filename, String content, Context context ) {
         try {
             FileOutputStream outputStream = context.openFileOutput(
@@ -55,6 +57,147 @@ public class JSONToActionListConverterTests {
         }
     }
 
-    private final String tinyJSONModelContent = "{\"@id\":1,\"@type\":\"com.chewielouie.textadventure.BasicModel\"}";
-}
+    private final String tinyJSONModelContent_withUnlockedDoor = "{\"@id\":1,\"@type\":\"com.chewielouie.textadventure.BasicModel\",\"locations\":{\"@id\":28,\"@type\":\"java.util.HashMap\",\"@keys\":[\"smallminechamber\"],\"@items\":[{\"@type\":\"com.chewielouie.textadventure.Location\",\"description\":\"location description\",\"items\":{\"@type\":\"java.util.ArrayList\",\"@items\":[{\"@type\":\"com.chewielouie.textadventure.item.NormalItem\",\"name\":\"unlocked door\"}]}}]}}";
 
+    @Test
+    public void adds_locked_door_item_id_to_model_when_item_named_unlocked_door() throws FileNotFoundException {
+        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        writeFile( "test_JSON_model", tinyJSONModelContent_withUnlockedDoor,
+                   realAndroidContext );
+        BasicModelConverter modelConverter = mock( BasicModelConverter.class );
+        JSONToActionListConverter converter =
+            new JSONToActionListConverter( realAndroidContext, "test_JSON_model",
+                                           modelConverter );
+
+        converter.actions();
+
+        BasicModel model = converter.model();
+        assertThat( model.findItemByID( "lockeddoor" ), is( notNullValue() ) );
+    }
+
+    private final String tinyJSONModelContent_withLockedDoor = "{\"@id\":1,\"@type\":\"com.chewielouie.textadventure.BasicModel\",\"locations\":{\"@id\":28,\"@type\":\"java.util.HashMap\",\"@keys\":[\"smallminechamber\"],\"@items\":[{\"@type\":\"com.chewielouie.textadventure.Location\",\"description\":\"location description\",\"items\":{\"@type\":\"java.util.ArrayList\",\"@items\":[{\"@type\":\"com.chewielouie.textadventure.item.NormalItem\",\"name\":\"locked door\"}]}}]}}";
+
+    @Test
+    public void adds_locked_door_item_id_to_model_when_item_named_locked_door() throws FileNotFoundException {
+        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        writeFile( "test_JSON_model", tinyJSONModelContent_withLockedDoor,
+                   realAndroidContext );
+        BasicModelConverter modelConverter = mock( BasicModelConverter.class );
+        JSONToActionListConverter converter =
+            new JSONToActionListConverter( realAndroidContext, "test_JSON_model",
+                                           modelConverter );
+
+        converter.actions();
+
+        BasicModel model = converter.model();
+        assertThat( model.findItemByID( "lockeddoor" ), is( notNullValue() ) );
+    }
+
+    private final String tinyJSONModelContent_withPocketLint = "{\"@id\":1,\"@type\":\"com.chewielouie.textadventure.BasicModel\",\"inventory\":{\"@ref\":1},\"inventoryItems\":{\"@type\":\"java.util.ArrayList\",\"@items\":[{\"@type\":\"com.chewielouie.textadventure.item.NormalItem\",\"name\":\"Pocket lint\"}]}}";
+
+    @Test
+    public void adds_pocket_lint_item_id_to_model() throws FileNotFoundException {
+        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        writeFile( "test_JSON_model", tinyJSONModelContent_withPocketLint,
+                   realAndroidContext );
+        BasicModelConverter modelConverter = mock( BasicModelConverter.class );
+        JSONToActionListConverter converter =
+            new JSONToActionListConverter( realAndroidContext, "test_JSON_model",
+                                           modelConverter );
+
+        converter.actions();
+
+        BasicModel model = converter.model();
+        assertThat( model.findItemByID( "pocketlint" ), is( notNullValue() ) );
+    }
+
+    private final String tinyJSONModelContent_withBananaPeelInInventory = "{\"@id\":1,\"@type\":\"com.chewielouie.textadventure.BasicModel\",\"inventory\":{\"@ref\":1},\"inventoryItems\":{\"@type\":\"java.util.ArrayList\",\"@items\":[{\"@type\":\"com.chewielouie.textadventure.item.NormalItem\",\"name\":\"Banana peel\"}]}}";
+
+    @Test
+    public void adds_banana_peel_item_id_to_model_when_in_inventory() throws FileNotFoundException {
+        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        writeFile( "test_JSON_model", tinyJSONModelContent_withBananaPeelInInventory,
+                   realAndroidContext );
+        BasicModelConverter modelConverter = mock( BasicModelConverter.class );
+        JSONToActionListConverter converter =
+            new JSONToActionListConverter( realAndroidContext, "test_JSON_model",
+                                           modelConverter );
+
+        converter.actions();
+
+        BasicModel model = converter.model();
+        assertThat( model.findItemByID( "bananapeel" ), is( notNullValue() ) );
+    }
+
+    private final String tinyJSONModelContent_withBananaPeelInLocation = "{\"@id\":1,\"@type\":\"com.chewielouie.textadventure.BasicModel\",\"locations\":{\"@id\":28,\"@type\":\"java.util.HashMap\",\"@keys\":[\"smallminechamber\"],\"@items\":[{\"@type\":\"com.chewielouie.textadventure.Location\",\"description\":\"location description\",\"items\":{\"@type\":\"java.util.ArrayList\",\"@items\":[{\"@type\":\"com.chewielouie.textadventure.item.NormalItem\",\"name\":\"Banana peel\"}]}}]}}";
+
+    @Test
+    public void adds_banana_peel_item_id_to_model_when_in_location() throws FileNotFoundException {
+        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        writeFile( "test_JSON_model", tinyJSONModelContent_withBananaPeelInLocation,
+                   realAndroidContext );
+        BasicModelConverter modelConverter = mock( BasicModelConverter.class );
+        JSONToActionListConverter converter =
+            new JSONToActionListConverter( realAndroidContext, "test_JSON_model",
+                                           modelConverter );
+
+        converter.actions();
+
+        BasicModel model = converter.model();
+        assertThat( model.findItemByID( "bananapeel" ), is( notNullValue() ) );
+    }
+
+    private final String tinyJSONModelContent_withDustOfTheAncientsInInventory = "{\"@id\":1,\"@type\":\"com.chewielouie.textadventure.BasicModel\",\"inventory\":{\"@ref\":1},\"inventoryItems\":{\"@type\":\"java.util.ArrayList\",\"@items\":[{\"@type\":\"com.chewielouie.textadventure.item.NormalItem\",\"name\":\"Dust of the Ancients\"}]}}";
+
+    @Test
+    public void adds_dust_of_the_ancients_item_id_to_model_when_in_inventory() throws FileNotFoundException {
+        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        writeFile( "test_JSON_model", tinyJSONModelContent_withDustOfTheAncientsInInventory,
+                   realAndroidContext );
+        BasicModelConverter modelConverter = mock( BasicModelConverter.class );
+        JSONToActionListConverter converter =
+            new JSONToActionListConverter( realAndroidContext, "test_JSON_model",
+                                           modelConverter );
+
+        converter.actions();
+
+        BasicModel model = converter.model();
+        assertThat( model.findItemByID( "dustoftheancients" ), is( notNullValue() ) );
+    }
+
+    private final String tinyJSONModelContent_withDustOfTheAncientsInLocation = "{\"@id\":1,\"@type\":\"com.chewielouie.textadventure.BasicModel\",\"locations\":{\"@id\":28,\"@type\":\"java.util.HashMap\",\"@keys\":[\"smallminechamber\"],\"@items\":[{\"@type\":\"com.chewielouie.textadventure.Location\",\"description\":\"location description\",\"items\":{\"@type\":\"java.util.ArrayList\",\"@items\":[{\"@type\":\"com.chewielouie.textadventure.item.NormalItem\",\"name\":\"Dust of the Ancients\"}]}}]}}";
+
+    @Test
+    public void adds_dust_of_the_ancients_item_id_to_model_when_in_location() throws FileNotFoundException {
+        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        writeFile( "test_JSON_model", tinyJSONModelContent_withDustOfTheAncientsInLocation,
+                   realAndroidContext );
+        BasicModelConverter modelConverter = mock( BasicModelConverter.class );
+        JSONToActionListConverter converter =
+            new JSONToActionListConverter( realAndroidContext, "test_JSON_model",
+                                           modelConverter );
+
+        converter.actions();
+
+        BasicModel model = converter.model();
+        assertThat( model.findItemByID( "dustoftheancients" ), is( notNullValue() ) );
+    }
+
+    private final String tinyJSONModelContent_withBagsOfJunk = "{\"@id\":1,\"@type\":\"com.chewielouie.textadventure.BasicModel\",\"locations\":{\"@id\":28,\"@type\":\"java.util.HashMap\",\"@keys\":[\"smallminechamber\"],\"@items\":[{\"@type\":\"com.chewielouie.textadventure.Location\",\"description\":\"location description\",\"items\":{\"@type\":\"java.util.ArrayList\",\"@items\":[{\"@type\":\"com.chewielouie.textadventure.item.NormalItem\",\"name\":\"Bags of junk\"}]}}]}}";
+
+    @Test
+    public void adds_bagss_of_junk_item_id_to_model() throws FileNotFoundException {
+        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        writeFile( "test_JSON_model", tinyJSONModelContent_withBagsOfJunk,
+                   realAndroidContext );
+        BasicModelConverter modelConverter = mock( BasicModelConverter.class );
+        JSONToActionListConverter converter =
+            new JSONToActionListConverter( realAndroidContext, "test_JSON_model",
+                                           modelConverter );
+
+        converter.actions();
+
+        BasicModel model = converter.model();
+        assertThat( model.findItemByID( "bagsofjunk" ), is( notNullValue() ) );
+    }
+}
