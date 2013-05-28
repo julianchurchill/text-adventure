@@ -66,8 +66,8 @@ Backlog
       * DONE Make sure the main text is re-presented to the user cleanly - no remanants of all the actions ocurring during load, just a fresh location description
       * DONE Locked door is not unlocked
         * FIXED: Some items in the old JSON save format may not have IDs, patch up the old model after loading with the missing IDs. Missing ids are pocket lint, banana peel, bags of junk, locked door, dust of the ancients.
-      * generateClockHourHandLifetimeActions() must include clock face lifetime actions
-      * generateClockMinuteHandLifetimeActions() must include clock hour hand lifetime actions
+      * DONE generateClockHourHandLifetimeActions() must include clock face lifetime actions
+      * DONE generateClockMinuteHandLifetimeActions() must include clock hour hand lifetime actions
       * Inventory has a wooden pole despite it being used
         * All axe/wooden pole related stuff seems to happen three times...
     * Delete old JSON based save file in onPause if it still exists

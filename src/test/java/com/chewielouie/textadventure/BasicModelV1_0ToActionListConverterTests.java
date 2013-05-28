@@ -273,6 +273,44 @@ public class BasicModelV1_0ToActionListConverterTests {
     }
 
     @Test
+    public void if_clock_mechanism_with_hour_hand_is_visible_add_use_spade_and_mound_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item mound = addItemToNewModel( "moundofearth" );
+        Item spade = addItemToNewModel( "spade" );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory ).createUseWithSpecificItemAction( spade, mound );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_hour_hand_is_visible_add_take_face_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item newItem = addItemToNewModel( "clockface" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "townoutbuildings" );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_hour_hand_is_visible_add_use_face_and_mechanism_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item newMechanism = addItemToNewModel( "clockmechanism" );
+        Item clockFace = addItemToNewModel( "clockface" );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory ).createUseWithSpecificItemAction( clockFace, newMechanism );
+    }
+
+    @Test
     public void if_clock_mechanism_with_hour_hand_is_visible_add_use_hour_hand_and_mechanism_action() {
         Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhand" );
         when( mechanism.visible() ).thenReturn( true );
@@ -311,6 +349,82 @@ public class BasicModelV1_0ToActionListConverterTests {
         verify( actionFactory ).createTakeSpecificItemAction( newItem,
                                                               inventory,
                                                               itemLocation );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_minute_hand_is_visible_add_examine_bags_of_junk_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhandandminutehand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item bagsOfJunk = addItemToNewModel( "bagsofjunk" );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory ).createExamineAction( bagsOfJunk );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_minute_hand_is_visible_add_take_hour_hand_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhandandminutehand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item newItem = addItemToNewModel( "clockhourhand" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "smallshed" );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_minute_hand_is_visible_add_use_spade_and_mound_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhandandminutehand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item mound = addItemToNewModel( "moundofearth" );
+        Item spade = addItemToNewModel( "spade" );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory ).createUseWithSpecificItemAction( spade, mound );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_minute_hand_is_visible_add_take_face_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhandandminutehand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item newItem = addItemToNewModel( "clockface" );
+        ModelLocation itemLocation = addMockLocationToNewModel( "townoutbuildings" );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory ).createTakeSpecificItemAction( newItem,
+                                                              inventory,
+                                                              itemLocation );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_minute_hand_is_visible_add_use_face_and_mechanism_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhandandminutehand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item newMechanism = addItemToNewModel( "clockmechanism" );
+        Item clockFace = addItemToNewModel( "clockface" );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory ).createUseWithSpecificItemAction( clockFace, newMechanism );
+    }
+
+    @Test
+    public void if_clock_mechanism_with_minute_hand_is_visible_add_use_hour_hand_and_mechanism_action() {
+        Item mechanism = addItemToOldModel( "clockmechanismwithfaceandhourhandandminutehand" );
+        when( mechanism.visible() ).thenReturn( true );
+        Item newMechanism = addItemToNewModel( "clockmechanismwithface" );
+        Item clockHourHand = addItemToNewModel( "clockhourhand" );
+
+        newConverter().inferActionsFrom( oldModel );
+
+        verify( actionFactory ).createUseWithSpecificItemAction( clockHourHand,
+                                                                 newMechanism );
     }
 
     @Test

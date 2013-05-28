@@ -118,11 +118,14 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
             addTakeAction( CLOCK_FACE, OUT_BUILDINGS );
 
         Item mechanism = findOldModelItem( MECHANISM_WITH_FACE );
-        if( mechanism != null && mechanism.visible() ) {
-            addUseAction( MOUND, SPADE );
-            addTakeAction( CLOCK_FACE, OUT_BUILDINGS );
-            addUseAction( MECHANISM, CLOCK_FACE );
-        }
+        if( mechanism != null && mechanism.visible() )
+            addAllClockFaceLifetimeActions();
+    }
+
+    private void addAllClockFaceLifetimeActions() {
+        addUseAction( MOUND, SPADE );
+        addTakeAction( CLOCK_FACE, OUT_BUILDINGS );
+        addUseAction( MECHANISM, CLOCK_FACE );
     }
 
     private void generateClockHourHandLifetimeActions() {
@@ -134,10 +137,15 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
 
         Item mechanism = oldModel.findItemByID( MECHANISM_WITH_HOUR_HAND );
         if( mechanism != null && mechanism.visible() ) {
-            addExamineAction( BAGS_OF_JUNK );
-            addTakeAction( CLOCK_HOUR_HAND, SHED );
-            addUseAction( MECHANISM_WITH_FACE, CLOCK_HOUR_HAND );
+            addAllClockFaceLifetimeActions();
+            addAllClockHourHandLifetimeActions();
         }
+    }
+
+    private void addAllClockHourHandLifetimeActions() {
+        addExamineAction( BAGS_OF_JUNK );
+        addTakeAction( CLOCK_HOUR_HAND, SHED );
+        addUseAction( MECHANISM_WITH_FACE, CLOCK_HOUR_HAND );
     }
 
     private void generateClockMinuteHandLifetimeActions() {
@@ -146,6 +154,8 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
 
         Item mechanism = findOldModelItem( MECHANISM_WITH_MINUTE_HAND );
         if( mechanism != null && mechanism.visible() ) {
+            addAllClockFaceLifetimeActions();
+            addAllClockHourHandLifetimeActions();
             addTakeAction( CLOCK_MINUTE_HAND, CLOCK_TOWER );
             addUseAction( MECHANISM_WITH_HOUR_HAND, CLOCK_MINUTE_HAND );
         }
