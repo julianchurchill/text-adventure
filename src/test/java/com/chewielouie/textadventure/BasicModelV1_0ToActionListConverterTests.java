@@ -131,8 +131,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( newLockedDoor,
-                                                                 newSkeletonKey );
+        verify( actionFactory ).createUseWithSpecificItemAction( newSkeletonKey,
+                                                                 newLockedDoor );
     }
 
 // Clock face lifetime
@@ -146,7 +146,7 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( mound, spade );
+        verify( actionFactory ).createUseWithSpecificItemAction( spade, mound );
     }
 
     @Test
@@ -157,7 +157,7 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( mound, spade );
+        verify( actionFactory ).createUseWithSpecificItemAction( spade, mound );
     }
 
     @Test
@@ -182,7 +182,7 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( mound, spade );
+        verify( actionFactory ).createUseWithSpecificItemAction( spade, mound );
     }
 
     @Test
@@ -208,7 +208,7 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( newMechanism, clockFace );
+        verify( actionFactory ).createUseWithSpecificItemAction( clockFace, newMechanism );
     }
 
 // Clock hour hand lifetime
@@ -281,8 +281,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( newMechanism,
-                                                                 clockHourHand );
+        verify( actionFactory ).createUseWithSpecificItemAction( clockHourHand,
+                                                                 newMechanism );
     }
 
 // Clock minute hand lifetime
@@ -322,8 +322,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( newMechanism,
-                                                                 clockMinuteHand );
+        verify( actionFactory ).createUseWithSpecificItemAction( clockMinuteHand,
+                                                                 newMechanism );
     }
 
 ////// End of clock face story //////
@@ -428,8 +428,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( axeHead,
-                                                                 woodenPole );
+        verify( actionFactory ).createUseWithSpecificItemAction( woodenPole,
+                                                                 axeHead);
     }
 
     @Test
@@ -474,8 +474,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( axeHead,
-                                                                 woodenPole );
+        verify( actionFactory ).createUseWithSpecificItemAction( woodenPole,
+                                                                 axeHead);
     }
 
     @Test
@@ -541,8 +541,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( axeHead,
-                                                                 woodenPole );
+        verify( actionFactory ).createUseWithSpecificItemAction( woodenPole,
+                                                                 axeHead );
     }
 
     @Test
@@ -570,8 +570,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( wheel,
-                                                                 bluntPickAxe );
+        verify( actionFactory ).createUseWithSpecificItemAction( bluntPickAxe,
+                                                                 wheel);
     }
 
     @Test
@@ -615,8 +615,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( axeHead,
-                                                                 woodenPole );
+        verify( actionFactory ).createUseWithSpecificItemAction( woodenPole,
+                                                                 axeHead );
     }
 
     @Test
@@ -640,8 +640,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( wheel,
-                                                                 bluntPickAxe );
+        verify( actionFactory ).createUseWithSpecificItemAction( bluntPickAxe,
+                                                                 wheel );
     }
 
     @Test
@@ -704,8 +704,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( rock,
-                                                                 pickAxe );
+        verify( actionFactory ).createUseWithSpecificItemAction( pickAxe,
+                                                                 rock );
     }
 
     @Test
@@ -716,8 +716,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( rock,
-                                                                 pickAxe );
+        verify( actionFactory ).createUseWithSpecificItemAction( pickAxe,
+                                                                 rock );
     }
 
     @Test
@@ -728,8 +728,8 @@ public class BasicModelV1_0ToActionListConverterTests {
 
         newConverter().inferActionsFrom( oldModel );
 
-        verify( actionFactory ).createUseWithSpecificItemAction( shopKeeper,
-                                                                 map );
+        verify( actionFactory ).createUseWithSpecificItemAction( map,
+                                                                 shopKeeper );
     }
 }
 

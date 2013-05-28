@@ -209,19 +209,24 @@ public class BasicModelV1_0ToActionListConverter implements BasicModelConverter{
     }
 
     private void addTakeAction( String itemId, String locationId ) {
+        logger.log( "adding take action for item '" + itemId + "' locationId '" +
+                    locationId + "'" );
         actions.add( actionFactory.createTakeSpecificItemAction(
                                         findNewModelItem( itemId ),
                                         inventory,
                                         findNewModelLocation( locationId ) ) );
     }
 
-    private void addUseAction( String actionOwnerItemID, String targetItemID ) {
+    private void addUseAction( String actionOwnerItemID, String otherItemID ) {
+        logger.log( "adding use action for owner item '" + actionOwnerItemID +
+                    "' otherItemID '" + otherItemID + "'" );
         actions.add( actionFactory.createUseWithSpecificItemAction(
-                                        findNewModelItem( actionOwnerItemID ),
-                                        findNewModelItem( targetItemID ) ) );
+                                        findNewModelItem( otherItemID ),
+                                        findNewModelItem( actionOwnerItemID ) ) );
     }
 
     private void addExamineAction( String itemID ) {
+        logger.log( "adding examine action for item '" + itemID + "'" );
         actions.add( actionFactory.createExamineAction( findNewModelItem( itemID ) ) );
     }
 
