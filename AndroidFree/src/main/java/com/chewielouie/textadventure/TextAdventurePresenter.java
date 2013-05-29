@@ -82,9 +82,13 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler, M
         resetActionsToStartOfChain();
     }
 
-    public void currentLocationChanged() {
+    public void resetAndRender() {
         actionText = "";
         render();
+    }
+
+    public void currentLocationChanged() {
+        resetAndRender();
     }
 
     public void clearDefaultActions() {

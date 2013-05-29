@@ -142,8 +142,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             JSONToActionListConverter j
                 = new JSONToActionListConverter( this, oldJSONFormatSaveFileName, c );
             replayActions( j.actions() );
-            if( j.model() != null && j.model().currentLocation() != null )
-                model.setCurrentLocation( j.model().currentLocation().id() );
         }
     }
 
@@ -191,7 +189,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             for( Action action : actions )
                 userActionHandler.enact( action );
             viewDisabler.off();
-            rendersView.render();
+            rendersView.resetAndRender();
         }
     }
 
