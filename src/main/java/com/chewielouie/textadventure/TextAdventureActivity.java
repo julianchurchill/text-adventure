@@ -484,8 +484,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void onPause() {
         super.onPause();
         writeActionHistorySaveFile();
-        // if( saveJSONFileExists() )
-            // delete oldJSONFormatSaveFileName;
+        if( saveJSONFileExists() )
+            deleteFile( oldJSONFormatSaveFileName );
     }
 
     private void writeActionHistorySaveFile() {

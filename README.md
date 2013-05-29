@@ -71,7 +71,10 @@ Backlog
       * DONE When checking for item changes visibility was not taken into account, therefore all conditions were always positive. Fixed to take visibility into account.
     * DONE Check acceptance tests work
     * DONE Add more acceptance tests - a medium length and a full story one
-    * Delete old JSON based save file in onPause if it still exists
+    * DONE Delete old JSON based save file in onPause if it still exists
+    * Upon loading converted action history - the current location is the original start location because there are no 'exit' actions to make the player move.
+      * Introduce a set current location action?
+      * Create a set of exit actions to get the player to the right location?
     * Merge feature branch
   * Defensive loading... if an old JSON file doesn't load capture the exception and recover gracefully, start a clean new game
 
