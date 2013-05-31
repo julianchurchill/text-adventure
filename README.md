@@ -11,13 +11,13 @@ Backlog
 =======
 
 - [BUG] User still has map after giving it to the shopkeeper!
-- [BUG] Entire inventory is not visible if everything is picked up in the game. Actions buttons view should be fixed size and scrollable - 1/4 to 1/3 of the screen height. It might need an indicator that there are more buttons to scroll down to.
+- [BUG] Entire inventory is not visible if everything is picked up in the game.
 - [BUG] Double blank line after item actions - clarify need for '\n\n' in Presenter.enact()
 - [FEATURE] Exits should have consistent colours for direction hints - e.g. all North should be green
+- [FEATURE] Tell the user when they get a ruby - make it much more obvious. Atm just mentioned in text and counter in corner goes up.
+  * Make counter and ruby graphic larger
+  * Add sound effect or screen flash or dialog
 - [FEATURE] Tell the user when they have reached the end of the available content! Perhaps a popup saying look out for new content in the next update?
-- [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
-- [FEATURE] Let user change the font size on an options screen
-- [FEATURE] Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 
 - [STORY] Shopkeeper directs you to town hall notice board where reports of strange goings on are being posted. This triggers the entrance to the town hall to become visible.
@@ -27,8 +27,13 @@ Backlog
 - [STORY] Passing the wolf there is a complex of rooms, there are voices and locked doors. One room deep within has a brigand blocking your way, you must bribe him to continue. This introduces a custom failed use message for all items used on the brigand e.g. "He looks at you and sneers in disgust.". Also allow for multiple items to be used with different consequences - e.g. if you use an empty purse you get the succes message 'The brigand throws the empty purse at you hitting you square on the nose. This smarts a little.'. To pass the brigand an empty purse (given to you by the shopkeeper earlier) must be filled with fake coins, perhaps find some, make some or use stones?
 - [STORY] Once you pass the brigand you see a few more rooms one of which contains a locked safe. You must find teh 4 digit code to unlock it. The digits can be found in the surrounding rooms, on a piece of burnt paper, scrawled on a desk/floor, somewhere else and finally you must speak to an NPC. This introduces a new action 'Talk' which needs to have a conversation tree associated with it, choose the right dialogue and the NPC spills the beans (final digit)! Go to the safe and use it (probably a new action too 'Use' rather than UseWith). A keyboard pops up and you must enter the correct digits to open the safe and see what is inside.
 
+- [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
+- [FEATURE] Let user change the font size on an options screen
+- [FEATURE] Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
+  * Use the new Google games API to record this as a high score?
+
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
-- [FEATURE] Ruby counter should show how many out of how many achieved - e.g. 10/100 - this needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
+- [TECHNICAL FEATURE] Ruby counter should show how many out of how many achieved - e.g. 10/100 - this needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 
 - [FEATURE-EDITOR] Update webapp editor to [de]serialise visibility and allow setting of visibility
 - [FEATURE-EDITOR] Update webapp editor to allow adding/deletion of on examine actions to items
@@ -37,12 +42,9 @@ Backlog
 
 - [FEATURE] In model content txt items can only be used in one direction, e.g. a spade with a mound of earth and the target item has to include the definition of what happens. If the original item (e.g. spade) includes this information it is ignored. Should this be changed to be bi-directional? It would make writing content easier but needs considering as it might not always be appropriate.
 
-
-- Add monsters, npcs
-
-- Add other verbs - attack, eat, drink, dance, take, drop, give, talk
-
-- Optional images to go with text?
+- [IDEA] Add monsters, npcs
+- [IDEA] Add other verbs - attack, eat, drink, dance, take, drop, give, talk
+- [IDEA] Optional images to go with text?
 
 Done
 ====
