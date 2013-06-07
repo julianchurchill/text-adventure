@@ -361,6 +361,7 @@ item use is not repeatable:
 item can be used with:minemap
 item successful use message:You hand the map to the shop keeper who smiles and nods at you with gratitude. 'Thank you, very kind. For your help have a ruby and come by my shop in town anytime - I'm sure I can arrange a favourable discount on anything that takes your eye.'. With that the man walks out leaving you alone. The air stirs around you and you feel slightly wealthier.
 item use action:change item visibility:shopkeeper:invisible
+item use action:destroy item:minemap
 item use action:increment score:
 LOCATION
 x:480

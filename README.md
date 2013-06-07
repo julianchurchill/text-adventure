@@ -10,7 +10,6 @@ To run the emulator - run 'android list avd' to get all the configured virtual d
 Backlog
 =======
 
-- [BUG] User still has map after giving it to the shopkeeper!
 - [BUG] Entire inventory is not visible if everything is picked up in the game.
 - [BUG] Double blank line after item actions - clarify need for '\n\n' in Presenter.enact()
 - [FEATURE] Exits should have consistent colours for direction hints - e.g. all North should be green
@@ -51,6 +50,9 @@ Done
 
 2.0
 ---
+
+- [BUG] User still has map after giving it to the shopkeeper!
+  - [FIX] Map is now destroyed once given to the shopkeeper.
 
 * [TECHNICAL FEATURE] Save file new format
   * DONE Turn off JSON save format file writing - this allows us to make the Presenter be a Model observer and have a cyclic dependency (only cyclic in real objects, the interface keep it all seperate). This cycle causes JSON-IO to crash on saving.
