@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.lang.StringBuilder;
 import java.lang.StringBuffer;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -294,18 +296,45 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         else
             text.append( "\nThere are no visible exits." );
 
-        int color = Color.GREEN;
         String prefix = "";
-        for( Exit exit : exits ) {
+        for( Exit exit : orderForDisplay( exits ) ) {
             int startIndex = text.length() + prefix.length();
             int endIndex = startIndex + exit.label().length();
             text.append( prefix + exit.label() );
             addExitActionHandler( text, startIndex, endIndex, exit );
-            text.setSpan( new ForegroundColorSpan( color ),
+            text.setSpan( new ForegroundColorSpan( selectExitColor( exit ) ),
                           startIndex, endIndex, 0 );
-            color = rotateExitColor( color );
             prefix = ", ";
         }
+    }
+
+    private List<Exit> orderForDisplay( List<Exit> exits ) {
+        List<Exit> sortedExits = new ArrayList<Exit>( exits );
+        Collections.sort( sortedExits,
+            new Comparator<Exit>() {
+                @Override
+                public int compare( Exit e1, Exit e2 ) {
+                    return rankedValueOf( e1.directionHint() ) - rankedValueOf( e2.directionHint() );
+                }
+            });
+        return sortedExits;
+    }
+
+    private int rankedValueOf( Exit.DirectionHint d ) {
+        if(      d == Exit.DirectionHint.North ) return 10;
+        else if( d == Exit.DirectionHint.South ) return 20;
+        else if( d == Exit.DirectionHint.East ) return 30;
+        else if( d == Exit.DirectionHint.West ) return 40;
+        return 70;
+    }
+
+    private int selectExitColor( Exit exit )
+    {
+        if(      exit.directionHint() == Exit.DirectionHint.North ) return Color.GREEN;
+        else if( exit.directionHint() == Exit.DirectionHint.South ) return Color.RED;
+        else if( exit.directionHint() == Exit.DirectionHint.East ) return Color.BLUE;
+        else if( exit.directionHint() == Exit.DirectionHint.West ) return Color.YELLOW;
+        return Color.MAGENTA;
     }
 
     private void addExitActionHandler( SpannableStringBuilder text,
@@ -322,13 +351,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             }
         };
         text.setSpan( c, startIndex, endIndex, 0 );
-    }
-
-    private int rotateExitColor( int currentColor ) {
-        if( currentColor == Color.GREEN ) return Color.BLUE;
-        else if( currentColor == Color.BLUE ) return Color.RED;
-        else if( currentColor == Color.RED ) return Color.GREEN;
-        return Color.GREEN;
     }
 
     public void useExit( Exit exit ) {

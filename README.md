@@ -10,9 +10,10 @@ To run the emulator - run 'android list avd' to get all the configured virtual d
 Backlog
 =======
 
+- [BUG] Clicking exit links can sometimes select the wrong one if you select near the end of a line - it selects the exit on the new line. Is this an Android issue with spannables or am I doing something wrong?
+  - Double check span calculations in Activity::addHyperLinkExits().
 - [BUG] From email from Alex Bailey "The text is sometime displayed in the wrong order. I can't remember which object, but the scene description told me there was an object present before it was mentioned how it got there. I can send a screenshot for this if I'm not being clear."
   * See email as he also included a screen shot.
-- [FEATURE] Exits should have consistent colours for direction hints - e.g. all North should be green
 - [FEATURE] Tell the user when they get a ruby - make it much more obvious. Atm just mentioned in text and counter in corner goes up.
   * Make counter and ruby graphic larger
   * Add sound effect or screen flash or dialog
@@ -50,6 +51,9 @@ Done
 
 2.0
 ---
+
+- [FEATURE] Exits have consistent colours for direction hints - e.g. all North are green.
+  - The exits are also ordered consistently.
 
 - [BUG] Double blank line after item actions - clarify need for '\n\n' in Presenter.enact()
   - [FIX] Lots of text presentation newline issues fixed across presenter, activity and change location description item action.
