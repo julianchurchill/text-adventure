@@ -306,6 +306,10 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
                           startIndex, endIndex, 0 );
             prefix = ", ";
         }
+        // This additional space stops the spannable click region for the last
+        // spannable from extending all the way to the edge of the text view
+        if( exits.size() > 0 )
+            text.append( " " );
     }
 
     private List<Exit> orderForDisplay( List<Exit> exits ) {

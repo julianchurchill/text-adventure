@@ -10,8 +10,6 @@ To run the emulator - run 'android list avd' to get all the configured virtual d
 Backlog
 =======
 
-- [BUG] Clicking exit links can sometimes select the wrong one if you select near the end of a line - it selects the exit on the new line. Is this an Android issue with spannables or am I doing something wrong?
-  - Double check span calculations in Activity::addHyperLinkExits().
 - [BUG] From email from Alex Bailey "The text is sometime displayed in the wrong order. I can't remember which object, but the scene description told me there was an object present before it was mentioned how it got there. I can send a screenshot for this if I'm not being clear."
   * See email as he also included a screen shot.
 - [FEATURE] Tell the user when they get a ruby - make it much more obvious. Atm just mentioned in text and counter in corner goes up.
@@ -55,6 +53,8 @@ Done
 - [FEATURE] Exits have consistent colours for direction hints - e.g. all North are green.
   - The exits are also ordered consistently.
 
+- [BUG] Clicking exit links can sometimes select the wrong one if you select near the end of a line - it selects the exit on the new line.
+  - [FIX] A spannable click region will extend to the edge of the text view or the next non-spanning text or spanned region. Fixed by adding a single white space at the end of the list of exits to stop the spannable click region.
 - [BUG] Double blank line after item actions - clarify need for '\n\n' in Presenter.enact()
   - [FIX] Lots of text presentation newline issues fixed across presenter, activity and change location description item action.
 - [BUG] Entire inventory is not visible if everything is picked up in the game.
