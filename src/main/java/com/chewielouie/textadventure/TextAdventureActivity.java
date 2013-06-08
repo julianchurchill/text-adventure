@@ -290,9 +290,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private void addHyperLinkExits( SpannableStringBuilder text ) {
         if( exits.size() > 0 )
-            text.append( "\n\nThe following exits are visible: " );
+            text.append( "\nThe following exits are visible: " );
         else
-            text.append( "\n\nThere are no visible exits." );
+            text.append( "\nThere are no visible exits." );
 
         int color = Color.GREEN;
         String prefix = "";

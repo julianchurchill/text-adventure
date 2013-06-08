@@ -34,7 +34,7 @@ public class ChangeLocationDescriptionItemActionTests {
             ignoring( location1 );
             allowing( location2 ).id();
             will( returnValue( "locid2" ) );
-            oneOf( location2 ).setLocationDescription( "new description" );
+            oneOf( location2 ).setLocationDescription( "new description\n" );
             ignoring( location2 );
         }});
 

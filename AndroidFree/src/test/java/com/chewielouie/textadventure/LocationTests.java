@@ -225,7 +225,7 @@ public class LocationTests {
         item3.setName( "name3" );
         l.addItem( item3 );
 
-        assertEquals( "Location description.\nThere is a name, a name2 and a name3 here.", l.description() );
+        assertEquals( "Location description.\nThere is a name, a name2 and a name3 here.\n", l.description() );
     }
 
     @Test
@@ -250,7 +250,7 @@ public class LocationTests {
         l.addItem( visibleItem );
         l.addItem( invisibleItem );
 
-        assertEquals( "Location description.\nThere is a visible item here.", l.description() );
+        assertEquals( "Location description.\nThere is a visible item here.\n", l.description() );
     }
 
     @Test

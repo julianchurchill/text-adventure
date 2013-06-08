@@ -91,7 +91,7 @@ public class Location implements ModelLocation {
                 itemsPostAmble += visibleItems.get(i).countableNounPrefix() + " " +
                               visibleItems.get(i).midSentenceCasedName();
             }
-            itemsPostAmble += " here.";
+            itemsPostAmble += " here.\n";
         }
         return itemsPostAmble;
     }

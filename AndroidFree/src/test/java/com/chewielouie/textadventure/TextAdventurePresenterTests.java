@@ -209,7 +209,7 @@ public class TextAdventurePresenterTests {
             allowing( model ).currentLocationDescription();
             will( returnValue( "location description" ) );
             ignoring( model );
-            oneOf( view ).showMainText( "location description\n\nsome user text\n\n" );
+            oneOf( view ).showMainText( "location description\nsome user text\n" );
             ignoring( view );
         }});
         TextAdventurePresenter p = new TextAdventurePresenter( view, model, null, null );
@@ -230,7 +230,7 @@ public class TextAdventurePresenterTests {
             allowing( model ).currentLocationDescription();
             will( returnValue( "location description" ) );
             ignoring( model );
-            oneOf( view ).showMainText( "location description\n\nsome user text\n\nsome user text\n\n" );
+            oneOf( view ).showMainText( "location description\nsome user text\n\nsome user text\n" );
             ignoring( view );
         }});
         TextAdventurePresenter p = new TextAdventurePresenter( view, model, null, null );
@@ -253,7 +253,7 @@ public class TextAdventurePresenterTests {
             allowing( model ).currentLocationDescription();
             will( returnValue( "location description" ) );
             ignoring( model );
-            exactly( 2 ).of( view ).showMainText( "location description\n\nsome user text\n\n" );
+            exactly( 2 ).of( view ).showMainText( "location description\nsome user text\n" );
             ignoring( view );
         }});
         TextAdventurePresenter p = new TextAdventurePresenter( view, model, null, null );
@@ -468,7 +468,7 @@ public class TextAdventurePresenterTests {
             allowing( model ).currentLocationDescription();
             will( returnValue( "location description" ) );
             ignoring( model );
-            oneOf( view ).showMainText( "location description\n\nsome user text\n\n" );
+            oneOf( view ).showMainText( "location description\nsome user text\n" );
             oneOf( view ).showMainText( "location description" );
             ignoring( view );
         }});

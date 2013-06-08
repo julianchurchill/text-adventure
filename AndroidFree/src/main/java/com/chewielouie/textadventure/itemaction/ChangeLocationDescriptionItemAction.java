@@ -28,7 +28,7 @@ public class ChangeLocationDescriptionItemAction implements ItemAction {
     private void extractDescription( String arguments ) {
         int endOfID = arguments.indexOf( ":" );
         if( endOfID != -1 && (endOfID+1) < arguments.length() )
-            newDescription = arguments.substring( endOfID+1 );
+            newDescription = arguments.substring( endOfID+1 ) + "\n";
     }
 
     public TextAdventureModel model() {
