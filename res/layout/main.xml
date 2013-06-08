@@ -23,21 +23,28 @@
         android:textSize="12sp"
         android:text="0/1"
         />
-    <LinearLayout
-        android:id="@+id/available_actions"
-        android:orientation="vertical"
+    <ScrollView
+        android:id="@+id/available_actions_scroll_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:background="#660055"
-        />
+        android:padding="6dip"
+        android:scrollbars="vertical">
+        <LinearLayout
+            android:id="@+id/available_actions"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#660055"
+            />
+    </ScrollView>
     <ScrollView
         android:id="@+id/main_text_output_scroll_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ruby_count"
-        android:layout_above="@id/available_actions"
+        android:layout_above="@id/available_actions_scroll_view"
         android:padding="6dip"
         android:scrollbars="vertical">
         <TextView

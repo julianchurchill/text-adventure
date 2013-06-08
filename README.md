@@ -10,7 +10,6 @@ To run the emulator - run 'android list avd' to get all the configured virtual d
 Backlog
 =======
 
-- [BUG] Entire inventory is not visible if everything is picked up in the game.
 - [BUG] Double blank line after item actions - clarify need for '\n\n' in Presenter.enact()
 - [BUG] From email from Alex Bailey "The text is sometime displayed in the wrong order. I can't remember which object, but the scene description told me there was an object present before it was mentioned how it got there. I can send a screenshot for this if I'm not being clear."
   * See email as he also included a screen shot.
@@ -53,6 +52,8 @@ Done
 2.0
 ---
 
+- [BUG] Entire inventory is not visible if everything is picked up in the game.
+  - [FIX] If actions list is larger than available space it now becomes scrollable.
 - [BUG] User still has map after giving it to the shopkeeper!
   - [FIX] Map is now destroyed once given to the shopkeeper.
 
