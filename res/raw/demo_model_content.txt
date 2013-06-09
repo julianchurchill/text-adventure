@@ -210,6 +210,12 @@ exit label:South
 exit destination:townentrance
 exit direction hint:South
 exit id:mainstreettownsouth
+EXIT
+exit label:Merchants Lane
+exit destination:merchantslane
+exit direction hint:West
+exit id:merchantslaneentrance
+exit is not visible:
 ITEM
 item name:Dust of the Ancients
 item description:This dust looks pretty powerful, for dust.
@@ -363,6 +369,7 @@ item successful use message:You hand the map to the shop keeper who smiles and n
 item use action:change item visibility:shopkeeper:invisible
 item use action:destroy item:minemap
 item use action:increment score:
+item use action:make exit visible:merchantslaneentrance
 LOCATION
 x:480
 y:600
@@ -481,3 +488,34 @@ item description:This is a typical miners pick axe and has been recently sharpen
 item id:pickaxe
 item countable noun prefix:a
 item visibility:invisible
+LOCATION
+x:240
+y:360
+location id:merchantslane
+location description:You stand at the start of Merchants Lane looking ahead admidst the varied and wonderful shop fronts that adorn this street. There a few people milling around, nipping in and out of one or two of the shops however most of the shops look closed. Immediately to the north you see an open shop door and behind the counter sits a man with a familiar face - the shopkeeper from the mine.
+EXIT
+exit label:East
+exit destination:mainstreettown
+exit direction hint:East
+exit id:merchantslaneeast
+EXIT
+exit label:General Store
+exit destination:generalstore
+exit direction hint:North
+exit id:merchantslanenorth
+LOCATION
+x:240
+y:420
+location id:generalstore
+location description:You step inside the General Store raising your hand in greeting to the shopkeeper. He stands up as you enter at once beckoning you forward and nodding his head in recognition.
+EXIT
+exit label:Outside
+exit destination:merchantslane
+exit direction hint:South
+exit id:generalstoreoutside
+ITEM
+item name:Shop keeper
+item description:He looks very smart, clearly having enjoyed a good bath, a shave and a haircut. His eyes are still sunken from the effects of his imprisonment but he looks in good health otherwise.
+item id:generalstoreshopkeeper
+item countable noun prefix:a
+item is untakeable:
