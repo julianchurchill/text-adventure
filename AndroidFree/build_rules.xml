@@ -5,9 +5,11 @@
     <property name="DEBUG" value="on"/>
 
     <property name="businesslogic.libs.test" value="${businesslogic.root}/libs/test"/>
+    <property name="businesslogic.src.acceptance-test" value="${businesslogic.root}/src/acceptance-test/java"/>
     <property name="businesslogic.src.test" value="${businesslogic.root}/src/test/java"/>
     <property name="businesslogic.src.main" value="${businesslogic.root}/src/main/java"/>
     <property name="businesslogic.test.output" value="${businesslogic.root}/bin/classes/test"/>
+    <property name="businesslogic.acceptance-test.output" value="${businesslogic.root}/bin/classes/acceptance-test"/>
     <property name="businesslogic.main.output" value="${businesslogic.root}/bin/classes/main"/>
 
     <path id="classpath.businesslogic.base">
@@ -24,6 +26,10 @@
         <pathelement location="${businesslogic.libs.test}/mockito-all-1.9.5.jar"/>
         <pathelement path="${businesslogic.test.output}"/>
         <path refid="classpath.businesslogic.base"/>
+    </path>
+    <path id="classpath.businesslogic.acceptance-test">
+        <pathelement path="${businesslogic.acceptance-test.output}"/>
+        <path refid="classpath.businesslogic.test"/>
     </path>
 
     <target name="compile-main" description="Compile production code">
@@ -76,7 +82,38 @@
         </junit>
     </target>
 
-    <target name="all-businesslogic" depends="unittest"/>
-    <target name="clean-businesslogic" depends="clean-compile-tests,clean-compile-main"/>
+    <target name="compile-acceptance-tests" description="Compile acceptance tests" depends="compile-main">
+        <mkdir dir="${businesslogic.acceptance-test.output}"/>
+        <javac srcdir="${businesslogic.src.acceptance-test}"
+               destdir="${businesslogic.acceptance-test.output}"
+               verbose="${TALK}"
+               debug="${DEBUG}"
+               includeantruntime="false">
+            <classpath refid="classpath.businesslogic.acceptance-test"/>
+        </javac>
+    </target>
+
+    <target name="clean-compile-acceptance-tests" description="Clean the compiled acceptance tests">
+        <delete verbose="${TALK}">
+            <fileset dir="${businesslogic.acceptance-test.output}">
+                <include name="**/*.class"/>
+            </fileset>
+        </delete>
+    </target>
+
+    <target name="acceptance-test" description="Execute acceptance tests" depends="compile-acceptance-tests">
+        <junit haltonfailure="yes">
+            <formatter type="plain" usefile="false"/>
+            <classpath refid="classpath.businesslogic.acceptance-test"/>
+            <batchtest>
+                <fileset dir="${businesslogic.src.acceptance-test}">
+                    <include name="**/*Tests.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="all-businesslogic" depends="unittest,acceptance-test"/>
+    <target name="clean-businesslogic" depends="clean-compile-tests,clean-compile-acceptance-tests,clean-compile-main"/>
 
 </project>

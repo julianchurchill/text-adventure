@@ -20,11 +20,13 @@ Backlog
 
 - [STORY] Shopkeeper directs you to town hall notice board where reports of strange goings on are being posted. This triggers the entrance to the town hall to become visible.
   - [FEATURE] Talk action responses need to be defined for the shopkeeper.
+    - DONE Write acceptance tests
     - [TEST] If an item has talk responses then include a 'Talk' action in Location::actions()
     - [TEST] Talk action allows choice of n phrases
     - [TEST] Choosing a phrase triggers a response as specified in model content
     - [TEST] Choosing a phrase can optionally trigger an alternative set of phrases to become available as follow up actions
     - [TEST] Choosing a phrase can optionally trigger actions (use the same actions as 'item use action:' directive). E.g. make an exit visible
+    - Run acceptance tests
 - [STORY] At the town hall notice board there are multiple notices (act as reminders of what the player has left to do, small board, medium board, azure board, each with a clue to a different story line). The notices appear as the player completes other prerequisite tasks. There is also a hall of deeds in the town hall where there are notices that state what the player has done, e.g. rescued the shop keeper - it's an achievements record.
 - [STORY] On entering the grave yard there is a mysterious presence, when you examine it it moves to a different location. If you keep following/examining it it leads you to a particular grave where an encoded inscription is writte on the headstone. Use the thing from the shopkeeper to read the inscription which directs yuo inside the church to the back of the altar.
 - [STORY] On examining the '8th' candlestick on the altar a trapdoor opens. Going below you are blocked by a ravenous wolf guarding a door. You must use an old leg bone from the graveyard to placate it. An exit is then accesible behind the wolf.
