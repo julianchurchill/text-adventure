@@ -21,6 +21,24 @@ Backlog
 - [STORY] Shopkeeper directs you to town hall notice board where reports of strange goings on are being posted. This triggers the entrance to the town hall to become visible.
   - [FEATURE] Talk action responses need to be defined for the shopkeeper.
     - DONE Write acceptance tests
+    - Location has a TalkToAction for each item that is talkable()
+      - The TalkToAction has an item. It's label is 'Talk to ' + item.midSentenceCasedName()
+      - The TalkToAction has a follow up action of SayAction, constructed with Item.getTalkable(), for each initial phrase id returned by talkable.initialPhraseIds()
+    - SayAction
+      - A SayAction has the label 'Say "' + talkable.phraseById( id ) + '"'
+      - A SayAction when enacted has user text of talkable.responseToPhraseById( id )
+      - A SayAction when enacted has a follow up SayAction for each id returned by talkable.followOnPhrasesForPhraseById( id )
+      - A SayAction when enacted calls takeable.executeActionsForPhraseById( id )
+    - Item
+      - Item has a getTalkable() method (could return itself or a seperate implementation of the interface)
+    - Talkable
+      - phraseById()
+      - responseToPhraseById()
+      - followOnPhrasesForPhraseById()
+      - executeActionsForPhraseById()
+    - Deserialise talk related specs from model content into Item.setTalkable()
+    - Serialise TalkToAction and SayAction for ActionHistory
+
     - [TEST] If an item has talk responses then include a 'Talk' action in Location::actions()
     - [TEST] Talk action allows choice of n phrases
     - [TEST] Choosing a phrase triggers a response as specified in model content
