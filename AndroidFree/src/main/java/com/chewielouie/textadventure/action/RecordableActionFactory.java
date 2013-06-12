@@ -97,4 +97,8 @@ public class RecordableActionFactory implements ActionFactory {
         action.setActionParameters( new ActionParameters( exit ) );
         return action;
     }
+
+    public Action createTalkToAction( Item item ) {
+        return null;
+    }
 }

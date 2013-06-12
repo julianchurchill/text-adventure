@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import com.chewielouie.textadventure.action.Action;
-import com.chewielouie.textadventure.action.TalkAction;
+import com.chewielouie.textadventure.action.TalkToAction;
 import com.chewielouie.textadventure.action.UserActionFactory;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.item.ItemFactory;
@@ -22,7 +22,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
-public class TalkActionAcceptanceTests {
+public class TalkToActionAcceptanceTests {
 
     private BasicModel createModelWithContent( String content ) {
         BasicModel model = new BasicModel();
@@ -67,15 +67,15 @@ public class TalkActionAcceptanceTests {
         presenter.render();
         ArgumentCaptor<List> actionsCaptor = ArgumentCaptor.forClass( List.class );
         verify( view ).setActions( actionsCaptor.capture() );
-        TalkAction helloTalkAction = null;
+        TalkToAction helloTalkToAction = null;
         List<Action> actions = actionsCaptor.getValue();
         for( Action action : actions )
-            if( action instanceof TalkAction )
-                helloTalkAction = (TalkAction)action;
-        assertThat( helloTalkAction, is( notNullValue() ) );
+            if( action instanceof TalkToAction )
+                helloTalkToAction = (TalkToAction)action;
+        assertThat( helloTalkToAction, is( notNullValue() ) );
 
         UserActionHandler userActionHandler = presenter;
-        userActionHandler.enact( helloTalkAction );
+        userActionHandler.enact( helloTalkToAction );
 
         ArgumentCaptor<String> mainText = ArgumentCaptor.forClass( String.class );
         verify( view ).showMainText( mainText.capture() );
@@ -105,21 +105,21 @@ public class TalkActionAcceptanceTests {
         presenter.render();
         ArgumentCaptor<List> actionsCaptor = ArgumentCaptor.forClass( List.class );
         verify( view ).setActions( actionsCaptor.capture() );
-        TalkAction helloTalkAction = null;
+        TalkToAction helloTalkToAction = null;
         List<Action> actions = actionsCaptor.getValue();
         for( Action action : actions )
-            if( action instanceof TalkAction )
-                helloTalkAction = (TalkAction)action;
-        assertThat( helloTalkAction, is( notNullValue() ) );
+            if( action instanceof TalkToAction )
+                helloTalkToAction = (TalkToAction)action;
+        assertThat( helloTalkToAction, is( notNullValue() ) );
 
         UserActionHandler userActionHandler = presenter;
-        userActionHandler.enact( helloTalkAction );
+        userActionHandler.enact( helloTalkToAction );
 
         verify( view ).setActions( actionsCaptor.capture() );
         actions = actionsCaptor.getValue();
         assertThat( actions.size(), is( 1 ) );
-        assertThat( actions.get( 0 ), is( instanceOf( TalkAction.class ) ) );
-        assertThat( ((TalkAction)actions.get( 0 )).phraseText(), is( "I just came to check in." ) );
+        assertThat( actions.get( 0 ), is( instanceOf( TalkToAction.class ) ) );
+        assertThat( ((TalkToAction)actions.get( 0 )).phraseText(), is( "I just came to check in." ) );
     }
 
     @Ignore( "Awaiting feature completion" )
@@ -151,18 +151,18 @@ public class TalkActionAcceptanceTests {
         presenter.render();
         ArgumentCaptor<List> actionsCaptor = ArgumentCaptor.forClass( List.class );
         verify( view ).setActions( actionsCaptor.capture() );
-        TalkAction helloTalkAction = null;
+        TalkToAction helloTalkToAction = null;
         List<Action> actions = actionsCaptor.getValue();
         for( Action action : actions )
-            if( action instanceof TalkAction )
-                helloTalkAction = (TalkAction)action;
-        assertThat( helloTalkAction, is( notNullValue() ) );
+            if( action instanceof TalkToAction )
+                helloTalkToAction = (TalkToAction)action;
+        assertThat( helloTalkToAction, is( notNullValue() ) );
 
         Exit exit = model.findExitByID( "mainstreeteast" );
         assertThat( exit, is( notNullValue() ) );
         assertThat( exit.visible(), is( false ) );
         UserActionHandler userActionHandler = presenter;
-        userActionHandler.enact( helloTalkAction );
+        userActionHandler.enact( helloTalkToAction );
 
         assertThat( exit.visible(), is( true ) );
     }
