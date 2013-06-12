@@ -45,7 +45,6 @@ public class TalkToActionTests {
 
     @Test
     public void user_must_choose_follow_up_action() {
-        ActionFactory actionFactory = mock( ActionFactory.class );
         TalkToAction action = new TalkToAction( null, null );
 
         assertThat( action.userMustChooseFollowUpAction(), is( true ) );
@@ -53,7 +52,6 @@ public class TalkToActionTests {
 
     @Test
     public void user_text_is_not_available() {
-        ActionFactory actionFactory = mock( ActionFactory.class );
         TalkToAction action = new TalkToAction( null, null );
 
         assertThat( action.userTextAvailable(), is( false ) );
