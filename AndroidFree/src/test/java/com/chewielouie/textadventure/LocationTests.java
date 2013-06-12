@@ -1,19 +1,21 @@
 package com.chewielouie.textadventure;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
+import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.action.ActionFactory;
+import com.chewielouie.textadventure.action.TalkToAction;
+import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.item.NormalItem;
 import java.util.ArrayList;
 import java.util.List;
 import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.chewielouie.textadventure.action.Action;
-import com.chewielouie.textadventure.action.ActionFactory;
-import com.chewielouie.textadventure.item.Item;
-import com.chewielouie.textadventure.item.NormalItem;
 
 @RunWith(JMock.class)
 public class LocationTests {
@@ -210,6 +212,46 @@ public class LocationTests {
         List<Action> actions = l.actions();
         assertTrue( actions.size() > 0 );
         assertThat( actions.get( 0 ), is( examineAnItemAction ) );
+    }
+
+    @Test
+    public void actions_uses_action_factory_to_create_TalkTo_action_for_all_canTalkTo_items() {
+        Item talkableItem = mock( Item.class );
+        when( talkableItem.canTalkTo() ).thenReturn( true );
+        when( talkableItem.visible() ).thenReturn( true );
+        Item notTalkableItem = mock( Item.class );
+        when( notTalkableItem.canTalkTo() ).thenReturn( false );
+        when( notTalkableItem.visible() ).thenReturn( true );
+        TalkToAction talkToAction = mock( TalkToAction.class );
+        ActionFactory actionFactory = mock( ActionFactory.class );
+        when( actionFactory.createTalkToAction( talkableItem ) ).thenReturn( talkToAction );
+
+        Location l = new Location( "", "", null, actionFactory );
+        l.addItem( talkableItem );
+        l.addItem( notTalkableItem );
+
+        assertThat( l.actions(), hasItem( talkToAction ) );
+        verify( actionFactory, never() ).createTalkToAction( notTalkableItem );
+    }
+
+    @Test
+    public void only_visible_items_can_be_spoken_to() {
+        Item visibleItem = mock( Item.class );
+        when( visibleItem.canTalkTo() ).thenReturn( true );
+        when( visibleItem.visible() ).thenReturn( true );
+        Item notVisibleItem = mock( Item.class );
+        when( notVisibleItem.canTalkTo() ).thenReturn( true );
+        when( notVisibleItem.visible() ).thenReturn( false );
+        TalkToAction talkToAction = mock( TalkToAction.class );
+        ActionFactory actionFactory = mock( ActionFactory.class );
+        when( actionFactory.createTalkToAction( visibleItem ) ).thenReturn( talkToAction );
+
+        Location l = new Location( "", "", null, actionFactory );
+        l.addItem( visibleItem );
+        l.addItem( notVisibleItem );
+
+        assertThat( l.actions(), hasItem( talkToAction ) );
+        verify( actionFactory, never() ).createTalkToAction( notVisibleItem );
     }
 
     @Test

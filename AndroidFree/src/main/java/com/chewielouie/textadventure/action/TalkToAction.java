@@ -3,8 +3,8 @@ package com.chewielouie.textadventure.action;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TalkAction implements Action {
-    public TalkAction() {
+public class TalkToAction implements Action {
+    public TalkToAction() {
     }
 
     public ActionFactory actionFactory() {

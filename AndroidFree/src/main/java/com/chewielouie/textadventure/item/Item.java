@@ -34,5 +34,6 @@ public interface Item {
     public void setExamineText( String text );
     public void setExamineActionIsNotRepeatable();
     public boolean examineActionIsNotRepeatable();
+    public boolean canTalkTo();
 }
 

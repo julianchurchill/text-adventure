@@ -21,9 +21,10 @@ Backlog
 - [STORY] Shopkeeper directs you to town hall notice board where reports of strange goings on are being posted. This triggers the entrance to the town hall to become visible.
   - [FEATURE] Talk action responses need to be defined for the shopkeeper.
     - DONE Write acceptance tests
-    - Location has a TalkToAction for each item that is talkable()
-      - The TalkToAction has an item. It's label is 'Talk to ' + item.midSentenceCasedName()
-      - The TalkToAction has a follow up action of SayAction, constructed with Item.getTalkable(), for each initial phrase id returned by talkable.initialPhraseIds()
+    - DONE Location has a TalkToAction for each item that is canTalkTo() == true
+    - TalkToAction
+      - A TalkToAction has an item. It's label is 'Talk to ' + item.midSentenceCasedName()
+      - A TalkToAction has a follow up action of SayAction, constructed with Item.getTalkable(), for each initial phrase id returned by talkable.initialPhraseIds()
     - SayAction
       - A SayAction has the label 'Say "' + talkable.phraseById( id ) + '"'
       - A SayAction when enacted has user text of talkable.responseToPhraseById( id )
@@ -31,6 +32,7 @@ Backlog
       - A SayAction when enacted calls takeable.executeActionsForPhraseById( id )
     - Item
       - Item has a getTalkable() method (could return itself or a seperate implementation of the interface)
+      - Item.canTalkTo()
     - Talkable
       - phraseById()
       - responseToPhraseById()

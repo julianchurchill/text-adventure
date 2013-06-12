@@ -115,8 +115,15 @@ public class Location implements ModelLocation {
                 actions.add( actionFactory.createTakeAnItemAction( takeableItems(), inventory, this ) );
             if( visibleItems().size() > 0 )
                 actions.add( actionFactory.createExamineAnItemAction( visibleItems() ) );
+            addTalkToActions( actions );
         }
         return actions;
+    }
+
+    private void addTalkToActions( List<Action> actions ) {
+        for( Item item : visibleItems() )
+            if( item.canTalkTo() )
+                actions.add( actionFactory.createTalkToAction( item ) );
     }
 
     private List<Item> visibleItems() {

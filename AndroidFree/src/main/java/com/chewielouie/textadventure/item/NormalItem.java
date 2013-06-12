@@ -188,5 +188,9 @@ public class NormalItem implements Item {
     public boolean examineActionIsNotRepeatable() {
         return !examineActionIsRepeatable;
     }
+
+    public boolean canTalkTo() {
+        return false;
+    }
 }
 

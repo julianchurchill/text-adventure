@@ -61,6 +61,10 @@ public class UserActionFactory implements ActionFactory {
     }
 
     public Action createExitAction( Exit exit, TextAdventureModel model ) {
-      return new ExitAction( exit, model );
+        return new ExitAction( exit, model );
+    }
+
+    public Action createTalkToAction( Item item ) {
+        return null;
     }
 }

@@ -28,5 +28,6 @@ public interface ActionFactory {
     public Action createUseWithSpecificItemAction( Item actionOwner,
                                                    Item target );
     public Action createExitAction( Exit exit, TextAdventureModel model );
+    public Action createTalkToAction( Item item );
 }
 
