@@ -192,5 +192,9 @@ public class NormalItem implements Item {
     public boolean canTalkTo() {
         return false;
     }
+
+    public Talkable getTalkable() {
+        return null;
+    }
 }
 

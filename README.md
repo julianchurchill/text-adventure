@@ -25,13 +25,14 @@ Backlog
     - TalkToAction
       - DONE A TalkToAction has an item. It's label is 'Talk to ' + item.midSentenceCasedName()
       - DONE A TalkToAction has a follow up action of SayAction, constructed with Item.getTalkable(), for each initial phrase id returned by talkable.initialPhraseIds()
+    - Correct acceptance tests based on new design
     - SayAction
       - A SayAction has the label 'Say "' + talkable.phraseById( id ) + '"'
       - A SayAction when enacted has user text of talkable.responseToPhraseById( id )
       - A SayAction when enacted has a follow up SayAction for each id returned by talkable.followOnPhrasesForPhraseById( id )
       - A SayAction when enacted calls takeable.executeActionsForPhraseById( id )
-    - ActionFactory can create TalkToActions
-    - ActionFactory can create SayActions
+    - UserActionFactory can create TalkToActions
+    - UserActionFactory can create SayActions
     - RecordableActionFactory can create TalkToActions
     - RecordableActionFactory can create SayActions
     - Item
@@ -44,7 +45,6 @@ Backlog
       - executeActionsForPhraseById()
     - Deserialise talk related specs from model content into Item.setTalkable()
     - Serialise TalkToAction and SayAction for ActionHistory
-    - Correct acceptance tests based on new design
 
     - [TEST] If an item has talk responses then include a 'Talk' action in Location::actions()
     - [TEST] Talk action allows choice of n phrases

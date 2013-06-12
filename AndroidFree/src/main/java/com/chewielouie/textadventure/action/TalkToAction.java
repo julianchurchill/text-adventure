@@ -30,8 +30,9 @@ public class TalkToAction implements Action {
 
     public List<Action> followUpActions() {
         List<Action> actions = new ArrayList<Action>();
-        for( String id : item.getTalkable().initialPhraseIds() )
-            actions.add( actionFactory.createSayAction( id, item.getTalkable() ) );
+        if( item.getTalkable() != null )
+            for( String id : item.getTalkable().initialPhraseIds() )
+                actions.add( actionFactory.createSayAction( id, item.getTalkable() ) );
         return actions;
     }
 
@@ -45,9 +46,5 @@ public class TalkToAction implements Action {
 
     public String name() {
         return "talk";
-    }
-
-    public String phraseText() {
-        return "";
     }
 }

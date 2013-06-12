@@ -1,11 +1,12 @@
 package com.chewielouie.textadventure.action;
 
-import java.util.List;
-import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.Exit;
 import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
 import com.chewielouie.textadventure.UserInventory;
+import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.item.Talkable;
+import java.util.List;
 
 public class UserActionFactory implements ActionFactory {
     private ActionFactory factoryForChildActionsToUse = this;
@@ -65,6 +66,10 @@ public class UserActionFactory implements ActionFactory {
     }
 
     public Action createTalkToAction( Item item ) {
+        return null;
+    }
+
+    public Action createSayAction( String phraseId, Talkable talkable ) {
         return null;
     }
 }
