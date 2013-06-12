@@ -25,7 +25,6 @@ Backlog
     - TalkToAction
       - DONE A TalkToAction has an item. It's label is 'Talk to ' + item.midSentenceCasedName()
       - DONE A TalkToAction has a follow up action of SayAction, constructed with Item.getTalkable(), for each initial phrase id returned by talkable.initialPhraseIds()
-    - Correct acceptance tests based on new design
     - SayAction
       - A SayAction has the label 'Say "' + talkable.phraseById( id ) + '"'
       - A SayAction when enacted has user text of talkable.responseToPhraseById( id )

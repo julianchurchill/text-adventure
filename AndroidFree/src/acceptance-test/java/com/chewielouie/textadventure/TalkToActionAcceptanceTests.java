@@ -76,6 +76,10 @@ public class TalkToActionAcceptanceTests {
 
         UserActionHandler userActionHandler = presenter;
         userActionHandler.enact( helloTalkToAction );
+        verify( view ).setActions( helloTalkToAction.followUpActions() );
+
+        Action sayAction = helloTalkToAction.followUpActions().get(0);
+        userActionHandler.enact( sayAction );
 
         ArgumentCaptor<String> mainText = ArgumentCaptor.forClass( String.class );
         verify( view ).showMainText( mainText.capture() );
@@ -114,12 +118,20 @@ public class TalkToActionAcceptanceTests {
 
         UserActionHandler userActionHandler = presenter;
         userActionHandler.enact( helloTalkToAction );
+        verify( view ).setActions( helloTalkToAction.followUpActions() );
+
+        Action sayAction = helloTalkToAction.followUpActions().get(0);
+        userActionHandler.enact( sayAction );
 
         verify( view ).setActions( actionsCaptor.capture() );
         actions = actionsCaptor.getValue();
         assertThat( actions.size(), is( 1 ) );
-        assertThat( actions.get( 0 ), is( instanceOf( TalkToAction.class ) ) );
-        // assertThat( ((SayAction)actions.get( 0 )).phraseText(), is( "I just came to check in." ) );
+        assertThat( actions.get( 0 ).label(), is( "Say \"I just came to check in.\"" ) );
+        userActionHandler.enact( actions.get( 0 ) );
+
+        ArgumentCaptor<String> mainText = ArgumentCaptor.forClass( String.class );
+        verify( view ).showMainText( mainText.capture() );
+        assertThat( mainText.getValue(), containsString( "I just came to check in." ) );
     }
 
     @Ignore( "Awaiting feature completion" )
@@ -158,11 +170,15 @@ public class TalkToActionAcceptanceTests {
                 helloTalkToAction = (TalkToAction)action;
         assertThat( helloTalkToAction, is( notNullValue() ) );
 
+        UserActionHandler userActionHandler = presenter;
+        userActionHandler.enact( helloTalkToAction );
+        verify( view ).setActions( helloTalkToAction.followUpActions() );
+
         Exit exit = model.findExitByID( "mainstreeteast" );
         assertThat( exit, is( notNullValue() ) );
         assertThat( exit.visible(), is( false ) );
-        UserActionHandler userActionHandler = presenter;
-        userActionHandler.enact( helloTalkToAction );
+        Action sayAction = helloTalkToAction.followUpActions().get(0);
+        userActionHandler.enact( sayAction );
 
         assertThat( exit.visible(), is( true ) );
     }
