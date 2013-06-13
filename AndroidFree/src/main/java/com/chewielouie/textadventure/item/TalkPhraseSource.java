@@ -2,7 +2,7 @@ package com.chewielouie.textadventure.item;
 
 import java.util.List;
 
-public interface Talkable {
+public interface TalkPhraseSource {
     public List<String> initialPhraseIds();
 }
 

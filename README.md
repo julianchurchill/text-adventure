@@ -24,7 +24,7 @@ Backlog
     - DONE Location has a TalkToAction for each item that is canTalkTo() == true
     - TalkToAction
       - DONE A TalkToAction has an item. It's label is 'Talk to ' + item.midSentenceCasedName()
-      - DONE A TalkToAction has a follow up action of SayAction, constructed with Item.getTalkable(), for each initial phrase id returned by talkable.initialPhraseIds()
+      - DONE A TalkToAction has a follow up action of SayAction, constructed with Item.getTalkPhraseSource(), for each initial phrase id returned by talkable.initialPhraseIds()
     - SayAction
       - A SayAction has the label 'Say "' + talkable.phraseById( id ) + '"'
       - A SayAction when enacted has user text of talkable.responseToPhraseById( id )
@@ -35,14 +35,14 @@ Backlog
     - RecordableActionFactory can create TalkToActions
     - RecordableActionFactory can create SayActions
     - Item
-      - Item has a getTalkable() method (could return itself or a seperate implementation of the interface)
+      - Item has a getTalkPhraseSource() method (could return itself or a seperate implementation of the interface)
       - Item.canTalkTo()
-    - Talkable
+    - TalkPhraseSource
       - phraseById()
       - responseToPhraseById()
       - followOnPhrasesForPhraseById()
       - executeActionsForPhraseById()
-    - Deserialise talk related specs from model content into Item.setTalkable()
+    - Deserialise talk related specs from model content into Item.setTalkPhraseSource()
     - Serialise TalkToAction and SayAction for ActionHistory
 
     - [TEST] If an item has talk responses then include a 'Talk' action in Location::actions()

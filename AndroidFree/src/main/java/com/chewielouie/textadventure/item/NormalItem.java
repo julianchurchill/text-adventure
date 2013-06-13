@@ -193,7 +193,7 @@ public class NormalItem implements Item {
         return false;
     }
 
-    public Talkable getTalkable() {
+    public TalkPhraseSource getTalkPhraseSource() {
         return null;
     }
 }

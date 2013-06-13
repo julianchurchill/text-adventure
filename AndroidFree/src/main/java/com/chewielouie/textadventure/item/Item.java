@@ -35,6 +35,6 @@ public interface Item {
     public void setExamineActionIsNotRepeatable();
     public boolean examineActionIsNotRepeatable();
     public boolean canTalkTo();
-    public Talkable getTalkable();
+    public TalkPhraseSource getTalkPhraseSource();
 }
 

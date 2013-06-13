@@ -2,7 +2,7 @@ package com.chewielouie.textadventure.action;
 
 import java.util.List;
 import com.chewielouie.textadventure.item.Item;
-import com.chewielouie.textadventure.item.Talkable;
+import com.chewielouie.textadventure.item.TalkPhraseSource;
 import com.chewielouie.textadventure.Exit;
 import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
@@ -30,6 +30,6 @@ public interface ActionFactory {
                                                    Item target );
     public Action createExitAction( Exit exit, TextAdventureModel model );
     public Action createTalkToAction( Item item );
-    public Action createSayAction( String phraseId, Talkable talkable );
+    public Action createSayAction( String phraseId, TalkPhraseSource talkable );
 }
 

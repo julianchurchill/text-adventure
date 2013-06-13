@@ -7,7 +7,7 @@ import static org.mockito.Mockito.*;
 
 import java.util.Arrays;
 import com.chewielouie.textadventure.item.Item;
-import com.chewielouie.textadventure.item.Talkable;
+import com.chewielouie.textadventure.item.TalkPhraseSource;
 import org.junit.Test;
 
 public class TalkToActionTests {
@@ -23,10 +23,10 @@ public class TalkToActionTests {
 
     @Test
     public void follow_up_actions_are_SayActions_created_with_action_factory() {
-        Talkable talkable = mock( Talkable.class );
+        TalkPhraseSource talkable = mock( TalkPhraseSource.class );
         when( talkable.initialPhraseIds() ).thenReturn( Arrays.asList( "id1" ) );
         Item item = mock( Item.class );
-        when( item.getTalkable() ).thenReturn( talkable );
+        when( item.getTalkPhraseSource() ).thenReturn( talkable );
         ActionFactory actionFactory = mock( ActionFactory.class );
         TalkToAction action = new TalkToAction( item, actionFactory );
 

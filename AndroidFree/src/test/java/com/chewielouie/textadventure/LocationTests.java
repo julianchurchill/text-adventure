@@ -219,19 +219,19 @@ public class LocationTests {
         Item talkableItem = mock( Item.class );
         when( talkableItem.canTalkTo() ).thenReturn( true );
         when( talkableItem.visible() ).thenReturn( true );
-        Item notTalkableItem = mock( Item.class );
-        when( notTalkableItem.canTalkTo() ).thenReturn( false );
-        when( notTalkableItem.visible() ).thenReturn( true );
+        Item notTalkPhraseSourceItem = mock( Item.class );
+        when( notTalkPhraseSourceItem.canTalkTo() ).thenReturn( false );
+        when( notTalkPhraseSourceItem.visible() ).thenReturn( true );
         TalkToAction talkToAction = mock( TalkToAction.class );
         ActionFactory actionFactory = mock( ActionFactory.class );
         when( actionFactory.createTalkToAction( talkableItem ) ).thenReturn( talkToAction );
 
         Location l = new Location( "", "", null, actionFactory );
         l.addItem( talkableItem );
-        l.addItem( notTalkableItem );
+        l.addItem( notTalkPhraseSourceItem );
 
         assertThat( l.actions(), hasItem( talkToAction ) );
-        verify( actionFactory, never() ).createTalkToAction( notTalkableItem );
+        verify( actionFactory, never() ).createTalkToAction( notTalkPhraseSourceItem );
     }
 
     @Test

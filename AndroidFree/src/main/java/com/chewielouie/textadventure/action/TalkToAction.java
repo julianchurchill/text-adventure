@@ -30,9 +30,9 @@ public class TalkToAction implements Action {
 
     public List<Action> followUpActions() {
         List<Action> actions = new ArrayList<Action>();
-        if( item.getTalkable() != null )
-            for( String id : item.getTalkable().initialPhraseIds() )
-                actions.add( actionFactory.createSayAction( id, item.getTalkable() ) );
+        if( item.getTalkPhraseSource() != null )
+            for( String id : item.getTalkPhraseSource().initialPhraseIds() )
+                actions.add( actionFactory.createSayAction( id, item.getTalkPhraseSource() ) );
         return actions;
     }
 
