@@ -26,10 +26,11 @@ Backlog
       - DONE A TalkToAction has an item. It's label is 'Talk to ' + item.midSentenceCasedName()
       - DONE A TalkToAction has a follow up action of SayAction, constructed with Item.getTalkPhraseSource(), for each initial phrase id returned by talkable.initialPhraseIds()
     - SayAction
-      - A SayAction has the label 'Say "' + talkable.phraseById( id ) + '"'
-      - A SayAction when enacted has user text of talkable.responseToPhraseById( id )
-      - A SayAction when enacted has a follow up SayAction for each id returned by talkable.followOnPhrasesForPhraseById( id )
-      - A SayAction when enacted calls takeable.executeActionsForPhraseById( id )
+      - DONE A SayAction has the label 'Say "' + talkable.shortPhraseById( id ) + '"'
+      - DONE A SayAction when enacted has user text of talkable.phraseById( id ) + talkable.responseToPhraseById( id )
+      - DONE A SayAction when enacted has user text of just talkable.phraseById( id ) when no responses are available
+      - DONE A SayAction when enacted has a follow up SayAction for each id returned by talkable.followOnPhrasesForPhraseById( id )
+      - DONE A SayAction when enacted calls talkable.executeActionsForPhraseById( id )
     - UserActionFactory can create TalkToActions
     - UserActionFactory can create SayActions
     - RecordableActionFactory can create TalkToActions
