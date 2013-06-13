@@ -99,7 +99,7 @@ public class TalkToActionAcceptanceTests {
                         "item countable noun prefix:a\n" +
                         "item talk initial phrase:hello:Hello!\n" +
                         "item talk response to:hello:Hello yourself!\n" +
-                        "item talk follow up phrase to:hello:checkin:I just came to check in.\n";
+                        "item talk follow up phrase to:hello:checkin:I just came to check in...:I just came to check in. Glad to see you're well.\n";
 
         BasicModel model = createModelWithContent( content );
         TextAdventureView view = mock( TextAdventureView.class );
@@ -126,12 +126,12 @@ public class TalkToActionAcceptanceTests {
         verify( view ).setActions( actionsCaptor.capture() );
         actions = actionsCaptor.getValue();
         assertThat( actions.size(), is( 1 ) );
-        assertThat( actions.get( 0 ).label(), is( "Say \"I just came to check in.\"" ) );
+        assertThat( actions.get( 0 ).label(), is( "Say \"I just came to check in...\"" ) );
         userActionHandler.enact( actions.get( 0 ) );
 
         ArgumentCaptor<String> mainText = ArgumentCaptor.forClass( String.class );
         verify( view ).showMainText( mainText.capture() );
-        assertThat( mainText.getValue(), containsString( "I just came to check in." ) );
+        assertThat( mainText.getValue(), containsString( "I just came to check in. Glad to see you're well." ) );
     }
 
     @Ignore( "Awaiting feature completion" )

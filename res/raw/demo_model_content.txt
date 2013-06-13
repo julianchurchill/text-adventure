@@ -522,9 +522,9 @@ item is untakeable:
 
 item talk initial phrase:hello:Hello!
 item talk response to:hello:Hello yourself my friend. How can I help you?
-item talk follow up phrase to:hello:checkin:I just came to check in. Glad you to see you are looking well.
+item talk follow up phrase to:hello:checkin:I just came to check in...:I just came to check in. Glad you to see you are looking well.
 item talk response to:checkin:Why thank you, it's all down to you my friend.
-item talk follow up phrase to:checkin:lookingforwork:I was looking for some work. Can you help me?
+item talk follow up phrase to:checkin:lookingforwork:I was looking for some work...:I was looking for some work. Can you help me?
 item talk response to:lookingforwork:Sure, you should go to the town hall to the east of the town. There are boards where an adventurer might find a job.
 item talk action in response to:lookingforwork:make exit visible:mainstreeteast
 
@@ -532,6 +532,6 @@ item talk initial phrase:lookingwell:You're looking well friend.
 item talk response to:lookingwell:Why thank you, it's all down to you my friend.
 item talk follow up phrase to:lookingwell:lookingforwork:
 
-item talk initial phrase:gimmemoney:I need money, can you spare some coin for your rescuer?
+item talk initial phrase:gimmemoney:I need money...:I need money, can you spare some coin for your rescuer?
 item talk response to:gimmemoney:Err I'm just getting my shop back on it's feet, I'm sorry but I can't spare any money at the moment.
 item talk follow up phrase to:gimmemoney:lookingwell:
