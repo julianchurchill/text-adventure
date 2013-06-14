@@ -3,12 +3,13 @@ package com.chewielouie.textadventure.action;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-import java.util.List;
-import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.Exit;
 import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
 import com.chewielouie.textadventure.UserInventory;
+import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.item.TalkPhraseSource;
+import java.util.List;
 import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
@@ -581,5 +582,66 @@ public class RecordableActionFactoryTests {
                                                                  null );
         RecordableAction a = (RecordableAction)f.createTalkToAction( item );
         assertThat( a.actionParameters().item(), is( item ) );
+    }
+
+    @Test
+    public void create_say_action_delegates_to_wrapped_factory() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final TalkPhraseSource talkable = mockery.mock( TalkPhraseSource.class );
+        mockery.checking( new Expectations() {{
+            oneOf( wrappedFactory ).createSayAction( "id", talkable );
+            ignoring( wrappedFactory );
+        }});
+        new RecordableActionFactory( wrappedFactory, null )
+            .createSayAction( "id", talkable );
+    }
+
+    @Test
+    public void wraps_Action_in_RecordableAction_for_Say() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class, "wrapped" );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
+        assertThat( f.createSayAction( null, null ),
+                    is( instanceOf( RecordableAction.class ) ) );
+    }
+
+    @Test
+    public void adds_ActionHistory_to_RecordableAction_for_Say() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final ActionHistory actionHistory = mockery.mock( ActionHistory.class );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
+                                                                 actionHistory );
+        RecordableAction a = (RecordableAction)f.createSayAction( null, null );
+        assertThat( a.actionHistory(), is( actionHistory ) );
+    }
+
+    @Test
+    public void adds_id_to_RecordableAction_for_Say() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
+                                                                 null );
+        RecordableAction a = (RecordableAction)f.createSayAction( "id", null );
+        assertThat( a.actionParameters().string(), is( "id" ) );
+    }
+
+    @Test
+    public void adds_talk_phrase_source_to_RecordableAction_for_Say() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final TalkPhraseSource talkable = mockery.mock( TalkPhraseSource.class );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
+                                                                 null );
+        RecordableAction a = (RecordableAction)f.createSayAction( null, talkable );
+        assertThat( a.actionParameters().talkPhraseSource(), is( talkable ) );
     }
 }
