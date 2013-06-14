@@ -31,8 +31,8 @@ Backlog
       - DONE A SayAction when enacted has user text of just talkable.phraseById( id ) when no responses are available
       - DONE A SayAction when enacted has a follow up SayAction for each id returned by talkable.followOnPhrasesForPhraseById( id )
       - DONE A SayAction when enacted calls talkable.executeActionsForPhraseById( id )
-    - UserActionFactory can create TalkToActions
-    - UserActionFactory can create SayActions
+    - DONE UserActionFactory can create TalkToActions
+    - DONE UserActionFactory can create SayActions
     - RecordableActionFactory can create TalkToActions
     - RecordableActionFactory can create SayActions
     - Item

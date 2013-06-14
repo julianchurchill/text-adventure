@@ -66,10 +66,10 @@ public class UserActionFactory implements ActionFactory {
     }
 
     public Action createTalkToAction( Item item ) {
-        return null;
+        return new TalkToAction( item, factoryForChildActionsToUse() );
     }
 
     public Action createSayAction( String phraseId, TalkPhraseSource talkable ) {
-        return null;
+        return new SayAction( phraseId, talkable, factoryForChildActionsToUse() );
     }
 }

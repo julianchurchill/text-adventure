@@ -204,4 +204,51 @@ public class UserActionFactoryTests {
 
         assertThat( action, is( instanceOf( ExitAction.class ) ) );
     }
+
+    @Test
+    public void create_talk_to_action_makes_right_action() {
+        UserActionFactory factory = new UserActionFactory();
+
+        Action action = factory.createTalkToAction( null );
+
+        assertThat( action, is( instanceOf( TalkToAction.class ) ) );
+    }
+
+    @Test
+    public void talk_to_action_gets_configured_factory_as_its_action_factory() {
+        ActionFactory factory = new UserActionFactory();
+        final ActionFactory otherFactory = mockery.mock( ActionFactory.class );
+        mockery.checking( new Expectations() {{
+            ignoring( otherFactory );
+        }});
+
+        factory.setFactoryForChildActionsToUse( otherFactory );
+        Action action = factory.createTalkToAction( null );
+
+        assertThat( action.actionFactory(), is( otherFactory ) );
+    }
+
+    @Test
+    public void create_say_action_makes_right_action() {
+        UserActionFactory factory = new UserActionFactory();
+
+        Action action = factory.createSayAction( null, null );
+
+        assertThat( action, is( instanceOf( SayAction.class ) ) );
+    }
+
+    @Test
+    public void say_action_gets_configured_factory_as_its_action_factory() {
+        ActionFactory factory = new UserActionFactory();
+        final ActionFactory otherFactory = mockery.mock( ActionFactory.class );
+        mockery.checking( new Expectations() {{
+            ignoring( otherFactory );
+        }});
+
+        factory.setFactoryForChildActionsToUse( otherFactory );
+        Action action = factory.createSayAction( null, null );
+
+        assertThat( action.actionFactory(), is( otherFactory ) );
+    }
+
 }
