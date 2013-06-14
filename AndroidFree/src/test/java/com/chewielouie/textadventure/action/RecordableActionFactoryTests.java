@@ -532,4 +532,54 @@ public class RecordableActionFactoryTests {
         RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
         f.setFactoryForChildActionsToUse( otherFactory );
     }
+
+    @Test
+    public void create_talk_to_action_delegates_to_wrapped_factory() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final Item item = mockery.mock( Item.class );
+        mockery.checking( new Expectations() {{
+            oneOf( wrappedFactory ).createTalkToAction( item );
+            ignoring( wrappedFactory );
+        }});
+        new RecordableActionFactory( wrappedFactory, null ) .createTalkToAction( item );
+    }
+
+    @Test
+    public void wraps_Action_in_RecordableAction_for_TalkTo() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class, "wrapped" );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory, null );
+        assertThat( f.createTalkToAction( null ),
+                    is( instanceOf( RecordableAction.class ) ) );
+    }
+
+    @Test
+    public void adds_ActionHistory_to_RecordableAction_for_TalkTo() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final ActionHistory actionHistory = mockery.mock( ActionHistory.class );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+            ignoring( actionHistory );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
+                                                                 actionHistory );
+        RecordableAction a = (RecordableAction)f.createTalkToAction( null );
+        assertThat( a.actionHistory(), is( actionHistory ) );
+    }
+
+    @Test
+    public void adds_Item_to_RecordableAction_for_TalkTo() {
+        final ActionFactory wrappedFactory = mockery.mock( ActionFactory.class );
+        final Item item = mockery.mock( Item.class );
+        mockery.checking( new Expectations() {{
+            ignoring( wrappedFactory );
+            ignoring( item );
+        }});
+        RecordableActionFactory f = new RecordableActionFactory( wrappedFactory,
+                                                                 null );
+        RecordableAction a = (RecordableAction)f.createTalkToAction( item );
+        assertThat( a.actionParameters().item(), is( item ) );
+    }
 }

@@ -33,7 +33,7 @@ Backlog
       - DONE A SayAction when enacted calls talkable.executeActionsForPhraseById( id )
     - DONE UserActionFactory can create TalkToActions
     - DONE UserActionFactory can create SayActions
-    - RecordableActionFactory can create TalkToActions
+    - DONE RecordableActionFactory can create TalkToActions
     - RecordableActionFactory can create SayActions
     - Item
       - Item has a getTalkPhraseSource() method (could return itself or a seperate implementation of the interface)
@@ -44,7 +44,7 @@ Backlog
       - followOnPhrasesForPhraseById()
       - executeActionsForPhraseById()
     - Deserialise talk related specs from model content into Item.setTalkPhraseSource()
-    - Serialise TalkToAction and SayAction for ActionHistory
+    - Serialise TalkToAction and SayAction for ActionHistory and ActionParameters
 
     - [TEST] If an item has talk responses then include a 'Talk' action in Location::actions()
     - [TEST] Talk action allows choice of n phrases
