@@ -26,6 +26,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private final String itemOnExamineActionTag = "item on examine action:";
     private final String itemInitialTalkPhraseTag = "item talk initial phrase:";
     private final String itemTalkResponseToTag = "item talk response to:";
+    private final String itemTalkFollowUpPhraseTag = "item talk follow up phrase to:";
     private Item item;
     private String content;
     private ItemActionFactory itemActionFactory;
@@ -146,6 +147,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         if( talkPhraseSink != null ) {
             extractInitialTalkPhrases( talkPhraseSink );
             extractTalkResponses( talkPhraseSink );
+            extractFollowUpPhrases( talkPhraseSink );
         }
     }
 
@@ -159,6 +161,24 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         for( IdAndArgPair pair : extractAllIdAndArgPairs( itemTalkResponseToTag,
                                                           talkPhraseSink ) )
             talkPhraseSink.addResponse( pair.id, pair.arg );
+    }
+
+    private void extractFollowUpPhrases( TalkPhraseSink talkPhraseSink ) {
+        int tagLoc = findTag( itemTalkFollowUpPhraseTag );
+        if( tagLoc != NOT_FOUND ) {
+            int startOfId = tagLoc + itemTalkFollowUpPhraseTag.length();
+            int argumentSeperatorIndex = findTagFrom( startOfId, argumentSeperator );
+            if( argumentSeperatorIndex != NOT_FOUND ) {
+                String parentPhraseId = content.substring( startOfId, argumentSeperatorIndex );
+                int startOfNewId = argumentSeperatorIndex + 1;
+                int endOfNewId = findTagFrom( startOfNewId, argumentSeperator );
+                if( endOfNewId != NOT_FOUND ) {
+                    String newPhraseId = content.substring( startOfNewId, endOfNewId );
+                    String phrase = extractValueUpToNewline( endOfNewId + 1 );
+                    talkPhraseSink.addFollowUpPhrase( parentPhraseId, newPhraseId, phrase );
+                }
+            }
+        }
     }
 
     class IdAndArgPair {

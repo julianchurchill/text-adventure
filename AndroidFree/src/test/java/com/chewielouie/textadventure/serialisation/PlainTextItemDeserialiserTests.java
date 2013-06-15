@@ -393,8 +393,19 @@ public class PlainTextItemDeserialiserTests {
         verify( talkPhraseSink ).addResponse( "id2", "2nd response" );
     }
 
-    // @Test
-    // public void deserialise_extracts_talk_follow_up_phrase() {
+    @Test
+    public void deserialise_extracts_talk_follow_up_phrase() {
+        TalkPhraseSink talkPhraseSink = mock( TalkPhraseSink.class );
+        Item item = mock( Item.class );
+        when( item.getTalkPhraseSink() ).thenReturn( talkPhraseSink );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+
+        d.deserialise( item,
+                       "item talk initial phrase:hello:Hello!\n" +
+                       "item talk follow up phrase to:hello:followup:The next step in the conversation.\n" );
+        verify( talkPhraseSink ).addFollowUpPhrase( "hello", "followup", "The next step in the conversation." );
+    }
+
     // @Test
     // public void deserialise_extracts_multiple_follow_up_phrases() {
     // @Test
