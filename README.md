@@ -37,9 +37,11 @@ Backlog
     - DONE RecordableActionFactory can create SayActions
     - Deserialise talk related specs from model content into Item.setTalkPhraseSource()
     - Serialise TalkToAction and SayAction for ActionHistory and ActionParameters
+    - Deserialise TalkToAction and SayAction for ActionHistory
     - Item
       - Item has a getTalkPhraseSource() method (could return itself or a seperate implementation of the interface)
       - Item.canTalkTo()
+      - Item.addInitialTalkPhrase()
     - TalkPhraseSource
       - phraseById()
       - responseToPhraseById()

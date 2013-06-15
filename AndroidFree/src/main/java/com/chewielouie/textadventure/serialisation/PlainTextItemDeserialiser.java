@@ -7,6 +7,8 @@ import com.chewielouie.textadventure.itemaction.ItemAction;
 import com.chewielouie.textadventure.itemaction.ItemActionFactory;
 
 public class PlainTextItemDeserialiser implements ItemDeserialiser {
+    private final int NOT_FOUND = -1;
+    private final String argumentSeperator = ":";
     private final String itemNameTag = "item name:";
     private final String itemDescriptionTag = "item description:";
     private final String itemIDTag = "item id:";
@@ -21,6 +23,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private final String itemExamineMessageTag = "item examine message:";
     private final String itemExamineActionIsNotRepeatableTag = "item examine action is not repeatable:";
     private final String itemOnExamineActionTag = "item on examine action:";
+    private final String itemInitialTalkPhraseTag = "item talk initial phrase:";
     private Item item;
     private String content;
     private ItemActionFactory itemActionFactory;
@@ -50,6 +53,8 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
 
         if( findTagWithNoArgument( itemIsUntakeableTag ) )
             item.setUntakeable();
+
+        extractTalkPhraseInfo();
     }
 
     private void extractItemUseProperties() {
@@ -132,6 +137,20 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
 
     private int findTagFrom( int start, String tag ) {
         return content.indexOf( tag, start + 1 );
+    }
+
+    private void extractTalkPhraseInfo() {
+        int initialTalkPhrase = findTag( itemInitialTalkPhraseTag );
+        if( initialTalkPhrase != NOT_FOUND ) {
+            int startOfID = initialTalkPhrase + itemInitialTalkPhraseTag.length();
+            int argumentSeperatorIndex = findTagFrom( startOfID, argumentSeperator );
+            if( argumentSeperatorIndex != NOT_FOUND ) {
+                String id = content.substring( startOfID, argumentSeperatorIndex );
+                String phrase = extractValueUpToNewline( argumentSeperatorIndex + 1 );
+                if( item.getTalkPhraseSink() != null )
+                    item.getTalkPhraseSink().addInitialPhrase ( id, phrase );
+            }
+        }
     }
 }
 

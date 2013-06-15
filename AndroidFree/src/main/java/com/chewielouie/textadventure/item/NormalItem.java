@@ -196,5 +196,9 @@ public class NormalItem implements Item {
     public TalkPhraseSource getTalkPhraseSource() {
         return null;
     }
+
+    public TalkPhraseSink getTalkPhraseSink() {
+        return null;
+    }
 }
 

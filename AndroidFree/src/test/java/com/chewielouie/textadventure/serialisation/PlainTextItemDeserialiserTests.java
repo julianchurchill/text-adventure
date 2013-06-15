@@ -1,12 +1,16 @@
 package com.chewielouie.textadventure.serialisation;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.item.TalkPhraseSink;
 import com.chewielouie.textadventure.itemaction.ItemAction;
 import com.chewielouie.textadventure.itemaction.ItemActionFactory;
 
@@ -358,5 +362,33 @@ public class PlainTextItemDeserialiserTests {
                        "item description:description\n" +
                        "item on examine action:actionname:action arguments\n" );
     }
+
+    @Test
+    public void deserialise_extracts_initial_talk_phrase() {
+        TalkPhraseSink talkPhraseSink = mock( TalkPhraseSink.class );
+        Item item = mock( Item.class );
+        when( item.getTalkPhraseSink() ).thenReturn( talkPhraseSink );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+
+        d.deserialise( item,
+                       "item name:Name\n" +
+                       "item description:description\n" +
+                       "item talk initial phrase:hello:Hello!\n" );
+        verify( talkPhraseSink ).addInitialPhrase( "hello", "Hello!" );
+    }
+
+    // @Test
+    // public void deserialise_extracts_multiple_initial_talk_phrases() {
+
+    // @Test
+    // public void deserialise_extracts_talk_response() {
+    // @Test
+    // public void deserialise_extracts_multiple_talk_responses() {
+    // @Test
+    // public void deserialise_extracts_talk_follow_up_phrase() {
+    // @Test
+    // public void deserialise_extracts_talk_action_in_response() {
+    // @Test
+    // public void deserialise_extracts_multiple_talk_actions_in_response() {
 }
 
