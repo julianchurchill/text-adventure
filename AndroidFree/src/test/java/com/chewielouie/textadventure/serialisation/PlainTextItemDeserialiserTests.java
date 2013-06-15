@@ -394,7 +394,7 @@ public class PlainTextItemDeserialiserTests {
     }
 
     @Test
-    public void deserialise_extracts_talk_follow_up_phrase() {
+    public void deserialise_extracts_multiple_talk_follow_up_phrases() {
         TalkPhraseSink talkPhraseSink = mock( TalkPhraseSink.class );
         Item item = mock( Item.class );
         when( item.getTalkPhraseSink() ).thenReturn( talkPhraseSink );
@@ -402,14 +402,29 @@ public class PlainTextItemDeserialiserTests {
 
         d.deserialise( item,
                        "item talk initial phrase:hello:Hello!\n" +
-                       "item talk follow up phrase to:hello:followup:The next step in the conversation.\n" );
-        verify( talkPhraseSink ).addFollowUpPhrase( "hello", "followup", "The next step in the conversation." );
+                       "item talk follow up phrase to:hello:followup1:The next step in the conversation.\n" +
+                       "item talk follow up phrase to:hello:followup2:Another next step in the conversation.\n" );
+        verify( talkPhraseSink ).addFollowUpPhrase( "hello", "followup1", "The next step in the conversation." );
+        verify( talkPhraseSink ).addFollowUpPhrase( "hello", "followup2", "Another next step in the conversation." );
     }
 
     // @Test
-    // public void deserialise_extracts_multiple_follow_up_phrases() {
-    // @Test
     // public void deserialise_extracts_talk_action_in_response() {
+    //     TalkPhraseSink talkPhraseSink = mock( TalkPhraseSink.class );
+    //     Item item = mock( Item.class );
+    //     when( item.getTalkPhraseSink() ).thenReturn( talkPhraseSink );
+    //     ItemAction action = mock( ItemAction.class );
+    //     ItemActionFactory itemActionFactory = mock( ItemActionFactory.class );
+    //     when( itemActionFactory.create( Any( String.class ) ) ).thenReturn( action );
+    //     PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( itemActionFactory );
+
+    //     d.deserialise( item,
+    //                    "item talk initial phrase:hello:Hello!\n" +
+    //                    "item talk action in response to:hello:action name:action arg\n" );
+    //     verify( talkPhraseSink ).addActionInResponseTo( "hello", action );
+    //     verify( itemActionFactory ).create( "action name:action arg", item );
+    // }
+
     // @Test
     // public void deserialise_extracts_multiple_talk_actions_in_response() {
 }

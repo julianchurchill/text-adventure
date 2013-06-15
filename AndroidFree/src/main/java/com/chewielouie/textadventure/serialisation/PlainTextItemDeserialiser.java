@@ -93,7 +93,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     }
 
     private boolean findTagWithNoArgument( String tag ) {
-        return findTag( tag ) != -1;
+        return findTag( tag ) != NOT_FOUND;
     }
 
     private int findTag( String tag ) {
@@ -102,14 +102,14 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
 
     private String extractNewlineDelimitedValueFor( String tag ) {
         int startOfTag = findTag( tag );
-        if( startOfTag == -1 )
+        if( startOfTag == NOT_FOUND )
             return "";
         return extractValueUpToNewline( startOfTag + tag.length() );
     }
 
     private String extractValueUpToNewline( int startOfValue ) {
         int endOfTag = content.indexOf( "\n", startOfValue );
-        if( endOfTag == -1 )
+        if( endOfTag == NOT_FOUND )
             endOfTag = content.length();
         return content.substring( startOfValue, endOfTag );
     }
@@ -123,8 +123,8 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private List<ItemAction> extractMultipleActions( String triggerEventTag ) {
         List<ItemAction> actions = new ArrayList<ItemAction>();
         if( itemActionFactory != null ) {
-            int nextTag = -1;
-            while( (nextTag=findTagFrom( nextTag, triggerEventTag )) != -1 )
+            int nextTag = NOT_FOUND;
+            while( (nextTag=findTagFrom( nextTag, triggerEventTag )) != NOT_FOUND )
                 actions.add( createAction( nextTag, triggerEventTag ) );
         }
         return actions;
@@ -164,17 +164,20 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     }
 
     private void extractFollowUpPhrases( TalkPhraseSink talkPhraseSink ) {
-        int tagLoc = findTag( itemTalkFollowUpPhraseTag );
-        if( tagLoc != NOT_FOUND ) {
-            int startOfId = tagLoc + itemTalkFollowUpPhraseTag.length();
-            int argumentSeperatorIndex = findTagFrom( startOfId, argumentSeperator );
-            if( argumentSeperatorIndex != NOT_FOUND ) {
-                String parentPhraseId = content.substring( startOfId, argumentSeperatorIndex );
-                int startOfNewId = argumentSeperatorIndex + 1;
-                IdAndArgPair pair = extractIdAndArgPair( startOfNewId );
-                if( pair != null )
-                    talkPhraseSink.addFollowUpPhrase( parentPhraseId, pair.id, pair.arg );
-            }
+        int tagLoc = NOT_FOUND;
+        while( (tagLoc = findTagFrom( tagLoc, itemTalkFollowUpPhraseTag )) != NOT_FOUND )
+            extractSingleFollowUpPhrase( tagLoc, talkPhraseSink );
+    }
+
+    private void extractSingleFollowUpPhrase( int tagLoc, TalkPhraseSink talkPhraseSink ) {
+        int startOfId = tagLoc + itemTalkFollowUpPhraseTag.length();
+        int argumentSeperatorIndex = findTagFrom( startOfId, argumentSeperator );
+        if( argumentSeperatorIndex != NOT_FOUND ) {
+            String parentPhraseId = content.substring( startOfId, argumentSeperatorIndex );
+            int startOfNewId = argumentSeperatorIndex + 1;
+            IdAndArgPair pair = extractIdAndArgPair( startOfNewId );
+            if( pair != null )
+                talkPhraseSink.addFollowUpPhrase( parentPhraseId, pair.id, pair.arg );
         }
     }
 
