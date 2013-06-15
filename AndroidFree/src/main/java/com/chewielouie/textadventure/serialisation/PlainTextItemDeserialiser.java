@@ -171,12 +171,9 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
             if( argumentSeperatorIndex != NOT_FOUND ) {
                 String parentPhraseId = content.substring( startOfId, argumentSeperatorIndex );
                 int startOfNewId = argumentSeperatorIndex + 1;
-                int endOfNewId = findTagFrom( startOfNewId, argumentSeperator );
-                if( endOfNewId != NOT_FOUND ) {
-                    String newPhraseId = content.substring( startOfNewId, endOfNewId );
-                    String phrase = extractValueUpToNewline( endOfNewId + 1 );
-                    talkPhraseSink.addFollowUpPhrase( parentPhraseId, newPhraseId, phrase );
-                }
+                IdAndArgPair pair = extractIdAndArgPair( startOfNewId );
+                if( pair != null )
+                    talkPhraseSink.addFollowUpPhrase( parentPhraseId, pair.id, pair.arg );
             }
         }
     }
@@ -196,7 +193,9 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         int currentLoc = NOT_FOUND;
         while( (currentLoc = findTagFrom( currentLoc, tag )) != NOT_FOUND ) {
             int startOfId = currentLoc + tag.length();
-            pairs.add( extractIdAndArgPair( startOfId ) );
+            IdAndArgPair pair = extractIdAndArgPair( startOfId );
+            if( pair != null )
+                pairs.add( pair );
         }
         return pairs;
     }
