@@ -377,8 +377,21 @@ public class PlainTextItemDeserialiserTests {
         verify( talkPhraseSink ).addInitialPhrase( "hello", "Hello!" );
     }
 
-    // @Test
-    // public void deserialise_extracts_multiple_initial_talk_phrases() {
+    @Test
+    public void deserialise_extracts_multiple_initial_talk_phrases() {
+        TalkPhraseSink talkPhraseSink = mock( TalkPhraseSink.class );
+        Item item = mock( Item.class );
+        when( item.getTalkPhraseSink() ).thenReturn( talkPhraseSink );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+
+        d.deserialise( item,
+                       "item name:Name\n" +
+                       "item description:description\n" +
+                       "item talk initial phrase:hello1:Hello1!\n" +
+                       "item talk initial phrase:hello2:Hello2!\n" );
+        verify( talkPhraseSink ).addInitialPhrase( "hello1", "Hello1!" );
+        verify( talkPhraseSink ).addInitialPhrase( "hello2", "Hello2!" );
+    }
 
     // @Test
     // public void deserialise_extracts_talk_response() {

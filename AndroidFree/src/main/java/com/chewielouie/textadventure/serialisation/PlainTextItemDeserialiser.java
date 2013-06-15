@@ -1,10 +1,11 @@
 package com.chewielouie.textadventure.serialisation;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.item.TalkPhraseSink;
 import com.chewielouie.textadventure.itemaction.ItemAction;
 import com.chewielouie.textadventure.itemaction.ItemActionFactory;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private final int NOT_FOUND = -1;
@@ -140,17 +141,23 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     }
 
     private void extractTalkPhraseInfo() {
-        int initialTalkPhrase = findTag( itemInitialTalkPhraseTag );
-        if( initialTalkPhrase != NOT_FOUND ) {
-            int startOfID = initialTalkPhrase + itemInitialTalkPhraseTag.length();
-            int argumentSeperatorIndex = findTagFrom( startOfID, argumentSeperator );
-            if( argumentSeperatorIndex != NOT_FOUND ) {
-                String id = content.substring( startOfID, argumentSeperatorIndex );
-                String phrase = extractValueUpToNewline( argumentSeperatorIndex + 1 );
-                if( item.getTalkPhraseSink() != null )
-                    item.getTalkPhraseSink().addInitialPhrase ( id, phrase );
-            }
+        TalkPhraseSink talkPhraseSink = item.getTalkPhraseSink();
+        if( talkPhraseSink != null ) {
+            int initialTalkPhraseLoc = NOT_FOUND;
+            while( (initialTalkPhraseLoc = findTagFrom( initialTalkPhraseLoc,
+                                            itemInitialTalkPhraseTag )) != NOT_FOUND )
+                extractInitialTalkPhrase( initialTalkPhraseLoc, talkPhraseSink );
+        }
+    }
+
+    private void extractInitialTalkPhrase( int initialTalkPhraseLoc,
+                                           TalkPhraseSink talkPhraseSink ) {
+        int startOfID = initialTalkPhraseLoc + itemInitialTalkPhraseTag.length();
+        int argumentSeperatorIndex = findTagFrom( startOfID, argumentSeperator );
+        if( argumentSeperatorIndex != NOT_FOUND ) {
+            String id = content.substring( startOfID, argumentSeperatorIndex );
+            String phrase = extractValueUpToNewline( argumentSeperatorIndex + 1 );
+            talkPhraseSink.addInitialPhrase ( id, phrase );
         }
     }
 }
-
