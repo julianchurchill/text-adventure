@@ -364,20 +364,6 @@ public class PlainTextItemDeserialiserTests {
     }
 
     @Test
-    public void deserialise_extracts_initial_talk_phrase() {
-        TalkPhraseSink talkPhraseSink = mock( TalkPhraseSink.class );
-        Item item = mock( Item.class );
-        when( item.getTalkPhraseSink() ).thenReturn( talkPhraseSink );
-        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
-
-        d.deserialise( item,
-                       "item name:Name\n" +
-                       "item description:description\n" +
-                       "item talk initial phrase:hello:Hello!\n" );
-        verify( talkPhraseSink ).addInitialPhrase( "hello", "Hello!" );
-    }
-
-    @Test
     public void deserialise_extracts_multiple_initial_talk_phrases() {
         TalkPhraseSink talkPhraseSink = mock( TalkPhraseSink.class );
         Item item = mock( Item.class );
@@ -385,20 +371,32 @@ public class PlainTextItemDeserialiserTests {
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
 
         d.deserialise( item,
-                       "item name:Name\n" +
-                       "item description:description\n" +
                        "item talk initial phrase:hello1:Hello1!\n" +
                        "item talk initial phrase:hello2:Hello2!\n" );
         verify( talkPhraseSink ).addInitialPhrase( "hello1", "Hello1!" );
         verify( talkPhraseSink ).addInitialPhrase( "hello2", "Hello2!" );
     }
 
-    // @Test
-    // public void deserialise_extracts_talk_response() {
-    // @Test
-    // public void deserialise_extracts_multiple_talk_responses() {
+    @Test
+    public void deserialise_extracts_multiple_responses() {
+        TalkPhraseSink talkPhraseSink = mock( TalkPhraseSink.class );
+        Item item = mock( Item.class );
+        when( item.getTalkPhraseSink() ).thenReturn( talkPhraseSink );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+
+        d.deserialise( item,
+                       "item talk initial phrase:id1:Hello!\n" +
+                       "item talk response to:id1:1st response\n" +
+                       "item talk initial phrase:id2:Hello2!\n" +
+                       "item talk response to:id2:2nd response\n" );
+        verify( talkPhraseSink ).addResponse( "id1", "1st response" );
+        verify( talkPhraseSink ).addResponse( "id2", "2nd response" );
+    }
+
     // @Test
     // public void deserialise_extracts_talk_follow_up_phrase() {
+    // @Test
+    // public void deserialise_extracts_multiple_follow_up_phrases() {
     // @Test
     // public void deserialise_extracts_talk_action_in_response() {
     // @Test

@@ -25,6 +25,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private final String itemExamineActionIsNotRepeatableTag = "item examine action is not repeatable:";
     private final String itemOnExamineActionTag = "item on examine action:";
     private final String itemInitialTalkPhraseTag = "item talk initial phrase:";
+    private final String itemTalkResponseToTag = "item talk response to:";
     private Item item;
     private String content;
     private ItemActionFactory itemActionFactory;
@@ -143,21 +144,50 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private void extractTalkPhraseInfo() {
         TalkPhraseSink talkPhraseSink = item.getTalkPhraseSink();
         if( talkPhraseSink != null ) {
-            int initialTalkPhraseLoc = NOT_FOUND;
-            while( (initialTalkPhraseLoc = findTagFrom( initialTalkPhraseLoc,
-                                            itemInitialTalkPhraseTag )) != NOT_FOUND )
-                extractInitialTalkPhrase( initialTalkPhraseLoc, talkPhraseSink );
+            extractInitialTalkPhrases( talkPhraseSink );
+            extractTalkResponses( talkPhraseSink );
         }
     }
 
-    private void extractInitialTalkPhrase( int initialTalkPhraseLoc,
-                                           TalkPhraseSink talkPhraseSink ) {
-        int startOfID = initialTalkPhraseLoc + itemInitialTalkPhraseTag.length();
-        int argumentSeperatorIndex = findTagFrom( startOfID, argumentSeperator );
-        if( argumentSeperatorIndex != NOT_FOUND ) {
-            String id = content.substring( startOfID, argumentSeperatorIndex );
-            String phrase = extractValueUpToNewline( argumentSeperatorIndex + 1 );
-            talkPhraseSink.addInitialPhrase ( id, phrase );
+    private void extractInitialTalkPhrases( TalkPhraseSink talkPhraseSink ) {
+        for( IdAndArgPair pair : extractAllIdAndArgPairs( itemInitialTalkPhraseTag,
+                                                          talkPhraseSink ) )
+            talkPhraseSink.addInitialPhrase( pair.id, pair.arg );
+    }
+
+    private void extractTalkResponses( TalkPhraseSink talkPhraseSink ) {
+        for( IdAndArgPair pair : extractAllIdAndArgPairs( itemTalkResponseToTag,
+                                                          talkPhraseSink ) )
+            talkPhraseSink.addResponse( pair.id, pair.arg );
+    }
+
+    class IdAndArgPair {
+        public String id;
+        public String arg;
+
+        IdAndArgPair( String id, String arg ) {
+            this.id = id;
+            this.arg = arg;
         }
+    }
+
+    private List<IdAndArgPair> extractAllIdAndArgPairs( String tag, TalkPhraseSink talkPhraseSink ) {
+        List<IdAndArgPair> pairs = new ArrayList<IdAndArgPair>();
+        int currentLoc = NOT_FOUND;
+        while( (currentLoc = findTagFrom( currentLoc, tag )) != NOT_FOUND ) {
+            int startOfId = currentLoc + tag.length();
+            pairs.add( extractIdAndArgPair( startOfId ) );
+        }
+        return pairs;
+    }
+
+    private IdAndArgPair extractIdAndArgPair( int startOfId ) {
+        int argumentSeperatorIndex = findTagFrom( startOfId, argumentSeperator );
+        if( argumentSeperatorIndex != NOT_FOUND ) {
+            String id = content.substring( startOfId, argumentSeperatorIndex );
+            String arg = extractValueUpToNewline( argumentSeperatorIndex + 1 );
+            return new IdAndArgPair( id, arg );
+        }
+        return null;
     }
 }
