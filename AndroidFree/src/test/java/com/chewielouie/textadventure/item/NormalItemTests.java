@@ -1,6 +1,9 @@
 package com.chewielouie.textadventure.item;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -278,6 +281,48 @@ public class NormalItemTests {
         item.examine();
         item.examine();
     }
+
+    @Test
+    public void item_on_construction_cannot_be_talked_to() {
+        assertThat( new NormalItem().canTalkTo(), is( false ) );
+    }
+
+    @Test
+    public void item_can_be_talked_to_after_initial_phrase_added() {
+        NormalItem item = new NormalItem();
+        item.getTalkPhraseSink().addInitialPhrase( "id", "content" );
+        assertThat( item.canTalkTo(), is( true ) );
+    }
+
+    @Test
+    public void added_initial_phrase_ids_can_be_retrieved() {
+        NormalItem item = new NormalItem();
+        item.getTalkPhraseSink().addInitialPhrase( "id1", "content" );
+        item.getTalkPhraseSink().addInitialPhrase( "id2", "content" );
+
+        TalkPhraseSource source = item.getTalkPhraseSource();
+        assertThat( source.initialPhraseIds().size(), is( 2 ) );
+        assertThat( source.initialPhraseIds(), hasItem( "id1" ) );
+        assertThat( source.initialPhraseIds(), hasItem( "id2" ) );
+    }
+
+    @Test
+    public void added_initial_phrases_can_be_retrieved() {
+        NormalItem item = new NormalItem();
+        item.getTalkPhraseSink().addInitialPhrase( "id1", "content 1" );
+        item.getTalkPhraseSink().addInitialPhrase( "id2", "content 2" );
+
+        TalkPhraseSource source = item.getTalkPhraseSource();
+        assertThat( source.phraseById( "id1" ), is( "content 1" ) );
+        assertThat( source.phraseById( "id2" ), is( "content 2" ) );
+    }
+
+    // @Test
+    // public void added_response_can_be_retrieved() {
+    // @Test
+    // public void added_follow_up_phrase_can_be_retrieved() {
+    // @Test
+    // public void added_actions_can_be_executed() {
 
     @Test
     public void two_objects_with_the_same_value_should_be_equal() {

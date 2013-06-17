@@ -36,6 +36,7 @@ Backlog
     - DONE RecordableActionFactory can create TalkToActions
     - DONE RecordableActionFactory can create SayActions
     - DONE Deserialise talk related specs from model content into TalkPhraseSink
+    - Deserialise short talk phrases into TalkPhraseSink
     - Item
       - Item has a getTalkPhraseSource() method (could return itself or a seperate implementation of the interface)
       - Item.canTalkTo()

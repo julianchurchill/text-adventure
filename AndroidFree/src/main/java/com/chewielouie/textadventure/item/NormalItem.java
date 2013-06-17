@@ -1,10 +1,12 @@
 package com.chewielouie.textadventure.item;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.chewielouie.textadventure.itemaction.ItemAction;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class NormalItem implements Item {
+public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     private String name = "";
     private String description = "";
     private String countableNounPrefix = "a";
@@ -21,6 +23,7 @@ public class NormalItem implements Item {
     private String examineText = "";
     private boolean examineActionIsRepeatable = true;
     private boolean examined = false;
+    private boolean canTalkTo = false;
 
     public String description() {
         return description;
@@ -190,15 +193,67 @@ public class NormalItem implements Item {
     }
 
     public boolean canTalkTo() {
-        return false;
+        return canTalkTo;
     }
 
     public TalkPhraseSource getTalkPhraseSource() {
-        return null;
+        return this;
     }
 
     public TalkPhraseSink getTalkPhraseSink() {
-        return null;
+        return this;
+    }
+
+    private class Phrase {
+        private String content;
+
+        public Phrase( String content ) {
+            this.content = content;
+        }
+
+        public String content() {
+            return content;
+        }
+    }
+
+    private Map<String, Phrase> initialPhrases = new HashMap<String, Phrase>();
+
+    public void addInitialPhrase( String id, String content ) {
+        canTalkTo = true;
+        initialPhrases.put( id, new Phrase( content ) );
+    }
+
+    public void addResponse( String id, String response ) {
+    }
+
+    public void addFollowUpPhrase( String parentId, String newPhraseId, String phrase ) {
+    }
+
+    public void addActionInResponseTo( String id, ItemAction action ) {
+    }
+
+    public List<String> initialPhraseIds() {
+        List<String> ids = new ArrayList<String>();
+        ids.addAll( initialPhrases.keySet() );
+        return ids;
+    }
+
+    public String shortPhraseById( String id ) {
+        return "";
+    }
+
+    public String phraseById( String id ) {
+        return initialPhrases.get( id ).content();
+    }
+
+    public String responseToPhraseById( String id ) {
+        return "";
+    }
+
+    public List<String> followOnPhrasesIdsForPhraseById( String id ) {
+        return new ArrayList<String>();
+    }
+
+    public void executeActionsForPhraseById( String id ) {
     }
 }
-
