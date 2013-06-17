@@ -3,8 +3,10 @@ package com.chewielouie.textadventure.item;
 import com.chewielouie.textadventure.itemaction.ItemAction;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     private String name = "";
@@ -216,26 +218,37 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
         }
     }
 
-    private Map<String, Phrase> initialPhrases = new HashMap<String, Phrase>();
+    private List<String> initialPhraseIds = new ArrayList<String>();
+    private Map<String, Phrase> phrases = new HashMap<String, Phrase>();
+    private Map<String, Phrase> responses = new HashMap<String, Phrase>();
+    private Map<String, Set<String>> followUpPhrases = new HashMap<String, Set<String>>();
 
     public void addInitialPhrase( String id, String content ) {
         canTalkTo = true;
-        initialPhrases.put( id, new Phrase( content ) );
+        initialPhraseIds.add( id );
+        phrases.put( id, new Phrase( content ) );
     }
 
     public void addResponse( String id, String response ) {
+        responses.put( id, new Phrase( response ) );
     }
 
     public void addFollowUpPhrase( String parentId, String newPhraseId, String phrase ) {
+        addFollowUpPhrase( parentId, newPhraseId );
+        phrases.put( newPhraseId, new Phrase( phrase ) );
+    }
+
+    public void addFollowUpPhrase( String parentId, String newPhraseId ) {
+        if( followUpPhrases.containsKey( parentId ) == false )
+            followUpPhrases.put( parentId, new HashSet<String>() );
+        followUpPhrases.get( parentId ).add( newPhraseId );
     }
 
     public void addActionInResponseTo( String id, ItemAction action ) {
     }
 
     public List<String> initialPhraseIds() {
-        List<String> ids = new ArrayList<String>();
-        ids.addAll( initialPhrases.keySet() );
-        return ids;
+        return initialPhraseIds;
     }
 
     public String shortPhraseById( String id ) {
@@ -243,15 +256,15 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     }
 
     public String phraseById( String id ) {
-        return initialPhrases.get( id ).content();
+        return phrases.get( id ).content();
     }
 
     public String responseToPhraseById( String id ) {
-        return "";
+        return responses.get( id ).content();
     }
 
     public List<String> followOnPhrasesIdsForPhraseById( String id ) {
-        return new ArrayList<String>();
+        return new ArrayList<String>( followUpPhrases.get( id ) );
     }
 
     public void executeActionsForPhraseById( String id ) {

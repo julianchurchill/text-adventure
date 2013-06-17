@@ -520,7 +520,7 @@ item id:generalstoreshopkeeper
 item countable noun prefix:a
 item is untakeable:
 
-item talk initial phrase:hello:You say "Hello!".
+item talk initial phrase:hello:Hello!:You say "Hello!".
 item talk response to:hello:The Shop keeper replies "Hello yourself my friend. How can I help you?".
 item talk follow up phrase to:hello:checkin:I just came to check in...:You say "I just came to check in. Glad you to see you are looking well.".
 item talk response to:checkin:The Shop keeper says "Why thank you, it's all down to you my friend.".
@@ -528,10 +528,10 @@ item talk follow up phrase to:checkin:lookingforwork:I was looking for some work
 item talk response to:lookingforwork:The Shop keeper says "Sure, you should go to the town hall to the east of the town. There are boards where an adventurer might find a job.".
 item talk action in response to:lookingforwork:make exit visible:mainstreeteast
 
-item talk initial phrase:lookingwell:You say "You're looking well friend.".
+item talk initial phrase:lookingwell:You're looking well...:You say "You're looking well friend.".
 item talk response to:lookingwell:The Shop keeper replies "Why thank you, it's all down to you my friend.".
 item talk follow up phrase to:lookingwell:lookingforwork:
 
 item talk initial phrase:gimmemoney:I need money...:You say "I need money, can you spare some coin for your rescuer?".
-item talk response to:gimmemoney:The Shop replies nervoursly "Err I'm just getting my shop back on it's feet, I'm sorry but I can't spare any money at the moment.".
+item talk response to:gimmemoney:The Shop keeper replies nervously "Err I'm just getting my shop back on it's feet, I'm sorry but I can't spare any money at the moment.".
 item talk follow up phrase to:gimmemoney:lookingwell:

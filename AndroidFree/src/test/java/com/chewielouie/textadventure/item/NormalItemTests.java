@@ -317,12 +317,77 @@ public class NormalItemTests {
         assertThat( source.phraseById( "id2" ), is( "content 2" ) );
     }
 
-    // @Test
-    // public void added_response_can_be_retrieved() {
-    // @Test
-    // public void added_follow_up_phrase_can_be_retrieved() {
+    @Test
+    public void added_response_can_be_retrieved() {
+        NormalItem item = new NormalItem();
+        item.getTalkPhraseSink().addResponse( "id1", "content 1" );
+        item.getTalkPhraseSink().addResponse( "id2", "content 2" );
+
+        TalkPhraseSource source = item.getTalkPhraseSource();
+        assertThat( source.responseToPhraseById( "id1" ), is( "content 1" ) );
+        assertThat( source.responseToPhraseById( "id2" ), is( "content 2" ) );
+    }
+
+    @Test
+    public void added_follow_up_phrase_ids_can_be_retrieved() {
+        NormalItem item = new NormalItem();
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "content 1" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id2", "content 2" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 2", "id3", "content 3" );
+
+        TalkPhraseSource source = item.getTalkPhraseSource();
+        List<String> followOnPhrases = source.followOnPhrasesIdsForPhraseById( "parent id 1" );
+        assertThat( followOnPhrases.size(), is( 2 ) );
+        assertThat( followOnPhrases, hasItem( "id1" ) );
+        assertThat( followOnPhrases, hasItem( "id2" ) );
+        followOnPhrases = source.followOnPhrasesIdsForPhraseById( "parent id 2" );
+        assertThat( followOnPhrases.size(), is( 1 ) );
+        assertThat( followOnPhrases, hasItem( "id3" ) );
+    }
+
+    @Test
+    public void added_follow_up_phrases_ids_only_appear_once() {
+        NormalItem item = new NormalItem();
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "content 1" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "content 1" );
+
+        TalkPhraseSource source = item.getTalkPhraseSource();
+        List<String> followOnPhrases = source.followOnPhrasesIdsForPhraseById( "parent id 1" );
+        assertThat( followOnPhrases.size(), is( 1 ) );
+        assertThat( followOnPhrases, hasItem( "id1" ) );
+    }
+
+    @Test
+    public void added_follow_up_phrases_can_be_retrieved() {
+        NormalItem item = new NormalItem();
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "content 1" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id2", "content 2" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 2", "id3", "content 3" );
+
+        TalkPhraseSource source = item.getTalkPhraseSource();
+        assertThat( source.phraseById( "id1" ), is( "content 1" ) );
+        assertThat( source.phraseById( "id2" ), is( "content 2" ) );
+        assertThat( source.phraseById( "id3" ), is( "content 3" ) );
+    }
+
+    @Test
+    public void added_follow_up_phrases_without_content_refer_to_already_added_phrase_content() {
+        NormalItem item = new NormalItem();
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "content 1" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 2", "id1" );
+
+        TalkPhraseSource source = item.getTalkPhraseSource();
+        List<String> followOnPhrases = source.followOnPhrasesIdsForPhraseById( "parent id 2" );
+        assertThat( followOnPhrases.size(), is( 1 ) );
+        assertThat( followOnPhrases, hasItem( "id1" ) );
+    }
+
     // @Test
     // public void added_actions_can_be_executed() {
+    // @Test
+    // public void short_phrases_for_initial_phrases_can_be_retrieved() {
+    // @Test
+    // public void short_phrases_for_follow_up_phrases_can_be_retrieved() {
 
     @Test
     public void two_objects_with_the_same_value_should_be_equal() {
