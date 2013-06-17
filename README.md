@@ -36,17 +36,16 @@ Backlog
     - DONE RecordableActionFactory can create TalkToActions
     - DONE RecordableActionFactory can create SayActions
     - DONE Deserialise talk related specs from model content into TalkPhraseSink
-    - Deserialise short talk phrases into TalkPhraseSink
-    - Deserialise follow up phrases specified by id only e.g. "item talk follow up phrase to:lookingwell:lookingforwork:". Use TalkPhraseSink.addFollowUpPhrase( parentId, childId ).
     - Item
-      - Item has a getTalkPhraseSource() method (could return itself or a seperate implementation of the interface)
-      - Item.canTalkTo()
-      - Item.addInitialTalkPhrase()
-    - TalkPhraseSource
-      - phraseById()
-      - responseToPhraseById()
-      - followOnPhrasesForPhraseById()
+      - DONE Item.canTalkTo()
+      - DONE addInitialTalkPhrase()
+      - DONE phraseById()
+      - DONE responseToPhraseById()
+      - DONE followOnPhrasesForPhraseById()
       - executeActionsForPhraseById()
+      - shortPhraseById()
+    - Deserialise follow up phrases specified by id only e.g. "item talk follow up phrase to:lookingwell:lookingforwork:". Use TalkPhraseSink.addFollowUpPhrase( parentId, childId ).
+    - Deserialise short talk phrases into TalkPhraseSink
     - Serialise TalkToAction and SayAction for ActionHistory and ActionParameters
     - Deserialise TalkToAction and SayAction for ActionHistory
 
