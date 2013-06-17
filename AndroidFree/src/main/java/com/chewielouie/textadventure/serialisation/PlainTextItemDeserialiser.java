@@ -27,6 +27,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private final String itemInitialTalkPhraseTag = "item talk initial phrase:";
     private final String itemTalkResponseToTag = "item talk response to:";
     private final String itemTalkFollowUpPhraseTag = "item talk follow up phrase to:";
+    private final String itemTalkActionTag = "item talk action in response to:";
     private Item item;
     private String content;
     private ItemActionFactory itemActionFactory;
@@ -148,6 +149,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
             extractInitialTalkPhrases( talkPhraseSink );
             extractTalkResponses( talkPhraseSink );
             extractFollowUpPhrases( talkPhraseSink );
+            extractTalkActions( talkPhraseSink, item );
         }
     }
 
@@ -167,6 +169,14 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         int tagLoc = NOT_FOUND;
         while( (tagLoc = findTagFrom( tagLoc, itemTalkFollowUpPhraseTag )) != NOT_FOUND )
             extractSingleFollowUpPhrase( tagLoc, talkPhraseSink );
+    }
+
+    private void extractTalkActions( TalkPhraseSink talkPhraseSink, Item item ) {
+        for( IdAndArgPair pair : extractAllIdAndArgPairs( itemTalkActionTag,
+                                                          talkPhraseSink ) ) {
+            ItemAction itemAction = itemActionFactory.create( pair.arg, item );
+            talkPhraseSink.addActionInResponseTo( pair.id, itemAction );
+        }
     }
 
     private void extractSingleFollowUpPhrase( int tagLoc, TalkPhraseSink talkPhraseSink ) {

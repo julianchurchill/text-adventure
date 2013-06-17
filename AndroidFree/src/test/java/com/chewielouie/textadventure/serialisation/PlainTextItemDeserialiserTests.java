@@ -9,6 +9,7 @@ import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.item.TalkPhraseSink;
 import com.chewielouie.textadventure.itemaction.ItemAction;
@@ -408,24 +409,27 @@ public class PlainTextItemDeserialiserTests {
         verify( talkPhraseSink ).addFollowUpPhrase( "hello", "followup2", "Another next step in the conversation." );
     }
 
-    // @Test
-    // public void deserialise_extracts_talk_action_in_response() {
-    //     TalkPhraseSink talkPhraseSink = mock( TalkPhraseSink.class );
-    //     Item item = mock( Item.class );
-    //     when( item.getTalkPhraseSink() ).thenReturn( talkPhraseSink );
-    //     ItemAction action = mock( ItemAction.class );
-    //     ItemActionFactory itemActionFactory = mock( ItemActionFactory.class );
-    //     when( itemActionFactory.create( Any( String.class ) ) ).thenReturn( action );
-    //     PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( itemActionFactory );
+    @Test
+    public void deserialise_extracts_multiple_talk_actions_in_response() {
+        TalkPhraseSink talkPhraseSink = mock( TalkPhraseSink.class );
+        Item item = mock( Item.class );
+        when( item.getTalkPhraseSink() ).thenReturn( talkPhraseSink );
+        ItemAction action1 = mock( ItemAction.class );
+        ItemAction action2 = mock( ItemAction.class );
+        ItemActionFactory itemActionFactory = mock( ItemActionFactory.class );
+        when( itemActionFactory.create( "action name 1:action arg", item ) )
+          .thenReturn( action1 );
+        when( itemActionFactory.create( "action name 2:action arg", item ) )
+          .thenReturn( action2 );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( itemActionFactory );
 
-    //     d.deserialise( item,
-    //                    "item talk initial phrase:hello:Hello!\n" +
-    //                    "item talk action in response to:hello:action name:action arg\n" );
-    //     verify( talkPhraseSink ).addActionInResponseTo( "hello", action );
-    //     verify( itemActionFactory ).create( "action name:action arg", item );
-    // }
-
-    // @Test
-    // public void deserialise_extracts_multiple_talk_actions_in_response() {
+        d.deserialise( item,
+                       "item talk initial phrase:hello:Hello!\n" +
+                       "item talk action in response to:hello1:action name 1:action arg\n" +
+                       "item talk action in response to:hello2:action name 2:action arg\n" );
+        verify( talkPhraseSink ).addActionInResponseTo( "hello1", action1 );
+        verify( talkPhraseSink ).addActionInResponseTo( "hello2", action2 );
+        verify( itemActionFactory ).create( "action name 1:action arg", item );
+        verify( itemActionFactory ).create( "action name 2:action arg", item );
+    }
 }
-
