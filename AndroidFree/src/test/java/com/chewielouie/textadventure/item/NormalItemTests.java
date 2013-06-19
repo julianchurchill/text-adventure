@@ -382,8 +382,34 @@ public class NormalItemTests {
         assertThat( followOnPhrases, hasItem( "id1" ) );
     }
 
-    // @Test
-    // public void added_actions_can_be_executed() {
+    @Test
+    public void added_actions_can_be_executed() {
+        NormalItem item = new NormalItem();
+        ItemAction action1 = mock( ItemAction.class );
+        ItemAction action2 = mock( ItemAction.class );
+        ItemAction action3 = mock( ItemAction.class );
+        item.getTalkPhraseSink().addActionInResponseTo( "id1", action1 );
+        item.getTalkPhraseSink().addActionInResponseTo( "id1", action2 );
+        item.getTalkPhraseSink().addActionInResponseTo( "id2", action3 );
+
+        item.getTalkPhraseSource().executeActionsForPhraseById( "id1" );
+
+        verify( action1 ).enact();
+        verify( action2 ).enact();
+        verify( action3, never() ).enact();
+    }
+
+    @Test
+    public void executing_actions_for_a_phrase_id_that_is_not_known_does_not_execute_any_actions() {
+        NormalItem item = new NormalItem();
+        ItemAction action = mock( ItemAction.class );
+        item.getTalkPhraseSink().addActionInResponseTo( "id1", action );
+
+        item.getTalkPhraseSource().executeActionsForPhraseById( "unknown id" );
+
+        verify( action, never() ).enact();
+    }
+
     // @Test
     // public void short_phrases_for_initial_phrases_can_be_retrieved() {
     // @Test

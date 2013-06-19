@@ -222,6 +222,7 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     private Map<String, Phrase> phrases = new HashMap<String, Phrase>();
     private Map<String, Phrase> responses = new HashMap<String, Phrase>();
     private Map<String, Set<String>> followUpPhrases = new HashMap<String, Set<String>>();
+    private Map<String, Set<ItemAction>> phraseActions = new HashMap<String, Set<ItemAction>>();
 
     public void addInitialPhrase( String id, String content ) {
         canTalkTo = true;
@@ -245,6 +246,9 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     }
 
     public void addActionInResponseTo( String id, ItemAction action ) {
+        if( phraseActions.containsKey( id ) == false )
+            phraseActions.put( id, new HashSet<ItemAction>() );
+        phraseActions.get( id ).add( action );
     }
 
     public List<String> initialPhraseIds() {
@@ -268,5 +272,8 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     }
 
     public void executeActionsForPhraseById( String id ) {
+        if( phraseActions.containsKey( id ) )
+            for( ItemAction a : phraseActions.get( id ) )
+                a.enact();
     }
 }
