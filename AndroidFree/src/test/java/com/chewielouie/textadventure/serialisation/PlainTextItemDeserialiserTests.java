@@ -410,6 +410,24 @@ public class PlainTextItemDeserialiserTests {
     }
 
     @Test
+    public void deserialise_extracts_multiple_talk_follow_up_phrases_with_ids_only() {
+        TalkPhraseSink talkPhraseSink = mock( TalkPhraseSink.class );
+        Item item = mock( Item.class );
+        when( item.getTalkPhraseSink() ).thenReturn( talkPhraseSink );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+
+        d.deserialise( item,
+                       "item talk initial phrase:hello1:short content:Hello!\n" +
+                       "item talk initial phrase:hello2:short content:Hello!\n" +
+                       "item talk initial phrase:hello3:short content:Hello!\n" +
+                       "item talk follow up phrase to:hello1:followup1:short content1:The next step in the conversation.\n" +
+                       "item talk follow up phrase to:hello2:followup1\n" +
+                       "item talk follow up phrase to:hello3:followup1\n" );
+        verify( talkPhraseSink ).addFollowUpPhrase( "hello2", "followup1" );
+        verify( talkPhraseSink ).addFollowUpPhrase( "hello3", "followup1" );
+    }
+
+    @Test
     public void deserialise_extracts_multiple_talk_actions_in_response() {
         TalkPhraseSink talkPhraseSink = mock( TalkPhraseSink.class );
         Item item = mock( Item.class );

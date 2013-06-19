@@ -185,12 +185,14 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         if( argumentSeperatorIndex != NOT_FOUND ) {
             String parentPhraseId = content.substring( startOfId, argumentSeperatorIndex );
             int startOfNewId = argumentSeperatorIndex + 1;
-            IdAndArgPair pair = extractIdAndArgPair( startOfNewId );
-            if( pair != null )
+            String restOfLine = extractValueUpToNewline( startOfNewId );
+            if( restOfLine.indexOf( ":" ) == NOT_FOUND )
+                talkPhraseSink.addFollowUpPhrase( parentPhraseId, restOfLine );
+            else
                 talkPhraseSink.addFollowUpPhrase( parentPhraseId,
-                                                  pair.id,
-                                                  pair.arg.split( argumentSeperator )[0],
-                                                  pair.arg.split( argumentSeperator )[1] );
+                                                  restOfLine.split( argumentSeperator )[0],
+                                                  restOfLine.split( argumentSeperator )[1],
+                                                  restOfLine.split( argumentSeperator )[2] );
         }
     }
 
