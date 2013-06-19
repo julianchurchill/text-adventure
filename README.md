@@ -44,8 +44,9 @@ Backlog
       - DONE followOnPhrasesForPhraseById()
       - DONE executeActionsForPhraseById()
       - DONE shortPhraseById()
+    - DONE Deserialise short talk phrases into TalkPhraseSink
     - Deserialise follow up phrases specified by id only e.g. "item talk follow up phrase to:lookingwell:lookingforwork:". Use TalkPhraseSink.addFollowUpPhrase( parentId, childId ).
-    - Deserialise short talk phrases into TalkPhraseSink
+      - Uncomment follow up phrases with id only in demo_model_content
     - Serialise TalkToAction and SayAction for ActionHistory and ActionParameters
     - Deserialise TalkToAction and SayAction for ActionHistory
     - Run acceptance tests

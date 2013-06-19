@@ -530,8 +530,8 @@ item talk action in response to:lookingforwork:make exit visible:mainstreeteast
 
 item talk initial phrase:lookingwell:You're looking well...:You say "You're looking well friend.".
 item talk response to:lookingwell:The Shop keeper replies "Why thank you, it's all down to you my friend.".
-item talk follow up phrase to:lookingwell:lookingforwork:
+//item [TODO] talk follow up phrase to:lookingwell:lookingforwork:
 
 item talk initial phrase:gimmemoney:I need money...:You say "I need money, can you spare some coin for your rescuer?".
 item talk response to:gimmemoney:The Shop keeper replies nervously "Err I'm just getting my shop back on it's feet, I'm sorry but I can't spare any money at the moment.".
-item talk follow up phrase to:gimmemoney:lookingwell:
+//item [TODO] talk follow up phrase to:gimmemoney:lookingwell:

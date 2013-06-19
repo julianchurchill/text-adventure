@@ -372,10 +372,10 @@ public class PlainTextItemDeserialiserTests {
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
 
         d.deserialise( item,
-                       "item talk initial phrase:hello1:Hello1!\n" +
-                       "item talk initial phrase:hello2:Hello2!\n" );
-        verify( talkPhraseSink ).addInitialPhrase( "hello1", "", "Hello1!" );
-        verify( talkPhraseSink ).addInitialPhrase( "hello2", "", "Hello2!" );
+                       "item talk initial phrase:hello1:short content1:long content1\n" +
+                       "item talk initial phrase:hello2:short content2:long content2\n" );
+        verify( talkPhraseSink ).addInitialPhrase( "hello1", "short content1", "long content1" );
+        verify( talkPhraseSink ).addInitialPhrase( "hello2", "short content2", "long content2" );
     }
 
     @Test
@@ -386,9 +386,9 @@ public class PlainTextItemDeserialiserTests {
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
 
         d.deserialise( item,
-                       "item talk initial phrase:id1:Hello!\n" +
+                       "item talk initial phrase:id1:short content:Hello!\n" +
                        "item talk response to:id1:1st response\n" +
-                       "item talk initial phrase:id2:Hello2!\n" +
+                       "item talk initial phrase:id2:short content:Hello2!\n" +
                        "item talk response to:id2:2nd response\n" );
         verify( talkPhraseSink ).addResponse( "id1", "1st response" );
         verify( talkPhraseSink ).addResponse( "id2", "2nd response" );
@@ -402,11 +402,11 @@ public class PlainTextItemDeserialiserTests {
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
 
         d.deserialise( item,
-                       "item talk initial phrase:hello:Hello!\n" +
-                       "item talk follow up phrase to:hello:followup1:The next step in the conversation.\n" +
-                       "item talk follow up phrase to:hello:followup2:Another next step in the conversation.\n" );
-        verify( talkPhraseSink ).addFollowUpPhrase( "hello", "followup1", "", "The next step in the conversation." );
-        verify( talkPhraseSink ).addFollowUpPhrase( "hello", "followup2", "", "Another next step in the conversation." );
+                       "item talk initial phrase:hello:short content:Hello!\n" +
+                       "item talk follow up phrase to:hello:followup1:short content1:The next step in the conversation.\n" +
+                       "item talk follow up phrase to:hello:followup2:short content2:Another next step in the conversation.\n" );
+        verify( talkPhraseSink ).addFollowUpPhrase( "hello", "followup1", "short content1", "The next step in the conversation." );
+        verify( talkPhraseSink ).addFollowUpPhrase( "hello", "followup2", "short content2", "Another next step in the conversation." );
     }
 
     @Test
@@ -424,7 +424,7 @@ public class PlainTextItemDeserialiserTests {
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( itemActionFactory );
 
         d.deserialise( item,
-                       "item talk initial phrase:hello:Hello!\n" +
+                       "item talk initial phrase:hello:short content:Hello!\n" +
                        "item talk action in response to:hello1:action name 1:action arg\n" +
                        "item talk action in response to:hello2:action name 2:action arg\n" );
         verify( talkPhraseSink ).addActionInResponseTo( "hello1", action1 );

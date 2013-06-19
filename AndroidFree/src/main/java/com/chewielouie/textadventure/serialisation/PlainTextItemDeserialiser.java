@@ -31,6 +31,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private Item item;
     private String content;
     private ItemActionFactory itemActionFactory;
+    private TalkPhraseSink talkPhraseSink;
 
     public PlainTextItemDeserialiser( ItemActionFactory itemActionFactory ) {
         this.itemActionFactory = itemActionFactory;
@@ -144,42 +145,41 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     }
 
     private void extractTalkPhraseInfo() {
-        TalkPhraseSink talkPhraseSink = item.getTalkPhraseSink();
+        talkPhraseSink = item.getTalkPhraseSink();
         if( talkPhraseSink != null ) {
-            extractInitialTalkPhrases( talkPhraseSink );
-            extractTalkResponses( talkPhraseSink );
-            extractFollowUpPhrases( talkPhraseSink );
-            extractTalkActions( talkPhraseSink, item );
+            extractInitialTalkPhrases();
+            extractTalkResponses();
+            extractFollowUpPhrases();
+            extractTalkActions( item );
         }
     }
 
-    private void extractInitialTalkPhrases( TalkPhraseSink talkPhraseSink ) {
-        for( IdAndArgPair pair : extractAllIdAndArgPairs( itemInitialTalkPhraseTag,
-                                                          talkPhraseSink ) )
-            talkPhraseSink.addInitialPhrase( pair.id, "", pair.arg );
+    private void extractInitialTalkPhrases() {
+        for( IdAndArgPair pair : extractAllIdAndArgPairs( itemInitialTalkPhraseTag ) )
+            talkPhraseSink.addInitialPhrase( pair.id,
+                                             pair.arg.split( argumentSeperator )[0],
+                                             pair.arg.split( argumentSeperator )[1] );
     }
 
-    private void extractTalkResponses( TalkPhraseSink talkPhraseSink ) {
-        for( IdAndArgPair pair : extractAllIdAndArgPairs( itemTalkResponseToTag,
-                                                          talkPhraseSink ) )
+    private void extractTalkResponses() {
+        for( IdAndArgPair pair : extractAllIdAndArgPairs( itemTalkResponseToTag ) )
             talkPhraseSink.addResponse( pair.id, pair.arg );
     }
 
-    private void extractFollowUpPhrases( TalkPhraseSink talkPhraseSink ) {
+    private void extractFollowUpPhrases() {
         int tagLoc = NOT_FOUND;
         while( (tagLoc = findTagFrom( tagLoc, itemTalkFollowUpPhraseTag )) != NOT_FOUND )
-            extractSingleFollowUpPhrase( tagLoc, talkPhraseSink );
+            extractSingleFollowUpPhrase( tagLoc );
     }
 
-    private void extractTalkActions( TalkPhraseSink talkPhraseSink, Item item ) {
-        for( IdAndArgPair pair : extractAllIdAndArgPairs( itemTalkActionTag,
-                                                          talkPhraseSink ) ) {
+    private void extractTalkActions( Item item ) {
+        for( IdAndArgPair pair : extractAllIdAndArgPairs( itemTalkActionTag ) ) {
             ItemAction itemAction = itemActionFactory.create( pair.arg, item );
             talkPhraseSink.addActionInResponseTo( pair.id, itemAction );
         }
     }
 
-    private void extractSingleFollowUpPhrase( int tagLoc, TalkPhraseSink talkPhraseSink ) {
+    private void extractSingleFollowUpPhrase( int tagLoc ) {
         int startOfId = tagLoc + itemTalkFollowUpPhraseTag.length();
         int argumentSeperatorIndex = findTagFrom( startOfId, argumentSeperator );
         if( argumentSeperatorIndex != NOT_FOUND ) {
@@ -187,7 +187,10 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
             int startOfNewId = argumentSeperatorIndex + 1;
             IdAndArgPair pair = extractIdAndArgPair( startOfNewId );
             if( pair != null )
-                talkPhraseSink.addFollowUpPhrase( parentPhraseId, pair.id, "", pair.arg );
+                talkPhraseSink.addFollowUpPhrase( parentPhraseId,
+                                                  pair.id,
+                                                  pair.arg.split( argumentSeperator )[0],
+                                                  pair.arg.split( argumentSeperator )[1] );
         }
     }
 
@@ -201,7 +204,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         }
     }
 
-    private List<IdAndArgPair> extractAllIdAndArgPairs( String tag, TalkPhraseSink talkPhraseSink ) {
+    private List<IdAndArgPair> extractAllIdAndArgPairs( String tag ) {
         List<IdAndArgPair> pairs = new ArrayList<IdAndArgPair>();
         int currentLoc = NOT_FOUND;
         while( (currentLoc = findTagFrom( currentLoc, tag )) != NOT_FOUND ) {
