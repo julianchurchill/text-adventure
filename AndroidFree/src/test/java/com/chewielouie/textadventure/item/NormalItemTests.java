@@ -390,6 +390,14 @@ public class NormalItemTests {
     }
 
     @Test
+    public void follow_on_phrases_for_non_existent_id_is_empty() {
+        NormalItem item = new NormalItem();
+        TalkPhraseSource source = item.getTalkPhraseSource();
+        List<String> followOnPhrases = source.followOnPhrasesIdsForPhraseById( "id" );
+        assertThat( followOnPhrases.size(), is( 0 ) );
+    }
+
+    @Test
     public void short_phrases_for_follow_up_phrases_can_be_retrieved() {
         NormalItem item = new NormalItem();
         item.getTalkPhraseSink().addFollowUpPhrase( "parent id", "id", "short phrase", "main content" );

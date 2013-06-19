@@ -284,7 +284,9 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     }
 
     public List<String> followOnPhrasesIdsForPhraseById( String id ) {
-        return new ArrayList<String>( followUpPhrases.get( id ) );
+        if( followUpPhrases.containsKey( id ) )
+            return new ArrayList<String>( followUpPhrases.get( id ) );
+        return new ArrayList<String>();
     }
 
     public void executeActionsForPhraseById( String id ) {
