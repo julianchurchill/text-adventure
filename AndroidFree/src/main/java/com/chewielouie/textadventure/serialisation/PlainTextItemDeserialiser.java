@@ -156,7 +156,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private void extractInitialTalkPhrases( TalkPhraseSink talkPhraseSink ) {
         for( IdAndArgPair pair : extractAllIdAndArgPairs( itemInitialTalkPhraseTag,
                                                           talkPhraseSink ) )
-            talkPhraseSink.addInitialPhrase( pair.id, pair.arg );
+            talkPhraseSink.addInitialPhrase( pair.id, "", pair.arg );
     }
 
     private void extractTalkResponses( TalkPhraseSink talkPhraseSink ) {
@@ -187,7 +187,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
             int startOfNewId = argumentSeperatorIndex + 1;
             IdAndArgPair pair = extractIdAndArgPair( startOfNewId );
             if( pair != null )
-                talkPhraseSink.addFollowUpPhrase( parentPhraseId, pair.id, pair.arg );
+                talkPhraseSink.addFollowUpPhrase( parentPhraseId, pair.id, "", pair.arg );
         }
     }
 

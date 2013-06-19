@@ -240,12 +240,6 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
         phrases.put( id, new Phrase( shortContent, content ) );
     }
 
-    public void addInitialPhrase( String id, String content ) {
-        canTalkTo = true;
-        initialPhraseIds.add( id );
-        phrases.put( id, new Phrase( content ) );
-    }
-
     public void addResponse( String id, String response ) {
         responses.put( id, new Phrase( response ) );
     }
@@ -253,11 +247,6 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     public void addFollowUpPhrase( String parentId, String newPhraseId, String shortContent, String content ) {
         addFollowUpPhrase( parentId, newPhraseId );
         phrases.put( newPhraseId, new Phrase( shortContent, content ) );
-    }
-
-    public void addFollowUpPhrase( String parentId, String newPhraseId, String phrase ) {
-        addFollowUpPhrase( parentId, newPhraseId );
-        phrases.put( newPhraseId, new Phrase( phrase ) );
     }
 
     public void addFollowUpPhrase( String parentId, String newPhraseId ) {
@@ -283,10 +272,14 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     }
 
     public String phraseById( String id ) {
+        if( phrases.containsKey( id ) == false )
+            return "";
         return phrases.get( id ).content();
     }
 
     public String responseToPhraseById( String id ) {
+        if( responses.containsKey( id ) == false )
+            return "";
         return responses.get( id ).content();
     }
 

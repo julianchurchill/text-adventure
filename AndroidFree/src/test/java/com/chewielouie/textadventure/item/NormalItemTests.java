@@ -290,15 +290,15 @@ public class NormalItemTests {
     @Test
     public void item_can_be_talked_to_after_initial_phrase_added() {
         NormalItem item = new NormalItem();
-        item.getTalkPhraseSink().addInitialPhrase( "id", "content" );
+        item.getTalkPhraseSink().addInitialPhrase( "id", "", "content" );
         assertThat( item.canTalkTo(), is( true ) );
     }
 
     @Test
     public void added_initial_phrase_ids_can_be_retrieved() {
         NormalItem item = new NormalItem();
-        item.getTalkPhraseSink().addInitialPhrase( "id1", "content" );
-        item.getTalkPhraseSink().addInitialPhrase( "id2", "content" );
+        item.getTalkPhraseSink().addInitialPhrase( "id1", "", "content" );
+        item.getTalkPhraseSink().addInitialPhrase( "id2", "", "content" );
 
         TalkPhraseSource source = item.getTalkPhraseSource();
         assertThat( source.initialPhraseIds().size(), is( 2 ) );
@@ -309,8 +309,8 @@ public class NormalItemTests {
     @Test
     public void added_initial_phrases_can_be_retrieved() {
         NormalItem item = new NormalItem();
-        item.getTalkPhraseSink().addInitialPhrase( "id1", "content 1" );
-        item.getTalkPhraseSink().addInitialPhrase( "id2", "content 2" );
+        item.getTalkPhraseSink().addInitialPhrase( "id1", "", "content 1" );
+        item.getTalkPhraseSink().addInitialPhrase( "id2", "", "content 2" );
 
         TalkPhraseSource source = item.getTalkPhraseSource();
         assertThat( source.phraseById( "id1" ), is( "content 1" ) );
@@ -338,9 +338,9 @@ public class NormalItemTests {
     @Test
     public void added_follow_up_phrase_ids_can_be_retrieved() {
         NormalItem item = new NormalItem();
-        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "content 1" );
-        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id2", "content 2" );
-        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 2", "id3", "content 3" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "", "content 1" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id2", "", "content 2" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 2", "id3", "", "content 3" );
 
         TalkPhraseSource source = item.getTalkPhraseSource();
         List<String> followOnPhrases = source.followOnPhrasesIdsForPhraseById( "parent id 1" );
@@ -355,8 +355,8 @@ public class NormalItemTests {
     @Test
     public void added_follow_up_phrases_ids_only_appear_once() {
         NormalItem item = new NormalItem();
-        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "content 1" );
-        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "content 1" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "", "content 1" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "", "content 1" );
 
         TalkPhraseSource source = item.getTalkPhraseSource();
         List<String> followOnPhrases = source.followOnPhrasesIdsForPhraseById( "parent id 1" );
@@ -367,9 +367,9 @@ public class NormalItemTests {
     @Test
     public void added_follow_up_phrases_can_be_retrieved() {
         NormalItem item = new NormalItem();
-        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "content 1" );
-        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id2", "content 2" );
-        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 2", "id3", "content 3" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "", "content 1" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id2", "", "content 2" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 2", "id3", "", "content 3" );
 
         TalkPhraseSource source = item.getTalkPhraseSource();
         assertThat( source.phraseById( "id1" ), is( "content 1" ) );
@@ -380,7 +380,7 @@ public class NormalItemTests {
     @Test
     public void added_follow_up_phrases_without_content_refer_to_already_added_phrase_content() {
         NormalItem item = new NormalItem();
-        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "content 1" );
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id 1", "id1", "", "content 1" );
         item.getTalkPhraseSink().addFollowUpPhrase( "parent id 2", "id1" );
 
         TalkPhraseSource source = item.getTalkPhraseSource();

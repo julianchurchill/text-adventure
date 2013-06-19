@@ -374,8 +374,8 @@ public class PlainTextItemDeserialiserTests {
         d.deserialise( item,
                        "item talk initial phrase:hello1:Hello1!\n" +
                        "item talk initial phrase:hello2:Hello2!\n" );
-        verify( talkPhraseSink ).addInitialPhrase( "hello1", "Hello1!" );
-        verify( talkPhraseSink ).addInitialPhrase( "hello2", "Hello2!" );
+        verify( talkPhraseSink ).addInitialPhrase( "hello1", "", "Hello1!" );
+        verify( talkPhraseSink ).addInitialPhrase( "hello2", "", "Hello2!" );
     }
 
     @Test
@@ -405,8 +405,8 @@ public class PlainTextItemDeserialiserTests {
                        "item talk initial phrase:hello:Hello!\n" +
                        "item talk follow up phrase to:hello:followup1:The next step in the conversation.\n" +
                        "item talk follow up phrase to:hello:followup2:Another next step in the conversation.\n" );
-        verify( talkPhraseSink ).addFollowUpPhrase( "hello", "followup1", "The next step in the conversation." );
-        verify( talkPhraseSink ).addFollowUpPhrase( "hello", "followup2", "Another next step in the conversation." );
+        verify( talkPhraseSink ).addFollowUpPhrase( "hello", "followup1", "", "The next step in the conversation." );
+        verify( talkPhraseSink ).addFollowUpPhrase( "hello", "followup2", "", "Another next step in the conversation." );
     }
 
     @Test
