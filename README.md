@@ -19,7 +19,7 @@ Backlog
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 
 - [STORY] Shopkeeper directs you to town hall notice board where reports of strange goings on are being posted. This triggers the entrance to the town hall to become visible.
-  - [FEATURE] Talk action responses need to be defined for the shopkeeper.
+  - [FEATURE] Talk action responses need to be defined for the shopkeeper. If an item has talk responses then include a 'Talk' action in Location::actions(). Talk action allows choice of n phrases. Choosing a phrase triggers a response as specified in model content. Choosing a phrase can optionally trigger an alternative set of phrases to become available as follow up actions. Choosing a phrase can optionally trigger actions (use the same actions as 'item use action:' directive) e.g. make an exit visible.
     - DONE Write acceptance tests
     - DONE Location has a TalkToAction for each item that is canTalkTo() == true
     - TalkToAction
@@ -48,13 +48,12 @@ Backlog
     - Deserialise short talk phrases into TalkPhraseSink
     - Serialise TalkToAction and SayAction for ActionHistory and ActionParameters
     - Deserialise TalkToAction and SayAction for ActionHistory
-
-    - [TEST] If an item has talk responses then include a 'Talk' action in Location::actions()
-    - [TEST] Talk action allows choice of n phrases
-    - [TEST] Choosing a phrase triggers a response as specified in model content
-    - [TEST] Choosing a phrase can optionally trigger an alternative set of phrases to become available as follow up actions
-    - [TEST] Choosing a phrase can optionally trigger actions (use the same actions as 'item use action:' directive). E.g. make an exit visible
     - Run acceptance tests
+  - Implement locked safe part of story next. Convert 'Talk' and 'Say' actions into generic actions where the words 'Talk to <item>' and 'Say <initial phrase>' can be defined in demo_model_content, such as Safe item has 'item special action:unlocksafe:Unlock safe' and 'item special action follow up to:unlocksafe:1stdigit1:Press 1:You press 1 on the key pad.' and 'item special action follow up to:1stdigit1:2nddigit1:You press 1 again.' and 'item special action do this when chosen:2nddigit1:change item visibility:unlocked safe:visible'.
+    - Format for special action is 'item special action:id:action label'
+    - Format for follow up action is 'item special action follow up to:parentid:id:action label:user text'
+    - Format for 'do this when chosen' is 'item special action do this when chosen:parentid:action name:action parameters'
+    - Not sure this is a great way of entering a digit sequence as needs a follow up to each possible key press.
 - [STORY] At the town hall notice board there are multiple notices (act as reminders of what the player has left to do, small board, medium board, azure board, each with a clue to a different story line). The notices appear as the player completes other prerequisite tasks. There is also a hall of deeds in the town hall where there are notices that state what the player has done, e.g. rescued the shop keeper - it's an achievements record.
 - [STORY] On entering the grave yard there is a mysterious presence, when you examine it it moves to a different location. If you keep following/examining it it leads you to a particular grave where an encoded inscription is writte on the headstone. Use the thing from the shopkeeper to read the inscription which directs yuo inside the church to the back of the altar.
 - [STORY] On examining the '8th' candlestick on the altar a trapdoor opens. Going below you are blocked by a ravenous wolf guarding a door. You must use an old leg bone from the graveyard to placate it. An exit is then accesible behind the wolf.
