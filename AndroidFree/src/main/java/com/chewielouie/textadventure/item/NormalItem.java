@@ -207,10 +207,20 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     }
 
     private class Phrase {
+        private String shortContent;
         private String content;
 
         public Phrase( String content ) {
             this.content = content;
+        }
+
+        public Phrase( String shortContent, String content ) {
+            this.shortContent = shortContent;
+            this.content = content;
+        }
+
+        public String shortContent() {
+            return shortContent;
         }
 
         public String content() {
@@ -224,6 +234,12 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     private Map<String, Set<String>> followUpPhrases = new HashMap<String, Set<String>>();
     private Map<String, Set<ItemAction>> phraseActions = new HashMap<String, Set<ItemAction>>();
 
+    public void addInitialPhrase( String id, String shortContent, String content ) {
+        canTalkTo = true;
+        initialPhraseIds.add( id );
+        phrases.put( id, new Phrase( shortContent, content ) );
+    }
+
     public void addInitialPhrase( String id, String content ) {
         canTalkTo = true;
         initialPhraseIds.add( id );
@@ -232,6 +248,11 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
 
     public void addResponse( String id, String response ) {
         responses.put( id, new Phrase( response ) );
+    }
+
+    public void addFollowUpPhrase( String parentId, String newPhraseId, String shortContent, String content ) {
+        addFollowUpPhrase( parentId, newPhraseId );
+        phrases.put( newPhraseId, new Phrase( shortContent, content ) );
     }
 
     public void addFollowUpPhrase( String parentId, String newPhraseId, String phrase ) {
@@ -256,7 +277,9 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     }
 
     public String shortPhraseById( String id ) {
-        return "";
+        if( phrases.containsKey( id ) == false )
+            return "";
+        return phrases.get( id ).shortContent();
     }
 
     public String phraseById( String id ) {

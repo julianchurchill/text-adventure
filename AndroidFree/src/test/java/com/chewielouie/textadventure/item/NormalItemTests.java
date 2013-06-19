@@ -318,6 +318,13 @@ public class NormalItemTests {
     }
 
     @Test
+    public void short_phrases_for_initial_phrases_can_be_retrieved() {
+        NormalItem item = new NormalItem();
+        item.getTalkPhraseSink().addInitialPhrase( "id", "short phrase", "main content" );
+        assertThat( item.getTalkPhraseSource().shortPhraseById( "id" ), is( "short phrase" ) );
+    }
+
+    @Test
     public void added_response_can_be_retrieved() {
         NormalItem item = new NormalItem();
         item.getTalkPhraseSink().addResponse( "id1", "content 1" );
@@ -383,6 +390,13 @@ public class NormalItemTests {
     }
 
     @Test
+    public void short_phrases_for_follow_up_phrases_can_be_retrieved() {
+        NormalItem item = new NormalItem();
+        item.getTalkPhraseSink().addFollowUpPhrase( "parent id", "id", "short phrase", "main content" );
+        assertThat( item.getTalkPhraseSource().shortPhraseById( "id" ), is( "short phrase" ) );
+    }
+
+    @Test
     public void added_actions_can_be_executed() {
         NormalItem item = new NormalItem();
         ItemAction action1 = mock( ItemAction.class );
@@ -409,11 +423,6 @@ public class NormalItemTests {
 
         verify( action, never() ).enact();
     }
-
-    // @Test
-    // public void short_phrases_for_initial_phrases_can_be_retrieved() {
-    // @Test
-    // public void short_phrases_for_follow_up_phrases_can_be_retrieved() {
 
     @Test
     public void two_objects_with_the_same_value_should_be_equal() {
