@@ -10,6 +10,7 @@ public class SayAction implements Action {
     private TalkPhraseSource phraseSource;
     private ActionFactory actionFactory;
     private Item item;
+    private List<Action> followUpActions;
 
     public SayAction( String id, Item item, ActionFactory factory ) {
         this.id = id;
@@ -36,10 +37,12 @@ public class SayAction implements Action {
     }
 
     public List<Action> followUpActions() {
-        List<Action> actions = new ArrayList<Action>();
-        for( String followOnPhraseId : phraseSource.followOnPhrasesIdsForPhraseById( id ) )
-            actions.add( actionFactory.createSayAction( followOnPhraseId, item ) );
-        return actions;
+        if( followUpActions == null ) {
+            followUpActions = new ArrayList<Action>();
+            for( String followOnPhraseId : phraseSource.followOnPhrasesIdsForPhraseById( id ) )
+                followUpActions.add( actionFactory.createSayAction( followOnPhraseId, item ) );
+        }
+        return followUpActions;
     }
 
     public String userText() {
