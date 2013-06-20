@@ -17,6 +17,7 @@ public class ActionHistoryDeserialiser {
     private ActionFactory factory;
     private UserInventory inventory;
     private TextAdventureModel model;
+    private String string;
     private Item item;
     private Item extraItem;
     private Exit exit;
@@ -41,6 +42,7 @@ public class ActionHistoryDeserialiser {
     }
 
     private void createActionFromLine( String line, List<Action> actions ) {
+        extractString( line );
         extractItem( line );
         extractExtraItem( line );
         extractExit( line );
@@ -48,6 +50,10 @@ public class ActionHistoryDeserialiser {
         String actionName = findTagValue( line, ACTION_NAME_TAG );
         if( actionName != "" )
             actions.add( makeActionByName( actionName ) );
+    }
+
+    private void extractString( String line ) {
+        string = findTagValue( line, STRING_TAG );
     }
 
     private void extractItem( String line ) {
@@ -115,6 +121,8 @@ public class ActionHistoryDeserialiser {
             action = factory.createUseWithAction( item, inventory, location );
         else if( actionName.equals( ACTION_NAME_TALK_TO ) )
             action = factory.createTalkToAction( item );
+        else if( actionName.equals( ACTION_NAME_SAY ) )
+            action = factory.createSayAction( string, item.getTalkPhraseSource() );
         return action;
     }
 }

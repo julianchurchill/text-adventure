@@ -1,13 +1,10 @@
 package com.chewielouie.textadventure.serialisation;
 
+import static com.chewielouie.textadventure.serialisation.ActionHistoryTextFormat.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;
-import static com.chewielouie.textadventure.serialisation.ActionHistoryTextFormat.*;
 
-import org.mockito.Mockito;
-import org.junit.Test;
-import java.util.List;
 import com.chewielouie.textadventure.Exit;
 import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
@@ -16,6 +13,10 @@ import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.action.ActionParameters;
 import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.item.TalkPhraseSource;
+import java.util.List;
+import org.junit.Test;
+import org.mockito.Mockito;
 
 public class ActionHistoryDeserialiserTests {
 
@@ -211,5 +212,23 @@ public class ActionHistoryDeserialiserTests {
 
         verify( model ).findItemByID( "itemid" );
         verify( factory ).createTalkToAction( Mockito.eq( item ) );
+    }
+
+    @Test
+    public void deserialises_Say_action_type_using_factory() {
+        ActionFactory factory = mock( ActionFactory.class );
+        TextAdventureModel model = mock( TextAdventureModel.class );
+        Item item = mock( Item.class );
+        when( model.findItemByID( "itemid" ) ).thenReturn( item );
+        TalkPhraseSource talkable = mock( TalkPhraseSource.class );
+        when( item.getTalkPhraseSource() ).thenReturn( talkable );
+
+        new ActionHistoryDeserialiser( factory, null, model ).deserialise(
+            ACTION_NAME_TAG + SEPERATOR + "say" + SEPERATOR +
+            STRING_TAG + SEPERATOR + "phraseid" + SEPERATOR +
+            ITEM_ID_TAG + SEPERATOR + "itemid" + SEPERATOR + "\n" );
+
+        verify( model ).findItemByID( "itemid" );
+        verify( factory ).createSayAction( Mockito.eq( "phraseid" ), Mockito.eq( talkable ) );
     }
  }

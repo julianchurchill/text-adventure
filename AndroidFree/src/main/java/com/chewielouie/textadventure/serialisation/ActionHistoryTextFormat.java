@@ -3,6 +3,7 @@ package com.chewielouie.textadventure.serialisation;
 public class ActionHistoryTextFormat {
     public static final String SEPERATOR = ":";
     public static final String ACTION_NAME_TAG = "action name";
+    public static final String STRING_TAG = "string";
     public static final String ITEM_ID_TAG = "item id";
     public static final String EXTRA_ITEM_ID_TAG = "extra item id";
     public static final String EXIT_ID_TAG = "exit id";
@@ -18,4 +19,5 @@ public class ActionHistoryTextFormat {
     public static final String ACTION_NAME_USE_WITH_SPECIFIC_ITEM = "use with specific item";
     public static final String ACTION_NAME_USE_WITH = "use with";
     public static final String ACTION_NAME_TALK_TO = "talk";
+    public static final String ACTION_NAME_SAY = "say";
 }
