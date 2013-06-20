@@ -37,12 +37,19 @@ public class ActionHistorySerialiser {
     private String serialiseActionParameters( ActionParameters params ) {
         String output = "";
         if( params != null ) {
+            output += serialiseStringParam( params.string() );
             output += serialiseItemParam( params.item() );
             output += serialiseExtraItemParam( params.extraItem() );
             output += serialiseExitParam( params.exit() );
             output += serialiseLocationParam( params.location() );
         }
         return output;
+    }
+
+    private String serialiseStringParam( String string ) {
+        if( string != null )
+            return STRING_TAG + SEPERATOR + string + SEPERATOR;
+        return "";
     }
 
     private String serialiseItemParam( Item item ) {

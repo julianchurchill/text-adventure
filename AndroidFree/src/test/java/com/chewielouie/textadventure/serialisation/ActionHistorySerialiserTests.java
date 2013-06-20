@@ -39,6 +39,20 @@ public class ActionHistorySerialiserTests {
     }
 
     @Test
+    public void serialises_string_parameter_if_present() {
+        ActionParameters params = mock( ActionParameters.class );
+        when( params.string() ).thenReturn( "string value" );
+        ActionRecord actionRecord = mock( ActionRecord.class );
+        when( actionRecord.params() ).thenReturn( params );
+        ActionHistory history = mock( ActionHistory.class );
+        when( history.size() ).thenReturn( 1 );
+        when( history.getRecord( 0 ) ).thenReturn( actionRecord );
+
+        assertThat( new ActionHistorySerialiser( history ).serialise(),
+                    is( "string:string value:\n" ) );
+    }
+
+    @Test
     public void serialises_item_parameter_if_present() {
         Item item = mock( Item.class );
         when( item.id() ).thenReturn( "itemid" );
@@ -111,6 +125,7 @@ public class ActionHistorySerialiserTests {
         Exit exit = mock( Exit.class );
         when( exit.id() ).thenReturn( "exitid" );
         ActionParameters params = mock( ActionParameters.class );
+        when( params.string() ).thenReturn( "string value" );
         when( params.item() ).thenReturn( item );
         when( params.extraItem() ).thenReturn( extraItem );
         when( params.exit() ).thenReturn( exit );
@@ -121,7 +136,7 @@ public class ActionHistorySerialiserTests {
         when( history.getRecord( 0 ) ).thenReturn( actionRecord );
 
         assertThat( new ActionHistorySerialiser( history ).serialise(),
-                    is( "item id:itemid:extra item id:extraitemid:exit id:exitid:\n" ) );
+                    is( "string:string value:item id:itemid:extra item id:extraitemid:exit id:exitid:\n" ) );
     }
 
     @Test
