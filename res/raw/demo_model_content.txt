@@ -216,6 +216,12 @@ exit destination:merchantslane
 exit direction hint:West
 exit id:merchantslaneentrance
 exit is not visible:
+EXIT
+exit label:East
+exit destination:eastofmainstreet
+exit direction hint:East
+exit id:mainstreeteast
+exit is not visible:
 ITEM
 item name:Dust of the Ancients
 item description:This dust looks pretty powerful, for dust.
@@ -535,3 +541,14 @@ item talk follow up phrase to:lookingwell:lookingforwork
 item talk initial phrase:gimmemoney:I need money...:You say "I need money, can you spare some coin for your rescuer?".
 item talk response to:gimmemoney:The Shop keeper replies nervously "Err I'm just getting my shop back on it's feet, I'm sorry but I can't spare any money at the moment.".
 item talk follow up phrase to:gimmemoney:lookingwell
+
+LOCATION
+x:360
+y:360
+location id:eastofmainstreet
+location description:You are standing on a street leading from main street which you can see to the west.
+EXIT
+exit label:West
+exit destination:mainstreettown
+exit direction hint:West
+exit id:eastofmainstreet_to_mainstreettown
