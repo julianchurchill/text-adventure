@@ -32,7 +32,7 @@ public class TalkToActionTests {
 
         action.followUpActions();
 
-        verify( actionFactory ).createSayAction( "id1", talkable );
+        verify( actionFactory ).createSayAction( "id1", item );
     }
 
     @Test

@@ -5,7 +5,6 @@ import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
 import com.chewielouie.textadventure.UserInventory;
 import com.chewielouie.textadventure.item.Item;
-import com.chewielouie.textadventure.item.TalkPhraseSource;
 import java.util.List;
 
 public class UserActionFactory implements ActionFactory {
@@ -69,7 +68,7 @@ public class UserActionFactory implements ActionFactory {
         return new TalkToAction( item, factoryForChildActionsToUse() );
     }
 
-    public Action createSayAction( String phraseId, TalkPhraseSource talkable ) {
-        return new SayAction( phraseId, talkable, factoryForChildActionsToUse() );
+    public Action createSayAction( String phraseId, Item item ) {
+        return new SayAction( phraseId, item, factoryForChildActionsToUse() );
     }
 }

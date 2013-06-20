@@ -122,7 +122,7 @@ public class ActionHistoryDeserialiser {
         else if( actionName.equals( ACTION_NAME_TALK_TO ) )
             action = factory.createTalkToAction( item );
         else if( actionName.equals( ACTION_NAME_SAY ) )
-            action = factory.createSayAction( string, item.getTalkPhraseSource() );
+            action = factory.createSayAction( string, item );
         return action;
     }
 }

@@ -32,7 +32,7 @@ public class TalkToAction implements Action {
         List<Action> actions = new ArrayList<Action>();
         if( item.getTalkPhraseSource() != null )
             for( String id : item.getTalkPhraseSource().initialPhraseIds() )
-                actions.add( actionFactory.createSayAction( id, item.getTalkPhraseSource() ) );
+                actions.add( actionFactory.createSayAction( id, item ) );
         return actions;
     }
 

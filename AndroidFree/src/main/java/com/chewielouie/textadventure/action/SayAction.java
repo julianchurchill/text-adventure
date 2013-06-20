@@ -1,5 +1,6 @@
 package com.chewielouie.textadventure.action;
 
+import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.item.TalkPhraseSource;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +9,13 @@ public class SayAction implements Action {
     private String id;
     private TalkPhraseSource phraseSource;
     private ActionFactory actionFactory;
+    private Item item;
 
-    public SayAction( String id, TalkPhraseSource phraseSource, ActionFactory factory ) {
+    public SayAction( String id, Item item, ActionFactory factory ) {
         this.id = id;
-        this.phraseSource = phraseSource;
+        this.item = item;
+        if( item != null )
+            this.phraseSource = item.getTalkPhraseSource();
         this.actionFactory = factory;
     }
 
@@ -34,7 +38,7 @@ public class SayAction implements Action {
     public List<Action> followUpActions() {
         List<Action> actions = new ArrayList<Action>();
         for( String followOnPhraseId : phraseSource.followOnPhrasesIdsForPhraseById( id ) )
-            actions.add( actionFactory.createSayAction( followOnPhraseId, phraseSource ) );
+            actions.add( actionFactory.createSayAction( followOnPhraseId, item ) );
         return actions;
     }
 

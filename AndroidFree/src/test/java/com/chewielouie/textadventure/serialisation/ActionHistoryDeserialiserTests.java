@@ -13,7 +13,6 @@ import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.action.ActionParameters;
 import com.chewielouie.textadventure.item.Item;
-import com.chewielouie.textadventure.item.TalkPhraseSource;
 import java.util.List;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -220,8 +219,6 @@ public class ActionHistoryDeserialiserTests {
         TextAdventureModel model = mock( TextAdventureModel.class );
         Item item = mock( Item.class );
         when( model.findItemByID( "itemid" ) ).thenReturn( item );
-        TalkPhraseSource talkable = mock( TalkPhraseSource.class );
-        when( item.getTalkPhraseSource() ).thenReturn( talkable );
 
         new ActionHistoryDeserialiser( factory, null, model ).deserialise(
             ACTION_NAME_TAG + SEPERATOR + "say" + SEPERATOR +
@@ -229,6 +226,6 @@ public class ActionHistoryDeserialiserTests {
             ITEM_ID_TAG + SEPERATOR + "itemid" + SEPERATOR + "\n" );
 
         verify( model ).findItemByID( "itemid" );
-        verify( factory ).createSayAction( Mockito.eq( "phraseid" ), Mockito.eq( talkable ) );
+        verify( factory ).createSayAction( Mockito.eq( "phraseid" ), Mockito.eq( item ) );
     }
  }

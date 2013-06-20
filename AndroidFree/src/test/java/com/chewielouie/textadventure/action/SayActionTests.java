@@ -5,9 +5,10 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import java.util.Arrays;
-import java.util.ArrayList;
+import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.item.TalkPhraseSource;
+import java.util.ArrayList;
+import java.util.Arrays;
 import org.junit.Test;
 
 public class SayActionTests {
@@ -16,7 +17,9 @@ public class SayActionTests {
     public void label_includes_short_phrase_from_phrase_source() {
         TalkPhraseSource phraseSource = mock( TalkPhraseSource.class );
         when( phraseSource.shortPhraseById( "id" ) ).thenReturn( "my short phrase..." );
-        SayAction action = new SayAction( "id", phraseSource, null );
+        Item item = mock( Item.class );
+        when( item.getTalkPhraseSource() ).thenReturn( phraseSource );
+        SayAction action = new SayAction( "id", item, null );
 
         assertThat( action.label(), is( "Say \"my short phrase...\"" ) );
     }
@@ -26,7 +29,9 @@ public class SayActionTests {
         TalkPhraseSource phraseSource = mock( TalkPhraseSource.class );
         when( phraseSource.phraseById( "id" ) ).thenReturn( "my long phrase" );
         when( phraseSource.responseToPhraseById( "id" ) ).thenReturn( "my response" );
-        SayAction action = new SayAction( "id", phraseSource, null );
+        Item item = mock( Item.class );
+        when( item.getTalkPhraseSource() ).thenReturn( phraseSource );
+        SayAction action = new SayAction( "id", item, null );
 
         action.trigger();
 
@@ -38,7 +43,9 @@ public class SayActionTests {
         TalkPhraseSource phraseSource = mock( TalkPhraseSource.class );
         when( phraseSource.phraseById( "id" ) ).thenReturn( "my long phrase" );
         when( phraseSource.responseToPhraseById( "id" ) ).thenReturn( "" );
-        SayAction action = new SayAction( "id", phraseSource, null );
+        Item item = mock( Item.class );
+        when( item.getTalkPhraseSource() ).thenReturn( phraseSource );
+        SayAction action = new SayAction( "id", item, null );
 
         action.trigger();
 
@@ -56,14 +63,16 @@ public class SayActionTests {
         TalkPhraseSource phraseSource = mock( TalkPhraseSource.class );
         when( phraseSource.followOnPhrasesIdsForPhraseById( "id" ) )
             .thenReturn( Arrays.asList( "follow on id 1", "follow on id 2" ) );
+        Item item = mock( Item.class );
+        when( item.getTalkPhraseSource() ).thenReturn( phraseSource );
         SayAction followOnSayAction1 = mock( SayAction.class );
         SayAction followOnSayAction2 = mock( SayAction.class );
         ActionFactory factory = mock( ActionFactory.class );
-        when( factory.createSayAction( "follow on id 1", phraseSource ) )
+        when( factory.createSayAction( "follow on id 1", item ) )
             .thenReturn( followOnSayAction1 );
-        when( factory.createSayAction( "follow on id 2", phraseSource ) )
+        when( factory.createSayAction( "follow on id 2", item ) )
             .thenReturn( followOnSayAction2 );
-        SayAction action = new SayAction( "id", phraseSource, factory );
+        SayAction action = new SayAction( "id", item, factory );
 
         assertThat( action.followUpActions(), hasItem( followOnSayAction1 ) );
         assertThat( action.followUpActions(), hasItem( followOnSayAction2 ) );
@@ -74,7 +83,9 @@ public class SayActionTests {
         TalkPhraseSource phraseSource = mock( TalkPhraseSource.class );
         when( phraseSource.followOnPhrasesIdsForPhraseById( "id" ) )
             .thenReturn( Arrays.asList( "follow on id 1" ) );
-        SayAction action = new SayAction( "id", phraseSource, null );
+        Item item = mock( Item.class );
+        when( item.getTalkPhraseSource() ).thenReturn( phraseSource );
+        SayAction action = new SayAction( "id", item, null );
 
         assertThat( action.userMustChooseFollowUpAction(), is( true ) );
     }
@@ -84,7 +95,9 @@ public class SayActionTests {
         TalkPhraseSource phraseSource = mock( TalkPhraseSource.class );
         when( phraseSource.followOnPhrasesIdsForPhraseById( "id" ) )
             .thenReturn( new ArrayList<String>() );
-        SayAction action = new SayAction( "id", phraseSource, null );
+        Item item = mock( Item.class );
+        when( item.getTalkPhraseSource() ).thenReturn( phraseSource );
+        SayAction action = new SayAction( "id", item, null );
 
         assertThat( action.userMustChooseFollowUpAction(), is( false ) );
     }
@@ -99,7 +112,9 @@ public class SayActionTests {
     @Test
     public void item_actions_are_enacted_when_say_action_triggered() {
         TalkPhraseSource phraseSource = mock( TalkPhraseSource.class );
-        SayAction action = new SayAction( "id", phraseSource, null );
+        Item item = mock( Item.class );
+        when( item.getTalkPhraseSource() ).thenReturn( phraseSource );
+        SayAction action = new SayAction( "id", item, null );
 
         action.trigger();
 
