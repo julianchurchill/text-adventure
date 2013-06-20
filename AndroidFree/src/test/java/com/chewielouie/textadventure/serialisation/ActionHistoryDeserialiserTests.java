@@ -197,4 +197,19 @@ public class ActionHistoryDeserialiserTests {
                                                Mockito.eq( inventory ),
                                                Mockito.eq( location ) );
     }
-}
+
+    @Test
+    public void deserialises_TalkTo_action_type_using_factory() {
+        ActionFactory factory = mock( ActionFactory.class );
+        TextAdventureModel model = mock( TextAdventureModel.class );
+        Item item = mock( Item.class );
+        when( model.findItemByID( "itemid" ) ).thenReturn( item );
+
+        new ActionHistoryDeserialiser( factory, null, model ).deserialise(
+            ACTION_NAME_TAG + SEPERATOR + "talk" + SEPERATOR +
+            ITEM_ID_TAG + SEPERATOR + "itemid" + SEPERATOR + "\n" );
+
+        verify( model ).findItemByID( "itemid" );
+        verify( factory ).createTalkToAction( Mockito.eq( item ) );
+    }
+ }

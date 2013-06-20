@@ -113,6 +113,8 @@ public class ActionHistoryDeserialiser {
             action = factory.createUseWithSpecificItemAction( item, extraItem );
         else if( actionName.equals( ACTION_NAME_USE_WITH ) )
             action = factory.createUseWithAction( item, inventory, location );
+        else if( actionName.equals( ACTION_NAME_TALK_TO ) )
+            action = factory.createTalkToAction( item );
         return action;
     }
 }

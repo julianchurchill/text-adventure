@@ -17,4 +17,5 @@ public class ActionHistoryTextFormat {
     public static final String ACTION_NAME_TAKE_SPECIFIC_ITEM = "take specific item";
     public static final String ACTION_NAME_USE_WITH_SPECIFIC_ITEM = "use with specific item";
     public static final String ACTION_NAME_USE_WITH = "use with";
+    public static final String ACTION_NAME_TALK_TO = "talk";
 }

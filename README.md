@@ -17,6 +17,7 @@ Backlog
   * Add sound effect or screen flash or dialog
 - [FEATURE] Tell the user when they have reached the end of the available content! Perhaps a popup saying look out for new content in the next update?
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
+- [FEATURE] What's new dialog for first run of new version.
 
 - [STORY] Shopkeeper directs you to town hall notice board where reports of strange goings on are being posted. This triggers the entrance to the town hall to become visible.
   - [FEATURE] Talk action responses need to be defined for the shopkeeper. If an item has talk responses then include a 'Talk' action in Location::actions(). Talk action allows choice of n phrases. Choosing a phrase triggers a response as specified in model content. Choosing a phrase can optionally trigger an alternative set of phrases to become available as follow up actions. Choosing a phrase can optionally trigger actions (use the same actions as 'item use action:' directive) e.g. make an exit visible.
@@ -49,6 +50,7 @@ Backlog
     - Serialise TalkToAction and SayAction for ActionHistory and ActionParameters
     - Deserialise TalkToAction and SayAction for ActionHistory
     - Run acceptance tests
+      - Fix for short phrases being mandatory
   - Implement locked safe part of story next. Convert 'Talk' and 'Say' actions into generic actions where the words 'Talk to <item>' and 'Say <initial phrase>' can be defined in demo_model_content, such as Safe item has 'item special action:unlocksafe:Unlock safe' and 'item special action follow up to:unlocksafe:1stdigit1:Press 1:You press 1 on the key pad.' and 'item special action follow up to:1stdigit1:2nddigit1:You press 1 again.' and 'item special action do this when chosen:2nddigit1:change item visibility:unlocked safe:visible'.
     - Format for special action is 'item special action:id:action label'
     - Format for follow up action is 'item special action follow up to:parentid:id:action label:user text'
