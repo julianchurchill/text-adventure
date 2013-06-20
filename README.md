@@ -48,7 +48,7 @@ Backlog
     - DONE Deserialise short talk phrases into TalkPhraseSink
     - DONE Deserialise follow up phrases specified by id only e.g. "item talk follow up phrase to:lookingwell:lookingforwork:". Use TalkPhraseSink.addFollowUpPhrase( parentId, childId ).
     - DONE Deserialise TalkToAction and SayAction for ActionHistory
-    - Serialise TalkToAction and SayAction for ActionHistory and ActionParameters
+    - DONE Serialise TalkToAction and SayAction for ActionHistory and ActionParameters
     - Run acceptance tests
       - Fix for short phrases being mandatory
   - Implement locked safe part of story next. Convert 'Talk' and 'Say' actions into generic actions where the words 'Talk to <item>' and 'Say <initial phrase>' can be defined in demo_model_content, such as Safe item has 'item special action:unlocksafe:Unlock safe' and 'item special action follow up to:unlocksafe:1stdigit1:Press 1:You press 1 on the key pad.' and 'item special action follow up to:1stdigit1:2nddigit1:You press 1 again.' and 'item special action do this when chosen:2nddigit1:change item visibility:unlocked safe:visible'.

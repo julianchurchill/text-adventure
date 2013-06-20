@@ -35,9 +35,9 @@ public class ActionParameters {
         this.exit = exit;
     }
 
-    public ActionParameters( String string, TalkPhraseSource talkable ) {
+    public ActionParameters( String string, Item item ) {
         this.string = string;
-        this.talkable = talkable;
+        this.item = item;
     }
 
     public Item item() {

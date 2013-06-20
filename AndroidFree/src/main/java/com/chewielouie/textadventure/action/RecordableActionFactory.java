@@ -108,7 +108,7 @@ public class RecordableActionFactory implements ActionFactory {
     public Action createSayAction( String phraseId, Item item ) {
         RecordableAction action = new RecordableAction(
             wrappedFactory.createSayAction( phraseId, item ), actionHistory );
-        action.setActionParameters( new ActionParameters( phraseId, item.getTalkPhraseSource() ) );
+        action.setActionParameters( new ActionParameters( phraseId, item ) );
         return action;
     }
 }
