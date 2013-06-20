@@ -546,9 +546,69 @@ LOCATION
 x:360
 y:360
 location id:eastofmainstreet
-location description:You are standing on a street leading from main street which you can see to the west.
+location description:You are standing on a street leading from main street which you can see to the west. Further to the east is a large building that looks like it might be the town hall.
 EXIT
 exit label:West
 exit destination:mainstreettown
 exit direction hint:West
 exit id:eastofmainstreet_to_mainstreettown
+EXIT
+exit label:East
+exit destination:outsidetownhall
+exit direction hint:East
+exit id:eastofmainstreet_to_outsidetownhall
+
+LOCATION
+x:420
+y:360
+location id:outsidetownhall
+location description:You are outside the town hall. The large wooden double doors in front of you are emblazoned with the town crest - two white dragons perched in a tree. A few people are standing about looking at the notice boards staked into the ground around the entrance to the town hall.
+EXIT
+exit label:West
+exit destination:eastofmainstreet
+exit direction hint:West
+exit id:outsidetownhall_to_eastofmainstreet
+EXIT
+exit label:Town Hall
+exit destination:townhall1
+exit direction hint:East
+exit id:outsidetownhall_to_townhall1
+ITEM
+item name:Blue board
+item description:The board has a notice pinned to it stating "Whomsoever can recover, in tact, my wife's Sapphire necklace shall find ample reward and my favour. Last seen near the church of St.Almedha to the west of the town. Oren Constantine."
+item id:bluenoticeboard
+item countable noun prefix:a
+item is untakeable:
+
+LOCATION
+x:480
+y:360
+location id:townhall1
+location description:You stand just inside the town hall entrance, a large circular reception room with several doors leading out. The walls are adorned with civic regalier and paintings of local scenes, intermingled with portraits of some of the more wealthy and powerful citizens. One door catches your eye due to the inscription above - "Room of Deeds".
+EXIT
+exit label:West
+exit destination:outsidetownhall
+exit direction hint:West
+exit id:townhall1_to_outsidetownhall
+EXIT
+exit label:Room of Deeds
+exit destination:roomofdeeds
+exit direction hint:North
+exit id:townhall1_to_roomofdeeds
+
+LOCATION
+x:480
+y:300
+location id:roomofdeeds
+location description:You stand in a large room with plenty of space for lots of notice boards. The ones that are here look intriguing and you feel like taking a closer look. Something about this room puts a smile on your face and you feel yourself start to day dream about adventures past.
+EXIT
+exit label:Town hall entrance lobby
+exit destination:townhall1
+exit direction hint:South
+exit id:roomofdeeds_to_townhall1
+ITEM
+item name:Slate board
+item description:The board has a notice pinned to it stating "The town praises the brave deeds of one adventurer who rescued our shop keeper from a dank and miserable mine and returned him to us from the clutches of an unknown foe."
+item id:slatenoticeboard
+item countable noun prefix:a
+item is untakeable:

@@ -19,7 +19,6 @@ Backlog
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] What's new dialog for first run of new version.
 
-- [STORY] At the town hall notice board there are multiple notices (act as reminders of what the player has left to do, small board, medium board, azure board, each with a clue to a different story line). The notices appear as the player completes other prerequisite tasks. There is also a hall of deeds in the town hall where there are notices that state what the player has done, e.g. rescued the shop keeper - it's an achievements record.
 - [STORY] On entering the grave yard there is a mysterious presence, when you examine it it moves to a different location. If you keep following/examining it it leads you to a particular grave where an encoded inscription is writte on the headstone. Use the thing from the shopkeeper to read the inscription which directs yuo inside the church to the back of the altar.
 - [STORY] On examining the '8th' candlestick on the altar a trapdoor opens. Going below you are blocked by a ravenous wolf guarding a door. You must use an old leg bone from the graveyard to placate it. An exit is then accesible behind the wolf.
 - [STORY] Passing the wolf there is a complex of rooms, there are voices and locked doors. One room deep within has a brigand blocking your way, you must bribe him to continue. This introduces a custom failed use message for all items used on the brigand e.g. "He looks at you and sneers in disgust.". Also allow for multiple items to be used with different consequences - e.g. if you use an empty purse you get the succes message 'The brigand throws the empty purse at you hitting you square on the nose. This smarts a little.'. To pass the brigand an empty purse (given to you by the shopkeeper earlier) must be filled with fake coins, perhaps find some, make some or use stones?
@@ -58,6 +57,7 @@ Done
 - [FEATURE] Exits have consistent colours for direction hints - e.g. all North are green.
   - The exits are also ordered consistently.
 
+- [STORY] At the town hall notice board there are multiple notices (act as reminders of what the player has left to do, small board, medium board, azure board, each with a clue to a different story line). The notices appear as the player completes other prerequisite tasks. There is also a hall of deeds in the town hall where there are notices that state what the player has done, e.g. rescued the shop keeper - it's an achievements record.
 - [STORY] Shopkeeper directs you to town hall notice board where reports of strange goings on are being posted. This triggers the entrance to the town hall to become visible.
 
 - [BUG] Clicking exit links can sometimes select the wrong one if you select near the end of a line - it selects the exit on the new line.
