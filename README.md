@@ -19,7 +19,6 @@ Backlog
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] What's new dialog for first run of new version.
 
-- [STORY] On entering the grave yard there is a raging Ansible, when you examine it it moves to a different location. The description states "You feel compelled to follow it.". If you keep following/examining it it leads you to a particular grave where an encoded inscription is written on the headstone. Use the thing from the shopkeeper to read the inscription which directs you inside the church to the back of the altar and makes the candlesticks visible.
 - [STORY] On examining the '8th' candlestick above the altar you realise it is different from the rest. You can use a rope with it to trigger trapdoor. Going below you are blocked by a ravenous wolf guarding a door, his collar and nameplate say 'Venom'. You must use an old leg bone from the graveyard to placate it. An exit is then accessible behind the wolf.
 - [STORY] Passing the wolf there is a complex of rooms, there are voices and locked doors. One room deep within has a brigand blocking your way. You can talk to the Brigand, yuo complement him on his hair and clothing, he opens up and admits he is just an actor, flattered by your compliments. He lets you pass.
 - [STORY] Once you pass the brigand you see a few more rooms one of which contains a locked voice-activated safe. You must find the 3 word code to unlock it. The words can be found in the surrounding rooms, on a piece of burnt paper, scrawled on the side of the safe and finally you must speak to an NPC.
@@ -63,6 +62,7 @@ Done
   - The exits are also ordered consistently.
 
 - [STORY] At the town hall notice board there are multiple notices (act as reminders of what the player has left to do, small board, medium board, azure board, each with a clue to a different story line). The notices appear as the player completes other prerequisite tasks. There is also a hall of deeds in the town hall where there are notices that state what the player has done, e.g. rescued the shop keeper - it's an achievements record.
+- [STORY] On entering the grave yard there is a raging Ansible, when you examine it it moves to a different location. The description states "You feel compelled to follow it.". If you keep following/examining it it leads you to a particular grave where an encoded inscription is written on the headstone. Use the thing from the shopkeeper to read the inscription which directs you inside the church to the back of the altar and makes the candlesticks visible.
 - [STORY] Shopkeeper directs you to town hall notice board where reports of strange goings on are being posted. This triggers the entrance to the town hall to become visible.
 
 - [BUG] Clicking exit links can sometimes select the wrong one if you select near the end of a line - it selects the exit on the new line.
