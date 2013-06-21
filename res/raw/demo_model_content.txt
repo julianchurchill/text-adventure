@@ -177,6 +177,12 @@ exit destination:groundfloorclocktower
 exit direction hint:North
 exit is not visible:
 exit id:clocktowerdoor
+EXIT
+exit label:West
+exit destination:cobbledroad
+exit direction hint:West
+exit is not visible:
+exit id:clocktower_to_cobbledroad
 ITEM
 item name:Clock minute hand
 item description:It is quite heavy, ornate and made of iron.
@@ -533,6 +539,8 @@ item talk response to:checkin:The Shop keeper says "Why thank you, it's all down
 item talk follow up phrase to:checkin:lookingforwork:I was looking for some work...:You say "I was looking for some work. Can you help me?".
 item talk response to:lookingforwork:The Shop keeper says "Sure, you should go to the town hall to the east of the town. There are boards where an adventurer might find a job.".
 item talk action in response to:lookingforwork:make exit visible:mainstreeteast
+item talk action in response to:lookingforwork:make exit visible:clocktower_to_cobbledroad
+item talk action in response to:lookingforwork:change location description:clocktower:You stand before a mighty clock tower. The clock goes TICK! There is a cobbled road off to the west that winds its way through the back streets of the town.
 
 item talk initial phrase:lookingwell:You're looking well...:You say "You're looking well friend.".
 item talk response to:lookingwell:The Shop keeper replies "Why thank you, it's all down to you my friend.".
@@ -612,3 +620,19 @@ item description:The board has a notice pinned to it stating "The town praises t
 item id:slatenoticeboard
 item countable noun prefix:a
 item is untakeable:
+
+LOCATION
+x:240
+y:240
+location id:cobbledroad
+location description:You are standing on a cobbled road that undulates between the small houses of this town. It continues west and back to the east you see an imposing clock tower looming over the houses.
+EXIT
+exit label:East
+exit destination:clocktower
+exit direction hint:East
+exit id:cobbledroad_to_clocktower
+EXIT
+exit label:West
+exit destination:morecobbledroad
+exit direction hint:West
+exit id:morecobbledroad_to_cobbledroad
