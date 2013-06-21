@@ -707,15 +707,15 @@ y:120
 location id:churchyardeast
 location description:You step into the churchyard, peering through the gloom which seems to stick to everything around you. A sense of personal peril hangs in the air jumping to new heights as you realise you are not alone. Beside you is a shady presence, menacing but still.
 EXIT
-exit label:South
-exit destination:dirttrack
-exit direction hint:South
-exit id:moredirttrack_to_dirttrack
-EXIT
 exit label:West
-exit destination:churchyardeast
+exit destination:moredirttrack
 exit direction hint:West
-exit id:moredirttrack_to_churchyardeast
+exit id:churchyardeast_to_moredirttrack
+EXIT
+exit label:South
+exit destination:churchyardsoutheast
+exit direction hint:South
+exit id:churchyardeast_to_churchyardsoutheast
 ITEM
 item name:Raging Ansible
 item description:It is huge and frightening. You want to look closer but do you dare?
