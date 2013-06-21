@@ -537,10 +537,11 @@ item talk response to:hello:The Shop keeper replies "Hello yourself my friend. H
 item talk follow up phrase to:hello:checkin:I just came to check in...:You say "I just came to check in. Glad you to see you are looking well.".
 item talk response to:checkin:The Shop keeper says "Why thank you, it's all down to you my friend.".
 item talk follow up phrase to:checkin:lookingforwork:I was looking for some work...:You say "I was looking for some work. Can you help me?".
-item talk response to:lookingforwork:The Shop keeper says "Sure, you should go to the town hall to the east of the town. There are boards where an adventurer might find a job.".
+item talk response to:lookingforwork:The Shop keeper says "Sure, you should go to the town hall to the east of the town. There are boards where an adventurer might find a job." Placing something on the shop counter he winks and says "You might also find this useful."
 item talk action in response to:lookingforwork:make exit visible:mainstreeteast
 item talk action in response to:lookingforwork:make exit visible:clocktower_to_cobbledroad
 item talk action in response to:lookingforwork:change location description:clocktower:You stand before a mighty clock tower. The clock goes TICK! There is a cobbled road off to the west that winds its way through the back streets of the town.
+item talk action in response to:lookingforwork:change item visibility:decoderring:visible
 
 item talk initial phrase:lookingwell:You're looking well...:You say "You're looking well friend.".
 item talk response to:lookingwell:The Shop keeper replies "Why thank you, it's all down to you my friend.".
@@ -549,6 +550,11 @@ item talk follow up phrase to:lookingwell:lookingforwork
 item talk initial phrase:gimmemoney:I need money...:You say "I need money, can you spare some coin for your rescuer?".
 item talk response to:gimmemoney:The Shop keeper replies nervously "Err I'm just getting my shop back on it's feet, I'm sorry but I can't spare any money at the moment.".
 item talk follow up phrase to:gimmemoney:lookingwell
+ITEM
+item name:Decoder ring
+item description:This looks like a kids toy. It has a shaped viewing hole through which you might read an encoded message, the letters becoming revelead due to the complex filter decorating the aperture. You wonder what on earth it could be useful for.
+item id:decoderring
+item countable noun prefix:a
 
 LOCATION
 x:360
@@ -635,7 +641,7 @@ EXIT
 exit label:West
 exit destination:morecobbledroad
 exit direction hint:West
-exit id:morecobbledroad_to_cobbledroad
+exit id:cobbledroad_to_morecobbledroad
 
 LOCATION
 x:180
@@ -673,7 +679,7 @@ LOCATION
 x:120
 y:180
 location id:dirttrack
-location description:You on a dirt track leading away from the town. There are deep furroughs indicating it has been well used, probably as a trade route to other more affluent ettlements. It continues to the north.
+location description:You on a dirt track leading away from the town. There are deep furroughs indicating it has been well used, probably as a trade route to other more affluent settlements. It continues to the north.
 EXIT
 exit label:North
 exit destination:moredirttrack
@@ -707,21 +713,274 @@ y:120
 location id:churchyardeast
 location description:You step into the churchyard, peering through the gloom which seems to stick to everything around you. A sense of personal peril hangs in the air jumping to new heights as you realise you are not alone. Beside you is a shady presence, menacing but still.
 EXIT
-exit label:West
+exit label:East
 exit destination:moredirttrack
-exit direction hint:West
+exit direction hint:East
 exit id:churchyardeast_to_moredirttrack
 EXIT
 exit label:South
 exit destination:churchyardsoutheast
 exit direction hint:South
 exit id:churchyardeast_to_churchyardsoutheast
+EXIT
+exit label:North
+exit destination:churchyardnortheast
+exit direction hint:North
+exit id:churchyardeast_to_churchyardnortheast
+EXIT
+exit label:West
+exit destination:churchyardmiddle
+exit direction hint:West
+exit id:churchyardeast_to_churchyardmiddle
 ITEM
 item name:Raging Ansible
 item description:It is huge and frightening. You want to look closer but do you dare?
 item id:ragingansible_churchyardeast
 item countable noun prefix:a
 item is untakeable:
-item examine message:Staring up at the Raging Ansible you are caught in its furious gaze. It mutters and mumble trying to express its anger but seemingly unable to move. The presence is terrifying but after a brief moment it disappears and you are released from it's spell. Feeling that it is still somewhere close by you feel compelled to follow it.
+item examine message:Staring up at the Raging Ansible you are caught in its furious gaze. It mutters and mumbles trying to express its anger but seemingly unable to move. The presence is terrifying but after a brief moment it disappears and you are released from it's spell. Sensing that it is still somewhere close by you feel compelled to follow it.
 item on examine action:change item visibility:ragingansible_churchyardeast:invisible
-item on examine action:change item visibility:ragingansible_churchyard_southeast:visible
+item on examine action:change item visibility:ragingansible_churchyardsoutheast:visible
+item on examine action:change location description:churchyardeast:You step into the churchyard, peering through the gloom which seems to stick to everything around you. A sense of personal peril hangs in the air.
+item on examine action:change location description:churchyardsoutheast:You are in the south east corner of the church yard. The Raging Ansible bears down on you with righteous fury and you can do nothing to shield yourself from it's rage.
+
+LOCATION
+x:060
+y:180
+location id:churchyardsoutheast
+location description:You are in the south east corner of the church yard.
+EXIT
+exit label:West
+exit destination:churchyardsouth
+exit direction hint:West
+exit id:churchyardsoutheast_to_churchyardsouth
+EXIT
+exit label:North
+exit destination:churchyardeast
+exit direction hint:North
+exit id:churchyardsoutheast_to_churchyardeast
+ITEM
+item name:Raging Ansible
+item description:It is huge and frightening. You want to look closer but do you dare?
+item id:ragingansible_churchyardsoutheast
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine message:Staring up at the Raging Ansible you are caught in its furious gaze. It mutters and mumbles trying to express its anger but seemingly unable to move. The presence is terrifying but after a brief moment it disappears and you are released from it's spell. Sensing that it is still somewhere close by you feel compelled to follow it.
+item on examine action:change item visibility:ragingansible_churchyardsoutheast:invisible
+item on examine action:change item visibility:ragingansible_churchyardsouth:visible
+item on examine action:change location description:churchyardsoutheast:You are in the south east corner of the church yard.
+item on examine action:change location description:churchyardsouth:You are at the south edge of the church yard. The Raging Ansible observes you with increasing anger, it's volcanic fury burning deep into your core.
+
+LOCATION
+x:000
+y:180
+location id:churchyardsouth
+location description:You are at the south edge of the church yard.
+EXIT
+exit label:East
+exit destination:churchyardsoutheast
+exit direction hint:East
+exit id:churchyardsouth_to_churchyardsoutheast
+EXIT
+exit label:West
+exit destination:churchyardsouthwest
+exit direction hint:West
+exit id:churchyardsouth_to_churchyardsouthwest
+EXIT
+exit label:North
+exit destination:churchyardmiddle
+exit direction hint:North
+exit id:churchyardsouth_to_churchyardmiddle
+ITEM
+item name:Raging Ansible
+item description:It is huge and frightening. You want to look closer but do you dare?
+item id:ragingansible_churchyardsouth
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine message:Staring up at the Raging Ansible you are caught in its furious gaze. It mutters and mumbles trying to express its anger but seemingly unable to move. The presence is terrifying but after a brief moment it disappears and you are released from it's spell. Sensing that it is still somewhere close by you feel compelled to follow it.
+item on examine action:change item visibility:ragingansible_churchyardsouth:invisible
+item on examine action:change item visibility:ragingansible_churchyardmiddle:visible
+item on examine action:change location description:churchyardsouth:You are at the south edge of the church yard.
+item on examine action:change location description:churchyardmiddle:You are in the middle of the church yard. The Raging Ansible regards you with potent hatred, making its roaming presence felt like a red light in your mind.
+
+LOCATION
+x:000
+y:120
+location id:churchyardmiddle
+location description:You are in the middle of the church yard.
+EXIT
+exit label:South
+exit destination:churchyardsouth
+exit direction hint:South
+exit id:churchyardmiddle_to_churchyardsouth
+EXIT
+exit label:North
+exit destination:churchyardnorth
+exit direction hint:North
+exit id:churchyardmiddle_to_churchyardnorth
+EXIT
+exit label:East
+exit destination:churchyardeast
+exit direction hint:East
+exit id:churchyardmiddle_to_churchyardeast
+EXIT
+exit label:West
+exit destination:churchyardwest
+exit direction hint:West
+exit id:churchyardmiddle_to_churchyardwest
+ITEM
+item name:Raging Ansible
+item description:It is huge and frightening. You want to look closer but do you dare?
+item id:ragingansible_churchyardmiddle
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine message:Staring up at the Raging Ansible you are caught in its furious gaze. It mutters and mumbles trying to express its anger but seemingly unable to move. The presence is terrifying but after a brief moment it disappears and you are released from it's spell. Sensing that it is still somewhere close by you feel compelled to follow it.
+item on examine action:change item visibility:ragingansible_churchyardmiddle:invisible
+item on examine action:change item visibility:ragingansible_churchyardnorth:visible
+item on examine action:change location description:churchyardmiddle:You are in the middle of the church yard.
+item on examine action:change location description:churchyardnorth:You are at the north edge of the church yard. The Raging Ansible glowers over you beating down rays of hideous ire upon you.
+
+LOCATION
+x:000
+y:060
+location id:churchyardnorth
+location description:You are at the north edge of the church yard.
+EXIT
+exit label:South
+exit destination:churchyardmiddle
+exit direction hint:South
+exit id:churchyardnorth_to_churchyardmiddle
+EXIT
+exit label:East
+exit destination:churchyardnortheast
+exit direction hint:East
+exit id:churchyardnorth_to_churchyardnortheast
+EXIT
+exit label:West
+exit destination:churchyardnorthwest
+exit direction hint:West
+exit id:churchyardnorth_to_churchyardnorthwest
+ITEM
+item name:Raging Ansible
+item description:It is huge and frightening. You want to look closer but do you dare?
+item id:ragingansible_churchyardnorth
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine message:Staring up at the Raging Ansible you are caught in its furious gaze. It mutters and mumbles trying to express its anger but seemingly unable to move. The presence is terrifying but after a brief moment it disappears and you are released from it's spell. Where it stood you see a solitary headstone, it appears to have some writing on it but you cannot make out the words.
+item on examine action:change item visibility:ragingansible_churchyardnorth:invisible
+item on examine action:change item visibility:headstone:visible
+item on examine action:change location description:churchyardnorth:You are at the north edge of the church yard.
+ITEM
+item name:Headstone
+item description:The headstone has writing on it but not in any language that you have ever seen before. Perhaps it is in code?
+item id:headstone
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:decoderring
+item use is not repeatable:
+item successful use message:You are slightly amazed and much amused that the decoder ring does indeed decode the message on the headstone. As you read it you scratch the decoded message onto the headstone next to the original phrase so that you can look at it again should you need to in the future. You discard the decoder ring to make room for the treasures you anticipate finding in the coming adventure.
+item use action:destroy item:decoderring
+item use action:change item description:The headstone has writing on it but not in any language that you have ever seen before. Next to the garbled script is the following phrase that you previously decoded and scratched here for posterity - "Search well at the altar of the headless saint and let truth light your path."
+
+LOCATION
+x:060
+y:060
+location id:churchyardnortheast
+location description:You are in the north east corner of the church yard. There is nothing here but a pile of leaves and a musty smell. An old withered oak tree sits unhappily against the church yard wall.
+EXIT
+exit label:South
+exit destination:churchyardeast
+exit direction hint:South
+exit id:churchyardnortheast_to_churchyardeast
+EXIT
+exit label:West
+exit destination:churchyardnorth
+exit direction hint:West
+exit id:churchyardnortheast_to_churchyardnorth
+ITEM
+item name:Pile of leaves
+item description:It is a loosely collected pile of leaves.
+item id:pileofleaves_northeast
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:You fumble about in the leaves making a right mess until you uncover a piece of frayed rope.
+item on examine action:change item visibility:frayedrope:visible
+ITEM
+item name:Frayed rope
+item description:The rope is frayed at the ends but looks sturdy enough. It is two men in length but unlikely to be able to hold as much.
+item id:frayedrope
+item countable noun prefix:a
+item visibility:invisible
+
+LOCATION
+x:-060
+y:060
+location id:churchyardnorthwest
+location description:You are in the north west corner of the church yard. There is nothing here but a pile of leaves and a musty smell. An old withered ash tree sits unhappily against the church yard wall.
+EXIT
+exit label:South
+exit destination:churchyardwest
+exit direction hint:South
+exit id:churchyardnorthwest_to_churchyardwest
+EXIT
+exit label:East
+exit destination:churchyardnorth
+exit direction hint:East
+exit id:churchyardnorthwest_to_churchyardnorth
+ITEM
+item name:Pile of leaves
+item description:It is a loosely collected pile of leaves.
+item id:pileofleaves_northwest
+item countable noun prefix:a
+item is untakeable:
+item examine message:You fumble about in the leaves making a right mess. There does not appear to be anything here.
+
+LOCATION
+x:-060
+y:120
+location id:churchyardwest
+location description:You are at the west edge of the church yard.
+EXIT
+exit label:North
+exit destination:churchyardnorthwest
+exit direction hint:North
+exit id:churchyardwest_to_churchyardnorthwest
+EXIT
+exit label:East
+exit destination:churchyardmiddle
+exit direction hint:East
+exit id:churchyardwest_to_churchyardmiddle
+EXIT
+exit label:South
+exit destination:churchyardsouthwest
+exit direction hint:South
+exit id:churchyardwest_to_churchyardsouthwest
+
+LOCATION
+x:-060
+y:160
+location id:churchyardsouthwest
+location description:You are in the south west corner of the church yard. There is nothing here but a pile of leaves and a musty smell. An old withered elm tree sits unhappily against the church yard wall.
+EXIT
+exit label:North
+exit destination:churchyardwest
+exit direction hint:North
+exit id:churchyardsouthwest_to_churchyardwest
+EXIT
+exit label:East
+exit destination:churchyardsouth
+exit direction hint:East
+exit id:churchyardsouthwest_to_churchyardsouth
+ITEM
+item name:Pile of leaves
+item description:It is a loosely collected pile of leaves.
+item id:pileofleaves_southwest
+item countable noun prefix:a
+item is untakeable:
+item examine message:You fumble about in the leaves making a right mess. There does not appear to be anything here.
