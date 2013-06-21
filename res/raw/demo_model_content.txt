@@ -636,3 +636,92 @@ exit label:West
 exit destination:morecobbledroad
 exit direction hint:West
 exit id:morecobbledroad_to_cobbledroad
+
+LOCATION
+x:180
+y:240
+location id:morecobbledroad
+location description:You are standing on a long cobbled road that undulates between the small houses of this town. It continues west and back to the east. Further up ahead you see a town gatehouse that guards one of the many entrances to the town.
+EXIT
+exit label:East
+exit destination:cobbledroad
+exit direction hint:East
+exit id:morecobbledroad_to_cobbledroad
+EXIT
+exit label:West
+exit destination:westgatehouse
+exit direction hint:West
+exit id:morecobbledroad_to_westgatehouse
+
+LOCATION
+x:120
+y:240
+location id:westgatehouse
+location description:You stand before a large gatehouse within which sit several men of the town watch. They are not doing very much and do not notice you as you pass. You wonder how much they get paid and make a mental note to consider a career change. To the north is a dirt track leading away from the town.
+EXIT
+exit label:East
+exit destination:morecobbledroad
+exit direction hint:East
+exit id:westgatehouse_to_morecobbledroad
+EXIT
+exit label:North
+exit destination:dirttrack
+exit direction hint:North
+exit id:westgatehouse_to_dirttrack
+
+LOCATION
+x:120
+y:180
+location id:dirttrack
+location description:You on a dirt track leading away from the town. There are deep furroughs indicating it has been well used, probably as a trade route to other more affluent ettlements. It continues to the north.
+EXIT
+exit label:North
+exit destination:moredirttrack
+exit direction hint:North
+exit id:dirttrack_to_moredirttrack
+EXIT
+exit label:South
+exit destination:westgatehouse
+exit direction hint:South
+exit id:dirttrack_to_westgatehouse
+
+LOCATION
+x:120
+y:120
+location id:moredirttrack
+location description:You on a dirt track leading away from the town. To the west you see a churchyard. It looks gloomy, mysterious and uninviting, not a great combination.
+EXIT
+exit label:South
+exit destination:dirttrack
+exit direction hint:South
+exit id:moredirttrack_to_dirttrack
+EXIT
+exit label:West
+exit destination:churchyardeast
+exit direction hint:West
+exit id:moredirttrack_to_churchyardeast
+
+LOCATION
+x:060
+y:120
+location id:churchyardeast
+location description:You step into the churchyard, peering through the gloom which seems to stick to everything around you. A sense of personal peril hangs in the air jumping to new heights as you realise you are not alone. Beside you is a shady presence, menacing but still.
+EXIT
+exit label:South
+exit destination:dirttrack
+exit direction hint:South
+exit id:moredirttrack_to_dirttrack
+EXIT
+exit label:West
+exit destination:churchyardeast
+exit direction hint:West
+exit id:moredirttrack_to_churchyardeast
+ITEM
+item name:Raging Ansible
+item description:It is huge and frightening. You want to look closer but do you dare?
+item id:ragingansible_churchyardeast
+item countable noun prefix:a
+item is untakeable:
+item examine message:Staring up at the Raging Ansible you are caught in its furious gaze. It mutters and mumble trying to express its anger but seemingly unable to move. The presence is terrifying but after a brief moment it disappears and you are released from it's spell. Feeling that it is still somewhere close by you feel compelled to follow it.
+item on examine action:change item visibility:ragingansible_churchyardeast:invisible
+item on examine action:change item visibility:ragingansible_churchyard_southeast:visible
