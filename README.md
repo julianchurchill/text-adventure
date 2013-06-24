@@ -12,19 +12,21 @@ Backlog
 
 - [BUG] From email from Alex Bailey "The text is sometime displayed in the wrong order. I can't remember which object, but the scene description told me there was an object present before it was mentioned how it got there. I can send a screenshot for this if I'm not being clear."
   * See email as he also included a screen shot.
-- [FEATURE] Tell the user when they get a ruby - make it much more obvious. Atm just mentioned in text and counter in corner goes up.
-  * Make counter and ruby graphic larger
-  * Add sound effect or screen flash or dialog
 - [FEATURE] Tell the user when they have reached the end of the available content! Perhaps a popup saying look out for new content in the next update?
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] What's new dialog for first run of new version.
+- [FEATURE] Let user change the font size on an options screen
+- [FEATURE] Tell the user when they get a ruby - make it much more obvious. Atm just mentioned in text and counter in corner goes up.
+  * Make counter and ruby graphic larger
+  * Add sound effect or screen flash or dialog
+  * Possibly remove the ruby idea entirely - what is the use of it?
 
 - [STORY] On examining the '8th' candlestick above the altar you realise it is different from the rest. You can use a rope with it to trigger trapdoor. Going below you are blocked by a ravenous wolf guarding a door, his collar and nameplate say 'Venom'. You must use an old leg bone from the graveyard to placate it. An exit is then accessible behind the wolf.
 - [STORY] Passing the wolf there is a complex of rooms, there are voices and locked doors. One room deep within has a brigand blocking your way. You can talk to the Brigand, yuo complement him on his hair and clothing, he opens up and admits he is just an actor, flattered by your compliments. He lets you pass.
 - [STORY] Once you pass the brigand you see a few more rooms one of which contains a locked voice-activated safe. You must find the 3 word code to unlock it. The words can be found in the surrounding rooms, on a piece of burnt paper, scrawled on the side of the safe and finally you must speak to an NPC.
   - To open the safe you must say the words in the correct order. They should all be nonsense words like bongle, doofap, tremedor, obviate, alucidit, banaroo, diddle, bendlebox, roobibus, diffdap. If you get the sequence wrong the safe says "What? I'm not letting you in, that was clearly nonsense.", "What are you, some sort of idiot? Stop babbling at me and leave me in peace.", "Who do you think you are? I'm smarter than you and I know you made that up!". On success "Phew, I've been waiting for someone to open this safe for ages, I'm gasping for some fresh air, I've been here for days." says a small imp perched on a tiny chair inside the safe.
   - Opening the safe reveals a Sapphire necklace which you can pick up. This also makes 'grumpy_oren_constantine' invisible and 'amiable_oren_constantine' visible.
-- [STORY] On the east side of town is the '' quarter. Oren Constantine's house is here, he sits on the porch waiting for news about his wife's necklace. Until you have the necklace you can say this:
+- [STORY] On the east side of town is the Nobels quarter. Oren Constantine's house is here, he sits on the porch waiting for news about his wife's necklace. Until you have the necklace you can say this:
   - "Hello Mr Constantine, I was wondering if you had any jobs an up and coming adventurer might be interested in." => "Well unless you've got my wife's necklace I have nothing for you, now get off my land before I release the hounds. Hrrmph." says Constantine as he pointedly turns his back on you.
   - Once you have necklace you can say this:
     - "Hello Mr Constantine - is this your wifes necklace?" => "Why yes good sir! Thank you, you have cured a great headache for me, at last I can have some peace!"
@@ -39,22 +41,13 @@ Backlog
 - [STORY] Once you have all the ingredients you return to Lady Bella and use them all with her. Once the last is used "She says 'Wonderful, you have done very well, now leave me to my work I must concentrate.' The look on Lady Bella's face suddenly turns very dark as she assembles the ingredients and potion making paraphenalia and you wonder if it is simply concentration or something else. You turn to Lady Bella to ask if there was any reward for bringing her these items but before you can speak she scowls at you and shouts 'Get out!'. You back up towards the door as she puts the ingredients into a large mixing bowl and your senses are suddenly assailed by a hideous smell. 'That doesn't smell like a love potion to me! ... that smells more like a death potion!'. Bella laughs mockingly 'Stupid boy, off course it's not a love potion, what a waste of an arc stone that would be, this is to get rid of my worthless husband.' You recoil, horrified at the realisation you have been used by this woman to help her achieve her evil goal. 'But why?' you ask. 'I can't stand him, he's an idiotic oaf. He gives me nothing and expects everything. I'm going to take all that is his and make him vanish from living memory.'"
 
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
-- [FEATURE] Let user change the font size on an options screen
-- [FEATURE] Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
-  * Use the new Google games API to record this as a high score?
 
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 - [TECHNICAL FEATURE] Ruby counter should show how many out of how many achieved - e.g. 10/100 - this needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 
-- [FEATURE-EDITOR] Update webapp editor to [de]serialise visibility and allow setting of visibility
-- [FEATURE-EDITOR] Update webapp editor to allow adding/deletion of on examine actions to items
-
-- [REFACTOR] Item interface is getting fat. Can 'use' and 'examine' be split off, perhaps Examinable, Usable? Is there any benefit?
-
 - [FEATURE] In model content txt items can only be used in one direction, e.g. a spade with a mound of earth and the target item has to include the definition of what happens. If the original item (e.g. spade) includes this information it is ignored. Should this be changed to be bi-directional? It would make writing content easier but needs considering as it might not always be appropriate.
 
-- [IDEA] Add monsters, npcs
-- [IDEA] Add other verbs - attack, eat, drink, dance, take, drop, give, talk
+- [IDEA] Add other verbs - attack, eat, drink, dance, drop, give
 - [IDEA] Optional images to go with text?
 
 Done
@@ -210,3 +203,17 @@ Done
 
 - [BUG] Using key on the door doesn't change door name from locked to unlocked...
   - [FIX] Mid-sentence cased name was being set in the demo content and overriding the new name
+
+Rejected
+========
+
+- Probably a bad idea as with the Talkable/TalkPhraseSource/Sink experience it has made using the Item a bit awkward.
+- [REFACTOR] Item interface is getting fat. Can 'use' and 'examine' be split off, perhaps Examinable, Usable? Is there any benefit?
+
+- Not appropriate for this version of the game.
+- [FEATURE] Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
+  * Use the new Google games API to record this as a high score?
+
+- No longer supporting the webapp editor.
+- [FEATURE-EDITOR] Update webapp editor to [de]serialise visibility and allow setting of visibility
+- [FEATURE-EDITOR] Update webapp editor to allow adding/deletion of on examine actions to items
