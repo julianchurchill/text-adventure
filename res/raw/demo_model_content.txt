@@ -886,6 +886,7 @@ item use is not repeatable:
 item successful use message:You are slightly amazed and much amused that the decoder ring does indeed decode the message on the headstone. As you read it you scratch the decoded message onto the headstone next to the original phrase so that you can look at it again should you need to in the future. You discard the decoder ring to make room for the treasures you anticipate finding in the coming adventure.
 item use action:destroy item:decoderring
 item use action:change item description:The headstone has writing on it but not in any language that you have ever seen before. Next to the garbled script is the following phrase that you previously decoded and scratched here for posterity - "Search well at the altar of the headless saint and let truth light your path."
+item use action:change item visibility:candlestick:visible
 
 LOCATION
 x:060
@@ -945,7 +946,7 @@ LOCATION
 x:-060
 y:120
 location id:churchyardwest
-location description:You are at the west edge of the church yard.
+location description:You are at the west edge of the church yard. The church porch stands in front of you, empty but full of shadows. You hear some scratching in the corner which you presume is a mouse.
 EXIT
 exit label:North
 exit destination:churchyardnorthwest
@@ -961,6 +962,11 @@ exit label:South
 exit destination:churchyardsouthwest
 exit direction hint:South
 exit id:churchyardwest_to_churchyardsouthwest
+EXIT
+exit label:West
+exit destination:churchentrance
+exit direction hint:West
+exit id:churchyardwest_to_churchentrance
 
 LOCATION
 x:-060
@@ -983,4 +989,161 @@ item description:It is a loosely collected pile of leaves.
 item id:pileofleaves_southwest
 item countable noun prefix:a
 item is untakeable:
-item examine message:You fumble about in the leaves making a right mess. There does not appear to be anything here.
+item examine action is not repeatable:
+item examine message:You fumble about in the leaves making a right mess until you uncover a dirty old bone. Possibly a tibula.
+item on examine action:change item visibility:tastybone:visible
+ITEM
+item name:Old dirty bone
+item description:It is a dirty bone. Probably a tibula. You can't imagine what this might be useful for unless you got desperately hungry and wanted to nibble something incredibly unpleasant and possibly lethal.
+item id:tastybone
+item countable noun prefix:a
+item visibility:invisible
+
+LOCATION
+x:-120
+y:120
+location id:churchentrance
+location description:You step inside the porch, grateful to be out of the creepy church yard. In front of you is a forboding wooden door, sturdy but weatherbeaten. It is slightly ajar letting out the barest crack of light which flickers over you.
+EXIT
+exit label:East
+exit destination:churchyardwest
+exit direction hint:East
+exit id:churchentrance_to_churchyardwest
+EXIT
+exit label:West
+exit destination:churchnave
+exit direction hint:West
+exit id:churchentrance_to_churchnave
+
+LOCATION
+x:-180
+y:120
+location id:churchnave
+location description:Surrounding you are the pews in which the congregation of the church would sit to attend a service. They look dusty and probably haven't been used for years. There doesn't appear to be anyone here right now, which you are thankful for since you are sneaking about. The ceiling is high and vaulted and the interior of this building looks a lot larger than it did from the outside. Further on you see the altar at the top of some shallow steps.
+EXIT
+exit label:East
+exit destination:churchentrance
+exit direction hint:East
+exit id:churchnave_to_churchentrance
+EXIT
+exit label:West
+exit destination:churchchancel
+exit direction hint:West
+exit id:churchnave_to_churchchancel
+
+LOCATION
+x:-240
+y:120
+location id:churchchancel
+location description:This part of the church is well lit by candle light, although whoever lit the candles does not appear to be around. You stand at the foot of the shallow stone platform upon which the altar stands.
+EXIT
+exit label:East
+exit destination:churchnave
+exit direction hint:East
+exit id:churchchancel_to_churchnave
+EXIT
+exit label:West
+exit destination:churchaltar
+exit direction hint:West
+exit id:churchchancel_to_churchaltar
+
+LOCATION
+x:-300
+y:120
+location id:churchaltar
+location description:You stand before a naked stone altar. It has been carvered from a single piece of stone and looks very heavy indeed. The light from the surrounding candles mounted on the wall dances over the surface of the stone.
+EXIT
+exit label:East
+exit destination:churchchancel
+exit direction hint:East
+exit id:churchaltar_to_churchchancel
+EXIT
+exit label:Down
+exit destination:churchcryptstairs
+exit direction hint:North
+exit id:churchaltar_to_churchcryptstairs
+exit is not visible:
+ITEM
+item name:Candlestick
+item description:There are many candlesticks surrounding the altar but this one looks a little wonky. Then again it might just be your imagination.
+item id:candlestick
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:frayedrope
+item use is not repeatable:
+item successful use message:You throw the frayed rope up in the air in a loop over the protruding candlestick. It lands gently and you carefully pull down. You have to pull quite hard before it gives but when it does the altar behind you begins to roll out over the stone platform, hidden gears grinding from behind a wall. A slim staircase is revealed, as a puff of stale air assails your nostrils. The frayed rope snaps as you hold it and you leave it dangling uselessly from the candlestick.
+item use action:destroy item:frayedrope
+item use action:make exit visible:churchaltar_to_churchcryptstairs
+item use action:change item description:There are many candlesticks surrounding the altar but this one is at a particularly violent angle with bits of frayed rope dangling from it.
+
+LOCATION
+x:-360
+y:120
+location id:churchcryptstairs
+location description:You are on the hidden crypt stairs. The church and the altar are above you and who knows what is below.
+EXIT
+exit label:Down
+exit destination:churchcrypt
+exit direction hint:North
+exit id:churchcryptstairs_to_churchcrypt
+EXIT
+exit label:Up
+exit destination:churchaltar
+exit direction hint:South
+exit id:churchcryptstairs_to_churchaltar
+
+LOCATION
+x:-420
+y:120
+location id:churchcrypt
+location description:You are at the bottom of the crypt stairs. It is quite dark but you can make out the walls and a passage way. The air is damp and smelly and you think you can hear some hoarse breathing nearby.
+EXIT
+exit label:Passageway
+exit destination:churchcryptpassageway
+exit direction hint:West
+exit id:churchcrypt_to_churchcryptpassageway
+EXIT
+exit label:Up
+exit destination:churchcryptstairs
+exit direction hint:South
+exit id:churchcrypt_to_churchcryptstairs
+
+LOCATION
+x:-480
+y:120
+location id:churchcryptpassageway
+location description:The passageway opens out into a small cavern. There is some light from a door slightly open at one end of the cavern however between you and it stands a grisly, hairy and dribbly beast. Behind you lies the passageway back to the stairs.
+EXIT
+exit label:Passageway
+exit destination:churchcrypt
+exit direction hint:East
+exit id:churchcryptpassageway_to_churchcrypt
+EXIT
+exit label:Door
+exit destination:churchcrypt_litroom
+exit direction hint:West
+exit id:churchcryptpassageway_to_churchcrypt_litroom
+exit is not visible:
+ITEM
+item name:Massive Wolf
+item description:It's an enormous grey wolf. Oddly it has a spiky collar around it's neck from which hangs a metal nameplate inscribed with the name 'Cuddles'.
+item id:massivewolf
+item countable noun prefix:a
+item is untakeable:
+item can be used with:tastybone
+item use is not repeatable:
+item successful use message:You throw the bone at the wolf and it hits him squarely between the eyes. He growls and looks mightily unimpressed, preparing himself to pounce upon you and get a decent meal - when his nose starts to twitch and he looks down at the bone. You thank your lucky stars as the wolf sniffs and licks the bone, picking it up in his jaws and taking it to a corner of the room allowing you to reach the door at the end of the room.
+item use action:destroy item:tastybone
+item use action:make exit visible:churchcryptpassageway_to_churchcrypt_litroom
+
+LOCATION
+x:-540
+y:120
+location id:churchcrypt_litroom
+location description:You stand in another cavern, lit by candles embedded in recesses in the wall. A door leads back to the passage to the stairs.
+EXIT
+exit label:Door
+exit destination:churchcryptpassageway
+exit direction hint:West
+exit id:churchcrypt_litroom_to_churchcryptpassageway
