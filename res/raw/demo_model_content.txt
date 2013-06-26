@@ -1141,9 +1141,58 @@ LOCATION
 x:-540
 y:120
 location id:churchcrypt_litroom
-location description:You stand in another cavern, lit by candles embedded in recesses in the wall. A door leads back to the passage to the stairs.
+location description:You stand in another cavern, lit by candles embedded in recesses in the wall. A door leads back to the passage to the stairs. Resting on the hilt of his sword stands a burly brigand blocking your way. Behind him is another door, this one looks a lot more serious than the last and is reinforced with metal bars.
 EXIT
 exit label:Door
 exit destination:churchcryptpassageway
 exit direction hint:West
 exit id:churchcrypt_litroom_to_churchcryptpassageway
+EXIT
+exit label:Reinforced door
+exit destination:churchcrypt_innersanctum
+exit direction hint:East
+exit id:churchcrypt_litroom_to_churchcrypt_innersanctum
+exit is not visible:
+ITEM
+item name:Burly Brigand
+item description:The brigand looks fierce and unfriendly, not suprising really. He glares at you, as though wishing you'd step a little closer so he can hack off your head and kick you in the crotch. He's a meany.
+item id:burlybrigand
+item countable noun prefix:a
+item is untakeable:
+
+item talk initial phrase:hello:Hello!:You say "Hello!".
+item talk response to:hello:The brigand growls menacingly and steps forward just a little.
+item talk follow up phrase to:hello:idontwanttrouble:I don't want any trouble...:You say "Hey, wait a minute, I don't want any trouble... I'm just trying to recover some potentially stolen goods and wondered if you knew where I might look?"
+item talk response to:idontwanttrouble:The brigand stands a little taller and replies in a slow drawl "What do you mean? Do I look like I'd know where stolen goods would be?". He playfully scrapes the blade of his sword over the stone floor and looks at you thoughtfully. You fully expect those thoughts to be mostly about stabbing you with that sword.
+item talk follow up phrase to:idontwanttrouble:ivemadeamistake:Sorry I've made a mistake...:You quickly reply "I've made a mistake, my apologies good sir - you are obviously an honourable and decent fellow!"
+item talk response to:ivemadeamistake:The brigand says "Yeah, that's right. I am. Now scarper before I come over there and split you from head to heel!"
+
+item talk initial phrase:outofmyway:Out of my way...:You puff your chest up and say in your gruffest voice "Out of my way barbarian or feel the wrath of my sword! He is sharp and eager, yes, be afeared for he is known as Shiny the Dread. Be further warned that in many parts of the land I am known as Dave the Shiv, so stand aside before I am forced to unsheath Shiny and do you an injury!"
+item talk response to:outofmyway:The brigand observes you with mild disdain and you feel your ruse has not worked as well as you had hoped.
+
+item talk initial phrase:mygosh:Your costume is amazing...:You take a deep breath and say "Your costume is amazing.".
+item talk response to:mygosh:"Ey?"
+item talk follow up phrase to:mygosh:andyourshoeslookauthentic:And your shoes look so authentic...:Steeling yourself for a second gambit you state "And your shoes look so authentic, probably real leather? I wish I had only half your taste and fashion sense.". You gulp in anticipation of the certain head chopping to come.
+item talk response to:andyourshoeslookauthentic:"Shoes?" says the brigand furrowing his brow deeply.
+item talk follow up phrase to:andyourshoeslookauthentic:yourhairisbeautiful:Your hair is beautiful...:And now for the killer blow - all or nothing - "Your hair is beautiful - like summer rain, it has such natural elegance, just flowing over your shoulders. Magnificent!"
+item talk response to:yourhairisbeautiful:"Gosh." blubbers the brigand. His voice has raised an octave or two and softened considerably. "That's awfully nice of you to say so, I spent hours this morning trying to get just the right look. Of course no one's been down here all week. I've been here all by myself with that smelly dog and no one to talk to. You're the first person I've had a chance to try out my brigand act on. What do you think, were you scared when you first saw me?" he asks with a wry smile and the hint of a girlish giggle rising in his face.
+item talk follow up phrase to:yourhairisbeautiful:youcouldhavebeenmorefierce:You could have been more fierce...:You say "Well you could have been more fierce but on the whole I'd give you 3 out of 5."
+item talk response to:youcouldhavebeenmorefierce:"Oh dear, really? That's a shame, I'd tried so hard." The poor brigand looks decidely dejected. Positively glum.
+item talk follow up phrase to:youcouldhavebeenmorefierce:youwereveryfierce
+item talk follow up phrase to:yourhairisbeautiful:youwereveryfierce:You were very fierce...:You say "Actually I thought you were very fierce and unfriendly, utterly convincing."
+item talk response to:youwereveryfierce:"Oh wonderful!" cries the brigand. "I'm so happy I think I'll just let you pass. Between you and me I couldn't stop you if I wanted to, this is just for show, and you've been so sweet.". The brigand literally skips aside, bows and motions you towards the barred door at the rear of the cavern. He whispers at you, covering his mouth as if someone might be listening "If you don't mind I'll keep up the brigand act - a jobbing actor has got to practice you know.". He signals the end of his secret missive with a wink.
+
+item talk action in response to:youwereveryfierce:make exit visible:churchcrypt_litroom_to_churchcrypt_innersanctum
+item talk action in response to:youwereveryfierce:change item description:The brigand looks convincingly fierce and unfriendly. As you look at him he puts on an extra grim face and gives you a cheeky wink.
+item talk action in response to:youwereveryfierce:change location description:churchcrypt_litroom:You stand in another cavern, lit by candles embedded in recesses in the wall. A door leads back to the passage to the stairs. Resting on the hilt of his sword stands a burly brigand. Beside him is another door, this one looks a lot more serious than the last and is reinforced with metal bars.
+
+LOCATION
+x:-600
+y:120
+location id:churchcrypt_innersanctum
+location description:You stand in yet another cavern however this one seems better looked after. There is a small amount of furniture, a few chairs, a table and some trinkets and the floor appears to have been swept.
+EXIT
+exit label:Reinforced door
+exit destination:churchcrypt_litroom
+exit direction hint:West
+exit id:churchcrypt_innersanctum_to_churchcrypt_litroom
