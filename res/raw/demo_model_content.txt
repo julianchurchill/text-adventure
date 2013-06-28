@@ -1145,12 +1145,12 @@ location description:You stand in another cavern, lit by candles embedded in rec
 EXIT
 exit label:Door
 exit destination:churchcryptpassageway
-exit direction hint:West
+exit direction hint:East
 exit id:churchcrypt_litroom_to_churchcryptpassageway
 EXIT
 exit label:Reinforced door
 exit destination:churchcrypt_innersanctum
-exit direction hint:East
+exit direction hint:West
 exit id:churchcrypt_litroom_to_churchcrypt_innersanctum
 exit is not visible:
 ITEM
@@ -1190,9 +1190,57 @@ LOCATION
 x:-600
 y:120
 location id:churchcrypt_innersanctum
-location description:You stand in yet another cavern however this one seems better looked after. There is a small amount of furniture, a few chairs, a table and some trinkets and the floor appears to have been swept.
+location description:You stand in yet another cavern however this one seems better looked after. There is a small amount of furniture, a few chairs, a table and some trinkets and the floor appears to have been swept. There are several doors leading from this room and you think you can hear whispering voices but you cannot tell which door they are coming from.
 EXIT
 exit label:Reinforced door
 exit destination:churchcrypt_litroom
-exit direction hint:West
+exit direction hint:East
 exit id:churchcrypt_innersanctum_to_churchcrypt_litroom
+EXIT
+exit label:Wooden door
+exit destination:churchcrypt_storeroom
+exit direction hint:West
+exit id:churchcrypt_innersanctum_to_churchcrypt_storeroom
+EXIT
+exit label:Metal door
+exit destination:churchcrypt_emptyroom2
+exit direction hint:North
+exit id:churchcrypt_innersanctum_to_churchcrypt_emptyroom2
+EXIT
+exit label:Tough wooden door
+exit destination:churchcrypt_saferoom
+exit direction hint:South
+exit id:churchcrypt_innersanctum_to_churchcrypt_saferoom
+
+LOCATION
+x:-660
+y:120
+location id:churchcrypt_storeroom
+location description:This room appears to be a storage area, there are boxes on the floor and shelves lined with supplies. You can see food, drink, medicines. There is enough here to keep a band of men going for many weeks - or one person for a lifetime. One box in the corner catches your eye, it is full of plants - which seems quite unusual given that you can see no natural source of light yet the plants appear to be alive and healthy.
+EXIT
+exit label:Wooden door
+exit destination:churchcrypt_innersanctum
+exit direction hint:East
+exit id:churchcrypt_storeroom_to_churchcrypt_innersanctum
+
+LOCATION
+x:-600
+y:060
+location id:churchcrypt_emptyroom2
+location description:You stand in yet another cavern.
+EXIT
+exit label:Metal door
+exit destination:churchcrypt_innersanctum
+exit direction hint:South
+exit id:churchcrypt_emptyroom2_to_churchcrypt_innersanctum
+
+LOCATION
+x:-600
+y:180
+location id:churchcrypt_saferoom
+location description:You stand in yet another cavern.
+EXIT
+exit label:Tough wooden door
+exit destination:churchcrypt_innersanctum
+exit direction hint:North
+exit id:churchcrypt_saferoom_to_churchcrypt_innersanctum
