@@ -555,6 +555,7 @@ item name:Decoder ring
 item description:This looks like a kids toy. It has a shaped viewing hole through which you might read an encoded message, the letters becoming revelead due to the complex filter decorating the aperture. You wonder what on earth it could be useful for.
 item id:decoderring
 item countable noun prefix:a
+item visibility:invisible
 
 LOCATION
 x:360
@@ -589,7 +590,7 @@ exit direction hint:East
 exit id:outsidetownhall_to_townhall1
 ITEM
 item name:Blue board
-item description:The board has a notice pinned to it stating "Whomsoever can recover, in tact, my wife's Sapphire necklace shall find ample reward and my favour. Last seen near the church of St.Almedha to the west of the town. Oren Constantine."
+item description:The board has a notice pinned to it stating "Whomsoever can recover, in tact, my wife's Sapphire necklace shall find ample reward and my favour. Last seen near the church of St.Almedha to the west of the town past the clock tower. Oren Constantine."
 item id:bluenoticeboard
 item countable noun prefix:a
 item is untakeable:
@@ -1174,12 +1175,12 @@ item talk initial phrase:mygosh:Your costume is amazing...:You take a deep breat
 item talk response to:mygosh:"Ey?"
 item talk follow up phrase to:mygosh:andyourshoeslookauthentic:And your shoes look so authentic...:Steeling yourself for a second gambit you state "And your shoes look so authentic, probably real leather? I wish I had only half your taste and fashion sense.". You gulp in anticipation of the certain head chopping to come.
 item talk response to:andyourshoeslookauthentic:"Shoes?" says the brigand furrowing his brow deeply.
-item talk follow up phrase to:andyourshoeslookauthentic:yourhairisbeautiful:Your hair is beautiful...:And now for the killer blow - all or nothing - "Your hair is beautiful - like summer rain, it has such natural elegance, just flowing over your shoulders. Magnificent!"
-item talk response to:yourhairisbeautiful:"Gosh." blubbers the brigand. His voice has raised an octave or two and softened considerably. "That's awfully nice of you to say so, I spent hours this morning trying to get just the right look. Of course no one's been down here all week. I've been here all by myself with that smelly dog and no one to talk to. You're the first person I've had a chance to try out my brigand act on. What do you think, were you scared when you first saw me?" he asks with a wry smile and the hint of a girlish giggle rising in his face.
-item talk follow up phrase to:yourhairisbeautiful:youcouldhavebeenmorefierce:You could have been more fierce...:You say "Well you could have been more fierce but on the whole I'd give you 3 out of 5."
+item talk follow up phrase to:andyourshoeslookauthentic:yourhairisshiny:Your hair is so shiny...:And now for the killer blow - all or nothing - "Your hair is so shiny - like summer rain, it has such natural elegance, just flowing over your shoulders. Magnificent!"
+item talk response to:yourhairisshiny:"Gosh." blubbers the brigand. His voice has raised an octave or two and softened considerably. "That's awfully nice of you to say so, I spent hours this morning trying to get just the right look. Of course no one's been down here all week. I've been here all by myself with that smelly dog and no one to talk to. You're the first person I've had a chance to try out my brigand act on. What do you think, were you scared when you first saw me?" he asks with a wry smile and the hint of a girlish giggle rising in his face.
+item talk follow up phrase to:yourhairisshiny:youcouldhavebeenmorefierce:You could have been more fierce...:You say "Well you could have been more fierce but on the whole I'd give you 3 out of 5."
 item talk response to:youcouldhavebeenmorefierce:"Oh dear, really? That's a shame, I'd tried so hard." The poor brigand looks decidely dejected. Positively glum.
 item talk follow up phrase to:youcouldhavebeenmorefierce:youwereveryfierce
-item talk follow up phrase to:yourhairisbeautiful:youwereveryfierce:You were very fierce...:You say "Actually I thought you were very fierce and unfriendly, utterly convincing."
+item talk follow up phrase to:yourhairisshiny:youwereveryfierce:You were very fierce...:You say "Actually I thought you were very fierce and unfriendly, utterly convincing."
 item talk response to:youwereveryfierce:"Oh wonderful!" cries the brigand. "I'm so happy I think I'll just let you pass. Between you and me I couldn't stop you if I wanted to, this is just for show, and you've been so sweet.". The brigand literally skips aside, bows and motions you towards the barred door at the rear of the cavern. He whispers at you, covering his mouth as if someone might be listening "If you don't mind I'll keep up the brigand act - a jobbing actor has got to practice you know.". He signals the end of his secret missive with a wink.
 
 item talk action in response to:youwereveryfierce:make exit visible:churchcrypt_litroom_to_churchcrypt_innersanctum
@@ -1222,6 +1223,34 @@ exit label:Wooden door
 exit destination:churchcrypt_innersanctum
 exit direction hint:East
 exit id:churchcrypt_storeroom_to_churchcrypt_innersanctum
+ITEM
+item name:Stack of boxes
+item description:The boxes are stacked high and are full of assorted supplies.
+item id:stack_of_boxes1
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:You unstack the boxes and have a good search through the contents. There's not much to see but you leave the boxes unstacked in case you want to examine them further.
+item on examine action:change item visibility:stack_of_boxes1:invisible
+item on examine action:change item visibility:stack_of_boxes2:visible
+ITEM
+item name:Stack of boxes
+item description:The boxes were stacked high, one of the boxes appears to have something interesting in.
+item id:stack_of_boxes2
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine action is not repeatable:
+item examine message:The very last box is lined with a sheet of torn paper which has some smudged writing on. You move all the objects on the paper out of the way so you can have a closer look.
+item on examine action:change item visibility:tornpaper:visible
+item on examine action:change item description:The boxes were stacked high. You feel you have already found whatever was interesting enough to root through this mess for.
+ITEM
+item name:Torn paper
+item description:The paper was used to line some supply boxes and is ripped in several places. There are stains all over it and you don't feel like putting something this filthy in your pocket. There is smudged writing on it but you think you can make out the last few words - "sceert psas psarhe is fnargl"
+item id:tornpaper
+item countable noun prefix:some
+item is untakeable:
+item visibility:invisible
 
 LOCATION
 x:-600
@@ -1244,3 +1273,120 @@ exit label:Tough wooden door
 exit destination:churchcrypt_innersanctum
 exit direction hint:North
 exit id:churchcrypt_saferoom_to_churchcrypt_innersanctum
+ITEM
+item name:Voice activated safe
+item description:This is one of those new fangled voice activated safes - SIREE - Safe In Risky Exotic Environments. It's well renowned for not recognising quite the word you intended. You should try talking to it.
+item id:voice_activated_safe
+item countable noun prefix:a
+item is untakeable:
+
+item talk initial phrase:hello:Hello!:You say "Hello?".
+item talk response to:hello:"What do you mean hello? I'm a safe not a pretty girl so stop trying to buy me a drink. What's the pass phrase?"
+item talk follow up phrase to:hello:fnargl:Fnargl:You say "Fnargl!".
+item talk response to:fnargl:"Go on..."
+item talk follow up phrase to:hello:anthrakh:Anthrakh:You say "Anthrakh!".
+item talk response to:anthrakh:"..."
+item talk follow up phrase to:hello:pottum:Pottum:You say "Pottum!".
+item talk response to:pottum:"Yes..."
+
+item talk follow up phrase to:fnargl:tremedor:Tremedor:You say "Tremedor!".
+item talk response to:tremedor:"..."
+item talk follow up phrase to:fnargl:doofap:Doofap:You say "Doofap!".
+item talk response to:doofap:"Continue..."
+item talk follow up phrase to:fnargl:bendlebox:Bendlebox:You say "Bendlebox!".
+item talk response to:bendlebox:"And..."
+
+item talk follow up phrase to:anthrakh:junisper:Junisper:You say "Junisper!".
+item talk response to:junisper:"Uh huh..."
+item talk follow up phrase to:anthrakh:bentium:Bentium:You say "Bentium!".
+item talk response to:bentium:"Ok..."
+item talk follow up phrase to:anthrakh:blongle:Blongle:You say "Blongle!".
+item talk response to:blongle:"Right..."
+
+item talk follow up phrase to:pottum:spoonfish:Spoonfish:You say "Spoonfish!".
+item talk response to:spoonfish:"Uh huh..."
+item talk follow up phrase to:pottum:jumpwazoo:Jumpwazoo:You say "Jumpwazoo!".
+item talk response to:jumpwazoo:"Ok..."
+item talk follow up phrase to:pottum:indigerent:Indigerent:You say "Indigerent!".
+item talk response to:indigerent:"Right..."
+
+item talk follow up phrase to:spoonfish:phewty:Phewty:You say "Phewty!".
+item talk response to:phewty:"Tell it to the fishes."
+item talk follow up phrase to:spoonfish:deeddum:Deeddum:You say "Deeddum!".
+item talk response to:deeddum:"Speak to the hand cos the safe ain't listening."
+item talk follow up phrase to:spoonfish:worpalparp:Worpalparp:You say "Worpalparp!".
+item talk response to:worpalparp:"The worst attempt so far. Thoroughly disappointing."
+
+item talk follow up phrase to:jumpwazoo:abracadabra:Abracadabra:You say "Abracadabra!".
+item talk response to:abracadabra:"Really?"
+item talk follow up phrase to:jumpwazoo:oneteetwotee:Oneteetwotee:You say "Oneteetwotee!".
+item talk response to:oneteetwotee:"Not a chance sunshine."
+item talk follow up phrase to:jumpwazoo:itchingfeet:Itchingfeet:You say "Itchingfeet!".
+item talk response to:itchingfeet:"You're wasting my time."
+
+item talk follow up phrase to:indigerent:ardvarkian:Ardvarkian:You say "Ardvarkian!".
+item talk response to:ardvarkian:"That is a really rubbish guess."
+item talk follow up phrase to:indigerent:jubiliam:Jubiliam:You say "Jubiliam!".
+item talk response to:jubiliam:"Can't you try harder, you're not putting your heart into this."
+item talk follow up phrase to:indigerent:unbelievable:Unbelievable:You say "Unbelievable!".
+item talk response to:unbelievable:"Oh what's the point."
+
+item talk follow up phrase to:junisper:gnasharay:Gnasharay:You say "Gnasharay!".
+item talk response to:gnasharay:"Bonkers. And completely wrong."
+item talk follow up phrase to:junisper:kalkulator:Kalkulator:You say "Kalkulator!".
+item talk response to:kalkulator:"You might as well give up."
+item talk follow up phrase to:junisper:spungiform:Spungiform:You say "Spungiform!".
+item talk response to:spungiform:"Don't you have anything else to do?"
+
+item talk follow up phrase to:bentium:conjuper:Conjuper:You say "Conjuper!".
+item talk response to:conjuper:"Bonkers. And completely wrong."
+item talk follow up phrase to:bentium:splatward:Splatward:You say "Splatward!".
+item talk response to:splatward:"You might as well give up."
+item talk follow up phrase to:bentium:infinitussock:Infinitussock:You say "Infinitussock!".
+item talk response to:infinitussock:"Don't you have anything else to do?"
+
+item talk follow up phrase to:blongle:boodle:Boodle:You say "Boodle!".
+item talk response to:boodle:"Bonkers. And completely wrong."
+item talk follow up phrase to:blongle:gafaro:Gafaro:You say "Gafaro!".
+item talk response to:gafaro:"Miserably hopeless."
+item talk follow up phrase to:blongle:leeple:Leeple:You say "Leeple!".
+item talk response to:leeple:"Just give up."
+
+item talk follow up phrase to:tremedor:banaroo:Banaroo:You say "Banaroo!".
+item talk response to:banaroo:"Of course not. Ridiculous."
+item talk follow up phrase to:tremedor:diddle:Diddle:You say "Diddle!".
+item talk response to:diddle:"Where do you get this stuff from? Hilarious."
+item talk follow up phrase to:tremedor:roobibus:Roobibus:You say "Roobibus!".
+item talk response to:roobibus:"Are you joking? Cos it's not funny."
+
+item talk follow up phrase to:doofap:hardenhousen:Hardenhousen:You say "Hardenhousen!".
+item talk response to:hardenhousen:"Of course not. Ridiculous."
+item talk follow up phrase to:doofap:obviate:Obviate:You say "Obviate!".
+item talk response to:obviate:"Where do you get this stuff from? Hilarious."
+item talk follow up phrase to:doofap:alucidit:Alucidit:You say "Alucidit!".
+item talk response to:alucidit:"Are you joking? Cos it's not funny."
+
+item talk follow up phrase to:bendlebox:bongle:Bongle:You say "Bongle!".
+item talk response to:bongle:"Of course not. Ridiculous."
+item talk follow up phrase to:bendlebox:ratamapantrap:Ratamapantrap:You say "Ratamapantrap!".
+item talk response to:ratamapantrap:"No. Idiot."
+item talk follow up phrase to:bendlebox:floomembrow:Floomembrow:You say "Floomembrow!".
+item talk response to:floomembrow:"Fantastic! You've got it right.". The safe door swings open and you see a small anxious imp sitting on a tiny chair inside the safe. He looks quite aggravated. "I've been waiting weeks for someone to open this blasted safe. You can't imagine the number of idiotic utterances I've had to deal with, the rank stupidity of people randomly guessing unbelievable words to get me to open up - I saw straight through them.". He takes a deep breath, calming himself and enjoying the fresh air from outside the safe. "I suppose this is what you're after." he says as he throws a necklace down at your feet. He sits back on his chair propping the safe door open with one foot and watches you.
+item talk action in response to:lookingforwork:change item visibility:voice_activated_safe:invisible
+item talk action in response to:lookingforwork:change item visibility:unlocked_voice_activated_safe:visible
+item talk action in response to:lookingforwork:change item visibility:sapphire_necklace:visible
+
+ITEM
+item name:Voice activated safe
+item description:This is one of those new fangled voice activated safes - SIREE - Safe In Risky Exotic Environments. It's well renowned for not recognising quite the word you intended. It is unlocked and the door is open wide. There is an angry little imp reclining in a tiny chair making rather rude gestures at you.
+item id:unlocked_voice_activated_safe
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+
+ITEM
+item name:Sapphire necklace
+item description:This is beautiful necklace, adorned with sapphires. There are also some other strange symbols shaped in metal interspersed amongst the sapphires. You do not recognize them but they seem familiar.
+item id:sapphire_necklace
+item countable noun prefix:a
+item visibility:invisible
