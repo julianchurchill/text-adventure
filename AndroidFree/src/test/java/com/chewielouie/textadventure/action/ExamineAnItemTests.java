@@ -30,7 +30,7 @@ public class ExamineAnItemTests {
 
     @Test
     public void label_is_examine_an_item() {
-        assertEquals( "Examine an item", createAction().label() );
+        assertEquals( "Examine", createAction().label() );
     }
 
     @Test

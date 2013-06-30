@@ -12,7 +12,6 @@ Backlog
 
 - [BUG] From email from Alex Bailey "The text is sometime displayed in the wrong order. I can't remember which object, but the scene description told me there was an object present before it was mentioned how it got there. I can send a screenshot for this if I'm not being clear."
   * See email as he also included a screen shot.
-- [FEATURE] The 'Examine an item' button text should be changed to 'Examine' so it works nicely with items and people.
 - [FEATURE] Tell the user when they have reached the end of the available content! Perhaps a popup saying look out for new content in the next update?
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] What's new dialog for first run of new version.
@@ -20,7 +19,7 @@ Backlog
 - [FEATURE] Tell the user when they get a ruby - make it much more obvious. Atm just mentioned in text and counter in corner goes up.
   * Make counter and ruby graphic larger
   * Add sound effect or screen flash or dialog
-  * Possibly remove the ruby idea entirely - what is the use of it?
+  * Possibly remove the ruby idea entirely - what is the use of it? - shows progress, let's the UI know when to show a 'end of content' popup...
 - [FEATURE] Add location title to title bar (next to rubies)?
 
 - [STORY] Once you pass the brigand you see a few more rooms one of which contains a locked voice-activated safe. You must find the 3 word code to unlock it. The words can be found in the surrounding rooms, on a piece of burnt paper, scrawled on the side of the safe and finally you must speak to an NPC.
@@ -57,6 +56,7 @@ Done
 2.0
 ---
 
+- [FEATURE] The 'Examine an item' button text changed to 'Examine' so it works nicely with items and people.
 - [FEATURE] Exits have consistent colours for direction hints - e.g. all North are green.
   - The exits are also ordered consistently.
 

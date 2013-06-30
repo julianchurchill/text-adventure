@@ -26,7 +26,7 @@ public class ExamineAnItem implements Action {
     }
 
     public String label() {
-        return "Examine an item";
+        return "Examine";
     }
 
     public void trigger() {
