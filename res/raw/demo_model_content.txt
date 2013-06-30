@@ -652,6 +652,38 @@ exit label:West
 exit destination:morecobbledroad
 exit direction hint:West
 exit id:cobbledroad_to_morecobbledroad
+EXIT
+exit label:House
+exit destination:hovel
+exit direction hint:North
+exit id:cobbledroad_to_hovel
+
+LOCATION
+x:240
+y:180
+location id:hovel
+location description:You step inside the house. It might be more appropriate to call this a hovel. There is mess everywhere and it looks abandoned.
+EXIT
+exit label:Outside
+exit destination:cobbledroad
+exit direction hint:South
+exit id:hovel_to_cobbledroad
+ITEM
+item name:Mess of stuff
+item description:A mess of stuff. There might be something hidden in here, but probably not on purpose.
+item id:mess_of_stuff
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:You search through the mess, holding your nose and averting your eyes - although this causes the search to be pretty ineffectual. You are lucky to find something, a scrap of paper.
+item on examine action:change item visibility:tornpaper_hovel:visible
+ITEM
+item name:Torn paper
+item description:The paper is ripped in several places. There are stains all over it and you don't feel like putting something this filthy in your pocket. There is smudged writing on it but you think you can make out the last word - "floomembrow"
+item id:tornpaper_hovel
+item countable noun prefix:some
+item is untakeable:
+item visibility:invisible
 
 LOCATION
 x:180
@@ -1381,10 +1413,10 @@ item talk follow up phrase to:bendlebox:ratamapantrap:Ratamapantrap:You say "Rat
 item talk response to:ratamapantrap:"No. Idiot."
 item talk follow up phrase to:bendlebox:floomembrow:Floomembrow:You say "Floomembrow!".
 item talk response to:floomembrow:"Fantastic! You've got it right.". The safe door swings open and you see a small anxious imp sitting on a tiny chair inside the safe. He looks quite aggravated. "I've been waiting weeks for someone to open this blasted safe. You can't imagine the number of idiotic utterances I've had to deal with, the rank stupidity of people randomly guessing unbelievable words to get me to open up - I saw straight through them.". He takes a deep breath, calming himself and enjoying the fresh air from outside the safe. "I suppose this is what you're after." he says as he throws a necklace down at your feet. He sits back on his chair propping the safe door open with one foot and watches you.
-item talk action in response to:lookingforwork:change item visibility:voice_activated_safe:invisible
-item talk action in response to:lookingforwork:change item visibility:unlocked_voice_activated_safe:visible
-item talk action in response to:lookingforwork:change item visibility:sapphire_necklace:visible
-item talk action in response to:increment score:
+item talk action in response to:floomembrow:change item visibility:voice_activated_safe:invisible
+item talk action in response to:floomembrow:change item visibility:unlocked_voice_activated_safe:visible
+item talk action in response to:floomembrow:change item visibility:sapphire_necklace:visible
+item talk action in response to:floomembrow:increment score:
 
 ITEM
 item name:Voice activated safe
