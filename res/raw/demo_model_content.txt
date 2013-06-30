@@ -1384,6 +1384,7 @@ item talk response to:floomembrow:"Fantastic! You've got it right.". The safe do
 item talk action in response to:lookingforwork:change item visibility:voice_activated_safe:invisible
 item talk action in response to:lookingforwork:change item visibility:unlocked_voice_activated_safe:visible
 item talk action in response to:lookingforwork:change item visibility:sapphire_necklace:visible
+item talk action in response to:increment score:
 
 ITEM
 item name:Voice activated safe

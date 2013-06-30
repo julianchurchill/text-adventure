@@ -13,7 +13,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     ModelLocation currentLocation = new NullLocation();
     private List<Item> inventoryItems = new ArrayList<Item>();
     private int currentScore = 0;
-    private int maximumScore = 2;
+    private int maximumScore = 3;
     private List<ModelEventSubscriber> eventSubscribers =
                                     new ArrayList<ModelEventSubscriber>();
 
