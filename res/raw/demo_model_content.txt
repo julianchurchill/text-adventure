@@ -467,6 +467,7 @@ item is untakeable:
 item examine action is not repeatable:
 item examine message:You're not sure how anyone found anything in this mess but a particular sheet of paper catches your eye. As you reach to pick it up it falls to the ground.
 item on examine action:change item visibility:minemap:visible
+item on examine action:change item visibility:tornpaper_mine:visible
 item on examine action:change item description:It is covered with papers. Boring, uninteresting papers.
 ITEM
 item name:Map
@@ -474,6 +475,14 @@ item description:This is a map of the mine tunnels - useful in case you get lost
 item id:minemap
 item countable noun prefix:a
 item visibility:invisible
+ITEM
+item name:Torn paper
+item description:The paper was hidden amongst all the others on the desk and is ripped in several places. There are stains all over it and you don't feel like putting something this filthy in your pocket. There is smudged writing on it but you think you can make out a word - "bendlebox". You wonder what it means.
+item id:tornpaper_mine
+item countable noun prefix:some
+item is untakeable:
+item visibility:invisible
+
 LOCATION
 x:480
 y:720
@@ -1383,7 +1392,6 @@ item id:unlocked_voice_activated_safe
 item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
-
 ITEM
 item name:Sapphire necklace
 item description:This is beautiful necklace, adorned with sapphires. There are also some other strange symbols shaped in metal interspersed amongst the sapphires. You do not recognize them but they seem familiar.
