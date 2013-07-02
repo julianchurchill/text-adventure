@@ -161,6 +161,7 @@ item countable noun prefix:a
 item id:clockhourhand
 item visibility:invisible
 item mid sentence cased name:clock hour hand
+
 LOCATION
 x:300
 y:240
@@ -183,6 +184,12 @@ exit destination:cobbledroad
 exit direction hint:West
 exit is not visible:
 exit id:clocktower_to_cobbledroad
+EXIT
+exit label:East
+exit destination:nobles_quarter_east_street
+exit direction hint:East
+exit is not visible:
+exit id:clocktower_to_nobles_quarter_east_street
 ITEM
 item name:Clock minute hand
 item description:It is quite heavy, ornate and made of iron.
@@ -549,6 +556,7 @@ item talk follow up phrase to:checkin:lookingforwork:I was looking for some work
 item talk response to:lookingforwork:The Shop keeper says "Sure, you should go to the town hall to the east of the town. There are boards where an adventurer might find a job." Placing something on the shop counter he winks and says "You might also find this useful."
 item talk action in response to:lookingforwork:make exit visible:mainstreeteast
 item talk action in response to:lookingforwork:make exit visible:clocktower_to_cobbledroad
+item talk action in response to:lookingforwork:make exit visible:clocktower_to_nobles_quarter_east_street
 item talk action in response to:lookingforwork:change location description:clocktower:You stand before a mighty clock tower. The clock goes TICK! There is a cobbled road off to the west that winds its way through the back streets of the town.
 item talk action in response to:lookingforwork:change item visibility:decoderring:visible
 
@@ -1431,3 +1439,14 @@ item description:This is beautiful necklace, adorned with sapphires. There are a
 item id:sapphire_necklace
 item countable noun prefix:a
 item visibility:invisible
+
+LOCATION
+x:360
+y:240
+location id:nobles_quarter_east_street
+location description:You stand at the west end of the main street of the nobles quarter. The houses around you are mansions, varying in size and grandeur to reflect the owners wealth. The larger houses are at the far end to the east. The streets are mostly empty but there are a few merchants wandering back to their homes laden with bargains from far off lands.
+EXIT
+exit label:Clock tower
+exit destination:clocktower
+exit direction hint:West
+exit id:nobles_quarter_east_street_to_clocktower
