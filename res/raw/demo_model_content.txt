@@ -186,10 +186,10 @@ exit is not visible:
 exit id:clocktower_to_cobbledroad
 EXIT
 exit label:East
-exit destination:nobles_quarter_east_street
+exit destination:nobles_quarter_west_street
 exit direction hint:East
 exit is not visible:
-exit id:clocktower_to_nobles_quarter_east_street
+exit id:clocktower_to_nobles_quarter_west_street
 ITEM
 item name:Clock minute hand
 item description:It is quite heavy, ornate and made of iron.
@@ -556,7 +556,7 @@ item talk follow up phrase to:checkin:lookingforwork:I was looking for some work
 item talk response to:lookingforwork:The Shop keeper says "Sure, you should go to the town hall to the east of the town. There are boards where an adventurer might find a job." Placing something on the shop counter he winks and says "You might also find this useful."
 item talk action in response to:lookingforwork:make exit visible:mainstreeteast
 item talk action in response to:lookingforwork:make exit visible:clocktower_to_cobbledroad
-item talk action in response to:lookingforwork:make exit visible:clocktower_to_nobles_quarter_east_street
+item talk action in response to:lookingforwork:make exit visible:clocktower_to_nobles_quarter_west_street
 item talk action in response to:lookingforwork:change location description:clocktower:You stand before a mighty clock tower. The clock goes TICK! There is a cobbled road off to the west that winds its way through the back streets of the town.
 item talk action in response to:lookingforwork:change item visibility:decoderring:visible
 
@@ -644,6 +644,13 @@ item description:The board has a notice pinned to it stating "The town praises t
 item id:slatenoticeboard
 item countable noun prefix:a
 item is untakeable:
+ITEM
+item name:Blue board
+item description:The board has a notice pinned to it stating "Oren Constantine professes his personal thanks to the adventurer who recovered his wife's necklace, in tact from a brigands nest in the crypts under the church of St.Almedha to the west of the town."
+item id:bluenoticeboard_roomofdeeds
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
 
 LOCATION
 x:240
@@ -1424,7 +1431,6 @@ item talk response to:floomembrow:"Fantastic! You've got it right.". The safe do
 item talk action in response to:floomembrow:change item visibility:voice_activated_safe:invisible
 item talk action in response to:floomembrow:change item visibility:unlocked_voice_activated_safe:visible
 item talk action in response to:floomembrow:change item visibility:sapphire_necklace:visible
-item talk action in response to:floomembrow:increment score:
 
 ITEM
 item name:Voice activated safe
@@ -1434,19 +1440,134 @@ item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 ITEM
-item name:Sapphire necklace
-item description:This is beautiful necklace, adorned with sapphires. There are also some other strange symbols shaped in metal interspersed amongst the sapphires. You do not recognize them but they seem familiar.
+item name:Necklace
+item description:This necklace looks like it might be the one reported missing by Oren Constantine. It is very hard to tell as it seems to be shrouded in a fuzzy cloak - you suspect magic is afoot here. As you know the best way to deal with magic is magic, and you'll need something powerful, for whatever it is.
 item id:sapphire_necklace
 item countable noun prefix:a
 item visibility:invisible
+item can be used with:dustoftheancients
+item successful use message:You place the necklace on the floor in front of you and sprinkle the dust over it. The fuzziness quickly turns to sharp constrast, revealing a beautiful sapphire necklace. Someone must have magically cloaked it to help hide it.
+item use action:change item description:This is a beautiful necklace, adorned with sapphires. There are also some other strange symbols shaped in metal interspersed amongst the sapphires. You do not recognize them but they seem familiar. This is definitely the necklace that belongs to Oren Constantine's wife.
+item use action:change item name:Sapphire necklace
+item use action:destroy item:dustoftheancients
+item use action:change item visibility:grumpy_oren:invisible
+item use action:change item visibility:amiable_oren:visible
+item use action:increment score:
 
 LOCATION
 x:360
 y:240
-location id:nobles_quarter_east_street
+location id:nobles_quarter_west_street
 location description:You stand at the west end of the main street of the nobles quarter. The houses around you are mansions, varying in size and grandeur to reflect the owners wealth. The larger houses are at the far end to the east. The streets are mostly empty but there are a few merchants wandering back to their homes laden with bargains from far off lands.
 EXIT
 exit label:Clock tower
 exit destination:clocktower
 exit direction hint:West
-exit id:nobles_quarter_east_street_to_clocktower
+exit id:nobles_quarter_west_street_to_clocktower
+EXIT
+exit label:East
+exit destination:nobles_quarter_middle_street
+exit direction hint:East
+exit id:nobles_quarter_west_street_to_nobles_quarter_middle_street
+
+LOCATION
+x:420
+y:240
+location id:nobles_quarter_middle_street
+location description:You stand in the middle of the main street that runs through the nobles quarter. There are impressive houses on all sides of you, getting larger and more opulent the further east you look. Back to the west you can see a clock tower in the distance.
+EXIT
+exit label:West
+exit destination:nobles_quarter_west_street
+exit direction hint:West
+exit id:nobles_quarter_middle_street_to_nobles_quarter_west_street
+EXIT
+exit label:East
+exit destination:nobles_quarter_east_street
+exit direction hint:East
+exit id:nobles_quarter_middle_street_to_nobles_quarter_east_street
+
+LOCATION
+x:480
+y:240
+location id:nobles_quarter_east_street
+location description:You stand at the west end of the main street that runs through the nobles quarter. This end has the most fantastic houses, mansions of huge proportions with people running to and fro, tending to the houses and the demands of the occupants. One house to the north has a large open porch whereupon stands a wide-shouldered man, looking out into the street expectantly.
+EXIT
+exit label:North
+exit destination:orens_porch
+exit direction hint:North
+exit id:nobles_quarter_east_street_to_orens_porch
+EXIT
+exit label:West
+exit destination:nobles_quarter_middle_street
+exit direction hint:West
+exit id:nobles_quarter_east_street_to_nobles_quarter_middle_street
+
+LOCATION
+x:540
+y:240
+location id:orens_porch
+location description:You stand on a long porch fronting an even longer house. The house itself has several floors and extends back from the street further than you can see. You get the impression there are large grounds round the back of the house and probably a fountain or two. In front of you stands a large man looking out into the street. He has the air of importance and wealth and you deduce that this must be Oren Constantine the famous merchant.
+EXIT
+exit label:South
+exit destination:nobles_quarter_east_street
+exit direction hint:South
+exit id:orens_porch_to_nobles_quarter_east_street
+EXIT
+exit label:Front door
+exit destination:orens_hallway
+exit direction hint:North
+exit id:orens_porch_to_orens_hallway
+exit is not visible:
+
+ITEM
+item name:Wealthy merchant
+item description:This is Oren Constantine, a famous merchant. Wealthy, shrewd and above all ruthless, he is well known across the town. Many respect him, some fear him and a few hate him. He looks to be in a bad mood and you wonder whether it is a good idea to bother him at this moment.
+item id:grumpy_oren
+item countable noun prefix:a
+item is untakeable:
+
+item talk initial phrase:hello:Hello!:You say "Hello Mr Constantine, I was wondering if you had any jobs an up and coming adventurer might be interested in.".
+item talk response to:hello:"Well unless you've got my wife's necklace I have nothing for you, now get off my land before I release the hounds. Hrrmph." says Constantine as he pointedly turns his back on you. His Hrrmph is particularly impressive.
+
+ITEM
+item name:Wealthy merchant
+item description:This is Oren Constantine, a famous merchant. Wealthy, shrewd and above all ruthless, he is well known across the town. Many respect him, some fear him and a few hate him. He looks to be in a good mood and amiable. If you've got anything to tell him, now is the time to do it.
+item id:amiable_oren
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+
+item talk initial phrase:hello:Hello!:You say "Hello Mr Constantine - is this your wife's necklace?".
+item talk response to:hello:"Why yes good sir! Thank you, you have cured a great headache for me, at last I can have some peace!"
+item talk follow up phrase to:hello:found_it_in_a_crypt:I found it in a crypt:You say "I'm so glad, I found it in a hidden crypt, in a safe being guarded by some brigands of dubious quality.".
+item talk response to:found_it_in_a_crypt:"Oh is that so?" replies Constantine. "Well never mind how you found it, what's important is that we have it back." He seems to make a point of saying the last sentence overly loud. Glancing furtively about you wonder if anyone might be listening.
+item talk follow up phrase to:found_it_in_a_crypt:here_it_is:Here is the necklace:You say "Ok, well here it is." you say expectantly.
+item talk response to:here_it_is:"And here is your reward." Oren passes you a large bag of coins, which you swiftly stash in your pocket. "And whilst you're here I'm sure my wife would like to thank you personally." He motions towards the front door and you feel you cannot refuse his invitation.
+item talk action in response to:here_it_is:destroy item:sapphire_necklace
+item talk action in response to:here_it_is:make exit visible:orens_porch_to_orens_hallway
+item talk action in response to:here_it_is:change item visibility:bluenoticeboard:invisible
+item talk action in response to:here_it_is:change item visibility:bluenoticeboard_roomofdeeds:visible
+item talk action in response to:here_it_is:change item visibility:amiable_oren:invisible
+item talk action in response to:here_it_is:change item visibility:relieved_oren:visible
+
+ITEM
+item name:Wealthy merchant
+item description:This is Oren Constantine, a famous merchant. Wealthy, shrewd and above all ruthless, he is well known across the town. Many respect him, some fear him and a few hate him. He looks to be in a good mood and amiable.
+item id:relieved_oren
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+
+item talk initial phrase:hello:Hello!:You say "Hello Mr Constantine, I was wondering if you had any jobs an up and coming adventurer might be interested in.".
+item talk response to:hello:"Ah, it's you. Thanks once again for finding my wife's necklace, I've not been able to do anything but worry since it went missing. I'm afraid I have no jobs available for you at the moment, but if anything comes up I'll keep you in mind.".
+
+LOCATION
+x:540
+y:180
+location id:orens_hallway
+location description:You are in the hallway of Oren's house. The floor is marbled and there is a sweeping staircase leading to the upper floors. Paintings line the walls and statues are ensconced in a number of alcoves around the hall.
+EXIT
+exit label:Porch
+exit destination:orens_porch
+exit direction hint:South
+exit id:orens_hallway_to_orens_porch
