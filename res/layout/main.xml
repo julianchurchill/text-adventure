@@ -51,7 +51,7 @@
             android:id="@+id/main_text_output"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="Hello!"
             />
     </ScrollView>

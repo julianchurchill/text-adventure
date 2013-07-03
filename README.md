@@ -16,10 +16,7 @@ Backlog
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Let user change the font size on an options screen
-- [FEATURE] Tell the user when they get a ruby - make it much more obvious. Atm just mentioned in text and counter in corner goes up.
-  * Make counter and ruby graphic larger
-  * Add sound effect or screen flash or dialog
-  * Possibly remove the ruby idea entirely - what is the use of it? - shows progress, let's the UI know when to show a 'end of content' popup...
+- [FEATURE] Remove mentions of rubies in the text. Change the score representation in the GUI to a simple percentage.
 - [FEATURE] Add location title to title bar (next to rubies)?
 
 - [STORY] When you speak to Oren's wife (Lady Bella Constantine) she thanks you for retrieving the necklace. The original necklace description needs to include 'it is adorned with several symbols in amongst the Sapphires - you do not recognise them but they look a little out of place on such a necklace.'. She asks if you can help her with a harmless love spell for a friend - she needs three ingredients - a mendicants scapula (from the ossery of a monastery), some silk blood (a herb found in the forest) and an arc stone (found by mining a seam in McCreedys mine). She casts a spell on your pick-axe to make it a magic pick axe and mentions only green eyed men can find an arc stone - that's good because you have green eyes. (the general store shop keepers description needs to include a small mention that he has green eyes). The shimmering seam in the mine becomes visible and the notice boards of jobs todo are updated.
