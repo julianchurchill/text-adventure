@@ -38,6 +38,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import com.cedarsoftware.util.io.JsonReader;
 import com.cedarsoftware.util.io.JsonWriter;
@@ -64,6 +65,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private static final int ABOUT_MENU_ITEM = 0;
     private static final int NEW_GAME_MENU_ITEM = 1;
+    private static final int OPTIONS_MENU_ITEM = 2;
     private static String oldJSONFormatSaveFileName = "save_file_1";
     private static String actionHistorySaveFileName = "action_history_save_file_1";
 
@@ -413,6 +415,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         menu.clear();
         menu.add( Menu.NONE, ABOUT_MENU_ITEM, Menu.NONE, getText( R.string.about ) );
         menu.add( Menu.NONE, NEW_GAME_MENU_ITEM, Menu.NONE, getText( R.string.new_game ) );
+        menu.add( Menu.NONE, OPTIONS_MENU_ITEM, Menu.NONE, getText( R.string.options ) );
         return true;
     }
 
@@ -427,6 +430,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
                 break;
             case NEW_GAME_MENU_ITEM:
                 showNewGameConfirmationDialog();
+                break;
+            case OPTIONS_MENU_ITEM:
+                showOptionsDialog();
                 break;
             default:
                 retVal = super.onOptionsItemSelected( item );
@@ -465,6 +471,46 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             })
             .setNegativeButton( R.string.no, null )
             .show();
+    }
+
+    private void showOptionsDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder( this );
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        View options_view = getLayoutInflater().inflate( R.layout.options_dialog, null );
+        builder.setView( options_view );
+        builder.setTitle( R.string.options_title );
+        final TextView options_font_example_text = (TextView)options_view.findViewById( R.id.options_font_example_text );
+        options_font_example_text.setTextSize( main_text_output.getTextSize() );
+        final SeekBar options_font_size_picker = (SeekBar)options_view.findViewById( R.id.options_font_size_picker );
+        // Editor editor = getSharedPreferences();
+        // float font_size = editor.get( key );
+        // options_font_size_picker.setValue( font_size );
+        final int minTextSize = 8;
+        options_font_size_picker.setOnSeekBarChangeListener( new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged( SeekBar bar, int newValue, boolean fromUser ) {
+                options_font_example_text.setTextSize( newValue + minTextSize );
+            }
+            @Override
+            public void onStartTrackingTouch( SeekBar seekBar ) {
+            }
+            @Override
+            public void onStopTrackingTouch( SeekBar seekBar ) {
+            }
+        });
+        builder.setPositiveButton( R.string.options_save, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                main_text_output.setTextSize( options_font_size_picker.getProgress() + minTextSize );
+                // Editor editor = getSharedPreferences();
+                // editor.edit();
+                // editor.put( key, font_size );
+                // editor.commit();
+            }
+        });
+        builder.setNegativeButton( R.string.options_cancel, null );
+        builder.create().show();
     }
 
     public void currentScore( int score ) {

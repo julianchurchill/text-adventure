@@ -16,6 +16,8 @@ Backlog
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Let user change the font size on an options screen
+  DONE - Basic font change dialog
+  - Persist font size in user preferences
 - [FEATURE] Remove mentions of rubies in the text. Change the score representation in the GUI to a simple percentage.
 - [FEATURE] Add location title to title bar (next to rubies)?
 

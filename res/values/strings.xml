@@ -10,4 +10,9 @@
     <string name="new_game_confirmation_dialog_text">All progress will be lost. Are you sure?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="options">Options</string>
+    <string name="options_title">Options</string>
+    <string name="options_example_font_size_text">Some example text to see the font size</string>
+    <string name="options_cancel">Cancel</string>
+    <string name="options_save">Save</string>
 </resources>
