@@ -22,6 +22,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
@@ -68,6 +69,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private static final int OPTIONS_MENU_ITEM = 2;
     private static String oldJSONFormatSaveFileName = "save_file_1";
     private static String actionHistorySaveFileName = "action_history_save_file_1";
+    private static String shared_prefs_root_key = "com.chewielouie.textadventure";
+    private static int default_font_size = 16;
+    private static String font_size_key = shared_prefs_root_key + ".fontsize";
 
     private RendersView rendersView;
     private boolean externallySuppliedViewRenderer = false;
@@ -126,6 +130,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         main_text_output = findTextView( R.id.main_text_output );
+        main_text_output.setTextSize( getFontSize() );
         score_text_view = findTextView( R.id.ruby_count );
         available_actions_view = (LinearLayout)findViewById( R.id.available_actions );
     }
@@ -473,24 +478,38 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             .show();
     }
 
+    private SharedPreferences getPrefs() {
+        return getSharedPreferences( shared_prefs_root_key, MODE_PRIVATE );
+    }
+
+    private int getFontSize() {
+        return getPrefs().getInt( font_size_key, default_font_size );
+    }
+
+    private void saveFontSize( int font_size ) {
+        SharedPreferences.Editor editor = getPrefs().edit();
+        editor.putInt( font_size_key, font_size );
+        editor.apply();
+    }
+
     private void showOptionsDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder( this );
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         View options_view = getLayoutInflater().inflate( R.layout.options_dialog, null );
+        AlertDialog.Builder builder = new AlertDialog.Builder( this );
         builder.setView( options_view );
         builder.setTitle( R.string.options_title );
         final TextView options_font_example_text = (TextView)options_view.findViewById( R.id.options_font_example_text );
         options_font_example_text.setTextSize( main_text_output.getTextSize() );
         final SeekBar options_font_size_picker = (SeekBar)options_view.findViewById( R.id.options_font_size_picker );
-        // Editor editor = getSharedPreferences();
-        // float font_size = editor.get( key );
-        // options_font_size_picker.setValue( font_size );
-        final int minTextSize = 8;
+        final int minFontSize = 8;
+        int font_size = getFontSize();;
+        options_font_size_picker.setProgress( font_size - minFontSize );
+        options_font_example_text.setTextSize( font_size );
         options_font_size_picker.setOnSeekBarChangeListener( new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged( SeekBar bar, int newValue, boolean fromUser ) {
-                options_font_example_text.setTextSize( newValue + minTextSize );
+                options_font_example_text.setTextSize( newValue + minFontSize );
             }
             @Override
             public void onStartTrackingTouch( SeekBar seekBar ) {
@@ -502,15 +521,16 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         builder.setPositiveButton( R.string.options_save, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                main_text_output.setTextSize( options_font_size_picker.getProgress() + minTextSize );
-                // Editor editor = getSharedPreferences();
-                // editor.edit();
-                // editor.put( key, font_size );
-                // editor.commit();
+                saveFontSize( options_font_size_picker.getProgress() + minFontSize );
+                main_text_output.setTextSize( getFontSize() );
             }
         });
         builder.setNegativeButton( R.string.options_cancel, null );
-        builder.create().show();
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        // The FILL_PARENT for width from the xml is ignored for some reason by android
+        // This fix must be done after show() to override the incorrect width = WRAP_CONTENT setting
+        dialog.getWindow().setLayout( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT );
     }
 
     public void currentScore( int score ) {
