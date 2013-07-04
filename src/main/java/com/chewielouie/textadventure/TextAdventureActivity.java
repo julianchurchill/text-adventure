@@ -131,7 +131,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         setContentView(R.layout.main);
         main_text_output = findTextView( R.id.main_text_output );
         main_text_output.setTextSize( getFontSize() );
-        score_text_view = findTextView( R.id.ruby_count );
+        score_text_view = findTextView( R.id.score_text_view );
         available_actions_view = (LinearLayout)findViewById( R.id.available_actions );
     }
 
@@ -539,8 +539,10 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void updateScore() {
-        score_text_view.setText( Integer.toString( currentScore ) + "/" +
-                                 Integer.toString( maximumScore ) );
+        int percentage = 0;
+        if ( maximumScore != 0 )
+            percentage = (int) (((float)currentScore / (float)maximumScore) * (float)100);
+        score_text_view.setText( Integer.toString( percentage ) + "% " + getText( R.string.completed ) );
     }
 
     public void maximumScore( int score ) {

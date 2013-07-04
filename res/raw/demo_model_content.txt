@@ -83,7 +83,7 @@ item id:clockmechanismwithfaceandhourhand
 item is untakeable:
 item visibility:invisible
 item can be used with:clockminutehand
-item successful use message:You push the minute hand on top of the hour hand already attached to the spindle in the centre of the clock face. It clips in place with a satisfying click. The mechanism starts to whir and the hands begin to gently jerk with the movement of the mechanism inside. The air stirs around you and you feel slightly wealthier. In the distance you hear what sounds like a rock slide and you take a mental note to investigate this further.
+item successful use message:You push the minute hand on top of the hour hand already attached to the spindle in the centre of the clock face. It clips in place with a satisfying click. The mechanism starts to whir and the hands begin to gently jerk with the movement of the mechanism inside. In the distance you hear what sounds like a rock slide and you take a mental note to investigate this further.
 item use action:make exit visible:mineshaftentrance
 item use action:change location description:outsideamineshaft:You stand before an old mine shaft. There are some dusty footprints in the dirt around the entrance. A sign states "McCreedys Mine - Stay out or suffer the consequences!". To the east is an old ramshackle shed.
 item use action:increment score:
@@ -384,7 +384,7 @@ item is untakeable:
 item visibility:invisible
 item use is not repeatable:
 item can be used with:minemap
-item successful use message:You hand the map to the shop keeper who smiles and nods at you with gratitude. 'Thank you, very kind. For your help have a ruby and come by my shop in town anytime - I'm sure I can arrange a favourable discount on anything that takes your eye.'. With that the man walks out leaving you alone. The air stirs around you and you feel slightly wealthier.
+item successful use message:You hand the map to the shop keeper who smiles and nods at you with gratitude. 'Thank you, you have been very kind to me. Come by my shop in town anytime - I'm sure I can arrange a favourable discount on anything that takes your eye.'. With that the man walks out leaving you alone.
 item use action:change item visibility:shopkeeper:invisible
 item use action:destroy item:minemap
 item use action:increment score:

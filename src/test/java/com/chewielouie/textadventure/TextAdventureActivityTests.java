@@ -154,15 +154,15 @@ public class TextAdventureActivityTests {
     //public void action_view_title_resets_to_Actions_when_action_chain_is_completed() {
 
     @Test
-    public void current_score_updates_the_acquired_ruby_count() {
+    public void current_score_updates_the_acquired_score_text() {
         TextAdventureActivity activity = new TextAdventureActivity();
         activity.onCreate( null );
 
         activity.currentScore( 5 );
-        activity.maximumScore( 23 );
+        activity.maximumScore( 10 );
 
-        final TextView t = (TextView)activity.findViewById( R.id.ruby_count );
-        assertEquals( "5/23", t.getText().toString() );
+        final TextView t = (TextView)activity.findViewById( R.id.score_text_view );
+        assertEquals( "50% completed", t.getText().toString() );
     }
 
     @Test

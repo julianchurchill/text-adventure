@@ -3,25 +3,16 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#000000">
-    <ImageView
-        android:id="@+id/ruby_image"
-        android:layout_width="14sp"
-        android:layout_height="14sp"
+    <TextView
+        android:id="@+id/score_text_view"
+        android:layout_width="fill_parent"
+        android:layout_height="16sp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:background="#330022"
-        android:src="@drawable/ruby"
-        />
-    <TextView
-        android:id="@+id/ruby_count"
-        android:layout_width="fill_parent"
-        android:layout_height="14sp"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@id/ruby_image"
         android:gravity="right|top"
         android:background="#330022"
         android:textSize="12sp"
-        android:text="0/1"
+        android:text="0% completed"
         />
     <ScrollView
         android:id="@+id/available_actions_scroll_view"
@@ -43,7 +34,7 @@
         android:id="@+id/main_text_output_scroll_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ruby_count"
+        android:layout_below="@id/score_text_view"
         android:layout_above="@id/available_actions_scroll_view"
         android:padding="6dip"
         android:scrollbars="vertical">

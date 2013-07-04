@@ -15,8 +15,7 @@ Backlog
 - [FEATURE] Tell the user when they have reached the end of the available content! Perhaps a popup saying look out for new content in the next update?
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] What's new dialog for first run of new version.
-- [FEATURE] Remove mentions of rubies in the text. Change the score representation in the GUI to a simple percentage.
-- [FEATURE] Add location title to title bar (next to rubies)?
+- [FEATURE] Add location title to title bar next to score?
 
 - [STORY] When you speak to Oren's wife (Lady Bella Constantine) she thanks you for retrieving the necklace. The original necklace description needs to include 'it is adorned with several symbols in amongst the Sapphires - you do not recognise them but they look a little out of place on such a necklace.'. She asks if you can help her with a harmless love spell for a friend - she needs three ingredients - a mendicants scapula (from the ossery of a monastery), some silk blood (a herb found in the forest) and an arc stone (found by mining a seam in McCreedys mine). She casts a spell on your pick-axe to make it a magic pick axe and mentions only green eyed men can find an arc stone - that's good because you have green eyes. (the general store shop keepers description needs to include a small mention that he has green eyes). The shimmering seam in the mine becomes visible and the notice boards of jobs todo are updated.
 - [STORY] While searching for the silk blood in the forest you also find some Witch Bane. The forest is a maze of twisty passages - all alike.
@@ -41,6 +40,7 @@ Done
 2.0
 ---
 
+- [FEATURE] Removed mentions of rubies in the text. Changed the score representation in the GUI to a simple percentage.
 - [FEATURE] The font size can be changed via the options dialog.
 - [FEATURE] The 'Examine an item' button text changed to 'Examine' so it works nicely with items and people.
 - [FEATURE] Exits have consistent colours for direction hints - e.g. all North are green.
