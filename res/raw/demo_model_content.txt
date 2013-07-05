@@ -389,6 +389,48 @@ item use action:change item visibility:shopkeeper:invisible
 item use action:destroy item:minemap
 item use action:increment score:
 item use action:make exit visible:merchantslaneentrance
+ITEM
+item name:Glowing seam
+item description:A seam runs through the wall of this cavern that glows with an eerie light. It looks soft enough to mine if you have the right tools.
+item id:arc_stone_seam_1
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:enchanted_pickaxe
+item successful use message:You hoist the enchanted pick axe above your head. The seam appears to react to the pick axe as soon as you bring it near. You strike once and a deep rumble resounds about you however none of the rock is chipped away. Perhaps you need to stop tickling it and hit it harder?
+item use action:change item visibility:arc_stone_seam_1:invisible
+item use action:change item visibility:arc_stone_seam_2:visible
+ITEM
+item name:Glowing seam
+item description:A seam runs through the wall of this cavern that glows with an eerie light. It looks soft enough to mine if you have the right tools.
+item id:arc_stone_seam_2
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:enchanted_pickaxe
+item successful use message:The seam is definitely reactive, you raise the pick axe and bring it firmly down on the rock. A small fleck of rock chips away to reveal a larger stone embedded in the seam however it will take some more work to remove it.
+item use action:change item visibility:arc_stone_seam_2:invisible
+item use action:change item visibility:arc_stone_seam_3:visible
+ITEM
+item name:Glowing seam
+item description:A seam runs through the wall of this cavern that glows with an eerie light. It looks soft enough to mine if you have the right tools.
+item id:arc_stone_seam_3
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:enchanted_pickaxe
+item successful use message:You resolve to strike hard this time and raise the axe in both hands bringing it confidently down upon the seam. The rock cracks and the embedded stone is freed from the surrounding rock popping like a cracked kernel of corn. The axe shatters with the force of the blow and the remaining pieces disintegrate from the loss of the magical forces that had previously enchanted them.
+item use action:change item visibility:arc_stone_seam_3:invisible
+item use action:destroy item:enchanted_pickaxe
+item use action:change item visibility:arc_stone:visible
+item use action:increment score:
+ITEM
+item name:Arc stone
+item description:This stone is roughly the size of your fist and glows a sickly green. You sense there is great power within but you do not think you have the power to unlock it.
+item id:arc_stone
+item countable noun prefix:a
+item visibility:invisible
+
 LOCATION
 x:480
 y:600
@@ -543,7 +585,7 @@ exit direction hint:South
 exit id:generalstoreoutside
 ITEM
 item name:Shop keeper
-item description:He looks very smart, clearly having enjoyed a good bath, a shave and an expensive haircut. His eyes are still sunken from the effects of his imprisonment but he looks in good health otherwise.
+item description:He looks very smart, clearly having enjoyed a good bath, a shave and an expensive haircut. His eyes are still sunken from the effects of his imprisonment but he looks in good health otherwise. You haven't noticed before now but he also has green eyes - just like you.
 item id:generalstoreshopkeeper
 item countable noun prefix:a
 item is untakeable:
@@ -611,6 +653,13 @@ item description:The board has a notice pinned to it stating "Whomsoever can rec
 item id:bluenoticeboard
 item countable noun prefix:a
 item is untakeable:
+ITEM
+item name:Ruby board
+item description:The board has a notice pinned to it stating "Lady Bella Constantine is looking for aid to find some special ingredients for a family recipe. Only green eyed males need apply. For further information see Lady Bella at the Constantine mansion in the nobles quarter.".
+item id:rubynoticeboard
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
 
 LOCATION
 x:480
@@ -1547,6 +1596,7 @@ item talk action in response to:here_it_is:destroy item:sapphire_necklace
 item talk action in response to:here_it_is:make exit visible:orens_porch_to_orens_hallway
 item talk action in response to:here_it_is:change item visibility:bluenoticeboard:invisible
 item talk action in response to:here_it_is:change item visibility:bluenoticeboard_roomofdeeds:visible
+item talk action in response to:here_it_is:change item visibility:rubynoticeboard:visible
 item talk action in response to:here_it_is:change item visibility:amiable_oren:invisible
 item talk action in response to:here_it_is:change item visibility:relieved_oren:visible
 
@@ -1565,9 +1615,66 @@ LOCATION
 x:540
 y:180
 location id:orens_hallway
-location description:You are in the hallway of Oren's house. The floor is marbled and there is a sweeping staircase leading to the upper floors. Paintings line the walls and statues are ensconced in a number of alcoves around the hall.
+location description:You are in the hallway of Oren's house. The floor is marbled and there is a sweeping staircase leading to the upper floors. Paintings line the walls and statues are ensconced in a number of alcoves around the hall. There are several doors leading from here but one is slightly ajar and looks inviting.
 EXIT
 exit label:Porch
 exit destination:orens_porch
 exit direction hint:South
 exit id:orens_hallway_to_orens_porch
+EXIT
+exit label:Study
+exit destination:orens_study
+exit direction hint:West
+exit id:orens_hallway_to_orens_study
+
+LOCATION
+x:480
+y:180
+location id:orens_study
+location description:You are in the study of the Constantine Mansion. There is a roaring fire on the west wall that crackles and lights the room up with flickers of flame. There is a large desk and two large chairs facing each other over it, both with high backs and wide arms. On the other side of the desk sits a lady, reading a book. As you enter the room she lifts her head and looks at you.
+EXIT
+exit label:Hallway
+exit destination:orens_hallway
+exit direction hint:East
+exit id:orens_study_to_orens_hallway
+
+ITEM
+item name:Enchanted pick axe
+item description:This is a magical pick axe. You know that because it glows and hums slightly when you swing it - like a mosquito in your ear but more pleasant.
+item id:enchanted_pickaxe
+item countable noun prefix:a
+item visibility:invisible
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease.
+item id:lady_bella_1
+item countable noun prefix:a
+item is untakeable:
+
+item talk initial phrase:ivefoundyournecklace:I've found your necklace:You say "My lady, I have come to return your necklace. I found it in the company of a band of unconvincing brigands.".
+item talk response to:ivefoundyournecklace:Lady Bella looks up at you and puts her book down on the desk. "Wonderful" she smiles, "I did so hope that someone would find it, it is very precious to me. I want to thank you personally - you are clearly an honourable and trust worthy man.". You blush slightly as she speaks.
+item talk follow up phrase to:ivefoundyournecklace:iwasjustdoingmyduty:I was just doing my duty:"Thank you my lady, I was just doing my duty.". You fondle the bag of coins in your pocket, trying to count them as you talk.
+item talk response to:iwasjustdoingmyduty:She stares at you for a brief moment, considering something and looking closely at your face. "I wonder if you might be interested in doing me another favour?"
+item talk follow up phrase to:iwasjustdoingmyduty:imabitbusyatthemoment:I'm a bit busy at the moment:"Well I'd like to help you out but I'm a bit busy at the moment" you say as you contemplate all the ways your going to spend your reward.
+item talk response to:imabitbusyatthemoment:"Oh, well that's a shame. If you change your mind you can find me here." and with that she returns to her book.
+item talk follow up phrase to:iwasjustdoingmyduty:iwouldbehonoured:I would be honoured:"I would be honoured to help you any way I can my lady" you gush, like a little school boy. She smiles softly at you.
+item talk response to:iwouldbehonoured:"Wonderful! Now this is in confidence so you mustn't tell a soul - you see I have a friend who is love sick for a young man who toys with her affections, he is very cruel and dallies with other ladies about town. It is so sad as they would be a perfect match both romantically and in terms of status. I have resolved to help her and to that end I have advised that if she gives the young man a draft of my making he will stay faithful to her to the end.". You think this sounds like an excellent idea, after all what can go wrong. "I accept" you say without hesitation. "Ok" Bella continues "I will need some very special ingredients - a mendicants scapula, some of a herb named silk blood and an arc stone. The last item can only be found by men with green eyes, as you have, since it requires a little bit of magic inside to recognise it. I cannot help you with the other items but for the arc stone I can cast a small spell over an axe if you have one that will allow you to mine the rock seams that contain such precious stone."
+item talk action in response to:iwouldbehonoured:change item visibility:lady_bella_1:invisible
+item talk action in response to:iwouldbehonoured:change item visibility:lady_bella_2:visible
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease.
+item id:lady_bella_2
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:pickaxe
+item successful use message:You pass your pick axe to Lady Bella who takes it from you carefully and turns to the roaring fire. She bathes the axe head in the flames while muttering some indeciphirable enchantment and then places it on the desk in front of you.
+item use action:destroy item:pickaxe
+item use action:change item visibility:enchanted_pickaxe:visible
+item use action:change item visibility:arc_stone_seam_1:visible
+
+item talk initial phrase:canyouremindme:Can you remind me of those things you wanted:You say "My lady, I apologise deeply but I am a forgetful fool and have forgotten what it was that you asked me to find. Can you tell me again the ingredients that you require?"
+item talk response to:canyouremindme:Lady Bella looks up at you and puts her book down on the desk. "Of course my child - I need a mendicants scapula, some of a herb named silk blood and an arc stone. The last item can only be found by men with green eyes, as you have, since it requires a little bit of magic inside to recognise it. Come back to me when you have all the items and I will prepare the love draft for my friend."
