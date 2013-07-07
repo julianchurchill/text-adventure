@@ -19,7 +19,7 @@ Backlog
 - [BUG] There is a lot of memory deallocation and it is slow during onPause() - how much memory is being used, is it a concern. Start up is also slow in onResume().
    - Do we need a 'Loading...' progress indicator - even if it's just a spinning wheel dialog on onPause and onResume ?
 
-- [STORY] While searching for the silk blood in the forest you also find some Witch Bane. The forest is a maze of twisty passages - all alike. Increment the score.
+- [STORY] You must find the 'Witches Bane' herb somewhere - in the forest, or the store room or somewhere else...
 - [STORY] The Mendicants scapula can be found in the Ossery of the monastery. Increment the score.
   - To gain entry you must give alms to a monk at the gate who has taken a vow of silence. You can talk to him but he only replies '...'. There is a sign next to him explaining the alms for entry bit. Get the alms as 'food and wine' from the store room in the brigands hideout under the church.
   - There is an Einstein-a-like monk stuck on a puzzle here who you must help to enable you to get the scapula.
@@ -49,6 +49,7 @@ Done
 - [FEATURE] Exits have consistent colours for direction hints - e.g. all North are green.
   - The exits are also ordered consistently.
 
+- [STORY] You must find the silk blood in the forest. The forest is a maze of twisty passages - all alike. Increment the score.
 - [STORY] The Arc stone can be found by using the magic pick axe with the shimmering seam in the mine, 3 times. First time the message is 'The seam appears to react to the pick axe as soon as you bring it near. You strike once and a deep rumble resounds about you however none of the rock is chipped away.', make the seam invisible and make the next seam visible - use message is 'The seam is definitely reactive, you raise the pick axe and bring it firmly down on the rock. A small fleck of rock chips away to reveal a larger stone embedded in the seam however it will take some more work to remove it.', make the seam invisible and make the final seam visible - use message is 'You resolve to strike hard this time and raise the axe in both hands bringing it confidently down upon the seam. The rock cracks and the embedded stone is freed from the surrounding rock.'. Increment the score.
 - [STORY] When you speak to Oren's wife (Lady Bella Constantine) she thanks you for retrieving the necklace. The original necklace description needs to include 'it is adorned with several symbols in amongst the Sapphires - you do not recognise them but they look a little out of place on such a necklace.'. She asks if you can help her with a harmless love spell for a friend - she needs three ingredients - a mendicants scapula (from the ossery of a monastery), some silk blood (a herb found in the forest) and an arc stone (found by mining a seam in McCreedys mine). She casts a spell on your pick-axe to make it a magic pick axe and mentions only green eyed men can find an arc stone - that's good because you have green eyes. (the general store shop keepers description needs to include a small mention that he has green eyes). The shimmering seam in the mine becomes visible.
 - [STORY] On the east side of town is the Nobels quarter. Oren Constantine's house is here, he sits on the porch waiting for news about his wife's necklace. Until you have the necklace you can say this:

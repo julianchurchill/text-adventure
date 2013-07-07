@@ -801,7 +801,12 @@ LOCATION
 x:120
 y:120
 location id:moredirttrack
-location description:You on a dirt track leading away from the town. To the west you see a churchyard. It looks gloomy, mysterious and uninviting, not a great combination.
+location description:You on a dirt track leading away from the town. To the west you see a churchyard. It looks gloomy, mysterious and uninviting, not a great combination. To the north the track starts to become enshrouded in the surrounding woodland.
+EXIT
+exit label:North
+exit destination:woodland_track
+exit direction hint:North
+exit id:dirttrack_to_woodland_track
 EXIT
 exit label:South
 exit destination:dirttrack
@@ -812,6 +817,159 @@ exit label:West
 exit destination:churchyardeast
 exit direction hint:West
 exit id:moredirttrack_to_churchyardeast
+
+LOCATION
+x:120
+y:060
+location id:woodland_track
+location description:You stand on a woodland track. To the south the track opens out but to the north the woods become much thicker and dense, you're not sure that you should venture much further - it looks like you might get lost.
+EXIT
+exit label:North
+exit destination:deep_dark_woodland_track
+exit direction hint:North
+exit id:woodlandtrack_to_deep_dark_woodland_track
+EXIT
+exit label:South
+exit destination:moredirttrack
+exit direction hint:South
+exit id:woodland_track_to_moredirttrack
+
+LOCATION
+x:120
+y:000
+location id:deep_dark_woodland_track
+location description:You stand in the middle of a maze of twisty tracks, all alike. You feel you may be a little lost and wonder which way to turn.
+EXIT
+exit label:North
+exit destination:deep_dark_woodland_track_3
+exit direction hint:North
+exit id:north_deep_dark_woodland_track_to_deep_dark_woodland_track_3
+EXIT
+exit label:East
+exit destination:deep_dark_woodland_track_2
+exit direction hint:East
+exit id:east_deep_dark_woodland_track_to_deep_dark_woodland_track
+EXIT
+exit label:West
+exit destination:deep_dark_woodland_track
+exit direction hint:West
+exit id:west_deep_dark_woodland_track_to_deep_dark_woodland_track
+EXIT
+exit label:Deer track
+exit destination:deep_dark_woodland_track_3
+exit direction hint:West
+exit id:deer_track_deep_dark_woodland_track_to_deep_dark_woodland_track_3
+EXIT
+exit label:Shrubbery
+exit destination:deep_dark_woodland_track_3
+exit direction hint:East
+exit id:shrubbery_deep_dark_woodland_track_to_deep_dark_woodland_track_3
+EXIT
+exit label:South
+exit destination:woodland_track
+exit direction hint:South
+exit id:deep_dark_woodland_track_to_woodland_track
+
+LOCATION
+x:180
+y:000
+location id:deep_dark_woodland_track_2
+location description:You stand in the middle of a maze of twisty tracks, all alike. You feel you may be a little lost and wonder which way to turn.
+EXIT
+exit label:North
+exit destination:deep_dark_woodland_track_3
+exit direction hint:North
+exit id:north_deep_dark_woodland_track_2_to_deep_dark_woodland_track_3
+EXIT
+exit label:North East
+exit destination:deep_dark_woodland_track_2
+exit direction hint:North
+exit id:north_east_deep_dark_woodland_track_2_to_deep_dark_woodland_track_2
+EXIT
+exit label:West
+exit destination:deep_dark_woodland_track
+exit direction hint:West
+exit id:west_deep_dark_woodland_track_2_to_deep_dark_woodland_track
+EXIT
+exit label:South
+exit destination:deep_dark_woodland_track_4
+exit direction hint:South
+exit id:south_deep_dark_woodland_track_2_to_deep_dark_woodland_track_4
+EXIT
+exit label:Badger trail
+exit destination:deep_dark_woodland_track_2
+exit direction hint:East
+exit id:badger_trail_deep_dark_woodland_track_2_to_deep_dark_woodland_track_2
+EXIT
+exit label:East
+exit destination:deep_dark_woodland_track_3
+exit direction hint:East
+exit id:east_deep_dark_woodland_track_2_to_deep_dark_woodland_track_3
+
+LOCATION
+x:120
+y:000
+location id:deep_dark_woodland_track_3
+location description:You stand in the middle of a maze of twisty tracks, all alike. You feel you may be a little lost and wonder which way to turn.
+EXIT
+exit label:North
+exit destination:deep_dark_woodland_track_2
+exit direction hint:North
+exit id:north_deep_dark_woodland_track_2_to_deep_dark_woodland_track_2
+EXIT
+exit label:North East
+exit destination:deep_dark_woodland_track_2
+exit direction hint:North
+exit id:north_east_deep_dark_woodland_track_2_to_deep_dark_woodland_track_2
+EXIT
+exit label:Drop Bear path
+exit destination:deep_dark_woodland_track
+exit direction hint:West
+exit id:west_deep_dark_woodland_track_2_to_deep_dark_woodland_track
+EXIT
+exit label:South
+exit destination:deep_dark_woodland_track
+exit direction hint:South
+exit id:south_deep_dark_woodland_track_3_to_deep_dark_woodland_track
+EXIT
+exit label:Badger trail
+exit destination:deep_dark_woodland_track
+exit direction hint:East
+exit id:badger_trail_deep_dark_woodland_track_3_to_deep_dark_woodland_track
+EXIT
+exit label:East
+exit destination:deep_dark_woodland_track_2
+exit direction hint:East
+exit id:east_deep_dark_woodland_track_2_to_deep_dark_woodland_track_2
+
+LOCATION
+x:180
+y:060
+location id:deep_dark_woodland_track_4
+location description:You stand in a clearing in the depths of a dark wood. There is not much light here as the canopy is thick but you can make out a plant that covers the ground with thin red leaves and bright purple stalks.
+EXIT
+exit label:North
+exit destination:deep_dark_woodland_track_2
+exit direction hint:North
+exit id:north_deep_dark_woodland_track_4_to_deep_dark_woodland_track_2
+ITEM
+item name:Silk blood
+item description:The leaves of the plant are thin and delicate with variagated shades of red to green from the central vein of the leaf to the edge. It looks fairly sturdy stuff though and you don't think you can simply dig it up with your hands.
+item id:buried_silk_blood
+item countable noun prefix:some
+item is untakeable:
+item can be used with:spade
+item use is not repeatable:
+item successful use message:You dig down around the silk blood, having to work suprisingly deep amongst the purple roots. You eventually unearth the plant whole, shake off some earth from the roots and lay it on the ground.
+item use action:change item visibility:buried_silk_blood:invisible
+item use action:change item visibility:silk_blood:visible
+item use action:increment score:
+ITEM
+item name:Silk blood
+item description:The leaves of the plant are thin and delicate with variagated shades of red to green from the central vein of the leaf to the edge.
+item id:silk_blood
+item countable noun prefix:some
+item visibility:invisible
 
 LOCATION
 x:060
