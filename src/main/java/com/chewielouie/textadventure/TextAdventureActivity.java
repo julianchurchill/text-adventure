@@ -95,6 +95,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private BasicModelFactory externalModelFactory = null;
     private BasicModelFactory internalModelFactory = null;
     private Logger logger = new StdoutLogger();
+    private boolean completionDialogShown = false;
 
     public TextAdventureActivity() {
     }
@@ -203,6 +204,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void createNewGame() {
+        completionDialogShown = false;
         createNewGameModel();
         setupPresenter();
     }
@@ -533,6 +535,13 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         dialog.getWindow().setLayout( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT );
     }
 
+    private void showCompletionDialog() {
+        Dialog dialog = new Dialog( this );
+        dialog.setContentView( R.layout.completion_dialog );
+        dialog.setTitle( R.string.completion_dialog_title );
+        dialog.show();
+    }
+
     public void currentScore( int score ) {
         currentScore = score;
         updateScore();
@@ -543,6 +552,11 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         if ( maximumScore != 0 )
             percentage = (int) (((float)currentScore / (float)maximumScore) * (float)100);
         score_text_view.setText( Integer.toString( percentage ) + "% " + getText( R.string.completed ) );
+
+        if( percentage == 100 && completionDialogShown == false ) {
+            showCompletionDialog();
+            completionDialogShown = true;
+        }
     }
 
     public void maximumScore( int score ) {

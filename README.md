@@ -12,7 +12,6 @@ Backlog
 
 - [BUG] From email from Alex Bailey "The text is sometime displayed in the wrong order. I can't remember which object, but the scene description told me there was an object present before it was mentioned how it got there. I can send a screenshot for this if I'm not being clear."
   * See email as he also included a screen shot.
-- [FEATURE] Tell the user when they have reached the end of the available content! Perhaps a popup saying look out for new content in the next update?
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Add location title to title bar next to score?
@@ -23,8 +22,9 @@ Backlog
 - [STORY] The Mendicants scapula can be found in the Ossery of the monastery. Increment the score.
   - To gain entry you must give alms to a monk at the gate who has taken a vow of silence. You can talk to him but he only replies '...'. There is a sign next to him explaining the alms for entry bit. Get the alms as 'food and wine' from the store room in the brigands hideout under the church.
   - There is an Einstein-a-like monk stuck on a puzzle here who you must help to enable you to get the scapula.
-- [STORY] Once you have all the ingredients you return to Lady Bella and use them all with her. Once the last is used "She says 'Wonderful, you have done very well, now leave me to my work I must concentrate.' The look on Lady Bella's face suddenly turns very dark as she assembles the ingredients and potion making paraphenalia and you wonder if it is simply concentration or something else. You turn to Lady Bella to ask if there was any reward for bringing her these items but before you can speak she scowls at you and shouts 'Get out!'. You back up towards the door as she puts the ingredients into a large mixing bowl and your senses are suddenly assailed by a hideous smell. 'That doesn't smell like a love potion to me! ... that smells more like a death potion!'. Bella laughs mockingly 'Stupid boy, off course it's not a love potion, what a waste of an arc stone that would be, this is to get rid of my worthless husband.' You recoil, horrified at the realisation you have been used by this woman to help her achieve her evil goal. 'But why?' you ask. 'I can't stand him, he's an idiotic oaf. He gives me nothing and expects everything. I'm going to take all that is his and make him vanish from living memory.'"
+- [STORY] Once you have all the ingredients you return to Lady Bella and use them all with her. Once the last is used "She says 'Wonderful, you have done very well, now leave me to my work I must concentrate.' The look on Lady Bella's face suddenly turns very dark as she assembles the ingredients and potion making paraphenalia and you wonder if it is simply concentration or something else. You turn to Lady Bella to ask if there was any reward for bringing her these items but before you can speak she scowls at you and shouts 'Get out!'. You back up towards the door as she puts the ingredients into a large mixing bowl and your senses are suddenly assailed by a hideous smell. 'That doesn't smell like a love potion to me! ... that smells more like a death potion!'. Bella laughs mockingly 'Stupid boy, of course it's not a love potion, what a waste of an arc stone that would be, this is to get rid of my worthless husband.' You recoil, horrified at the realisation you have been used by this woman to help her achieve her evil goal. 'But why?' you ask. 'I can't stand him, he's an idiotic oaf. He gives me nothing and expects everything. I'm going to take all that is his and make him vanish from living memory.'"
   - You can defeat her by using 'Witches Bane' a herb that you find somewhere.
+  - Finish with a triumphant "I beat you" phrase - so that the rest of the preceeding dialog can be read before getting blatted by the completion dialog upon incrementing the score.
   - Increment the score.
 
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
@@ -43,6 +43,7 @@ Done
 2.0
 ---
 
+- [FEATURE] Tell the user when they have reached the end of the available content with a popup saying look out for the next title in the series.
 - [FEATURE] Removed mentions of rubies in the text. Changed the score representation in the GUI to a simple percentage.
 - [FEATURE] The font size can be changed via the options dialog.
 - [FEATURE] The 'Examine an item' button text changed to 'Examine' so it works nicely with items and people.
