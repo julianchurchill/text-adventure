@@ -81,6 +81,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private TextView main_text_output;
     private TextView score_text_view;
     private String mainTextContent = "";
+    private String availableItemsText = "";
     private Map<TextView,Exit> directions_and_exits =
         new HashMap<TextView,Exit>();
     private Map<Button,Action> actionButtons = new HashMap<Button,Action>();
@@ -290,38 +291,54 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     public void showAvailableItemsText( String s ) {
+        availableItemsText = s;
+        updateMainText();
     }
 
     private void updateMainText() {
         SpannableStringBuilder text = new SpannableStringBuilder(
                 mainTextContent );
-        addHyperLinkExits( text );
+        addItemsText( text );
+        addExitsText( text );
 
-        enableClickableLinkCallbacks();
         main_text_output.setText( text, TextView.BufferType.SPANNABLE );
         scrollToBottomOfMainText();
     }
 
-    private void addHyperLinkExits( SpannableStringBuilder text ) {
-        if( exits.size() > 0 )
-            text.append( "\nThe following exits are visible: " );
-        else
+    private void addItemsText( SpannableStringBuilder text ) {
+        if( availableItemsText != "" )
+            text.append( "\n" + availableItemsText );
+    }
+
+    private void addExitsText( SpannableStringBuilder text ) {
+        if( exits.size() == 0 )
             text.append( "\nThere are no visible exits." );
+        else
+            addHyperLinkExits( text );
+    }
+
+    private void addHyperLinkExits( SpannableStringBuilder text ) {
+        text.append( "\nThe following exits are visible: " );
 
         String prefix = "";
         for( Exit exit : orderForDisplay( exits ) ) {
-            int startIndex = text.length() + prefix.length();
-            int endIndex = startIndex + exit.label().length();
-            text.append( prefix + exit.label() );
-            addExitActionHandler( text, startIndex, endIndex, exit );
-            text.setSpan( new ForegroundColorSpan( selectExitColor( exit ) ),
-                          startIndex, endIndex, 0 );
+            addHyperLinkForExit( prefix, exit, text );
             prefix = ", ";
         }
         // This additional space stops the spannable click region for the last
         // spannable from extending all the way to the edge of the text view
-        if( exits.size() > 0 )
-            text.append( " " );
+        text.append( " " );
+        enableClickableLinkCallbacks();
+    }
+
+    private void addHyperLinkForExit( String prefix, Exit exit,
+                                      SpannableStringBuilder text ) {
+        int startIndex = text.length() + prefix.length();
+        int endIndex = startIndex + exit.label().length();
+        text.append( prefix + exit.label() );
+        addExitActionHandler( text, startIndex, endIndex, exit );
+        text.setSpan( new ForegroundColorSpan( selectExitColor( exit ) ),
+                      startIndex, endIndex, 0 );
     }
 
     private List<Exit> orderForDisplay( List<Exit> exits ) {

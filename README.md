@@ -7,13 +7,15 @@ Don't forget to drive the development by producing value - the value is game con
 
 To run the emulator - run 'android list avd' to get all the configured virtual devices, then 'emulator @<device-name>' to run the chosen device in the emulator.
 
+Save files are stored on the emulated device under /data/data/com.chewielouie.textadventure/files. Run 'adb shell' to get access to the file system.
+
 Backlog
 =======
 
 - [BUG] From email from Alex Bailey "The text is sometime displayed in the wrong order. I can't remember which object, but the scene description told me there was an object present before it was mentioned how it got there. I can send a screenshot for this if I'm not being clear."
   * See email as he also included a screen shot.
   DONE - Update Presenter to get items text from model and pass to view
-  - Update activity to combine items text with main text
+  DONE - Update activity to combine items text with main text
   - Update model to return items text
   - Update model to stop items text being included in the main description
 - [FEATURE] What's new dialog for first run of new version.
@@ -21,6 +23,7 @@ Backlog
 - [FEATURE] Add location title to title bar next to score?
 - [BUG] There is a lot of memory deallocation and it is slow during onPause() - how much memory is being used, is it a concern. Start up is also slow in onResume().
    - Do we need a 'Loading...' progress indicator - even if it's just a spinning wheel dialog on onPause and onResume ?
+- [FEATURE] improve look of completion dialog - add a title seperator or something. See "What's new" dialogs in other apps with the holo theme.
 
 - [STORY] You must find the 'Witches Bane' herb somewhere - in the forest, or the store room or somewhere else...
 - [STORY] The Mendicants scapula can be found in the Ossery of the monastery. Increment the score.
