@@ -77,23 +77,32 @@ public class Location implements ModelLocation {
     }
 
     private String itemsPostAmble() {
-        String itemsPostAmble = "";
         List<Item> visibleItems = visibleItems();
-        if( visibleItems.size() > 0 ) {
-            itemsPostAmble = "There is ";
-            for( int i = 0; i < visibleItems.size(); i++ ) {
-                if( visibleItems.size() > 1 ) {
-                    if( i != 0 && i != (visibleItems.size()-1) )
-                        itemsPostAmble += ", ";
-                    if( i == (visibleItems.size()-1) )
-                        itemsPostAmble += " and ";
-                }
-                itemsPostAmble += visibleItems.get(i).countableNounPrefix() + " " +
-                              visibleItems.get(i).midSentenceCasedName();
-            }
-            itemsPostAmble += " here.\n";
-        }
+        if( visibleItems.size() == 0 )
+            return "";
+
+        String itemsPostAmble = "There is ";
+        for( Item item : visibleItems )
+            itemsPostAmble += item.countableNounPrefix() + " " +
+                              item.midSentenceCasedName() +
+                              itemPostfix( item, visibleItems );
         return itemsPostAmble;
+    }
+
+    private String itemPostfix( Item item, List<Item> items ) {
+        if( item == lastOf( items ) )
+            return " here.\n";
+        else if( item == secondTolastOf( items ) )
+            return " and ";
+        return  ", ";
+    }
+
+    private Item lastOf( List<Item> items ) {
+        return items.get( items.size() - 1 );
+    }
+
+    private Item secondTolastOf( List<Item> items ) {
+        return items.get( items.size() - 2 );
     }
 
     public void addItem( Item item ) {
