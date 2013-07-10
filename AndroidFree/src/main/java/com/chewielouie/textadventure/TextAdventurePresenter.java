@@ -35,6 +35,7 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler, M
                     + "\n" + actionText );
         else
             view.showMainText( model.currentLocationDescription() );
+        view.showAvailableItemsText( model.availableItemsText() );
         view.showLocationExits( model.currentLocationExits() );
         view.currentScore( model.currentScore() );
         view.maximumScore( model.maximumScore() );

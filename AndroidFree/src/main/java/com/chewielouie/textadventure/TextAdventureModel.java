@@ -7,6 +7,7 @@ import com.chewielouie.textadventure.ModelEventSubscriber;
 
 public interface TextAdventureModel {
     public String currentLocationDescription();
+    public String availableItemsText();
     public void setCurrentLocation( String id );
     public void addLocation( ModelLocation location );
     public List<Exit> currentLocationExits();

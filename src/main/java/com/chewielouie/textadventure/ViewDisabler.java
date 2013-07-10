@@ -24,6 +24,11 @@ public class ViewDisabler implements TextAdventureView {
             originalView.showMainText( s );
     }
 
+    public void showAvailableItemsText( String s ) {
+        if( disabled == false )
+            originalView.showAvailableItemsText( s );
+    }
+
     public void showLocationExits( List<Exit> exits ) {
         if( disabled == false )
             originalView.showLocationExits( exits );

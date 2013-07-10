@@ -34,6 +34,21 @@ public class TextAdventurePresenterTests {
     }
 
     @Test
+    public void render_tells_view_of_available_items_text() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        mockery.checking( new Expectations() {{
+            allowing( model ).availableItemsText();
+            will( returnValue( "some items text" ) );
+            ignoring( model );
+            oneOf( view ).showAvailableItemsText( "some items text" );
+            ignoring( view );
+        }});
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null, null );
+        p.render();
+    }
+
+    @Test
     public void render_tells_view_what_room_exits_are_available() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
@@ -54,7 +69,7 @@ public class TextAdventurePresenterTests {
     }
 
     @Test
-    public void render_tells_of_view_default_actions() {
+    public void render_tells_view_of_default_actions() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
         mockery.checking( new Expectations() {{
@@ -474,6 +489,21 @@ public class TextAdventurePresenterTests {
         }});
         TextAdventurePresenter p = new TextAdventurePresenter( view, model, null, null );
         p.enact( action );
+        p.currentLocationChanged();
+    }
+
+    @Test
+    public void on_current_location_changed_updates_view_with_available_items_text() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        mockery.checking( new Expectations() {{
+            allowing( model ).availableItemsText();
+            will( returnValue( "some items text" ) );
+            ignoring( model );
+            oneOf( view ).showAvailableItemsText( "some items text" );
+            ignoring( view );
+        }});
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null, null );
         p.currentLocationChanged();
     }
 

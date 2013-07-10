@@ -287,7 +287,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     public void showMainText( String s ) {
         mainTextContent = s;
         updateMainText();
-        scrollToBottomOfMainText();
+    }
+
+    public void showAvailableItemsText( String s ) {
     }
 
     private void updateMainText() {
@@ -297,6 +299,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
         enableClickableLinkCallbacks();
         main_text_output.setText( text, TextView.BufferType.SPANNABLE );
+        scrollToBottomOfMainText();
     }
 
     private void addHyperLinkExits( SpannableStringBuilder text ) {

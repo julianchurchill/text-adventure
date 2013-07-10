@@ -12,8 +12,12 @@ Backlog
 
 - [BUG] From email from Alex Bailey "The text is sometime displayed in the wrong order. I can't remember which object, but the scene description told me there was an object present before it was mentioned how it got there. I can send a screenshot for this if I'm not being clear."
   * See email as he also included a screen shot.
-- [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
+  DONE - Update Presenter to get items text from model and pass to view
+  - Update activity to combine items text with main text
+  - Update model to return items text
+  - Update model to stop items text being included in the main description
 - [FEATURE] What's new dialog for first run of new version.
+- [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] Add location title to title bar next to score?
 - [BUG] There is a lot of memory deallocation and it is slow during onPause() - how much memory is being used, is it a concern. Start up is also slow in onResume().
    - Do we need a 'Loading...' progress indicator - even if it's just a spinning wheel dialog on onPause and onResume ?
