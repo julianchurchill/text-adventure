@@ -25,8 +25,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public String availableItemsText() {
-        return currentLocation().descriptionWithoutItems();
-        // return "Some text to show the available items";
+        return currentLocation().availableItemsText();
     }
 
     public void setCurrentLocation( String id ) {

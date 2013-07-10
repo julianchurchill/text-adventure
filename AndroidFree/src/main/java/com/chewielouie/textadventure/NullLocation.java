@@ -36,7 +36,7 @@ public class NullLocation implements ModelLocation {
         return "";
     }
 
-    public String descriptionWithoutItems() {
+    public String availableItemsText() {
         return "";
     }
 

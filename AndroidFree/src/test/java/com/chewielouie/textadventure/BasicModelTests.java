@@ -113,6 +113,21 @@ public class BasicModelTests {
     }
 
     @Test
+    public void available_items_text_is_taken_from_the_current_location() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final String itemsText = "items text";
+        mockery.checking( new Expectations() {{
+            oneOf( location ).availableItemsText();
+            will( returnValue( itemsText ) );
+            ignoring( location );
+        }});
+        BasicModel model = new BasicModel();
+        model.addLocation( location );
+
+        assertEquals( itemsText, model.availableItemsText() );
+    }
+
+    @Test
     public void current_location_exits_are_taken_from_the_current_location() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
         final List<Exit> exits = new ArrayList<Exit>();

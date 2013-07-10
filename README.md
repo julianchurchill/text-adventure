@@ -12,12 +12,6 @@ Save files are stored on the emulated device under /data/data/com.chewielouie.te
 Backlog
 =======
 
-- [BUG] From email from Alex Bailey "The text is sometime displayed in the wrong order. I can't remember which object, but the scene description told me there was an object present before it was mentioned how it got there. I can send a screenshot for this if I'm not being clear."
-  * See email as he also included a screen shot.
-  DONE - Update Presenter to get items text from model and pass to view
-  DONE - Update activity to combine items text with main text
-  - Update model to return items text
-  - Update model to stop items text being included in the main description
 - [FEATURE] What's new dialog for first run of new version.
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] Add location title to title bar next to score?
@@ -50,7 +44,8 @@ Done
 2.0
 ---
 
-- [FEATURE] Tell the user when they have reached the end of the available content with a popup saying look out for the next title in the series.
+- [FEATURE] Forced available items text in a locations to be just before the exit text instead of getting lost in the description/story text.
+- [FEATURE] The user will be notified when they have reached the end of the available content with a popup.
 - [FEATURE] Removed mentions of rubies in the text. Changed the score representation in the GUI to a simple percentage.
 - [FEATURE] The font size can be changed via the options dialog.
 - [FEATURE] The 'Examine an item' button text changed to 'Examine' so it works nicely with items and people.

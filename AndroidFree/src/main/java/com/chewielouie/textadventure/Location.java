@@ -65,11 +65,11 @@ public class Location implements ModelLocation {
     }
 
     public String description() {
-        return description + itemsPostAmble();
+        return description;
     }
 
-    public String descriptionWithoutItems() {
-        return description;
+    public String availableItemsText() {
+        return itemsPostAmble();
     }
 
     public void setLocationDescription( String description ) {
@@ -80,7 +80,7 @@ public class Location implements ModelLocation {
         String itemsPostAmble = "";
         List<Item> visibleItems = visibleItems();
         if( visibleItems.size() > 0 ) {
-            itemsPostAmble = "\nThere is ";
+            itemsPostAmble = "There is ";
             for( int i = 0; i < visibleItems.size(); i++ ) {
                 if( visibleItems.size() > 1 ) {
                     if( i != 0 && i != (visibleItems.size()-1) )

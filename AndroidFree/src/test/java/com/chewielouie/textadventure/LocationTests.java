@@ -39,6 +39,12 @@ public class LocationTests {
     }
 
     @Test
+    public void available_items_text_is_empty_on_construction() {
+        Location l = new Location( "", "", null, null );
+        assertEquals( "", l.availableItemsText() );
+    }
+
+    @Test
     public void added_exit_makes_the_exit_exitable() {
         final Exit exit = mockery.mock( Exit.class );
         mockery.checking( new Expectations() {{
@@ -255,7 +261,7 @@ public class LocationTests {
     }
 
     @Test
-    public void added_items_are_added_to_location_description() {
+    public void added_items_are_added_to_available_items_text() {
         Location l = new Location( "", "Location description.", null, null );
         NormalItem item1 = new NormalItem();
         item1.setName( "name" );
@@ -267,11 +273,12 @@ public class LocationTests {
         item3.setName( "name3" );
         l.addItem( item3 );
 
-        assertEquals( "Location description.\nThere is a name, a name2 and a name3 here.\n", l.description() );
+        assertEquals( "There is a name, a name2 and a name3 here.\n",
+                      l.availableItemsText() );
     }
 
     @Test
-    public void description_includes_only_visible_items() {
+    public void available_items_text_includes_only_visible_items() {
         final Item visibleItem = mockery.mock( Item.class, "visible item" );
         final Item invisibleItem = mockery.mock( Item.class, "invisible item" );
         mockery.checking( new Expectations() {{
@@ -292,7 +299,8 @@ public class LocationTests {
         l.addItem( visibleItem );
         l.addItem( invisibleItem );
 
-        assertEquals( "Location description.\nThere is a visible item here.\n", l.description() );
+        assertEquals( "There is a visible item here.\n",
+                      l.availableItemsText() );
     }
 
     @Test
