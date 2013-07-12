@@ -822,7 +822,7 @@ LOCATION
 x:120
 y:060
 location id:woodland_track
-location description:You stand on a woodland track. To the south the track opens out but to the north the woods become much thicker and dense, you're not sure that you should venture much further - it looks like you might get lost.
+location description:You stand on a woodland track. To the south the track opens out but to the north the woods become much thicker and dense, you're not sure that you should venture much further - it looks like you might get lost. There is a track to the east which looks better travelled.
 EXIT
 exit label:North
 exit destination:deep_dark_woodland_track
@@ -833,6 +833,88 @@ exit label:South
 exit destination:moredirttrack
 exit direction hint:South
 exit id:woodland_track_to_moredirttrack
+EXIT
+exit label:East
+exit destination:track_to_friary
+exit direction hint:East
+exit id:woodland_track_to_track_to_friary
+
+LOCATION
+x:180
+y:060
+location id:track_to_friary
+location description:You are on a fairly well travelled track which leads to a large imposing building up ahead. To the west you see woodland and that's about all.
+EXIT
+exit label:West
+exit destination:woodland_track
+exit direction hint:West
+exit id:track_to_friary_to_woodland_track
+EXIT
+exit label:East
+exit destination:friary_gates
+exit direction hint:East
+exit id:track_to_friary_to_friary_gates
+
+LOCATION
+x:240
+y:060
+location id:friary_gates
+location description:You stand before the gates of a large imposing building. There is a friar in front of you whom from his black cloak and white habit you identify as a member of the Dominican order. Back to the west is a wood and in the distance a church tower can be seen.
+EXIT
+exit label:West
+exit destination:track_to_friary
+exit direction hint:West
+exit id:friary_gates_to_track_to_friary
+EXIT
+exit label:East
+exit destination:friary_entrance
+exit direction hint:East
+exit id:friary_gates_to_friary_entrance
+exit is not visible:
+ITEM
+item name:Notice board
+item description:The notice board reads "Friary of the Order Of Preachers of St Dominic de Guzman". In smaller writing at the bottom it states "This order has taken a vow to discard worldy goods and live from the charity of the good people of this town. As mendicants we can better fulfil our obligations to the Lord. Please leave alms with the gatekeeper who has taken a vow of silence."
+item id:friary_gates_notice_board
+item countable noun prefix:a
+item is untakeable:
+ITEM
+item name:Friar
+item description:This friar looks cold and hungry. His cloak is a little tattered around the edges, you bet a proper meal would do him the world of good.
+item id:unhappy_friar
+item countable noun prefix:a
+item is untakeable:
+item talk initial phrase:hello:Hello Friar!:You say "Hello Friar!" as merrily as you can. This fellow looks like he needs some cheering up.
+item talk response to:hello:The friar shakes his head at you and nods towards the notice board.
+item can be used with:food_and_wine
+item use is not repeatable:
+item successful use message:You show the food and wine to the friar who smiles at you and receives your gift with grateful eyes.
+item use action:destroy item:food_and_wine
+item use action:change item visibility:unhappy_friar:invisible
+item use action:change item visibility:cheerful_friar:visible
+ITEM
+item name:Friar
+item description:This friar looks cold and hungry but happy. He has some food and wine in a nook next to the friary gate.
+item id:cheerful_friar
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:can_i_enter_the_friary:Can I enter the friary?:You say "Excuse me Friar but may I gain entrance to your friary?"
+item talk response to:can_i_enter_the_friary:The friar looks at you quizzically and waits for you to expand on your request.
+item talk follow up phrase to:can_i_enter_the_friary:i_want_to_join_your_order:I want to join your order:You say "I've been thinking a lot recently and have decided I want to dedicate my life to good works and helping the poor.". The friar looks you up and down and clearly doesn't believe a word you're saying - as neither do you. He steps between you and the gate, folds his arms and blocks your progress. For a hungry friar he looks quite mean.
+item talk follow up phrase to:can_i_enter_the_friary:i_am_here_to_fix_the_toilets:I'm here to fix the toilets:You say "I'm here to fix the toilets - I understand you have a very serious blockage.".
+item talk response to:i_am_here_to_fix_the_toilets:The friar looks at you with some concern, hesitates and then steps aside, gesturing that you should proceed quickly.
+item talk action in response to:i_am_here_to_fix_the_toilets:make exit visible:friary_gates_to_friary_entrance
+
+LOCATION
+x:300
+y:060
+location id:friary_entrance
+location description:You stand just inside the friary gates in a courtyard. Straw is scattered around and there are a few goats that have been brought here to provide milk for the order.
+EXIT
+exit label:West
+exit destination:friary_gates
+exit direction hint:West
+exit id:friary_entrance_to_friary_gates
 
 LOCATION
 x:120
@@ -1498,7 +1580,7 @@ item on examine action:change item visibility:stack_of_boxes1:invisible
 item on examine action:change item visibility:stack_of_boxes2:visible
 ITEM
 item name:Stack of boxes
-item description:The boxes were stacked high, one of the boxes appears to have something interesting in.
+item description:The boxes were stacked high, one of the boxes appears to have some food and wine in and something else that looks interesting.
 item id:stack_of_boxes2
 item countable noun prefix:a
 item is untakeable:
@@ -1506,6 +1588,7 @@ item visibility:invisible
 item examine action is not repeatable:
 item examine message:The very last box is lined with a sheet of torn paper which has some smudged writing on. You move all the objects on the paper out of the way so you can have a closer look.
 item on examine action:change item visibility:tornpaper:visible
+item on examine action:change item visibility:food_and_wine:visible
 item on examine action:change item description:The boxes were stacked high. You feel you have already found whatever was interesting enough to root through this mess for.
 ITEM
 item name:Torn paper
@@ -1513,6 +1596,12 @@ item description:The paper was used to line some supply boxes and is ripped in s
 item id:tornpaper
 item countable noun prefix:some
 item is untakeable:
+item visibility:invisible
+ITEM
+item name:Food and wine
+item description:This is an assortment of bread, cheese and wine - perfects alms for a mendicant friar.
+item id:food_and_wine
+item countable noun prefix:some
 item visibility:invisible
 
 LOCATION
