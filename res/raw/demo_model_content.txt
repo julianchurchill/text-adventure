@@ -909,12 +909,92 @@ LOCATION
 x:300
 y:060
 location id:friary_entrance
-location description:You stand just inside the friary gates in a courtyard. Straw is scattered around and there are a few goats that have been brought here to provide milk for the order.
+location description:You stand just inside the friary gates in a courtyard. Straw is scattered around and there are a few goats that have been brought here to provide milk for the order. There is a large door leading to a large communal space to the east and to the north there is a corridor running under the building surrounding you, opening up to more buildings further on.
 EXIT
 exit label:West
 exit destination:friary_gates
 exit direction hint:West
 exit id:friary_entrance_to_friary_gates
+EXIT
+exit label:East
+exit destination:friary_main_hall
+exit direction hint:East
+exit id:friary_entrance_to_friary_main_hall
+EXIT
+exit label:North
+exit destination:friary_north_corridor
+exit direction hint:North
+exit id:friary_entrance_to_friary_north_corridor
+
+LOCATION
+x:360
+y:060
+location id:friary_main_hall
+location description:This is the main hall of the friary. There is a long wooden table running through the centre of the hall lined with simple wooden chairs. There is space for about 20 friars. The hall itself is plain, with a few windows and a high ceiling.
+EXIT
+exit label:West
+exit destination:friary_entrance
+exit direction hint:West
+exit id:friary_main_hall_to_friary_entrance
+
+LOCATION
+x:300
+y:000
+location id:friary_north_corridor
+location description:You are in the north corridor of the friary which leads from the entrance courtyard to the north buildings. Looking ahead you can spy the entrance to some stairs leading up a tower and a couple of doors to more wood and stone buildings.
+EXIT
+exit label:South
+exit destination:friary_entrance
+exit direction hint:South
+exit id:friary_north_corridor_to_friary_entrance
+EXIT
+exit label:North
+exit destination:friary_north_courtyard
+exit direction hint:North
+exit id:friary_north_corridor_to_friary_north_courtyard
+
+LOCATION
+x:300
+y:-060
+location id:friary_north_courtyard
+location description:You are in the north courtyard of the friary, behind you to the south is a corridor that leads to the entrance of the friary. From here you can see a door leading to steps that climb a tower - looking upwards you see lights in the room at the top and get a sense that there is much work going on above. There is also a door into the surrounding building to the east.
+EXIT
+exit label:South
+exit destination:friary_north_corridor
+exit direction hint:South
+exit id:friary_north_courtyard_to_friary_north_corridor
+EXIT
+exit label:Tower stairs
+exit destination:friary_tower_stairs
+exit direction hint:North
+exit id:friary_north_courtyard_to_friary_tower_stairs
+EXIT
+exit label:Door
+exit destination:friary_north_building
+exit direction hint:East
+exit id:friary_north_courtyard_to_friary_north_building
+
+LOCATION
+x:300
+y:-120
+location id:friary_tower_stairs
+location description:You are at the bottom of a steep set of stone stairs that spiral far above you. Looking up makes you feel a little sick and the combination of the steep angle of the staircase and the shallow depth of the steps, on which you can barely get a foothold, make you think twice about proceeding upwards.
+EXIT
+exit label:South
+exit destination:friary_north_courtyard
+exit direction hint:South
+exit id:friary_tower_stairs_to_friary_north_courtyard
+
+LOCATION
+x:360
+y:-060
+location id:friary_north_building
+location description:You are in the north building of the friary.
+EXIT
+exit label:West
+exit destination:friary_north_courtyard
+exit direction hint:West
+exit id:friary_north_building_to_friary_north_courtyard
 
 LOCATION
 x:120
