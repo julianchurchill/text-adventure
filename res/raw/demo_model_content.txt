@@ -984,6 +984,83 @@ exit label:South
 exit destination:friary_north_courtyard
 exit direction hint:South
 exit id:friary_tower_stairs_to_friary_north_courtyard
+EXIT
+exit label:Up
+exit destination:friary_tower_stairs_first_floor
+exit direction hint:Up
+exit id:friary_tower_stairs_to_friary_tower_stairs_first_floor
+
+LOCATION
+x:300
+y:-120
+location id:friary_tower_stairs_first_floor
+location description:You stand on an indented ledge on the first floor of the tower stairs. You look up and the stairs continue above you spiralling out of sight.
+EXIT
+exit label:Down
+exit destination:friary_tower_stairs
+exit direction hint:Down
+exit id:friary_tower_stairs_first_floor_to_friary_tower_stairs
+EXIT
+exit label:Up
+exit destination:friary_tower_stairs_second_floor
+exit direction hint:Up
+exit id:friary_tower_stairs_first_floor_to_friary_tower_stairs_second_floor
+
+LOCATION
+x:300
+y:-120
+location id:friary_tower_stairs_second_floor
+location description:You stand on an indented ledge on the second floor of the tower stairs. You can hear shuffling above you.
+EXIT
+exit label:Down
+exit destination:friary_tower_stairs_first_floor
+exit direction hint:Down
+exit id:friary_tower_stairs_second_floor_to_friary_tower_stairs_first_floor
+EXIT
+exit label:Up
+exit destination:friary_tower_library_room
+exit direction hint:Up
+exit id:friary_tower_stairs_second_floor_to_friary_tower_library_room
+
+LOCATION
+x:300
+y:-120
+location id:friary_tower_library_room
+location description:You stand in a large open room at the top of the tower. It is full of books piled upon tables, chairs, shelves and even the floor. This must be the Friary library where the friars study and write down their knowledge and experiences for the guidance of future friars. You notice a man in the corner hunched over a desk mumbling to himself.
+EXIT
+exit label:Down
+exit destination:friary_tower_stairs_second_floor
+exit direction hint:Down
+exit id:friary_tower_library_room_to_friary_tower_stairs_second_floor
+ITEM
+item name:Librarian
+item description:The man is sat at a reading desk, surrounded by books but his attention is taken by a strange object resting on the desk in front of him. His hair is quite dishevelled and you get the impression from the shock of white-grey hair, that half stands up by itself, that this fellow is quite a clever chap. He has obviously been in deep thought about the object in front of him and looks quite aggravated.
+item id:librarian_friar
+item countable noun prefix:the
+item is untakeable:
+item talk initial phrase:excuse_me:Excuse me Friar:You say "Excuse me Friar. I wonder if you could help me?".
+item talk response to:excuse_me:The friar looks up. "Help you? Why I can't even help myself, how am I supposed to help you?".
+item talk follow up phrase to:excuse_me:tell_me_where_I_can_find_a_clavicle:Where can I find a clavicle?:You say "You could tell me where I can find a clavicle...".
+item talk response to:tell_me_where_I_can_find_a_clavicle:The friar shakes his head in dismay and turns quietly back to the object in front of him.
+item talk follow up phrase to:excuse_me:can_i_help_you:Can I help you?:You say "I'm but a ungodly fool but perhaps I can offer my assistance with whatever is troubling you?".
+item talk response to:can_i_help_you:He looks up and smiles. "Thank you my son, that would be very much appreciated.". He stands up to shake your hand and you grasp it firmly. "My name is Alfred Eisenstein, I'm the librarian here at the Friary.". He turns to the item on the desk and picks it up gently, you look at it as he moves closer to you but all you can see is a blurry arrangement of lines which seem to form some sort of structure. It sits in his hands and Alfred ponders it. "This is Rupriks Hexadecachoron - it's a puzzle. At least I'm prettying sure it's a puzzle. I found it hidden under a large pile of old books at the back of the library and with it there was just a dusty old leaf of paper that stated to solve it you must line up all the colours on each face. Well I've been trying to complete it since I found the thing but I can't seem to comprehend the structure - it has too many surfaces you see and sometimes not enough."
+item talk follow up phrase to:can_i_help_you:i_cant_help_you:I can't help you:You shuffle from foot to foot uncomfortably "I can't help you, you're quite clearly nuts. I'm going to go look for a clavicle somewhere more sensible.".
+item talk response to:i_cant_help_you:The friar looks saddened but returns to his puzzle with no more regard for you.
+item talk follow up phrase to:can_i_help_you:sure_lets_do_it:Sure lets fix it:You state confidently "Sure let's fix this baby, it looks easy.".
+item talk response to:sure_lets_do_it:The friar looks delighted although a little skeptical of your new found confidence. "Ok, all you need to do is tell me which face to turn and in what direction.".
+
+item talk follow up phrase to:sure_lets_do_it:the_leftwise_face_untwistwise:Leftwise untwistwise:You say "Ok, first move - leftwise face and turn it in an untwistwise direction.".
+item talk response to:the_leftwise_face_untwistwise:The friar follows your excellent instructions to the letter. "Oh no, that's not right at all. Try something else.".
+item talk follow up phrase to:the_leftwise_face_untwistwise:the_leftwise_face_untwistwise
+item talk follow up phrase to:the_leftwise_face_untwistwise:the_rightwise_face_untwistwise
+item talk follow up phrase to:sure_lets_do_it:the_rightwise_face_untwistwise:Rightwise untwistwise:You say "Ok, first move - rightwise face and turn it in an untwistwise direction.".
+item talk response to:the_rightwise_face_untwistwise:The friar follows your excellent instructions to the letter. "Looking good, what next?".
+item talk follow up phrase to:the_rightwise_face_untwistwise:back_face_upsy_forward_a_little:Back face upsy and forward:You say "Next move - back face upsy and forward a little.".
+item talk response to:back_face_upsy_forward_a_little:The friar follows your excellent instructions to the letter. "Looking good, what next?".
+item talk follow up phrase to:back_face_upsy_forward_a_little:lateral_hemisphere_rotation_over_5_seconds:Lateral hemisphere rotation over 5 seconds:You say "Try this one - lateral hemisphere rotation over 5 seconds.". The friar looks at you a little oddly but proceeds anyway.
+item talk response to:lateral_hemisphere_rotation_over_5_seconds:The friar follows your excellent instructions to the letter. "Looking good, what next?".
+item talk follow up phrase to:lateral_hemisphere_rotation_over_5_seconds:finish_with_a_full_rotator_cuff_backflip:Finish with a full rotator cuff backflip:You say "Final move - full rotator cuff backflip.".
+item talk response to:finish_with_a_full_rotator_cuff_backflip:Without a second though the friar leaps into the air, spins around on a pin and lands next to you with the Rupriks Hexadecachoron held triumphantly high in his hand. "Woot!" says the friar.
 
 LOCATION
 x:360
