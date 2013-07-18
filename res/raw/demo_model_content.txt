@@ -599,7 +599,7 @@ item talk response to:lookingforwork:The Shop keeper says "Sure, you should go t
 item talk action in response to:lookingforwork:make exit visible:mainstreeteast
 item talk action in response to:lookingforwork:make exit visible:clocktower_to_cobbledroad
 item talk action in response to:lookingforwork:make exit visible:clocktower_to_nobles_quarter_west_street
-item talk action in response to:lookingforwork:change location description:clocktower:You stand before a mighty clock tower. The clock goes TICK! There is a cobbled road off to the west that winds its way through the back streets of the town.
+item talk action in response to:lookingforwork:change location description:clocktower:You stand before a mighty clock tower. The clock goes TICK! There is a cobbled road off to the west that winds its way through the back streets of the town and to the east is the nobles quarter.
 item talk action in response to:lookingforwork:change item visibility:decoderring:visible
 
 item talk initial phrase:lookingwell:You're looking well...:You say "You're looking well friend.".
@@ -1040,13 +1040,13 @@ item countable noun prefix:the
 item is untakeable:
 item talk initial phrase:excuse_me:Excuse me Friar:You say "Excuse me Friar. I wonder if you could help me?".
 item talk response to:excuse_me:The friar looks up. "Help you? Why I can't even help myself, how am I supposed to help you?".
-item talk follow up phrase to:excuse_me:tell_me_where_I_can_find_a_clavicle:Where can I find a clavicle?:You say "You could tell me where I can find a clavicle...".
-item talk response to:tell_me_where_I_can_find_a_clavicle:The friar shakes his head in dismay and turns quietly back to the object in front of him.
+item talk follow up phrase to:excuse_me:tell_me_where_I_can_find_a_scapula:Where can I find a scapula?:You say "You could tell me where I can find a scapula...".
+item talk response to:tell_me_where_I_can_find_a_scapula:The friar shakes his head in dismay and turns quietly back to the object in front of him.
 item talk follow up phrase to:excuse_me:can_i_help_you:Can I help you?:You say "I'm but a ungodly fool but perhaps I can offer my assistance with whatever is troubling you?".
-item talk response to:can_i_help_you:He looks up and smiles. "Thank you my son, that would be very much appreciated.". He stands up to shake your hand and you grasp it firmly. "My name is Alfred Eisenstein, I'm the librarian here at the Friary.". He turns to the item on the desk and picks it up gently, you look at it as he moves closer to you but all you can see is a blurry arrangement of lines which seem to form some sort of structure. It sits in his hands and Alfred ponders it. "This is Rupriks Hexadecachoron - it's a puzzle. At least I'm prettying sure it's a puzzle. I found it hidden under a large pile of old books at the back of the library and with it there was just a dusty old leaf of paper that stated to solve it you must line up all the colours on each face. Well I've been trying to complete it since I found the thing but I can't seem to comprehend the structure - it has too many surfaces you see and sometimes not enough."
-item talk follow up phrase to:can_i_help_you:i_cant_help_you:I can't help you:You shuffle from foot to foot uncomfortably "I can't help you, you're quite clearly nuts. I'm going to go look for a clavicle somewhere more sensible.".
+item talk response to:can_i_help_you:He looks up and smiles. "Thank you my son, that would be very much appreciated.". He stands up to shake your hand and you grasp it firmly. "My name is Alfred Eisenstein, I'm the librarian here at the Friary.". He turns to the item on the desk and picks it up gently, you look at it as he moves closer to you but all you can see is a blurry arrangement of lines which seem to form some sort of structure. It sits in his hands and Alfred ponders it. "This is Ruprik's Hexadecachoron - it's a puzzle. At least I'm prettying sure it's a puzzle. I found it hidden under a large pile of old books at the back of the library and with it there was just a dusty old leaf of paper that stated to solve it you must line up all the colours on each face. Well I've been trying to complete it since I found the thing but I can't seem to comprehend the structure - it has too many surfaces you see and sometimes not enough."
+item talk follow up phrase to:can_i_help_you:i_cant_help_you:I can't help you:You shuffle from foot to foot uncomfortably "I can't help you, you're quite clearly nuts. I'm going to go look for a scapula somewhere more sensible.".
 item talk response to:i_cant_help_you:The friar looks saddened but returns to his puzzle with no more regard for you.
-item talk follow up phrase to:can_i_help_you:sure_lets_do_it:Sure lets fix it:You state confidently "Sure let's fix this baby, it looks easy.".
+item talk follow up phrase to:can_i_help_you:sure_lets_do_it:Sure lets solve it:You state confidently "Sure let's solve this baby, it looks easy.".
 item talk response to:sure_lets_do_it:The friar looks delighted although a little skeptical of your new found confidence. "Ok, all you need to do is tell me which face to turn and in what direction.".
 
 item talk follow up phrase to:sure_lets_do_it:the_leftwise_face_untwistwise:Leftwise untwistwise:You say "Ok, first move - leftwise face and turn it in an untwistwise direction.".
@@ -1060,18 +1060,133 @@ item talk response to:back_face_upsy_forward_a_little:The friar follows your exc
 item talk follow up phrase to:back_face_upsy_forward_a_little:lateral_hemisphere_rotation_over_5_seconds:Lateral hemisphere rotation over 5 seconds:You say "Try this one - lateral hemisphere rotation over 5 seconds.". The friar looks at you a little oddly but proceeds anyway.
 item talk response to:lateral_hemisphere_rotation_over_5_seconds:The friar follows your excellent instructions to the letter. "Looking good, what next?".
 item talk follow up phrase to:lateral_hemisphere_rotation_over_5_seconds:finish_with_a_full_rotator_cuff_backflip:Finish with a full rotator cuff backflip:You say "Final move - full rotator cuff backflip.".
-item talk response to:finish_with_a_full_rotator_cuff_backflip:Without a second though the friar leaps into the air, spins around on a pin and lands next to you with the Rupriks Hexadecachoron held triumphantly high in his hand. "Woot!" says the friar.
+item talk response to:finish_with_a_full_rotator_cuff_backflip:Without a second thought the friar leaps into the air, spins around on a pin and lands next to you with the Ruprik's Hexadecachoron held triumphantly high in his hand. "Woot!" says the friar. "Thats fantastic, you've solved it - all the sides have the same colour." - he shoves the Hexadecachoron towards you grinning manically. You look at the thing but you still can't distinguish any of its features. "Ok, a scapula was it, some sort of physician are you?". You nod cautiously. "Great, well if you pop down to the kitchen you'll find a loose flagstone, move it out of the way and you can get down to the cellar beneath the kitchen. All the brothers are laid to rest down there, if you look to the back you're bound to find what you need. Many thanks once more!". With that he sits back at his desk and ponders the wonderous object further.
+item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change item visibility:loose_flagstone:visible
+item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change item visibility:librarian_friar:invisible
+item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change item visibility:librarian_friar_solved:visible
+item talk follow up phrase to:lateral_hemisphere_rotation_over_5_seconds:jazz_hands:A flurry, a Pas de Chat and jazz hands?:You say "How about a flurry, a Pas de Chat and finally Jazz hands!".
+item talk response to:jazz_hands:The friar readys himself and launches into a bizarre contortion of modern dance and flash jazz, as he lands he thrusts his arms out and waves his hands for all he's worth - the best Jazz hands you've ever seen. He looks at the cube with concern. "I think that made it worse.".
+item talk follow up phrase to:jazz_hands:jazz_hands
+item talk follow up phrase to:jazz_hands:finish_with_a_full_rotator_cuff_backflip
+ITEM
+item name:Librarian
+item description:The man is sat at a reading desk, surrounded by books but his attention is taken by a strange object resting on the desk in front of him. His hair is quite dishevelled and you get the impression from the shock of white-grey hair, that half stands up by itself, that this fellow is quite a clever chap. He has obviously been in deep thought about the object in front of him.
+item id:librarian_friar_solved
+item countable noun prefix:the
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:excuse_me:Excuse me Friar:You say "Excuse me Friar. I wonder if you could help me?".
+item talk response to:excuse_me:The friar looks up. "Lost already eh? Down in the kitchen, the loose flagstone? You'll find what you need down there.".
 
 LOCATION
 x:360
 y:-060
 location id:friary_north_building
-location description:You are in the north building of the friary.
+location description:You are in the north building of the friary. To the east you see a kitchen through a narrow, low doorway.
 EXIT
 exit label:West
 exit destination:friary_north_courtyard
 exit direction hint:West
 exit id:friary_north_building_to_friary_north_courtyard
+EXIT
+exit label:East
+exit destination:friary_kitchen
+exit direction hint:East
+exit id:friary_north_building_to_friary_kitchen
+
+LOCATION
+x:420
+y:-060
+location id:friary_kitchen
+location description:All around you is the smell of cooked food, although you cannot see any laid out. The kitchen looks quite clean and tidy, you must have arrived just after a meal has been served.
+EXIT
+exit label:West
+exit destination:friary_north_building
+exit direction hint:West
+exit id:friary_kitchen_to_friary_north_building
+EXIT
+exit label:Down
+exit destination:friary_cellar
+exit direction hint:Down
+exit id:friary_kitchen_to_friary_cellar
+exit is not visible:
+ITEM
+item name:Loose flagstone
+item description:The flagstone is loose and has obviously been moved in and out of position many times. You can't quite get purchase on it to move it although you think you could slip something in the crack around the flagstone and maybe ease it up.
+item id:loose_flagstone
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:multitool
+item use is not repeatable:
+item successful use message:You slide the blade of the multitool in the crack between the flagstone and floor and ease the stone up. Gripping it by your fingertips you pull it upright and place it to the side out of the way.
+item use action:change item visibility:loose_flagstone:invisible
+item use action:make exit visible:friary_kitchen_to_friary_cellar
+ITEM
+item name:Wash basin
+item description:It is a large ceramic trough that the friars use to wash food and dishes.
+item id:wash_basin
+item countable noun prefix:a
+item is untakeable:
+item can be used with:dirty_scapula
+item use is not repeatable:
+item successful use message:You give the bone a really good wash. Now it is all shiny and ready to be used. You place it next to the wash basin to dry.
+item use action:change item visibility:scapula:visible
+item use action:destroy item:dirty_scapula
+item use action:increment score:
+ITEM
+item name:Scapula
+item description:This is a shoulder blade. It is a clean, white bone, fairly old but solid, shaped slightly like an axe head.
+item id:scapula
+item countable noun prefix:a
+item visibility:invisible
+
+LOCATION
+x:420
+y:-060
+location id:friary_cellar
+location description:You stand in the cool space beneath the kitchen, bare rock around you and just about enough room to move. The cellar narrows up ahead and you will have to crawl on your knees to get further in.
+EXIT
+exit label:Up
+exit destination:friary_kitchen
+exit direction hint:Up
+exit id:friary_cellar_to_friary_kitchen
+EXIT
+exit label:Narrow tunnel
+exit destination:friary_cellar_narrow_end
+exit direction hint:East
+exit id:friary_cellar_to_friary_cellar_narrow_end
+
+LOCATION
+x:480
+y:-060
+location id:friary_cellar_narrow_end
+location description:You are crawling along the floor of the friary cellar, the space around you is tight and makes you feel a little nervous. As you reach the end of the crawlspace you can make out some bones stacked in piles against the back wall.
+EXIT
+exit label:Out
+exit destination:friary_cellar
+exit direction hint:West
+exit id:friary_cellar_narrow_end_to_friary_cellar
+ITEM
+item name:Clavicle
+item description:This is a collar bone. It is a clean, white bone, fairly old but solid, short and strut-like.
+item id:clavicle
+item countable noun prefix:a
+ITEM
+item name:Dirty scapula
+item description:This is a shoulder blade. It is a dirty bone, fairly old but solid, shaped slightly like an axe head. It is barely recognisable and entirely unusable in this state.
+item id:dirty_scapula
+item countable noun prefix:a
+ITEM
+item name:Tibia
+item description:This is a shin bone. It is a clean, white bone, fairly old but solid and heavy. It would make a good club.
+item id:tibia
+item countable noun prefix:a
+ITEM
+item name:Fibula
+item description:This is a calf bone. It is a clean, white bone, fairly old but solid. It is slimmer than the other bones.
+item id:fibula
+item countable noun prefix:a
 
 LOCATION
 x:120
