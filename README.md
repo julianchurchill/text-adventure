@@ -12,8 +12,6 @@ Save files are stored on the emulated device under /data/data/com.chewielouie.te
 Backlog
 =======
 
-- [FEATURE] Scroll to the top of _new_ description content.
-  - If the description has changed since the last update, make sure the top of the difference is in view. If the text is long then it might be at the top of the screen, otherwise the text may be in the middle, as long as the start is visible.
 - [FEATURE] Improve look of completion dialog - add a title seperator or something. See "What's new" dialogs in other apps with the holo theme.
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Add location title to title bar next to score?
@@ -43,6 +41,7 @@ Done
 2.0
 ---
 
+- [FEATURE] Scroll to the top of _new_ description content instead of scrolling to the bottom of the current content all the time.
 - [FEATURE] Forced available items text in a locations to be just before the exit text instead of getting lost in the description/story text.
 - [FEATURE] The user will be notified when they have reached the end of the available content with a popup upon their next action.
 - [FEATURE] Removed mentions of rubies in the text. Changed the score representation in the GUI to a simple percentage.

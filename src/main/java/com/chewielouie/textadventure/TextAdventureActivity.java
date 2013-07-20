@@ -24,6 +24,7 @@ import android.content.pm.PackageManager;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
@@ -81,6 +82,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private TextView main_text_output;
     private TextView score_text_view;
     private String mainTextContent = "";
+    private String oldMainTextContent = "";
+    private int oldDescriptionLineCount = 0;
     private String availableItemsText = "";
     private Map<TextView,Exit> directions_and_exits =
         new HashMap<TextView,Exit>();
@@ -298,13 +301,69 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void updateMainText() {
-        SpannableStringBuilder text = new SpannableStringBuilder(
-                mainTextContent );
+        scrollToTopOfNewDescriptionContent();
+
+        SpannableStringBuilder text = new SpannableStringBuilder( mainTextContent );
         addItemsText( text );
         addExitsText( text );
 
         main_text_output.setText( text, TextView.BufferType.SPANNABLE );
-        scrollToBottomOfMainText();
+    }
+
+    private void scrollToTopOfNewDescriptionContent() {
+        main_text_output.setText( mainTextContent, TextView.BufferType.SPANNABLE );
+        if( newDescriptionIsBigger() ) {
+            if( newDescriptionStartsWithTheOld() )
+                scrollToFirstNewDescriptionLine();
+            else
+                scrollToTopOfMainText();
+        }
+        else if( newDescriptionIsSmaller() || newDescriptionIsDifferent() )
+            scrollToTopOfMainText();
+        oldMainTextContent = mainTextContent;
+        oldDescriptionLineCount = main_text_output.getLineCount();
+    }
+
+    private boolean newDescriptionIsBigger() {
+        return main_text_output.getLineCount() > oldDescriptionLineCount;
+    }
+
+    private boolean newDescriptionIsSmaller() {
+        return main_text_output.getLineCount() < oldDescriptionLineCount;
+    }
+
+    private boolean newDescriptionStartsWithTheOld() {
+        return mainTextContent.startsWith( oldMainTextContent );
+    }
+
+    private boolean newDescriptionIsDifferent() {
+        return mainTextContent.equals( oldMainTextContent ) == false;
+    }
+
+    private void scrollToFirstNewDescriptionLine() {
+        final int lastLineInOldDescription = oldDescriptionLineCount - 1;
+        final ScrollView scrollView = (ScrollView)findViewById(
+                R.id.main_text_output_scroll_view );
+        scrollView.post(new Runnable() {
+            public void run() {
+                Rect bounds = new Rect();
+                if( lastLineInOldDescription > 0 ) {
+                    int firstNewDescriptionLine = lastLineInOldDescription + 1;
+                    main_text_output.getLineBounds( firstNewDescriptionLine, bounds );
+                }
+                scrollView.smoothScrollTo( 0, bounds.top );
+            }
+        });
+    }
+
+    private void scrollToTopOfMainText() {
+        final ScrollView scrollView = (ScrollView)findViewById(
+                R.id.main_text_output_scroll_view );
+        scrollView.post(new Runnable() {
+            public void run() {
+                scrollView.smoothScrollTo( 0, 0 );
+            }
+        });
     }
 
     private void addItemsText( SpannableStringBuilder text ) {
@@ -394,16 +453,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private void enableClickableLinkCallbacks() {
         main_text_output.setMovementMethod( LinkMovementMethod.getInstance() );
-    }
-
-    private void scrollToBottomOfMainText() {
-        final ScrollView scrollView = (ScrollView)findViewById(
-                R.id.main_text_output_scroll_view );
-        scrollView.post(new Runnable() {
-            public void run() {
-                scrollView.smoothScrollTo( 0, main_text_output.getBottom() );
-            }
-        });
     }
 
     public void showLocationExits( List<Exit> exits ) {
