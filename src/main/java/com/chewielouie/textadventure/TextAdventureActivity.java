@@ -616,10 +616,15 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         if( completionDialogShown == false ) {
             completionDialogShown = true;
             completionDialogShowPending = false;
-            Dialog dialog = new Dialog( this );
-            dialog.setContentView( R.layout.completion_dialog );
-            dialog.setTitle( R.string.completion_dialog_title );
+            AlertDialog.Builder builder = new AlertDialog.Builder( this );
+            // Pass null as the parent view because its going in the dialog layout
+            builder.setView( getLayoutInflater().inflate( R.layout.completion_dialog, null ) );
+            builder.setTitle( R.string.completion_dialog_title );
+            AlertDialog dialog = builder.create();
             dialog.show();
+            // The FILL_PARENT for width from the xml is ignored for some reason by android
+            // This fix must be done after show() to override the incorrect width = WRAP_CONTENT setting
+            dialog.getWindow().setLayout( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT );
         }
     }
 
