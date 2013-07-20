@@ -97,6 +97,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private BasicModelFactory internalModelFactory = null;
     private Logger logger = new StdoutLogger();
     private boolean completionDialogShown = false;
+    private boolean completionDialogShowPending = false;
 
     public TextAdventureActivity() {
     }
@@ -206,6 +207,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private void createNewGame() {
         completionDialogShown = false;
+        completionDialogShowPending = false;
         createNewGameModel();
         setupPresenter();
     }
@@ -379,15 +381,15 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         ClickableSpan c = new ClickableSpan() {
             @Override
             public void onClick( View view ) {
-                finalUserActionHandler.enact( factory.createExitAction( finalExit,
-                                                                        finalModel ) );
+                doAction( finalUserActionHandler, factory.createExitAction( finalExit,
+                                                                            finalModel ) );
             }
         };
         text.setSpan( c, startIndex, endIndex, 0 );
     }
 
     public void useExit( Exit exit ) {
-        userActionHandler.enact( actionFactory().createExitAction( exit, model ) );
+        doAction( userActionHandler, actionFactory().createExitAction( exit, model ) );
     }
 
     private void enableClickableLinkCallbacks() {
@@ -433,7 +435,13 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     public void onClick( View v ) {
         if( v instanceof Button && actionButtons.containsKey( (Button)v ) )
-            userActionHandler.enact( actionButtons.get( (Button)v ) );
+            doAction( userActionHandler, actionButtons.get( (Button)v ) );
+    }
+
+    private void doAction( final UserActionHandler actionHandler, Action action ) {
+        actionHandler.enact( action );
+        if( completionDialogShowPending )
+            showCompletionDialog();
     }
 
     @Override
@@ -556,10 +564,14 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void showCompletionDialog() {
-        Dialog dialog = new Dialog( this );
-        dialog.setContentView( R.layout.completion_dialog );
-        dialog.setTitle( R.string.completion_dialog_title );
-        dialog.show();
+        if( completionDialogShown == false ) {
+            completionDialogShown = true;
+            completionDialogShowPending = false;
+            Dialog dialog = new Dialog( this );
+            dialog.setContentView( R.layout.completion_dialog );
+            dialog.setTitle( R.string.completion_dialog_title );
+            dialog.show();
+        }
     }
 
     public void currentScore( int score ) {
@@ -573,10 +585,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             percentage = (int) (((float)currentScore / (float)maximumScore) * (float)100);
         score_text_view.setText( Integer.toString( percentage ) + "% " + getText( R.string.completed ) );
 
-        if( percentage == 100 && completionDialogShown == false ) {
-            showCompletionDialog();
-            completionDialogShown = true;
-        }
+        if( percentage == 100 )
+            completionDialogShowPending = true;
     }
 
     public void maximumScore( int score ) {
