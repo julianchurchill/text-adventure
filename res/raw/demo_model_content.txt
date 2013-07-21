@@ -1324,6 +1324,12 @@ item description:The leaves of the plant are thin and delicate with variagated s
 item id:silk_blood
 item countable noun prefix:some
 item visibility:invisible
+ITEM
+item name:Witches Bane
+item description:You recognise this plant as Witches Bane, a herb rumoured to be effective against witches - although you don't really believe in all that superstitious humbug.
+item id:witches_bane
+item countable noun prefix:some
+item visibility:visible
 
 LOCATION
 x:060
