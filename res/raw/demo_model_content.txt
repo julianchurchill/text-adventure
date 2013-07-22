@@ -1042,7 +1042,7 @@ item talk initial phrase:excuse_me:Excuse me Friar:You say "Excuse me Friar. I w
 item talk response to:excuse_me:The friar looks up. "Help you? Why I can't even help myself, how am I supposed to help you?".
 item talk follow up phrase to:excuse_me:tell_me_where_I_can_find_a_scapula:Where can I find a scapula?:You say "You could tell me where I can find a scapula...".
 item talk response to:tell_me_where_I_can_find_a_scapula:The friar shakes his head in dismay and turns quietly back to the object in front of him.
-item talk follow up phrase to:excuse_me:can_i_help_you:Can I help you?:You say "I'm but a ungodly fool but perhaps I can offer my assistance with whatever is troubling you?".
+item talk follow up phrase to:excuse_me:can_i_help_you:Can I help you?:You say "I'm but an ungodly fool but perhaps I can offer my assistance with whatever is troubling you?".
 item talk response to:can_i_help_you:He looks up and smiles. "Thank you my son, that would be very much appreciated.". He stands up to shake your hand and you grasp it firmly. "My name is Alfred Eisenstein, I'm the librarian here at the Friary.". He turns to the item on the desk and picks it up gently, you look at it as he moves closer to you but all you can see is a blurry arrangement of lines which seem to form some sort of structure. It sits in his hands and Alfred ponders it. "This is Ruprik's Hexadecachoron - it's a puzzle. At least I'm prettying sure it's a puzzle. I found it hidden under a large pile of old books at the back of the library and with it there was just a dusty old leaf of paper that stated to solve it you must line up all the colours on each face. Well I've been trying to complete it since I found the thing but I can't seem to comprehend the structure - it has too many surfaces you see and sometimes not enough."
 item talk follow up phrase to:can_i_help_you:i_cant_help_you:I can't help you:You shuffle from foot to foot uncomfortably "I can't help you, you're quite clearly nuts. I'm going to go look for a scapula somewhere more sensible.".
 item talk response to:i_cant_help_you:The friar looks saddened but returns to his puzzle with no more regard for you.
@@ -1065,7 +1065,7 @@ item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change 
 item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change item visibility:librarian_friar:invisible
 item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change item visibility:librarian_friar_solved:visible
 item talk follow up phrase to:lateral_hemisphere_rotation_over_5_seconds:jazz_hands:A flurry, a Pas de Chat and jazz hands?:You say "How about a flurry, a Pas de Chat and finally Jazz hands!".
-item talk response to:jazz_hands:The friar readys himself and launches into a bizarre contortion of modern dance and flash jazz, as he lands he thrusts his arms out and waves his hands for all he's worth - the best Jazz hands you've ever seen. He looks at the cube with concern. "I think that made it worse.".
+item talk response to:jazz_hands:The friar readies himself and launches into a bizarre contortion of modern dance and flash jazz, as he lands he thrusts his arms out and waves his hands for all he's worth - the best Jazz hands you've ever seen. He looks at the cube with concern. "I think that made it worse.".
 item talk follow up phrase to:jazz_hands:jazz_hands
 item talk follow up phrase to:jazz_hands:finish_with_a_full_rotator_cuff_backflip
 ITEM
@@ -1119,7 +1119,7 @@ item is untakeable:
 item visibility:invisible
 item can be used with:multitool
 item use is not repeatable:
-item successful use message:You slide the blade of the multitool in the crack between the flagstone and floor and ease the stone up. Gripping it by your fingertips you pull it upright and place it to the side out of the way.
+item successful use message:You slide the blade of the multitool in the crack between the flagstone and the floor and ease the stone up. Gripping it by your fingertips you pull it upright and place it to the side out of the way.
 item use action:change item visibility:loose_flagstone:invisible
 item use action:make exit visible:friary_kitchen_to_friary_cellar
 ITEM
@@ -1202,7 +1202,7 @@ EXIT
 exit label:East
 exit destination:deep_dark_woodland_track_2
 exit direction hint:East
-exit id:east_deep_dark_woodland_track_to_deep_dark_woodland_track
+exit id:east_deep_dark_woodland_track_to_deep_dark_woodland_track_2
 EXIT
 exit label:West
 exit destination:deep_dark_woodland_track
@@ -1269,17 +1269,17 @@ EXIT
 exit label:North
 exit destination:deep_dark_woodland_track_2
 exit direction hint:North
-exit id:north_deep_dark_woodland_track_2_to_deep_dark_woodland_track_2
+exit id:north_deep_dark_woodland_track_3_to_deep_dark_woodland_track_2
 EXIT
 exit label:North East
 exit destination:deep_dark_woodland_track_2
 exit direction hint:North
-exit id:north_east_deep_dark_woodland_track_2_to_deep_dark_woodland_track_2
+exit id:north_east_deep_dark_woodland_track_3_to_deep_dark_woodland_track_2
 EXIT
 exit label:Drop Bear path
 exit destination:deep_dark_woodland_track
 exit direction hint:West
-exit id:west_deep_dark_woodland_track_2_to_deep_dark_woodland_track
+exit id:west_deep_dark_woodland_track_3_to_deep_dark_woodland_track
 EXIT
 exit label:South
 exit destination:deep_dark_woodland_track
@@ -1294,7 +1294,7 @@ EXIT
 exit label:East
 exit destination:deep_dark_woodland_track_2
 exit direction hint:East
-exit id:east_deep_dark_woodland_track_2_to_deep_dark_woodland_track_2
+exit id:east_deep_dark_woodland_track_3_to_deep_dark_woodland_track_2
 
 LOCATION
 x:180
@@ -2150,7 +2150,7 @@ item visibility:invisible
 item talk initial phrase:didyouseeyourwife:Did you see your wife go by?:You say "Hello Mr Constantine, did you see your wife go by?".
 item talk response to:didyouseeyourwife:"Yes, yes I did." he says somberly. "I heard what happened in there - I was stopped by some unnatural force from entering to aid you.".
 item talk follow up phrase to:didyouseeyourwife:imsorry:I'm sorry for my part in this:You reply to Oren "I'm sorry for what she did and for my part in it. I assure you I did not know what she was doing and what she really was.".
-item talk response to:imsorry:Oren looks at you sternly but gently "I know. I often wondered if she felt some enmity towards me, there were small signs but I never thought she'd be capable of something like this. And her being a witch! Gods I've never been so suprised and horrified in my life. Anyway thank you once again strange for coming to my rescue, I will be forever indebted to you."
+item talk response to:imsorry:Oren looks at you sternly but gently "I know. I often wondered if she felt some enmity towards me, there were small signs but I never thought she'd be capable of something like this. And her being a witch! Gods I've never been so suprised and horrified in my life. Anyway thank you once again stranger for coming to my rescue, I will be forever indebted to you."
 
 LOCATION
 x:540
@@ -2216,14 +2216,8 @@ item successful use message:You pass your pick axe to Lady Bella who takes it fr
 item use action:destroy item:pickaxe
 item use action:change item visibility:enchanted_pickaxe:visible
 item use action:change item visibility:arc_stone_seam_1:visible
-item can be used with:silk_blood
-item successful use message:You pass the Silk Blood to Lady Bella. She takes it, crushing the herb between her fingers, smelling it as she does so and puts it in a small bowl on the desk.
-item use action:destroy item:silk_blood
 item use action:change item visibility:lady_bella_2:invisible
 item use action:change item visibility:lady_bella_3:visible
-
-item talk initial phrase:canyouremindme:Can you remind me of those things you wanted?:You say "My lady, I apologise deeply but I am a forgetful fool and have forgotten what it was that you asked me to find. Can you tell me again the ingredients that you require?"
-item talk response to:canyouremindme:Lady Bella looks up at you and puts her book down on the desk. "Of course my child - I need a mendicants scapula, some of a herb named Silk Blood and an arc stone. The last item can only be found by men with green eyes, as you have, since it requires a little bit of magic inside to recognise it. Come back to me when you have all the items and I will prepare the love draft for my friend. I will need the herb first of all."
 
 ITEM
 item name:Lady
@@ -2232,14 +2226,15 @@ item id:lady_bella_3
 item countable noun prefix:a
 item visibility:invisible
 item is untakeable:
-item can be used with:scapula
-item successful use message:You pass the scapula to Lady Bella. She takes it, picks up a knife from the desk and scrapes some fragments from the bone into the small bowl with the Silk Blood.
-item use action:destroy item:scapula
+item can be used with:silk_blood
+item successful use message:You pass the Silk Blood to Lady Bella. She takes it, crushing the herb between her fingers, smelling it as she does so and puts it in a small bowl on the desk.
+item use action:destroy item:silk_blood
 item use action:change item visibility:lady_bella_3:invisible
 item use action:change item visibility:lady_bella_4:visible
 
-item talk initial phrase:whatdoyouneednext:What do you need next?:You say "My lady, what do you need next?"
-item talk response to:canyouremindme:Lady Bella looks at you. "I will need the mendicants scapula next."
+item talk initial phrase:canyouremindme:Can you remind me of those things you wanted?:You say "My lady, I apologise deeply but I am a forgetful fool and have forgotten what it was that you asked me to find. Can you tell me again the ingredients that you require?"
+item talk response to:canyouremindme:Lady Bella looks up at you and puts her book down on the desk. "Of course my child - I need a mendicants scapula, some of a herb named Silk Blood and an arc stone. The last item can only be found by men with green eyes, as you have, since it requires a little bit of magic inside to recognise it. Come back to me when you have all the items and I will prepare the love draft for my friend. I will need the herb first of all."
+
 
 ITEM
 item name:Lady
@@ -2248,20 +2243,36 @@ item id:lady_bella_4
 item countable noun prefix:a
 item visibility:invisible
 item is untakeable:
+item can be used with:scapula
+item successful use message:You pass the scapula to Lady Bella. She takes it, picks up a knife from the desk and scrapes some fragments from the bone into the small bowl with the Silk Blood.
+item use action:destroy item:scapula
+item use action:change item visibility:lady_bella_4:invisible
+item use action:change item visibility:lady_bella_5:visible
+
+item talk initial phrase:whatdoyouneednext:What do you need next?:You say "My lady, what do you need next?"
+item talk response to:whatdoyouneednext:Lady Bella looks at you. "I will need the mendicants scapula next."
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease.
+item id:lady_bella_5
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
 item can be used with:arc_stone
 item successful use message:You pass the arc stone to Lady Bella. She takes it and places it next to the bowl containing the scapula scrapings and crushed Silk Blood. Staring deeply into the stone she caresses it with one hand, closes her eyes and starts to mumble an incantation. The air is thick with static and you can hear Bella's voice splitting into many dissonant tones echoing all around you. You're starting to feel slightly nervous, you didn't expect quite such a reaction for a simple harmless, love potion!
 item use action:destroy item:arc_stone
-item use action:change item visibility:lady_bella_4:invisible
-item use action:change item visibility:lady_bella_5:visible
+item use action:change item visibility:lady_bella_5:invisible
+item use action:change item visibility:lady_bella_6:visible
 item use action:change location description:orens_study:You are in the study of the Constantine Mansion. There is a roaring fire on the west wall that crackles and lights the room up with flickers of flame. There is a large desk and two large chairs facing each other over it, both with high backs and wide arms. On the other side of the desk sits a lady, deep in concentration bent over a bowl and talking to a mysterious glowing stone. There are voices all around you, muttering incoherent and unrepeatable things, you are very nervous standing here and feel a pressing need to leave and run away.
 
 item talk initial phrase:whatdoyouneednext:What do you need next?:You say "My lady, what do you need next?"
-item talk response to:canyouremindme:Lady Bella looks at you. "I will need the arc stone now."
+item talk response to:whatdoyouneednext:Lady Bella looks at you. "I will need the arc stone now."
 
 ITEM
 item name:Lady
 item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She is in the middle of concocting a potion. The air around her is electric, literally buzzing with the unnatural power that Bella is invoking.
-item id:lady_bella_5
+item id:lady_bella_6
 item countable noun prefix:a
 item visibility:invisible
 item is untakeable:
@@ -2270,23 +2281,23 @@ item talk initial phrase:whatishappening:What is happening?:You mumble nervously
 item talk response to:whatishappening:Lady Bella breaks her concentration and glares directly at you. "Be quiet you fool, you're ruining my concentration."
 item talk follow up phrase to:whatishappening:thatdoesntsmelllikealovepotion:That doesn't smell like a love potion:"That doesn't smell like a love potion to me." you reply rather meekily.
 item talk response to:thatdoesntsmelllikealovepotion:Bella stands up and strides towards you. "You idiot, I don't need you anymore! Of course it's not a love potion, what a ridiculous notion - why would I care about someones trifling daliance. This is a death potion!". Of course, you suddenly realise that is what the smell is, it's not love it's the rotting wretchedness of a mans impending doom!
-item talk follow up phrase to:thatdoesntsmelllikealovepotion:idontunderstand:I don't understand!:"But why? Who are you making this for? I don't understand!". Again you mumble this rather feebly and with a good dose of self pity. You resolve to be a bit more hero-like with your next utterance.
+item talk follow up phrase to:thatdoesntsmelllikealovepotion:idontunderstand:I don't understand!:"But why? Who are you making this for? I don't understand!". Again you mumble this rather feebly and with a good dose of self pity. You resolve to be a bit more heroic with your next utterance.
 item talk response to:idontunderstand:"Weakling, pitiful fool, you really are an imbecile aren't you?". She pauses for a moment to let her tirade sink in. "This potion is for my dear husband." she sneers. "He's a waste of space too, you are peas in a pod and deserve to be crushed. I'll take his money, his house and his life!". She moves ever more closely into your personal space and you can sense her power. You're feeling really anxious now. She sweeps her arms back and screams "Get out!" swinging down towards you and at once you feel the air contract and blast you through the door. You grasp onto the door frame battling with the force of her magic.
-item talk action in response to:idontunderstand:change item visibility:lady_bella_5:invisible
-item talk action in response to:idontunderstand:change item visibility:lady_bella_6:visible
+item talk action in response to:idontunderstand:change item visibility:lady_bella_6:invisible
+item talk action in response to:idontunderstand:change item visibility:lady_bella_7:visible
 
 ITEM
 item name:Lady
 item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She is in the middle of concocting a wicked potion. The air around her is fetid with the stench of evil at work.
-item id:lady_bella_6
+item id:lady_bella_7
 item countable noun prefix:a
 item visibility:invisible
 item is untakeable:
 item can be used with:witches_bane
 item successful use message:You crush the Witches Bane between your fingers as you saw Bella do with the Silk Blood and throw it towards her. Splat! It hits her right on the cheek. She looks a little puzzled and you return the look of puzzlement with a slight air of suprise - that'll make her think. Slowly she sniffs the air and wiping the icky mess from her face glares at you and cries "What have you done? This is Witches Bane - my one weakness - how did you know?". You stand there and consider answering her question with the obvious reply but decide it is a little pointless now. Her face is starting to contort and she chokes and splutters "Damn you, damn you!". She knocks the bowl to the floor as the deadly herb ravages her evil body, twisting her this way and that. Bella suddenly pulls herself upright and with the last of her strength charges at the door before you realise what is happening. As she runs out she screams at you "This is not over - I'll destroy you for this, one day, I'll destroy you!". And she is gone.
 item use action:change location description:orens_study:You are in the study of the Constantine Mansion. There is a roaring fire on the west wall that crackles and lights the room up with flickers of flame. There is a large desk and two large chairs facing each other over it, both with high backs and wide arms. There is a broken bowl besides the desk with a foul concoction leaking out over the floor and there is a rank smell in the air, a mixture of decaying vegetation and the gases of flatulent livestock.
-item use action:destroy item:lady_bella_6
-item use action:change item visibility:lady_bella_4:visible
+item use action:destroy item:lady_bella_7
+item use action:destroy item:witches_bane
 item use action:change item visibility:relieved_oren:invisible
 item use action:change item visibility:saved_oren:visible
 item use action:increment score:
