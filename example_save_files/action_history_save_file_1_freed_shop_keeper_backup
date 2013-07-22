@@ -1,0 +1,31 @@
+action name:take specific item:item id:clocktowerskeletonkey:location id:townentrance:
+action name:take specific item:item id:spade:location id:smallshed:
+action name:use with specific item:item id:clocktowerskeletonkey:extra item id:lockeddoor:
+action name:use with specific item:item id:spade:extra item id:moundofearth:
+action name:take specific item:item id:clockface:location id:townoutbuildings:
+action name:use with specific item:item id:clockface:extra item id:clockmechanism:
+action name:examine:item id:bagsofjunk:
+action name:take specific item:item id:clockhourhand:location id:smallshed:
+action name:use with specific item:item id:clockhourhand:extra item id:clockmechanismwithface:
+action name:take specific item:item id:clockminutehand:location id:clocktower:
+action name:use with specific item:item id:clockminutehand:extra item id:clockmechanismwithfaceandhourhand:
+action name:examine:item id:axehead:
+action name:examine:item id:pileofstraw:
+action name:take specific item:item id:woodenpole:location id:evensmallerannex:
+action name:use with specific item:item id:woodenpole:extra item id:axehead:
+action name:take specific item:item id:bluntpickaxe:location id:dimlylitannex:
+action name:use with specific item:item id:bluntpickaxe:extra item id:sharpeningwheel:
+action name:take specific item:item id:pickaxe:location id:minesmithy:
+action name:examine:item id:table:
+action name:take specific item:item id:minemap:location id:candlelitchamber:
+action name:use with specific item:item id:pickaxe:extra item id:rock:
+action name:use with specific item:item id:minemap:extra item id:shopkeeper:
+action name:show inventory:
+action name:show inventory:
+action name:exit:exit id:townentrancewest:
+action name:exit:exit id:townoutbuildingseast:
+action name:exit:exit id:townentranceeast:
+action name:exit:exit id:mineshaftentrance:
+action name:exit:exit id:mineshaftchamber1darktunnel:
+action name:exit:exit id:darktunnel1south:
+action name:exit:exit id:darktunnel2south:
