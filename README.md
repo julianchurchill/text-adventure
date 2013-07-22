@@ -18,11 +18,6 @@ Backlog
 - [BUG] There is a lot of memory deallocation and it is slow during onPause() - how much memory is being used, is it a concern? Start up is also slow in onResume().
    - Do we need a 'Loading...' progress indicator - even if it's just a spinning wheel dialog on onPause and onResume ?
 
-- [STORY] Once you have all the ingredients you return to Lady Bella and use them all with her. Once the last is used "She says 'Wonderful, you have done very well, now leave me to my work I must concentrate.' The look on Lady Bella's face suddenly turns very dark as she assembles the ingredients and potion making paraphenalia and you wonder if it is simply concentration or something else. You turn to Lady Bella to ask if there was any reward for bringing her these items but before you can speak she scowls at you and shouts 'Get out!'. You back up towards the door as she puts the ingredients into a large mixing bowl and your senses are suddenly assailed by a hideous smell. 'That doesn't smell like a love potion to me! ... that smells more like a death potion!'. Bella laughs mockingly 'Stupid boy, of course it's not a love potion, what a waste of an arc stone that would be, this is to get rid of my worthless husband.' You recoil, horrified at the realisation you have been used by this woman to help her achieve her evil goal. 'But why?' you ask. 'I can't stand him, he's an idiotic oaf. He gives me nothing and expects everything. I'm going to take all that is his and make him vanish from living memory.'"
-  - You can defeat her by using 'Witches Bane' a herb that you find somewhere.
-  - Finish with a triumphant "I beat you" phrase - so that the rest of the preceeding dialog can be read before getting blatted by the completion dialog upon incrementing the score.
-  - Increment the score.
-
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
 
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
@@ -32,6 +27,7 @@ Backlog
 
 - [IDEA] Add other verbs - attack, eat, drink, dance, drop, give
 - [IDEA] Optional images to go with text?
+- [IDEA] Sounds - looped bells ringing when near the clock tower, mice scratching at the church, spooky ambiance for the graveyard, hustle and bustle for the market and so on.
 
 Done
 ====
@@ -151,6 +147,9 @@ Done
       * Leave the user at the start location after converting the JSON (instead of setting to the last location)?
 * [TECHNICAL FEATURE] An ActionFactory is needed for user actions like Examine, TakeAnItem, ShowInventory. This needs to be passed to the Presenter and the other Actions that create actions.
 
+- [STORY] Once you have all the ingredients you return to Lady Bella and use them all with her. Once the last is used "She says 'Wonderful, you have done very well, now leave me to my work I must concentrate.' The look on Lady Bella's face suddenly turns very dark as she assembles the ingredients and potion making paraphenalia and you wonder if it is simply concentration or something else. You turn to Lady Bella to ask if there was any reward for bringing her these items but before you can speak she scowls at you and shouts 'Get out!'. You back up towards the door as she puts the ingredients into a large mixing bowl and your senses are suddenly assailed by a hideous smell. 'That doesn't smell like a love potion to me! ... that smells more like a death potion!'. Bella laughs mockingly 'Stupid boy, of course it's not a love potion, what a waste of an arc stone that would be, this is to get rid of my worthless husband.' You recoil, horrified at the realisation you have been used by this woman to help her achieve her evil goal. 'But why?' you ask. 'I can't stand him, he's an idiotic oaf. He gives me nothing and expects everything. I'm going to take all that is his and make him vanish from living memory.'"
+  - You can defeat her by using 'Witches Bane' a herb that you find somewhere.
+  - Increment the score.
 - [STORY] The Mendicants scapula can be found in the Ossery of the friary. Increment the score.
   - To gain entry you must give alms to a friar at the gate who has taken a vow of silence. You can talk to him but he only replies '...'. There is a sign next to him explaining the alms for entry bit. Get the alms as 'food and wine' from the store room in the brigands hideout under the church.
   - There is a north courtyard with a tower leading to a library. There is an Einstein-a-like friar librarian stuck on a puzzle "Rupriks Hexadecachoron - 'The problem is it has too many surfaces, I just can't explain the angles to a layman like you.'" in the library who you must help to enable you to get entrance to the tunnels underneath the friary. Once helped a loose flagstone becomes visible in the pantry off the kitchen.

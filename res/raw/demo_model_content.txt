@@ -1307,28 +1307,31 @@ exit destination:deep_dark_woodland_track_2
 exit direction hint:North
 exit id:north_deep_dark_woodland_track_4_to_deep_dark_woodland_track_2
 ITEM
-item name:Silk blood
+item name:Silk Blood
 item description:The leaves of the plant are thin and delicate with variagated shades of red to green from the central vein of the leaf to the edge. It looks fairly sturdy stuff though and you don't think you can simply dig it up with your hands.
 item id:buried_silk_blood
 item countable noun prefix:some
+item mid sentence cased name:Silk Blood
 item is untakeable:
 item can be used with:spade
 item use is not repeatable:
-item successful use message:You dig down around the silk blood, having to work suprisingly deep amongst the purple roots. You eventually unearth the plant whole, shake off some earth from the roots and lay it on the ground.
+item successful use message:You dig down around the Silk Blood, having to work suprisingly deep amongst the purple roots. You eventually unearth the plant whole, shake off some earth from the roots and lay it on the ground.
 item use action:change item visibility:buried_silk_blood:invisible
 item use action:change item visibility:silk_blood:visible
 item use action:increment score:
 ITEM
-item name:Silk blood
+item name:Silk Blood
 item description:The leaves of the plant are thin and delicate with variagated shades of red to green from the central vein of the leaf to the edge.
 item id:silk_blood
 item countable noun prefix:some
+item mid sentence cased name:Silk Blood
 item visibility:invisible
 ITEM
 item name:Witches Bane
 item description:You recognise this plant as Witches Bane, a herb rumoured to be effective against witches - although you don't really believe in all that superstitious humbug.
 item id:witches_bane
 item countable noun prefix:some
+item mid sentence cased name:Witches Bane
 item visibility:visible
 
 LOCATION
@@ -2136,6 +2139,19 @@ item visibility:invisible
 item talk initial phrase:hello:Hello!:You say "Hello Mr Constantine, I was wondering if you had any jobs an up and coming adventurer might be interested in.".
 item talk response to:hello:"Ah, it's you. Thanks once again for finding my wife's necklace, I've not been able to do anything but worry since it went missing. I'm afraid I have no jobs available for you at the moment, but if anything comes up I'll keep you in mind.".
 
+ITEM
+item name:Wealthy merchant
+item description:This is Oren Constantine, a famous merchant. Wealthy, shrewd and above all ruthless, he is well known across the town. Many respect him, some fear him and a few hate him. He looks like a weight has been lifted from his shoulders.
+item id:saved_oren
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+
+item talk initial phrase:didyouseeyourwife:Did you see your wife go by?:You say "Hello Mr Constantine, did you see your wife go by?".
+item talk response to:didyouseeyourwife:"Yes, yes I did." he says somberly. "I heard what happened in there - I was stopped by some unnatural force from entering to aid you.".
+item talk follow up phrase to:didyouseeyourwife:imsorry:I'm sorry for my part in this:You reply to Oren "I'm sorry for what she did and for my part in it. I assure you I did not know what she was doing and what she really was.".
+item talk response to:imsorry:Oren looks at you sternly but gently "I know. I often wondered if she felt some enmity towards me, there were small signs but I never thought she'd be capable of something like this. And her being a witch! Gods I've never been so suprised and horrified in my life. Anyway thank you once again strange for coming to my rescue, I will be forever indebted to you."
+
 LOCATION
 x:540
 y:180
@@ -2184,7 +2200,7 @@ item talk response to:iwasjustdoingmyduty:She stares at you for a brief moment, 
 item talk follow up phrase to:iwasjustdoingmyduty:imabitbusyatthemoment:I'm a bit busy at the moment:"Well I'd like to help you out but I'm a bit busy at the moment" you say as you contemplate all the ways your going to spend your reward.
 item talk response to:imabitbusyatthemoment:"Oh, well that's a shame. If you change your mind you can find me here." and with that she returns to her book.
 item talk follow up phrase to:iwasjustdoingmyduty:iwouldbehonoured:I would be honoured:"I would be honoured to help you any way I can my lady" you gush, like a little school boy. She smiles softly at you.
-item talk response to:iwouldbehonoured:"Wonderful! Now this is in confidence so you mustn't tell a soul - you see I have a friend who is love sick for a young man who toys with her affections, he is very cruel and dallies with other ladies about town. It is so sad as they would be a perfect match both romantically and in terms of status. I have resolved to help her and to that end I have advised that if she gives the young man a draft of my making he will stay faithful to her to the end.". You think this sounds like an excellent idea, after all what can go wrong. "I accept" you say without hesitation. "Ok" Bella continues "I will need some very special ingredients - a mendicants scapula, some of a herb named silk blood and an arc stone. The last item can only be found by men with green eyes, as you have, since it requires a little bit of magic inside to recognise it. I cannot help you with the other items but for the arc stone I can cast a small spell over an axe if you have one that will allow you to mine the rock seams that contain such precious stone."
+item talk response to:iwouldbehonoured:"Wonderful! Now this is in confidence so you mustn't tell a soul - you see I have a friend who is love sick for a young man who toys with her affections, he is very cruel and dallies with other ladies about town. It is so sad as they would be a perfect match both romantically and in terms of status. I have resolved to help her and to that end I have advised that if she gives the young man a draft of my making he will stay faithful to her to the end.". You think this sounds like an excellent idea, after all what can go wrong. "I accept" you say without hesitation. "Ok" Bella continues "I will need some very special ingredients - a mendicants scapula, some of a herb named Silk Blood and an arc stone. The last item can only be found by men with green eyes, as you have, since it requires a little bit of magic inside to recognise it. I cannot help you with the other items but for the arc stone I can cast a small spell over an axe if you have one that will allow you to mine the rock seams that contain such precious stone."
 item talk action in response to:iwouldbehonoured:change item visibility:lady_bella_1:invisible
 item talk action in response to:iwouldbehonoured:change item visibility:lady_bella_2:visible
 
@@ -2201,13 +2217,13 @@ item use action:destroy item:pickaxe
 item use action:change item visibility:enchanted_pickaxe:visible
 item use action:change item visibility:arc_stone_seam_1:visible
 item can be used with:silk_blood
-item successful use message:You pass the silk blood to Lady Bella. She takes it, crushing the herb between her fingers, smelling it as she does so and puts it in a small bowl on the desk.
+item successful use message:You pass the Silk Blood to Lady Bella. She takes it, crushing the herb between her fingers, smelling it as she does so and puts it in a small bowl on the desk.
 item use action:destroy item:silk_blood
 item use action:change item visibility:lady_bella_2:invisible
 item use action:change item visibility:lady_bella_3:visible
 
 item talk initial phrase:canyouremindme:Can you remind me of those things you wanted?:You say "My lady, I apologise deeply but I am a forgetful fool and have forgotten what it was that you asked me to find. Can you tell me again the ingredients that you require?"
-item talk response to:canyouremindme:Lady Bella looks up at you and puts her book down on the desk. "Of course my child - I need a mendicants scapula, some of a herb named silk blood and an arc stone. The last item can only be found by men with green eyes, as you have, since it requires a little bit of magic inside to recognise it. Come back to me when you have all the items and I will prepare the love draft for my friend. I will need the herb first of all."
+item talk response to:canyouremindme:Lady Bella looks up at you and puts her book down on the desk. "Of course my child - I need a mendicants scapula, some of a herb named Silk Blood and an arc stone. The last item can only be found by men with green eyes, as you have, since it requires a little bit of magic inside to recognise it. Come back to me when you have all the items and I will prepare the love draft for my friend. I will need the herb first of all."
 
 ITEM
 item name:Lady
@@ -2217,7 +2233,7 @@ item countable noun prefix:a
 item visibility:invisible
 item is untakeable:
 item can be used with:scapula
-item successful use message:You pass the scapula to Lady Bella. She takes it, picks up a knife from the desk and scrapes some fragments from the bone into the small bowl with the silk blood.
+item successful use message:You pass the scapula to Lady Bella. She takes it, picks up a knife from the desk and scrapes some fragments from the bone into the small bowl with the Silk Blood.
 item use action:destroy item:scapula
 item use action:change item visibility:lady_bella_3:invisible
 item use action:change item visibility:lady_bella_4:visible
@@ -2233,7 +2249,7 @@ item countable noun prefix:a
 item visibility:invisible
 item is untakeable:
 item can be used with:arc_stone
-item successful use message:You pass the arc stone to Lady Bella. She takes it and places it next to the bowl containing the scapula scrapings and crushed silk blood. Staring deeply into the stone she caresses it with one hand, closes her eyes and starts to mumble an incantation. The air is thick with static and you can hear Bella's voice splitting into many dissonant tones echoing all around you. You're starting to feel slightly nervous, you didn't expect quite such a reaction for a simple harmless, love potion!
+item successful use message:You pass the arc stone to Lady Bella. She takes it and places it next to the bowl containing the scapula scrapings and crushed Silk Blood. Staring deeply into the stone she caresses it with one hand, closes her eyes and starts to mumble an incantation. The air is thick with static and you can hear Bella's voice splitting into many dissonant tones echoing all around you. You're starting to feel slightly nervous, you didn't expect quite such a reaction for a simple harmless, love potion!
 item use action:destroy item:arc_stone
 item use action:change item visibility:lady_bella_4:invisible
 item use action:change item visibility:lady_bella_5:visible
@@ -2248,13 +2264,14 @@ item description:This is Lady Bella Constantine, wife of Oren Constantine and la
 item id:lady_bella_5
 item countable noun prefix:a
 item visibility:invisible
+item is untakeable:
 
 item talk initial phrase:whatishappening:What is happening?:You mumble nervously "My lady, what is happening? Is everything ok?"
 item talk response to:whatishappening:Lady Bella breaks her concentration and glares directly at you. "Be quiet you fool, you're ruining my concentration."
 item talk follow up phrase to:whatishappening:thatdoesntsmelllikealovepotion:That doesn't smell like a love potion:"That doesn't smell like a love potion to me." you reply rather meekily.
 item talk response to:thatdoesntsmelllikealovepotion:Bella stands up and strides towards you. "You idiot, I don't need you anymore! Of course it's not a love potion, what a ridiculous notion - why would I care about someones trifling daliance. This is a death potion!". Of course, you suddenly realise that is what the smell is, it's not love it's the rotting wretchedness of a mans impending doom!
 item talk follow up phrase to:thatdoesntsmelllikealovepotion:idontunderstand:I don't understand!:"But why? Who are you making this for? I don't understand!". Again you mumble this rather feebly and with a good dose of self pity. You resolve to be a bit more hero-like with your next utterance.
-item talk response to:idontunderstand:"Weakling, pitiful fool, you really are an imbecile aren't you?". She pauses for a moment to let her tirade sink in. "This potion is for my dear husband." she sneers. "He's a waste of space too, you are peas in a pod and deserve to be crushed. I'll take his money, his house and his life!". She moves ever more closely into your personal space and you can sense her power. You're feeling really anxious now. She sweeps her arms back and screams "Get out!" swinging down towards you and at once you feel the air contract and blast you out of the door. You grasp onto the door frame battling with the force of her magic.
+item talk response to:idontunderstand:"Weakling, pitiful fool, you really are an imbecile aren't you?". She pauses for a moment to let her tirade sink in. "This potion is for my dear husband." she sneers. "He's a waste of space too, you are peas in a pod and deserve to be crushed. I'll take his money, his house and his life!". She moves ever more closely into your personal space and you can sense her power. You're feeling really anxious now. She sweeps her arms back and screams "Get out!" swinging down towards you and at once you feel the air contract and blast you through the door. You grasp onto the door frame battling with the force of her magic.
 item talk action in response to:idontunderstand:change item visibility:lady_bella_5:invisible
 item talk action in response to:idontunderstand:change item visibility:lady_bella_6:visible
 
@@ -2264,3 +2281,17 @@ item description:This is Lady Bella Constantine, wife of Oren Constantine and la
 item id:lady_bella_6
 item countable noun prefix:a
 item visibility:invisible
+item is untakeable:
+item can be used with:witches_bane
+item successful use message:You crush the Witches Bane between your fingers as you saw Bella do with the Silk Blood and throw it towards her. Splat! It hits her right on the cheek. She looks a little puzzled and you return the look of puzzlement with a slight air of suprise - that'll make her think. Slowly she sniffs the air and wiping the icky mess from her face glares at you and cries "What have you done? This is Witches Bane - my one weakness - how did you know?". You stand there and consider answering her question with the obvious reply but decide it is a little pointless now. Her face is starting to contort and she chokes and splutters "Damn you, damn you!". She knocks the bowl to the floor as the deadly herb ravages her evil body, twisting her this way and that. Bella suddenly pulls herself upright and with the last of her strength charges at the door before you realise what is happening. As she runs out she screams at you "This is not over - I'll destroy you for this, one day, I'll destroy you!". And she is gone.
+item use action:change location description:orens_study:You are in the study of the Constantine Mansion. There is a roaring fire on the west wall that crackles and lights the room up with flickers of flame. There is a large desk and two large chairs facing each other over it, both with high backs and wide arms. There is a broken bowl besides the desk with a foul concoction leaking out over the floor and there is a rank smell in the air, a mixture of decaying vegetation and the gases of flatulent livestock.
+item use action:destroy item:lady_bella_6
+item use action:change item visibility:lady_bella_4:visible
+item use action:change item visibility:relieved_oren:invisible
+item use action:change item visibility:saved_oren:visible
+item use action:increment score:
+
+item talk initial phrase:stoporiwillstopyou:Stop or I will stop you!:You finally decide to man up and give her what for. "Stop you foul hag or I will stop you!". You wonder if you worded that a little strongly. To be fair to Lady Bella, she's actually quite an attractive lady.
+item talk response to:stoporiwillstopyou:Lady Bella throws her head back and lets out a devilish cackle. "You can't stop me! My powers are beyond your worst imaginings!"
+item talk follow up phrase to:stoporiwillstopyou:ihavepowersofmyown:I have powers of my own!:"I can and I will. Contrary to your beliefs madam I have powers of my own at my disposal.". You wait to see if your bluff works.
+item talk response to:ihavepowersofmyown:"If that is true you'll have no problem dealing with this!." Once again she sweeps her arms back and sends a magical shockwave of air against you which blasts you through the door. You grasp onto the door frame frantically battling with the force of her magic.
