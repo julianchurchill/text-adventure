@@ -2200,6 +2200,67 @@ item successful use message:You pass your pick axe to Lady Bella who takes it fr
 item use action:destroy item:pickaxe
 item use action:change item visibility:enchanted_pickaxe:visible
 item use action:change item visibility:arc_stone_seam_1:visible
+item can be used with:silk_blood
+item successful use message:You pass the silk blood to Lady Bella. She takes it, crushing the herb between her fingers, smelling it as she does so and puts it in a small bowl on the desk.
+item use action:destroy item:silk_blood
+item use action:change item visibility:lady_bella_2:invisible
+item use action:change item visibility:lady_bella_3:visible
 
-item talk initial phrase:canyouremindme:Can you remind me of those things you wanted:You say "My lady, I apologise deeply but I am a forgetful fool and have forgotten what it was that you asked me to find. Can you tell me again the ingredients that you require?"
-item talk response to:canyouremindme:Lady Bella looks up at you and puts her book down on the desk. "Of course my child - I need a mendicants scapula, some of a herb named silk blood and an arc stone. The last item can only be found by men with green eyes, as you have, since it requires a little bit of magic inside to recognise it. Come back to me when you have all the items and I will prepare the love draft for my friend."
+item talk initial phrase:canyouremindme:Can you remind me of those things you wanted?:You say "My lady, I apologise deeply but I am a forgetful fool and have forgotten what it was that you asked me to find. Can you tell me again the ingredients that you require?"
+item talk response to:canyouremindme:Lady Bella looks up at you and puts her book down on the desk. "Of course my child - I need a mendicants scapula, some of a herb named silk blood and an arc stone. The last item can only be found by men with green eyes, as you have, since it requires a little bit of magic inside to recognise it. Come back to me when you have all the items and I will prepare the love draft for my friend. I will need the herb first of all."
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease.
+item id:lady_bella_3
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:scapula
+item successful use message:You pass the scapula to Lady Bella. She takes it, picks up a knife from the desk and scrapes some fragments from the bone into the small bowl with the silk blood.
+item use action:destroy item:scapula
+item use action:change item visibility:lady_bella_3:invisible
+item use action:change item visibility:lady_bella_4:visible
+
+item talk initial phrase:whatdoyouneednext:What do you need next?:You say "My lady, what do you need next?"
+item talk response to:canyouremindme:Lady Bella looks at you. "I will need the mendicants scapula next."
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease.
+item id:lady_bella_4
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:arc_stone
+item successful use message:You pass the arc stone to Lady Bella. She takes it and places it next to the bowl containing the scapula scrapings and crushed silk blood. Staring deeply into the stone she caresses it with one hand, closes her eyes and starts to mumble an incantation. The air is thick with static and you can hear Bella's voice splitting into many dissonant tones echoing all around you. You're starting to feel slightly nervous, you didn't expect quite such a reaction for a simple harmless, love potion!
+item use action:destroy item:arc_stone
+item use action:change item visibility:lady_bella_4:invisible
+item use action:change item visibility:lady_bella_5:visible
+item use action:change location description:orens_study:You are in the study of the Constantine Mansion. There is a roaring fire on the west wall that crackles and lights the room up with flickers of flame. There is a large desk and two large chairs facing each other over it, both with high backs and wide arms. On the other side of the desk sits a lady, deep in concentration bent over a bowl and talking to a mysterious glowing stone. There are voices all around you, muttering incoherent and unrepeatable things, you are very nervous standing here and feel a pressing need to leave and run away.
+
+item talk initial phrase:whatdoyouneednext:What do you need next?:You say "My lady, what do you need next?"
+item talk response to:canyouremindme:Lady Bella looks at you. "I will need the arc stone now."
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She is in the middle of concocting a potion. The air around her is electric, literally buzzing with the unnatural power that Bella is invoking.
+item id:lady_bella_5
+item countable noun prefix:a
+item visibility:invisible
+
+item talk initial phrase:whatishappening:What is happening?:You mumble nervously "My lady, what is happening? Is everything ok?"
+item talk response to:whatishappening:Lady Bella breaks her concentration and glares directly at you. "Be quiet you fool, you're ruining my concentration."
+item talk follow up phrase to:whatishappening:thatdoesntsmelllikealovepotion:That doesn't smell like a love potion:"That doesn't smell like a love potion to me." you reply rather meekily.
+item talk response to:thatdoesntsmelllikealovepotion:Bella stands up and strides towards you. "You idiot, I don't need you anymore! Of course it's not a love potion, what a ridiculous notion - why would I care about someones trifling daliance. This is a death potion!". Of course, you suddenly realise that is what the smell is, it's not love it's the rotting wretchedness of a mans impending doom!
+item talk follow up phrase to:thatdoesntsmelllikealovepotion:idontunderstand:I don't understand!:"But why? Who are you making this for? I don't understand!". Again you mumble this rather feebly and with a good dose of self pity. You resolve to be a bit more hero-like with your next utterance.
+item talk response to:idontunderstand:"Weakling, pitiful fool, you really are an imbecile aren't you?". She pauses for a moment to let her tirade sink in. "This potion is for my dear husband." she sneers. "He's a waste of space too, you are peas in a pod and deserve to be crushed. I'll take his money, his house and his life!". She moves ever more closely into your personal space and you can sense her power. You're feeling really anxious now. She sweeps her arms back and screams "Get out!" swinging down towards you and at once you feel the air contract and blast you out of the door. You grasp onto the door frame battling with the force of her magic.
+item talk action in response to:idontunderstand:change item visibility:lady_bella_5:invisible
+item talk action in response to:idontunderstand:change item visibility:lady_bella_6:visible
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She is in the middle of concocting a wicked potion. The air around her is fetid with the stench of evil at work.
+item id:lady_bella_6
+item countable noun prefix:a
+item visibility:invisible
