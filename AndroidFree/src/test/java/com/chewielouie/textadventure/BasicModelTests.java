@@ -88,6 +88,7 @@ public class BasicModelTests {
             oneOf( loc1 ).exitable( notAValidExit );
             will( returnValue( false ) );
             ignoring( loc1 );
+            ignoring( notAValidExit );
         }});
         BasicModel model = new BasicModel();
         model.addLocation( loc1 );
@@ -392,6 +393,7 @@ public class BasicModelTests {
             mockery.mock( ModelEventSubscriber.class );
         mockery.checking( new Expectations() {{
             never( modelEventSubscriber ).currentLocationChanged();
+            ignoring( north );
         }});
         BasicModel model = new BasicModel();
         model.subscribeForEvents( modelEventSubscriber );
