@@ -26,6 +26,10 @@ Backlog
 - Text for graveyard entrance description suggests you've just entered it when you could have approached from a different direction.
 - Scrollbars on action buttons list to make it clear that there might be more buttons
 - Oren text about the necklace should indicate that you need to give it to his wife (is this correct?)
+- Grammar and spelling on blue board in deeds room, 'brigands' and 'in tact'
+- 100% completion popup could be text in at the end of the description instead. Removes the need for delayed showing.
+- Witches Bane should only become available after enraging the witch. It should also be somewhere other than where the Silk Blood is.
+- Are the board updated for collecting the witch stuff?
 
 
 - [FEATURE] What's new dialog for first run of new version.
