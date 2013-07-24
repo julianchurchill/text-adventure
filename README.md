@@ -14,6 +14,9 @@ Backlog
 
 
 BUG - Load/resume time is very very long as the game goes on
+BUG - Freeze when loading complete - probably from a long game - ~57% complete and about 2 hours play
+      - Ended with a failed save and so when starting again began a new game and all progress was lost
+      - Perhaps save file should go to a temporary file and if successful then gets copied to the real file location. This would make it more resilient against losing save files.
 - Forest maze and friary should be shut until you deliver the necklace
 - Some talk sequences don't reflect current state
    - Shopkeeper puts the decoder ring on the table repeatedly
@@ -22,6 +25,7 @@ BUG - Load/resume time is very very long as the game goes on
    - Possibly others
 - Text for graveyard entrance description suggests you've just entered it when you could have approached from a different direction.
 - Scrollbars on action buttons list to make it clear that there might be more buttons
+- Oren text about the necklace should indicate that you need to give it to his wife (is this correct?)
 
 
 - [FEATURE] What's new dialog for first run of new version.
