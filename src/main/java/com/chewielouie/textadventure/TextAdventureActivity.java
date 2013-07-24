@@ -679,11 +679,11 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void writeActionHistorySaveFile() {
+        byte[] bytes = new ActionHistorySerialiser( actionHistory ).serialise().getBytes();
         try {
             FileOutputStream outputStream = openFileOutput( actionHistorySaveFileName,
                                                             Context.MODE_PRIVATE );
-            outputStream.write(
-                new ActionHistorySerialiser( actionHistory ).serialise().getBytes() );
+            outputStream.write( bytes );
             outputStream.close();
         } catch( FileNotFoundException e ) {
             e.printStackTrace();
