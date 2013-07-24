@@ -11,6 +11,7 @@ import com.chewielouie.textadventure.ModelEventSubscriber;
 public class BasicModel implements TextAdventureModel, UserInventory {
     Map<String,ModelLocation> locations = new HashMap<String,ModelLocation>();
     Map<String,Exit> exits = new HashMap<String,Exit>();
+    Map<String,Item> items = new HashMap<String,Item>();
     ModelLocation currentLocation = new NullLocation();
     private List<Item> inventoryItems = new ArrayList<Item>();
     private int currentScore = 0;
@@ -40,6 +41,12 @@ public class BasicModel implements TextAdventureModel, UserInventory {
             currentLocation = location;
         locations.put( location.id(), location );
         addExitsToCache( location );
+        addItemsToCache( location );
+    }
+
+    private void addItemsToCache( ModelLocation location ) {
+        for( Item item : location.items() )
+            items.put( item.id(), item );
     }
 
     private void addExitsToCache( ModelLocation location ) {
@@ -70,6 +77,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
 
     public void addToInventory( Item item ) {
         inventoryItems.add( item );
+        items.put( item.id(), item );
     }
 
     public Collection<ModelLocation> locations() {
@@ -81,6 +89,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public void destroyItem( String id ) {
+        items.remove( id );
         if( removeItemFromInventory( id ) == false )
             if( removeItemFromCurrentLocation( id ) == false )
                 removeItemFromAnyLocation( id );
@@ -117,10 +126,20 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public Item findItemByID( String id ) {
+        if( items.containsKey( id ) )
+            return items.get( id );
+        // Acceptance tests fail if we don't check the inventory here, not sure why...
         Item item = findItemInInventory( id );
-        if( item != null )
+        if( item != null ) {
+            items.put( id, item );
             return item;
-        return findItemInAnyLocation( id );
+        }
+        // If item has been added to the location _after_ it was added to the model
+        // we won't have cached it yet so look again...
+        item = findItemInAnyLocation( id );
+        if( item != null )
+            items.put( id, item );
+        return item;
     }
 
     private Item findItemInInventory( String id ) {
