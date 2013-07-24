@@ -12,6 +12,18 @@ Save files are stored on the emulated device under /data/data/com.chewielouie.te
 Backlog
 =======
 
+
+BUG - Load/resume time is very very long as the game goes on
+- Forest maze and friary should be shut until you deliver the necklace
+- Some talk sequences don't reflect current state
+   - Shopkeeper puts the decoder ring on the table repeatedly
+   - Brigand...
+   - Gatekeeper friar
+   - Possibly others
+- Text for graveyard entrance description suggests you've just entered it when you could have approached from a different direction.
+- Scrollbars on action buttons list to make it clear that there might be more buttons
+
+
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Add location title to title bar next to score?
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
