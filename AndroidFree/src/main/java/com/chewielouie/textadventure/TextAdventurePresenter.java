@@ -58,10 +58,11 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler, M
     }
 
     private void notifyViewOfAvailableActions() {
-        List<Action> availableActions = new ArrayList<Action>( defaultActions );
-        availableActions.addAll( model.currentLocation().actions() );
-        if( enableViewUpdates )
+        if( enableViewUpdates ) {
+            List<Action> availableActions = new ArrayList<Action>( defaultActions );
+            availableActions.addAll( model.currentLocation().actions() );
             view.setActions( availableActions );
+        }
     }
 
     public void enact( Action action ) {
