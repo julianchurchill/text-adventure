@@ -13,8 +13,8 @@ Backlog
 =======
 
 
-BUG - Load/resume time is very very long as the game goes on
-BUG - Freeze when loading complete - probably from a long game - ~57% complete and about 2 hours play
+- BUG Load/resume time is very very long as the game goes on
+- BUG Freeze when loading complete - probably from a long game - ~57% complete and about 2 hours play
       - Ended with a failed save and so when starting again began a new game and all progress was lost
       - Perhaps save file should go to a temporary file and if successful then gets copied to the real file location. This would make it more resilient against losing save files.
 - Forest maze and friary should be shut until you deliver the necklace
