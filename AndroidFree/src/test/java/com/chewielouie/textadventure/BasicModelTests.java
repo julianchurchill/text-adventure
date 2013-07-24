@@ -149,9 +149,12 @@ public class BasicModelTests {
 
     @Test
     public void adding_an_item_to_the_inventory_actually_adds_it() {
-        Item item = mockery.mock( Item.class );
+        final Item item = mockery.mock( Item.class );
         BasicModel model = new BasicModel();
         int sizeBeforeAdd = model.inventoryItems().size();
+        mockery.checking( new Expectations() {{
+            ignoring( item );
+        }});
         model.addToInventory( item );
 
         assertEquals( sizeBeforeAdd+1, model.inventoryItems().size() );
