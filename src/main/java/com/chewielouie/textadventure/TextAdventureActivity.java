@@ -183,18 +183,34 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private String loadSerialisedActionHistory() {
-        StringBuffer serialisedHistory = new StringBuffer("");
+        InputStream inputStream = null;
         try {
-            FileInputStream inputStream = openFileInput( actionHistorySaveFileName );
-            int ch;
-            while( (ch=inputStream.read()) != -1 )
-                serialisedHistory.append( (char)ch );
+            inputStream = openFileInput( actionHistorySaveFileName );
         } catch( FileNotFoundException e ) {
             System.err.println("exception thrown: " + e.toString() );
         } catch( IOException e ) {
             System.err.println("exception thrown: " + e.toString() );
         }
-        return serialisedHistory.toString();
+        if( inputStream == null )
+            return "";
+        return readRawTextFile( inputStream, actionHistorySaveFileName );
+    }
+
+    private String readRawTextFile( InputStream input, String fileID ) {
+        BufferedReader buffreader = new BufferedReader( new InputStreamReader( input ) );
+        String line;
+        StringBuilder text = new StringBuilder();
+        try {
+            while (( line = buffreader.readLine()) != null) {
+                text.append(line);
+                text.append('\n');
+            }
+        } catch (IOException e) {
+            System.out.println("Exception thrown while reading " + fileID );
+            System.out.println( e.getMessage() );
+            return null;
+        }
+        return text.toString();
     }
 
     private void replayActions( List<Action> actions ) {
@@ -252,26 +268,11 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private String demoContent() {
-        return readRawTextFile( R.raw.demo_model_content );
+        return readRawTextFileFromResource( R.raw.demo_model_content );
     }
 
-    private String readRawTextFile( int resId ) {
-        BufferedReader buffreader = new BufferedReader(
-            new InputStreamReader( getResources().openRawResource( resId ) ) );
-        String line;
-        StringBuilder text = new StringBuilder();
-        try {
-            while (( line = buffreader.readLine()) != null) {
-                text.append(line);
-                text.append('\n');
-            }
-        } catch (IOException e) {
-            System.out.println("Exception thrown while reading resource file " +
-                    "with id " + resId );
-            System.out.println( e.getMessage() );
-            return null;
-        }
-        return text.toString();
+    private String readRawTextFileFromResource( int resId ) {
+        return readRawTextFile( getResources().openRawResource( resId ), "resource file with id " + resId );
     }
 
     private void setupPresenter() {
