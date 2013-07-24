@@ -95,7 +95,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private UserInventory inventory = null;
     private ActionFactory actionFactory = null;
     private ActionHistory actionHistory = null;
-    private ViewDisabler viewDisabler = null;
     private BasicModelFactory externalModelFactory = null;
     private BasicModelFactory internalModelFactory = null;
     private Logger logger = new StdoutLogger();
@@ -215,11 +214,11 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     private void replayActions( List<Action> actions ) {
         if( actions != null ) {
-            viewDisabler.on();
+            rendersView.disableViewUpdates();
             actionHistory.clear();
             for( Action action : actions )
                 userActionHandler.enact( action );
-            viewDisabler.off();
+            rendersView.enableViewUpdates();
             rendersView.resetAndRender();
         }
     }
@@ -276,9 +275,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void setupPresenter() {
-        viewDisabler = new ViewDisabler( this );
         TextAdventurePresenter p = new TextAdventurePresenter(
-            viewDisabler, model, (UserInventory)model, actionFactory() );
+            this, model, (UserInventory)model, actionFactory() );
         if( externallySuppliedViewRenderer == false )
             this.rendersView = p;
         if( externallySuppliedUserActionHandler == false )

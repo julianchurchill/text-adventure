@@ -12,6 +12,7 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler, M
     private List<Action> defaultActions = new ArrayList<Action>();
     private String actionText = "";
     private boolean inAnActionChain = false;
+    private boolean enableViewUpdates = true;
 
     public TextAdventurePresenter( TextAdventureView v,
            TextAdventureModel m, UserInventory inventory,
@@ -29,16 +30,26 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler, M
         updateView();
     }
 
+    public void disableViewUpdates() {
+        enableViewUpdates = false;
+    }
+
+    public void enableViewUpdates() {
+        enableViewUpdates = true;
+    }
+
     private void updateView() {
-        if( actionText != "" )
-            view.showMainText( model.currentLocationDescription()
-                    + "\n" + actionText );
-        else
-            view.showMainText( model.currentLocationDescription() );
-        view.showAvailableItemsText( model.availableItemsText() );
-        view.showLocationExits( model.currentLocationExits() );
-        view.currentScore( model.currentScore() );
-        view.maximumScore( model.maximumScore() );
+        if( enableViewUpdates ) {
+            if( actionText != "" )
+                view.showMainText( model.currentLocationDescription()
+                        + "\n" + actionText );
+            else
+                view.showMainText( model.currentLocationDescription() );
+            view.showAvailableItemsText( model.availableItemsText() );
+            view.showLocationExits( model.currentLocationExits() );
+            view.currentScore( model.currentScore() );
+            view.maximumScore( model.maximumScore() );
+        }
     }
 
     private void resetActionsToStartOfChain() {
@@ -49,7 +60,8 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler, M
     private void notifyViewOfAvailableActions() {
         List<Action> availableActions = new ArrayList<Action>( defaultActions );
         availableActions.addAll( model.currentLocation().actions() );
-        view.setActions( availableActions );
+        if( enableViewUpdates )
+            view.setActions( availableActions );
     }
 
     public void enact( Action action ) {
@@ -71,7 +83,8 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler, M
 
     private void continueActionChain( Action action ) {
         inAnActionChain = true;
-        view.setActions( action.followUpActions() );
+        if( enableViewUpdates )
+            view.setActions( action.followUpActions() );
     }
 
     public List<Action> defaultActions() {

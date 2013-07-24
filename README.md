@@ -15,8 +15,10 @@ Backlog
 
 - BUG Load/resume time is very very long as the game goes on
 - BUG Freeze when loading complete - probably from a long game - ~57% complete and about 2 hours play
-      - Ended with a failed save and so when starting again began a new game and all progress was lost
-      - Perhaps save file should go to a temporary file and if successful then gets copied to the real file location. This would make it more resilient against losing save files.
+  - DONE BasicModel.findExitByID() needs to be cached in a map to improve fetch time
+  - DONE When loading the save file, view disabler in Activity::replayActions() should tell the presenter to stop sending view updates. This should save a significant amount of string construction for no reason. - 17% of load game time
+  - BasicModel.findItemByID() needs to be cached in a map to improve fetch time - 33% of load game time
+  - Put loading into a seperate thread with a spinner on the GUI, should avoid Android saying 'app not responding'
 - Forest maze and friary should be shut until you deliver the necklace
 - Some talk sequences don't reflect current state
    - Shopkeeper puts the decoder ring on the table repeatedly

@@ -43,6 +43,7 @@ public class ActivityAcceptanceTests {
             modelFactory );
         prepareActionHistorySaveFile( activity );
 
+        activity.onCreate( null );
         activity.onResume();
 
         verify( renderer, atLeastOnce() ).render();
