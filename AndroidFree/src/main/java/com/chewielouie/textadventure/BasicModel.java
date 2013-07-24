@@ -10,6 +10,7 @@ import com.chewielouie.textadventure.ModelEventSubscriber;
 
 public class BasicModel implements TextAdventureModel, UserInventory {
     Map<String,ModelLocation> locations = new HashMap<String,ModelLocation>();
+    Map<String,Exit> exits = new HashMap<String,Exit>();
     ModelLocation currentLocation = new NullLocation();
     private List<Item> inventoryItems = new ArrayList<Item>();
     private int currentScore = 0;
@@ -38,6 +39,12 @@ public class BasicModel implements TextAdventureModel, UserInventory {
         if( currentLocation instanceof NullLocation )
             currentLocation = location;
         locations.put( location.id(), location );
+        addExitsToCache( location );
+    }
+
+    private void addExitsToCache( ModelLocation location ) {
+        for( Exit exit : location.exitsIncludingInvisibleOnes() )
+            exits.put( exit.id(), exit );
     }
 
     public void moveThroughExit( Exit exit ) {
@@ -70,11 +77,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public Exit findExitByID( String id ) {
-        for( ModelLocation location : locations.values() )
-            for( Exit exit : location.exitsIncludingInvisibleOnes() )
-                if( exit.id().equals( id ) )
-                    return exit;
-        return null;
+        return exits.get( id );
     }
 
     public void destroyItem( String id ) {
