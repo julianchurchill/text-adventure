@@ -601,6 +601,8 @@ item talk action in response to:lookingforwork:make exit visible:clocktower_to_c
 item talk action in response to:lookingforwork:make exit visible:clocktower_to_nobles_quarter_west_street
 item talk action in response to:lookingforwork:change location description:clocktower:You stand before a mighty clock tower. The clock goes TICK! There is a cobbled road off to the west that winds its way through the back streets of the town and to the east is the nobles quarter.
 item talk action in response to:lookingforwork:change item visibility:decoderring:visible
+item talk action in response to:lookingforwork:change item visibility:generalstoreshopkeeper:invisible
+item talk action in response to:lookingforwork:change item visibility:generalstoreshopkeeper2:visible
 
 item talk initial phrase:lookingwell:You're looking well...:You say "You're looking well friend.".
 item talk response to:lookingwell:The Shop keeper replies "Why thank you, it's all down to you my friend.".
@@ -609,6 +611,30 @@ item talk follow up phrase to:lookingwell:lookingforwork
 item talk initial phrase:gimmemoney:I need money...:You say "I need money, can you spare some coin for your rescuer?".
 item talk response to:gimmemoney:The Shop keeper replies nervously "Err I'm just getting my shop back on it's feet, I'm sorry but I can't spare any money at the moment.".
 item talk follow up phrase to:gimmemoney:lookingwell
+
+ITEM
+item name:Shop keeper
+item description:He looks very smart, clearly having enjoyed a good bath, a shave and an expensive haircut. His eyes are still sunken from the effects of his imprisonment but he looks in good health otherwise. You haven't noticed before now but he also has green eyes - just like you.
+item id:generalstoreshopkeeper2
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+
+item talk initial phrase:hello:Hello!:You say "Hello!".
+item talk response to:hello:The Shop keeper replies "Hello yourself my friend. How can I help you?".
+item talk follow up phrase to:hello:checkin:I just came to check in...:You say "I just came to check in. Glad you to see you are looking well.".
+item talk response to:checkin:The Shop keeper says "Why thank you, it's all down to you my friend.".
+item talk follow up phrase to:checkin:lookingforwork:I was looking for some work...:You say "I was looking for some work. Can you help me?".
+item talk response to:lookingforwork:The Shop keeper says "Sure, you should go to the town hall to the east of the town. There are boards where an adventurer might find a job."
+
+item talk initial phrase:lookingwell:You're looking well...:You say "You're looking well friend.".
+item talk response to:lookingwell:The Shop keeper replies "Why thank you, it's all down to you my friend.".
+item talk follow up phrase to:lookingwell:lookingforwork
+
+item talk initial phrase:gimmemoney:I need money...:You say "I need money, can you spare some coin for your rescuer?".
+item talk response to:gimmemoney:The Shop keeper replies nervously "Err I'm just getting my shop back on it's feet, I'm sorry but I can't spare any money at the moment.".
+item talk follow up phrase to:gimmemoney:lookingwell
+
 ITEM
 item name:Decoder ring
 item description:This looks like a kids toy. It has a shaped viewing hole through which you might read an encoded message, the letters becoming revelead due to the complex filter decorating the aperture. You wonder what on earth it could be useful for.
@@ -895,9 +921,9 @@ item is untakeable:
 item visibility:invisible
 item talk initial phrase:can_i_enter_the_friary:Can I enter the friary?:You say "Excuse me Friar but may I gain entrance to your friary?"
 item talk response to:can_i_enter_the_friary:The friar looks at you quizzically and waits for you to expand on your request.
-item talk follow up phrase to:can_i_enter_the_friary:i_want_to_join_your_order:I want to join your order:You say "I've been thinking a lot recently and have decided I want to dedicate my life to good works and helping the poor.". The friar looks you up and down and clearly doesn't believe a word you're saying - as neither do you. He steps between you and the gate, folds his arms and blocks your progress. For a hungry friar he looks quite mean.
+item talk follow up phrase to:can_i_enter_the_friary:i_want_to_join_your_order:I want to join your order:You say "I've been thinking a lot recently and have decided I want to dedicate my life to good works and helping the poor.". The friar looks you up and down and clearly doesn't believe a word you're saying - as neither do you. For a hungry friar he looks quite mean.
 item talk follow up phrase to:can_i_enter_the_friary:i_am_here_to_fix_the_toilets:I'm here to fix the toilets:You say "I'm here to fix the toilets - I understand you have a very serious blockage.".
-item talk response to:i_am_here_to_fix_the_toilets:The friar looks at you with some concern, hesitates and then steps aside, gesturing that you should proceed quickly.
+item talk response to:i_am_here_to_fix_the_toilets:The friar looks at you with some concern, hesitates and then points at the gate, gesturing that you should proceed quickly.
 item talk action in response to:i_am_here_to_fix_the_toilets:make exit visible:friary_gates_to_friary_entrance
 
 LOCATION

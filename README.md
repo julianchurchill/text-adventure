@@ -12,11 +12,6 @@ Save files are stored on the emulated device under /data/data/com.chewielouie.te
 Backlog
 =======
 
-- Some talk sequences don't reflect current state
-   - Shopkeeper puts the decoder ring on the table repeatedly
-   - Brigand...
-   - Gatekeeper friar
-   - Possibly others
 - Text for graveyard entrance description suggests you've just entered it when you could have approached from a different direction.
 - Are the boards updated for collecting the witch stuff?
 
