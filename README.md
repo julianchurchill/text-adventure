@@ -12,8 +12,6 @@ Save files are stored on the emulated device under /data/data/com.chewielouie.te
 Backlog
 =======
 
-- Forest maze should be moved to the friary, past the kitchen as the herb garden
-- Perhaps food and wine are given to you by Bella 'to sustain you' after she enchants your axe. This effectively controls opening the friary at the right time.
 - Some talk sequences don't reflect current state
    - Shopkeeper puts the decoder ring on the table repeatedly
    - Brigand...

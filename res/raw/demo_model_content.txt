@@ -822,12 +822,7 @@ LOCATION
 x:120
 y:060
 location id:woodland_track
-location description:You stand on a woodland track. To the south the track opens out but to the north the woods become much thicker and dense, you're not sure that you should venture much further - it looks like you might get lost. There is a track to the east which looks better travelled.
-EXIT
-exit label:North
-exit destination:deep_dark_woodland_track
-exit direction hint:North
-exit id:woodlandtrack_to_deep_dark_woodland_track
+location description:You stand on a woodland track. To the south the track opens out but to the north the woods become too dense to pass. There is a track to the east which looks better travelled.
 EXIT
 exit label:South
 exit destination:moredirttrack
@@ -1098,12 +1093,17 @@ LOCATION
 x:420
 y:-060
 location id:friary_kitchen
-location description:All around you is the smell of cooked food, although you cannot see any laid out. The kitchen looks quite clean and tidy, you must have arrived just after a meal has been served.
+location description:All around you is the smell of cooked food, although you cannot see any laid out. The kitchen looks quite clean and tidy, you must have arrived just after a meal has been served. There is a door to the outside and what looks like a herb garden.
 EXIT
 exit label:West
 exit destination:friary_north_building
 exit direction hint:West
 exit id:friary_kitchen_to_friary_north_building
+EXIT
+exit label:Door
+exit destination:friary_herb_garden
+exit direction hint:East
+exit id:friary_kitchen_to_friary_herb_garden
 EXIT
 exit label:Down
 exit destination:friary_cellar
@@ -1189,123 +1189,139 @@ item id:fibula
 item countable noun prefix:a
 
 LOCATION
-x:120
-y:000
-location id:deep_dark_woodland_track
+x:480
+y:-060
+location id:friary_herb_garden
+location description:You are surrounded by delicate scents and deep aromas. You stand in the Friary's herb garden and it is looking a little unkempt. The further you look the more overgrown it has become. You are unsure if you should venture further in for fear of getting lost in the undergrowth!
+EXIT
+exit label:West
+exit destination:friary_kitchen
+exit direction hint:West
+exit id:friary_herb_garden_to_friary_kitchen
+EXIT
+exit label:Undergrowth
+exit destination:herb_garden_track
+exit direction hint:North
+exit id:friary_herb_garden_to_herb_garden_track
+
+LOCATION
+x:480
+y:-120
+location id:herb_garden_track
 location description:You stand in the middle of a maze of twisty tracks, all alike. You feel you may be a little lost and wonder which way to turn.
 EXIT
 exit label:North
-exit destination:deep_dark_woodland_track_3
+exit destination:herb_garden_track_3
 exit direction hint:North
-exit id:north_deep_dark_woodland_track_to_deep_dark_woodland_track_3
+exit id:north_herb_garden_track_to_herb_garden_track_3
 EXIT
 exit label:East
-exit destination:deep_dark_woodland_track_2
+exit destination:herb_garden_track_2
 exit direction hint:East
-exit id:east_deep_dark_woodland_track_to_deep_dark_woodland_track_2
+exit id:east_herb_garden_track_to_herb_garden_track_2
 EXIT
 exit label:West
-exit destination:deep_dark_woodland_track
+exit destination:herb_garden_track
 exit direction hint:West
-exit id:west_deep_dark_woodland_track_to_deep_dark_woodland_track
+exit id:west_herb_garden_track_to_herb_garden_track
 EXIT
 exit label:Deer track
-exit destination:deep_dark_woodland_track_3
+exit destination:herb_garden_track_3
 exit direction hint:West
-exit id:deer_track_deep_dark_woodland_track_to_deep_dark_woodland_track_3
+exit id:deer_track_herb_garden_track_to_herb_garden_track_3
 EXIT
 exit label:Shrubbery
-exit destination:deep_dark_woodland_track_3
+exit destination:herb_garden_track_3
 exit direction hint:East
-exit id:shrubbery_deep_dark_woodland_track_to_deep_dark_woodland_track_3
+exit id:shrubbery_herb_garden_track_to_herb_garden_track_3
 EXIT
 exit label:South
-exit destination:woodland_track
+exit destination:friary_herb_garden
 exit direction hint:South
-exit id:deep_dark_woodland_track_to_woodland_track
+exit id:herb_garden_track_to_friary_herb_garden
 
 LOCATION
-x:180
-y:000
-location id:deep_dark_woodland_track_2
+x:560
+y:-060
+location id:herb_garden_track_2
 location description:You stand in the middle of a maze of twisty tracks, all alike. You feel you may be a little lost and wonder which way to turn.
 EXIT
 exit label:North
-exit destination:deep_dark_woodland_track_3
+exit destination:herb_garden_track_3
 exit direction hint:North
-exit id:north_deep_dark_woodland_track_2_to_deep_dark_woodland_track_3
+exit id:north_herb_garden_track_2_to_herb_garden_track_3
 EXIT
 exit label:North East
-exit destination:deep_dark_woodland_track_2
+exit destination:herb_garden_track_2
 exit direction hint:North
-exit id:north_east_deep_dark_woodland_track_2_to_deep_dark_woodland_track_2
+exit id:north_east_herb_garden_track_2_to_herb_garden_track_2
 EXIT
 exit label:West
-exit destination:deep_dark_woodland_track
+exit destination:herb_garden_track
 exit direction hint:West
-exit id:west_deep_dark_woodland_track_2_to_deep_dark_woodland_track
+exit id:west_herb_garden_track_2_to_herb_garden_track
 EXIT
 exit label:South
-exit destination:deep_dark_woodland_track_4
+exit destination:herb_garden_track_4
 exit direction hint:South
-exit id:south_deep_dark_woodland_track_2_to_deep_dark_woodland_track_4
+exit id:south_herb_garden_track_2_to_herb_garden_track_4
 EXIT
 exit label:Badger trail
-exit destination:deep_dark_woodland_track_2
+exit destination:herb_garden_track_2
 exit direction hint:East
-exit id:badger_trail_deep_dark_woodland_track_2_to_deep_dark_woodland_track_2
+exit id:badger_trail_herb_garden_track_2_to_herb_garden_track_2
 EXIT
 exit label:East
-exit destination:deep_dark_woodland_track_3
+exit destination:herb_garden_track_3
 exit direction hint:East
-exit id:east_deep_dark_woodland_track_2_to_deep_dark_woodland_track_3
+exit id:east_herb_garden_track_2_to_herb_garden_track_3
 
 LOCATION
-x:120
-y:000
-location id:deep_dark_woodland_track_3
+x:620
+y:-060
+location id:herb_garden_track_3
 location description:You stand in the middle of a maze of twisty tracks, all alike. You feel you may be a little lost and wonder which way to turn.
 EXIT
 exit label:North
-exit destination:deep_dark_woodland_track_2
+exit destination:herb_garden_track_2
 exit direction hint:North
-exit id:north_deep_dark_woodland_track_3_to_deep_dark_woodland_track_2
+exit id:north_herb_garden_track_3_to_herb_garden_track_2
 EXIT
 exit label:North East
-exit destination:deep_dark_woodland_track_2
+exit destination:herb_garden_track_2
 exit direction hint:North
-exit id:north_east_deep_dark_woodland_track_3_to_deep_dark_woodland_track_2
+exit id:north_east_herb_garden_track_3_to_herb_garden_track_2
 EXIT
 exit label:Drop Bear path
-exit destination:deep_dark_woodland_track
+exit destination:herb_garden_track
 exit direction hint:West
-exit id:west_deep_dark_woodland_track_3_to_deep_dark_woodland_track
+exit id:west_herb_garden_track_3_to_herb_garden_track
 EXIT
 exit label:South
-exit destination:deep_dark_woodland_track
+exit destination:herb_garden_track
 exit direction hint:South
-exit id:south_deep_dark_woodland_track_3_to_deep_dark_woodland_track
+exit id:south_herb_garden_track_3_to_herb_garden_track
 EXIT
 exit label:Badger trail
-exit destination:deep_dark_woodland_track
+exit destination:herb_garden_track
 exit direction hint:East
-exit id:badger_trail_deep_dark_woodland_track_3_to_deep_dark_woodland_track
+exit id:badger_trail_herb_garden_track_3_to_herb_garden_track
 EXIT
 exit label:East
-exit destination:deep_dark_woodland_track_2
+exit destination:herb_garden_track_2
 exit direction hint:East
-exit id:east_deep_dark_woodland_track_3_to_deep_dark_woodland_track_2
+exit id:east_herb_garden_track_3_to_herb_garden_track_2
 
 LOCATION
-x:180
-y:060
-location id:deep_dark_woodland_track_4
-location description:You stand in a clearing in the depths of a dark wood. There is not much light here as the canopy is thick but you can make out a plant that covers the ground with thin red leaves and bright purple stalks.
+x:560
+y:000
+location id:herb_garden_track_4
+location description:You stand in a clearing in the depths of the herb garden. There is not much light here as the canopy is thick but you can make out a plant that covers the ground with thin red leaves and bright purple stalks.
 EXIT
 exit label:North
-exit destination:deep_dark_woodland_track_2
+exit destination:herb_garden_track_2
 exit direction hint:North
-exit id:north_deep_dark_woodland_track_4_to_deep_dark_woodland_track_2
+exit id:north_herb_garden_track_4_to_herb_garden_track_2
 ITEM
 item name:Silk Blood
 item description:The leaves of the plant are thin and delicate with variagated shades of red to green from the central vein of the leaf to the edge. It looks fairly sturdy stuff though and you don't think you can simply dig it up with your hands.
@@ -1869,7 +1885,6 @@ item visibility:invisible
 item examine action is not repeatable:
 item examine message:The very last box is lined with a sheet of torn paper which has some smudged writing on. You move all the objects on the paper out of the way so you can have a closer look.
 item on examine action:change item visibility:tornpaper:visible
-item on examine action:change item visibility:food_and_wine:visible
 item on examine action:change item description:The boxes were stacked high. You feel you have already found whatever was interesting enough to root through this mess for.
 ITEM
 item name:Torn paper
@@ -1877,12 +1892,6 @@ item description:The paper was used to line some supply boxes and is ripped in s
 item id:tornpaper
 item countable noun prefix:some
 item is untakeable:
-item visibility:invisible
-ITEM
-item name:Food and wine
-item description:This is an assortment of bread, cheese and wine - perfects alms for a mendicant friar.
-item id:food_and_wine
-item countable noun prefix:some
 item visibility:invisible
 
 LOCATION
@@ -2187,6 +2196,13 @@ item countable noun prefix:a
 item visibility:invisible
 
 ITEM
+item name:Food and wine
+item description:This is an assortment of bread, cheese and wine - perfect to fill your belly or the belly of a mendicant friar.
+item id:food_and_wine
+item countable noun prefix:some
+item visibility:invisible
+
+ITEM
 item name:Lady
 item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease. She is sitting at a large desk reading a book and as you enter the room she looks up.
 item id:lady_bella_1
@@ -2212,12 +2228,13 @@ item countable noun prefix:a
 item visibility:invisible
 item is untakeable:
 item can be used with:pickaxe
-item successful use message:You pass your pick axe to Lady Bella who takes it from you carefully and turns to the roaring fire. She bathes the axe head in the flames while muttering some indeciphirable enchantment and then places it on the desk in front of you.
+item successful use message:You pass your pick axe to Lady Bella who takes it from you carefully and turns to the roaring fire. She bathes the axe head in the flames while muttering some indeciphirable enchantment and then places it on the desk in front of you. "And as I think of it here are some supplies to sustain you in your adventures." and she places some food and wine next to the pick axe.
 item use action:destroy item:pickaxe
 item use action:change item visibility:enchanted_pickaxe:visible
 item use action:change item visibility:arc_stone_seam_1:visible
 item use action:change item visibility:lady_bella_2:invisible
 item use action:change item visibility:lady_bella_3:visible
+item use action:change item visibility:food_and_wine:visible
 
 ITEM
 item name:Lady
