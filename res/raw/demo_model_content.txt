@@ -1380,7 +1380,7 @@ LOCATION
 x:060
 y:120
 location id:churchyardeast
-location description:You step into the churchyard, peering through the gloom which seems to stick to everything around you. A sense of personal peril hangs in the air jumping to new heights as you realise you are not alone. Beside you is a shady presence, menacing but still.
+location description:You are in a churchyard, peering through the gloom which seems to stick to everything around you. A sense of personal peril hangs in the air jumping to new heights as you realise you are not alone. There is more churchyard to the west and a dirt track leading away to the east. Beside you is a shady presence, menacing but still.
 EXIT
 exit label:East
 exit destination:moredirttrack
@@ -1410,7 +1410,7 @@ item is untakeable:
 item examine message:Staring up at the Raging Ansible you are caught in its furious gaze. It mutters and mumbles trying to express its anger but seemingly unable to move. The presence is terrifying but after a brief moment it disappears and you are released from it's spell. Sensing that it is still somewhere close by you feel compelled to follow it.
 item on examine action:change item visibility:ragingansible_churchyardeast:invisible
 item on examine action:change item visibility:ragingansible_churchyardsoutheast:visible
-item on examine action:change location description:churchyardeast:You step into the churchyard, peering through the gloom which seems to stick to everything around you. A sense of personal peril hangs in the air.
+item on examine action:change location description:churchyardeast:You are in a churchyard, peering through the gloom which seems to stick to everything around you. A sense of personal peril hangs in the air. There is more churchyard to the west and a dirt track leading away to the east.
 item on examine action:change location description:churchyardsoutheast:You are in the south east corner of the church yard. The Raging Ansible bears down on you with righteous fury and you can do nothing to shield yourself from it's rage.
 
 LOCATION

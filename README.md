@@ -12,7 +12,6 @@ Save files are stored on the emulated device under /data/data/com.chewielouie.te
 Backlog
 =======
 
-- Text for graveyard entrance description suggests you've just entered it when you could have approached from a different direction.
 - Are the boards updated for collecting the witch stuff?
 
 - Missing unit test for PlainTextItemDeserialiser.insertEncodedNewLines() for setUsedWithText()
