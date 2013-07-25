@@ -19,12 +19,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
@@ -100,6 +102,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private Logger logger = new StdoutLogger();
     private boolean completionDialogShown = false;
     private boolean completionDialogShowPending = false;
+    private ProgressDialog progressDialog = null;
 
     public TextAdventureActivity() {
     }
@@ -140,23 +143,38 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         available_actions_view = (LinearLayout)findViewById( R.id.available_actions );
     }
 
+    private class LoadTask extends AsyncTask<Void, Void, Void> {
+        protected Void doInBackground(Void... args) {
+            if( saveFileExists() )
+                loadGame();
+            else
+                createNewGame();
+
+            if( saveJSONFileExists() ) {
+                BasicModelV1_0ToActionListConverter c
+                    = new BasicModelV1_0ToActionListConverter( model, inventory,
+                                                               actionFactory(), logger );
+                JSONToActionListConverter j
+                    = new JSONToActionListConverter( TextAdventureActivity.this, oldJSONFormatSaveFileName, c );
+                replayActions( j.actions() );
+            }
+            return null;
+        }
+
+         protected void onPostExecute(Void result) {
+            rendersView.resetAndRender();
+            if( progressDialog != null ) {
+                progressDialog.dismiss();
+            }
+         }
+    }
+
     @Override
     public void onResume() {
         super.onResume();
 
-        if( saveFileExists() )
-            loadGame();
-        else
-            createNewGame();
-
-        if( saveJSONFileExists() ) {
-            BasicModelV1_0ToActionListConverter c
-                = new BasicModelV1_0ToActionListConverter( model, inventory,
-                                                           actionFactory(), logger );
-            JSONToActionListConverter j
-                = new JSONToActionListConverter( this, oldJSONFormatSaveFileName, c );
-            replayActions( j.actions() );
-        }
+        progressDialog = ProgressDialog.show(this, "Starting...", "Loading game...", true, false);
+        new LoadTask().execute();
     }
 
     private boolean saveJSONFileExists() {
@@ -219,7 +237,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             for( Action action : actions )
                 userActionHandler.enact( action );
             rendersView.enableViewUpdates();
-            rendersView.resetAndRender();
+            // rendersView.resetAndRender();
         }
     }
 
@@ -281,8 +299,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             this.rendersView = p;
         if( externallySuppliedUserActionHandler == false )
             this.userActionHandler = p;
-
-        rendersView.render();
+        // rendersView.render();
     }
 
     private TextView findTextView( int id ) {
@@ -549,6 +566,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
                 @Override
                 public void onClick( DialogInterface dialog, int which ) {
                     createNewGame();
+                    rendersView.render();
                 }
 
             })

@@ -46,7 +46,6 @@ public class ActivityAcceptanceTests {
         activity.onCreate( null );
         activity.onResume();
 
-        verify( renderer, atLeastOnce() ).render();
         ModelLocation townEntrance = model.findLocationByID( "townentrance" );
         Item skeletonKey = model.findItemByID( "clocktowerskeletonkey" );
         assertThat( townEntrance.items(), not( hasItem( skeletonKey ) ) );
@@ -176,7 +175,6 @@ public class ActivityAcceptanceTests {
 
         activity.onResume();
 
-        verify( renderer, atLeastOnce() ).render();
         ModelLocation townEntrance = model.findLocationByID( "townentrance" );
         Item skeletonKey = model.findItemByID( "clocktowerskeletonkey" );
         assertThat( townEntrance.items(), not( hasItem( skeletonKey ) ) );
@@ -237,7 +235,6 @@ public class ActivityAcceptanceTests {
 
         activity.onResume();
 
-        verify( renderer, atLeastOnce() ).render();
         ModelLocation townEntrance = model.findLocationByID( "townentrance" );
         Item skeletonKey = model.findItemByID( "clocktowerskeletonkey" );
         assertThat( townEntrance.items(), not( hasItem( skeletonKey ) ) );
@@ -309,7 +306,6 @@ public class ActivityAcceptanceTests {
 
         activity.onResume();
 
-        verify( renderer, atLeastOnce() ).render();
         ModelLocation townEntrance = model.findLocationByID( "townentrance" );
         Item skeletonKey = model.findItemByID( "clocktowerskeletonkey" );
         assertThat( townEntrance.items(), not( hasItem( skeletonKey ) ) );

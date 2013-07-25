@@ -18,7 +18,7 @@ Backlog
   - DONE BasicModel.findExitByID() needs to be cached in a map to improve fetch time
   - DONE When loading the save file, view disabler in Activity::replayActions() should tell the presenter to stop sending view updates. This should save a significant amount of string construction for no reason. - 17% of load game time
   - DONE BasicModel.findItemByID() needs to be cached in a map to improve fetch time - 33% of load game time
-  - Put loading and saving into a seperate thread with a spinner on the GUI, should avoid Android saying 'app not responding'
+  - DONE Put loading and saving into a seperate thread with a spinner on the GUI, should avoid Android saying 'app not responding'
 - BUG Save time is very very long too...
 - Forest maze and friary should be shut until you deliver the necklace
 - Some talk sequences don't reflect current state
