@@ -9,70 +9,91 @@ import com.chewielouie.textadventure.action.ActionHistory;
 import com.chewielouie.textadventure.action.ActionParameters;
 import com.chewielouie.textadventure.action.ActionRecord;
 import com.chewielouie.textadventure.item.Item;
+import java.lang.StringBuilder;
 
 public class ActionHistorySerialiser {
     private ActionHistory history;
+    private StringBuilder stringBuilder = null;
+    // These are to avoid doing the concatentaion while serialising. Reduces the appends the
+    // string builder must do by 1. At the time this was written a large game save takes 3s
+    // and this optimisation can save about 30% of that.
+    private static final String ACTION_NAME_TAG_AND_SEPERATOR = ACTION_NAME_TAG + SEPERATOR;
+    private static final String STRING_TAG_AND_SEPERATOR = STRING_TAG + SEPERATOR;
+    private static final String ITEM_ID_TAG_AND_SEPERATOR = ITEM_ID_TAG + SEPERATOR;
+    private static final String EXTRA_ITEM_ID_TAG_AND_SEPERATOR = EXTRA_ITEM_ID_TAG + SEPERATOR;
+    private static final String EXIT_ID_TAG_AND_SEPERATOR = EXIT_ID_TAG + SEPERATOR;
+    private static final String LOCATION_ID_TAG_AND_SEPERATOR = LOCATION_ID_TAG + SEPERATOR;
 
     public ActionHistorySerialiser( ActionHistory history ) {
         this.history = history;
     }
 
     public String serialise() {
-        String output = "";
+        stringBuilder = new StringBuilder();
         for( int i = 0; i < history.size(); ++i ) {
             ActionRecord record = history.getRecord( i );
-            output += serialiseActionType( record.action() );
-            output += serialiseActionParameters( record.params() );
-            output += "\n";
+            serialiseActionType( record.action() );
+            serialiseActionParameters( record.params() );
+            stringBuilder.append( "\n" );
         }
-        return output;
+        return stringBuilder.toString();
     }
 
-    private String serialiseActionType( Action action ) {
-        if( action != null )
-            return ACTION_NAME_TAG + SEPERATOR + action.name() + SEPERATOR;
-        return "";
+    private void serialiseActionType( Action action ) {
+        if( action != null ) {
+            stringBuilder.append( ACTION_NAME_TAG_AND_SEPERATOR );
+            stringBuilder.append( action.name() );
+            stringBuilder.append( SEPERATOR );
+        }
     }
 
-    private String serialiseActionParameters( ActionParameters params ) {
-        String output = "";
+    private void serialiseActionParameters( ActionParameters params ) {
         if( params != null ) {
-            output += serialiseStringParam( params.string() );
-            output += serialiseItemParam( params.item() );
-            output += serialiseExtraItemParam( params.extraItem() );
-            output += serialiseExitParam( params.exit() );
-            output += serialiseLocationParam( params.location() );
+            serialiseStringParam( params.string() );
+            serialiseItemParam( params.item() );
+            serialiseExtraItemParam( params.extraItem() );
+            serialiseExitParam( params.exit() );
+            serialiseLocationParam( params.location() );
         }
-        return output;
     }
 
-    private String serialiseStringParam( String string ) {
-        if( string != null )
-            return STRING_TAG + SEPERATOR + string + SEPERATOR;
-        return "";
+    private void serialiseStringParam( String string ) {
+        if( string != null ) {
+            stringBuilder.append( STRING_TAG_AND_SEPERATOR );
+            stringBuilder.append( string );
+            stringBuilder.append( SEPERATOR );
+        }
     }
 
-    private String serialiseItemParam( Item item ) {
-        if( item != null )
-            return ITEM_ID_TAG + SEPERATOR + item.id() + SEPERATOR;
-        return "";
+    private void serialiseItemParam( Item item ) {
+        if( item != null ) {
+            stringBuilder.append( ITEM_ID_TAG_AND_SEPERATOR );
+            stringBuilder.append( item.id() );
+            stringBuilder.append( SEPERATOR );
+        }
     }
 
-    private String serialiseExtraItemParam( Item item ) {
-        if( item != null )
-            return EXTRA_ITEM_ID_TAG + SEPERATOR + item.id() + SEPERATOR;
-        return "";
+    private void serialiseExtraItemParam( Item item ) {
+        if( item != null ) {
+            stringBuilder.append( EXTRA_ITEM_ID_TAG_AND_SEPERATOR );
+            stringBuilder.append( item.id() );
+            stringBuilder.append( SEPERATOR );
+        }
     }
 
-    private String serialiseExitParam( Exit exit ) {
-        if( exit != null )
-            return EXIT_ID_TAG + SEPERATOR + exit.id() + SEPERATOR;
-        return "";
+    private void serialiseExitParam( Exit exit ) {
+        if( exit != null ) {
+            stringBuilder.append( EXIT_ID_TAG_AND_SEPERATOR );
+            stringBuilder.append( exit.id() );
+            stringBuilder.append( SEPERATOR );
+        }
     }
 
-    private String serialiseLocationParam( ModelLocation location ) {
-        if( location != null )
-            return LOCATION_ID_TAG + SEPERATOR + location.id() + SEPERATOR;
-        return "";
+    private void serialiseLocationParam( ModelLocation location ) {
+        if( location != null ) {
+            stringBuilder.append( LOCATION_ID_TAG_AND_SEPERATOR );
+            stringBuilder.append( location.id() );
+            stringBuilder.append( SEPERATOR );
+        }
     }
 }

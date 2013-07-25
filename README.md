@@ -13,10 +13,9 @@ Backlog
 =======
 
 
-- BUG Save time is very very long too...
-  - This makes the loading look slow if you close and open the app before the save has completed
-- Forest maze should be moved to the friary, past the kitchen as the herb garden
 - 100% completion popup could be text in at the end of the description instead. Removes the need for delayed showing.
+- Forest maze should be moved to the friary, past the kitchen as the herb garden
+- Perhaps food and wine are given to you by Bella 'to sustain you' after she enchants your axe. This effectively controls opening the friary at the right time.
 - Scrollbars on action buttons list to make it clear that there might be more buttons
 - Some talk sequences don't reflect current state
    - Shopkeeper puts the decoder ring on the table repeatedly
@@ -25,15 +24,12 @@ Backlog
    - Possibly others
 - Text for graveyard entrance description suggests you've just entered it when you could have approached from a different direction.
 - Grammar and spelling on blue board in deeds room, 'brigands' and 'in tact'
-- Witches Bane should only become available after enraging the witch. It should also be somewhere other than where the Silk Blood is.
 - Are the boards updated for collecting the witch stuff?
 
 
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Add location title to title bar next to score?
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
-- [BUG] There is a lot of memory deallocation and it is slow during onPause() - how much memory is being used, is it a concern? Start up is also slow in onResume().
-   - Do we need a 'Loading...' progress indicator - even if it's just a spinning wheel dialog on onPause and onResume ?
 
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
 
@@ -74,6 +70,8 @@ Done
   - [FIX] When loading the save file, view disabler in Activity::replayActions() tells the presenter to stop sending view updates. This should save a significant amount of string construction for no reason. - 17% of load game time
   - [FIX] BasicModel.findItemByID() is cached in a map to improve fetch time - 33% of load game time
   - [FIX] Loading is in a seperate thread with a spinner on the GUI, should avoid Android saying 'app not responding'
+- [BUG] Save time is very very long too...
+  - [FIX] Most of time was spent serialising and building a string. Using a StringBuilder in ActionHistorySerialiser reduced the time taken by a factor of ten.
 
 - [TECHNICAL FEATURE] Items can have talk/say action chains. If an item has talk responses then include a 'Talk' action in Location::actions(). Talk action allows choice of n phrases. Choosing a phrase triggers a response as specified in model content. Choosing a phrase can optionally trigger an alternative set of phrases to become available as follow up actions. Choosing a phrase can optionally trigger actions (use the same actions as 'item use action:' directive) e.g. make an exit visible.
   - DONE Location has a TalkToAction for each item that is canTalkTo() == true
