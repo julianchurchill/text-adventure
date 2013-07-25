@@ -14,7 +14,6 @@ Backlog
 
 - Forest maze should be moved to the friary, past the kitchen as the herb garden
 - Perhaps food and wine are given to you by Bella 'to sustain you' after she enchants your axe. This effectively controls opening the friary at the right time.
-- Scrollbars on action buttons list to make it clear that there might be more buttons
 - Some talk sequences don't reflect current state
    - Shopkeeper puts the decoder ring on the table repeatedly
    - Brigand...
@@ -46,6 +45,7 @@ Done
 2.0
 ---
 
+- [FEATURE] Scrollbars in action buttons list are permanent to make it clear that there might be more buttons
 - [FEATURE] Scroll to the top of _new_ description content instead of scrolling to the bottom of the current content all the time.
 - [FEATURE] Forced available items text in a locations to be just before the exit text instead of getting lost in the description/story text.
 - [FEATURE] The user will be notified when they have reached the end of the available content with text at the end of the description.

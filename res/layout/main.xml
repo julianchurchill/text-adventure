@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:padding="6dip"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false">
         <LinearLayout
             android:id="@+id/available_actions"
             android:orientation="vertical"
