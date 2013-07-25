@@ -2172,7 +2172,7 @@ LOCATION
 x:480
 y:180
 location id:orens_study
-location description:You are in the study of the Constantine Mansion. There is a roaring fire on the west wall that crackles and lights the room up with flickers of flame. There is a large desk and two large chairs facing each other over it, both with high backs and wide arms. On the other side of the desk sits a lady, reading a book. As you enter the room she lifts her head and looks at you.
+location description:You are in the study of the Constantine Mansion. There is a roaring fire on the west wall that crackles and lights the room up with flickers of flame. There is a large desk and two large chairs facing each other over it, both with high backs and wide arms.
 EXIT
 exit label:Hallway
 exit destination:orens_hallway
@@ -2188,7 +2188,7 @@ item visibility:invisible
 
 ITEM
 item name:Lady
-item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease.
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease. She is sitting at a large desk reading a book and as you enter the room she looks up.
 item id:lady_bella_1
 item countable noun prefix:a
 item is untakeable:
@@ -2254,7 +2254,7 @@ item talk response to:whatdoyouneednext:Lady Bella looks at you. "I will need th
 
 ITEM
 item name:Lady
-item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease.
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease. On the other side of the desk she sits, deep in concentration bent over a bowl and talking to a mysterious glowing stone. There are voices all around you, muttering incoherent and unrepeatable things, you are very nervous standing here and feel a pressing need to leave and run away.
 item id:lady_bella_5
 item countable noun prefix:a
 item visibility:invisible
@@ -2264,7 +2264,6 @@ item successful use message:You pass the arc stone to Lady Bella. She takes it a
 item use action:destroy item:arc_stone
 item use action:change item visibility:lady_bella_5:invisible
 item use action:change item visibility:lady_bella_6:visible
-item use action:change location description:orens_study:You are in the study of the Constantine Mansion. There is a roaring fire on the west wall that crackles and lights the room up with flickers of flame. There is a large desk and two large chairs facing each other over it, both with high backs and wide arms. On the other side of the desk sits a lady, deep in concentration bent over a bowl and talking to a mysterious glowing stone. There are voices all around you, muttering incoherent and unrepeatable things, you are very nervous standing here and feel a pressing need to leave and run away.
 
 item talk initial phrase:whatdoyouneednext:What do you need next?:You say "My lady, what do you need next?"
 item talk response to:whatdoyouneednext:Lady Bella looks at you. "I will need the arc stone now."
@@ -2295,7 +2294,6 @@ item visibility:invisible
 item is untakeable:
 item can be used with:witches_bane
 item successful use message:You crush the Witches Bane between your fingers as you saw Bella do with the Silk Blood and throw it towards her. Splat! It hits her right on the cheek. She looks a little puzzled and you return the look of puzzlement with a slight air of suprise - that'll make her think. Slowly she sniffs the air and wiping the icky mess from her face glares at you and cries "What have you done? This is Witches Bane - my one weakness - how did you know?". You stand there and consider answering her question with the obvious reply but decide it is a little pointless now. Her face is starting to contort and she chokes and splutters "Damn you, damn you!". She knocks the bowl to the floor as the deadly herb ravages her evil body, twisting her this way and that. Bella suddenly pulls herself upright and with the last of her strength charges at the door before you realise what is happening. As she runs out she screams at you "This is not over - I'll destroy you for this, one day, I'll destroy you!". And she is gone.                                  Well done! You have completed the available content, hope you have enjoyed the game and please look out for the next installment of the Tiny Text Adventure series!
-item use action:change location description:orens_study:You are in the study of the Constantine Mansion. There is a roaring fire on the west wall that crackles and lights the room up with flickers of flame. There is a large desk and two large chairs facing each other over it, both with high backs and wide arms. There is a broken bowl besides the desk with a foul concoction leaking out over the floor and there is a rank smell in the air, a mixture of decaying vegetation and the gases of flatulent livestock.
 item use action:destroy item:lady_bella_7
 item use action:destroy item:witches_bane
 item use action:change item visibility:relieved_oren:invisible
