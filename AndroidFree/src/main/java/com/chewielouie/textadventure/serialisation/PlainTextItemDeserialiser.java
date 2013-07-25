@@ -64,12 +64,18 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
 
     private void extractItemUseProperties() {
         item.setCanBeUsedWith( extractNewlineDelimitedValueFor( itemCanBeUsedWithTag ) );
-        item.setUsedWithText( extractNewlineDelimitedValueFor( itemSuccessfulUseMessageTag ) );
+        item.setUsedWithText(
+            insertEncodedNewLines(
+                extractNewlineDelimitedValueFor( itemSuccessfulUseMessageTag ) ) );
 
         if( findTagWithNoArgument( itemUseIsNotRepeatableTag ) )
             item.setUseIsNotRepeatable();
 
         extractItemUseActions();
+    }
+
+    private String insertEncodedNewLines( String input ) {
+        return input.replace( "<newline>", "\n" );
     }
 
     private void extractItemVisibilityProperties() {

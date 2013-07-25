@@ -16,7 +16,5 @@
     <string name="options_cancel">Cancel</string>
     <string name="options_save">Save</string>
     <string name="completed">completed</string>
-    <string name="completion_dialog_title">100% Completion!</string>
-    <string name="completion_dialog_text">Well done! You have completed the available content, hope you have enjoyed the game and please look out for the next installment of the Tiny Text Adventure series!</string>
     <string name="ok">Ok</string>
 </resources>

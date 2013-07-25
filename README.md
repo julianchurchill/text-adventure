@@ -12,8 +12,6 @@ Save files are stored on the emulated device under /data/data/com.chewielouie.te
 Backlog
 =======
 
-
-- 100% completion popup could be text in at the end of the description instead. Removes the need for delayed showing.
 - Forest maze should be moved to the friary, past the kitchen as the herb garden
 - Perhaps food and wine are given to you by Bella 'to sustain you' after she enchants your axe. This effectively controls opening the friary at the right time.
 - Scrollbars on action buttons list to make it clear that there might be more buttons
@@ -23,10 +21,10 @@ Backlog
    - Gatekeeper friar
    - Possibly others
 - Text for graveyard entrance description suggests you've just entered it when you could have approached from a different direction.
-- Grammar and spelling on blue board in deeds room, 'brigands' and 'in tact'
 - Are the boards updated for collecting the witch stuff?
 
-
+- Missing unit test for PlainTextItemDeserialiser.insertEncodedNewLines() for setUsedWithText()
+- Missing unit test for presenter.enable/disableViewUpdates()
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Add location title to title bar next to score?
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
@@ -50,7 +48,7 @@ Done
 
 - [FEATURE] Scroll to the top of _new_ description content instead of scrolling to the bottom of the current content all the time.
 - [FEATURE] Forced available items text in a locations to be just before the exit text instead of getting lost in the description/story text.
-- [FEATURE] The user will be notified when they have reached the end of the available content with a popup upon their next action.
+- [FEATURE] The user will be notified when they have reached the end of the available content with text at the end of the description.
 - [FEATURE] Removed mentions of rubies in the text. Changed the score representation in the GUI to a simple percentage.
 - [FEATURE] The font size can be changed via the options dialog.
 - [FEATURE] The 'Examine an item' button text changed to 'Examine' so it works nicely with items and people.
