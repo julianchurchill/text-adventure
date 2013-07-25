@@ -13,26 +13,20 @@ Backlog
 =======
 
 
-- BUG Load/resume time is very very long as the game goes on
-- BUG Freeze when loading complete - probably from a long game - ~57% complete and about 2 hours play
-  - DONE BasicModel.findExitByID() needs to be cached in a map to improve fetch time
-  - DONE When loading the save file, view disabler in Activity::replayActions() should tell the presenter to stop sending view updates. This should save a significant amount of string construction for no reason. - 17% of load game time
-  - DONE BasicModel.findItemByID() needs to be cached in a map to improve fetch time - 33% of load game time
-  - DONE Put loading and saving into a seperate thread with a spinner on the GUI, should avoid Android saying 'app not responding'
 - BUG Save time is very very long too...
-- Forest maze and friary should be shut until you deliver the necklace
+  - This makes the loading look slow if you close and open the app before the save has completed
+- Forest maze should be moved to the friary, past the kitchen as the herb garden
+- 100% completion popup could be text in at the end of the description instead. Removes the need for delayed showing.
+- Scrollbars on action buttons list to make it clear that there might be more buttons
 - Some talk sequences don't reflect current state
    - Shopkeeper puts the decoder ring on the table repeatedly
    - Brigand...
    - Gatekeeper friar
    - Possibly others
 - Text for graveyard entrance description suggests you've just entered it when you could have approached from a different direction.
-- Scrollbars on action buttons list to make it clear that there might be more buttons
-- Oren text about the necklace should indicate that you need to give it to his wife (is this correct?)
 - Grammar and spelling on blue board in deeds room, 'brigands' and 'in tact'
-- 100% completion popup could be text in at the end of the description instead. Removes the need for delayed showing.
 - Witches Bane should only become available after enraging the witch. It should also be somewhere other than where the Silk Blood is.
-- Are the board updated for collecting the witch stuff?
+- Are the boards updated for collecting the witch stuff?
 
 
 - [FEATURE] What's new dialog for first run of new version.
@@ -75,6 +69,11 @@ Done
   - [FIX] If actions list is larger than available space it now becomes scrollable.
 - [BUG] User still has map after giving it to the shopkeeper!
   - [FIX] Map is now destroyed once given to the shopkeeper.
+- [BUG] Freeze and long load/resume time
+  - [FIX] BasicModel.findExitByID() is cached in a map to improve fetch time
+  - [FIX] When loading the save file, view disabler in Activity::replayActions() tells the presenter to stop sending view updates. This should save a significant amount of string construction for no reason. - 17% of load game time
+  - [FIX] BasicModel.findItemByID() is cached in a map to improve fetch time - 33% of load game time
+  - [FIX] Loading is in a seperate thread with a spinner on the GUI, should avoid Android saying 'app not responding'
 
 - [TECHNICAL FEATURE] Items can have talk/say action chains. If an item has talk responses then include a 'Talk' action in Location::actions(). Talk action allows choice of n phrases. Choosing a phrase triggers a response as specified in model content. Choosing a phrase can optionally trigger an alternative set of phrases to become available as follow up actions. Choosing a phrase can optionally trigger actions (use the same actions as 'item use action:' directive) e.g. make an exit visible.
   - DONE Location has a TalkToAction for each item that is canTalkTo() == true
