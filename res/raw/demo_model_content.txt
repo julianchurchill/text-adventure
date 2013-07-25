@@ -695,7 +695,7 @@ item countable noun prefix:a
 item is untakeable:
 ITEM
 item name:Blue board
-item description:The board has a notice pinned to it stating "Oren Constantine professes his personal thanks to the adventurer who recovered his wife's necklace, in tact from a brigands nest in the crypts under the church of St.Almedha to the west of the town."
+item description:The board has a notice pinned to it stating "Oren Constantine professes his personal thanks to the adventurer who recovered his wife's necklace, intact from a brigand's nest in the crypts under the church of St.Almedha to the west of the town."
 item id:bluenoticeboard_roomofdeeds
 item countable noun prefix:a
 item is untakeable:
