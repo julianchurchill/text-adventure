@@ -12,6 +12,9 @@ Save files are stored on the emulated device under /data/data/com.chewielouie.te
 Backlog
 =======
 
+- After accepting Laby Bella's quest to find her the potion ingredients you can't talk to her anymore
+- Ruby Board still shows Love Potion task when finished. Nor is it added to Room of Deeds
+
 - When you change items that are already in your inventory (e.g. dust on necklace) the item should automatically go into your inventory
 - Replace example save files with good ones now that I've stopped moving locations and item around (e.g. herb garden)
 - Missing unit test for PlainTextItemDeserialiser.insertEncodedNewLines() for setUsedWithText()
