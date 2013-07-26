@@ -12,6 +12,7 @@ Save files are stored on the emulated device under /data/data/com.chewielouie.te
 Backlog
 =======
 
+- When you change items that are already in your inventory (e.g. dust on necklace) the item should automatically go into your inventory
 - Replace example save files with good ones now that I've stopped moving locations and item around (e.g. herb garden)
 - Missing unit test for PlainTextItemDeserialiser.insertEncodedNewLines() for setUsedWithText()
 - Missing unit test for presenter.enable/disableViewUpdates()
