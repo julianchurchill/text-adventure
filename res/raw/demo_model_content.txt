@@ -726,6 +726,12 @@ item id:bluenoticeboard_roomofdeeds
 item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
+item name:Ruby board
+item description:The board has a notice pinned to it stating "Lady Bella Constantine happily received the special ingredients she required for a family recipe. A bold green eyed male came to her aid and delivered a mendicant's scapula, some Silk Blood and an arc stone.".
+item id:rubynoticeboard_roomofdeeds
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
 
 LOCATION
 x:240
@@ -2310,6 +2316,8 @@ item successful use message:You pass the arc stone to Lady Bella. She takes it a
 item use action:destroy item:arc_stone
 item use action:change item visibility:lady_bella_5:invisible
 item use action:change item visibility:lady_bella_6:visible
+item use action:change item visibility:rubynoticeboard:invisible
+item use action:change item visibility:rubynoticeboard_roomofdeeds:visible
 
 item talk initial phrase:whatdoyouneednext:What do you need next?:You say "My lady, what do you need next?"
 item talk response to:whatdoyouneednext:Lady Bella looks at you. "I will need the arc stone now."

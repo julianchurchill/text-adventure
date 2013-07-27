@@ -12,14 +12,14 @@ Save files are stored on the emulated device under /data/data/com.chewielouie.te
 Backlog
 =======
 
-- Ruby Board still shows Love Potion task when finished. Nor is it added to Room of Deeds
-
 - When you change items that are already in your inventory (e.g. dust on necklace) the item should automatically go into your inventory
 - Replace example save files with good ones now that I've stopped moving locations and item around (e.g. herb garden)
 - Missing unit test for PlainTextItemDeserialiser.insertEncodedNewLines() for setUsedWithText()
 - Missing unit test for presenter.enable/disableViewUpdates()
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Add location title to title bar next to score?
+- [FEATURE] Auto ascii map - shows exits you've not yet gone through, perhaps using different colours to show this
+  - Maybe need 'areas' for groups of locations - e.g.  Friary - so that the map can be better annotated
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
