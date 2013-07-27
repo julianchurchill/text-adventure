@@ -733,6 +733,13 @@ item id:rubynoticeboard_roomofdeeds
 item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
+ITEM
+item name:Gold board
+item description:The board has a notice pinned to it stating "A brave adventurer has saved the life of Oren Constantine, a great and influential benefactor of this town. They banished the evil witch Bella Constantine through cunning use of a mysterious plant. Hurrah for the brave adventurer!".
+item id:goldnoticeboard_roomofdeeds
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
 
 LOCATION
 x:240
@@ -2352,6 +2359,7 @@ item use action:destroy item:lady_bella_7
 item use action:destroy item:witches_bane
 item use action:change item visibility:relieved_oren:invisible
 item use action:change item visibility:saved_oren:visible
+item use action:change item visibility:goldnoticeboard_roomofdeeds:visible
 item use action:increment score:
 
 item talk initial phrase:stoporiwillstopyou:Stop or I will stop you!:You finally decide to man up and give her what for. "Stop you foul hag or I will stop you!". You wonder if you worded that a little strongly. To be fair to Lady Bella, she's actually quite an attractive lady.
