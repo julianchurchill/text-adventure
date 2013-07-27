@@ -726,6 +726,7 @@ item id:bluenoticeboard_roomofdeeds
 item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
+ITEM
 item name:Ruby board
 item description:The board has a notice pinned to it stating "Lady Bella Constantine happily received the special ingredients she required for a family recipe. A bold green eyed male came to her aid and delivered a mendicant's scapula, some Silk Blood and an arc stone.".
 item id:rubynoticeboard_roomofdeeds
