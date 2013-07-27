@@ -12,7 +12,6 @@ Save files are stored on the emulated device under /data/data/com.chewielouie.te
 Backlog
 =======
 
-- About dialog email is wrong - should be chewielouie03 - not chewielouie
 - After accepting Laby Bella's quest to find her the potion ingredients you can't talk to her anymore
 - Ruby Board still shows Love Potion task when finished. Nor is it added to Room of Deeds
 
