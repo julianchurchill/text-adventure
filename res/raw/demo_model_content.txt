@@ -1817,7 +1817,7 @@ LOCATION
 x:-540
 y:120
 location id:churchcrypt_litroom
-location description:You stand in another cavern, lit by candles embedded in recesses in the wall. A door leads back to the passage to the stairs. Resting on the hilt of his sword stands a burly brigand blocking your way. Behind him is another door, this one looks a lot more serious than the last and is reinforced with metal bars.
+location description:You stand in another cavern, lit by candles embedded in recesses in the wall. A door leads back to the passage to the stairs. Resting on the hilt of his sword stands a burly brigand. Beside him is another door, this one looks a lot more serious than the last and is reinforced with metal bars.
 EXIT
 exit label:Door
 exit destination:churchcryptpassageway
@@ -1860,7 +1860,6 @@ item talk response to:youwereveryfierce:"Oh wonderful!" cries the brigand. "I'm 
 
 item talk action in response to:youwereveryfierce:make exit visible:churchcrypt_litroom_to_churchcrypt_innersanctum
 item talk action in response to:youwereveryfierce:change item description:The brigand looks convincingly fierce and unfriendly. As you look at him he puts on an extra grim face and gives you a cheeky wink.
-item talk action in response to:youwereveryfierce:change location description:churchcrypt_litroom:You stand in another cavern, lit by candles embedded in recesses in the wall. A door leads back to the passage to the stairs. Resting on the hilt of his sword stands a burly brigand. Beside him is another door, this one looks a lot more serious than the last and is reinforced with metal bars.
 
 LOCATION
 x:-600
