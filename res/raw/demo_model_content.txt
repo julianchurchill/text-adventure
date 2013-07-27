@@ -675,7 +675,7 @@ exit direction hint:East
 exit id:outsidetownhall_to_townhall1
 ITEM
 item name:Blue board
-item description:The board has a notice pinned to it stating "Whomsoever can recover, in tact, my wife's Sapphire necklace shall find ample reward and my favour. Last seen near the church of St.Almedha to the west of the town past the clock tower. Oren Constantine."
+item description:The board has a notice pinned to it stating "Whomsoever can recover, intact, my wife's Sapphire necklace shall find ample reward and my favour. Last seen near the church of St.Almedha to the west of the town past the clock tower. Oren Constantine."
 item id:bluenoticeboard
 item countable noun prefix:a
 item is untakeable:
