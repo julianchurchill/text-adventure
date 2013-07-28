@@ -36,6 +36,12 @@ Backlog
 Done
 ====
 
+2.1
+-----
+
+- [BUG] Can't start a new game, old game gets saved and on load is used instead of new game
+  - [FIX] reset action history on new game
+
 2.0
 ---
 

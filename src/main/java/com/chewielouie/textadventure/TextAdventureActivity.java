@@ -231,17 +231,21 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private void replayActions( List<Action> actions ) {
         if( actions != null ) {
             rendersView.disableViewUpdates();
-            actionHistory.clear();
+            actionHistory().clear();
             for( Action action : actions )
                 userActionHandler.enact( action );
             rendersView.enableViewUpdates();
-            // rendersView.resetAndRender();
         }
     }
 
     private void createNewGame() {
+        resetActionHistory();
         createNewGameModel();
         setupPresenter();
+    }
+
+    private void resetActionHistory() {
+        actionHistory().clear();
     }
 
     private void createNewGameModel() {
@@ -272,12 +276,16 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private ActionFactory actionFactory() {
-        if( actionFactory == null ) {
-            actionHistory = new BasicActionHistory();
+        if( actionFactory == null )
             actionFactory = new RecordableActionFactory( new UserActionFactory(),
-                                                         actionHistory );
-        }
+                                                         actionHistory() );
         return actionFactory;
+    }
+
+    private ActionHistory actionHistory() {
+        if( actionHistory == null )
+            actionHistory = new BasicActionHistory();
+        return actionHistory;
     }
 
     private String demoContent() {
@@ -295,7 +303,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
             this.rendersView = p;
         if( externallySuppliedUserActionHandler == false )
             this.userActionHandler = p;
-        // rendersView.render();
     }
 
     private TextView findTextView( int id ) {
@@ -671,7 +678,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void writeActionHistorySaveFile() {
-        byte[] bytes = new ActionHistorySerialiser( actionHistory ).serialise().getBytes();
+        byte[] bytes = new ActionHistorySerialiser( actionHistory() ).serialise().getBytes();
         try {
             FileOutputStream outputStream = openFileOutput( actionHistorySaveFileName,
                                                             Context.MODE_PRIVATE );
