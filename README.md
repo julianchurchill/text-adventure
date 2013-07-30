@@ -32,6 +32,9 @@ Features and Bugs
 - When you change items that are already in your inventory (e.g. dust on necklace) the item should automatically go into your inventory
 - [FEATURE] Auto ascii map - shows exits you've not yet gone through, perhaps using different colours to show this
   - Maybe need 'areas' for groups of locations - e.g.  Friary - so that the map can be better annotated
+- [FEATURE] Sound effects
+  - Door unlocking, clock tower ticking, ghostly sounds in the graveyard.
+  - Make on/off-able in options
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Add location title or area to title bar next to score?
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
