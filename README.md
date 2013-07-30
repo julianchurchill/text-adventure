@@ -12,14 +12,28 @@ Save files are stored on the emulated device under /data/data/com.chewielouie.te
 Backlog
 =======
 
-- When you change items that are already in your inventory (e.g. dust on necklace) the item should automatically go into your inventory
+Technical Tasks
+
 - Replace example save files with good ones now that I've stopped moving locations and item around (e.g. herb garden)
 - Missing unit test for PlainTextItemDeserialiser.insertEncodedNewLines() for setUsedWithText()
 - Missing unit test for presenter.enable/disableViewUpdates()
-- [FEATURE] What's new dialog for first run of new version.
-- [FEATURE] Add location title to title bar next to score?
+
+Features and Bugs
+
+- [UI] Parchment background
+- [UI] Transparent, full width action buttons
+- [UI] Restrict action button list to half screen height
+- [FEATURE] (Google games API) Achievements
+  - Chatterbox (talk to everyone about everything)
+  - Champion (complete the game)
+  - Perfect (complete game in minimal moves)
+  - Explorer (has gone to every location)
+- [FEATURE] (Google games API) Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
+- When you change items that are already in your inventory (e.g. dust on necklace) the item should automatically go into your inventory
 - [FEATURE] Auto ascii map - shows exits you've not yet gone through, perhaps using different colours to show this
   - Maybe need 'areas' for groups of locations - e.g.  Friary - so that the map can be better annotated
+- [FEATURE] What's new dialog for first run of new version.
+- [FEATURE] Add location title or area to title bar next to score?
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
@@ -236,10 +250,6 @@ Rejected
 
 - Probably a bad idea as with the Talkable/TalkPhraseSource/Sink experience it has made using the Item a bit awkward.
 - [REFACTOR] Item interface is getting fat. Can 'use' and 'examine' be split off, perhaps Examinable, Usable? Is there any benefit?
-
-- Not appropriate for this version of the game.
-- [FEATURE] Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
-  * Use the new Google games API to record this as a high score?
 
 - No longer supporting the webapp editor.
 - [FEATURE-EDITOR] Update webapp editor to [de]serialise visibility and allow setting of visibility
