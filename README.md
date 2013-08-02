@@ -17,6 +17,7 @@ Technical Tasks
 - Replace example save files with good ones now that I've stopped moving locations and item around (e.g. herb garden)
 - Missing unit test for PlainTextItemDeserialiser.insertEncodedNewLines() for setUsedWithText()
 - Missing unit test for presenter.enable/disableViewUpdates()
+- 'demo_model_content.txt' needs renaming so we can have multiple stories available
 
 Features and Bugs
 
