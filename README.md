@@ -23,18 +23,21 @@ Features and Bugs
 - [UI] Parchment background
 - [UI] Transparent, full width action buttons
 - [UI] Restrict action button list to half screen height
-- [FEATURE] (Google games API) Achievements
+- [FEATURE] Auto ascii map - shows exits you've not yet gone through, perhaps using different colours to show this
+  - Maybe need 'areas' for groups of locations - e.g.  Friary - so that the map can be better annotated
+  - Map could be shown as a graph of nodes and connections - might be easier than a coordinate based absolute map?
+  - A hand drawn map with areas being revealed, and perhaps whole areas being coloured - red (if unexplored, e.g. exits not taken, locations not visited) or green (if totally explored)
+- [FEATURE] Sound effects
+  - Door unlocking, clock tower ticking, ghostly sounds in the graveyard.
+  - Make on/off-able in options
+- [FEATURE] Google games API Achievements
   - Chatterbox (talk to everyone about everything)
   - Champion (complete the game)
   - Perfect (complete game in minimal moves)
   - Explorer (has gone to every location)
-- [FEATURE] (Google games API) Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
-- When you change items that are already in your inventory (e.g. dust on necklace) the item should automatically go into your inventory
-- [FEATURE] Auto ascii map - shows exits you've not yet gone through, perhaps using different colours to show this
-  - Maybe need 'areas' for groups of locations - e.g.  Friary - so that the map can be better annotated
-- [FEATURE] Sound effects
-  - Door unlocking, clock tower ticking, ghostly sounds in the graveyard.
-  - Make on/off-able in options
+  - Pathfinder (has gone through every exit)
+- [FEATURE] Google games API Leaderboard - Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
+- [FEATURE] New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Add location title or area to title bar next to score?
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
