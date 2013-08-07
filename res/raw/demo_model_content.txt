@@ -901,7 +901,7 @@ exit destination:track_to_friary
 exit direction hint:West
 exit id:friary_gates_to_track_to_friary
 EXIT
-exit label:East
+exit label:Friary Entrance
 exit destination:friary_entrance
 exit direction hint:East
 exit id:friary_gates_to_friary_entrance
