@@ -825,7 +825,7 @@ LOCATION
 x:120
 y:180
 location id:dirttrack
-location description:You are on a dirt track leading away from the town. There are deep furroughs indicating it has been well used, probably as a trade route to other more affluent settlements. It continues to the north.
+location description:You are on a dirt track leading away from the town. There are deep furrows indicating it has been well used, probably as a trade route to other more affluent settlements. It continues to the north.
 EXIT
 exit label:North
 exit destination:moredirttrack
