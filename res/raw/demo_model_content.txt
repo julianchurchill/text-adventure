@@ -2115,7 +2115,7 @@ LOCATION
 x:480
 y:240
 location id:nobles_quarter_east_street
-location description:You stand at the west end of the main street that runs through the Noble's Quarter. This end has the most fantastic houses, mansions of huge proportions with people running to and fro, tending to the houses and the demands of the occupants. One house to the north has a large open porch whereupon stands a wide-shouldered man, looking out into the street expectantly.
+location description:You stand at the east end of the main street that runs through the Noble's Quarter. This end has the most fantastic houses, mansions of huge proportions with people running to and fro, tending to the houses and the demands of the occupants. One house to the north has a large open porch whereupon stands a wide-shouldered man, looking out into the street expectantly.
 EXIT
 exit label:North
 exit destination:orens_porch
