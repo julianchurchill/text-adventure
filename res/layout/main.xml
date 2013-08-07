@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_relative_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#000000">
+    android:background="#000000"
+    >
     <TextView
         android:id="@+id/score_text_view"
         android:layout_width="fill_parent"
@@ -19,7 +21,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:padding="6dip"
         android:scrollbars="vertical"
         android:fadeScrollbars="false">
         <LinearLayout
@@ -28,23 +29,27 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:background="#660055"
             />
     </ScrollView>
     <ScrollView
         android:id="@+id/main_text_output_scroll_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:layout_below="@id/score_text_view"
         android:layout_above="@id/available_actions_scroll_view"
         android:padding="6dip"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        android:fillViewport="true"
+        >
         <TextView
             android:id="@+id/main_text_output"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dip"
             android:textSize="16sp"
             android:text=""
+            android:textColor="#000000"
+            android:background="@drawable/paper38f_3"
             />
     </ScrollView>
 </RelativeLayout>
