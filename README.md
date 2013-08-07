@@ -28,9 +28,11 @@ Features
 
 - [UI] Parchment background
   - Testing paper38f.jpg from www.myfreetextures.com/worn-parchment-paper-2/ - fair use policy - must ask permission in comments and credit the website in the about box.
+  - 'West' exit yellow colour can't be seen on the parchment background - choose a better colour
+  - 'North' exit green colour isn't very visible on the parchment background either - choose a better colour
+  - Need a splashscreen to avoid seeing the intermittent layout where the parchment background is only half width.
   - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
   - Scroll bar images need to compliment the parchment background...
-  - 'West' exit yellow colour can't be seen on the parchment background - choose a better colour
 - [UI] Restrict action button list to half screen height
 - [FEATURE] Auto ascii map - shows exits you've not yet gone through, perhaps using different colours to show this
   - Maybe need 'areas' for groups of locations - e.g.  Friary - so that the map can be better annotated
