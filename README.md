@@ -19,7 +19,12 @@ Technical Tasks
 - Missing unit test for presenter.enable/disableViewUpdates()
 - 'demo_model_content.txt' needs renaming so we can have multiple stories available
 
-Features and Bugs
+Bugs
+
+- [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
+  - Changing locked door to 'unlocked door' must also change the countable noun prefix
+
+Features
 
 - [UI] Parchment background
 - [UI] Transparent, full width action buttons
