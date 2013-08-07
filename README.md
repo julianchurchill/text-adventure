@@ -22,19 +22,18 @@ Technical Tasks
 Bugs
 
 - [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
-  - Changing locked door to 'unlocked door' must also change the countable noun prefix
+  - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
 
 Features
 
 - [UI] Parchment background
-- [UI] Transparent, full width action buttons
 - [UI] Restrict action button list to half screen height
 - [FEATURE] Auto ascii map - shows exits you've not yet gone through, perhaps using different colours to show this
   - Maybe need 'areas' for groups of locations - e.g.  Friary - so that the map can be better annotated
   - Map could be shown as a graph of nodes and connections - might be easier than a coordinate based absolute map?
   - A hand drawn map with areas being revealed, and perhaps whole areas being coloured - red (if unexplored, e.g. exits not taken, locations not visited) or green (if totally explored)
 - [FEATURE] Sound effects
-  - Door unlocking, clock tower ticking, ghostly sounds in the graveyard.
+  - Door unlocking, clock tower ticking/bells, ghostly sounds in the graveyard, mice scratching at the church, market hustle and bustle.
   - Make on/off-able in options
 - [FEATURE] Google games API Achievements
   - Chatterbox (talk to everyone about everything)
@@ -46,24 +45,28 @@ Features
 - [FEATURE] New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Add location title or area to title bar next to score?
-- [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 
+- [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
 
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
-- [TECHNICAL FEATURE] Ruby counter should show how many out of how many achieved - e.g. 10/100 - this needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
+- [TECHNICAL FEATURE] Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 
 - [FEATURE] In model content txt items can only be used in one direction, e.g. a spade with a mound of earth and the target item has to include the definition of what happens. If the original item (e.g. spade) includes this information it is ignored. Should this be changed to be bi-directional? It would make writing content easier but needs considering as it might not always be appropriate.
 
 - [IDEA] Add other verbs - attack, eat, drink, dance, drop, give
 - [IDEA] Optional images to go with text?
-- [IDEA] Sounds - looped bells ringing when near the clock tower, mice scratching at the church, spooky ambiance for the graveyard, hustle and bustle for the market and so on.
 
 Done
 ====
 
+2.2
+---
+
+- [UI] Full width action buttons
+
 2.1
------
+---
 
 - [BUG] Can't start a new game, old game gets saved and on load is used instead of new game
   - [FIX] reset action history on new game

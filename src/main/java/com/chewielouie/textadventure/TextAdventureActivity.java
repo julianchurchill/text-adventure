@@ -491,7 +491,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         Button button = new Button( this );
         button.setText( action.label() );
         button.setOnClickListener( this );
-        LayoutParams lp = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
+        LayoutParams lp = new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT );
         available_actions_view.addView( button, lp );
 
         actionButtons.put( button, action );
