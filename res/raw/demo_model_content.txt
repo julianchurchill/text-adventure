@@ -428,7 +428,7 @@ ITEM
 item name:Arc stone
 item description:This stone is roughly the size of your fist and glows a sickly green. You sense there is great power within but you do not think you have the power to unlock it.
 item id:arc_stone
-item countable noun prefix:a
+item countable noun prefix:an
 item visibility:invisible
 
 LOCATION
@@ -592,14 +592,14 @@ item is untakeable:
 
 item talk initial phrase:hello:Hello!:You say "Hello!".
 item talk response to:hello:The Shop keeper replies "Hello yourself my friend. How can I help you?".
-item talk follow up phrase to:hello:checkin:I just came to check in...:You say "I just came to check in. Glad you to see you are looking well.".
+item talk follow up phrase to:hello:checkin:I just came to check in...:You say "I just came to check in. Glad to see you are looking well.".
 item talk response to:checkin:The Shop keeper says "Why thank you, it's all down to you my friend.".
 item talk follow up phrase to:checkin:lookingforwork:I was looking for some work...:You say "I was looking for some work. Can you help me?".
 item talk response to:lookingforwork:The Shop keeper says "Sure, you should go to the town hall to the east of the town. There are boards where an adventurer might find a job." Placing something on the shop counter he winks and says "You might also find this useful."
 item talk action in response to:lookingforwork:make exit visible:mainstreeteast
 item talk action in response to:lookingforwork:make exit visible:clocktower_to_cobbledroad
 item talk action in response to:lookingforwork:make exit visible:clocktower_to_nobles_quarter_west_street
-item talk action in response to:lookingforwork:change location description:clocktower:You stand before a mighty clock tower. The clock goes TICK! There is a cobbled road off to the west that winds its way through the back streets of the town and to the east is the nobles quarter.
+item talk action in response to:lookingforwork:change location description:clocktower:You stand before a mighty clock tower. The clock goes TICK! There is a cobbled road off to the west that winds its way through the back streets of the town and to the east is the Noble's Quarter.
 item talk action in response to:lookingforwork:change item visibility:decoderring:visible
 item talk action in response to:lookingforwork:change item visibility:generalstoreshopkeeper:invisible
 item talk action in response to:lookingforwork:change item visibility:generalstoreshopkeeper2:visible
@@ -622,7 +622,7 @@ item is untakeable:
 
 item talk initial phrase:hello:Hello!:You say "Hello!".
 item talk response to:hello:The Shop keeper replies "Hello yourself my friend. How can I help you?".
-item talk follow up phrase to:hello:checkin:I just came to check in...:You say "I just came to check in. Glad you to see you are looking well.".
+item talk follow up phrase to:hello:checkin:I just came to check in...:You say "I just came to check in. Glad to see you are looking well.".
 item talk response to:checkin:The Shop keeper says "Why thank you, it's all down to you my friend.".
 item talk follow up phrase to:checkin:lookingforwork:I was looking for some work...:You say "I was looking for some work. Can you help me?".
 item talk response to:lookingforwork:The Shop keeper says "Sure, you should go to the town hall to the east of the town. There are boards where an adventurer might find a job."
@@ -681,7 +681,7 @@ item countable noun prefix:a
 item is untakeable:
 ITEM
 item name:Ruby board
-item description:The board has a notice pinned to it stating "Lady Bella Constantine is looking for aid to find some special ingredients for a family recipe. Only green eyed males need apply. For further information see Lady Bella at the Constantine mansion in the nobles quarter.".
+item description:The board has a notice pinned to it stating "Lady Bella Constantine is looking for aid to find some special ingredients for a family recipe. Only green eyed males need apply. For further information see Lady Bella at the Constantine mansion in the Noble's Quarter.".
 item id:rubynoticeboard
 item countable noun prefix:a
 item is untakeable:
@@ -691,7 +691,7 @@ LOCATION
 x:480
 y:360
 location id:townhall1
-location description:You stand just inside the town hall entrance, a large circular reception room with several doors leading out. The walls are adorned with civic regalier and paintings of local scenes, intermingled with portraits of some of the more wealthy and powerful citizens. One door catches your eye due to the inscription above - "Room of Deeds".
+location description:You stand just inside the town hall entrance, a large circular reception room with several doors leading out. The walls are adorned with civic regalia and paintings of local scenes, intermingled with portraits of some of the more wealthy and powerful citizens. One door catches your eye due to the inscription above - "Room of Deeds".
 EXIT
 exit label:West
 exit destination:outsidetownhall
@@ -707,7 +707,7 @@ LOCATION
 x:480
 y:300
 location id:roomofdeeds
-location description:You stand in a large room with plenty of space for lots of notice boards. The ones that are here look intriguing and you feel like taking a closer look. Something about this room puts a smile on your face and you feel yourself start to day dream about adventures past.
+location description:You stand in a large room with plenty of space for lots of notice boards. The ones that are here look intriguing and you feel like taking a closer look. Something about this room puts a smile on your face and you feel yourself start to daydream about adventures past.
 EXIT
 exit label:Town hall entrance lobby
 exit destination:townhall1
@@ -825,7 +825,7 @@ LOCATION
 x:120
 y:180
 location id:dirttrack
-location description:You on a dirt track leading away from the town. There are deep furroughs indicating it has been well used, probably as a trade route to other more affluent settlements. It continues to the north.
+location description:You are on a dirt track leading away from the town. There are deep furroughs indicating it has been well used, probably as a trade route to other more affluent settlements. It continues to the north.
 EXIT
 exit label:North
 exit destination:moredirttrack
@@ -841,7 +841,7 @@ LOCATION
 x:120
 y:120
 location id:moredirttrack
-location description:You on a dirt track leading away from the town. To the west you see a churchyard. It looks gloomy, mysterious and uninviting, not a great combination. To the north the track starts to become enshrouded in the surrounding woodland.
+location description:You are on a dirt track leading away from the town. To the west you see a churchyard. It looks gloomy, mysterious and uninviting, not a great combination. To the north the track starts to become enshrouded in the surrounding woodland.
 EXIT
 exit label:North
 exit destination:woodland_track
@@ -2083,7 +2083,7 @@ LOCATION
 x:360
 y:240
 location id:nobles_quarter_west_street
-location description:You stand at the west end of the main street of the nobles quarter. The houses around you are mansions, varying in size and grandeur to reflect the owners wealth. The larger houses are at the far end to the east. The streets are mostly empty but there are a few merchants wandering back to their homes laden with bargains from far off lands.
+location description:You stand at the west end of the main street of the Noble's Quarter. The houses around you are mansions, varying in size and grandeur to reflect the owner's wealth. The larger houses are at the far end to the east. The streets are mostly empty but there are a few merchants wandering back to their homes laden with bargains from far off lands.
 EXIT
 exit label:Clock tower
 exit destination:clocktower
@@ -2099,7 +2099,7 @@ LOCATION
 x:420
 y:240
 location id:nobles_quarter_middle_street
-location description:You stand in the middle of the main street that runs through the nobles quarter. There are impressive houses on all sides of you, getting larger and more opulent the further east you look. Back to the west you can see a clock tower in the distance.
+location description:You stand in the middle of the main street that runs through the Noble's Quarter. There are impressive houses all around you, getting larger and more opulent the further east you look. Back to the west you can see a clock tower in the distance.
 EXIT
 exit label:West
 exit destination:nobles_quarter_west_street
@@ -2115,7 +2115,7 @@ LOCATION
 x:480
 y:240
 location id:nobles_quarter_east_street
-location description:You stand at the west end of the main street that runs through the nobles quarter. This end has the most fantastic houses, mansions of huge proportions with people running to and fro, tending to the houses and the demands of the occupants. One house to the north has a large open porch whereupon stands a wide-shouldered man, looking out into the street expectantly.
+location description:You stand at the west end of the main street that runs through the Noble's Quarter. This end has the most fantastic houses, mansions of huge proportions with people running to and fro, tending to the houses and the demands of the occupants. One house to the north has a large open porch whereupon stands a wide-shouldered man, looking out into the street expectantly.
 EXIT
 exit label:North
 exit destination:orens_porch
@@ -2152,7 +2152,7 @@ item countable noun prefix:a
 item is untakeable:
 
 item talk initial phrase:hello:Hello!:You say "Hello Mr Constantine, I was wondering if you had any jobs an up and coming adventurer might be interested in.".
-item talk response to:hello:"Well unless you've got my wife's necklace I have nothing for you, now get off my land before I release the hounds. Hrrmph." says Constantine as he pointedly turns his back on you. His Hrrmph is particularly impressive.
+item talk response to:hello:"Well unless you've got my wife's necklace I have nothing for you, now get off my land before I release the hounds. Hrrmph." says Constantine as he pointedly turns his back on you. His Hrrmph' is particularly impressive.
 
 ITEM
 item name:Wealthy merchant
