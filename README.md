@@ -33,6 +33,8 @@ Features
   - Need a splashscreen to avoid seeing the intermittent layout where the parchment background is only half width.
   - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
   - Scroll bar images need to compliment the parchment background...
+  - Needs a complimentary font
+- [UI] Action buttons could be bevelled, perhaps like gems? E.g. red ruby buttons
 - [UI] Restrict action button list to half screen height
 - [FEATURE] Auto ascii map - shows exits you've not yet gone through, perhaps using different colours to show this
   - Maybe need 'areas' for groups of locations - e.g.  Friary - so that the map can be better annotated
