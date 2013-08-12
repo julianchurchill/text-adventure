@@ -29,7 +29,6 @@ Features
 
 - [UI] Parchment background
   - Testing paper38f.jpg from www.myfreetextures.com/worn-parchment-paper-2/ - fair use policy - must ask permission in comments and credit the website in the about box.
-  - Need 9.patch images for background to protect top and bottom sections from stretching and causing a black bleed into the text which makes it hard to read.
   - Scroll bar images need to compliment the parchment background...
   - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
   - Needs a complimentary font or just try android:typeface="serif"
