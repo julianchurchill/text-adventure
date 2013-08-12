@@ -38,24 +38,27 @@ Features
 - [FEATURE] Map - shows where you've not been yet, perhaps using different colours to show this
   - Areas need to be defined for each location - e.g.  Friary - so that the map can be annotated and revealed appropriately
   - A hand drawn map with areas being revealed, and perhaps whole areas being coloured - red (if unexplored, e.g. exits not taken, locations not visited) or green (if totally explored)
-    - Hand drawn map as original images + 1 mask image per area with a black mask identifying the area.
+    - Hand drawn map as original images + 1 mask image per area with a black mask identifying the area and transparent everywhere else.
     - For each undiscovered area hide it by applying the matching area mask to the original image with a Paint object set with setXfermode(new PorterDuffXfermode(Mode.SRC_IN)), where the mask is the source and the original image is the destination.
     - If the area has not been fully explored apply the same mask as above but use a different PorterDuff mode - try Mode.LIGHTEN, Mode.DARKEN or Mode.MULTIPLY
     - See http://stackoverflow.com/questions/12614542/maskingcrop-image-in-frame/12637039#12637039 and http://stackoverflow.com/questions/11337679/porterduffxfermode-clear-a-section-of-a-bitmap
+    - Player will need to be monitored to detect when they reveal a new area (WorldExplorer object?) and when they completely explore an area. This should be reusable by the achievements detection task below.
 - [FEATURE] Add location title or area to title bar next to score?
+- [FEATURE] Google games API Achievements
+  - Chatterbox (talk to everyone about everything)
+  - Converser (talked to everyone)
+  - Champion (complete the game)
+  - Perfect (complete game in minimal moves) - questionable worth and hard to calculate
+  - Explorer (has gone to every location)
+  - Pathfinder (has gone through every exit)
+  - Player of the Kazoo (completed a sub quest to create and play a kazoo at a childrens party)
+- [FEATURE] New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
 - [UI] Restrict action button list to half screen height
 - [FEATURE] Sound effects
   - Door unlocking, clock tower ticking/bells, ghostly sounds in the graveyard, mice scratching at the church, market hustle and bustle.
   - Make on/off-able in options
-- [FEATURE] Google games API Achievements
-  - Chatterbox (talk to everyone about everything)
-  - Champion (complete the game)
-  - Perfect (complete game in minimal moves)
-  - Explorer (has gone to every location)
-  - Pathfinder (has gone through every exit)
-- [FEATURE] Google games API Leaderboard - Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
-- [FEATURE] New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
 - [FEATURE] What's new dialog for first run of new version.
+- [FEATURE] Google games API Leaderboard - Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
 
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
