@@ -23,6 +23,7 @@ Bugs
 
 - [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
   - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
+- [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
 
 Features
 
@@ -33,7 +34,7 @@ Features
   - Need 9.patch images for background to protect top and bottom sections from stretching and causing a black bleed into the text which makes it hard to read.
   - Scroll bar images need to compliment the parchment background...
   - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
-  - Needs a complimentary font
+  - Needs a complimentary font or just try android:typeface="serif"
 - [UI] Action buttons could be bevelled, perhaps like gems? E.g. red ruby buttons
 - [FEATURE] Map - shows where you've not been yet, perhaps using different colours to show this
   - Areas need to be defined for each location - e.g.  Friary - so that the map can be annotated and revealed appropriately
