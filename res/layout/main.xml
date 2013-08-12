@@ -33,7 +33,7 @@
     </ScrollView>
     <ScrollView
         android:id="@+id/main_text_output_scroll_view"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/score_text_view"
         android:layout_above="@id/available_actions_scroll_view"

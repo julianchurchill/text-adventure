@@ -30,11 +30,9 @@ Features
   - Testing paper38f.jpg from www.myfreetextures.com/worn-parchment-paper-2/ - fair use policy - must ask permission in comments and credit the website in the about box.
   - 'West' exit yellow colour can't be seen on the parchment background - choose a better colour
   - 'North' exit green colour isn't very visible on the parchment background either - choose a better colour
-  - Need a splashscreen to avoid seeing the intermittent layout where the parchment background is only half width.
-    - Or set layout to fill parent instead of wrap content
   - Need 9.patch images for background to protect top and bottom sections from stretching and causing a black bleed into the text which makes it hard to read.
-  - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
   - Scroll bar images need to compliment the parchment background...
+  - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
   - Needs a complimentary font
 - [UI] Action buttons could be bevelled, perhaps like gems? E.g. red ruby buttons
 - [FEATURE] Map - shows where you've not been yet, perhaps using different colours to show this
