@@ -442,8 +442,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         return 70;
     }
 
-    private int ORANGE = Color.rgb( 255, 128, 0 );
-    private int DARK_ORANGE = Color.rgb( 238, 119, 0 );
+    private int LIGHT_BLUE = Color.rgb( 0, 154, 255 );
     private int PURPLE = Color.rgb( 130, 0, 186 );
 
     private int selectExitColor( Exit exit )
@@ -451,7 +450,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         if(      exit.directionHint() == Exit.DirectionHint.North ) return PURPLE;
         else if( exit.directionHint() == Exit.DirectionHint.South ) return Color.RED;
         else if( exit.directionHint() == Exit.DirectionHint.East ) return Color.BLUE;
-        else if( exit.directionHint() == Exit.DirectionHint.West ) return DARK_ORANGE;
+        else if( exit.directionHint() == Exit.DirectionHint.West ) return LIGHT_BLUE;
         return Color.MAGENTA;
     }
 
