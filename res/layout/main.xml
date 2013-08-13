@@ -49,6 +49,7 @@
             android:textSize="16sp"
             android:text=""
             android:textColor="#000000"
+            android:typeface="serif"
             android:background="@drawable/paper38f_3"
             />
     </ScrollView>

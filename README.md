@@ -31,7 +31,7 @@ Features
   - Testing paper38f.jpg from www.myfreetextures.com/worn-parchment-paper-2/ - fair use policy - must ask permission in comments and credit the website in the about box.
   - Scroll bar images need to compliment the parchment background...
   - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
-  - Needs a complimentary font or just try android:typeface="serif"
+- [FEATURE] Add location title or area to title bar next to score?
 - [UI] Action buttons could be bevelled, perhaps like gems? E.g. red ruby buttons
 - [FEATURE] Map - shows where you've not been yet, perhaps using different colours to show this
   - Areas need to be defined for each location - e.g.  Friary - so that the map can be annotated and revealed appropriately
@@ -41,7 +41,6 @@ Features
     - If the area has not been fully explored apply the same mask as above but use a different PorterDuff mode - try Mode.LIGHTEN, Mode.DARKEN or Mode.MULTIPLY
     - See http://stackoverflow.com/questions/12614542/maskingcrop-image-in-frame/12637039#12637039 and http://stackoverflow.com/questions/11337679/porterduffxfermode-clear-a-section-of-a-bitmap
     - Player will need to be monitored to detect when they reveal a new area (WorldExplorer object?) and when they completely explore an area. This should be reusable by the achievements detection task below.
-- [FEATURE] Add location title or area to title bar next to score?
 - [FEATURE] Google games API Achievements
   - Chatterbox (talk to everyone about everything)
   - Converser (talked to everyone)

@@ -26,6 +26,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
@@ -495,6 +496,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         Button button = new Button( this );
         button.setText( action.label() );
         button.setOnClickListener( this );
+        button.setTypeface( Typeface.SERIF );
         LayoutParams lp = new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT );
         available_actions_view.addView( button, lp );
 
