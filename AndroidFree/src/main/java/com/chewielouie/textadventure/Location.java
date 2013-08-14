@@ -166,5 +166,8 @@ public class Location implements ModelLocation {
     public int y() {
         return this.y;
     }
+
+    public void setAreaID( String id ) {
+    }
 }
 

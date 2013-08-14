@@ -29,6 +29,18 @@ public class PlainTextModelLocationDeserialiserTests {
     }
 
     @Test
+    public void deserialise_finds_location_area_id() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        PlainTextModelLocationDeserialiser d = new PlainTextModelLocationDeserialiser( null, null );
+        mockery.checking( new Expectations() {{
+            oneOf( location ).setAreaID( "area-id" );
+            ignoring( location );
+        }});
+        d.deserialise( location, "location id:name\n" +
+                                 "location area id:area-id\n" );
+    }
+
+    @Test
     public void deserialise_finds_location_description() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
         PlainTextModelLocationDeserialiser d = new PlainTextModelLocationDeserialiser( null, null );

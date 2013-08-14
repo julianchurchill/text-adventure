@@ -23,6 +23,7 @@ public interface ModelLocation {
     public void setY( int y );
     public int x();
     public int y();
+    public void setAreaID( String id );
 }
 
 

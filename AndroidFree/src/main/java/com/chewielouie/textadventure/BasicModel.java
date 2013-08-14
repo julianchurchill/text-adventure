@@ -30,6 +30,9 @@ public class BasicModel implements TextAdventureModel, UserInventory {
         return currentLocation().availableItemsText();
     }
 
+    public void addLocationArea( String id, String name ) {
+    }
+
     public void setCurrentLocation( String id ) {
         currentLocation = locations.get( id );
         for( ModelEventSubscriber s : eventSubscribers )

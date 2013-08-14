@@ -27,11 +27,14 @@ Bugs
 
 Features
 
+- [FEATURE] Add location title or area to title bar next to score?
+  - DONE Deserialise location area id for each location
+  - DONE Deserialise list of location area ids and location area names
+  - Presenter should update view with location area name when the location changes
 - [UI] Parchment background
   - Testing paper38f.jpg from www.myfreetextures.com/worn-parchment-paper-2/ - fair use policy - must ask permission in comments and credit the website in the about box.
   - Scroll bar images need to compliment the parchment background...
   - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
-- [FEATURE] Add location title or area to title bar next to score?
 - [UI] Action buttons could be bevelled, perhaps like gems? E.g. red ruby buttons
 - [FEATURE] Map - shows where you've not been yet, perhaps using different colours to show this
   - Areas need to be defined for each location - e.g.  Friary - so that the map can be annotated and revealed appropriately

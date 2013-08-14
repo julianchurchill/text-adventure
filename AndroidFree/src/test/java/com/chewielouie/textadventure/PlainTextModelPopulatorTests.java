@@ -152,6 +152,20 @@ public class PlainTextModelPopulatorTests {
     }
 
     @Test
+    public void location_areas_are_deserialised_and_added_to_model() {
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        mockery.checking( new Expectations() {{
+            oneOf( model ).addLocationArea( "area-id1", "area name1" );
+            oneOf( model ).addLocationArea( "area-id2", "area name2" );
+            ignoring( model );
+        }});
+
+        new PlainTextModelPopulator( model, null, null, null, null, null,
+           "LOCATION AREA\nlocation area id:area-id1\nlocation area name:area name1\n" +
+           "LOCATION AREA\nlocation area id:area-id2\nlocation area name:area name2\n" );
+    }
+
+    @Test
     public void location_is_created_using_factory() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
         final ModelLocationFactory locationFactory =

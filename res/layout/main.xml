@@ -6,8 +6,26 @@
     android:background="#000000"
     >
     <TextView
-        android:id="@+id/score_text_view"
         android:layout_width="fill_parent"
+        android:layout_height="16sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:background="#330022"
+        />
+    <TextView
+        android:id="@+id/location_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="16sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:gravity="left|top"
+        android:background="#330022"
+        android:textSize="12sp"
+        android:text="location"
+        />
+    <TextView
+        android:id="@+id/score_text_view"
+        android:layout_width="wrap_content"
         android:layout_height="16sp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"

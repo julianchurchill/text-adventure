@@ -1,5 +1,6 @@
 package com.chewielouie.textadventure.serialisation;
 
+import com.chewielouie.textadventure.DeserialiserUtils;
 import com.chewielouie.textadventure.Exit;
 import com.chewielouie.textadventure.ExitFactory;
 import com.chewielouie.textadventure.item.Item;
@@ -10,6 +11,7 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
     private final String xTag = "x:";
     private final String yTag = "y:";
     private final String locationIDTag = "location id:";
+    private final String locationAreaIDTag = "location area id:";
     private final String locationDescriptionTag = "location description:";
     private final String exitTag = "EXIT\n";
     private final String itemTag = "ITEM\n";
@@ -41,33 +43,18 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
         this.content = content;
 
         deserialiseCoordinates();
-        location.setId( extractNewlineDelimitedValueFor( locationIDTag ) );
+        location.setId( DeserialiserUtils.extractNewlineDelimitedValueFor( locationIDTag, content ) );
+        location.setAreaID( DeserialiserUtils.extractNewlineDelimitedValueFor( locationAreaIDTag, content ) );
         deserialiseDescription();
         deserialiseExits();
         deserialiseItems();
     }
 
-    private String extractNewlineDelimitedValueFor( String tag ) {
-        int startOfTag = content.indexOf( tag );
-        //if( startOfTag == -1 )
-        if( startOfTag == -1 || isStartOfALine( startOfTag ) == false )
-            return "";
-        int endOfTag = content.indexOf( "\n", startOfTag );
-        if( endOfTag == -1 )
-            endOfTag = content.length();
-        return content.substring( startOfTag + tag.length(), endOfTag );
-    }
-
-    private boolean isStartOfALine( int index ) {
-        return index == 0 ||
-               (index > 0 && content.charAt( index-1 ) == '\n');
-    }
-
     private void deserialiseCoordinates() {
-        String x = extractNewlineDelimitedValueFor( xTag );
+        String x = DeserialiserUtils.extractNewlineDelimitedValueFor( xTag, content );
         if( x != "" )
             location.setX( Integer.parseInt( x ) );
-        String y = extractNewlineDelimitedValueFor( yTag );
+        String y = DeserialiserUtils.extractNewlineDelimitedValueFor( yTag, content );
         if( y != "" )
             location.setY( Integer.parseInt( y ) );
     }

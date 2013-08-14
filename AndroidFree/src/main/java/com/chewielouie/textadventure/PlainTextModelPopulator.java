@@ -8,6 +8,9 @@ import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 public class PlainTextModelPopulator {
     private final String locationNameTag = "LOCATION\n";
     private final String inventoryItemNameTag = "INVENTORY ITEM\n";
+    private final String locationAreaTag = "LOCATION AREA\n";
+    private final String locationAreaIdTag = "location area id:";
+    private final String locationAreaNameTag = "location area name:";
     private int nextCharToParse = 0;
     private TextAdventureModel model = null;
     private ModelLocationFactory locationFactory = null;
@@ -33,6 +36,7 @@ public class PlainTextModelPopulator {
         this.content = content;
 
         extractInventory();
+        extractLocationAreas();
         extractLocations();
     }
 
@@ -68,6 +72,27 @@ public class PlainTextModelPopulator {
                 endOfSection = content.length();
         }
         nextCharToParse = endOfSection;
+    }
+
+    private void extractLocationAreas() {
+        while( moreContentToParse() && nextSectionIsALocationArea() ) {
+            if( model != null )
+                model.addLocationArea( extractLocationAreaId(),
+                                       extractLocationAreaName() );
+            nextCharToParse++;
+        }
+    }
+
+    private boolean nextSectionIsALocationArea() {
+        return content.indexOf( locationAreaTag, nextCharToParse ) != -1;
+    }
+
+    private String extractLocationAreaId() {
+        return DeserialiserUtils.extractNewlineDelimitedValueFor( locationAreaIdTag, content, nextCharToParse );
+    }
+
+    private String extractLocationAreaName() {
+        return DeserialiserUtils.extractNewlineDelimitedValueFor( locationAreaNameTag, content, nextCharToParse );
     }
 
     private void extractLocations() {

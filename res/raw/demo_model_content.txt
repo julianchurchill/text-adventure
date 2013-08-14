@@ -11,6 +11,7 @@ LOCATION
 x:300
 y:480
 location id:townentrance
+location area id:town-area
 location description:You are standing outside a small town. The main street goes north, to the west there are some small out buildings and to the east you can see what looks like an abandoned mine shaft.
 EXIT
 exit label:North
