@@ -33,7 +33,7 @@ Features
   - DONE Location stores which area it belongs to by id which can be retrieved from the location
   - DONE Update demo_model_content with location area ids and names at the top
   - DONE Update demo_model_content with location area ids for each location
-  - Location area ids are mapped to the specified area name by the model
+  - DONE Location area ids are mapped to the specified area name by the model
   - Presenter should update view with location area name when the location changes
   - View/Activity should update location area name when told
 - [UI] Parchment background

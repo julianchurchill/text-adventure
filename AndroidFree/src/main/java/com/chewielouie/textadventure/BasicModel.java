@@ -18,6 +18,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     private int maximumScore = 7;
     private List<ModelEventSubscriber> eventSubscribers =
                                     new ArrayList<ModelEventSubscriber>();
+    Map<String,String> locationAreaNames = new HashMap<String,String>();
 
     public BasicModel() {
     }
@@ -31,6 +32,11 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public void addLocationArea( String id, String name ) {
+        locationAreaNames.put( id, name );
+    }
+
+    public String currentLocationAreaName() {
+        return locationAreaNames.get( currentLocation().areaID() );
     }
 
     public void setCurrentLocation( String id ) {

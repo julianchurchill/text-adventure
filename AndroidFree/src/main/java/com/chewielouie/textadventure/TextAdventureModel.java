@@ -9,6 +9,7 @@ public interface TextAdventureModel {
     public String currentLocationDescription();
     public String availableItemsText();
     public void addLocationArea( String id, String name );
+    public String currentLocationAreaName();
     public void setCurrentLocation( String id );
     public void addLocation( ModelLocation location );
     public List<Exit> currentLocationExits();

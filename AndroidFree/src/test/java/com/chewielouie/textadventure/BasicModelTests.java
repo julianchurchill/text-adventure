@@ -362,6 +362,18 @@ public class BasicModelTests {
     }
 
     @Test
+    public void current_area_name_is_mapped_from_current_location_area_id() {
+        ModelLocation loc1 = mock( ModelLocation.class );
+        when( loc1.areaID() ).thenReturn( "area-id" );
+        BasicModel model = new BasicModel();
+        model.addLocation( loc1 );
+
+        model.addLocationArea( "area-id", "area name" );
+
+        assertThat( model.currentLocationAreaName(), is( "area name" ) );
+    }
+
+    @Test
     public void subscribers_receive_current_location_change_events() {
         final ModelLocation loc1 = mockery.mock( ModelLocation.class, "loc1" );
         final ModelLocation loc2 = mockery.mock( ModelLocation.class, "loc2" );
