@@ -58,6 +58,7 @@ Features
   - Pathfinder (has gone through every exit)
   - Player of the Kazoo (completed a sub quest to create and play a kazoo at a childrens party)
 - [FEATURE] New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
+  - Make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 - [UI] Restrict action button list to half screen height
 - [FEATURE] Sound effects
   - Door unlocking, clock tower ticking/bells, ghostly sounds in the graveyard, mice scratching at the church, market hustle and bustle.
