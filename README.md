@@ -27,8 +27,7 @@ Bugs
 
 Features
 
-- [UI] Parchment background
-  - Testing paper38f.jpg from www.myfreetextures.com/worn-parchment-paper-2/ - fair use policy - must ask permission in comments and credit the website in the about box.
+- [UI] Parchment background extras
   - Scroll bar images need to compliment the parchment background...
   - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
 - [FEATURE] Map - shows where you've not been yet, perhaps using different colours to show this
@@ -74,6 +73,7 @@ Done
 2.2
 ---
 
+- [UI] Parchment background (from http://www.myfreetextures.com/worn-parchment-paper-2)
 - [FEATURE] Added location title to title bar next to score
 - [UI] Full width action buttons
 
