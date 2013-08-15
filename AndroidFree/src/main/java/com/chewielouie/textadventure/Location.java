@@ -9,6 +9,7 @@ import com.chewielouie.textadventure.item.Item;
 public class Location implements ModelLocation {
     private String id;
     private String description;
+    private String areaID = "";
     private List<Exit> exits = new ArrayList<Exit>();
     private List<Item> items = new ArrayList<Item>();
     private UserInventory inventory;
@@ -168,6 +169,11 @@ public class Location implements ModelLocation {
     }
 
     public void setAreaID( String id ) {
+        this.areaID = id;
+    }
+
+    public String areaID() {
+        return areaID;
     }
 }
 

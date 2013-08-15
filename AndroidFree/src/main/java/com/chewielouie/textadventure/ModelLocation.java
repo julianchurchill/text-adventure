@@ -24,6 +24,7 @@ public interface ModelLocation {
     public int x();
     public int y();
     public void setAreaID( String id );
+    public String areaID();
 }
 
 

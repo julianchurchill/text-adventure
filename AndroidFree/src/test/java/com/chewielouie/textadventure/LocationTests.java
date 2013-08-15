@@ -39,6 +39,19 @@ public class LocationTests {
     }
 
     @Test
+    public void location_area_id_is_blank_on_construction() {
+        Location l = new Location( "", "", null, null );
+        assertEquals( "", l.areaID() );
+    }
+
+    @Test
+    public void location_area_id_can_be_set_and_retrieved() {
+        Location l = new Location( "", "", null, null );
+        l.setAreaID( "area id" );
+        assertEquals( "area id", l.areaID() );
+    }
+
+    @Test
     public void available_items_text_is_empty_on_construction() {
         Location l = new Location( "", "", null, null );
         assertEquals( "", l.availableItemsText() );
