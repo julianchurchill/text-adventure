@@ -11,8 +11,9 @@ public class PlainTextModelPopulator {
     private final String locationAreaTag = "LOCATION AREA\n";
     private final String locationAreaIdTag = "location area id:";
     private final String locationAreaNameTag = "location area name:";
+    private final String[] orderedSections = { inventoryItemNameTag, locationAreaTag, locationNameTag };
     private int nextCharToParse = 0;
-    private TextAdventureModel model = null;
+    private TextAdventureModel model = new NullModel();
     private ModelLocationFactory locationFactory = null;
     private UserInventory inventory = null;
     private ItemFactory itemFactory = null;
@@ -27,7 +28,8 @@ public class PlainTextModelPopulator {
                                     ModelLocationDeserialiser d,
                                     ItemDeserialiser i,
                                     String content ) {
-        this.model = model;
+        if( model != null )
+            this.model = model;
         this.locationFactory = locationFactory;
         this.inventory = inventory;
         this.itemFactory = itemFactory;
@@ -65,11 +67,11 @@ public class PlainTextModelPopulator {
     }
 
     private int findEndOfCurrentSection() {
-        int endOfSection = content.indexOf( inventoryItemNameTag, nextCharToParse+1 );
-        if( endOfSection == -1 )
-            endOfSection = content.indexOf( locationAreaTag, nextCharToParse+1 );
-        if( endOfSection == -1 )
-            endOfSection = content.indexOf( locationNameTag, nextCharToParse+1 );
+        int endOfSection = -1;
+        for( String section : orderedSections )
+            if( endOfSection == - 1 )
+                endOfSection = content.indexOf( section, nextCharToParse+1 );
+
         if( endOfSection == -1 )
             endOfSection = content.length();
         return endOfSection;
@@ -77,9 +79,8 @@ public class PlainTextModelPopulator {
 
     private void extractLocationAreas() {
         while( moreContentToParse() && nextSectionIsALocationArea() ) {
-            if( model != null )
-                model.addLocationArea( extractLocationAreaId(),
-                                       extractLocationAreaName() );
+            model.addLocationArea( extractLocationAreaId(),
+                                   extractLocationAreaName() );
             nextCharToParse++;
         }
     }
@@ -103,8 +104,7 @@ public class PlainTextModelPopulator {
                 String content = extractLocationContent();
                 if( locationDeserialiser != null )
                     locationDeserialiser.deserialise( l, content );
-                if( model != null )
-                    model.addLocation( l );
+                model.addLocation( l );
             }
         }
     }
