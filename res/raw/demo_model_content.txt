@@ -7,6 +7,18 @@ INVENTORY ITEM
 item name:Multitool
 item description:It's got a lot of tools on it. You feel like a man of the wilderness when you wield this formidable contraption.
 item id:multitool
+LOCATION AREA
+location area id:town-area
+location area name:Town
+LOCATION AREA
+location area id:mine-area
+location area name:Mine
+LOCATION AREA
+location area id:church-area
+location area name:Church
+LOCATION AREA
+location area id:friary-area
+location area name:Friary
 LOCATION
 x:300
 y:480
@@ -44,6 +56,7 @@ LOCATION
 x:300
 y:0
 location id:secondfloorclocktower
+location area id:town-area
 location description:You are at the top of the clock tower standing in front of the clock mechanism.
 EXIT
 exit label:Down
@@ -103,6 +116,7 @@ LOCATION
 x:300
 y:60
 location id:firstfloorclocktower
+location area id:town-area
 location description:You are standing on the first floor of the clock tower. The wooden floorboards creak and groan as you tread across them.
 EXIT
 exit label:Up
@@ -118,6 +132,7 @@ LOCATION
 x:300
 y:120
 location id:groundfloorclocktower
+location area id:town-area
 location description:You are inside the mighty clock tower. Sound resonates around you as the clock ticks.
 EXIT
 exit label:Up
@@ -133,6 +148,7 @@ LOCATION
 x:480
 y:480
 location id:smallshed
+location area id:town-area
 location description:You are standing inside a small shed. It is dusty and dirty and a variety of mining tools rest against the walls.
 EXIT
 exit label:West
@@ -167,6 +183,7 @@ LOCATION
 x:300
 y:240
 location id:clocktower
+location area id:town-area
 location description:You stand before a mighty clock tower. The clock goes TICK!
 EXIT
 exit label:South
@@ -213,6 +230,7 @@ LOCATION
 x:300
 y:360
 location id:mainstreettown
+location area id:town-area
 location description:You are on the main street of the town. There is a clock tower to the north.
 EXIT
 exit label:North
@@ -246,6 +264,7 @@ LOCATION
 x:180
 y:480
 location id:townoutbuildings
+location area id:town-area
 location description:There are a number of small shack like structures here, fallen down and decrepit they haven't been used for years.
 EXIT
 exit label:East
@@ -273,6 +292,7 @@ LOCATION
 x:420
 y:480
 location id:outsideamineshaft
+location area id:town-area
 location description:You stand before an old blocked up mine shaft, there are some dusty footprints in the dirt around the entrance however there is no obvious way in. A sign states "McCreedys Mine - Stay out or suffer the consequences!". To the east is an old ramshackle shed.
 EXIT
 exit label:West
@@ -294,6 +314,7 @@ LOCATION
 x:420
 y:540
 location id:mineshaftchamber1
+location area id:mine-area
 location description:You stand just inside a dusty mineshaft. It looks like it has been abandoned and not used for many years. Until recently the entrance was blocked by a large rock fall. There are footprints leading down a small dark tunnel and there is a dimly lit annex to the right.
 EXIT
 exit label:Outside
@@ -314,6 +335,7 @@ LOCATION
 x:420
 y:600
 location id:darktunnel1
+location area id:mine-area
 location description:You are in a dark tunnel with a trail of scuffed footprints leading deeper into the mine. You think you can make out two sets of prints in the dirt. The mine entrance lies to the north and the tunnel continues south.
 EXIT
 exit label:North
@@ -329,6 +351,7 @@ LOCATION
 x:420
 y:660
 location id:darktunnel2
+location area id:mine-area
 location description:The footprints continue further south where you can see a dim light burning. The air down here is dank and you feel a little claustrophobic. Off to the east is a candle lit chamber.
 EXIT
 exit label:North
@@ -349,6 +372,7 @@ LOCATION
 x:420
 y:720
 location id:smallminechamber
+location area id:mine-area
 location description:You enter the chamber and although it is lit by a candle burning gently in an alcove you strain your eyes to peer into the shadows. Out shuffles a man, bedraggled and somber, head down muttering to himself. You notice he has a manacle around his ankle, chained to a nearby rock. Approaching him you say softly 'Hello? Who are you? What's happened here?'. The man replies 'I was taken, I don't know who it was. They hit me from behind and I woke up here, like this.' gesturing to the chain at his feet. 'Help me, please.' splutters the man as he gasps for breath. He is clearly suffering from his circumstances and you feel inclined to find a way to help him out of his predicament.
 EXIT
 exit label:North
@@ -436,6 +460,7 @@ LOCATION
 x:480
 y:600
 location id:dimlylitannex
+location area id:mine-area
 location description:This annex is carved out of the rock face with several indentations holding a variety of items including bones, a burnt out candle, some old torn paper and a metal ring.
 EXIT
 exit label:East
@@ -472,6 +497,7 @@ LOCATION
 x:480
 y:660
 location id:evensmallerannex
+location area id:mine-area
 location description:This is an even smaller annex attached to a larger better lit one. There is straw on the floor and it looks like someone has been sleeping here.
 EXIT
 exit label:Dimly lit annex
@@ -497,6 +523,7 @@ LOCATION
 x:480
 y:660
 location id:candlelitchamber
+location area id:mine-area
 location description:You stand in a circular chamber with candles lining the walls in metal brakets. There is a table in the centre of the room and an exit leading deeper into the mine to what looks like a smithy. To the west a tunnel meanders back through the darkness.
 EXIT
 exit label:Dark tunnel
@@ -537,6 +564,7 @@ LOCATION
 x:480
 y:720
 location id:minesmithy
+location area id:mine-area
 location description:This is the mine smithy, used for emergency tool repair to save the workers from trekking back into town. There are a selection of tools lying around, none of which catch your eye.
 EXIT
 exit label:Candle lit chamber
@@ -563,6 +591,7 @@ LOCATION
 x:240
 y:360
 location id:merchantslane
+location area id:town-area
 location description:You stand at the start of Merchants Lane looking ahead admidst the varied and wonderful shop fronts that adorn this street. There a few people milling around, nipping in and out of one or two of the shops however most of the shops look closed. Immediately to the north you see an open shop door and behind the counter sits a man with a familiar face - the shopkeeper from the mine.
 EXIT
 exit label:East
@@ -578,6 +607,7 @@ LOCATION
 x:240
 y:420
 location id:generalstore
+location area id:town-area
 location description:You step inside the General Store raising your hand in greeting to the shopkeeper. He stands up as you enter at once beckoning you forward and nodding his head in recognition.
 EXIT
 exit label:Outside
@@ -647,6 +677,7 @@ LOCATION
 x:360
 y:360
 location id:eastofmainstreet
+location area id:town-area
 location description:You are standing on a street leading from main street which you can see to the west. Further to the east is a large building that looks like it might be the town hall.
 EXIT
 exit label:West
@@ -663,6 +694,7 @@ LOCATION
 x:420
 y:360
 location id:outsidetownhall
+location area id:town-area
 location description:You are outside the town hall. The large wooden double doors in front of you are emblazoned with the town crest - two white dragons perched in a tree. A few people are standing about looking at the notice boards staked into the ground around the entrance to the town hall.
 EXIT
 exit label:West
@@ -692,6 +724,7 @@ LOCATION
 x:480
 y:360
 location id:townhall1
+location area id:town-area
 location description:You stand just inside the town hall entrance, a large circular reception room with several doors leading out. The walls are adorned with civic regalia and paintings of local scenes, intermingled with portraits of some of the more wealthy and powerful citizens. One door catches your eye due to the inscription above - "Room of Deeds".
 EXIT
 exit label:West
@@ -708,6 +741,7 @@ LOCATION
 x:480
 y:300
 location id:roomofdeeds
+location area id:town-area
 location description:You stand in a large room with plenty of space for lots of notice boards. The ones that are here look intriguing and you feel like taking a closer look. Something about this room puts a smile on your face and you feel yourself start to daydream about adventures past.
 EXIT
 exit label:Town hall entrance lobby
@@ -746,6 +780,7 @@ LOCATION
 x:240
 y:240
 location id:cobbledroad
+location area id:town-area
 location description:You are standing on a cobbled road that undulates between the small houses of this town. It continues west and back to the east you see an imposing clock tower looming over the houses.
 EXIT
 exit label:East
@@ -767,6 +802,7 @@ LOCATION
 x:240
 y:180
 location id:hovel
+location area id:town-area
 location description:You step inside the house. It might be more appropriate to call this a hovel. There is mess everywhere and it looks abandoned.
 EXIT
 exit label:Outside
@@ -794,6 +830,7 @@ LOCATION
 x:180
 y:240
 location id:morecobbledroad
+location area id:town-area
 location description:You are standing on a long cobbled road that undulates between the small houses of this town. It continues west and back to the east. Further up ahead you see a town gatehouse that guards one of the many entrances to the town.
 EXIT
 exit label:East
@@ -810,6 +847,7 @@ LOCATION
 x:120
 y:240
 location id:westgatehouse
+location area id:town-area
 location description:You stand before a large gatehouse within which sit several men of the town watch. They are not doing very much and do not notice you as you pass. You wonder how much they get paid and make a mental note to consider a career change. To the north is a dirt track leading away from the town.
 EXIT
 exit label:East
@@ -826,6 +864,7 @@ LOCATION
 x:120
 y:180
 location id:dirttrack
+location area id:town-area
 location description:You are on a dirt track leading away from the town. There are deep furrows indicating it has been well used, probably as a trade route to other more affluent settlements. It continues to the north.
 EXIT
 exit label:North
@@ -842,6 +881,7 @@ LOCATION
 x:120
 y:120
 location id:moredirttrack
+location area id:town-area
 location description:You are on a dirt track leading away from the town. To the west you see a churchyard. It looks gloomy, mysterious and uninviting, not a great combination. To the north the track starts to become enshrouded in the surrounding woodland.
 EXIT
 exit label:North
@@ -863,6 +903,7 @@ LOCATION
 x:120
 y:060
 location id:woodland_track
+location area id:town-area
 location description:You stand on a woodland track. To the south the track opens out but to the north the woods become too dense to pass. There is a track to the east which looks better travelled.
 EXIT
 exit label:South
@@ -879,6 +920,7 @@ LOCATION
 x:180
 y:060
 location id:track_to_friary
+location area id:town-area
 location description:You are on a fairly well travelled track which leads to a large imposing building up ahead. To the west you see woodland and that's about all.
 EXIT
 exit label:West
@@ -895,6 +937,7 @@ LOCATION
 x:240
 y:060
 location id:friary_gates
+location area id:friary-area
 location description:You stand before the gates of a large imposing building. There is a friar in front of you whom from his black cloak and white habit you identify as a member of the Dominican order. Back to the west is a wood and in the distance a church tower can be seen.
 EXIT
 exit label:West
@@ -945,6 +988,7 @@ LOCATION
 x:300
 y:060
 location id:friary_entrance
+location area id:friary-area
 location description:You stand just inside the friary gates in a courtyard. Straw is scattered around and there are a few goats that have been brought here to provide milk for the order. There is a large door leading to a large communal space to the east and to the north there is a corridor running under the building surrounding you, opening up to more buildings further on.
 EXIT
 exit label:West
@@ -966,6 +1010,7 @@ LOCATION
 x:360
 y:060
 location id:friary_main_hall
+location area id:friary-area
 location description:This is the main hall of the friary. There is a long wooden table running through the centre of the hall lined with simple wooden chairs. There is space for about 20 friars. The hall itself is plain, with a few windows and a high ceiling.
 EXIT
 exit label:West
@@ -977,6 +1022,7 @@ LOCATION
 x:300
 y:000
 location id:friary_north_corridor
+location area id:friary-area
 location description:You are in the north corridor of the friary which leads from the entrance courtyard to the north buildings. Looking ahead you can spy the entrance to some stairs leading up a tower and a couple of doors to more wood and stone buildings.
 EXIT
 exit label:South
@@ -993,6 +1039,7 @@ LOCATION
 x:300
 y:-060
 location id:friary_north_courtyard
+location area id:friary-area
 location description:You are in the north courtyard of the friary, behind you to the south is a corridor that leads to the entrance of the friary. From here you can see a door leading to steps that climb a tower - looking upwards you see lights in the room at the top and get a sense that there is much work going on above. There is also a door into the surrounding building to the east.
 EXIT
 exit label:South
@@ -1014,6 +1061,7 @@ LOCATION
 x:300
 y:-120
 location id:friary_tower_stairs
+location area id:friary-area
 location description:You are at the bottom of a steep set of stone stairs that spiral far above you. Looking up makes you feel a little sick and the combination of the steep angle of the staircase and the shallow depth of the steps, on which you can barely get a foothold, make you think twice about proceeding upwards.
 EXIT
 exit label:South
@@ -1030,6 +1078,7 @@ LOCATION
 x:300
 y:-120
 location id:friary_tower_stairs_first_floor
+location area id:friary-area
 location description:You stand on an indented ledge on the first floor of the tower stairs. You look up and the stairs continue above you spiralling out of sight.
 EXIT
 exit label:Down
@@ -1046,6 +1095,7 @@ LOCATION
 x:300
 y:-120
 location id:friary_tower_stairs_second_floor
+location area id:friary-area
 location description:You stand on an indented ledge on the second floor of the tower stairs. You can hear shuffling above you.
 EXIT
 exit label:Down
@@ -1062,6 +1112,7 @@ LOCATION
 x:300
 y:-120
 location id:friary_tower_library_room
+location area id:friary-area
 location description:You stand in a large open room at the top of the tower. It is full of books piled upon tables, chairs, shelves and even the floor. This must be the Friary library where the friars study and write down their knowledge and experiences for the guidance of future friars. You notice a man in the corner hunched over a desk mumbling to himself.
 EXIT
 exit label:Down
@@ -1118,6 +1169,7 @@ LOCATION
 x:360
 y:-060
 location id:friary_north_building
+location area id:friary-area
 location description:You are in the north building of the friary. To the east you see a kitchen through a narrow, low doorway.
 EXIT
 exit label:West
@@ -1134,6 +1186,7 @@ LOCATION
 x:420
 y:-060
 location id:friary_kitchen
+location area id:friary-area
 location description:All around you is the smell of cooked food, although you cannot see any laid out. The kitchen looks quite clean and tidy, you must have arrived just after a meal has been served. There is a door to the outside and what looks like a herb garden.
 EXIT
 exit label:West
@@ -1186,6 +1239,7 @@ LOCATION
 x:420
 y:-060
 location id:friary_cellar
+location area id:friary-area
 location description:You stand in the cool space beneath the kitchen, bare rock around you and just about enough room to move. The cellar narrows up ahead and you will have to crawl on your knees to get further in.
 EXIT
 exit label:Up
@@ -1202,6 +1256,7 @@ LOCATION
 x:480
 y:-060
 location id:friary_cellar_narrow_end
+location area id:friary-area
 location description:You are crawling along the floor of the friary cellar, the space around you is tight and makes you feel a little nervous. As you reach the end of the crawlspace you can make out some bones stacked in piles against the back wall.
 EXIT
 exit label:Out
@@ -1233,6 +1288,7 @@ LOCATION
 x:480
 y:-060
 location id:friary_herb_garden
+location area id:friary-area
 location description:You are surrounded by delicate scents and deep aromas. You stand in the Friary's herb garden and it is looking a little unkempt. The further you look the more overgrown it has become. You are unsure if you should venture further in for fear of getting lost in the undergrowth!
 EXIT
 exit label:West
@@ -1249,6 +1305,7 @@ LOCATION
 x:480
 y:-120
 location id:herb_garden_track
+location area id:friary-area
 location description:You stand in the middle of a maze of twisty tracks, all alike. You feel you may be a little lost and wonder which way to turn.
 EXIT
 exit label:North
@@ -1285,6 +1342,7 @@ LOCATION
 x:560
 y:-060
 location id:herb_garden_track_2
+location area id:friary-area
 location description:You stand in the middle of a maze of twisty tracks, all alike. You feel you may be a little lost and wonder which way to turn.
 EXIT
 exit label:North
@@ -1321,6 +1379,7 @@ LOCATION
 x:620
 y:-060
 location id:herb_garden_track_3
+location area id:friary-area
 location description:You stand in the middle of a maze of twisty tracks, all alike. You feel you may be a little lost and wonder which way to turn.
 EXIT
 exit label:North
@@ -1357,6 +1416,7 @@ LOCATION
 x:560
 y:000
 location id:herb_garden_track_4
+location area id:friary-area
 location description:You stand in a clearing in the depths of the herb garden. There is not much light here as the canopy is thick but you can make out a plant that covers the ground with thin red leaves and bright purple stalks.
 EXIT
 exit label:North
@@ -1395,6 +1455,7 @@ LOCATION
 x:060
 y:120
 location id:churchyardeast
+location area id:church-area
 location description:You are in a churchyard, peering through the gloom which seems to stick to everything around you. A sense of personal peril hangs in the air jumping to new heights as you realise you are not alone. There is more churchyard to the west and a dirt track leading away to the east. Beside you is a shady presence, menacing but still.
 EXIT
 exit label:East
@@ -1432,6 +1493,7 @@ LOCATION
 x:060
 y:180
 location id:churchyardsoutheast
+location area id:church-area
 location description:You are in the south east corner of the church yard.
 EXIT
 exit label:West
@@ -1460,6 +1522,7 @@ LOCATION
 x:000
 y:180
 location id:churchyardsouth
+location area id:church-area
 location description:You are at the south edge of the church yard.
 EXIT
 exit label:East
@@ -1493,6 +1556,7 @@ LOCATION
 x:000
 y:120
 location id:churchyardmiddle
+location area id:church-area
 location description:You are in the middle of the church yard.
 EXIT
 exit label:South
@@ -1531,6 +1595,7 @@ LOCATION
 x:000
 y:060
 location id:churchyardnorth
+location area id:church-area
 location description:You are at the north edge of the church yard.
 EXIT
 exit label:South
@@ -1576,6 +1641,7 @@ LOCATION
 x:060
 y:060
 location id:churchyardnortheast
+location area id:church-area
 location description:You are in the north east corner of the church yard. There is nothing here but a pile of leaves and a musty smell. An old withered oak tree sits unhappily against the church yard wall.
 EXIT
 exit label:South
@@ -1607,6 +1673,7 @@ LOCATION
 x:-060
 y:060
 location id:churchyardnorthwest
+location area id:church-area
 location description:You are in the north west corner of the church yard. There is nothing here but a pile of leaves and a musty smell. An old withered ash tree sits unhappily against the church yard wall.
 EXIT
 exit label:South
@@ -1630,6 +1697,7 @@ LOCATION
 x:-060
 y:120
 location id:churchyardwest
+location area id:church-area
 location description:You are at the west edge of the church yard. The church porch stands in front of you, empty but full of shadows. You hear some scratching in the corner which you presume is a mouse.
 EXIT
 exit label:North
@@ -1656,6 +1724,7 @@ LOCATION
 x:-060
 y:160
 location id:churchyardsouthwest
+location area id:church-area
 location description:You are in the south west corner of the church yard. There is nothing here but a pile of leaves and a musty smell. An old withered elm tree sits unhappily against the church yard wall.
 EXIT
 exit label:North
@@ -1687,6 +1756,7 @@ LOCATION
 x:-120
 y:120
 location id:churchentrance
+location area id:church-area
 location description:You step inside the porch, grateful to be out of the creepy church yard. In front of you is a forboding wooden door, sturdy but weatherbeaten. It is slightly ajar letting out the barest crack of light which flickers over you.
 EXIT
 exit label:East
@@ -1703,6 +1773,7 @@ LOCATION
 x:-180
 y:120
 location id:churchnave
+location area id:church-area
 location description:Surrounding you are the pews in which the congregation of the church would sit to attend a service. They look dusty and probably haven't been used for years. There doesn't appear to be anyone here right now, which you are thankful for since you are sneaking about. The ceiling is high and vaulted and the interior of this building looks a lot larger than it did from the outside. Further on you see the altar at the top of some shallow steps.
 EXIT
 exit label:East
@@ -1719,6 +1790,7 @@ LOCATION
 x:-240
 y:120
 location id:churchchancel
+location area id:church-area
 location description:This part of the church is well lit by candle light, although whoever lit the candles does not appear to be around. You stand at the foot of the shallow stone platform upon which the altar stands.
 EXIT
 exit label:East
@@ -1735,6 +1807,7 @@ LOCATION
 x:-300
 y:120
 location id:churchaltar
+location area id:church-area
 location description:You stand before a naked stone altar. It has been carvered from a single piece of stone and looks very heavy indeed. The light from the surrounding candles mounted on the wall dances over the surface of the stone.
 EXIT
 exit label:East
@@ -1765,6 +1838,7 @@ LOCATION
 x:-360
 y:120
 location id:churchcryptstairs
+location area id:church-area
 location description:You are on the hidden crypt stairs. The church and the altar are above you and who knows what is below.
 EXIT
 exit label:Down
@@ -1781,6 +1855,7 @@ LOCATION
 x:-420
 y:120
 location id:churchcrypt
+location area id:church-area
 location description:You are at the bottom of the crypt stairs. It is quite dark but you can make out the walls and a passage way. The air is damp and smelly and you think you can hear some hoarse breathing nearby.
 EXIT
 exit label:Passageway
@@ -1797,6 +1872,7 @@ LOCATION
 x:-480
 y:120
 location id:churchcryptpassageway
+location area id:church-area
 location description:The passageway opens out into a small cavern. There is some light from a door slightly open at one end of the cavern however between you and it stands a grisly, hairy and dribbly beast. Behind you lies the passageway back to the stairs.
 EXIT
 exit label:Passageway
@@ -1825,6 +1901,7 @@ LOCATION
 x:-540
 y:120
 location id:churchcrypt_litroom
+location area id:church-area
 location description:You stand in another cavern, lit by candles embedded in recesses in the wall. A door leads back to the passage to the stairs. Resting on the hilt of his sword stands a burly brigand. Beside him is another door, this one looks a lot more serious than the last and is reinforced with metal bars.
 EXIT
 exit label:Door
@@ -1873,6 +1950,7 @@ LOCATION
 x:-600
 y:120
 location id:churchcrypt_innersanctum
+location area id:church-area
 location description:You stand in yet another cavern however this one seems better looked after. There is a small amount of furniture, a few chairs, a table and some trinkets and the floor appears to have been swept. There are several doors leading from this room and you think you can hear whispering voices but you cannot tell which door they are coming from.
 EXIT
 exit label:Reinforced door
@@ -1899,6 +1977,7 @@ LOCATION
 x:-660
 y:120
 location id:churchcrypt_storeroom
+location area id:church-area
 location description:This room appears to be a storage area, there are boxes on the floor and shelves lined with supplies. You can see food, drink, medicines. There is enough here to keep a band of men going for many weeks - or one person for a lifetime. One box in the corner catches your eye, it is full of plants - which seems quite unusual given that you can see no natural source of light yet the plants appear to be alive and healthy.
 EXIT
 exit label:Wooden door
@@ -1938,6 +2017,7 @@ LOCATION
 x:-600
 y:060
 location id:churchcrypt_emptyroom2
+location area id:church-area
 location description:You stand in yet another cavern.
 EXIT
 exit label:Metal door
@@ -1949,6 +2029,7 @@ LOCATION
 x:-600
 y:180
 location id:churchcrypt_saferoom
+location area id:church-area
 location description:You stand in yet another cavern.
 EXIT
 exit label:Tough wooden door
@@ -2084,6 +2165,7 @@ LOCATION
 x:360
 y:240
 location id:nobles_quarter_west_street
+location area id:town-area
 location description:You stand at the west end of the main street of the Noble's Quarter. The houses around you are mansions, varying in size and grandeur to reflect the owner's wealth. The larger houses are at the far end to the east. The streets are mostly empty but there are a few merchants wandering back to their homes laden with bargains from far off lands.
 EXIT
 exit label:Clock tower
@@ -2100,6 +2182,7 @@ LOCATION
 x:420
 y:240
 location id:nobles_quarter_middle_street
+location area id:town-area
 location description:You stand in the middle of the main street that runs through the Noble's Quarter. There are impressive houses all around you, getting larger and more opulent the further east you look. Back to the west you can see a clock tower in the distance.
 EXIT
 exit label:West
@@ -2116,6 +2199,7 @@ LOCATION
 x:480
 y:240
 location id:nobles_quarter_east_street
+location area id:town-area
 location description:You stand at the east end of the main street that runs through the Noble's Quarter. This end has the most fantastic houses, mansions of huge proportions with people running to and fro, tending to the houses and the demands of the occupants. One house to the north has a large open porch whereupon stands a wide-shouldered man, looking out into the street expectantly.
 EXIT
 exit label:North
@@ -2132,6 +2216,7 @@ LOCATION
 x:540
 y:240
 location id:orens_porch
+location area id:town-area
 location description:You stand on a long porch fronting an even longer house. The house itself has several floors and extends back from the street further than you can see. You get the impression there are large grounds round the back of the house and probably a fountain or two. In front of you stands a large man looking out into the street. He has the air of importance and wealth and you deduce that this must be Oren Constantine the famous merchant.
 EXIT
 exit label:South
@@ -2205,6 +2290,7 @@ LOCATION
 x:540
 y:180
 location id:orens_hallway
+location area id:town-area
 location description:You are in the hallway of Oren's house. The floor is marbled and there is a sweeping staircase leading to the upper floors. Paintings line the walls and statues are ensconced in a number of alcoves around the hall. There are several doors leading from here but one is slightly ajar and looks inviting.
 EXIT
 exit label:Porch
@@ -2221,6 +2307,7 @@ LOCATION
 x:480
 y:180
 location id:orens_study
+location area id:town-area
 location description:You are in the study of the Constantine Mansion. There is a roaring fire on the west wall that crackles and lights the room up with flickers of flame. There is a large desk and two large chairs facing each other over it, both with high backs and wide arms.
 EXIT
 exit label:Hallway
