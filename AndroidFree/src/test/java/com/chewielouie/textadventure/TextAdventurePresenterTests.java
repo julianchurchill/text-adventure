@@ -543,5 +543,21 @@ public class TextAdventurePresenterTests {
         TextAdventurePresenter p = new TextAdventurePresenter( view, model, null, null );
         p.currentLocationChanged();
     }
+
+    @Test
+    public void on_current_location_changed_updates_view_with_location_area_name() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        mockery.checking( new Expectations() {{
+            allowing( model ).currentLocationAreaName();
+            will( returnValue( "area name" ) );
+            ignoring( model );
+            oneOf( view ).showAreaName( "area name" );
+            ignoring( view );
+        }});
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null, null );
+        p.currentLocationChanged();
+    }
+
 }
 

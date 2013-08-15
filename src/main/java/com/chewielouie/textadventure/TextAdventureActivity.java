@@ -485,6 +485,11 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         updateMainText();
     }
 
+    public void showAreaName( String s ) {
+        TextView location_area  = findTextView( R.id.location_text_view );
+        location_area.setText( s );
+    }
+
     public void setActions( List<Action> actions ) {
         actionButtons.clear();
         available_actions_view.removeAllViews();

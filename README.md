@@ -34,8 +34,8 @@ Features
   - DONE Update demo_model_content with location area ids and names at the top
   - DONE Update demo_model_content with location area ids for each location
   - DONE Location area ids are mapped to the specified area name by the model
-  - Presenter should update view with location area name when the location changes
-  - View/Activity should update location area name when told
+  - DONE Presenter should update view with location area name when the location changes
+  - DONE View/Activity should update location area name when told
 - [UI] Parchment background
   - Testing paper38f.jpg from www.myfreetextures.com/worn-parchment-paper-2/ - fair use policy - must ask permission in comments and credit the website in the about box.
   - Scroll bar images need to compliment the parchment background...
