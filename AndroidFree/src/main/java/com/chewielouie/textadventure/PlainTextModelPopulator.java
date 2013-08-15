@@ -59,19 +59,20 @@ public class PlainTextModelPopulator {
 
     private String extractInventoryItemContent() {
         int itemStart = content.indexOf( inventoryItemNameTag, nextCharToParse );
-        findEndOfCurrentSection();
+        nextCharToParse = findEndOfCurrentSection();
         return content.substring(
                 itemStart + inventoryItemNameTag.length(), nextCharToParse );
     }
 
-    private void findEndOfCurrentSection() {
+    private int findEndOfCurrentSection() {
         int endOfSection = content.indexOf( inventoryItemNameTag, nextCharToParse+1 );
-        if( endOfSection == -1 ) {
+        if( endOfSection == -1 )
+            endOfSection = content.indexOf( locationAreaTag, nextCharToParse+1 );
+        if( endOfSection == -1 )
             endOfSection = content.indexOf( locationNameTag, nextCharToParse+1 );
-            if( endOfSection == -1 )
-                endOfSection = content.length();
-        }
-        nextCharToParse = endOfSection;
+        if( endOfSection == -1 )
+            endOfSection = content.length();
+        return endOfSection;
     }
 
     private void extractLocationAreas() {

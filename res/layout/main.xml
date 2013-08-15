@@ -21,7 +21,7 @@
         android:gravity="left|top"
         android:background="#330022"
         android:textSize="12sp"
-        android:text="location"
+        android:text=""
         />
     <TextView
         android:id="@+id/score_text_view"

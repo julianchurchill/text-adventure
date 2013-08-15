@@ -166,6 +166,39 @@ public class PlainTextModelPopulatorTests {
     }
 
     @Test
+    public void location_areas_come_after_inventory_items() {
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
+        mockery.checking( new Expectations() {{
+            oneOf( model ).addLocationArea( "area-id", "area name" );
+            ignoring( model );
+            ignoring( itemFactory );
+        }});
+
+        new PlainTextModelPopulator( model, null, null, itemFactory, null, null,
+           "INVENTORY ITEM\ninventory content\n" +
+           "LOCATION AREA\nlocation area id:area-id\nlocation area name:area name\n" );
+    }
+
+
+    @Test
+    public void location_areas_come_before_locations() {
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        final ItemFactory itemFactory = mockery.mock( ItemFactory.class );
+        mockery.checking( new Expectations() {{
+            oneOf( model ).addLocationArea( "area-id", "area name" );
+            ignoring( model );
+            ignoring( itemFactory );
+        }});
+
+        new PlainTextModelPopulator( model, null, null, itemFactory, null, null,
+           "INVENTORY ITEM\ninventory content\n" +
+           "LOCATION AREA\nlocation area id:area-id\nlocation area name:area name\n" +
+           "LOCATION\nlocation area id:area-id\nlocation id:id\n" );
+    }
+
+
+    @Test
     public void location_is_created_using_factory() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
         final ModelLocationFactory locationFactory =

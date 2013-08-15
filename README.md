@@ -27,20 +27,10 @@ Bugs
 
 Features
 
-- [FEATURE] Add location title or area to title bar next to score
-  - DONE Deserialise location area id for each location
-  - DONE Deserialise list of location area ids and location area names
-  - DONE Location stores which area it belongs to by id which can be retrieved from the location
-  - DONE Update demo_model_content with location area ids and names at the top
-  - DONE Update demo_model_content with location area ids for each location
-  - DONE Location area ids are mapped to the specified area name by the model
-  - DONE Presenter should update view with location area name when the location changes
-  - DONE View/Activity should update location area name when told
 - [UI] Parchment background
   - Testing paper38f.jpg from www.myfreetextures.com/worn-parchment-paper-2/ - fair use policy - must ask permission in comments and credit the website in the about box.
   - Scroll bar images need to compliment the parchment background...
   - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
-- [UI] Action buttons could be bevelled, perhaps like gems? E.g. red ruby buttons
 - [FEATURE] Map - shows where you've not been yet, perhaps using different colours to show this
   - Areas need to be defined for each location - e.g.  Friary - so that the map can be annotated and revealed appropriately
   - A hand drawn map with areas being revealed, and perhaps whole areas being coloured - red (if unexplored, e.g. exits not taken, locations not visited) or green (if totally explored)
@@ -59,6 +49,7 @@ Features
   - Player of the Kazoo (completed a sub quest to create and play a kazoo at a childrens party)
 - [FEATURE] New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
   - Make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
+- [UI] Action buttons could be bevelled, perhaps like gems? E.g. red ruby buttons
 - [UI] Restrict action button list to half screen height
 - [FEATURE] Sound effects
   - Door unlocking, clock tower ticking/bells, ghostly sounds in the graveyard, mice scratching at the church, market hustle and bustle.
@@ -83,6 +74,7 @@ Done
 2.2
 ---
 
+- [FEATURE] Added location title to title bar next to score
 - [UI] Full width action buttons
 
 2.1
