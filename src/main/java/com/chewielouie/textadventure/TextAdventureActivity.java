@@ -41,6 +41,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
@@ -72,6 +73,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private static final int ABOUT_MENU_ITEM = 0;
     private static final int NEW_GAME_MENU_ITEM = 1;
     private static final int OPTIONS_MENU_ITEM = 2;
+    private static final int SHOW_MAP_MENU_ITEM = 3;
     private static String oldJSONFormatSaveFileName = "save_file_1";
     private static String actionHistorySaveFileName = "action_history_save_file_1";
     private static String shared_prefs_root_key = "com.chewielouie.textadventure";
@@ -93,6 +95,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         new HashMap<TextView,Exit>();
     private Map<Button,Action> actionButtons = new HashMap<Button,Action>();
     private LinearLayout available_actions_view;
+    private ImageView map_view;
     private int currentScore = 0;
     private int maximumScore = 0;
     private BasicModel model = null;
@@ -141,6 +144,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         main_text_output.setTextSize( getFontSize() );
         score_text_view = findTextView( R.id.score_text_view );
         available_actions_view = (LinearLayout)findViewById( R.id.available_actions );
+        map_view = (ImageView)findViewById( R.id.map_view );
     }
 
     private class LoadTask extends AsyncTask<Void, Void, Void> {
@@ -528,6 +532,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         menu.add( Menu.NONE, ABOUT_MENU_ITEM, Menu.NONE, getText( R.string.about ) );
         menu.add( Menu.NONE, NEW_GAME_MENU_ITEM, Menu.NONE, getText( R.string.new_game ) );
         menu.add( Menu.NONE, OPTIONS_MENU_ITEM, Menu.NONE, getText( R.string.options ) );
+        menu.add( Menu.NONE, SHOW_MAP_MENU_ITEM, Menu.NONE, getText( R.string.show_map ) );
         return true;
     }
 
@@ -545,6 +550,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
                 break;
             case OPTIONS_MENU_ITEM:
                 showOptionsDialog();
+                break;
+            case SHOW_MAP_MENU_ITEM:
+                showMap();
                 break;
             default:
                 retVal = super.onOptionsItemSelected( item );
@@ -641,6 +649,10 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         dialog.getWindow().setLayout( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT );
     }
 
+    private void showMap() {
+        map_view.setVisibility( View.VISIBLE );
+    }
+
     public void currentScore( int score ) {
         currentScore = score;
         updateScore();
@@ -674,7 +686,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
     @Override
     public void onBackPressed() {
-        if( userActionHandler.inAnActionChain() )
+        if( map_view.getVisibility() == View.VISIBLE )
+            map_view.setVisibility( View.GONE );
+        else if( userActionHandler.inAnActionChain() )
             userActionHandler.cancelActionChain();
         else
             finish();

@@ -17,4 +17,5 @@
     <string name="options_save">Save</string>
     <string name="completed">completed</string>
     <string name="ok">Ok</string>
+    <string name="show_map">Map</string>
 </resources>

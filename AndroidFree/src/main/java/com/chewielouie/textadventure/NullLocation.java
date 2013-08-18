@@ -73,5 +73,12 @@ public class NullLocation implements ModelLocation {
     public int y() {
         return 0;
     }
+
+    public void setAreaID( String id ) {
+    }
+
+    public String areaID() {
+        return "";
+    }
 }
 

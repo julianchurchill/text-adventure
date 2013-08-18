@@ -27,17 +27,18 @@ Bugs
 
 Features
 
-- [UI] Parchment background extras
-  - Scroll bar images need to compliment the parchment background...
-  - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
 - [FEATURE] Map - shows where you've not been yet, perhaps using different colours to show this
-  - Areas need to be defined for each location - e.g.  Friary - so that the map can be annotated and revealed appropriately
+  - DONE In app menu add 'Map' option to show map image. 'Back' should hide it and return to main text view.
+  - Scaling - make sure image stays full size and in proportion so user can pan around.
   - A hand drawn map with areas being revealed, and perhaps whole areas being coloured - red (if unexplored, e.g. exits not taken, locations not visited) or green (if totally explored)
     - Hand drawn map as original images + 1 mask image per area with a black mask identifying the area and transparent everywhere else.
     - For each undiscovered area hide it by applying the matching area mask to the original image with a Paint object set with setXfermode(new PorterDuffXfermode(Mode.SRC_IN)), where the mask is the source and the original image is the destination.
     - If the area has not been fully explored apply the same mask as above but use a different PorterDuff mode - try Mode.LIGHTEN, Mode.DARKEN or Mode.MULTIPLY
     - See http://stackoverflow.com/questions/12614542/maskingcrop-image-in-frame/12637039#12637039 and http://stackoverflow.com/questions/11337679/porterduffxfermode-clear-a-section-of-a-bitmap
     - Player will need to be monitored to detect when they reveal a new area (WorldExplorer object?) and when they completely explore an area. This should be reusable by the achievements detection task below.
+- [UI] Parchment background extras
+  - Scroll bar images need to compliment the parchment background...
+  - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
 - [FEATURE] Google games API Achievements
   - Chatterbox (talk to everyone about everything)
   - Converser (talked to everyone)
