@@ -24,7 +24,14 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -650,6 +657,9 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void showMap() {
+        int[] drawable_masks = { R.drawable.church_mask, R.drawable.mine_mask, R.drawable.town_mask, R.drawable.friary_mask };
+        map_view.setImageBitmap( new MapImageCreator( getResources(), drawable_masks, R.drawable.map ).create() );
+        map_view.setScaleType( ImageView.ScaleType.CENTER );
         map_view.setVisibility( View.VISIBLE );
     }
 
