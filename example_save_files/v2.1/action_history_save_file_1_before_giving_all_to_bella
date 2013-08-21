@@ -449,3 +449,43 @@ action name:use with:item id:dirty_scapula:location id:friary_kitchen:
 action name:use with specific item:item id:dirty_scapula:extra item id:wash_basin:
 action name:take an item:location id:friary_kitchen:
 action name:take specific item:item id:scapula:location id:friary_kitchen:
+action name:exit:exit id:friary_kitchen_to_friary_north_building:
+action name:exit:exit id:friary_north_building_to_friary_kitchen:
+action name:exit:exit id:friary_kitchen_to_friary_herb_garden:
+action name:exit:exit id:friary_herb_garden_to_herb_garden_track:
+action name:exit:exit id:east_herb_garden_track_to_herb_garden_track_2:
+action name:exit:exit id:south_herb_garden_track_2_to_herb_garden_track_4:
+action name:take an item:location id:herb_garden_track_4:
+action name:take specific item:item id:witches_bane:location id:herb_garden_track_4:
+action name:show inventory:
+action name:inventory item:item id:spade:location id:herb_garden_track_4:
+action name:use with:item id:spade:location id:herb_garden_track_4:
+action name:use with specific item:item id:spade:extra item id:buried_silk_blood:
+action name:take an item:location id:herb_garden_track_4:
+action name:take specific item:item id:silk_blood:location id:herb_garden_track_4:
+action name:exit:exit id:north_herb_garden_track_4_to_herb_garden_track_2:
+action name:exit:exit id:west_herb_garden_track_2_to_herb_garden_track:
+action name:exit:exit id:herb_garden_track_to_friary_herb_garden:
+action name:exit:exit id:friary_herb_garden_to_friary_kitchen:
+action name:exit:exit id:friary_kitchen_to_friary_north_building:
+action name:exit:exit id:friary_north_building_to_friary_north_courtyard:
+action name:exit:exit id:friary_north_courtyard_to_friary_north_corridor:
+action name:exit:exit id:friary_north_corridor_to_friary_entrance:
+action name:exit:exit id:friary_entrance_to_friary_gates:
+action name:exit:exit id:friary_gates_to_track_to_friary:
+action name:exit:exit id:track_to_friary_to_woodland_track:
+action name:exit:exit id:woodland_track_to_moredirttrack:
+action name:exit:exit id:moredirttrack_to_dirttrack:
+action name:exit:exit id:dirttrack_to_westgatehouse:
+action name:exit:exit id:westgatehouse_to_morecobbledroad:
+action name:exit:exit id:morecobbledroad_to_cobbledroad:
+action name:exit:exit id:cobbledroad_to_clocktower:
+action name:exit:exit id:clocktowersouth:
+action name:exit:exit id:mainstreettownnorth:
+action name:exit:exit id:clocktower_to_nobles_quarter_west_street:
+action name:exit:exit id:nobles_quarter_west_street_to_nobles_quarter_middle_street:
+action name:exit:exit id:nobles_quarter_middle_street_to_nobles_quarter_east_street:
+action name:exit:exit id:nobles_quarter_east_street_to_orens_porch:
+action name:exit:exit id:orens_porch_to_orens_hallway:
+action name:exit:exit id:orens_hallway_to_orens_study:
+action name:show inventory:

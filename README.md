@@ -14,13 +14,14 @@ Backlog
 
 Technical Tasks
 
-- Replace example save files with good ones now that I've stopped moving locations and item around (e.g. herb garden)
 - Missing unit test for PlainTextItemDeserialiser.insertEncodedNewLines() for setUsedWithText()
 - Missing unit test for presenter.enable/disableViewUpdates()
 - 'demo_model_content.txt' needs renaming so we can have multiple stories available
 
 Bugs
 
+- [BUG] Last line with directions often is half drawn or unreadable. Perhaps the parchment image is causing this issue.
+  - Also the top line can occasionally become half drawn too.
 - [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
   - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
@@ -54,6 +55,7 @@ Features
   - Action buttons should have a complimentary colour to the parchment.
   - Scroll bar images need to compliment the parchment background...
   - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
+    - Background parchment looks more rubbish as it gets stretched. Can we use a higher res image?
 - [UI] Action buttons could be bevelled, perhaps like gems? E.g. red ruby buttons.
 - [UI] Restrict action button list to half screen height
 - [FEATURE] Sound effects
