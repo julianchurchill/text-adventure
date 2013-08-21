@@ -115,6 +115,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private BasicModelFactory internalModelFactory = null;
     private Logger logger = new StdoutLogger();
     private ProgressDialog progressDialog = null;
+    private MovementMonitor movementMonitor = null;
 
     public TextAdventureActivity() {
     }
@@ -280,6 +281,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
                                          new PlainTextExitDeserialiser() ),
                                      itemDeserialiser,
                                      demoContent() );
+        movementMonitor = new MovementMonitor( model );
     }
 
     public BasicModelFactory modelFactory() {
@@ -659,31 +661,13 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void showMap() {
-        map_view.setImageBitmap( new MapImageCreator( getResources(), findExploredAreaMaskIDs(), R.drawable.map ).create() );
+        map_view.setImageBitmap(
+            new MapImageCreator( getResources(),
+                                 movementMonitor.findExploredAreaMaskIDs(),
+                                 R.drawable.map )
+            .create() );
         map_view.setScaleType( ImageView.ScaleType.CENTER );
         map_view.setVisibility( View.VISIBLE );
-    }
-
-    private static final Map<String, Integer> areaIDsToMaskIDs;
-    static {
-        Map<String, Integer> aMap = new HashMap<String, Integer>();
-        aMap.put( "church-area", R.drawable.church_mask );
-        aMap.put( "mine-area", R.drawable.mine_mask );
-        aMap.put( "town-area", R.drawable.town_mask );
-        aMap.put( "friary-area", R.drawable.friary_mask );
-        areaIDsToMaskIDs = Collections.unmodifiableMap( aMap );
-    }
-
-    private int[] findExploredAreaMaskIDs() {
-        Set<String> exploredAreas = new HashSet<String>();
-        exploredAreas.add( "church-area" );
-        exploredAreas.add( "mine-area" );
-
-        int[] exploredMasks = new int[exploredAreas.size()];
-        int i = 0;
-        for( String areaID : exploredAreas )
-            exploredMasks[i++] = areaIDsToMaskIDs.get( areaID );
-        return exploredMasks;
     }
 
     public void currentScore( int score ) {
