@@ -40,16 +40,6 @@ Story (Episode 2)
 
 Features
 
-- [FEATURE] Map - shows where you've not been yet, perhaps using different colours to show this
-  - DONE In app menu add 'Map' option to show map image. 'Back' should hide it and return to main text view.
-  - A hand drawn map with areas being revealed, and perhaps whole areas being coloured - red (if unexplored, e.g. exits not taken, locations not visited) or green (if totally explored)
-    - DONE Mask out areas that have not been explored.
-    - DONE Player will need to be monitored to detect when they reveal a new area (WorldExplorer object?) and when they completely explore an area. This should be reusable by the achievements detection task below.
-    - Scaling - make sure image stays full size and in proportion so user can pan around.
-    - Make better masks and a better map!
-- [UI] Parchment background extras
-  - Scroll bar images need to compliment the parchment background...
-  - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
 - [FEATURE] Google games API Achievements
   - Chatterbox (talk to everyone about everything)
   - Converser (talked to everyone)
@@ -60,11 +50,18 @@ Features
   - Player of the Kazoo (completed a sub quest to create and play a kazoo at a childrens party)
 - [FEATURE] New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
   - Make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
-- [UI] Action buttons could be bevelled, perhaps like gems? E.g. red ruby buttons
+- [UI] Parchment background extras
+  - Action buttons should have a complimentary colour to the parchment.
+  - Scroll bar images need to compliment the parchment background...
+  - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
+- [UI] Action buttons could be bevelled, perhaps like gems? E.g. red ruby buttons.
 - [UI] Restrict action button list to half screen height
 - [FEATURE] Sound effects
   - Door unlocking, clock tower ticking/bells, ghostly sounds in the graveyard, mice scratching at the church, market hustle and bustle.
   - Make on/off-able in options
+- [FEATURE] Map - extras
+    - Scaling - make sure image stays full size and in proportion so user can pan around.
+    - Make better masks and a better map!
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Google games API Leaderboard - Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
 
@@ -85,8 +82,9 @@ Done
 2.2
 ---
 
+- [FEATURE] Map - shows where you've been
+- [FEATURE] Added location area to title bar
 - [UI] Parchment background (from http://www.myfreetextures.com/worn-parchment-paper-2)
-- [FEATURE] Added location title to title bar next to score
 - [UI] Full width action buttons
 
 2.1
