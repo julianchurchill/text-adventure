@@ -3,7 +3,7 @@ package com.chewielouie.textadventure;
 import java.util.Collection;
 import java.util.List;
 import com.chewielouie.textadventure.item.Item;
-import com.chewielouie.textadventure.ModelEventSubscriber;
+import com.chewielouie.textadventure.MovementEventSubscriber;
 
 public class NullModel implements TextAdventureModel {
     public String currentLocationDescription() {
@@ -71,7 +71,7 @@ public class NullModel implements TextAdventureModel {
     public void setMaximumScore( int score ) {
     }
 
-    public void subscribeForEvents( ModelEventSubscriber subscriber ) {
+    public void subscribeForEvents( MovementEventSubscriber subscriber ) {
     }
 
     public ModelLocation findLocationByID( String id ) {

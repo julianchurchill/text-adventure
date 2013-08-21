@@ -378,8 +378,8 @@ public class BasicModelTests {
         final ModelLocation loc1 = mockery.mock( ModelLocation.class, "loc1" );
         final ModelLocation loc2 = mockery.mock( ModelLocation.class, "loc2" );
         final Exit north = mockery.mock( Exit.class );
-        final ModelEventSubscriber modelEventSubscriber =
-            mockery.mock( ModelEventSubscriber.class );
+        final MovementEventSubscriber movementEventSubscriber =
+            mockery.mock( MovementEventSubscriber.class );
         mockery.checking( new Expectations() {{
             allowing( loc1 ).exitable( north );
             will( returnValue( true ) );
@@ -390,13 +390,13 @@ public class BasicModelTests {
             will( returnValue( "loc2" ) );
             ignoring( loc2 );
             ignoring( north );
-            oneOf( modelEventSubscriber ).currentLocationChanged();
-            ignoring( modelEventSubscriber );
+            oneOf( movementEventSubscriber ).currentLocationChanged();
+            ignoring( movementEventSubscriber );
         }});
         BasicModel model = new BasicModel();
         model.addLocation( loc1 );
         model.addLocation( loc2 );
-        model.subscribeForEvents( modelEventSubscriber );
+        model.subscribeForEvents( movementEventSubscriber );
 
         model.moveThroughExit( north );
     }
@@ -404,14 +404,14 @@ public class BasicModelTests {
     @Test
     public void subscribers_do_not_receive_current_location_change_event_on_failed_exit() {
         final Exit north = mockery.mock( Exit.class );
-        final ModelEventSubscriber modelEventSubscriber =
-            mockery.mock( ModelEventSubscriber.class );
+        final MovementEventSubscriber movementEventSubscriber =
+            mockery.mock( MovementEventSubscriber.class );
         mockery.checking( new Expectations() {{
-            never( modelEventSubscriber ).currentLocationChanged();
+            never( movementEventSubscriber ).currentLocationChanged();
             ignoring( north );
         }});
         BasicModel model = new BasicModel();
-        model.subscribeForEvents( modelEventSubscriber );
+        model.subscribeForEvents( movementEventSubscriber );
 
         model.moveThroughExit( north );
     }
@@ -422,15 +422,15 @@ public class BasicModelTests {
         when( loc1.id() ).thenReturn( "loc1id" );
         ModelLocation loc2 = mock( ModelLocation.class );
         when( loc2.id() ).thenReturn( "loc2id" );
-        ModelEventSubscriber modelEventSubscriber = mock( ModelEventSubscriber.class );
+        MovementEventSubscriber movementEventSubscriber = mock( MovementEventSubscriber.class );
         BasicModel model = new BasicModel();
         model.addLocation( loc1 );
         model.addLocation( loc2 );
-        model.subscribeForEvents( modelEventSubscriber );
+        model.subscribeForEvents( movementEventSubscriber );
 
         model.setCurrentLocation( "loc2id" );
 
-        verify( modelEventSubscriber ).currentLocationChanged();
+        verify( movementEventSubscriber ).currentLocationChanged();
     }
 }
 

@@ -6,7 +6,7 @@ import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.action.TakeAnItem;
 
-public class TextAdventurePresenter implements RendersView, UserActionHandler, ModelEventSubscriber {
+public class TextAdventurePresenter implements RendersView, UserActionHandler, MovementEventSubscriber {
     private final TextAdventureView view;
     private final TextAdventureModel model;
     private List<Action> defaultActions = new ArrayList<Action>();

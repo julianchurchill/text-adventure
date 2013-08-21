@@ -1,5 +1,5 @@
 package com.chewielouie.textadventure;
 
-public interface ModelEventSubscriber {
+public interface MovementEventSubscriber {
     public void currentLocationChanged();
 }

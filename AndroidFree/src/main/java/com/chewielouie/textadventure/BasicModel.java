@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.chewielouie.textadventure.item.Item;
-import com.chewielouie.textadventure.ModelEventSubscriber;
+import com.chewielouie.textadventure.MovementEventSubscriber;
 
 public class BasicModel implements TextAdventureModel, UserInventory {
     Map<String,ModelLocation> locations = new HashMap<String,ModelLocation>();
@@ -16,8 +16,8 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     private List<Item> inventoryItems = new ArrayList<Item>();
     private int currentScore = 0;
     private int maximumScore = 7;
-    private List<ModelEventSubscriber> eventSubscribers =
-                                    new ArrayList<ModelEventSubscriber>();
+    private List<MovementEventSubscriber> eventSubscribers =
+                                    new ArrayList<MovementEventSubscriber>();
     Map<String,String> locationAreaNames = new HashMap<String,String>();
 
     public BasicModel() {
@@ -41,7 +41,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
 
     public void setCurrentLocation( String id ) {
         currentLocation = locations.get( id );
-        for( ModelEventSubscriber s : eventSubscribers )
+        for( MovementEventSubscriber s : eventSubscribers )
             s.currentLocationChanged();
     }
 
@@ -67,7 +67,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
         if( currentLocation.exitable( exit ) ) {
             currentLocation = locations.get(
                     currentLocation.exitDestinationFor( exit ) );
-            for( ModelEventSubscriber s : eventSubscribers )
+            for( MovementEventSubscriber s : eventSubscribers )
                 s.currentLocationChanged();
         }
     }
@@ -182,7 +182,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
         maximumScore = score;
     }
 
-    public void subscribeForEvents( ModelEventSubscriber subscriber ) {
+    public void subscribeForEvents( MovementEventSubscriber subscriber ) {
         eventSubscribers.add( subscriber );
     }
 
