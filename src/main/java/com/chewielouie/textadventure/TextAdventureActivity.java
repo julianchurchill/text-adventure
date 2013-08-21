@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -657,10 +659,31 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     }
 
     private void showMap() {
-        int[] drawable_masks = { R.drawable.church_mask, R.drawable.mine_mask, R.drawable.town_mask, R.drawable.friary_mask };
-        map_view.setImageBitmap( new MapImageCreator( getResources(), drawable_masks, R.drawable.map ).create() );
+        map_view.setImageBitmap( new MapImageCreator( getResources(), findExploredAreaMaskIDs(), R.drawable.map ).create() );
         map_view.setScaleType( ImageView.ScaleType.CENTER );
         map_view.setVisibility( View.VISIBLE );
+    }
+
+    private static final Map<String, Integer> areaIDsToMaskIDs;
+    static {
+        Map<String, Integer> aMap = new HashMap<String, Integer>();
+        aMap.put( "church-area", R.drawable.church_mask );
+        aMap.put( "mine-area", R.drawable.mine_mask );
+        aMap.put( "town-area", R.drawable.town_mask );
+        aMap.put( "friary-area", R.drawable.friary_mask );
+        areaIDsToMaskIDs = Collections.unmodifiableMap( aMap );
+    }
+
+    private int[] findExploredAreaMaskIDs() {
+        Set<String> exploredAreas = new HashSet<String>();
+        exploredAreas.add( "church-area" );
+        exploredAreas.add( "mine-area" );
+
+        int[] exploredMasks = new int[exploredAreas.size()];
+        int i = 0;
+        for( String areaID : exploredAreas )
+            exploredMasks[i++] = areaIDsToMaskIDs.get( areaID );
+        return exploredMasks;
     }
 
     public void currentScore( int score ) {
