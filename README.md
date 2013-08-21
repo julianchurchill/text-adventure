@@ -25,6 +25,19 @@ Bugs
   - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
 
+Story (Episode 2)
+
+- Return to the town - extra shops open, friary is abandoned, church is a burnt shell, towns people dislike you.
+- Bella Constantine lives! In a far away hideout plotting her revenge on you...
+- New locations
+  - Another town/village
+  - A river and bridge between the two settlements
+    - Use a boat to get across initially, perhaps repair the bridge from the other side to return to the town
+  - An ancient temple to old gods with traps and puzzles
+  - A portal to a dark plane (deep inside the temple) with demon creatures you must defeat some how
+- Sub quests
+  - Create and play a kazoo at a childrens party at a nobles house (achievement Player of the Kazoo)
+
 Features
 
 - [FEATURE] Map - shows where you've not been yet, perhaps using different colours to show this
