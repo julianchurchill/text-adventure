@@ -14,7 +14,6 @@ Backlog
 
 Technical Tasks
 
-- Missing unit test for PlainTextItemDeserialiser.insertEncodedNewLines() for setUsedWithText()
 - Missing unit test for presenter.enable/disableViewUpdates()
 - 'demo_model_content.txt' needs renaming so we can have multiple stories available
 

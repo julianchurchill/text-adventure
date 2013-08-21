@@ -143,6 +143,22 @@ public class PlainTextItemDeserialiserTests {
     }
 
     @Test
+    public void deserialise_extracts_item_successful_use_messsage_including_embedded_newlines() {
+        final Item item = mockery.mock( Item.class );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+        mockery.checking( new Expectations() {{
+            oneOf( item ).setUsedWithText( "\nmess\nage\n" );
+            ignoring( item );
+        }});
+
+        d.deserialise( item,
+                       "item name:Name\n" +
+                       "item description:description\n" +
+                       "item successful use message:<newline>mess<newline>age<newline>\n" );
+    }
+
+
+    @Test
     public void deserialise_extracts_item_use_is_not_repeatable() {
         final Item item = mockery.mock( Item.class );
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
