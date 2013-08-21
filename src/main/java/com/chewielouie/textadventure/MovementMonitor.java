@@ -23,8 +23,7 @@ public class MovementMonitor implements MovementEventSubscriber {
 
     public MovementMonitor( TextAdventureModel model ) {
         this.model = model;
-        exploredAreas.add( "church-area" );
-        exploredAreas.add( "mine-area" );
+        this.model.subscribeForEvents( this );
     }
 
     public void currentLocationChanged() {

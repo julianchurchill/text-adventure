@@ -30,9 +30,10 @@ Features
 - [FEATURE] Map - shows where you've not been yet, perhaps using different colours to show this
   - DONE In app menu add 'Map' option to show map image. 'Back' should hide it and return to main text view.
   - A hand drawn map with areas being revealed, and perhaps whole areas being coloured - red (if unexplored, e.g. exits not taken, locations not visited) or green (if totally explored)
-    - Mask out areas that have not been explored.
-    - Player will need to be monitored to detect when they reveal a new area (WorldExplorer object?) and when they completely explore an area. This should be reusable by the achievements detection task below.
+    - DONE Mask out areas that have not been explored.
+    - DONE Player will need to be monitored to detect when they reveal a new area (WorldExplorer object?) and when they completely explore an area. This should be reusable by the achievements detection task below.
     - Scaling - make sure image stays full size and in proportion so user can pan around.
+    - Make better masks and a better map!
 - [UI] Parchment background extras
   - Scroll bar images need to compliment the parchment background...
   - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
