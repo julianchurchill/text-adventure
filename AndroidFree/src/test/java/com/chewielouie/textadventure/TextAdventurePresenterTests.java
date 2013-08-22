@@ -559,5 +559,36 @@ public class TextAdventurePresenterTests {
         p.currentLocationChanged();
     }
 
+
+    @Test
+    public void with_view_updates_disabled_view_does_not_get_updates_on_location_change() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, null, null, null );
+
+        p.disableViewUpdates();
+        p.currentLocationChanged();
+    }
+
+    @Test
+    public void with_view_updates_disabled_view_does_not_get_updates_on_render() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        TextAdventurePresenter p = new TextAdventurePresenter( view, null, null, null );
+
+        p.disableViewUpdates();
+        p.render();
+    }
+
+    @Test
+    public void with_view_updates_disabled_view_does_not_get_updates_on_enact() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final Action action = mockery.mock( Action.class );
+        mockery.checking( new Expectations() {{
+            ignoring( action );
+        }});
+        TextAdventurePresenter p = new TextAdventurePresenter( view, null, null, null );
+
+        p.disableViewUpdates();
+        p.enact( action );
+    }
 }
 
