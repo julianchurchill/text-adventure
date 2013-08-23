@@ -36,6 +36,7 @@ Story (Episode 2)
   - A portal to a dark plane (deep inside the temple) with demon creatures you must defeat some how
 - Sub quests
   - Create and play a kazoo at a childrens party at a nobles house (achievement Player of the Kazoo)
+  - Collect bugs - using a bug collector to make them visible and catch them. There are 12 to find and there are clues at the locations to indicate that there is a bug there. Something like "There is a flicker of movement in the corner." (Bug Collector)
 
 Features
 
