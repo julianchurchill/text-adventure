@@ -660,10 +660,28 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         dialog.getWindow().setLayout( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT );
     }
 
+    private static final Map<String, Integer> areaIDsToMaskIDs;
+    static {
+        Map<String, Integer> aMap = new HashMap<String, Integer>();
+        aMap.put( "church-area", R.drawable.church_mask );
+        aMap.put( "mine-area", R.drawable.mine_mask );
+        aMap.put( "town-area", R.drawable.town_mask );
+        aMap.put( "friary-area", R.drawable.friary_mask );
+        areaIDsToMaskIDs = Collections.unmodifiableMap( aMap );
+    }
+
+    private int[] findExploredAreaMaskIDs() {
+        int[] exploredMasks = new int[movementMonitor.exploredAreas().size()];
+        int i = 0;
+        for( String areaID : movementMonitor.exploredAreas() )
+            exploredMasks[i++] = areaIDsToMaskIDs.get( areaID );
+        return exploredMasks;
+    }
+
     private void showMap() {
         map_view.setImageBitmap(
             new MapImageCreator( getResources(),
-                                 movementMonitor.findExploredAreaMaskIDs(),
+                                 findExploredAreaMaskIDs(),
                                  R.drawable.map )
             .create() );
         map_view.setScaleType( ImageView.ScaleType.CENTER );
