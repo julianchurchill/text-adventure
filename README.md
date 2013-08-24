@@ -14,7 +14,6 @@ Backlog
 
 Technical Tasks
 
-- 'demo_model_content.txt' needs renaming so we can have multiple stories available
 - Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
   - Markup for map images and masks to help seperate story content from framework
   - Build system should set up Android resources and manifest for the correct app (TTA1 or TTA2). Copy files from somewhere else in the git repo. Don't save the manifest or res content to git anymore. Update README with instructions on configure before build.

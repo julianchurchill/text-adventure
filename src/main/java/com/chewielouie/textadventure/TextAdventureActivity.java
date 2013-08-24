@@ -280,7 +280,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
                                          itemDeserialiser,
                                          new PlainTextExitDeserialiser() ),
                                      itemDeserialiser,
-                                     demoContent() );
+                                     modelContent() );
         movementMonitor = new MovementMonitor( model );
     }
 
@@ -305,8 +305,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         return actionHistory;
     }
 
-    private String demoContent() {
-        return readRawTextFileFromResource( R.raw.demo_model_content );
+    private String modelContent() {
+        return readRawTextFileFromResource( R.raw.model_content );
     }
 
     private String readRawTextFileFromResource( int resId ) {
