@@ -15,7 +15,7 @@ Backlog
 Technical Tasks
 
 - Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
-  - Markup for map images and masks to help seperate story content from framework
+  - Mask images should be auto found by looking for resources starting with area-id. E.g. the mask filename for the town-area should be town-area_mask.png
   - Build system should set up Android resources and manifest for the correct app (TTA1 or TTA2). Copy files from somewhere else in the git repo. Don't save the manifest or res content to git anymore. Update README with instructions on configure before build.
 - Need markup for italics for introduction of the names above
 - New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
