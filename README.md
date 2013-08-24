@@ -15,6 +15,12 @@ Backlog
 Technical Tasks
 
 - 'demo_model_content.txt' needs renaming so we can have multiple stories available
+- Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
+  - Markup for map images and masks to help seperate story content from framework
+  - Build system should set up Android resources and manifest for the correct app (TTA1 or TTA2). Copy files from somewhere else in the git repo. Don't save the manifest or res content to git anymore. Update README with instructions on configure before build.
+- Need markup for italics for introduction of the names above
+- New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
+  - Make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 
 Bugs
 
@@ -24,16 +30,18 @@ Bugs
   - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
 
-Story (Episode 2)
+Story (Part 2)
 
-- Return to the town - extra shops open, friary is abandoned, church is a burnt shell, towns people dislike you.
+- Return to the town (needs a name now) - extra shops open, friary is abandoned, church is a burnt shell, towns people dislike you.
 - Bella Constantine lives! In a far away hideout plotting her revenge on you...
-- New locations
-  - Another town/village
-  - A river and bridge between the two settlements
-    - Use a boat to get across initially, perhaps repair the bridge from the other side to return to the town
-  - An ancient temple to old gods with traps and puzzles
-  - A portal to a dark plane (deep inside the temple) with demon creatures you must defeat some how
+- Another town/village - Perpetuity? Subdued by Bella to serve her - the future of the old town...
+- A river and bridge between the two settlements
+  - Use a boat to get across initially, perhaps repair the bridge from the other side to return to the town
+- Underwater adventure of somesort - perhaps in the river. Meet water faeries
+- Magical robots - perhaps trapped water faery souls - agents for either side, initially created by the witch to serve her, wills too strong for her to control, some changed sides. Self naming, Least Chance of Failure, Random Acts of Kindness, Vengeful Beyond Death, Penchant for Foolish Bravery
+- An ancient temple to old gods with traps and puzzles
+- A portal to a dark plane (deep inside the temple) with demon creatures you must defeat some how
+- Bellas HQ - a castle in a forest on the other side of the river.
 - Sub quests
   - Create and play a kazoo at a childrens party at a nobles house (achievement Player of the Kazoo)
   - Collect bugs - using a bug collector to make them visible and catch them. There are 12 to find and there are clues at the locations to indicate that there is a bug there. Something like "There is a flicker of movement in the corner." (Bug Collector)
@@ -48,8 +56,6 @@ Features
   - Explorer (has gone to every location)
   - Pathfinder (has gone through every exit)
   - Player of the Kazoo (completed a sub quest to create and play a kazoo at a childrens party)
-- [FEATURE] New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
-  - Make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 - [UI] Parchment background extras
   - Action buttons should have a complimentary colour to the parchment.
   - Scroll bar images need to compliment the parchment background...
