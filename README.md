@@ -16,9 +16,6 @@ Backlog
 
 Technical Tasks
 
-- Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
-  - DONE Mask images should be auto found by looking for resources starting with area-id. E.g. the mask filename for the town-area should be town-area_mask.png
-  - Build system should set up Android resources and manifest for the correct app (TTA1 or TTA2). Copy files from somewhere else in the git repo. Don't save the manifest or res content to git anymore. Update README with instructions on configure before build.
 - Need markup for italics for introduction of the names above
 - New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
   - Make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
@@ -87,13 +84,18 @@ Features
 Done
 ====
 
-2.2
+Note: Multiple version numbers are used where changes are common to multiple apps
+
+TTA1 v2.2/TTA2 v1.0
 ---
 
 - [FEATURE] Map - shows where you've been
 - [FEATURE] Added location area to title bar
 - [UI] Parchment background (from http://www.myfreetextures.com/worn-parchment-paper-2)
 - [UI] Full width action buttons
+- [TECHINCAL TASK] Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
+  - Mask images should be auto found by looking for resources starting with area-id. E.g. the mask filename for the town-area should be town-area_mask.png
+  - Build system should set up Android resources and manifest for the correct app (TTA1 or TTA2). Copy files from somewhere else in the git repo. Don't save the manifest or res content to git anymore. Update README with instructions on configure before build.
 
 2.1
 ---
