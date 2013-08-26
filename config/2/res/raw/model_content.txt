@@ -1,0 +1,2456 @@
+INVENTORY ITEM
+item name:Pocket lint
+item description:It's fluffy and shaped like an inverted belly button.
+item countable noun prefix:some
+item id:pocketlint
+INVENTORY ITEM
+item name:Multitool
+item description:It's got a lot of tools on it. You feel like a man of the wilderness when you wield this formidable contraption.
+item id:multitool
+LOCATION AREA
+location area id:town_area
+location area name:Town
+LOCATION AREA
+location area id:mine_area
+location area name:Mine
+LOCATION AREA
+location area id:church_area
+location area name:Church
+LOCATION AREA
+location area id:friary_area
+location area name:Friary
+LOCATION
+x:300
+y:480
+location id:townentrance
+location area id:town_area
+location description:You are standing outside a small town. The main street goes north, to the west there are some small out buildings and to the east you can see what looks like an abandoned mine shaft.
+EXIT
+exit label:North
+exit destination:mainstreettown
+exit direction hint:North
+exit id:townentrancenorth
+EXIT
+exit label:East
+exit destination:outsideamineshaft
+exit direction hint:East
+exit id:townentranceeast
+EXIT
+exit label:West
+exit destination:townoutbuildings
+exit direction hint:West
+exit id:townentrancewest
+ITEM
+item name:Skeleton key
+item description:It is rather dirty and has clearly been carved from some poor unfortunates metacarpal.
+item id:clocktowerskeletonkey
+item countable noun prefix:a
+item mid sentence cased name:skeleton key
+ITEM
+item name:Banana peel
+item description:It is yellow and a little moldy.
+item id:bananapeel
+item countable noun prefix:some
+item mid sentence cased name:banana peel
+LOCATION
+x:300
+y:0
+location id:secondfloorclocktower
+location area id:town_area
+location description:You are at the top of the clock tower standing in front of the clock mechanism.
+EXIT
+exit label:Down
+exit destination:firstfloorclocktower
+exit direction hint:South
+exit id:secondfloorclocktowerdown
+ITEM
+item name:Clock mechanism
+item description:It is missing a clock face and both hands. Looking at it you decide the face would be best placed upon the mechanism before the hands.
+item countable noun prefix:a
+item mid sentence cased name:clock mechanism
+item id:clockmechanism
+item is untakeable:
+item can be used with:clockface
+item successful use message:You place the clock face onto the front of the mechanism and it clicks gently into place.
+item use action:change item visibility:clockmechanismwithface:visible
+item use action:destroy item:clockface
+item use action:destroy item:clockmechanism
+ITEM
+item name:Clock mechanism
+item description:It has an engraved clock face but is missing its hands. It looks like it needs to have the hour hand fitted first.
+item countable noun prefix:a
+item mid sentence cased name:clock mechanism
+item id:clockmechanismwithface
+item is untakeable:
+item visibility:invisible
+item can be used with:clockhourhand
+item successful use message:You push the hour hand onto the spindle in the centre of the clock face.
+item use action:change item visibility:clockmechanismwithfaceandhourhand:visible
+item use action:destroy item:clockhourhand
+item use action:destroy item:clockmechanismwithface
+ITEM
+item name:Clock mechanism
+item description:It has an engraved clock face but is missing its minute hand. The hour hand has been expertly placed upon the central spindle.
+item countable noun prefix:a
+item mid sentence cased name:clock mechanism
+item id:clockmechanismwithfaceandhourhand
+item is untakeable:
+item visibility:invisible
+item can be used with:clockminutehand
+item successful use message:You push the minute hand on top of the hour hand already attached to the spindle in the centre of the clock face. It clips in place with a satisfying click. The mechanism starts to whir and the hands begin to gently jerk with the movement of the mechanism inside. In the distance you hear what sounds like a rock slide and you take a mental note to investigate this further.
+item use action:make exit visible:mineshaftentrance
+item use action:change location description:outsideamineshaft:You stand before an old mine shaft. There are some dusty footprints in the dirt around the entrance. A sign states "McCreedys Mine - Stay out or suffer the consequences!". To the east is an old ramshackle shed.
+item use action:increment score:
+item use action:change item visibility:clockmechanismwithfaceandhourhandandminutehand:visible
+item use action:destroy item:clockminutehand
+item use action:destroy item:clockmechanismwithfaceandhourhand
+ITEM
+item name:Clock mechanism
+item description:It has an engraved clock face and both hands. It ticks gently.
+item countable noun prefix:a
+item mid sentence cased name:clock mechanism
+item id:clockmechanismwithfaceandhourhandandminutehand
+item is untakeable:
+item visibility:invisible
+LOCATION
+x:300
+y:60
+location id:firstfloorclocktower
+location area id:town_area
+location description:You are standing on the first floor of the clock tower. The wooden floorboards creak and groan as you tread across them.
+EXIT
+exit label:Up
+exit destination:secondfloorclocktower
+exit direction hint:North
+exit id:firstfloorclocktowerup
+EXIT
+exit label:Down
+exit destination:groundfloorclocktower
+exit direction hint:South
+exit id:firstfloorclocktowerdown
+LOCATION
+x:300
+y:120
+location id:groundfloorclocktower
+location area id:town_area
+location description:You are inside the mighty clock tower. Sound resonates around you as the clock ticks.
+EXIT
+exit label:Up
+exit destination:firstfloorclocktower
+exit direction hint:North
+exit id:groundfloorclocktowerup
+EXIT
+exit label:Clock tower door
+exit destination:clocktower
+exit direction hint:South
+exit id:groundfloorclocktowerdoor
+LOCATION
+x:480
+y:480
+location id:smallshed
+location area id:town_area
+location description:You are standing inside a small shed. It is dusty and dirty and a variety of mining tools rest against the walls.
+EXIT
+exit label:West
+exit destination:outsideamineshaft
+exit direction hint:West
+exit id:smallshedwest
+ITEM
+item name:Spade
+item description:It is a wooden handled spade. It looks like it has seen quite a lot of use and might not be good for much.
+item countable noun prefix:a
+item id:spade
+ITEM
+item name:Bags of junk
+item description:They are full of rubbish, there might be something of interest here but it is hard to tell.
+item countable noun prefix:some
+item id:bagsofjunk
+item mid sentence cased name:bags of junk
+item is untakeable:
+item examine action is not repeatable:
+item examine message:You look closer and see something glinting in the darkness. You scramble around in the bag trying to reach it, grasping with your finger tips pulling it out and dropping it at your feet.
+item on examine action:change item description:They are full of rubbish. Nothing else.
+item on examine action:change item visibility:clockhourhand:visible
+ITEM
+item name:Clock hour hand
+item description:It is the hour hand from a clock.
+item countable noun prefix:a
+item id:clockhourhand
+item visibility:invisible
+item mid sentence cased name:clock hour hand
+
+LOCATION
+x:300
+y:240
+location id:clocktower
+location area id:town_area
+location description:You stand before a mighty clock tower. The clock goes TICK!
+EXIT
+exit label:South
+exit destination:mainstreettown
+exit direction hint:South
+exit id:clocktowersouth
+EXIT
+exit label:Clock tower door
+exit destination:groundfloorclocktower
+exit direction hint:North
+exit is not visible:
+exit id:clocktowerdoor
+EXIT
+exit label:West
+exit destination:cobbledroad
+exit direction hint:West
+exit is not visible:
+exit id:clocktower_to_cobbledroad
+EXIT
+exit label:East
+exit destination:nobles_quarter_west_street
+exit direction hint:East
+exit is not visible:
+exit id:clocktower_to_nobles_quarter_west_street
+ITEM
+item name:Clock minute hand
+item description:It is quite heavy, ornate and made of iron.
+item id:clockminutehand
+item countable noun prefix:a
+item mid sentence cased name:clock minute hand
+ITEM
+item name:locked door
+item description:It is locked and looks impenetrable. It appears to allow access to the clock tower itself.
+item id:lockeddoor
+item countable noun prefix:a
+item is untakeable:
+item can be used with:clocktowerskeletonkey
+item successful use message:You hear a click and the door springs open.
+item use is not repeatable:
+item use action:change item description:It is unlocked. It appears to allow access to the clock tower itself.
+item use action:change item name:unlocked door
+item use action:make exit visible:clocktowerdoor
+LOCATION
+x:300
+y:360
+location id:mainstreettown
+location area id:town_area
+location description:You are on the main street of the town. There is a clock tower to the north.
+EXIT
+exit label:North
+exit destination:clocktower
+exit direction hint:North
+exit id:mainstreettownnorth
+EXIT
+exit label:South
+exit destination:townentrance
+exit direction hint:South
+exit id:mainstreettownsouth
+EXIT
+exit label:Merchants Lane
+exit destination:merchantslane
+exit direction hint:West
+exit id:merchantslaneentrance
+exit is not visible:
+EXIT
+exit label:East
+exit destination:eastofmainstreet
+exit direction hint:East
+exit id:mainstreeteast
+exit is not visible:
+ITEM
+item name:Dust of the Ancients
+item description:This dust looks pretty powerful, for dust.
+item id:dustoftheancients
+item countable noun prefix:some
+item mid sentence cased name:Dust of the Ancients
+LOCATION
+x:180
+y:480
+location id:townoutbuildings
+location area id:town_area
+location description:There are a number of small shack like structures here, fallen down and decrepit they haven't been used for years.
+EXIT
+exit label:East
+exit destination:townentrance
+exit direction hint:East
+exit id:townoutbuildingseast
+ITEM
+item name:mound of earth
+item description:It has recently been disturbed.
+item id:moundofearth
+item countable noun prefix:a
+item is untakeable:
+item can be used with:spade
+item successful use message:You dig deep into the dirt, sweat dripping from your brow in the dry heat. Clank! The spade strikes something metallic. You brush the earth away to reveal an old clock face, without a minute or an hour hand. It looks sad.
+item use action:destroy item:moundofearth
+item use action:change item visibility:clockface:visible
+ITEM
+item name:Clock face
+item description:It is a disembodied clock face, without hands.
+item id:clockface
+item countable noun prefix:a
+item visibility:invisible
+item mid sentence cased name:clock face
+LOCATION
+x:420
+y:480
+location id:outsideamineshaft
+location area id:town_area
+location description:You stand before an old blocked up mine shaft, there are some dusty footprints in the dirt around the entrance however there is no obvious way in. A sign states "McCreedys Mine - Stay out or suffer the consequences!". To the east is an old ramshackle shed.
+EXIT
+exit label:West
+exit destination:townentrance
+exit direction hint:West
+exit id:outsideamineshaftwest
+EXIT
+exit label:Ramshackle Shed
+exit destination:smallshed
+exit direction hint:East
+exit id:outsideamineshafteast
+EXIT
+exit label:Mineshaft entrance
+exit destination:mineshaftchamber1
+exit direction hint:South
+exit id:mineshaftentrance
+exit is not visible:
+LOCATION
+x:420
+y:540
+location id:mineshaftchamber1
+location area id:mine_area
+location description:You stand just inside a dusty mineshaft. It looks like it has been abandoned and not used for many years. Until recently the entrance was blocked by a large rock fall. There are footprints leading down a small dark tunnel and there is a dimly lit annex to the right.
+EXIT
+exit label:Outside
+exit destination:outsideamineshaft
+exit direction hint:North
+exit id:mineshaftchamber1outside
+EXIT
+exit label:Dark tunnel
+exit destination:darktunnel1
+exit direction hint:South
+exit id:mineshaftchamber1darktunnel
+EXIT
+exit label:Dimly lit annex
+exit destination:dimlylitannex
+exit direction hint:West
+exit id:mineshaftchamber1annex
+LOCATION
+x:420
+y:600
+location id:darktunnel1
+location area id:mine_area
+location description:You are in a dark tunnel with a trail of scuffed footprints leading deeper into the mine. You think you can make out two sets of prints in the dirt. The mine entrance lies to the north and the tunnel continues south.
+EXIT
+exit label:North
+exit destination:mineshaftchamber1
+exit direction hint:North
+exit id:darktunnel1north
+EXIT
+exit label:South
+exit destination:darktunnel2
+exit direction hint:South
+exit id:darktunnel1south
+LOCATION
+x:420
+y:660
+location id:darktunnel2
+location area id:mine_area
+location description:The footprints continue further south where you can see a dim light burning. The air down here is dank and you feel a little claustrophobic. Off to the east is a candle lit chamber.
+EXIT
+exit label:North
+exit destination:darktunnel1
+exit direction hint:North
+exit id:darktunnel2north
+EXIT
+exit label:South
+exit destination:smallminechamber
+exit direction hint:South
+exit id:darktunnel2south
+EXIT
+exit label:Candle lit chamber
+exit destination:candlelitchamber
+exit direction hint:East
+exit id:darktunnel2candlelitchamber
+LOCATION
+x:420
+y:720
+location id:smallminechamber
+location area id:mine_area
+location description:You enter the chamber and although it is lit by a candle burning gently in an alcove you strain your eyes to peer into the shadows. Out shuffles a man, bedraggled and somber, head down muttering to himself. You notice he has a manacle around his ankle, chained to a nearby rock. Approaching him you say softly 'Hello? Who are you? What's happened here?'. The man replies 'I was taken, I don't know who it was. They hit me from behind and I woke up here, like this.' gesturing to the chain at his feet. 'Help me, please.' splutters the man as he gasps for breath. He is clearly suffering from his circumstances and you feel inclined to find a way to help him out of his predicament.
+EXIT
+exit label:North
+exit destination:darktunnel2
+exit direction hint:North
+exit id:smallminechambernorth
+ITEM
+item name:Imprisoned man
+item description:He is dirty and looks exhausted. Chained to a nearby rock you see no easy way to free him.
+item id:imprisonedman
+item countable noun prefix:an
+item is untakeable:
+item can be used with:multitool
+item successful use message:The man cowers away from you and you feel foolish for threatening the poor man with your impressive multitool.
+ITEM
+item name:Rock
+item description:It looks to be softer than the surrounding walls, particularly where the chain link has been pinned to it. You wonder if there might be a way to lever or pick the pin out from the rock.
+item id:rock
+item countable noun prefix:a
+item is untakeable:
+item use is not repeatable:
+item can be used with:pickaxe
+item successful use message:You swing the pick axe high above your head and bring it hard down upon the rock, pin and chain. The links shatter into pieces and scatter across the floor, freeing the man who jumps to his feet with joy. 'Oh thank you good sir - I can return to my shop at last, if there's anything left to return to.' he says.
+item use action:change item description:It looks to be softer than the surrounding walls. There is a hole where a chain pin used to be embedded in the rock.
+item use action:change location description:smallminechamber:You enter the chamber and although it is lit by a candle burning gently in an alcove you strain your eyes to peer into the shadows. This room looks lived in, of a sort. You notice shattered chain links on the floor.
+item use action:change item visibility:imprisonedman:invisible
+item use action:change item visibility:shopkeeper:visible
+ITEM
+item name:Shop keeper
+item description:He is dirty and looks exhausted but has the light of hope in his eyes now that he is free. He also looks a little lost.
+item id:shopkeeper
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item use is not repeatable:
+item can be used with:minemap
+item successful use message:You hand the map to the shop keeper who smiles and nods at you with gratitude. 'Thank you, you have been very kind to me. Come by my shop in town anytime - I'm sure I can arrange a favourable discount on anything that takes your eye.'. With that the man walks out leaving you alone.
+item use action:change item visibility:shopkeeper:invisible
+item use action:destroy item:minemap
+item use action:increment score:
+item use action:make exit visible:merchantslaneentrance
+ITEM
+item name:Glowing seam
+item description:A seam runs through the wall of this cavern that glows with an eerie light. It looks soft enough to mine if you have the right tools.
+item id:arc_stone_seam_1
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:enchanted_pickaxe
+item successful use message:You hoist the enchanted pick axe above your head. The seam appears to react to the pick axe as soon as you bring it near. You strike once and a deep rumble resounds about you however none of the rock is chipped away. Perhaps you need to stop tickling it and hit it harder?
+item use action:change item visibility:arc_stone_seam_1:invisible
+item use action:change item visibility:arc_stone_seam_2:visible
+ITEM
+item name:Glowing seam
+item description:A seam runs through the wall of this cavern that glows with an eerie light. It looks soft enough to mine if you have the right tools.
+item id:arc_stone_seam_2
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:enchanted_pickaxe
+item successful use message:The seam is definitely reactive, you raise the pick axe and bring it firmly down on the rock. A small fleck of rock chips away to reveal a larger stone embedded in the seam however it will take some more work to remove it.
+item use action:change item visibility:arc_stone_seam_2:invisible
+item use action:change item visibility:arc_stone_seam_3:visible
+ITEM
+item name:Glowing seam
+item description:A seam runs through the wall of this cavern that glows with an eerie light. It looks soft enough to mine if you have the right tools.
+item id:arc_stone_seam_3
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:enchanted_pickaxe
+item successful use message:You resolve to strike hard this time and raise the axe in both hands bringing it confidently down upon the seam. The rock cracks and the embedded stone is freed from the surrounding rock popping like a cracked kernel of corn. The axe shatters with the force of the blow and the remaining pieces disintegrate from the loss of the magical forces that had previously enchanted them.
+item use action:change item visibility:arc_stone_seam_3:invisible
+item use action:destroy item:enchanted_pickaxe
+item use action:change item visibility:arc_stone:visible
+item use action:increment score:
+ITEM
+item name:Arc stone
+item description:This stone is roughly the size of your fist and glows a sickly green. You sense there is great power within but you do not think you have the power to unlock it.
+item id:arc_stone
+item countable noun prefix:an
+item visibility:invisible
+
+LOCATION
+x:480
+y:600
+location id:dimlylitannex
+location area id:mine_area
+location description:This annex is carved out of the rock face with several indentations holding a variety of items including bones, a burnt out candle, some old torn paper and a metal ring.
+EXIT
+exit label:East
+exit destination:mineshaftchamber1
+exit direction hint:East
+exit id:dimlylitannexeast
+EXIT
+exit label:Even smaller annex
+exit destination:evensmallerannex
+exit direction hint:South
+exit id:dimlylitannexevensmallerannex
+ITEM
+item name:Chunk of metal
+item description:This is a sizeable chunk of metal, pointy at two ends with a notch in the center. It looks like it could be fitted onto something but it is wedged in a crack in the wall.
+item id:axehead
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:Upon further consideration you see it is shaped like an axe head. No wait, it is an axe head.
+item on examine action:change item description:This is quite clearly an axe head. You are however missing a means to wield it and it is wedged in a crack in the wall.
+item on examine action:change item name:Axe head
+item can be used with:woodenpole
+item successful use message:The wooden pole slots perfectly into the axe head allowing you to apply your weight to the end of the pole causing the axe to pop out of the crack in the wall like a lollipop from a babies mouth. It is quite a hefty mining implement and is well weighted. You feel you could move a substantial amount of rock with this if it were but a touch sharper.
+item use action:change item visibility:bluntpickaxe:visible
+item use action:destroy item:axehead
+item use action:destroy item:woodenpole
+ITEM
+item name:Blunt pick axe
+item description:It looks rather blunt. You can probably bludgeon some small rocks into shards with it given a few hours and some angry words but not much else.
+item id:bluntpickaxe
+item countable noun prefix:a
+item visibility:invisible
+LOCATION
+x:480
+y:660
+location id:evensmallerannex
+location area id:mine_area
+location description:This is an even smaller annex attached to a larger better lit one. There is straw on the floor and it looks like someone has been sleeping here.
+EXIT
+exit label:Dimly lit annex
+exit destination:dimlylitannex
+exit direction hint:North
+exit id:evensmallerannexdimlylitannex
+ITEM
+item name:Pile of straw
+item description:It still has the indentation of a sleeping body although the body does not appear to still be here.
+item id:pileofstraw
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:You delve deeply into the pile of straw and unearth a variety of delightful things, mostly ticks and beetles, as well as some unspeakable left overs. At the very bottom of the pile you find a wooden pole. You wish the owner was around so you could beat them with it for having left their bedroom in such a disgraceful state.
+item on examine action:change item visibility:woodenpole:visible
+ITEM
+item name:Wooden pole
+item description:It looks like it was attached to something at one end. Perhaps it was a tool of some sort.
+item id:woodenpole
+item countable noun prefix:a
+item visibility:invisible
+LOCATION
+x:480
+y:660
+location id:candlelitchamber
+location area id:mine_area
+location description:You stand in a circular chamber with candles lining the walls in metal brakets. There is a table in the centre of the room and an exit leading deeper into the mine to what looks like a smithy. To the west a tunnel meanders back through the darkness.
+EXIT
+exit label:Dark tunnel
+exit destination:darktunnel2
+exit direction hint:West
+exit id:candlelitchamberdarktunnel
+EXIT
+exit label:Smithy
+exit destination:minesmithy
+exit direction hint:South
+exit id:candlelitchambersmithy
+ITEM
+item name:Table
+item description:It is covered with papers.
+item id:table
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:You're not sure how anyone found anything in this mess but a particular sheet of paper catches your eye. As you reach to pick it up it falls to the ground.
+item on examine action:change item visibility:minemap:visible
+item on examine action:change item visibility:tornpaper_mine:visible
+item on examine action:change item description:It is covered with papers. Boring, uninteresting papers.
+ITEM
+item name:Map
+item description:This is a map of the mine tunnels - useful in case you get lost.
+item id:minemap
+item countable noun prefix:a
+item visibility:invisible
+ITEM
+item name:Torn paper
+item description:The paper was hidden amongst all the others on the desk and is ripped in several places. There are stains all over it and you don't feel like putting something this filthy in your pocket. There is smudged writing on it but you think you can make out a word - "bendlebox". You wonder what it means.
+item id:tornpaper_mine
+item countable noun prefix:some
+item is untakeable:
+item visibility:invisible
+
+LOCATION
+x:480
+y:720
+location id:minesmithy
+location area id:mine_area
+location description:This is the mine smithy, used for emergency tool repair to save the workers from trekking back into town. There are a selection of tools lying around, none of which catch your eye.
+EXIT
+exit label:Candle lit chamber
+exit destination:candlelitchamber
+exit direction hint:North
+exit id:minesmithycandlelitchamber
+ITEM
+item name:Sharpening wheel
+item description:This is used to sharpen blunted mining tools.
+item id:sharpeningwheel
+item countable noun prefix:a
+item is untakeable:
+item can be used with:bluntpickaxe
+item successful use message:You sit down at the wheel and place the blunted axe head against the sharpening stone, pumping the pedal to turn the wheel with such vigour that sparks fly across the room. If only you applied yourself with such energy to all your endeavours you might see sparks more often.
+item use action:destroy item:bluntpickaxe
+item use action:change item visibility:pickaxe:visible
+ITEM
+item name:Pick axe
+item description:This is a typical miners pick axe and has been recently sharpened.
+item id:pickaxe
+item countable noun prefix:a
+item visibility:invisible
+LOCATION
+x:240
+y:360
+location id:merchantslane
+location area id:town_area
+location description:You stand at the start of Merchants Lane looking ahead admidst the varied and wonderful shop fronts that adorn this street. There a few people milling around, nipping in and out of one or two of the shops however most of the shops look closed. Immediately to the north you see an open shop door and behind the counter sits a man with a familiar face - the shopkeeper from the mine.
+EXIT
+exit label:East
+exit destination:mainstreettown
+exit direction hint:East
+exit id:merchantslaneeast
+EXIT
+exit label:General Store
+exit destination:generalstore
+exit direction hint:North
+exit id:merchantslanenorth
+LOCATION
+x:240
+y:420
+location id:generalstore
+location area id:town_area
+location description:You step inside the General Store raising your hand in greeting to the shopkeeper. He stands up as you enter at once beckoning you forward and nodding his head in recognition.
+EXIT
+exit label:Outside
+exit destination:merchantslane
+exit direction hint:South
+exit id:generalstoreoutside
+ITEM
+item name:Shop keeper
+item description:He looks very smart, clearly having enjoyed a good bath, a shave and an expensive haircut. His eyes are still sunken from the effects of his imprisonment but he looks in good health otherwise. You haven't noticed before now but he also has green eyes - just like you.
+item id:generalstoreshopkeeper
+item countable noun prefix:a
+item is untakeable:
+
+item talk initial phrase:hello:Hello!:You say "Hello!".
+item talk response to:hello:The Shop keeper replies "Hello yourself my friend. How can I help you?".
+item talk follow up phrase to:hello:checkin:I just came to check in...:You say "I just came to check in. Glad to see you are looking well.".
+item talk response to:checkin:The Shop keeper says "Why thank you, it's all down to you my friend.".
+item talk follow up phrase to:checkin:lookingforwork:I was looking for some work...:You say "I was looking for some work. Can you help me?".
+item talk response to:lookingforwork:The Shop keeper says "Sure, you should go to the town hall to the east of the town. There are boards where an adventurer might find a job." Placing something on the shop counter he winks and says "You might also find this useful."
+item talk action in response to:lookingforwork:make exit visible:mainstreeteast
+item talk action in response to:lookingforwork:make exit visible:clocktower_to_cobbledroad
+item talk action in response to:lookingforwork:make exit visible:clocktower_to_nobles_quarter_west_street
+item talk action in response to:lookingforwork:change location description:clocktower:You stand before a mighty clock tower. The clock goes TICK! There is a cobbled road off to the west that winds its way through the back streets of the town and to the east is the Noble's Quarter.
+item talk action in response to:lookingforwork:change item visibility:decoderring:visible
+item talk action in response to:lookingforwork:change item visibility:generalstoreshopkeeper:invisible
+item talk action in response to:lookingforwork:change item visibility:generalstoreshopkeeper2:visible
+
+item talk initial phrase:lookingwell:You're looking well...:You say "You're looking well friend.".
+item talk response to:lookingwell:The Shop keeper replies "Why thank you, it's all down to you my friend.".
+item talk follow up phrase to:lookingwell:lookingforwork
+
+item talk initial phrase:gimmemoney:I need money...:You say "I need money, can you spare some coin for your rescuer?".
+item talk response to:gimmemoney:The Shop keeper replies nervously "Err I'm just getting my shop back on it's feet, I'm sorry but I can't spare any money at the moment.".
+item talk follow up phrase to:gimmemoney:lookingwell
+
+ITEM
+item name:Shop keeper
+item description:He looks very smart, clearly having enjoyed a good bath, a shave and an expensive haircut. His eyes are still sunken from the effects of his imprisonment but he looks in good health otherwise. You haven't noticed before now but he also has green eyes - just like you.
+item id:generalstoreshopkeeper2
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+
+item talk initial phrase:hello:Hello!:You say "Hello!".
+item talk response to:hello:The Shop keeper replies "Hello yourself my friend. How can I help you?".
+item talk follow up phrase to:hello:checkin:I just came to check in...:You say "I just came to check in. Glad to see you are looking well.".
+item talk response to:checkin:The Shop keeper says "Why thank you, it's all down to you my friend.".
+item talk follow up phrase to:checkin:lookingforwork:I was looking for some work...:You say "I was looking for some work. Can you help me?".
+item talk response to:lookingforwork:The Shop keeper says "Sure, you should go to the town hall to the east of the town. There are boards where an adventurer might find a job."
+
+item talk initial phrase:lookingwell:You're looking well...:You say "You're looking well friend.".
+item talk response to:lookingwell:The Shop keeper replies "Why thank you, it's all down to you my friend.".
+item talk follow up phrase to:lookingwell:lookingforwork
+
+item talk initial phrase:gimmemoney:I need money...:You say "I need money, can you spare some coin for your rescuer?".
+item talk response to:gimmemoney:The Shop keeper replies nervously "Err I'm just getting my shop back on it's feet, I'm sorry but I can't spare any money at the moment.".
+item talk follow up phrase to:gimmemoney:lookingwell
+
+ITEM
+item name:Decoder ring
+item description:This looks like a kids toy. It has a shaped viewing hole through which you might read an encoded message, the letters becoming revelead due to the complex filter decorating the aperture. You wonder what on earth it could be useful for.
+item id:decoderring
+item countable noun prefix:a
+item visibility:invisible
+
+LOCATION
+x:360
+y:360
+location id:eastofmainstreet
+location area id:town_area
+location description:You are standing on a street leading from main street which you can see to the west. Further to the east is a large building that looks like it might be the town hall.
+EXIT
+exit label:West
+exit destination:mainstreettown
+exit direction hint:West
+exit id:eastofmainstreet_to_mainstreettown
+EXIT
+exit label:East
+exit destination:outsidetownhall
+exit direction hint:East
+exit id:eastofmainstreet_to_outsidetownhall
+
+LOCATION
+x:420
+y:360
+location id:outsidetownhall
+location area id:town_area
+location description:You are outside the town hall. The large wooden double doors in front of you are emblazoned with the town crest - two white dragons perched in a tree. A few people are standing about looking at the notice boards staked into the ground around the entrance to the town hall.
+EXIT
+exit label:West
+exit destination:eastofmainstreet
+exit direction hint:West
+exit id:outsidetownhall_to_eastofmainstreet
+EXIT
+exit label:Town Hall
+exit destination:townhall1
+exit direction hint:East
+exit id:outsidetownhall_to_townhall1
+ITEM
+item name:Blue board
+item description:The board has a notice pinned to it stating "Whomsoever can recover, intact, my wife's Sapphire necklace shall find ample reward and my favour. Last seen near the church of St.Almedha to the west of the town past the clock tower. Oren Constantine."
+item id:bluenoticeboard
+item countable noun prefix:a
+item is untakeable:
+ITEM
+item name:Ruby board
+item description:The board has a notice pinned to it stating "Lady Bella Constantine is looking for aid to find some special ingredients for a family recipe. Only green eyed males need apply. For further information see Lady Bella at the Constantine mansion in the Noble's Quarter.".
+item id:rubynoticeboard
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+
+LOCATION
+x:480
+y:360
+location id:townhall1
+location area id:town_area
+location description:You stand just inside the town hall entrance, a large circular reception room with several doors leading out. The walls are adorned with civic regalia and paintings of local scenes, intermingled with portraits of some of the more wealthy and powerful citizens. One door catches your eye due to the inscription above - "Room of Deeds".
+EXIT
+exit label:West
+exit destination:outsidetownhall
+exit direction hint:West
+exit id:townhall1_to_outsidetownhall
+EXIT
+exit label:Room of Deeds
+exit destination:roomofdeeds
+exit direction hint:North
+exit id:townhall1_to_roomofdeeds
+
+LOCATION
+x:480
+y:300
+location id:roomofdeeds
+location area id:town_area
+location description:You stand in a large room with plenty of space for lots of notice boards. The ones that are here look intriguing and you feel like taking a closer look. Something about this room puts a smile on your face and you feel yourself start to daydream about adventures past.
+EXIT
+exit label:Town hall entrance lobby
+exit destination:townhall1
+exit direction hint:South
+exit id:roomofdeeds_to_townhall1
+ITEM
+item name:Slate board
+item description:The board has a notice pinned to it stating "The town praises the brave deeds of one adventurer who rescued our shop keeper from a dank and miserable mine and returned him to us from the clutches of an unknown foe."
+item id:slatenoticeboard
+item countable noun prefix:a
+item is untakeable:
+ITEM
+item name:Blue board
+item description:The board has a notice pinned to it stating "Oren Constantine professes his personal thanks to the adventurer who recovered his wife's necklace, intact from a brigand's nest in the crypts under the church of St.Almedha to the west of the town."
+item id:bluenoticeboard_roomofdeeds
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+ITEM
+item name:Ruby board
+item description:The board has a notice pinned to it stating "Lady Bella Constantine happily received the special ingredients she required for a family recipe. A bold green eyed male came to her aid and delivered a mendicant's scapula, some Silk Blood and an arc stone.".
+item id:rubynoticeboard_roomofdeeds
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+ITEM
+item name:Gold board
+item description:The board has a notice pinned to it stating "A brave adventurer has saved the life of Oren Constantine, a great and influential benefactor of this town. They banished the evil witch Bella Constantine through cunning use of a mysterious plant. Hurrah for the brave adventurer!".
+item id:goldnoticeboard_roomofdeeds
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+
+LOCATION
+x:240
+y:240
+location id:cobbledroad
+location area id:town_area
+location description:You are standing on a cobbled road that undulates between the small houses of this town. It continues west and back to the east you see an imposing clock tower looming over the houses.
+EXIT
+exit label:East
+exit destination:clocktower
+exit direction hint:East
+exit id:cobbledroad_to_clocktower
+EXIT
+exit label:West
+exit destination:morecobbledroad
+exit direction hint:West
+exit id:cobbledroad_to_morecobbledroad
+EXIT
+exit label:House
+exit destination:hovel
+exit direction hint:North
+exit id:cobbledroad_to_hovel
+
+LOCATION
+x:240
+y:180
+location id:hovel
+location area id:town_area
+location description:You step inside the house. It might be more appropriate to call this a hovel. There is mess everywhere and it looks abandoned.
+EXIT
+exit label:Outside
+exit destination:cobbledroad
+exit direction hint:South
+exit id:hovel_to_cobbledroad
+ITEM
+item name:Mess of stuff
+item description:A mess of stuff. There might be something hidden in here, but probably not on purpose.
+item id:mess_of_stuff
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:You search through the mess, holding your nose and averting your eyes - although this causes the search to be pretty ineffectual. You are lucky to find something, a scrap of paper.
+item on examine action:change item visibility:tornpaper_hovel:visible
+ITEM
+item name:Torn paper
+item description:The paper is ripped in several places. There are stains all over it and you don't feel like putting something this filthy in your pocket. There is smudged writing on it but you think you can make out the last word - "floomembrow"
+item id:tornpaper_hovel
+item countable noun prefix:some
+item is untakeable:
+item visibility:invisible
+
+LOCATION
+x:180
+y:240
+location id:morecobbledroad
+location area id:town_area
+location description:You are standing on a long cobbled road that undulates between the small houses of this town. It continues west and back to the east. Further up ahead you see a town gatehouse that guards one of the many entrances to the town.
+EXIT
+exit label:East
+exit destination:cobbledroad
+exit direction hint:East
+exit id:morecobbledroad_to_cobbledroad
+EXIT
+exit label:West
+exit destination:westgatehouse
+exit direction hint:West
+exit id:morecobbledroad_to_westgatehouse
+
+LOCATION
+x:120
+y:240
+location id:westgatehouse
+location area id:town_area
+location description:You stand before a large gatehouse within which sit several men of the town watch. They are not doing very much and do not notice you as you pass. You wonder how much they get paid and make a mental note to consider a career change. To the north is a dirt track leading away from the town.
+EXIT
+exit label:East
+exit destination:morecobbledroad
+exit direction hint:East
+exit id:westgatehouse_to_morecobbledroad
+EXIT
+exit label:North
+exit destination:dirttrack
+exit direction hint:North
+exit id:westgatehouse_to_dirttrack
+
+LOCATION
+x:120
+y:180
+location id:dirttrack
+location area id:town_area
+location description:You are on a dirt track leading away from the town. There are deep furrows indicating it has been well used, probably as a trade route to other more affluent settlements. It continues to the north.
+EXIT
+exit label:North
+exit destination:moredirttrack
+exit direction hint:North
+exit id:dirttrack_to_moredirttrack
+EXIT
+exit label:South
+exit destination:westgatehouse
+exit direction hint:South
+exit id:dirttrack_to_westgatehouse
+
+LOCATION
+x:120
+y:120
+location id:moredirttrack
+location area id:town_area
+location description:You are on a dirt track leading away from the town. To the west you see a churchyard. It looks gloomy, mysterious and uninviting, not a great combination. To the north the track starts to become enshrouded in the surrounding woodland.
+EXIT
+exit label:North
+exit destination:woodland_track
+exit direction hint:North
+exit id:dirttrack_to_woodland_track
+EXIT
+exit label:South
+exit destination:dirttrack
+exit direction hint:South
+exit id:moredirttrack_to_dirttrack
+EXIT
+exit label:West
+exit destination:churchyardeast
+exit direction hint:West
+exit id:moredirttrack_to_churchyardeast
+
+LOCATION
+x:120
+y:060
+location id:woodland_track
+location area id:town_area
+location description:You stand on a woodland track. To the south the track opens out but to the north the woods become too dense to pass. There is a track to the east which looks better travelled.
+EXIT
+exit label:South
+exit destination:moredirttrack
+exit direction hint:South
+exit id:woodland_track_to_moredirttrack
+EXIT
+exit label:East
+exit destination:track_to_friary
+exit direction hint:East
+exit id:woodland_track_to_track_to_friary
+
+LOCATION
+x:180
+y:060
+location id:track_to_friary
+location area id:town_area
+location description:You are on a fairly well travelled track which leads to a large imposing building up ahead. To the west you see woodland and that's about all.
+EXIT
+exit label:West
+exit destination:woodland_track
+exit direction hint:West
+exit id:track_to_friary_to_woodland_track
+EXIT
+exit label:East
+exit destination:friary_gates
+exit direction hint:East
+exit id:track_to_friary_to_friary_gates
+
+LOCATION
+x:240
+y:060
+location id:friary_gates
+location area id:friary_area
+location description:You stand before the gates of a large imposing building. There is a friar in front of you whom from his black cloak and white habit you identify as a member of the Dominican order. Back to the west is a wood and in the distance a church tower can be seen.
+EXIT
+exit label:West
+exit destination:track_to_friary
+exit direction hint:West
+exit id:friary_gates_to_track_to_friary
+EXIT
+exit label:Friary Entrance
+exit destination:friary_entrance
+exit direction hint:East
+exit id:friary_gates_to_friary_entrance
+exit is not visible:
+ITEM
+item name:Notice board
+item description:The notice board reads "Friary of the Order Of Preachers of St Dominic de Guzman". In smaller writing at the bottom it states "This order has taken a vow to discard worldy goods and live from the charity of the good people of this town. As mendicants we can better fulfil our obligations to the Lord. Please leave alms with the gatekeeper who has taken a vow of silence."
+item id:friary_gates_notice_board
+item countable noun prefix:a
+item is untakeable:
+ITEM
+item name:Friar
+item description:This friar looks cold and hungry. His cloak is a little tattered around the edges, you bet a proper meal would do him the world of good.
+item id:unhappy_friar
+item countable noun prefix:a
+item is untakeable:
+item talk initial phrase:hello:Hello Friar!:You say "Hello Friar!" as merrily as you can. This fellow looks like he needs some cheering up.
+item talk response to:hello:The friar shakes his head at you and nods towards the notice board.
+item can be used with:food_and_wine
+item use is not repeatable:
+item successful use message:You show the food and wine to the friar who smiles at you and receives your gift with grateful eyes.
+item use action:destroy item:food_and_wine
+item use action:change item visibility:unhappy_friar:invisible
+item use action:change item visibility:cheerful_friar:visible
+ITEM
+item name:Friar
+item description:This friar looks cold and hungry but happy. He has some food and wine in a nook next to the friary gate.
+item id:cheerful_friar
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:can_i_enter_the_friary:Can I enter the friary?:You say "Excuse me Friar but may I gain entrance to your friary?"
+item talk response to:can_i_enter_the_friary:The friar looks at you quizzically and waits for you to expand on your request.
+item talk follow up phrase to:can_i_enter_the_friary:i_want_to_join_your_order:I want to join your order:You say "I've been thinking a lot recently and have decided I want to dedicate my life to good works and helping the poor.". The friar looks you up and down and clearly doesn't believe a word you're saying - as neither do you. For a hungry friar he looks quite mean.
+item talk follow up phrase to:can_i_enter_the_friary:i_am_here_to_fix_the_toilets:I'm here to fix the toilets:You say "I'm here to fix the toilets - I understand you have a very serious blockage.".
+item talk response to:i_am_here_to_fix_the_toilets:The friar looks at you with some concern, hesitates and then points at the gate, gesturing that you should proceed quickly.
+item talk action in response to:i_am_here_to_fix_the_toilets:make exit visible:friary_gates_to_friary_entrance
+
+LOCATION
+x:300
+y:060
+location id:friary_entrance
+location area id:friary_area
+location description:You stand just inside the friary gates in a courtyard. Straw is scattered around and there are a few goats that have been brought here to provide milk for the order. There is a large door leading to a large communal space to the east and to the north there is a corridor running under the building surrounding you, opening up to more buildings further on.
+EXIT
+exit label:West
+exit destination:friary_gates
+exit direction hint:West
+exit id:friary_entrance_to_friary_gates
+EXIT
+exit label:East
+exit destination:friary_main_hall
+exit direction hint:East
+exit id:friary_entrance_to_friary_main_hall
+EXIT
+exit label:North
+exit destination:friary_north_corridor
+exit direction hint:North
+exit id:friary_entrance_to_friary_north_corridor
+
+LOCATION
+x:360
+y:060
+location id:friary_main_hall
+location area id:friary_area
+location description:This is the main hall of the friary. There is a long wooden table running through the centre of the hall lined with simple wooden chairs. There is space for about 20 friars. The hall itself is plain, with a few windows and a high ceiling.
+EXIT
+exit label:West
+exit destination:friary_entrance
+exit direction hint:West
+exit id:friary_main_hall_to_friary_entrance
+
+LOCATION
+x:300
+y:000
+location id:friary_north_corridor
+location area id:friary_area
+location description:You are in the north corridor of the friary which leads from the entrance courtyard to the north buildings. Looking ahead you can spy the entrance to some stairs leading up a tower and a couple of doors to more wood and stone buildings.
+EXIT
+exit label:South
+exit destination:friary_entrance
+exit direction hint:South
+exit id:friary_north_corridor_to_friary_entrance
+EXIT
+exit label:North
+exit destination:friary_north_courtyard
+exit direction hint:North
+exit id:friary_north_corridor_to_friary_north_courtyard
+
+LOCATION
+x:300
+y:-060
+location id:friary_north_courtyard
+location area id:friary_area
+location description:You are in the north courtyard of the friary, behind you to the south is a corridor that leads to the entrance of the friary. From here you can see a door leading to steps that climb a tower - looking upwards you see lights in the room at the top and get a sense that there is much work going on above. There is also a door into the surrounding building to the east.
+EXIT
+exit label:South
+exit destination:friary_north_corridor
+exit direction hint:South
+exit id:friary_north_courtyard_to_friary_north_corridor
+EXIT
+exit label:Tower stairs
+exit destination:friary_tower_stairs
+exit direction hint:North
+exit id:friary_north_courtyard_to_friary_tower_stairs
+EXIT
+exit label:Door
+exit destination:friary_north_building
+exit direction hint:East
+exit id:friary_north_courtyard_to_friary_north_building
+
+LOCATION
+x:300
+y:-120
+location id:friary_tower_stairs
+location area id:friary_area
+location description:You are at the bottom of a steep set of stone stairs that spiral far above you. Looking up makes you feel a little sick and the combination of the steep angle of the staircase and the shallow depth of the steps, on which you can barely get a foothold, make you think twice about proceeding upwards.
+EXIT
+exit label:South
+exit destination:friary_north_courtyard
+exit direction hint:South
+exit id:friary_tower_stairs_to_friary_north_courtyard
+EXIT
+exit label:Up
+exit destination:friary_tower_stairs_first_floor
+exit direction hint:Up
+exit id:friary_tower_stairs_to_friary_tower_stairs_first_floor
+
+LOCATION
+x:300
+y:-120
+location id:friary_tower_stairs_first_floor
+location area id:friary_area
+location description:You stand on an indented ledge on the first floor of the tower stairs. You look up and the stairs continue above you spiralling out of sight.
+EXIT
+exit label:Down
+exit destination:friary_tower_stairs
+exit direction hint:Down
+exit id:friary_tower_stairs_first_floor_to_friary_tower_stairs
+EXIT
+exit label:Up
+exit destination:friary_tower_stairs_second_floor
+exit direction hint:Up
+exit id:friary_tower_stairs_first_floor_to_friary_tower_stairs_second_floor
+
+LOCATION
+x:300
+y:-120
+location id:friary_tower_stairs_second_floor
+location area id:friary_area
+location description:You stand on an indented ledge on the second floor of the tower stairs. You can hear shuffling above you.
+EXIT
+exit label:Down
+exit destination:friary_tower_stairs_first_floor
+exit direction hint:Down
+exit id:friary_tower_stairs_second_floor_to_friary_tower_stairs_first_floor
+EXIT
+exit label:Up
+exit destination:friary_tower_library_room
+exit direction hint:Up
+exit id:friary_tower_stairs_second_floor_to_friary_tower_library_room
+
+LOCATION
+x:300
+y:-120
+location id:friary_tower_library_room
+location area id:friary_area
+location description:You stand in a large open room at the top of the tower. It is full of books piled upon tables, chairs, shelves and even the floor. This must be the Friary library where the friars study and write down their knowledge and experiences for the guidance of future friars. You notice a man in the corner hunched over a desk mumbling to himself.
+EXIT
+exit label:Down
+exit destination:friary_tower_stairs_second_floor
+exit direction hint:Down
+exit id:friary_tower_library_room_to_friary_tower_stairs_second_floor
+ITEM
+item name:Librarian
+item description:The man is sat at a reading desk, surrounded by books but his attention is taken by a strange object resting on the desk in front of him. His hair is quite dishevelled and you get the impression from the shock of white-grey hair, that half stands up by itself, that this fellow is quite a clever chap. He has obviously been in deep thought about the object in front of him and looks quite aggravated.
+item id:librarian_friar
+item countable noun prefix:the
+item is untakeable:
+item talk initial phrase:excuse_me:Excuse me Friar:You say "Excuse me Friar. I wonder if you could help me?".
+item talk response to:excuse_me:The friar looks up. "Help you? Why I can't even help myself, how am I supposed to help you?".
+item talk follow up phrase to:excuse_me:tell_me_where_I_can_find_a_scapula:Where can I find a scapula?:You say "You could tell me where I can find a scapula...".
+item talk response to:tell_me_where_I_can_find_a_scapula:The friar shakes his head in dismay and turns quietly back to the object in front of him.
+item talk follow up phrase to:excuse_me:can_i_help_you:Can I help you?:You say "I'm but an ungodly fool but perhaps I can offer my assistance with whatever is troubling you?".
+item talk response to:can_i_help_you:He looks up and smiles. "Thank you my son, that would be very much appreciated.". He stands up to shake your hand and you grasp it firmly. "My name is Alfred Eisenstein, I'm the librarian here at the Friary.". He turns to the item on the desk and picks it up gently, you look at it as he moves closer to you but all you can see is a blurry arrangement of lines which seem to form some sort of structure. It sits in his hands and Alfred ponders it. "This is Ruprik's Hexadecachoron - it's a puzzle. At least I'm prettying sure it's a puzzle. I found it hidden under a large pile of old books at the back of the library and with it there was just a dusty old leaf of paper that stated to solve it you must line up all the colours on each face. Well I've been trying to complete it since I found the thing but I can't seem to comprehend the structure - it has too many surfaces you see and sometimes not enough."
+item talk follow up phrase to:can_i_help_you:i_cant_help_you:I can't help you:You shuffle from foot to foot uncomfortably "I can't help you, you're quite clearly nuts. I'm going to go look for a scapula somewhere more sensible.".
+item talk response to:i_cant_help_you:The friar looks saddened but returns to his puzzle with no more regard for you.
+item talk follow up phrase to:can_i_help_you:sure_lets_do_it:Sure lets solve it:You state confidently "Sure let's solve this baby, it looks easy.".
+item talk response to:sure_lets_do_it:The friar looks delighted although a little skeptical of your new found confidence. "Ok, all you need to do is tell me which face to turn and in what direction.".
+
+item talk follow up phrase to:sure_lets_do_it:the_leftwise_face_untwistwise:Leftwise untwistwise:You say "Ok, first move - leftwise face and turn it in an untwistwise direction.".
+item talk response to:the_leftwise_face_untwistwise:The friar follows your excellent instructions to the letter. "Oh no, that's not right at all. Try something else.".
+item talk follow up phrase to:the_leftwise_face_untwistwise:the_leftwise_face_untwistwise
+item talk follow up phrase to:the_leftwise_face_untwistwise:the_rightwise_face_untwistwise
+item talk follow up phrase to:sure_lets_do_it:the_rightwise_face_untwistwise:Rightwise untwistwise:You say "Ok, first move - rightwise face and turn it in an untwistwise direction.".
+item talk response to:the_rightwise_face_untwistwise:The friar follows your excellent instructions to the letter. "Looking good, what next?".
+item talk follow up phrase to:the_rightwise_face_untwistwise:back_face_upsy_forward_a_little:Back face upsy and forward:You say "Next move - back face upsy and forward a little.".
+item talk response to:back_face_upsy_forward_a_little:The friar follows your excellent instructions to the letter. "Looking good, what next?".
+item talk follow up phrase to:back_face_upsy_forward_a_little:lateral_hemisphere_rotation_over_5_seconds:Lateral hemisphere rotation over 5 seconds:You say "Try this one - lateral hemisphere rotation over 5 seconds.". The friar looks at you a little oddly but proceeds anyway.
+item talk response to:lateral_hemisphere_rotation_over_5_seconds:The friar follows your excellent instructions to the letter. "Looking good, what next?".
+item talk follow up phrase to:lateral_hemisphere_rotation_over_5_seconds:finish_with_a_full_rotator_cuff_backflip:Finish with a full rotator cuff backflip:You say "Final move - full rotator cuff backflip.".
+item talk response to:finish_with_a_full_rotator_cuff_backflip:Without a second thought the friar leaps into the air, spins around on a pin and lands next to you with the Ruprik's Hexadecachoron held triumphantly high in his hand. "Woot!" says the friar. "Thats fantastic, you've solved it - all the sides have the same colour." - he shoves the Hexadecachoron towards you grinning manically. You look at the thing but you still can't distinguish any of its features. "Ok, a scapula was it, some sort of physician are you?". You nod cautiously. "Great, well if you pop down to the kitchen you'll find a loose flagstone, move it out of the way and you can get down to the cellar beneath the kitchen. All the brothers are laid to rest down there, if you look to the back you're bound to find what you need. Many thanks once more!". With that he sits back at his desk and ponders the wonderous object further.
+item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change item visibility:loose_flagstone:visible
+item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change item visibility:librarian_friar:invisible
+item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change item visibility:librarian_friar_solved:visible
+item talk follow up phrase to:lateral_hemisphere_rotation_over_5_seconds:jazz_hands:A flurry, a Pas de Chat and jazz hands?:You say "How about a flurry, a Pas de Chat and finally Jazz hands!".
+item talk response to:jazz_hands:The friar readies himself and launches into a bizarre contortion of modern dance and flash jazz, as he lands he thrusts his arms out and waves his hands for all he's worth - the best Jazz hands you've ever seen. He looks at the cube with concern. "I think that made it worse.".
+item talk follow up phrase to:jazz_hands:jazz_hands
+item talk follow up phrase to:jazz_hands:finish_with_a_full_rotator_cuff_backflip
+ITEM
+item name:Librarian
+item description:The man is sat at a reading desk, surrounded by books but his attention is taken by a strange object resting on the desk in front of him. His hair is quite dishevelled and you get the impression from the shock of white-grey hair, that half stands up by itself, that this fellow is quite a clever chap. He has obviously been in deep thought about the object in front of him.
+item id:librarian_friar_solved
+item countable noun prefix:the
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:excuse_me:Excuse me Friar:You say "Excuse me Friar. I wonder if you could help me?".
+item talk response to:excuse_me:The friar looks up. "Lost already eh? Down in the kitchen, the loose flagstone? You'll find what you need down there.".
+
+LOCATION
+x:360
+y:-060
+location id:friary_north_building
+location area id:friary_area
+location description:You are in the north building of the friary. To the east you see a kitchen through a narrow, low doorway.
+EXIT
+exit label:West
+exit destination:friary_north_courtyard
+exit direction hint:West
+exit id:friary_north_building_to_friary_north_courtyard
+EXIT
+exit label:East
+exit destination:friary_kitchen
+exit direction hint:East
+exit id:friary_north_building_to_friary_kitchen
+
+LOCATION
+x:420
+y:-060
+location id:friary_kitchen
+location area id:friary_area
+location description:All around you is the smell of cooked food, although you cannot see any laid out. The kitchen looks quite clean and tidy, you must have arrived just after a meal has been served. There is a door to the outside and what looks like a herb garden.
+EXIT
+exit label:West
+exit destination:friary_north_building
+exit direction hint:West
+exit id:friary_kitchen_to_friary_north_building
+EXIT
+exit label:Door
+exit destination:friary_herb_garden
+exit direction hint:East
+exit id:friary_kitchen_to_friary_herb_garden
+EXIT
+exit label:Down
+exit destination:friary_cellar
+exit direction hint:Down
+exit id:friary_kitchen_to_friary_cellar
+exit is not visible:
+ITEM
+item name:Loose flagstone
+item description:The flagstone is loose and has obviously been moved in and out of position many times. You can't quite get purchase on it to move it although you think you could slip something in the crack around the flagstone and maybe ease it up.
+item id:loose_flagstone
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:multitool
+item use is not repeatable:
+item successful use message:You slide the blade of the multitool in the crack between the flagstone and the floor and ease the stone up. Gripping it by your fingertips you pull it upright and place it to the side out of the way.
+item use action:change item visibility:loose_flagstone:invisible
+item use action:make exit visible:friary_kitchen_to_friary_cellar
+ITEM
+item name:Wash basin
+item description:It is a large ceramic trough that the friars use to wash food and dishes.
+item id:wash_basin
+item countable noun prefix:a
+item is untakeable:
+item can be used with:dirty_scapula
+item use is not repeatable:
+item successful use message:You give the bone a really good wash. Now it is all shiny and ready to be used. You place it next to the wash basin to dry.
+item use action:change item visibility:scapula:visible
+item use action:destroy item:dirty_scapula
+item use action:increment score:
+ITEM
+item name:Scapula
+item description:This is a shoulder blade. It is a clean, white bone, fairly old but solid, shaped slightly like an axe head.
+item id:scapula
+item countable noun prefix:a
+item visibility:invisible
+
+LOCATION
+x:420
+y:-060
+location id:friary_cellar
+location area id:friary_area
+location description:You stand in the cool space beneath the kitchen, bare rock around you and just about enough room to move. The cellar narrows up ahead and you will have to crawl on your knees to get further in.
+EXIT
+exit label:Up
+exit destination:friary_kitchen
+exit direction hint:Up
+exit id:friary_cellar_to_friary_kitchen
+EXIT
+exit label:Narrow tunnel
+exit destination:friary_cellar_narrow_end
+exit direction hint:East
+exit id:friary_cellar_to_friary_cellar_narrow_end
+
+LOCATION
+x:480
+y:-060
+location id:friary_cellar_narrow_end
+location area id:friary_area
+location description:You are crawling along the floor of the friary cellar, the space around you is tight and makes you feel a little nervous. As you reach the end of the crawlspace you can make out some bones stacked in piles against the back wall.
+EXIT
+exit label:Out
+exit destination:friary_cellar
+exit direction hint:West
+exit id:friary_cellar_narrow_end_to_friary_cellar
+ITEM
+item name:Clavicle
+item description:This is a collar bone. It is a clean, white bone, fairly old but solid, short and strut-like.
+item id:clavicle
+item countable noun prefix:a
+ITEM
+item name:Dirty scapula
+item description:This is a shoulder blade. It is a dirty bone, fairly old but solid, shaped slightly like an axe head. It is barely recognisable and entirely unusable in this state.
+item id:dirty_scapula
+item countable noun prefix:a
+ITEM
+item name:Tibia
+item description:This is a shin bone. It is a clean, white bone, fairly old but solid and heavy. It would make a good club.
+item id:tibia
+item countable noun prefix:a
+ITEM
+item name:Fibula
+item description:This is a calf bone. It is a clean, white bone, fairly old but solid. It is slimmer than the other bones.
+item id:fibula
+item countable noun prefix:a
+
+LOCATION
+x:480
+y:-060
+location id:friary_herb_garden
+location area id:friary_area
+location description:You are surrounded by delicate scents and deep aromas. You stand in the Friary's herb garden and it is looking a little unkempt. The further you look the more overgrown it has become. You are unsure if you should venture further in for fear of getting lost in the undergrowth!
+EXIT
+exit label:West
+exit destination:friary_kitchen
+exit direction hint:West
+exit id:friary_herb_garden_to_friary_kitchen
+EXIT
+exit label:Undergrowth
+exit destination:herb_garden_track
+exit direction hint:North
+exit id:friary_herb_garden_to_herb_garden_track
+
+LOCATION
+x:480
+y:-120
+location id:herb_garden_track
+location area id:friary_area
+location description:You stand in the middle of a maze of twisty tracks, all alike. You feel you may be a little lost and wonder which way to turn.
+EXIT
+exit label:North
+exit destination:herb_garden_track_3
+exit direction hint:North
+exit id:north_herb_garden_track_to_herb_garden_track_3
+EXIT
+exit label:East
+exit destination:herb_garden_track_2
+exit direction hint:East
+exit id:east_herb_garden_track_to_herb_garden_track_2
+EXIT
+exit label:West
+exit destination:herb_garden_track
+exit direction hint:West
+exit id:west_herb_garden_track_to_herb_garden_track
+EXIT
+exit label:Deer track
+exit destination:herb_garden_track_3
+exit direction hint:West
+exit id:deer_track_herb_garden_track_to_herb_garden_track_3
+EXIT
+exit label:Shrubbery
+exit destination:herb_garden_track_3
+exit direction hint:East
+exit id:shrubbery_herb_garden_track_to_herb_garden_track_3
+EXIT
+exit label:South
+exit destination:friary_herb_garden
+exit direction hint:South
+exit id:herb_garden_track_to_friary_herb_garden
+
+LOCATION
+x:560
+y:-060
+location id:herb_garden_track_2
+location area id:friary_area
+location description:You stand in the middle of a maze of twisty tracks, all alike. You feel you may be a little lost and wonder which way to turn.
+EXIT
+exit label:North
+exit destination:herb_garden_track_3
+exit direction hint:North
+exit id:north_herb_garden_track_2_to_herb_garden_track_3
+EXIT
+exit label:North East
+exit destination:herb_garden_track_2
+exit direction hint:North
+exit id:north_east_herb_garden_track_2_to_herb_garden_track_2
+EXIT
+exit label:West
+exit destination:herb_garden_track
+exit direction hint:West
+exit id:west_herb_garden_track_2_to_herb_garden_track
+EXIT
+exit label:South
+exit destination:herb_garden_track_4
+exit direction hint:South
+exit id:south_herb_garden_track_2_to_herb_garden_track_4
+EXIT
+exit label:Badger trail
+exit destination:herb_garden_track_2
+exit direction hint:East
+exit id:badger_trail_herb_garden_track_2_to_herb_garden_track_2
+EXIT
+exit label:East
+exit destination:herb_garden_track_3
+exit direction hint:East
+exit id:east_herb_garden_track_2_to_herb_garden_track_3
+
+LOCATION
+x:620
+y:-060
+location id:herb_garden_track_3
+location area id:friary_area
+location description:You stand in the middle of a maze of twisty tracks, all alike. You feel you may be a little lost and wonder which way to turn.
+EXIT
+exit label:North
+exit destination:herb_garden_track_2
+exit direction hint:North
+exit id:north_herb_garden_track_3_to_herb_garden_track_2
+EXIT
+exit label:North East
+exit destination:herb_garden_track_2
+exit direction hint:North
+exit id:north_east_herb_garden_track_3_to_herb_garden_track_2
+EXIT
+exit label:Drop Bear path
+exit destination:herb_garden_track
+exit direction hint:West
+exit id:west_herb_garden_track_3_to_herb_garden_track
+EXIT
+exit label:South
+exit destination:herb_garden_track
+exit direction hint:South
+exit id:south_herb_garden_track_3_to_herb_garden_track
+EXIT
+exit label:Badger trail
+exit destination:herb_garden_track
+exit direction hint:East
+exit id:badger_trail_herb_garden_track_3_to_herb_garden_track
+EXIT
+exit label:East
+exit destination:herb_garden_track_2
+exit direction hint:East
+exit id:east_herb_garden_track_3_to_herb_garden_track_2
+
+LOCATION
+x:560
+y:000
+location id:herb_garden_track_4
+location area id:friary_area
+location description:You stand in a clearing in the depths of the herb garden. There is not much light here as the canopy is thick but you can make out a plant that covers the ground with thin red leaves and bright purple stalks.
+EXIT
+exit label:North
+exit destination:herb_garden_track_2
+exit direction hint:North
+exit id:north_herb_garden_track_4_to_herb_garden_track_2
+ITEM
+item name:Silk Blood
+item description:The leaves of the plant are thin and delicate with variagated shades of red to green from the central vein of the leaf to the edge. It looks fairly sturdy stuff though and you don't think you can simply dig it up with your hands.
+item id:buried_silk_blood
+item countable noun prefix:some
+item mid sentence cased name:Silk Blood
+item is untakeable:
+item can be used with:spade
+item use is not repeatable:
+item successful use message:You dig down around the Silk Blood, having to work suprisingly deep amongst the purple roots. You eventually unearth the plant whole, shake off some earth from the roots and lay it on the ground.
+item use action:change item visibility:buried_silk_blood:invisible
+item use action:change item visibility:silk_blood:visible
+item use action:increment score:
+ITEM
+item name:Silk Blood
+item description:The leaves of the plant are thin and delicate with variagated shades of red to green from the central vein of the leaf to the edge.
+item id:silk_blood
+item countable noun prefix:some
+item mid sentence cased name:Silk Blood
+item visibility:invisible
+ITEM
+item name:Witches Bane
+item description:You recognise this plant as Witches Bane, a herb rumoured to be effective against witches - although you don't really believe in all that superstitious humbug.
+item id:witches_bane
+item countable noun prefix:some
+item mid sentence cased name:Witches Bane
+item visibility:visible
+
+LOCATION
+x:060
+y:120
+location id:churchyardeast
+location area id:church_area
+location description:You are in a churchyard, peering through the gloom which seems to stick to everything around you. A sense of personal peril hangs in the air jumping to new heights as you realise you are not alone. There is more churchyard to the west and a dirt track leading away to the east. Beside you is a shady presence, menacing but still.
+EXIT
+exit label:East
+exit destination:moredirttrack
+exit direction hint:East
+exit id:churchyardeast_to_moredirttrack
+EXIT
+exit label:South
+exit destination:churchyardsoutheast
+exit direction hint:South
+exit id:churchyardeast_to_churchyardsoutheast
+EXIT
+exit label:North
+exit destination:churchyardnortheast
+exit direction hint:North
+exit id:churchyardeast_to_churchyardnortheast
+EXIT
+exit label:West
+exit destination:churchyardmiddle
+exit direction hint:West
+exit id:churchyardeast_to_churchyardmiddle
+ITEM
+item name:Raging Ansible
+item description:It is huge and frightening. You want to look closer but do you dare?
+item id:ragingansible_churchyardeast
+item countable noun prefix:a
+item is untakeable:
+item examine message:Staring up at the Raging Ansible you are caught in its furious gaze. It mutters and mumbles trying to express its anger but seemingly unable to move. The presence is terrifying but after a brief moment it disappears and you are released from it's spell. Sensing that it is still somewhere close by you feel compelled to follow it.
+item on examine action:change item visibility:ragingansible_churchyardeast:invisible
+item on examine action:change item visibility:ragingansible_churchyardsoutheast:visible
+item on examine action:change location description:churchyardeast:You are in a churchyard, peering through the gloom which seems to stick to everything around you. A sense of personal peril hangs in the air. There is more churchyard to the west and a dirt track leading away to the east.
+item on examine action:change location description:churchyardsoutheast:You are in the south east corner of the church yard. The Raging Ansible bears down on you with righteous fury and you can do nothing to shield yourself from it's rage.
+
+LOCATION
+x:060
+y:180
+location id:churchyardsoutheast
+location area id:church_area
+location description:You are in the south east corner of the church yard.
+EXIT
+exit label:West
+exit destination:churchyardsouth
+exit direction hint:West
+exit id:churchyardsoutheast_to_churchyardsouth
+EXIT
+exit label:North
+exit destination:churchyardeast
+exit direction hint:North
+exit id:churchyardsoutheast_to_churchyardeast
+ITEM
+item name:Raging Ansible
+item description:It is huge and frightening. You want to look closer but do you dare?
+item id:ragingansible_churchyardsoutheast
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine message:Staring up at the Raging Ansible you are caught in its furious gaze. It mutters and mumbles trying to express its anger but seemingly unable to move. The presence is terrifying but after a brief moment it disappears and you are released from it's spell. Sensing that it is still somewhere close by you feel compelled to follow it.
+item on examine action:change item visibility:ragingansible_churchyardsoutheast:invisible
+item on examine action:change item visibility:ragingansible_churchyardsouth:visible
+item on examine action:change location description:churchyardsoutheast:You are in the south east corner of the church yard.
+item on examine action:change location description:churchyardsouth:You are at the south edge of the church yard. The Raging Ansible observes you with increasing anger, it's volcanic fury burning deep into your core.
+
+LOCATION
+x:000
+y:180
+location id:churchyardsouth
+location area id:church_area
+location description:You are at the south edge of the church yard.
+EXIT
+exit label:East
+exit destination:churchyardsoutheast
+exit direction hint:East
+exit id:churchyardsouth_to_churchyardsoutheast
+EXIT
+exit label:West
+exit destination:churchyardsouthwest
+exit direction hint:West
+exit id:churchyardsouth_to_churchyardsouthwest
+EXIT
+exit label:North
+exit destination:churchyardmiddle
+exit direction hint:North
+exit id:churchyardsouth_to_churchyardmiddle
+ITEM
+item name:Raging Ansible
+item description:It is huge and frightening. You want to look closer but do you dare?
+item id:ragingansible_churchyardsouth
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine message:Staring up at the Raging Ansible you are caught in its furious gaze. It mutters and mumbles trying to express its anger but seemingly unable to move. The presence is terrifying but after a brief moment it disappears and you are released from it's spell. Sensing that it is still somewhere close by you feel compelled to follow it.
+item on examine action:change item visibility:ragingansible_churchyardsouth:invisible
+item on examine action:change item visibility:ragingansible_churchyardmiddle:visible
+item on examine action:change location description:churchyardsouth:You are at the south edge of the church yard.
+item on examine action:change location description:churchyardmiddle:You are in the middle of the church yard. The Raging Ansible regards you with potent hatred, making its roaming presence felt like a red light in your mind.
+
+LOCATION
+x:000
+y:120
+location id:churchyardmiddle
+location area id:church_area
+location description:You are in the middle of the church yard.
+EXIT
+exit label:South
+exit destination:churchyardsouth
+exit direction hint:South
+exit id:churchyardmiddle_to_churchyardsouth
+EXIT
+exit label:North
+exit destination:churchyardnorth
+exit direction hint:North
+exit id:churchyardmiddle_to_churchyardnorth
+EXIT
+exit label:East
+exit destination:churchyardeast
+exit direction hint:East
+exit id:churchyardmiddle_to_churchyardeast
+EXIT
+exit label:West
+exit destination:churchyardwest
+exit direction hint:West
+exit id:churchyardmiddle_to_churchyardwest
+ITEM
+item name:Raging Ansible
+item description:It is huge and frightening. You want to look closer but do you dare?
+item id:ragingansible_churchyardmiddle
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine message:Staring up at the Raging Ansible you are caught in its furious gaze. It mutters and mumbles trying to express its anger but seemingly unable to move. The presence is terrifying but after a brief moment it disappears and you are released from it's spell. Sensing that it is still somewhere close by you feel compelled to follow it.
+item on examine action:change item visibility:ragingansible_churchyardmiddle:invisible
+item on examine action:change item visibility:ragingansible_churchyardnorth:visible
+item on examine action:change location description:churchyardmiddle:You are in the middle of the church yard.
+item on examine action:change location description:churchyardnorth:You are at the north edge of the church yard. The Raging Ansible glowers over you beating down rays of hideous ire upon you.
+
+LOCATION
+x:000
+y:060
+location id:churchyardnorth
+location area id:church_area
+location description:You are at the north edge of the church yard.
+EXIT
+exit label:South
+exit destination:churchyardmiddle
+exit direction hint:South
+exit id:churchyardnorth_to_churchyardmiddle
+EXIT
+exit label:East
+exit destination:churchyardnortheast
+exit direction hint:East
+exit id:churchyardnorth_to_churchyardnortheast
+EXIT
+exit label:West
+exit destination:churchyardnorthwest
+exit direction hint:West
+exit id:churchyardnorth_to_churchyardnorthwest
+ITEM
+item name:Raging Ansible
+item description:It is huge and frightening. You want to look closer but do you dare?
+item id:ragingansible_churchyardnorth
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine message:Staring up at the Raging Ansible you are caught in its furious gaze. It mutters and mumbles trying to express its anger but seemingly unable to move. The presence is terrifying but after a brief moment it disappears and you are released from it's spell. Where it stood you see a solitary headstone, it appears to have some writing on it but you cannot make out the words.
+item on examine action:change item visibility:ragingansible_churchyardnorth:invisible
+item on examine action:change item visibility:headstone:visible
+item on examine action:change location description:churchyardnorth:You are at the north edge of the church yard.
+ITEM
+item name:Headstone
+item description:The headstone has writing on it but not in any language that you have ever seen before. Perhaps it is in code?
+item id:headstone
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:decoderring
+item use is not repeatable:
+item successful use message:You are slightly amazed and much amused that the decoder ring does indeed decode the message on the headstone. As you read it you scratch the decoded message onto the headstone next to the original phrase so that you can look at it again should you need to in the future. You discard the decoder ring to make room for the treasures you anticipate finding in the coming adventure.
+item use action:destroy item:decoderring
+item use action:change item description:The headstone has writing on it but not in any language that you have ever seen before. Next to the garbled script is the following phrase that you previously decoded and scratched here for posterity - "Search well at the altar of the headless saint and let truth light your path."
+item use action:change item visibility:candlestick:visible
+
+LOCATION
+x:060
+y:060
+location id:churchyardnortheast
+location area id:church_area
+location description:You are in the north east corner of the church yard. There is nothing here but a pile of leaves and a musty smell. An old withered oak tree sits unhappily against the church yard wall.
+EXIT
+exit label:South
+exit destination:churchyardeast
+exit direction hint:South
+exit id:churchyardnortheast_to_churchyardeast
+EXIT
+exit label:West
+exit destination:churchyardnorth
+exit direction hint:West
+exit id:churchyardnortheast_to_churchyardnorth
+ITEM
+item name:Pile of leaves
+item description:It is a loosely collected pile of leaves.
+item id:pileofleaves_northeast
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:You fumble about in the leaves making a right mess until you uncover a piece of frayed rope.
+item on examine action:change item visibility:frayedrope:visible
+ITEM
+item name:Frayed rope
+item description:The rope is frayed at the ends but looks sturdy enough. It is two men in length but unlikely to be able to hold as much.
+item id:frayedrope
+item countable noun prefix:a
+item visibility:invisible
+
+LOCATION
+x:-060
+y:060
+location id:churchyardnorthwest
+location area id:church_area
+location description:You are in the north west corner of the church yard. There is nothing here but a pile of leaves and a musty smell. An old withered ash tree sits unhappily against the church yard wall.
+EXIT
+exit label:South
+exit destination:churchyardwest
+exit direction hint:South
+exit id:churchyardnorthwest_to_churchyardwest
+EXIT
+exit label:East
+exit destination:churchyardnorth
+exit direction hint:East
+exit id:churchyardnorthwest_to_churchyardnorth
+ITEM
+item name:Pile of leaves
+item description:It is a loosely collected pile of leaves.
+item id:pileofleaves_northwest
+item countable noun prefix:a
+item is untakeable:
+item examine message:You fumble about in the leaves making a right mess. There does not appear to be anything here.
+
+LOCATION
+x:-060
+y:120
+location id:churchyardwest
+location area id:church_area
+location description:You are at the west edge of the church yard. The church porch stands in front of you, empty but full of shadows. You hear some scratching in the corner which you presume is a mouse.
+EXIT
+exit label:North
+exit destination:churchyardnorthwest
+exit direction hint:North
+exit id:churchyardwest_to_churchyardnorthwest
+EXIT
+exit label:East
+exit destination:churchyardmiddle
+exit direction hint:East
+exit id:churchyardwest_to_churchyardmiddle
+EXIT
+exit label:South
+exit destination:churchyardsouthwest
+exit direction hint:South
+exit id:churchyardwest_to_churchyardsouthwest
+EXIT
+exit label:West
+exit destination:churchentrance
+exit direction hint:West
+exit id:churchyardwest_to_churchentrance
+
+LOCATION
+x:-060
+y:160
+location id:churchyardsouthwest
+location area id:church_area
+location description:You are in the south west corner of the church yard. There is nothing here but a pile of leaves and a musty smell. An old withered elm tree sits unhappily against the church yard wall.
+EXIT
+exit label:North
+exit destination:churchyardwest
+exit direction hint:North
+exit id:churchyardsouthwest_to_churchyardwest
+EXIT
+exit label:East
+exit destination:churchyardsouth
+exit direction hint:East
+exit id:churchyardsouthwest_to_churchyardsouth
+ITEM
+item name:Pile of leaves
+item description:It is a loosely collected pile of leaves.
+item id:pileofleaves_southwest
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:You fumble about in the leaves making a right mess until you uncover a dirty old bone. Possibly a tibula.
+item on examine action:change item visibility:tastybone:visible
+ITEM
+item name:Old dirty bone
+item description:It is a dirty bone. Probably a tibula. You can't imagine what this might be useful for unless you got desperately hungry and wanted to nibble something incredibly unpleasant and possibly lethal.
+item id:tastybone
+item countable noun prefix:a
+item visibility:invisible
+
+LOCATION
+x:-120
+y:120
+location id:churchentrance
+location area id:church_area
+location description:You step inside the porch, grateful to be out of the creepy church yard. In front of you is a forboding wooden door, sturdy but weatherbeaten. It is slightly ajar letting out the barest crack of light which flickers over you.
+EXIT
+exit label:East
+exit destination:churchyardwest
+exit direction hint:East
+exit id:churchentrance_to_churchyardwest
+EXIT
+exit label:West
+exit destination:churchnave
+exit direction hint:West
+exit id:churchentrance_to_churchnave
+
+LOCATION
+x:-180
+y:120
+location id:churchnave
+location area id:church_area
+location description:Surrounding you are the pews in which the congregation of the church would sit to attend a service. They look dusty and probably haven't been used for years. There doesn't appear to be anyone here right now, which you are thankful for since you are sneaking about. The ceiling is high and vaulted and the interior of this building looks a lot larger than it did from the outside. Further on you see the altar at the top of some shallow steps.
+EXIT
+exit label:East
+exit destination:churchentrance
+exit direction hint:East
+exit id:churchnave_to_churchentrance
+EXIT
+exit label:West
+exit destination:churchchancel
+exit direction hint:West
+exit id:churchnave_to_churchchancel
+
+LOCATION
+x:-240
+y:120
+location id:churchchancel
+location area id:church_area
+location description:This part of the church is well lit by candle light, although whoever lit the candles does not appear to be around. You stand at the foot of the shallow stone platform upon which the altar stands.
+EXIT
+exit label:East
+exit destination:churchnave
+exit direction hint:East
+exit id:churchchancel_to_churchnave
+EXIT
+exit label:West
+exit destination:churchaltar
+exit direction hint:West
+exit id:churchchancel_to_churchaltar
+
+LOCATION
+x:-300
+y:120
+location id:churchaltar
+location area id:church_area
+location description:You stand before a naked stone altar. It has been carvered from a single piece of stone and looks very heavy indeed. The light from the surrounding candles mounted on the wall dances over the surface of the stone.
+EXIT
+exit label:East
+exit destination:churchchancel
+exit direction hint:East
+exit id:churchaltar_to_churchchancel
+EXIT
+exit label:Down
+exit destination:churchcryptstairs
+exit direction hint:North
+exit id:churchaltar_to_churchcryptstairs
+exit is not visible:
+ITEM
+item name:Candlestick
+item description:There are many candlesticks surrounding the altar but this one looks a little wonky. Then again it might just be your imagination.
+item id:candlestick
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:frayedrope
+item use is not repeatable:
+item successful use message:You throw the frayed rope up in the air in a loop over the protruding candlestick. It lands gently and you carefully pull down. You have to pull quite hard before it gives but when it does the altar behind you begins to roll out over the stone platform, hidden gears grinding from behind a wall. A slim staircase is revealed, as a puff of stale air assails your nostrils. The frayed rope snaps as you hold it and you leave it dangling uselessly from the candlestick.
+item use action:destroy item:frayedrope
+item use action:make exit visible:churchaltar_to_churchcryptstairs
+item use action:change item description:There are many candlesticks surrounding the altar but this one is at a particularly violent angle with bits of frayed rope dangling from it.
+
+LOCATION
+x:-360
+y:120
+location id:churchcryptstairs
+location area id:church_area
+location description:You are on the hidden crypt stairs. The church and the altar are above you and who knows what is below.
+EXIT
+exit label:Down
+exit destination:churchcrypt
+exit direction hint:North
+exit id:churchcryptstairs_to_churchcrypt
+EXIT
+exit label:Up
+exit destination:churchaltar
+exit direction hint:South
+exit id:churchcryptstairs_to_churchaltar
+
+LOCATION
+x:-420
+y:120
+location id:churchcrypt
+location area id:church_area
+location description:You are at the bottom of the crypt stairs. It is quite dark but you can make out the walls and a passage way. The air is damp and smelly and you think you can hear some hoarse breathing nearby.
+EXIT
+exit label:Passageway
+exit destination:churchcryptpassageway
+exit direction hint:West
+exit id:churchcrypt_to_churchcryptpassageway
+EXIT
+exit label:Up
+exit destination:churchcryptstairs
+exit direction hint:South
+exit id:churchcrypt_to_churchcryptstairs
+
+LOCATION
+x:-480
+y:120
+location id:churchcryptpassageway
+location area id:church_area
+location description:The passageway opens out into a small cavern. There is some light from a door slightly open at one end of the cavern however between you and it stands a grisly, hairy and dribbly beast. Behind you lies the passageway back to the stairs.
+EXIT
+exit label:Passageway
+exit destination:churchcrypt
+exit direction hint:East
+exit id:churchcryptpassageway_to_churchcrypt
+EXIT
+exit label:Door
+exit destination:churchcrypt_litroom
+exit direction hint:West
+exit id:churchcryptpassageway_to_churchcrypt_litroom
+exit is not visible:
+ITEM
+item name:Massive Wolf
+item description:It's an enormous grey wolf. Oddly it has a spiky collar around it's neck from which hangs a metal nameplate inscribed with the name 'Cuddles'.
+item id:massivewolf
+item countable noun prefix:a
+item is untakeable:
+item can be used with:tastybone
+item use is not repeatable:
+item successful use message:You throw the bone at the wolf and it hits him squarely between the eyes. He growls and looks mightily unimpressed, preparing himself to pounce upon you and get a decent meal - when his nose starts to twitch and he looks down at the bone. You thank your lucky stars as the wolf sniffs and licks the bone, picking it up in his jaws and taking it to a corner of the room allowing you to reach the door at the end of the room.
+item use action:destroy item:tastybone
+item use action:make exit visible:churchcryptpassageway_to_churchcrypt_litroom
+
+LOCATION
+x:-540
+y:120
+location id:churchcrypt_litroom
+location area id:church_area
+location description:You stand in another cavern, lit by candles embedded in recesses in the wall. A door leads back to the passage to the stairs. Resting on the hilt of his sword stands a burly brigand. Beside him is another door, this one looks a lot more serious than the last and is reinforced with metal bars.
+EXIT
+exit label:Door
+exit destination:churchcryptpassageway
+exit direction hint:East
+exit id:churchcrypt_litroom_to_churchcryptpassageway
+EXIT
+exit label:Reinforced door
+exit destination:churchcrypt_innersanctum
+exit direction hint:West
+exit id:churchcrypt_litroom_to_churchcrypt_innersanctum
+exit is not visible:
+ITEM
+item name:Burly Brigand
+item description:The brigand looks fierce and unfriendly, not suprising really. He glares at you, as though wishing you'd step a little closer so he can hack off your head and kick you in the crotch. He's a meany.
+item id:burlybrigand
+item countable noun prefix:a
+item is untakeable:
+
+item talk initial phrase:hello:Hello!:You say "Hello!".
+item talk response to:hello:The brigand growls menacingly and steps forward just a little.
+item talk follow up phrase to:hello:idontwanttrouble:I don't want any trouble...:You say "Hey, wait a minute, I don't want any trouble... I'm just trying to recover some potentially stolen goods and wondered if you knew where I might look?"
+item talk response to:idontwanttrouble:The brigand stands a little taller and replies in a slow drawl "What do you mean? Do I look like I'd know where stolen goods would be?". He playfully scrapes the blade of his sword over the stone floor and looks at you thoughtfully. You fully expect those thoughts to be mostly about stabbing you with that sword.
+item talk follow up phrase to:idontwanttrouble:ivemadeamistake:Sorry I've made a mistake...:You quickly reply "I've made a mistake, my apologies good sir - you are obviously an honourable and decent fellow!"
+item talk response to:ivemadeamistake:The brigand says "Yeah, that's right. I am. Now scarper before I come over there and split you from head to heel!"
+
+item talk initial phrase:outofmyway:Out of my way...:You puff your chest up and say in your gruffest voice "Out of my way barbarian or feel the wrath of my sword! He is sharp and eager, yes, be afeared for he is known as Shiny the Dread. Be further warned that in many parts of the land I am known as Dave the Shiv, so stand aside before I am forced to unsheath Shiny and do you an injury!"
+item talk response to:outofmyway:The brigand observes you with mild disdain and you feel your ruse has not worked as well as you had hoped.
+
+item talk initial phrase:mygosh:Your costume is amazing...:You take a deep breath and say "Your costume is amazing.".
+item talk response to:mygosh:"Ey?"
+item talk follow up phrase to:mygosh:andyourshoeslookauthentic:And your shoes look so authentic...:Steeling yourself for a second gambit you state "And your shoes look so authentic, probably real leather? I wish I had only half your taste and fashion sense.". You gulp in anticipation of the certain head chopping to come.
+item talk response to:andyourshoeslookauthentic:"Shoes?" says the brigand furrowing his brow deeply.
+item talk follow up phrase to:andyourshoeslookauthentic:yourhairisshiny:Your hair is so shiny...:And now for the killer blow - all or nothing - "Your hair is so shiny - like summer rain, it has such natural elegance, just flowing over your shoulders. Magnificent!"
+item talk response to:yourhairisshiny:"Gosh." blubbers the brigand. His voice has raised an octave or two and softened considerably. "That's awfully nice of you to say so, I spent hours this morning trying to get just the right look. Of course no one's been down here all week. I've been here all by myself with that smelly dog and no one to talk to. You're the first person I've had a chance to try out my brigand act on. What do you think, were you scared when you first saw me?" he asks with a wry smile and the hint of a girlish giggle rising in his face.
+item talk follow up phrase to:yourhairisshiny:youcouldhavebeenmorefierce:You could have been more fierce...:You say "Well you could have been more fierce but on the whole I'd give you 3 out of 5."
+item talk response to:youcouldhavebeenmorefierce:"Oh dear, really? That's a shame, I'd tried so hard." The poor brigand looks decidely dejected. Positively glum.
+item talk follow up phrase to:youcouldhavebeenmorefierce:youwereveryfierce
+item talk follow up phrase to:yourhairisshiny:youwereveryfierce:You were very fierce...:You say "Actually I thought you were very fierce and unfriendly, utterly convincing."
+item talk response to:youwereveryfierce:"Oh wonderful!" cries the brigand. "I'm so happy I think I'll just let you pass. Between you and me I couldn't stop you if I wanted to, this is just for show, and you've been so sweet.". The brigand literally skips aside, bows and motions you towards the barred door at the rear of the cavern. He whispers at you, covering his mouth as if someone might be listening "If you don't mind I'll keep up the brigand act - a jobbing actor has got to practice you know.". He signals the end of his secret missive with a wink.
+
+item talk action in response to:youwereveryfierce:make exit visible:churchcrypt_litroom_to_churchcrypt_innersanctum
+item talk action in response to:youwereveryfierce:change item description:The brigand looks convincingly fierce and unfriendly. As you look at him he puts on an extra grim face and gives you a cheeky wink.
+
+LOCATION
+x:-600
+y:120
+location id:churchcrypt_innersanctum
+location area id:church_area
+location description:You stand in yet another cavern however this one seems better looked after. There is a small amount of furniture, a few chairs, a table and some trinkets and the floor appears to have been swept. There are several doors leading from this room and you think you can hear whispering voices but you cannot tell which door they are coming from.
+EXIT
+exit label:Reinforced door
+exit destination:churchcrypt_litroom
+exit direction hint:East
+exit id:churchcrypt_innersanctum_to_churchcrypt_litroom
+EXIT
+exit label:Wooden door
+exit destination:churchcrypt_storeroom
+exit direction hint:West
+exit id:churchcrypt_innersanctum_to_churchcrypt_storeroom
+EXIT
+exit label:Metal door
+exit destination:churchcrypt_emptyroom2
+exit direction hint:North
+exit id:churchcrypt_innersanctum_to_churchcrypt_emptyroom2
+EXIT
+exit label:Tough wooden door
+exit destination:churchcrypt_saferoom
+exit direction hint:South
+exit id:churchcrypt_innersanctum_to_churchcrypt_saferoom
+
+LOCATION
+x:-660
+y:120
+location id:churchcrypt_storeroom
+location area id:church_area
+location description:This room appears to be a storage area, there are boxes on the floor and shelves lined with supplies. You can see food, drink, medicines. There is enough here to keep a band of men going for many weeks - or one person for a lifetime. One box in the corner catches your eye, it is full of plants - which seems quite unusual given that you can see no natural source of light yet the plants appear to be alive and healthy.
+EXIT
+exit label:Wooden door
+exit destination:churchcrypt_innersanctum
+exit direction hint:East
+exit id:churchcrypt_storeroom_to_churchcrypt_innersanctum
+ITEM
+item name:Stack of boxes
+item description:The boxes are stacked high and are full of assorted supplies.
+item id:stack_of_boxes1
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:You unstack the boxes and have a good search through the contents. There's not much to see but you leave the boxes unstacked in case you want to examine them further.
+item on examine action:change item visibility:stack_of_boxes1:invisible
+item on examine action:change item visibility:stack_of_boxes2:visible
+ITEM
+item name:Stack of boxes
+item description:The boxes were stacked high, one of the boxes appears to have some food and wine in and something else that looks interesting.
+item id:stack_of_boxes2
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine action is not repeatable:
+item examine message:The very last box is lined with a sheet of torn paper which has some smudged writing on. You move all the objects on the paper out of the way so you can have a closer look.
+item on examine action:change item visibility:tornpaper:visible
+item on examine action:change item description:The boxes were stacked high. You feel you have already found whatever was interesting enough to root through this mess for.
+ITEM
+item name:Torn paper
+item description:The paper was used to line some supply boxes and is ripped in several places. There are stains all over it and you don't feel like putting something this filthy in your pocket. There is smudged writing on it but you think you can make out the last few words - "sceert psas psarhe is fnargl"
+item id:tornpaper
+item countable noun prefix:some
+item is untakeable:
+item visibility:invisible
+
+LOCATION
+x:-600
+y:060
+location id:churchcrypt_emptyroom2
+location area id:church_area
+location description:You stand in yet another cavern.
+EXIT
+exit label:Metal door
+exit destination:churchcrypt_innersanctum
+exit direction hint:South
+exit id:churchcrypt_emptyroom2_to_churchcrypt_innersanctum
+
+LOCATION
+x:-600
+y:180
+location id:churchcrypt_saferoom
+location area id:church_area
+location description:You stand in yet another cavern.
+EXIT
+exit label:Tough wooden door
+exit destination:churchcrypt_innersanctum
+exit direction hint:North
+exit id:churchcrypt_saferoom_to_churchcrypt_innersanctum
+ITEM
+item name:Voice activated safe
+item description:This is one of those new fangled voice activated safes - SIREE - Safe In Risky Exotic Environments. It's well renowned for not recognising quite the word you intended. You should try talking to it.
+item id:voice_activated_safe
+item countable noun prefix:a
+item is untakeable:
+
+item talk initial phrase:hello:Hello!:You say "Hello?".
+item talk response to:hello:"What do you mean hello? I'm a safe not a pretty girl so stop trying to buy me a drink. What's the pass phrase?"
+item talk follow up phrase to:hello:fnargl:Fnargl:You say "Fnargl!".
+item talk response to:fnargl:"Go on..."
+item talk follow up phrase to:hello:anthrakh:Anthrakh:You say "Anthrakh!".
+item talk response to:anthrakh:"..."
+item talk follow up phrase to:hello:pottum:Pottum:You say "Pottum!".
+item talk response to:pottum:"Yes..."
+
+item talk follow up phrase to:fnargl:tremedor:Tremedor:You say "Tremedor!".
+item talk response to:tremedor:"..."
+item talk follow up phrase to:fnargl:doofap:Doofap:You say "Doofap!".
+item talk response to:doofap:"Continue..."
+item talk follow up phrase to:fnargl:bendlebox:Bendlebox:You say "Bendlebox!".
+item talk response to:bendlebox:"And..."
+
+item talk follow up phrase to:anthrakh:junisper:Junisper:You say "Junisper!".
+item talk response to:junisper:"Uh huh..."
+item talk follow up phrase to:anthrakh:bentium:Bentium:You say "Bentium!".
+item talk response to:bentium:"Ok..."
+item talk follow up phrase to:anthrakh:blongle:Blongle:You say "Blongle!".
+item talk response to:blongle:"Right..."
+
+item talk follow up phrase to:pottum:spoonfish:Spoonfish:You say "Spoonfish!".
+item talk response to:spoonfish:"Uh huh..."
+item talk follow up phrase to:pottum:jumpwazoo:Jumpwazoo:You say "Jumpwazoo!".
+item talk response to:jumpwazoo:"Ok..."
+item talk follow up phrase to:pottum:indigerent:Indigerent:You say "Indigerent!".
+item talk response to:indigerent:"Right..."
+
+item talk follow up phrase to:spoonfish:phewty:Phewty:You say "Phewty!".
+item talk response to:phewty:"Tell it to the fishes."
+item talk follow up phrase to:spoonfish:deeddum:Deeddum:You say "Deeddum!".
+item talk response to:deeddum:"Speak to the hand cos the safe ain't listening."
+item talk follow up phrase to:spoonfish:worpalparp:Worpalparp:You say "Worpalparp!".
+item talk response to:worpalparp:"The worst attempt so far. Thoroughly disappointing."
+
+item talk follow up phrase to:jumpwazoo:abracadabra:Abracadabra:You say "Abracadabra!".
+item talk response to:abracadabra:"Really?"
+item talk follow up phrase to:jumpwazoo:oneteetwotee:Oneteetwotee:You say "Oneteetwotee!".
+item talk response to:oneteetwotee:"Not a chance sunshine."
+item talk follow up phrase to:jumpwazoo:itchingfeet:Itchingfeet:You say "Itchingfeet!".
+item talk response to:itchingfeet:"You're wasting my time."
+
+item talk follow up phrase to:indigerent:ardvarkian:Ardvarkian:You say "Ardvarkian!".
+item talk response to:ardvarkian:"That is a really rubbish guess."
+item talk follow up phrase to:indigerent:jubiliam:Jubiliam:You say "Jubiliam!".
+item talk response to:jubiliam:"Can't you try harder, you're not putting your heart into this."
+item talk follow up phrase to:indigerent:unbelievable:Unbelievable:You say "Unbelievable!".
+item talk response to:unbelievable:"Oh what's the point."
+
+item talk follow up phrase to:junisper:gnasharay:Gnasharay:You say "Gnasharay!".
+item talk response to:gnasharay:"Bonkers. And completely wrong."
+item talk follow up phrase to:junisper:kalkulator:Kalkulator:You say "Kalkulator!".
+item talk response to:kalkulator:"You might as well give up."
+item talk follow up phrase to:junisper:spungiform:Spungiform:You say "Spungiform!".
+item talk response to:spungiform:"Don't you have anything else to do?"
+
+item talk follow up phrase to:bentium:conjuper:Conjuper:You say "Conjuper!".
+item talk response to:conjuper:"Bonkers. And completely wrong."
+item talk follow up phrase to:bentium:splatward:Splatward:You say "Splatward!".
+item talk response to:splatward:"You might as well give up."
+item talk follow up phrase to:bentium:infinitussock:Infinitussock:You say "Infinitussock!".
+item talk response to:infinitussock:"Don't you have anything else to do?"
+
+item talk follow up phrase to:blongle:boodle:Boodle:You say "Boodle!".
+item talk response to:boodle:"Bonkers. And completely wrong."
+item talk follow up phrase to:blongle:gafaro:Gafaro:You say "Gafaro!".
+item talk response to:gafaro:"Miserably hopeless."
+item talk follow up phrase to:blongle:leeple:Leeple:You say "Leeple!".
+item talk response to:leeple:"Just give up."
+
+item talk follow up phrase to:tremedor:banaroo:Banaroo:You say "Banaroo!".
+item talk response to:banaroo:"Of course not. Ridiculous."
+item talk follow up phrase to:tremedor:diddle:Diddle:You say "Diddle!".
+item talk response to:diddle:"Where do you get this stuff from? Hilarious."
+item talk follow up phrase to:tremedor:roobibus:Roobibus:You say "Roobibus!".
+item talk response to:roobibus:"Are you joking? Cos it's not funny."
+
+item talk follow up phrase to:doofap:hardenhousen:Hardenhousen:You say "Hardenhousen!".
+item talk response to:hardenhousen:"Of course not. Ridiculous."
+item talk follow up phrase to:doofap:obviate:Obviate:You say "Obviate!".
+item talk response to:obviate:"Where do you get this stuff from? Hilarious."
+item talk follow up phrase to:doofap:alucidit:Alucidit:You say "Alucidit!".
+item talk response to:alucidit:"Are you joking? Cos it's not funny."
+
+item talk follow up phrase to:bendlebox:bongle:Bongle:You say "Bongle!".
+item talk response to:bongle:"Of course not. Ridiculous."
+item talk follow up phrase to:bendlebox:ratamapantrap:Ratamapantrap:You say "Ratamapantrap!".
+item talk response to:ratamapantrap:"No. Idiot."
+item talk follow up phrase to:bendlebox:floomembrow:Floomembrow:You say "Floomembrow!".
+item talk response to:floomembrow:"Fantastic! You've got it right.". The safe door swings open and you see a small anxious imp sitting on a tiny chair inside the safe. He looks quite aggravated. "I've been waiting weeks for someone to open this blasted safe. You can't imagine the number of idiotic utterances I've had to deal with, the rank stupidity of people randomly guessing unbelievable words to get me to open up - I saw straight through them.". He takes a deep breath, calming himself and enjoying the fresh air from outside the safe. "I suppose this is what you're after." he says as he throws a necklace down at your feet. He sits back on his chair propping the safe door open with one foot and watches you.
+item talk action in response to:floomembrow:change item visibility:voice_activated_safe:invisible
+item talk action in response to:floomembrow:change item visibility:unlocked_voice_activated_safe:visible
+item talk action in response to:floomembrow:change item visibility:sapphire_necklace:visible
+
+ITEM
+item name:Voice activated safe
+item description:This is one of those new fangled voice activated safes - SIREE - Safe In Risky Exotic Environments. It's well renowned for not recognising quite the word you intended. It is unlocked and the door is open wide. There is an angry little imp reclining in a tiny chair making rather rude gestures at you.
+item id:unlocked_voice_activated_safe
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+ITEM
+item name:Necklace
+item description:This necklace looks like it might be the one reported missing by Oren Constantine. It is very hard to tell as it seems to be shrouded in a fuzzy cloak - you suspect magic is afoot here. As you know the best way to deal with magic is magic, and you'll need something powerful, for whatever it is.
+item id:sapphire_necklace
+item countable noun prefix:a
+item visibility:invisible
+item can be used with:dustoftheancients
+item successful use message:You place the necklace on the floor in front of you and sprinkle the dust over it. The fuzziness quickly turns to sharp constrast, revealing a beautiful sapphire necklace. Someone must have magically cloaked it to help hide it.
+item use action:change item description:This is a beautiful necklace, adorned with sapphires. There are also some other strange symbols shaped in metal interspersed amongst the sapphires. You do not recognize them but they seem familiar. This is definitely the necklace that belongs to Oren Constantine's wife.
+item use action:change item name:Sapphire necklace
+item use action:destroy item:dustoftheancients
+item use action:change item visibility:grumpy_oren:invisible
+item use action:change item visibility:amiable_oren:visible
+item use action:increment score:
+
+LOCATION
+x:360
+y:240
+location id:nobles_quarter_west_street
+location area id:town_area
+location description:You stand at the west end of the main street of the Noble's Quarter. The houses around you are mansions, varying in size and grandeur to reflect the owner's wealth. The larger houses are at the far end to the east. The streets are mostly empty but there are a few merchants wandering back to their homes laden with bargains from far off lands.
+EXIT
+exit label:Clock tower
+exit destination:clocktower
+exit direction hint:West
+exit id:nobles_quarter_west_street_to_clocktower
+EXIT
+exit label:East
+exit destination:nobles_quarter_middle_street
+exit direction hint:East
+exit id:nobles_quarter_west_street_to_nobles_quarter_middle_street
+
+LOCATION
+x:420
+y:240
+location id:nobles_quarter_middle_street
+location area id:town_area
+location description:You stand in the middle of the main street that runs through the Noble's Quarter. There are impressive houses all around you, getting larger and more opulent the further east you look. Back to the west you can see a clock tower in the distance.
+EXIT
+exit label:West
+exit destination:nobles_quarter_west_street
+exit direction hint:West
+exit id:nobles_quarter_middle_street_to_nobles_quarter_west_street
+EXIT
+exit label:East
+exit destination:nobles_quarter_east_street
+exit direction hint:East
+exit id:nobles_quarter_middle_street_to_nobles_quarter_east_street
+
+LOCATION
+x:480
+y:240
+location id:nobles_quarter_east_street
+location area id:town_area
+location description:You stand at the east end of the main street that runs through the Noble's Quarter. This end has the most fantastic houses, mansions of huge proportions with people running to and fro, tending to the houses and the demands of the occupants. One house to the north has a large open porch whereupon stands a wide-shouldered man, looking out into the street expectantly.
+EXIT
+exit label:North
+exit destination:orens_porch
+exit direction hint:North
+exit id:nobles_quarter_east_street_to_orens_porch
+EXIT
+exit label:West
+exit destination:nobles_quarter_middle_street
+exit direction hint:West
+exit id:nobles_quarter_east_street_to_nobles_quarter_middle_street
+
+LOCATION
+x:540
+y:240
+location id:orens_porch
+location area id:town_area
+location description:You stand on a long porch fronting an even longer house. The house itself has several floors and extends back from the street further than you can see. You get the impression there are large grounds round the back of the house and probably a fountain or two. In front of you stands a large man looking out into the street. He has the air of importance and wealth and you deduce that this must be Oren Constantine the famous merchant.
+EXIT
+exit label:South
+exit destination:nobles_quarter_east_street
+exit direction hint:South
+exit id:orens_porch_to_nobles_quarter_east_street
+EXIT
+exit label:Front door
+exit destination:orens_hallway
+exit direction hint:North
+exit id:orens_porch_to_orens_hallway
+exit is not visible:
+
+ITEM
+item name:Wealthy merchant
+item description:This is Oren Constantine, a famous merchant. Wealthy, shrewd and above all ruthless, he is well known across the town. Many respect him, some fear him and a few hate him. He looks to be in a bad mood and you wonder whether it is a good idea to bother him at this moment.
+item id:grumpy_oren
+item countable noun prefix:a
+item is untakeable:
+
+item talk initial phrase:hello:Hello!:You say "Hello Mr Constantine, I was wondering if you had any jobs an up and coming adventurer might be interested in.".
+item talk response to:hello:"Well unless you've got my wife's necklace I have nothing for you, now get off my land before I release the hounds. Hrrmph." says Constantine as he pointedly turns his back on you. His Hrrmph' is particularly impressive.
+
+ITEM
+item name:Wealthy merchant
+item description:This is Oren Constantine, a famous merchant. Wealthy, shrewd and above all ruthless, he is well known across the town. Many respect him, some fear him and a few hate him. He looks to be in a good mood and amiable. If you've got anything to tell him, now is the time to do it.
+item id:amiable_oren
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+
+item talk initial phrase:hello:Hello!:You say "Hello Mr Constantine - is this your wife's necklace?".
+item talk response to:hello:"Why yes good sir! Thank you, you have cured a great headache for me, at last I can have some peace!"
+item talk follow up phrase to:hello:found_it_in_a_crypt:I found it in a crypt:You say "I'm so glad, I found it in a hidden crypt, in a safe being guarded by some brigands of dubious quality.".
+item talk response to:found_it_in_a_crypt:"Oh is that so?" replies Constantine. "Well never mind how you found it, what's important is that we have it back." He seems to make a point of saying the last sentence overly loud. Glancing furtively about you wonder if anyone might be listening.
+item talk follow up phrase to:found_it_in_a_crypt:here_it_is:Here is the necklace:You say "Ok, well here it is." you say expectantly.
+item talk response to:here_it_is:"And here is your reward." Oren passes you a large bag of coins, which you swiftly stash in your pocket. "And whilst you're here I'm sure my wife would like to thank you personally." He motions towards the front door and you feel you cannot refuse his invitation.
+item talk action in response to:here_it_is:destroy item:sapphire_necklace
+item talk action in response to:here_it_is:make exit visible:orens_porch_to_orens_hallway
+item talk action in response to:here_it_is:change item visibility:bluenoticeboard:invisible
+item talk action in response to:here_it_is:change item visibility:bluenoticeboard_roomofdeeds:visible
+item talk action in response to:here_it_is:change item visibility:rubynoticeboard:visible
+item talk action in response to:here_it_is:change item visibility:amiable_oren:invisible
+item talk action in response to:here_it_is:change item visibility:relieved_oren:visible
+
+ITEM
+item name:Wealthy merchant
+item description:This is Oren Constantine, a famous merchant. Wealthy, shrewd and above all ruthless, he is well known across the town. Many respect him, some fear him and a few hate him. He looks to be in a good mood and amiable.
+item id:relieved_oren
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+
+item talk initial phrase:hello:Hello!:You say "Hello Mr Constantine, I was wondering if you had any jobs an up and coming adventurer might be interested in.".
+item talk response to:hello:"Ah, it's you. Thanks once again for finding my wife's necklace, I've not been able to do anything but worry since it went missing. I'm afraid I have no jobs available for you at the moment, but if anything comes up I'll keep you in mind.".
+
+ITEM
+item name:Wealthy merchant
+item description:This is Oren Constantine, a famous merchant. Wealthy, shrewd and above all ruthless, he is well known across the town. Many respect him, some fear him and a few hate him. He looks like a weight has been lifted from his shoulders.
+item id:saved_oren
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+
+item talk initial phrase:didyouseeyourwife:Did you see your wife go by?:You say "Hello Mr Constantine, did you see your wife go by?".
+item talk response to:didyouseeyourwife:"Yes, yes I did." he says somberly. "I heard what happened in there - I was stopped by some unnatural force from entering to aid you.".
+item talk follow up phrase to:didyouseeyourwife:imsorry:I'm sorry for my part in this:You reply to Oren "I'm sorry for what she did and for my part in it. I assure you I did not know what she was doing and what she really was.".
+item talk response to:imsorry:Oren looks at you sternly but gently "I know. I often wondered if she felt some enmity towards me, there were small signs but I never thought she'd be capable of something like this. And her being a witch! Gods I've never been so suprised and horrified in my life. Anyway thank you once again stranger for coming to my rescue, I will be forever indebted to you."
+
+LOCATION
+x:540
+y:180
+location id:orens_hallway
+location area id:town_area
+location description:You are in the hallway of Oren's house. The floor is marbled and there is a sweeping staircase leading to the upper floors. Paintings line the walls and statues are ensconced in a number of alcoves around the hall. There are several doors leading from here but one is slightly ajar and looks inviting.
+EXIT
+exit label:Porch
+exit destination:orens_porch
+exit direction hint:South
+exit id:orens_hallway_to_orens_porch
+EXIT
+exit label:Study
+exit destination:orens_study
+exit direction hint:West
+exit id:orens_hallway_to_orens_study
+
+LOCATION
+x:480
+y:180
+location id:orens_study
+location area id:town_area
+location description:You are in the study of the Constantine Mansion. There is a roaring fire on the west wall that crackles and lights the room up with flickers of flame. There is a large desk and two large chairs facing each other over it, both with high backs and wide arms.
+EXIT
+exit label:Hallway
+exit destination:orens_hallway
+exit direction hint:East
+exit id:orens_study_to_orens_hallway
+
+ITEM
+item name:Enchanted pick axe
+item description:This is a magical pick axe. You know that because it glows and hums slightly when you swing it - like a mosquito in your ear but more pleasant.
+item id:enchanted_pickaxe
+item countable noun prefix:a
+item visibility:invisible
+
+ITEM
+item name:Food and wine
+item description:This is an assortment of bread, cheese and wine - perfect to fill your belly or the belly of a mendicant friar.
+item id:food_and_wine
+item countable noun prefix:some
+item visibility:invisible
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease. She is sitting at a large desk reading a book and as you enter the room she looks up.
+item id:lady_bella_1
+item countable noun prefix:a
+item is untakeable:
+
+item talk initial phrase:ivefoundyournecklace:I've found your necklace:You say "My lady, I have come to return your necklace. I found it in the company of a band of unconvincing brigands.".
+item talk response to:ivefoundyournecklace:Lady Bella looks up at you and puts her book down on the desk. "Wonderful" she smiles, "I did so hope that someone would find it, it is very precious to me. I want to thank you personally - you are clearly an honourable and trust worthy man.". You blush slightly as she speaks.
+item talk follow up phrase to:ivefoundyournecklace:iwasjustdoingmyduty:I was just doing my duty:"Thank you my lady, I was just doing my duty.". You fondle the bag of coins in your pocket, trying to count them as you talk.
+item talk response to:iwasjustdoingmyduty:She stares at you for a brief moment, considering something and looking closely at your face. "I wonder if you might be interested in doing me another favour?"
+item talk follow up phrase to:iwasjustdoingmyduty:imabitbusyatthemoment:I'm a bit busy at the moment:"Well I'd like to help you out but I'm a bit busy at the moment" you say as you contemplate all the ways your going to spend your reward.
+item talk response to:imabitbusyatthemoment:"Oh, well that's a shame. If you change your mind you can find me here." and with that she returns to her book.
+item talk follow up phrase to:iwasjustdoingmyduty:iwouldbehonoured:I would be honoured:"I would be honoured to help you any way I can my lady" you gush, like a little school boy. She smiles softly at you.
+item talk response to:iwouldbehonoured:"Wonderful! Now this is in confidence so you mustn't tell a soul - you see I have a friend who is love sick for a young man who toys with her affections, he is very cruel and dallies with other ladies about town. It is so sad as they would be a perfect match both romantically and in terms of status. I have resolved to help her and to that end I have advised that if she gives the young man a draft of my making he will stay faithful to her to the end.". You think this sounds like an excellent idea, after all what can go wrong. "I accept" you say without hesitation. "Ok" Bella continues "I will need some very special ingredients - a mendicants scapula, some of a herb named Silk Blood and an arc stone. The last item can only be found by men with green eyes, as you have, since it requires a little bit of magic inside to recognise it. I cannot help you with the other items but for the arc stone I can cast a small spell over a pick axe if you have one that will allow you to mine the rock seams that contain such precious stone."
+item talk action in response to:iwouldbehonoured:change item visibility:lady_bella_1:invisible
+item talk action in response to:iwouldbehonoured:change item visibility:lady_bella_2:visible
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease.
+item id:lady_bella_2
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:pickaxe
+item successful use message:You pass your pick axe to Lady Bella who takes it from you carefully and turns to the roaring fire. She bathes the axe head in the flames while muttering some indeciphirable enchantment and then places it on the desk in front of you. "And as I think of it here are some supplies to sustain you in your adventures." and she places some food and wine next to the pick axe.
+item use action:destroy item:pickaxe
+item use action:change item visibility:enchanted_pickaxe:visible
+item use action:change item visibility:arc_stone_seam_1:visible
+item use action:change item visibility:lady_bella_2:invisible
+item use action:change item visibility:lady_bella_3:visible
+item use action:change item visibility:food_and_wine:visible
+
+item talk initial phrase:canyouremindme:Can you remind me of what I need to do next?:You say "My lady, I apologise deeply but I am a forgetful fool and have forgotten what it was that I need to do next."
+item talk response to:canyouremindme:Lady Bella looks up at you and puts her book down on the desk. "Of course my child - bring me a pick axe - so that I might cast an enchantment upon it for you to use the pick axe to find an arc stone."
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease.
+item id:lady_bella_3
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:silk_blood
+item successful use message:You pass the Silk Blood to Lady Bella. She takes it, crushing the herb between her fingers, smelling it as she does so and puts it in a small bowl on the desk.
+item use action:destroy item:silk_blood
+item use action:change item visibility:lady_bella_3:invisible
+item use action:change item visibility:lady_bella_4:visible
+
+item talk initial phrase:canyouremindme:Can you remind me of those things you wanted?:You say "My lady, I apologise deeply but I am a forgetful fool and have forgotten what it was that you asked me to find. Can you tell me again the ingredients that you require?"
+item talk response to:canyouremindme:Lady Bella looks up at you and puts her book down on the desk. "Of course my child - I need a mendicants scapula, some of a herb named Silk Blood and an arc stone. The last item can only be found by men with green eyes, as you have, since it requires a little bit of magic inside to recognise it. Come back to me when you have all the items and I will prepare the love draft for my friend. I will need the herb first of all."
+
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease.
+item id:lady_bella_4
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:scapula
+item successful use message:You pass the scapula to Lady Bella. She takes it, picks up a knife from the desk and scrapes some fragments from the bone into the small bowl with the Silk Blood.
+item use action:destroy item:scapula
+item use action:change item visibility:lady_bella_4:invisible
+item use action:change item visibility:lady_bella_5:visible
+
+item talk initial phrase:whatdoyouneednext:What do you need next?:You say "My lady, what do you need next?"
+item talk response to:whatdoyouneednext:Lady Bella looks at you. "I will need the mendicants scapula next."
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She looks very approachable with a gentle and soft demeanour that sets you immediately at ease. On the other side of the desk she sits, deep in concentration bent over a bowl and talking to a mysterious glowing stone. There are voices all around you, muttering incoherent and unrepeatable things, you are very nervous standing here and feel a pressing need to leave and run away.
+item id:lady_bella_5
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:arc_stone
+item successful use message:You pass the arc stone to Lady Bella. She takes it and places it next to the bowl containing the scapula scrapings and crushed Silk Blood. Staring deeply into the stone she caresses it with one hand, closes her eyes and starts to mumble an incantation. The air is thick with static and you can hear Bella's voice splitting into many dissonant tones echoing all around you. You're starting to feel slightly nervous, you didn't expect quite such a reaction for a simple harmless, love potion!
+item use action:destroy item:arc_stone
+item use action:change item visibility:lady_bella_5:invisible
+item use action:change item visibility:lady_bella_6:visible
+item use action:change item visibility:rubynoticeboard:invisible
+item use action:change item visibility:rubynoticeboard_roomofdeeds:visible
+
+item talk initial phrase:whatdoyouneednext:What do you need next?:You say "My lady, what do you need next?"
+item talk response to:whatdoyouneednext:Lady Bella looks at you. "I will need the arc stone now."
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She is in the middle of concocting a potion. The air around her is electric, literally buzzing with the unnatural power that Bella is invoking.
+item id:lady_bella_6
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+
+item talk initial phrase:whatishappening:What is happening?:You mumble nervously "My lady, what is happening? Is everything ok?"
+item talk response to:whatishappening:Lady Bella breaks her concentration and glares directly at you. "Be quiet you fool, you're ruining my concentration."
+item talk follow up phrase to:whatishappening:thatdoesntsmelllikealovepotion:That doesn't smell like a love potion:"That doesn't smell like a love potion to me." you reply rather meekily.
+item talk response to:thatdoesntsmelllikealovepotion:Bella stands up and strides towards you. "You idiot, I don't need you anymore! Of course it's not a love potion, what a ridiculous notion - why would I care about someones trifling daliance. This is a death potion!". Of course, you suddenly realise that is what the smell is, it's not love it's the rotting wretchedness of a man's impending doom!
+item talk follow up phrase to:thatdoesntsmelllikealovepotion:idontunderstand:I don't understand!:"But why? Who are you making this for? I don't understand!". Again you mumble this rather feebly and with a good dose of self pity. You resolve to be a bit more heroic with your next utterance.
+item talk response to:idontunderstand:"Weakling, pitiful fool, you really are an imbecile aren't you?". She pauses for a moment to let her tirade sink in. "This potion is for my dear husband." she sneers. "He's a waste of space too, you are peas in a pod and deserve to be crushed. I'll take his money, his house and his life!". She moves ever more closely into your personal space and you can sense her power. You're feeling really anxious now. She sweeps her arms back and screams "Get out!" swinging down towards you and at once you feel the air contract and blast you through the door. You grasp onto the door frame battling with the force of her magic.
+item talk action in response to:idontunderstand:change item visibility:lady_bella_6:invisible
+item talk action in response to:idontunderstand:change item visibility:lady_bella_7:visible
+
+ITEM
+item name:Lady
+item description:This is Lady Bella Constantine, wife of Oren Constantine and lady of this house. She is in the middle of concocting a wicked potion. The air around her is fetid with the stench of evil at work.
+item id:lady_bella_7
+item countable noun prefix:a
+item visibility:invisible
+item is untakeable:
+item can be used with:witches_bane
+item successful use message:You crush the Witches Bane between your fingers as you saw Bella do with the Silk Blood and throw it towards her. Splat! It hits her right on the cheek. She looks a little puzzled and you return the look of puzzlement with a slight air of suprise - that'll make her think. Slowly she sniffs the air and wiping the icky mess from her face glares at you and cries "What have you done? This is Witches Bane - my one weakness - how did you know?". You stand there and consider answering her question with the obvious reply but decide it is a little pointless now. Her face is starting to contort and she chokes and splutters "Damn you, damn you!". She knocks the bowl to the floor as the deadly herb ravages her evil body, twisting her this way and that. Bella suddenly pulls herself upright and with the last of her strength charges at the door before you realise what is happening. As she runs out she screams at you "This is not over - I'll destroy you for this, one day, I'll destroy you!". And she is gone.<newline><newline>Well done! You have completed the available content, hope you have enjoyed the game and please look out for the next installment of the Tiny Text Adventure series!
+item use action:destroy item:lady_bella_7
+item use action:destroy item:witches_bane
+item use action:change item visibility:relieved_oren:invisible
+item use action:change item visibility:saved_oren:visible
+item use action:change item visibility:goldnoticeboard_roomofdeeds:visible
+item use action:increment score:
+
+item talk initial phrase:stoporiwillstopyou:Stop or I will stop you!:You finally decide to man up and give her what for. "Stop you foul hag or I will stop you!". You wonder if you worded that a little strongly. To be fair to Lady Bella, she's actually quite an attractive lady.
+item talk response to:stoporiwillstopyou:Lady Bella throws her head back and lets out a devilish cackle. "You can't stop me! My powers are beyond your worst imaginings!"
+item talk follow up phrase to:stoporiwillstopyou:ihavepowersofmyown:I have powers of my own!:"I can and I will. Contrary to your beliefs madam I have powers of my own at my disposal.". You wait to see if your bluff works.
+item talk response to:ihavepowersofmyown:"If that is true you'll have no problem dealing with this!." Once again she sweeps her arms back and sends a magical shockwave of air against you which blasts you through the door. You grasp onto the door frame frantically battling with the force of her magic.
