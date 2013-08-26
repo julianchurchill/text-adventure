@@ -20,3 +20,7 @@ local.properties
 # Eclipse project files
 .classpath
 .project
+
+# configured files for each app version
+AndroidManifest.xml
+res/

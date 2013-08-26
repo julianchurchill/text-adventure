@@ -5,6 +5,8 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 
 Don't forget to drive the development by producing value - the value is game content and this should drive the development of functionality to support it.
 
+To build first run './config/prepare.sh' to copy the correct resource files and AndroidManifest.xml for the app you want to build. Then run 'ant debug' or 'ant release'.
+
 To run the emulator - run 'android list avd' to get all the configured virtual devices, then 'emulator @<device-name>' to run the chosen device in the emulator.
 
 Save files are stored on the emulated device under /data/data/com.chewielouie.textadventure/files. Run 'adb shell' to get access to the file system.
