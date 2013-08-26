@@ -16,7 +16,6 @@ Backlog
 
 Technical Tasks
 
-- Need markup for italics for introduction of the names above
 - New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
   - Make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 
@@ -30,9 +29,10 @@ Bugs
 
 Story (Part 2)
 
-- Return to the town (needs a name now) - extra shops open, friary is abandoned, church is a burnt shell, towns people dislike you.
+- Return to the town (Perpetuity?) - extra shops open, friary is abandoned, church is a burnt shell, towns people dislike you.
 - Bella Constantine lives! In a far away hideout plotting her revenge on you...
-- Another town/village - Perpetuity? Subdued by Bella to serve her - the future of the old town...
+- Another town/village - Ubiquity? Subdued by Bella to serve her - the future of the old town...
+- A girl named Oubliette
 - A river and bridge between the two settlements
   - Use a boat to get across initially, perhaps repair the bridge from the other side to return to the town
 - Underwater adventure of somesort - perhaps in the river. Meet water faeries
