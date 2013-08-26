@@ -596,7 +596,7 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         catch ( PackageManager.NameNotFoundException e ) {
         }
         dialog.setTitle( getResources().getString( R.string.app_name ) +
-                         " " + versionName );
+                         " v" + versionName );
 
         dialog.show();
     }
