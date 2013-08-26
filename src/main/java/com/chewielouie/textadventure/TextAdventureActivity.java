@@ -119,16 +119,6 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private Map<String, Integer> areaIDsToMaskIDs;
 
     public TextAdventureActivity() {
-        Map<String, Integer> aMap = new HashMap<String, Integer>();
-        aMap.put( "church-area", getDrawableIDByName( "church_mask" ) );
-        aMap.put( "mine-area", getDrawableIDByName( "mine_mask" ) );
-        aMap.put( "town-area", getDrawableIDByName( "town_mask" ) );
-        aMap.put( "friary-area", getDrawableIDByName( "friary_mask" ) );
-        areaIDsToMaskIDs = Collections.unmodifiableMap( aMap );
-    }
-
-    private int getDrawableIDByName( String name ) {
-        return getResources().getIdentifier( name, "drawable", getPackageName() );
     }
 
     public TextAdventureActivity( RendersView r ) {
@@ -293,6 +283,18 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
                                      itemDeserialiser,
                                      modelContent() );
         movementMonitor = new MovementMonitor( model );
+        loadMapImages();
+    }
+
+    private void loadMapImages() {
+        Map<String, Integer> aMap = new HashMap<String, Integer>();
+        for( String areaID : model.areaIDs() )
+            aMap.put( areaID, getDrawableIDByName( areaID + "_mask" ) );
+        areaIDsToMaskIDs = Collections.unmodifiableMap( aMap );
+    }
+
+    private int getDrawableIDByName( String name ) {
+        return getResources().getIdentifier( name, "drawable", getPackageName() );
     }
 
     public BasicModelFactory modelFactory() {

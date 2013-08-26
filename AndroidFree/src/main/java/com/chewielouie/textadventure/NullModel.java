@@ -2,6 +2,7 @@ package com.chewielouie.textadventure;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.MovementEventSubscriber;
 
@@ -19,6 +20,10 @@ public class NullModel implements TextAdventureModel {
 
     public String currentLocationAreaName() {
         return "";
+    }
+
+    public Set<String> areaIDs() {
+        return null;
     }
 
     public void setCurrentLocation( String id ) {

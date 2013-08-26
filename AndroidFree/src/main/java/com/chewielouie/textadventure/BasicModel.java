@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.MovementEventSubscriber;
 
@@ -37,6 +38,10 @@ public class BasicModel implements TextAdventureModel, UserInventory {
 
     public String currentLocationAreaName() {
         return locationAreaNames.get( currentLocation().areaID() );
+    }
+
+    public Set<String> areaIDs() {
+        return locationAreaNames.keySet();
     }
 
     public void setCurrentLocation( String id ) {

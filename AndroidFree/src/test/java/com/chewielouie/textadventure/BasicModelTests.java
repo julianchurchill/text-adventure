@@ -374,6 +374,23 @@ public class BasicModelTests {
     }
 
     @Test
+    public void area_ids_match_those_added() {
+        ModelLocation loc1 = mock( ModelLocation.class );
+        when( loc1.areaID() ).thenReturn( "area-id1" );
+        ModelLocation loc2 = mock( ModelLocation.class );
+        when( loc2.areaID() ).thenReturn( "area-id2" );
+        BasicModel model = new BasicModel();
+        model.addLocation( loc1 );
+        model.addLocation( loc2 );
+
+        model.addLocationArea( "area-id1", "area name" );
+        model.addLocationArea( "area-id2", "area name" );
+
+        assertThat( model.areaIDs(), hasItem( "area-id1" ) );
+        assertThat( model.areaIDs(), hasItem( "area-id2" ) );
+    }
+
+    @Test
     public void subscribers_receive_current_location_change_events() {
         final ModelLocation loc1 = mockery.mock( ModelLocation.class, "loc1" );
         final ModelLocation loc2 = mockery.mock( ModelLocation.class, "loc2" );
