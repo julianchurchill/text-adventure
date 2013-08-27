@@ -1,5 +1,7 @@
 package com.chewielouie.textadventure;
 
+import com.chewielouie.textadventure_common.TextAdventureCommonActivity;
+
 public class TextAdventureActivity extends TextAdventureCommonActivity {
 
     public TextAdventureActivity() {

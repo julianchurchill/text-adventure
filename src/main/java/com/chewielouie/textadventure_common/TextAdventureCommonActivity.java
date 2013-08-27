@@ -1,4 +1,4 @@
-package com.chewielouie.textadventure;
+package com.chewielouie.textadventure_common;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -58,6 +58,20 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import com.cedarsoftware.util.io.JsonReader;
 import com.cedarsoftware.util.io.JsonWriter;
+import com.chewielouie.textadventure.BasicModel;
+import com.chewielouie.textadventure.BasicModelFactory;
+import com.chewielouie.textadventure.Exit;
+import com.chewielouie.textadventure.LocationFactory;
+import com.chewielouie.textadventure.LocationExitFactory;
+import com.chewielouie.textadventure.Logger;
+import com.chewielouie.textadventure.PlainTextModelPopulator;
+import com.chewielouie.textadventure.RendersView;
+import com.chewielouie.textadventure.StdoutLogger;
+import com.chewielouie.textadventure.TextAdventurePresenter;
+import com.chewielouie.textadventure.TextAdventureModel;
+import com.chewielouie.textadventure.TextAdventureView;
+import com.chewielouie.textadventure.UserActionHandler;
+import com.chewielouie.textadventure.UserInventory;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.action.ActionHistory;
@@ -76,8 +90,6 @@ import com.chewielouie.textadventure.item.NormalItemFactory;
 import com.chewielouie.textadventure.itemaction.ItemActionFactory;
 import com.chewielouie.textadventure.itemaction.NormalItemActionFactory;
 import com.chewielouie.textadventure.itemaction.LoggableNormalItemActionFactory;
-import com.chewielouie.textadventure_common.BasicModelV1_0ToActionListConverter;
-import com.chewielouie.textadventure_common.JSONToActionListConverter;
 
 public abstract class TextAdventureCommonActivity extends Activity implements TextAdventureView, OnClickListener {
 
