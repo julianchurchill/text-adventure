@@ -153,41 +153,116 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
     {
         super.onCreate(savedInstanceState);
         setContentView(R_layout_main());
-        main_text_output = findTextView( R.id.main_text_output );
+        main_text_output = findTextView( R_id_main_text_output() );
         main_text_output.setTextSize( getFontSize() );
-        score_text_view = findTextView( R.id.score_text_view );
-        available_actions_view = (LinearLayout)findViewById( R.id.available_actions );
-        map_view = (ImageView)findViewById( R.id.map_view );
+        score_text_view = findTextView( R_id_score_text_view() );
+        available_actions_view = (LinearLayout)findViewById( R_id_available_actions() );
+        map_view = (ImageView)findViewById( R_id_map_view() );
+    }
+
+    protected int R_drawable_map() {
+        return R.drawable.map;
+    }
+
+    protected int R_id_available_actions() {
+        return R.id.available_actions;
+    }
+
+    protected int R_id_location_text_view() {
+        return R.id.location_text_view;
+    }
+
+    protected int R_id_map_view() {
+        return R.id.map_view;
+    }
+
+    protected int R_id_main_text_output() {
+        return R.id.main_text_output;
+    }
+
+    protected int R_id_main_text_output_scroll_view() {
+        return R.id.main_text_output_scroll_view;
+    }
+
+    protected int R_id_options_font_example_text() {
+        return R.id.options_font_example_text;
+    }
+
+    protected int R_id_options_font_size_picker() {
+        return R.id.options_font_size_picker;
+    }
+
+    protected int R_id_score_text_view() {
+        return R.id.score_text_view;
+    }
+
+    protected int R_layout_about_dialog() {
+        return R.layout.about_dialog;
     }
 
     protected int R_layout_main() {
         return R.layout.main;
     }
-        // R.id.main_text_output );
-        // R.id.score_text_view );
-        // R.id.available_actions );
-        // R.id.map_view );
-        // R.layout.main;
-        // R.id.main_text_output_scroll_view );
-        // R.id.location_text_view );
-        // R.string.about ) );
-        // R.string.new_game ) );
-        // R.string.options ) );
-        // R.string.show_map ) );
-        // R.layout.about_dialog );
-        // R.string.app_name ) +
-        // R.string.new_game_title )
-        // R.string.new_game_confirmation_dialog_text )
-        // R.string.yes, new DialogInterface.OnClickListener() {
-        // R.string.no, null )
-        // R.layout.options_dialog, null );
-        // R.string.options_title );
-        // R.id.options_font_example_text );
-        // R.id.options_font_size_picker );
-        // R.string.options_save, new DialogInterface.OnClickListener() {
-        // R.string.options_cancel, null );
-        // R.drawable.map )
-        // R.string.completed ) );
+
+    protected int R_layout_options_dialog() {
+        return R.layout.options_dialog;
+    }
+
+    protected int R_raw_model_content() {
+        return R.raw.model_content;
+    }
+
+    protected int R_string_about() {
+        return R.string.about;
+    }
+
+    protected int R_string_app_name() {
+        return R.string.app_name;
+    }
+
+    protected int R_string_completed() {
+        return R.string.completed;
+    }
+
+    protected int R_string_new_game() {
+        return R.string.new_game;
+    }
+
+    protected int R_string_new_game_title() {
+        return R.string.new_game_title;
+    }
+
+    protected int R_string_new_game_confirmation_dialog_text() {
+        return R.string.new_game_confirmation_dialog_text;
+    }
+
+    protected int R_string_no() {
+        return R.string.no;
+    }
+
+    protected int R_string_options() {
+        return R.string.options;
+    }
+
+    protected int R_string_options_title() {
+        return R.string.options_title;
+    }
+
+    protected int R_string_options_save() {
+        return R.string.options_save;
+    }
+
+    protected int R_string_options_cancel() {
+        return R.string.options_cancel;
+    }
+
+    protected int R_string_show_map() {
+        return R.string.show_map;
+    }
+
+    protected int R_string_yes() {
+        return R.string.yes;
+    }
 
     private class LoadTask extends AsyncTask<Void, Void, Void> {
         protected Void doInBackground(Void... args) {
@@ -350,7 +425,7 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
     }
 
     private String modelContent() {
-        return readRawTextFileFromResource( R.raw.model_content );
+        return readRawTextFileFromResource( R_raw_model_content() );
     }
 
     private String readRawTextFileFromResource( int resId ) {
@@ -423,7 +498,7 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
     private void scrollToFirstNewDescriptionLine() {
         final int lastLineInOldDescription = oldDescriptionLineCount - 1;
         final ScrollView scrollView = (ScrollView)findViewById(
-                R.id.main_text_output_scroll_view );
+                R_id_main_text_output_scroll_view() );
         scrollView.post(new Runnable() {
             public void run() {
                 Rect bounds = new Rect();
@@ -438,7 +513,7 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
 
     private void scrollToTopOfMainText() {
         final ScrollView scrollView = (ScrollView)findViewById(
-                R.id.main_text_output_scroll_view );
+                R_id_main_text_output_scroll_view() );
         scrollView.post(new Runnable() {
             public void run() {
                 scrollView.smoothScrollTo( 0, 0 );
@@ -545,7 +620,7 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
     }
 
     public void showAreaName( String s ) {
-        TextView location_area  = findTextView( R.id.location_text_view );
+        TextView location_area  = findTextView( R_id_location_text_view() );
         location_area.setText( s );
     }
 
@@ -584,10 +659,10 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
     public boolean onPrepareOptionsMenu( Menu menu )
     {
         menu.clear();
-        menu.add( Menu.NONE, ABOUT_MENU_ITEM, Menu.NONE, getText( R.string.about ) );
-        menu.add( Menu.NONE, NEW_GAME_MENU_ITEM, Menu.NONE, getText( R.string.new_game ) );
-        menu.add( Menu.NONE, OPTIONS_MENU_ITEM, Menu.NONE, getText( R.string.options ) );
-        menu.add( Menu.NONE, SHOW_MAP_MENU_ITEM, Menu.NONE, getText( R.string.show_map ) );
+        menu.add( Menu.NONE, ABOUT_MENU_ITEM, Menu.NONE, getText( R_string_about() ) );
+        menu.add( Menu.NONE, NEW_GAME_MENU_ITEM, Menu.NONE, getText( R_string_new_game() ) );
+        menu.add( Menu.NONE, OPTIONS_MENU_ITEM, Menu.NONE, getText( R_string_options() ) );
+        menu.add( Menu.NONE, SHOW_MAP_MENU_ITEM, Menu.NONE, getText( R_string_show_map() ) );
         return true;
     }
 
@@ -618,7 +693,7 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
 
     private void showAboutDialog() {
         Dialog dialog = new Dialog( this );
-        dialog.setContentView( R.layout.about_dialog );
+        dialog.setContentView( R_layout_about_dialog() );
 
         String versionName = "";
         try {
@@ -626,7 +701,7 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
         }
         catch ( PackageManager.NameNotFoundException e ) {
         }
-        dialog.setTitle( getResources().getString( R.string.app_name ) +
+        dialog.setTitle( getResources().getString( R_string_app_name() ) +
                          " v" + versionName );
 
         dialog.show();
@@ -635,9 +710,9 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
     private void showNewGameConfirmationDialog() {
         new AlertDialog.Builder( this )
             .setIcon( android.R.drawable.ic_dialog_alert )
-            .setTitle( R.string.new_game_title )
-            .setMessage( R.string.new_game_confirmation_dialog_text )
-            .setPositiveButton( R.string.yes, new DialogInterface.OnClickListener() {
+            .setTitle( R_string_new_game_title() )
+            .setMessage( R_string_new_game_confirmation_dialog_text() )
+            .setPositiveButton( R_string_yes(), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick( DialogInterface dialog, int which ) {
                     createNewGame();
@@ -645,7 +720,7 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
                 }
 
             })
-            .setNegativeButton( R.string.no, null )
+            .setNegativeButton( R_string_no(), null )
             .show();
     }
 
@@ -666,13 +741,13 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
     private void showOptionsDialog() {
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        View options_view = getLayoutInflater().inflate( R.layout.options_dialog, null );
+        View options_view = getLayoutInflater().inflate( R_layout_options_dialog(), null );
         AlertDialog.Builder builder = new AlertDialog.Builder( this );
         builder.setView( options_view );
-        builder.setTitle( R.string.options_title );
-        final TextView options_font_example_text = (TextView)options_view.findViewById( R.id.options_font_example_text );
+        builder.setTitle( R_string_options_title() );
+        final TextView options_font_example_text = (TextView)options_view.findViewById( R_id_options_font_example_text() );
         options_font_example_text.setTextSize( main_text_output.getTextSize() );
-        final SeekBar options_font_size_picker = (SeekBar)options_view.findViewById( R.id.options_font_size_picker );
+        final SeekBar options_font_size_picker = (SeekBar)options_view.findViewById( R_id_options_font_size_picker() );
         final int minFontSize = 8;
         int font_size = getFontSize();;
         options_font_size_picker.setProgress( font_size - minFontSize );
@@ -689,14 +764,14 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
             public void onStopTrackingTouch( SeekBar seekBar ) {
             }
         });
-        builder.setPositiveButton( R.string.options_save, new DialogInterface.OnClickListener() {
+        builder.setPositiveButton( R_string_options_save(), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 saveFontSize( options_font_size_picker.getProgress() + minFontSize );
                 main_text_output.setTextSize( getFontSize() );
             }
         });
-        builder.setNegativeButton( R.string.options_cancel, null );
+        builder.setNegativeButton( R_string_options_cancel(), null );
         AlertDialog dialog = builder.create();
         dialog.show();
         // The FILL_PARENT for width from the xml is ignored for some reason by android
@@ -708,7 +783,7 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
         map_view.setImageBitmap(
             new MapImageCreator( getResources(),
                                  findExploredAreaMaskIDs(),
-                                 R.drawable.map )
+                                 R_drawable_map() )
             .create() );
         map_view.setScaleType( ImageView.ScaleType.CENTER );
         map_view.setVisibility( View.VISIBLE );
@@ -731,7 +806,7 @@ public class TextAdventureCommonActivity extends Activity implements TextAdventu
         int percentage = 0;
         if ( maximumScore != 0 )
             percentage = (int) (((float)currentScore / (float)maximumScore) * (float)100);
-        score_text_view.setText( Integer.toString( percentage ) + "% " + getText( R.string.completed ) );
+        score_text_view.setText( Integer.toString( percentage ) + "% " + getText( R_string_completed() ) );
     }
 
     public void maximumScore( int score ) {
