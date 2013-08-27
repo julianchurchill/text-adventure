@@ -1,4 +1,4 @@
-package com.chewielouie.textadventure;
+package REPLACE_ME;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -22,6 +22,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.BasicModel;
+import com.chewielouie.textadventure.BasicModelFactory;
+import com.chewielouie.textadventure.Exit;
+import com.chewielouie.textadventure.ModelLocation;
+import com.chewielouie.textadventure.RendersView;
 
 @RunWith(RobolectricTestRunner.class)
 public class ActivityAcceptanceTests {
@@ -39,7 +44,7 @@ public class ActivityAcceptanceTests {
         BasicModel model = new BasicModel();
         BasicModelFactory modelFactory = mock( BasicModelFactory.class );
         when( modelFactory.createModel() ).thenReturn( model );
-        TextAdventureActivity activity = new TextAdventureActivity( renderer,
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( renderer,
             modelFactory );
         prepareActionHistorySaveFile( activity );
 
@@ -78,7 +83,7 @@ public class ActivityAcceptanceTests {
         BasicModel model = new BasicModel();
         BasicModelFactory modelFactory = mock( BasicModelFactory.class );
         when( modelFactory.createModel() ).thenReturn( model );
-        TextAdventureActivity activity = new TextAdventureActivity( modelFactory );
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( modelFactory );
         activity.onCreate( null );
         activity.onResume();
 
@@ -107,7 +112,7 @@ public class ActivityAcceptanceTests {
         assertThat( savedHistory, is( expected_action_history ) );
     }
 
-    private Button getButton( String label, TextAdventureActivity activity ) {
+    private Button getButton( String label, TextAdventureDummyActivity activity ) {
         Button requestedButton = null;
         Map<Button,Action> actionButtonsMap = activity.actionButtons();
         for( Button button : actionButtonsMap.keySet() ) {
@@ -146,7 +151,7 @@ public class ActivityAcceptanceTests {
 
     @Test
     public void on_resume_reads_a_json_file_and_saves_as_an_action_history_file__unlock_door() {
-        TextAdventureActivity activity = new TextAdventureActivity();
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
         activity.deleteFile( actionHistorySaveFileName );
         prepareJSONSaveFile( activity, json_model_unlock_door );
         activity.onCreate( null );
@@ -167,7 +172,7 @@ public class ActivityAcceptanceTests {
         BasicModel model = new BasicModel();
         BasicModelFactory modelFactory = mock( BasicModelFactory.class );
         when( modelFactory.createModel() ).thenReturn( model );
-        TextAdventureActivity activity = new TextAdventureActivity( renderer,
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( renderer,
             modelFactory );
         activity.deleteFile( actionHistorySaveFileName );
         prepareJSONSaveFile( activity, json_model_unlock_door );
@@ -194,7 +199,7 @@ public class ActivityAcceptanceTests {
 
     @Test
     public void on_resume_reads_a_json_file_and_saves_as_an_action_history_file__get_wooden_pole() {
-        TextAdventureActivity activity = new TextAdventureActivity();
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
         activity.deleteFile( actionHistorySaveFileName );
         prepareJSONSaveFile( activity, json_model_get_wooden_pole );
         activity.onCreate( null );
@@ -227,7 +232,7 @@ public class ActivityAcceptanceTests {
         BasicModel model = new BasicModel();
         BasicModelFactory modelFactory = mock( BasicModelFactory.class );
         when( modelFactory.createModel() ).thenReturn( model );
-        TextAdventureActivity activity = new TextAdventureActivity( renderer,
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( renderer,
             modelFactory );
         activity.deleteFile( actionHistorySaveFileName );
         prepareJSONSaveFile( activity, json_model_get_wooden_pole );
@@ -257,7 +262,7 @@ public class ActivityAcceptanceTests {
 
     @Test
     public void on_resume_reads_a_json_file_and_saves_as_an_action_history_file__free_shopkeeper() {
-        TextAdventureActivity activity = new TextAdventureActivity();
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
         activity.deleteFile( actionHistorySaveFileName );
         prepareJSONSaveFile( activity, json_model_upto_free_shopkeeper );
         activity.onCreate( null );
@@ -298,7 +303,7 @@ public class ActivityAcceptanceTests {
         BasicModel model = new BasicModel();
         BasicModelFactory modelFactory = mock( BasicModelFactory.class );
         when( modelFactory.createModel() ).thenReturn( model );
-        TextAdventureActivity activity = new TextAdventureActivity( renderer,
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( renderer,
             modelFactory );
         activity.deleteFile( actionHistorySaveFileName );
         prepareJSONSaveFile( activity, json_model_upto_free_shopkeeper );

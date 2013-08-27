@@ -1,4 +1,4 @@
-package com.chewielouie.textadventure;
+package REPLACE_ME;
 
 import static org.junit.Assert.*;
 
@@ -15,6 +15,7 @@ import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.action.Action;
+import com.chewielouie.textadventure.UserActionHandler;
 
 @RunWith(RobolectricTestRunner.class)
 public class TextAdventureActivityTests {
@@ -30,7 +31,7 @@ public class TextAdventureActivityTests {
     //         oneOf( r ).render();
     //     }});
 
-    //     TextAdventureActivity t = new TextAdventureActivity( r );
+    //     TextAdventureDummyActivity t = new TextAdventureDummyActivity( r );
     //     t.onCreate( null );
     //     t.onResume();
 
@@ -42,7 +43,7 @@ public class TextAdventureActivityTests {
     // This might be a robolectric shadowing deficiency.
     //@Test
     //public void show_room_text_updates_text_view() {
-        //TextAdventureActivity activity = new TextAdventureActivity();
+        //TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
         //activity.onCreate( null );
 
         //activity.showMainText( "cheese" );
@@ -53,7 +54,7 @@ public class TextAdventureActivityTests {
 
     @Test
     public void set_actions_updates_action_view_with_buttons_for_each_action() {
-        TextAdventureActivity activity = new TextAdventureActivity();
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
         activity.onCreate( null );
         final Action action1 = mockery.mock( Action.class, "action 1" );
         final Action action2 = mockery.mock( Action.class, "action 2" );
@@ -71,7 +72,7 @@ public class TextAdventureActivityTests {
         actions.add( action2 );
         activity.setActions( actions );
 
-        ViewGroup actionView = (ViewGroup)activity.findViewById( R.id.available_actions );
+        ViewGroup actionView = (ViewGroup)activity.findViewById( activity.R_id_available_actions() );
         assertEquals( 2, actionView.getChildCount() );
         Button button1 = (Button)actionView.getChildAt(0);
         Button button2 = (Button)actionView.getChildAt(1);
@@ -82,7 +83,7 @@ public class TextAdventureActivityTests {
     @Test
     public void pressing_an_action_view_button_triggers_action_on_user_event_handler() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( handler );
         activity.onCreate( null );
         final Action action = mockery.mock( Action.class );
         mockery.checking( new Expectations() {{
@@ -97,7 +98,7 @@ public class TextAdventureActivityTests {
         actions.add( action );
         activity.setActions( actions );
 
-        ViewGroup actionView = (ViewGroup)activity.findViewById( R.id.available_actions );
+        ViewGroup actionView = (ViewGroup)activity.findViewById( activity.R_id_available_actions() );
         Button button = (Button)actionView.getChildAt(0);
         button.performClick();
 
@@ -107,7 +108,7 @@ public class TextAdventureActivityTests {
     @Test
     public void action_view_buttons_update_to_show_follow_up_actions() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( handler );
         activity.onCreate( null );
         final Action action = mockery.mock( Action.class, "action" );
         final Action newAction1 = mockery.mock( Action.class, "new action 1" );
@@ -129,7 +130,7 @@ public class TextAdventureActivityTests {
         actions.add( action );
         activity.setActions( actions );
 
-        ViewGroup actionView = (ViewGroup)activity.findViewById( R.id.available_actions );
+        ViewGroup actionView = (ViewGroup)activity.findViewById( activity.R_id_available_actions() );
         Button button = (Button)actionView.getChildAt(0);
         button.performClick();
         List<Action> newActions = new ArrayList<Action>();
@@ -153,20 +154,20 @@ public class TextAdventureActivityTests {
 
     @Test
     public void current_score_updates_the_acquired_score_text() {
-        TextAdventureActivity activity = new TextAdventureActivity();
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
         activity.onCreate( null );
 
         activity.currentScore( 5 );
         activity.maximumScore( 10 );
 
-        final TextView t = (TextView)activity.findViewById( R.id.score_text_view );
+        final TextView t = (TextView)activity.findViewById( activity.R_id_score_text_view() );
         assertEquals( "50% completed", t.getText().toString() );
     }
 
     @Test
     public void pressing_back_finishes_the_activity_when_not_in_an_action_chain() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( handler );
         activity.onCreate( null );
         mockery.checking( new Expectations() {{
             allowing( handler ).inAnActionChain();
@@ -181,7 +182,7 @@ public class TextAdventureActivityTests {
     @Test
     public void pressing_back_whilst_in_an_action_chain_does_not_finish_the_activity() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( handler );
         activity.onCreate( null );
         final Action action = mockery.mock( Action.class, "action" );
         final Action newAction = mockery.mock( Action.class, "new action" );
@@ -199,12 +200,12 @@ public class TextAdventureActivityTests {
         assertFalse( activity.isFinishing() );
     }
 
-    private void enterActionChain( TextAdventureActivity activity, Action action, Action newAction ) {
+    private void enterActionChain( TextAdventureDummyActivity activity, Action action, Action newAction ) {
         List<Action> actions = new ArrayList<Action>();
         actions.add( action );
         activity.setActions( actions );
 
-        ViewGroup actionView = (ViewGroup)activity.findViewById( R.id.available_actions );
+        ViewGroup actionView = (ViewGroup)activity.findViewById( activity.R_id_available_actions() );
         Button button = (Button)actionView.getChildAt(0);
         button.performClick();
         List<Action> newActions = new ArrayList<Action>();
@@ -215,7 +216,7 @@ public class TextAdventureActivityTests {
     @Test
     public void pressing_back_whilst_in_an_action_chain_cancels_the_chain_on_the_user_action_handler() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        TextAdventureActivity activity = new TextAdventureActivity( handler );
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( handler );
         activity.onCreate( null );
         final Action action = mockery.mock( Action.class, "action" );
         final Action newAction = mockery.mock( Action.class, "new action" );

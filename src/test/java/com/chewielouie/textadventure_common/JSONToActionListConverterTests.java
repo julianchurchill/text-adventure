@@ -5,7 +5,6 @@ import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import com.chewielouie.textadventure.BasicModel;
-import com.chewielouie.textadventure.TextAdventureActivity;
 import com.chewielouie.textadventure.TextAdventureModel;
 import org.mockito.Mockito;
 import org.junit.Test;
@@ -32,7 +31,7 @@ public class JSONToActionListConverterTests {
 
     @Test
     public void passes_loaded_JSON_model_to_BasicModelConverter() throws FileNotFoundException {
-        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        DummyActivity realAndroidContext = new DummyActivity();
         writeFile( "test_JSON_model", tinyJSONModelContent, realAndroidContext );
         BasicModelConverter modelConverter = mock( BasicModelConverter.class );
         JSONToActionListConverter converter =
@@ -64,7 +63,7 @@ public class JSONToActionListConverterTests {
 
     @Test
     public void adds_locked_door_item_id_to_model_when_item_named_unlocked_door() throws FileNotFoundException {
-        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        DummyActivity realAndroidContext = new DummyActivity();
         writeFile( "test_JSON_model", tinyJSONModelContent_withUnlockedDoor,
                    realAndroidContext );
         BasicModelConverter modelConverter = mock( BasicModelConverter.class );
@@ -82,7 +81,7 @@ public class JSONToActionListConverterTests {
 
     @Test
     public void adds_locked_door_item_id_to_model_when_item_named_locked_door() throws FileNotFoundException {
-        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        DummyActivity realAndroidContext = new DummyActivity();
         writeFile( "test_JSON_model", tinyJSONModelContent_withLockedDoor,
                    realAndroidContext );
         BasicModelConverter modelConverter = mock( BasicModelConverter.class );
@@ -100,7 +99,7 @@ public class JSONToActionListConverterTests {
 
     @Test
     public void adds_pocket_lint_item_id_to_model() throws FileNotFoundException {
-        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        DummyActivity realAndroidContext = new DummyActivity();
         writeFile( "test_JSON_model", tinyJSONModelContent_withPocketLint,
                    realAndroidContext );
         BasicModelConverter modelConverter = mock( BasicModelConverter.class );
@@ -118,7 +117,7 @@ public class JSONToActionListConverterTests {
 
     @Test
     public void adds_banana_peel_item_id_to_model_when_in_inventory() throws FileNotFoundException {
-        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        DummyActivity realAndroidContext = new DummyActivity();
         writeFile( "test_JSON_model", tinyJSONModelContent_withBananaPeelInInventory,
                    realAndroidContext );
         BasicModelConverter modelConverter = mock( BasicModelConverter.class );
@@ -136,7 +135,7 @@ public class JSONToActionListConverterTests {
 
     @Test
     public void adds_banana_peel_item_id_to_model_when_in_location() throws FileNotFoundException {
-        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        DummyActivity realAndroidContext = new DummyActivity();
         writeFile( "test_JSON_model", tinyJSONModelContent_withBananaPeelInLocation,
                    realAndroidContext );
         BasicModelConverter modelConverter = mock( BasicModelConverter.class );
@@ -154,7 +153,7 @@ public class JSONToActionListConverterTests {
 
     @Test
     public void adds_dust_of_the_ancients_item_id_to_model_when_in_inventory() throws FileNotFoundException {
-        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        DummyActivity realAndroidContext = new DummyActivity();
         writeFile( "test_JSON_model", tinyJSONModelContent_withDustOfTheAncientsInInventory,
                    realAndroidContext );
         BasicModelConverter modelConverter = mock( BasicModelConverter.class );
@@ -172,7 +171,7 @@ public class JSONToActionListConverterTests {
 
     @Test
     public void adds_dust_of_the_ancients_item_id_to_model_when_in_location() throws FileNotFoundException {
-        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        DummyActivity realAndroidContext = new DummyActivity();
         writeFile( "test_JSON_model", tinyJSONModelContent_withDustOfTheAncientsInLocation,
                    realAndroidContext );
         BasicModelConverter modelConverter = mock( BasicModelConverter.class );
@@ -190,7 +189,7 @@ public class JSONToActionListConverterTests {
 
     @Test
     public void adds_bagss_of_junk_item_id_to_model() throws FileNotFoundException {
-        TextAdventureActivity realAndroidContext = new TextAdventureActivity();
+        DummyActivity realAndroidContext = new DummyActivity();
         writeFile( "test_JSON_model", tinyJSONModelContent_withBagsOfJunk,
                    realAndroidContext );
         BasicModelConverter modelConverter = mock( BasicModelConverter.class );
