@@ -81,7 +81,7 @@
             <classpath refid="classpath.android.test"/>
             <batchtest>
                 <fileset dir="${android.src.test}">
-                    <include name="**/*.java"/>
+                    <include name="**/*Tests.java"/>
                 </fileset>
             </batchtest>
         </junit>
