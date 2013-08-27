@@ -20,8 +20,9 @@ Technical Tasks
   - DONE Add chewielouie.textadventure_common namespace for all common code between app1 and 2 activities.
   - DONE Leave a skeleton activity in chewielouie.textadventure and chewielouie.textadventure2 which inherit from TextAdventureCommonActivity which has abstract methods for getting the 'R' class ids
   - DONE Add appropriate build files for config/1 and config/2 so that only textadventureN and textadventure_common are included in the build. Worst case copy the full namespace + Activity from the config/1/2 areas and keep them in source control there instead of under src/.
-  - Update .gitignore to avoid TextAdventureActivity.java
+  - DONE Update .gitignore to avoid TextAdventureActivity.java
   - Move Acceptance tests and activity tests so they use the Common activity not a specific one
+  - Update buildAndWatch.sh so it avoids triggering on TextAdventureActivity.java changing
 - New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
   - Make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 

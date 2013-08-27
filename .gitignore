@@ -24,3 +24,5 @@ local.properties
 # configured files for each app version
 /AndroidManifest.xml
 /res/
+/src/main/java/com/chewielouie/textadventure
+/src/main/java/com/chewielouie/textadventure2
