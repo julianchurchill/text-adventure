@@ -1,5 +1,10 @@
-package com.chewielouie.textadventure;
+package com.chewielouie.textadventure_common;
 
+import com.chewielouie.textadventure.Logger;
+import com.chewielouie.textadventure.ModelLocation;
+import com.chewielouie.textadventure.NullLogger;
+import com.chewielouie.textadventure.TextAdventureModel;
+import com.chewielouie.textadventure.UserInventory;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.item.Item;

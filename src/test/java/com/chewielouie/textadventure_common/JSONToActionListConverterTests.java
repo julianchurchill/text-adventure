@@ -1,9 +1,12 @@
-package com.chewielouie.textadventure;
+package com.chewielouie.textadventure_common;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;
 
+import com.chewielouie.textadventure.BasicModel;
+import com.chewielouie.textadventure.TextAdventureActivity;
+import com.chewielouie.textadventure.TextAdventureModel;
 import org.mockito.Mockito;
 import org.junit.Test;
 import org.junit.runner.RunWith;

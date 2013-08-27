@@ -76,6 +76,8 @@ import com.chewielouie.textadventure.item.NormalItemFactory;
 import com.chewielouie.textadventure.itemaction.ItemActionFactory;
 import com.chewielouie.textadventure.itemaction.NormalItemActionFactory;
 import com.chewielouie.textadventure.itemaction.LoggableNormalItemActionFactory;
+import com.chewielouie.textadventure_common.BasicModelV1_0ToActionListConverter;
+import com.chewielouie.textadventure_common.JSONToActionListConverter;
 
 public class TextAdventureActivity extends Activity implements TextAdventureView, OnClickListener {
 

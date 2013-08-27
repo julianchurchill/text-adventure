@@ -1,4 +1,4 @@
-package com.chewielouie.textadventure;
+package com.chewielouie.textadventure_common;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.List;
 import android.content.Context;
 import com.cedarsoftware.util.io.JsonReader;
+import com.chewielouie.textadventure.BasicModel;
+import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.item.Item;

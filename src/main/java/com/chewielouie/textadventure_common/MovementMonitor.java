@@ -1,5 +1,7 @@
-package com.chewielouie.textadventure;
+package com.chewielouie.textadventure_common;
 
+import com.chewielouie.textadventure.MovementEventSubscriber;
+import com.chewielouie.textadventure.TextAdventureModel;
 import java.util.HashSet;
 import java.util.Set;
 

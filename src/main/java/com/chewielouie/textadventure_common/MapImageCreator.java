@@ -1,4 +1,4 @@
-package com.chewielouie.textadventure;
+package com.chewielouie.textadventure_common;
 
 import java.util.ArrayList;
 import java.util.List;
