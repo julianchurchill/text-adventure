@@ -71,7 +71,7 @@
             android:background="@drawable/paper38f_3"
             />
     </ScrollView>
-    <ImageView
+    <com.chewielouie.textadventure_common.ZoomableImageView
         android:id="@+id/map_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -79,6 +79,9 @@
         android:layout_alignParentLeft="true"
         android:background="#000000"
         android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:scaleType="matrix"
         />
 </RelativeLayout>
 

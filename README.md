@@ -74,6 +74,7 @@ Features
   - Make on/off-able in options
 - [FEATURE] Map - extras
     - Scaling - make sure image stays full size and in proportion so user can pan around.
+    - Needs to be zoomable
     - Make better masks and a better map!
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Google games API Leaderboard - Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
