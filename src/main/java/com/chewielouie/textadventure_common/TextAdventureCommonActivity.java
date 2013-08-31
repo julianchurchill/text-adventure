@@ -720,7 +720,6 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
                                  findExploredAreaMaskIDs(),
                                  R_drawable_map() )
             .create() );
-        map_view.setScaleType( ImageView.ScaleType.CENTER );
         map_view.setVisibility( View.VISIBLE );
     }
 
