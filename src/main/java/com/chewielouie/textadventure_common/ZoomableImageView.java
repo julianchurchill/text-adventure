@@ -17,37 +17,52 @@ public class ZoomableImageView extends ImageView implements OnTouchListener {
     static final int NONE = 0;
     static final int DRAG = 1;
     static final int ZOOM = 2;
+    static final float minimumFingerDistanceToTriggerZoom = 10f;
 
-    private Matrix matrix = new Matrix();
-    private Matrix savedMatrix = new Matrix();
-    private int mode = NONE;
-    private PointF mStartPoint = new PointF();
-    private PointF mMiddlePoint = new PointF();
-    private Point mBitmapMiddlePoint = new Point();
-    private float oldDist = 1f;
-    private float matrixValues[] = {0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f};
-    private float scale;
-    private float oldEventX = 0;
-    private float oldEventY = 0;
-    private float oldStartPointX = 0;
-    private float oldStartPointY = 0;
+    private Matrix matrix;
+    private Matrix savedMatrix;
+    private int mode;
+    private PointF mStartPoint;
+    private PointF mMiddlePoint;
+    private float oldDist;
+    private float oldEventX;
+    private float oldEventY;
+    private float oldStartPointX;
+    private float oldStartPointY;
+    private boolean mDraggable;
     private int mViewWidth = -1;
     private int mViewHeight = -1;
     private int mBitmapWidth = -1;
     private int mBitmapHeight = -1;
-    private boolean mDraggable = false;
 
     public ZoomableImageView(Context context) {
         this(context, null, 0);
+        resetState();
+    }
+
+    private void resetState() {
+        matrix = new Matrix();
+        savedMatrix = new Matrix();
+        mode = NONE;
+        mStartPoint = new PointF();
+        mMiddlePoint = new PointF();
+        oldDist = 1f;
+        oldEventX = 0;
+        oldEventY = 0;
+        oldStartPointX = 0;
+        oldStartPointY = 0;
+        mDraggable = false;
     }
 
     public ZoomableImageView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
+        resetState();
     }
 
     public ZoomableImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         this.setOnTouchListener(this);
+        resetState();
     }
 
     @Override
@@ -55,20 +70,44 @@ public class ZoomableImageView extends ImageView implements OnTouchListener {
         super.onSizeChanged(w, h, oldw, oldh);
         mViewWidth = w;
         mViewHeight = h;
+        centerBitmap();
+        System.out.println("ZoomableImageView.onSizeChanged() mViewWidth = " + mViewWidth + ", mViewHeight = " + mViewHeight );
     }
 
     public void setBitmap(Bitmap bitmap) {
         if(bitmap != null) {
             setImageBitmap(bitmap);
-
             mBitmapWidth = bitmap.getWidth();
             mBitmapHeight = bitmap.getHeight();
-            mBitmapMiddlePoint.x = (mViewWidth / 2) - (mBitmapWidth /  2);
-            mBitmapMiddlePoint.y = (mViewHeight / 2) - (mBitmapHeight / 2);
+            resetState();
+            centerBitmap();
+        }
+    }
 
-            matrix.postTranslate(mBitmapMiddlePoint.x, mBitmapMiddlePoint.y);
+    private void centerBitmap() {
+        if( haveValidViewSize() ) {
+            Point bitmapMiddlePoint = new Point();
+            bitmapMiddlePoint.x = (mViewWidth / 2) - (mBitmapWidth /  2);
+            bitmapMiddlePoint.y = (mViewHeight / 2) - (mBitmapHeight / 2);
+
+            System.out.println("ZoomableImageView.setBitmap() centering image by translating dx,dy = '" + bitmapMiddlePoint.x + "," + bitmapMiddlePoint.y + "'" );
+            System.out.println("ZoomableImageView.setBitmap() mViewWidth = " + mViewWidth + ", mViewHeight = " + mViewHeight );
+            matrix.postTranslate(bitmapMiddlePoint.x, bitmapMiddlePoint.y);
+
+            // For testing drag - zoom in
+            // float scale = 1.5f;
+            // matrix.postScale(scale, scale, bitmapMiddlePoint.x, bitmapMiddlePoint.y);
+            // also make draggable for testing
+            // Does this code assume that the initial image fits in the view? If so then mDraggable must be set
+            // based on whether this is true!
+            // mDraggable = true;
+
             this.setImageMatrix(matrix);
         }
+    }
+
+    private boolean haveValidViewSize() {
+        return mViewWidth != -1 && mViewHeight != -1;
     }
 
     @Override
@@ -78,30 +117,36 @@ public class ZoomableImageView extends ImageView implements OnTouchListener {
                 savedMatrix.set(matrix);
                 mStartPoint.set(event.getX(), event.getY());
                 mode = DRAG;
+                System.out.println("ZoomableImageView.onTouch() ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
-                oldDist = spacing(event);
-                if(oldDist > 10f) {
+                oldDist = distanceBetweenFingers(event);
+                if(oldDist > minimumFingerDistanceToTriggerZoom) {
                     savedMatrix.set(matrix);
-                    midPoint(mMiddlePoint, event);
+                    midPointBetweenFingers(mMiddlePoint, event);
                     mode = ZOOM;
                 }
+                System.out.println("ZoomableImageView.onTouch() ACTION_POINTER_DOWN");
                 break;
             case MotionEvent.ACTION_UP:
+                System.out.println("ZoomableImageView.onTouch() ACTION_UP");
             case MotionEvent.ACTION_POINTER_UP:
                 mode = NONE;
+                System.out.println("ZoomableImageView.onTouch() ACTION_POINTER_UP");
                 break;
             case MotionEvent.ACTION_MOVE:
-              if(mode == DRAG)
-                  drag(event);
-              else if(mode == ZOOM)
-                  zoom(event);
-              break;
+                if(mode == DRAG)
+                    drag(event);
+                else if(mode == ZOOM)
+                    zoom(event);
+                System.out.println("ZoomableImageView.onTouch() ACTION_MOVE");
+                break;
         }
         return true;
     }
 
-    public void drag(MotionEvent event) {
+    private void drag(MotionEvent event) {
+        float matrixValues[] = {0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f};
         matrix.getValues(matrixValues);
 
         float left = matrixValues[2];
@@ -139,26 +184,34 @@ public class ZoomableImageView extends ImageView implements OnTouchListener {
 
         if(mDraggable) {
             matrix.set(savedMatrix);
-            matrix.postTranslate(x? eventX - mStartPoint.x : 0, y? eventY - mStartPoint.y : 0);
+            float dx = x? eventX - mStartPoint.x : 0;
+            float dy = y? eventY - mStartPoint.y : 0;
+            matrix.postTranslate(dx, dy);
             this.setImageMatrix(matrix);
             if(x) oldEventX = eventX;
             if(y) oldEventY = eventY;
             if(x) oldStartPointX = mStartPoint.x;
             if(y) oldStartPointY = mStartPoint.y;
+
+            System.out.println("ZoomableImageView.drag() dx,dy = '" + dx + "," + dy + "'" );
         }
     }
 
-    public void zoom(MotionEvent event) {
+    private void zoom(MotionEvent event) {
+        float matrixValues[] = {0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f};
         matrix.getValues(matrixValues);
 
-        float newDist = spacing(event);
-        float bitmapWidth = matrixValues[0] * mBitmapWidth;
-        float bimtapHeight = matrixValues[0] * mBitmapHeight;
-        boolean in = newDist > oldDist;
+        float newDist = distanceBetweenFingers(event);
+        float scaledBitmapWidth = matrixValues[0] * mBitmapWidth;
+        float scaledBitmapHeight = matrixValues[0] * mBitmapHeight;
+        boolean zoomingIn = newDist > oldDist;
 
-        if(!in && matrixValues[0] < 1)
+        // Is this the condition that stops it zooming out more than original full size?
+        // What does matrixValues[0] represent?
+        if( !zoomingIn && matrixValues[0] < 1 )
             return;
-        if(bitmapWidth > mViewWidth || bimtapHeight > mViewHeight)
+
+        if(scaledBitmapWidth > mViewWidth || scaledBitmapHeight > mViewHeight)
             mDraggable = true;
         else
             mDraggable = false;
@@ -167,22 +220,20 @@ public class ZoomableImageView extends ImageView implements OnTouchListener {
         float midY = (mViewHeight / 2);
 
         matrix.set(savedMatrix);
-        scale = newDist / oldDist;
-        matrix.postScale(scale, scale, bitmapWidth > mViewWidth ? mMiddlePoint.x : midX, bimtapHeight > mViewHeight ? mMiddlePoint.y : midY);
+        float scale = newDist / oldDist;
+        matrix.postScale(scale, scale, scaledBitmapWidth > mViewWidth ? mMiddlePoint.x : midX, scaledBitmapHeight > mViewHeight ? mMiddlePoint.y : midY);
 
+        System.out.println("ZoomableImageView.zoom() matrix='" + matrix + "'" );
         this.setImageMatrix(matrix);
     }
 
-    // Determine the space between the first two fingers
-    private float spacing(MotionEvent event) {
+    private float distanceBetweenFingers(MotionEvent event) {
         float x = event.getX(0) - event.getX(1);
         float y = event.getY(0) - event.getY(1);
-
         return (float)Math.sqrt(x * x + y * y);
     }
 
-    // Calculate the mid point of the first two fingers
-    private void midPoint(PointF point, MotionEvent event) {
+    private void midPointBetweenFingers(PointF point, MotionEvent event) {
         float x = event.getX(0) + event.getX(1);
         float y = event.getY(0) + event.getY(1);
         point.set(x / 2, y / 2);
