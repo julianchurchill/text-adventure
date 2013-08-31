@@ -54,6 +54,8 @@ Story (Part 2)
 
 Features
 
+- [FEATURE] Map - extras
+    - Make better masks and a better map!
 - [FEATURE] Google games API Achievements
   - Chatterbox (talk to everyone about everything)
   - Converser (talked to everyone)
@@ -72,10 +74,6 @@ Features
 - [FEATURE] Sound effects
   - Door unlocking, clock tower ticking/bells, ghostly sounds in the graveyard, mice scratching at the church, market hustle and bustle.
   - Make on/off-able in options
-- [FEATURE] Map - extras
-    - Scaling - make sure image stays full size and in proportion so user can pan around.
-    - Needs to be zoomable
-    - Make better masks and a better map!
 - [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Google games API Leaderboard - Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
 
