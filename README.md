@@ -21,6 +21,7 @@ Technical Tasks
 
 Bugs
 
+- [BUG] Map does not show anything after start of game until you move at least one location
 - [BUG] Last line with directions often is half drawn or unreadable. Perhaps the parchment image is causing this issue.
   - Also the top line can occasionally become half drawn too.
 - [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
