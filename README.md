@@ -55,7 +55,15 @@ Story (Part 2)
 Features
 
 - [FEATURE] Map - extras
-    - Make better masks and a better map!
+    - Make better masks and a better map! Charlies on the case.
+- [UI] Parchment background extras
+  - Action buttons should have a complimentary colour to the parchment.
+  - Scroll bar images need to compliment the parchment background...
+  - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
+    - Background parchment looks more rubbish as it gets stretched. Can we use a higher res image?
+- [UI] Images for inventory items to appear on buttons next to label
+- [UI] Images for actions to appear on buttons next to label
+- [UI] Restrict action button list to half screen height
 - [FEATURE] Google games API Achievements
   - Chatterbox (talk to everyone about everything)
   - Converser (talked to everyone)
@@ -64,13 +72,6 @@ Features
   - Explorer (has gone to every location)
   - Pathfinder (has gone through every exit)
   - Player of the Kazoo (completed a sub quest to create and play a kazoo at a childrens party)
-- [UI] Parchment background extras
-  - Action buttons should have a complimentary colour to the parchment.
-  - Scroll bar images need to compliment the parchment background...
-  - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
-    - Background parchment looks more rubbish as it gets stretched. Can we use a higher res image?
-- [UI] Action buttons could be bevelled, perhaps like gems? E.g. red ruby buttons.
-- [UI] Restrict action button list to half screen height
 - [FEATURE] Sound effects
   - Door unlocking, clock tower ticking/bells, ghostly sounds in the graveyard, mice scratching at the church, market hustle and bustle.
   - Make on/off-able in options
