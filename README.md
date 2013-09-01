@@ -29,6 +29,9 @@ Bugs
 
 Story (Part 2)
 
+- Intro text
+  - Display on game start/entering a room and follow up with normal room description.
+  "Staring up at the town sign swinging across the gate above you realise it has been many years since you were last here. The town itself looks quiet but not how you left it. It looks almost defeated."
 - Return to the town (Perpetuity?) - extra shops open, friary is abandoned, church is a burnt shell, towns people dislike you.
 - Bella Constantine lives! In a far away hideout plotting her revenge on you...
 - Another town/village - Ubiquity? Subdued by Bella to serve her - the future of the old town...
