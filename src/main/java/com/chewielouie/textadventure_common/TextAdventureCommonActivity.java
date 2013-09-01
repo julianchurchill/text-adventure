@@ -158,6 +158,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private ProgressDialog progressDialog = null;
     private MovementMonitor movementMonitor = null;
     private Map<String, Integer> areaIDsToMaskIDs;
+    private String externallySuppliedModelContent = null;
 
     public TextAdventureCommonActivity() {
     }
@@ -184,6 +185,10 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         this();
         this.userActionHandler = u;
         this.externallySuppliedUserActionHandler = true;
+    }
+
+    public void setModelContent( String content ) {
+        this.externallySuppliedModelContent = content;
     }
 
     /** Called when the activity is first created. */
@@ -360,6 +365,8 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private String modelContent() {
+        if( externallySuppliedModelContent != null )
+            return externallySuppliedModelContent;
         return readRawTextFileFromResource( R_raw_model_content() );
     }
 
