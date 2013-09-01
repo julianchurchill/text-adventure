@@ -16,14 +16,6 @@ Backlog
 
 Technical Tasks
 
-- Ensure two different apps (need two unique Java package names in manifest and source for activity) can co-exist
-  - DONE Add chewielouie.textadventure_common namespace for all common code between app1 and 2 activities.
-  - DONE Leave a skeleton activity in chewielouie.textadventure and chewielouie.textadventure2 which inherit from TextAdventureCommonActivity which has abstract methods for getting the 'R' class ids
-  - DONE Add appropriate build files for config/1 and config/2 so that only textadventureN and textadventure_common are included in the build. Worst case copy the full namespace + Activity from the config/1/2 areas and keep them in source control there instead of under src/.
-  - DONE Update .gitignore to avoid TextAdventureActivity.java
-  - DONE Move Acceptance tests and activity tests so they use the Common activity not a specific one
-    - Activity acceptance tests need to have data built in - not taken from loaded model_content.txt. The model content needs to be supplied to the activity when the test creates it. Without this the acceptance tests will never pass for textadventure2.
-  - Update buildAndWatch.sh so it avoids triggering on TextAdventureActivity.java changing
 - New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
   - Make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 
@@ -101,9 +93,15 @@ TTA1 v2.2.x/TTA2 v1.0
 - [FEATURE] Added location area to title bar
 - [UI] Parchment background (from http://www.myfreetextures.com/worn-parchment-paper-2)
 - [UI] Full width action buttons
-- [TECHINCAL TASK] Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
+- [TECHNICAL TASK] Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
   - Mask images should be auto found by looking for resources starting with area-id. E.g. the mask filename for the town-area should be town-area_mask.png
   - Build system should set up Android resources and manifest for the correct app (TTA1 or TTA2). Copy files from somewhere else in the git repo. Don't save the manifest or res content to git anymore. Update README with instructions on configure before build.
+- [TECHNICAL TASK] Ensure two different apps (need two unique Java package names in manifest and source for activity) can co-exist
+  - Add chewielouie.textadventure_common namespace for all common code between app1 and 2 activities.
+  - Leave a skeleton activity in chewielouie.textadventure and chewielouie.textadventure2 which inherit from TextAdventureCommonActivity which has abstract methods for getting the 'R' class ids
+  - Add appropriate build files for config/1 and config/2 so that only textadventureN and textadventure_common are included in the build. Worst case copy the full namespace + Activity from the config/1/2 areas and keep them in source control there instead of under src/.
+  - Move Acceptance tests and activity tests so they use the Common activity not a specific one
+    - Activity acceptance tests need to have data built in - not taken from loaded model_content.txt. The model content needs to be supplied to the activity when the test creates it. Without this the acceptance tests will never pass for textadventure2.
 
 2.1
 ---

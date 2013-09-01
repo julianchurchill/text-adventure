@@ -8,43 +8,53 @@ function usage()
 
 function removeOldFiles()
 {
-    rm -r AndroidManifest.xml res
+    rm --recursive AndroidManifest.xml res
 }
 
 function removeOldSourceFilesForOtherPackage()
 {
     packageName=$1
-    rm -r src/main/java/com/chewielouie/$packageName
-    rm -r src/test/java/com/chewielouie/$packageName
+    rm --recursive src/main/java/com/chewielouie/$packageName
+    rm --recursive src/test/java/com/chewielouie/$packageName
+}
+
+function copy()
+{
+    src=$1
+    dest=$2
+    cp --update --recursive $src $dest
 }
 
 function copyCommonFiles()
 {
-    cp -R config/common/res .
+    copy config/common/res .
 }
 
 function copyTestFilesForPackage()
 {
     packageName=$1
-    mkdir -p src/test/java/com/chewielouie/$packageName
-    cp config/common/test/* src/test/java/com/chewielouie/$packageName
-    monkeyPatchPackageNamesForTestFiles $packageName
+    testDirectoryRoot=src/test/java/com/chewielouie
+    testDirectory=$testDirectoryRoot/$packageName
+    mkdir --parents $testDirectory
+    copy config/common/test/* $testDirectory
+    monkeyPatchPackageNamesForTestFiles $packageName $testDirectoryRoot
 }
 
 function monkeyPatchPackageNamesForTestFiles()
 {
     packageName=$1
-    for file in src/test/java/com/chewielouie/$packageName/* ; do
-        sed -e "s/package REPLACE_ME/package com.chewielouie.$packageName/" $file > $file.tmp && mv $file.tmp $file
+    testDirectoryRoot=$2
+    for file in $testDirectoryRoot/$packageName/* ; do
+        grep --quiet "package REPLACE_ME" $file && sed --eepression="s/package REPLACE_ME/package com.chewielouie.$packageName/" $file > $file.tmp && mv $file.tmp $file
     done
 }
 
 function copyFilesFromConfigArea()
 {
     configArea=$1
-    cp config/$configArea/AndroidManifest.xml .
-    cp -R config/$configArea/res .
-    cp -R config/$configArea/src .
+    copy config/$configArea/AndroidManifest.xml .
+    copy config/$configArea/res .
+    copy config/$configArea/src .
 }
 
 if [ -z "$1" ]
