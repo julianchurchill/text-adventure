@@ -51,9 +51,9 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public void addLocation( ModelLocation location ) {
-        if( currentLocation instanceof NullLocation )
-            currentLocation = location;
         locations.put( location.id(), location );
+        if( currentLocation instanceof NullLocation )
+            setCurrentLocation( location.id() );
         addExitsToCache( location );
         addItemsToCache( location );
     }

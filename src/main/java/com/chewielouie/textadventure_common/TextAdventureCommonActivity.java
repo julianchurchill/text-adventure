@@ -313,6 +313,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     private void createNewGameModel() {
         model = (BasicModel)modelFactory().createModel();
+        movementMonitor = new MovementMonitor( model );
         inventory = model;
         ItemActionFactory itemActionFactory = new LoggableNormalItemActionFactory( logger, model );
         ItemFactory itemFactory = new NormalItemFactory();
@@ -328,7 +329,6 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
                                          new PlainTextExitDeserialiser() ),
                                      itemDeserialiser,
                                      modelContent() );
-        movementMonitor = new MovementMonitor( model );
         loadMapImages();
     }
 
