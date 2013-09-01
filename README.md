@@ -55,6 +55,7 @@ Features
     - Background parchment looks more rubbish as it gets stretched. Can we use a higher res image?
 - [UI] Images for inventory items to appear on buttons next to label
 - [UI] Images for actions to appear on buttons next to label
+- [UI] Images embedded within text to add more context for the user. Can be informational like a picture of the clock tower or non-descript paragraph seperators, i.e. a skull.
 - [UI] Restrict action button list to half screen height
 - [FEATURE] Google games API Achievements
   - Chatterbox (talk to everyone about everything)
