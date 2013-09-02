@@ -26,6 +26,8 @@ public interface ModelLocation {
     public void setAreaID( String id );
     public String areaID();
     public void setTextForFirstEntry( String text );
+    public String contextualText();
+    public void exited();
 }
 
 

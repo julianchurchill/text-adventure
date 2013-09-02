@@ -80,5 +80,15 @@ public class NullLocation implements ModelLocation {
     public String areaID() {
         return "";
     }
+
+    public void setTextForFirstEntry( String text ) {
+    }
+
+    public String contextualText() {
+        return "";
+    }
+
+    public void exited() {
+    }
 }
 
