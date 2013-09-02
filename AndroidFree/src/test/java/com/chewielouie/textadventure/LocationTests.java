@@ -365,5 +365,26 @@ public class LocationTests {
         assertEquals( 5,  l.x() );
         assertEquals( 10, l.y() );
     }
+
+    @Test
+    public void location_contextual_text_is_blank_by_default() {
+        Location l = createLocation();
+        assertEquals( "",  l.contextualText() );
+    }
+
+    @Test
+    public void location_contextual_text_contains_first_entry_text() {
+        Location l = createLocation();
+        l.setTextForFirstEntry( "first entry" );
+        assertEquals( "first entry",  l.contextualText() );
+    }
+
+    @Test
+    public void location_contextual_text_does_not_contain_first_entry_text_after_being_left() {
+        Location l = createLocation();
+        l.setTextForFirstEntry( "first entry" );
+        l.exited();
+        assertEquals( "",  l.contextualText() );
+    }
 }
 

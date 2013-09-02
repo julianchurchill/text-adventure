@@ -16,6 +16,7 @@ public class Location implements ModelLocation {
     private ActionFactory actionFactory;
     private int x = 0;
     private int y = 0;
+    private String firstEntryText = "";
 
     public Location( String locationId, String description,
             UserInventory inventory, ActionFactory factory ) {
@@ -177,6 +178,15 @@ public class Location implements ModelLocation {
     }
 
     public void setTextForFirstEntry( String text ) {
+        this.firstEntryText = text;
+    }
+
+    public String contextualText() {
+        return firstEntryText;
+    }
+
+    public void exited() {
+        this.firstEntryText = "";
     }
 }
 

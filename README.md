@@ -34,7 +34,7 @@ Story (Part 2)
   - Display on game start/entering a room and follow up with normal room description.
   "Staring up at the town sign swinging across the gate above you realise it has been many years since you were last here. The town itself looks quiet but not how you left it. It looks almost defeated."
     - DONE Deserialisation of 'location text to show on enter:'
-    - Location.contextualText() returns text set with setTextForFirstEntry() until Location is notified that it has been left, then it returns ""
+    - DONE Location.contextualText() returns text set with setTextForFirstEntry() until Location is notified that it has been left, then it returns ""
     - Current location should be notified by Model when it is left.
     - Model should query current location for available contextual text.
     - Presenter should prepend contextual text from model to room description.
