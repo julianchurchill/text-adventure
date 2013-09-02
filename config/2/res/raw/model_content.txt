@@ -27,6 +27,7 @@ y:480
 location id:townentrance
 location area id:town_area
 location description:You are standing outside a small town. The main street goes north, to the west there are some small out buildings and to the east you can see what looks like an abandoned mine shaft.
+text to show on first entry:Staring up at the town sign swinging across the gate above you realise it has been many years since you were last here. The town itself looks quiet but not how you left it. It looks almost defeated.
 EXIT
 exit label:North
 exit destination:mainstreettown

@@ -13,6 +13,7 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
     private final String locationIDTag = "location id:";
     private final String locationAreaIDTag = "location area id:";
     private final String locationDescriptionTag = "location description:";
+    private final String textToShowOnFirstEntryTag = "text to show on first entry:";
     private final String exitTag = "EXIT\n";
     private final String itemTag = "ITEM\n";
     private String content;
@@ -46,6 +47,7 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
         location.setId( DeserialiserUtils.extractNewlineDelimitedValueFor( locationIDTag, content ) );
         location.setAreaID( DeserialiserUtils.extractNewlineDelimitedValueFor( locationAreaIDTag, content ) );
         deserialiseDescription();
+        deserialiseTextForFirstEntry();
         deserialiseExits();
         deserialiseItems();
     }
@@ -60,21 +62,34 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
     }
 
     private void deserialiseDescription() {
-        int startOfDescription = content.indexOf( locationDescriptionTag );
-        if( startOfDescription != -1 )
-            location.setLocationDescription( content.substring(
-                        startOfDescription + locationDescriptionTag.length(),
-                        findEndOfDescription() ) );
+        int start = content.indexOf( locationDescriptionTag );
+        if( start != -1 )
+            location.setLocationDescription(
+                findContentForTag( locationDescriptionTag, start ) );
     }
 
-    private int findEndOfDescription() {
-        int endOfDescription = content.indexOf( exitTag );
-        if( endOfDescription == -1 ) {
-            endOfDescription = content.indexOf( itemTag );
-            if( endOfDescription == -1 )
-                endOfDescription = content.length();
+    private String findContentForTag( String tag, int start ) {
+        return content.substring( start + tag.length(), findEndOfValue( start + 1 ) );
+    }
+
+    private int findEndOfValue( int start ) {
+        int end = content.indexOf( textToShowOnFirstEntryTag, start );
+        if( end == -1 ) {
+            end = content.indexOf( exitTag, start );
+            if( end == -1 ) {
+                end = content.indexOf( itemTag, start );
+                if( end == -1 )
+                    end = content.length();
+            }
         }
-        return endOfDescription;
+        return end;
+    }
+
+    private void deserialiseTextForFirstEntry() {
+        int start = content.indexOf( textToShowOnFirstEntryTag );
+        if( start != -1 )
+            location.setTextForFirstEntry(
+                findContentForTag( textToShowOnFirstEntryTag, start ) );
     }
 
     private void deserialiseExits() {

@@ -175,5 +175,8 @@ public class Location implements ModelLocation {
     public String areaID() {
         return areaID;
     }
+
+    public void setTextForFirstEntry( String text ) {
+    }
 }
 

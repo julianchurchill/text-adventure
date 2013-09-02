@@ -33,11 +33,11 @@ Story (Part 2)
 - Intro text
   - Display on game start/entering a room and follow up with normal room description.
   "Staring up at the town sign swinging across the gate above you realise it has been many years since you were last here. The town itself looks quiet but not how you left it. It looks almost defeated."
-    - Deserialisation of 'location text to show on enter:', store in location, returned by Location.extraText()
-    - Location.extraText() returns extra text until Location is notified that it has been left, then it returns ""
-    - Location should be notified by Model when it is left so it can clear the extra text.
-    - Model should query location for available extra text.
-    - Presenter should prepend extra text from model to room description.
+    - DONE Deserialisation of 'location text to show on enter:'
+    - Location.contextualText() returns text set with setTextForFirstEntry() until Location is notified that it has been left, then it returns ""
+    - Current location should be notified by Model when it is left.
+    - Model should query current location for available contextual text.
+    - Presenter should prepend contextual text from model to room description.
 - Return to the town (Perpetuity?) - extra shops open, friary is abandoned, church is a burnt shell, towns people dislike you.
 - Bella Constantine lives! In a far away hideout plotting her revenge on you...
 - Another town/village - Ubiquity? Subdued by Bella to serve her - the future of the old town...
@@ -66,6 +66,7 @@ Features
 - [UI] Images for actions to appear on buttons next to label
 - [UI] Images embedded within text to add more context for the user. Can be informational like a picture of the clock tower or non-descript paragraph seperators, i.e. a skull.
 - [UI] Restrict action button list to half screen height
+- [FEATURE] Story log - a record of all the story text you've seen so far - i.e. the 'text on first entry to location'. Possibly also the conversation text? How much of this to store, room descriptions, item activations?
 - [FEATURE] Google games API Achievements
   - Chatterbox (talk to everyone about everything)
   - Converser (talked to everyone)

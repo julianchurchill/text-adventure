@@ -25,6 +25,7 @@ public interface ModelLocation {
     public int y();
     public void setAreaID( String id );
     public String areaID();
+    public void setTextForFirstEntry( String text );
 }
 
 

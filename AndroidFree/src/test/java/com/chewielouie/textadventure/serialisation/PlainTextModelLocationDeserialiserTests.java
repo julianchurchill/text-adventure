@@ -383,6 +383,53 @@ public class PlainTextModelLocationDeserialiserTests {
                                          "It is a bit untidy.\n" +
                                  "a_tag_that_ends_with_another_tag____x:102020\n" );
     }
+
+    @Test
+    public void deserialise_finds_text_to_show_on_first_entry() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        PlainTextModelLocationDeserialiser d = new PlainTextModelLocationDeserialiser( null, null );
+        mockery.checking( new Expectations() {{
+            oneOf( location ).setTextForFirstEntry(
+                "You've never been here before.\n" +
+                "It is a bit untidy." );
+            ignoring( location );
+        }});
+        d.deserialise( location, "location id:name\n" +
+                 "text to show on first entry:You've never been here before.\n" +
+                 "It is a bit untidy." );
+    }
+
+    @Test
+    public void deserialise_of_first_entry_text_does_not_include_exits_or_items() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        PlainTextModelLocationDeserialiser d = new PlainTextModelLocationDeserialiser( null, null );
+        mockery.checking( new Expectations() {{
+            oneOf( location ).setTextForFirstEntry(
+                "You've never been here before.\n" +
+                "It is a bit untidy.\n" );
+            ignoring( location );
+        }});
+        d.deserialise( location, "location id:name\n" +
+                 "text to show on first entry:You've never been here before.\n" +
+                 "It is a bit untidy.\n" +
+                 "EXIT\n" +
+                 "ITEM\n" );
+    }
+
+    @Test
+    public void deserialise_of_description_does_not_include_first_entry_text() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        PlainTextModelLocationDeserialiser d = new PlainTextModelLocationDeserialiser( null, null );
+        mockery.checking( new Expectations() {{
+            oneOf( location ).setLocationDescription(
+                "You are in a room.\n" );
+            ignoring( location );
+        }});
+        d.deserialise( location, "location id:name\n" +
+                 "location description:You are in a room.\n" +
+                 "text to show on first entry:You've never been here before.\n" +
+                 "It is a bit untidy." );
+    }
 }
 
 
