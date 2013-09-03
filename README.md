@@ -29,6 +29,7 @@ Bugs
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - Is this due to not setting correct flags for setSpan()? Most examples use Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
     - See http://developer.android.com/reference/android/text/Spanned.html
+  - Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
 - [BUG] Lost save game when restarting phone - reported on intfiction forum here http://www.intfiction.org/forum/viewtopic.php?f=19&t=8891
   - It is possible that read/write of action history save file may clash - read is during background thread triggered from onResume, write is on UI thread triggered from onPause. This read/write should probably be a mutually exclusive critical section.
 
