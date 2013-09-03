@@ -23,9 +23,12 @@ Bugs
 
 - [BUG] Last line with directions often is half drawn or unreadable. Perhaps the parchment image is causing this issue.
   - Also the top line can occasionally become half drawn too.
+  - Is this due to something odd about the auto scrolling behaviour when new text appears?
 - [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
   - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
+  - Is this due to not setting correct flags for setSpan()? Most examples use Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+    - See http://developer.android.com/reference/android/text/Spanned.html
 - [BUG] Lost save game when restarting phone - reported on intfiction forum here http://www.intfiction.org/forum/viewtopic.php?f=19&t=8891
   - It is possible that read/write of action history save file may clash - read is during background thread triggered from onResume, write is on UI thread triggered from onPause. This read/write should probably be a mutually exclusive critical section.
 
