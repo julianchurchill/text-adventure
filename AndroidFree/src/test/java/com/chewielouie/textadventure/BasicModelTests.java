@@ -99,6 +99,30 @@ public class BasicModelTests {
     }
 
     @Test
+    public void leaving_a_location_notifies_it() {
+        final ModelLocation loc1 = mockery.mock( ModelLocation.class, "loc1" );
+        final ModelLocation loc2 = mockery.mock( ModelLocation.class, "loc2" );
+        final Exit north = mockery.mock( Exit.class );
+        mockery.checking( new Expectations() {{
+            allowing( loc1 ).exitable( north );
+            will( returnValue( true ) );
+            allowing( loc1 ).exitDestinationFor( north );
+            will( returnValue( "loc2" ) );
+            oneOf( loc1 ).exited();
+            ignoring( loc1 );
+            allowing( loc2 ).id();
+            will( returnValue( "loc2" ) );
+            ignoring( loc2 );
+            ignoring( north );
+        }});
+        BasicModel model = new BasicModel();
+        model.addLocation( loc1 );
+        model.addLocation( loc2 );
+
+        model.moveThroughExit( north );
+    }
+
+    @Test
     public void current_location_description_is_taken_from_the_current_location() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
         final String description = "description of this location";

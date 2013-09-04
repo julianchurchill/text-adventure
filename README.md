@@ -27,7 +27,7 @@ Bugs
 - [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
   - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
-  - Is this due to not setting correct flags for setSpan()? Most examples use Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+  - FAILED (Tried and it didn't work) - Is this due to not setting correct flags for setSpan()? Most examples use Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
     - See http://developer.android.com/reference/android/text/Spanned.html
   - Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
 - [BUG] Lost save game when restarting phone - reported on intfiction forum here http://www.intfiction.org/forum/viewtopic.php?f=19&t=8891
@@ -40,7 +40,7 @@ Story (Part 2)
   "Staring up at the town sign swinging across the gate above you realise it has been many years since you were last here. The town itself looks quiet but not how you left it. It looks almost defeated."
     - DONE Deserialisation of 'location text to show on enter:'
     - DONE Location.contextualText() returns text set with setTextForFirstEntry() until Location is notified that it has been left, then it returns ""
-    - Current location should be notified by Model when it is left.
+    - DONE Current location should be notified by Model when it is left.
     - Model should query current location for available contextual text.
     - Presenter should prepend contextual text from model to room description.
 - Return to the town (Perpetuity?) - extra shops open, friary is abandoned, church is a burnt shell, towns people dislike you.
