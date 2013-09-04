@@ -58,7 +58,7 @@ public class TextAdventurePresenterTests {
             allowing( model ).currentLocationDescription();
             will( returnValue( "some room text" ) );
             ignoring( model );
-            oneOf( view ).showMainText( "some contextual text\n\nsome room text" );
+            oneOf( view ).showMainText( "some contextual text\nsome room text" );
             ignoring( view );
         }});
         TextAdventurePresenter p = new TextAdventurePresenter( view, model, null, null );

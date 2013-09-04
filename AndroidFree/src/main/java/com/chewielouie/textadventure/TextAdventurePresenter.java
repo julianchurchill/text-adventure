@@ -53,7 +53,7 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler, M
         String mainText = "";
         mainText += model.contextualText();
         if( model.contextualText() != "" && model.currentLocationDescription() != "" )
-            mainText += "\n\n";
+            mainText += "\n";
         mainText += model.currentLocationDescription();
         if( actionText != "" )
             mainText += "\n" + actionText;
