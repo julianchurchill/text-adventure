@@ -35,14 +35,6 @@ Bugs
 
 Story (Part 2)
 
-- Intro text
-  - Display on game start/entering a room and follow up with normal room description.
-  "Staring up at the town sign swinging across the gate above you realise it has been many years since you were last here. The town itself looks quiet but not how you left it. It looks almost defeated."
-    - DONE Deserialisation of 'location text to show on enter:'
-    - DONE Location.contextualText() returns text set with setTextForFirstEntry() until Location is notified that it has been left, then it returns ""
-    - DONE Current location should be notified by Model when it is left.
-    - DONE Model should query current location for available contextual text.
-    - DONE Presenter should prepend contextual text from model to room description.
 - Return to the town (Perpetuity?) - extra shops open, friary is abandoned, church is a burnt shell, towns people dislike you.
 - Bella Constantine lives! In a far away hideout plotting her revenge on you...
 - Another town/village - Ubiquity? Subdued by Bella to serve her - the future of the old town...
@@ -107,6 +99,7 @@ Note: Multiple version numbers are used where changes are common to multiple app
 TTA1 v2.2.x/TTA2 v1.0
 ---
 
+- [FEATURE] One shot contextual text can be displayed on entering a room and is then proceeded by the normal room description.
 - [FEATURE] Map - shows where you've been
 - [FEATURE] Added location area to title bar
 - [UI] Parchment background (from http://www.myfreetextures.com/worn-parchment-paper-2)
