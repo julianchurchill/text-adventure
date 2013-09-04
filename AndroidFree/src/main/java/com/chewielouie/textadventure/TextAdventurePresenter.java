@@ -40,17 +40,24 @@ public class TextAdventurePresenter implements RendersView, UserActionHandler, M
 
     private void updateView() {
         if( enableViewUpdates ) {
-            if( actionText != "" )
-                view.showMainText( model.currentLocationDescription()
-                        + "\n" + actionText );
-            else
-                view.showMainText( model.currentLocationDescription() );
+            view.showMainText( assembleMainText() );
             view.showAvailableItemsText( model.availableItemsText() );
             view.showLocationExits( model.currentLocationExits() );
             view.showAreaName( model.currentLocationAreaName() );
             view.currentScore( model.currentScore() );
             view.maximumScore( model.maximumScore() );
         }
+    }
+
+    private String assembleMainText() {
+        String mainText = "";
+        mainText += model.contextualText();
+        if( model.contextualText() != "" && model.currentLocationDescription() != "" )
+            mainText += "\n\n";
+        mainText += model.currentLocationDescription();
+        if( actionText != "" )
+            mainText += "\n" + actionText;
+        return mainText;
     }
 
     private void resetActionsToStartOfChain() {

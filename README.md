@@ -42,7 +42,7 @@ Story (Part 2)
     - DONE Location.contextualText() returns text set with setTextForFirstEntry() until Location is notified that it has been left, then it returns ""
     - DONE Current location should be notified by Model when it is left.
     - DONE Model should query current location for available contextual text.
-    - Presenter should prepend contextual text from model to room description.
+    - DONE Presenter should prepend contextual text from model to room description.
 - Return to the town (Perpetuity?) - extra shops open, friary is abandoned, church is a burnt shell, towns people dislike you.
 - Bella Constantine lives! In a far away hideout plotting her revenge on you...
 - Another town/village - Ubiquity? Subdued by Bella to serve her - the future of the old town...

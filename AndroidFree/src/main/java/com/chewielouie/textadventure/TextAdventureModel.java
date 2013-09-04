@@ -7,6 +7,7 @@ import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.MovementEventSubscriber;
 
 public interface TextAdventureModel {
+    public String contextualText();
     public String currentLocationDescription();
     public String availableItemsText();
     public void addLocationArea( String id, String name );

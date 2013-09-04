@@ -7,6 +7,10 @@ import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.MovementEventSubscriber;
 
 public class NullModel implements TextAdventureModel {
+    public String contextualText() {
+        return "";
+    }
+
     public String currentLocationDescription() {
         return "";
     }

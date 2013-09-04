@@ -19,6 +19,21 @@ public class TextAdventurePresenterTests {
     private Mockery mockery = new Mockery();
 
     @Test
+    public void render_tells_view_to_show_contextual_text_from_model() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        mockery.checking( new Expectations() {{
+            allowing( model ).contextualText();
+            will( returnValue( "some contextual text" ) );
+            ignoring( model );
+            oneOf( view ).showMainText( "some contextual text" );
+            ignoring( view );
+        }});
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null, null );
+        p.render();
+    }
+
+    @Test
     public void render_tells_view_to_show_location_description_from_model() {
         final TextAdventureView view = mockery.mock( TextAdventureView.class );
         final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
@@ -27,6 +42,23 @@ public class TextAdventurePresenterTests {
             will( returnValue( "some room text" ) );
             ignoring( model );
             oneOf( view ).showMainText( "some room text" );
+            ignoring( view );
+        }});
+        TextAdventurePresenter p = new TextAdventurePresenter( view, model, null, null );
+        p.render();
+    }
+
+    @Test
+    public void render_appends_location_description_to_contextual_text() {
+        final TextAdventureView view = mockery.mock( TextAdventureView.class );
+        final TextAdventureModel model = mockery.mock( TextAdventureModel.class );
+        mockery.checking( new Expectations() {{
+            allowing( model ).contextualText();
+            will( returnValue( "some contextual text" ) );
+            allowing( model ).currentLocationDescription();
+            will( returnValue( "some room text" ) );
+            ignoring( model );
+            oneOf( view ).showMainText( "some contextual text\n\nsome room text" );
             ignoring( view );
         }});
         TextAdventurePresenter p = new TextAdventurePresenter( view, model, null, null );
