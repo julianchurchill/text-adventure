@@ -24,6 +24,10 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     public BasicModel() {
     }
 
+    public String contextualText() {
+        return currentLocation().contextualText();
+    }
+
     public String currentLocationDescription() {
         return currentLocation().description();
     }

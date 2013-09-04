@@ -473,5 +473,20 @@ public class BasicModelTests {
 
         verify( movementEventSubscriber ).currentLocationChanged();
     }
+
+    @Test
+    public void contextual_text_is_taken_from_the_current_location() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        final String text = "contextual text lalalala";
+        mockery.checking( new Expectations() {{
+            oneOf( location ).contextualText();
+            will( returnValue( text ) );
+            ignoring( location );
+        }});
+        BasicModel model = new BasicModel();
+        model.addLocation( location );
+
+        assertEquals( text, model.contextualText() );
+    }
 }
 
