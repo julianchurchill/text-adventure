@@ -17,8 +17,8 @@ x:300
 y:480
 location id:townentrance
 location area id:town_area
-location description:You are standing outside a small town. The main street goes north, to the west there are some small out buildings and to the east you can see what looks like an old mine shaft.
-text to show on first entry:Staring up at the town sign swinging across the gate above you realise it has been many years since you were last here. The town itself looks quiet but not how you left it. It looks almost defeated.
+location description:You are standing outside a small town. The main street goes north, to the west there are some small out buildings and to the east you can see what looks like an old mine shaft. The name of the town is etched on the sign above in once proud lettering - "Perpetuity".
+text to show on first entry:Staring up at the town sign swinging across the gate above you realise it has been many years since you were last here. The town itself looks quiet but not how you left it. It looks almost defeated. Your heart starts to beat noticeably faster, pounding away in your chest as you think back, as you remember your encounter with the witch Bella Constantine.
 EXIT
 exit label:North
 exit destination:mainstreettown
@@ -78,42 +78,16 @@ exit id:smallshedwest
 
 LOCATION
 x:300
-y:240
-location id:clocktower
-location area id:town_area
-location description:You stand before a mighty clock tower. The clock goes TICK!
-EXIT
-exit label:South
-exit destination:mainstreettown
-exit direction hint:South
-exit id:clocktowersouth
-EXIT
-exit label:Clock tower door
-exit destination:groundfloorclocktower
-exit direction hint:North
-exit id:clocktowerdoor
-EXIT
-exit label:West
-exit destination:cobbledroad
-exit direction hint:West
-exit id:clocktower_to_cobbledroad
-EXIT
-exit label:East
-exit destination:nobles_quarter_west_street
-exit direction hint:East
-exit id:clocktower_to_nobles_quarter_west_street
-
-LOCATION
-x:300
 y:360
 location id:mainstreettown
 location area id:town_area
-location description:You are on the main street of the town. There is a clock tower to the north.
+location description:You are on the main street of the town. There is a clock tower further to the north but a large barricade of furniture, barrels and hay carts blocks your way. The only way to continue is through Merchants Lane and perhaps you can circle around the barricade. Besides the jumbled barrier there is further evidence of a large disturbance all around - the walls of the nearby buildings appear to have deep gouged claw marks and a number of the barrels have been rendered to splinters.
 EXIT
 exit label:North
 exit destination:clocktower
 exit direction hint:North
 exit id:mainstreettownnorth
+exit is not visible:
 EXIT
 exit label:South
 exit destination:townentrance
@@ -124,18 +98,14 @@ exit label:Merchants Lane
 exit destination:merchantslane
 exit direction hint:West
 exit id:merchantslaneentrance
-EXIT
-exit label:East
-exit destination:eastofmainstreet
-exit direction hint:East
-exit id:mainstreeteast
 
 LOCATION
 x:240
 y:360
 location id:merchantslane
 location area id:town_area
-location description:You stand at the start of Merchants Lane looking ahead admidst the varied and wonderful shop fronts that adorn this street. There a few people milling around, nipping in and out of one or two of the shops however most of the shops look closed. Immediately to the north you see an open shop door and behind the counter sits a man with a familiar face - the shopkeeper from the mine.
+text to show on first entry:Stepping over the broken pieces of crockery and half-melted knives spread across the street you start to wonder if it was a good idea to return to this town.
+location description:Merchants Lane stretches out ahead of you, abandoned and battered, not a single shop is open or has the slightest sign of life. These shops have been closed for some time now and this street hasn't seen a merry day in many a month. There is one shop door which has the corner broken in, as though something has forced it's way inside.
 EXIT
 exit label:East
 exit destination:mainstreettown
@@ -146,6 +116,7 @@ exit label:General Store
 exit destination:generalstore
 exit direction hint:North
 exit id:merchantslanenorth
+exit is not visible:
 
 LOCATION
 x:240
@@ -166,135 +137,21 @@ item countable noun prefix:a
 item is untakeable:
 
 LOCATION
-x:360
-y:360
-location id:eastofmainstreet
+x:300
+y:240
+location id:clocktower
 location area id:town_area
-location description:You are standing on a street leading from main street which you can see to the west. Further to the east is a large building that looks like it might be the town hall.
+location description:You stand before a mighty clock tower. The clock goes TICK!
 EXIT
-exit label:West
+exit label:South
 exit destination:mainstreettown
-exit direction hint:West
-exit id:eastofmainstreet_to_mainstreettown
-EXIT
-exit label:East
-exit destination:outsidetownhall
-exit direction hint:East
-exit id:eastofmainstreet_to_outsidetownhall
-
-LOCATION
-x:420
-y:360
-location id:outsidetownhall
-location area id:town_area
-location description:You are outside the town hall. The large wooden double doors in front of you are emblazoned with the town crest - two white dragons perched in a tree. A few people are standing about looking at the notice boards staked into the ground around the entrance to the town hall.
-EXIT
-exit label:West
-exit destination:eastofmainstreet
-exit direction hint:West
-exit id:outsidetownhall_to_eastofmainstreet
-EXIT
-exit label:Town Hall
-exit destination:townhall1
-exit direction hint:East
-exit id:outsidetownhall_to_townhall1
-
-LOCATION
-x:480
-y:360
-location id:townhall1
-location area id:town_area
-location description:You stand just inside the town hall entrance, a large circular reception room with several doors leading out. The walls are adorned with civic regalia and paintings of local scenes, intermingled with portraits of some of the more wealthy and powerful citizens. One door catches your eye due to the inscription above - "Room of Deeds".
-EXIT
-exit label:West
-exit destination:outsidetownhall
-exit direction hint:West
-exit id:townhall1_to_outsidetownhall
-EXIT
-exit label:Room of Deeds
-exit destination:roomofdeeds
-exit direction hint:North
-exit id:townhall1_to_roomofdeeds
-
-LOCATION
-x:480
-y:300
-location id:roomofdeeds
-location area id:town_area
-location description:You stand in a large room with plenty of space for lots of notice boards. The ones that are here look intriguing and you feel like taking a closer look. Something about this room puts a smile on your face and you feel yourself start to daydream about adventures past.
-EXIT
-exit label:Town hall entrance lobby
-exit destination:townhall1
 exit direction hint:South
-exit id:roomofdeeds_to_townhall1
-
-LOCATION
-x:240
-y:240
-location id:cobbledroad
-location area id:town_area
-location description:You are standing on a cobbled road that undulates between the small houses of this town. It continues west and back to the east you see an imposing clock tower looming over the houses.
+exit id:clocktowersouth
 EXIT
 exit label:East
-exit destination:clocktower
+exit destination:nobles_quarter_west_street
 exit direction hint:East
-exit id:cobbledroad_to_clocktower
-EXIT
-exit label:West
-exit destination:morecobbledroad
-exit direction hint:West
-exit id:cobbledroad_to_morecobbledroad
-EXIT
-exit label:House
-exit destination:hovel
-exit direction hint:North
-exit id:cobbledroad_to_hovel
-
-LOCATION
-x:240
-y:180
-location id:hovel
-location area id:town_area
-location description:You step inside the house. It might be more appropriate to call this a hovel. There is mess everywhere and it looks abandoned.
-EXIT
-exit label:Outside
-exit destination:cobbledroad
-exit direction hint:South
-exit id:hovel_to_cobbledroad
-
-LOCATION
-x:180
-y:240
-location id:morecobbledroad
-location area id:town_area
-location description:You are standing on a long cobbled road that undulates between the small houses of this town. It continues west and back to the east. Further up ahead you see a town gatehouse that guards one of the many entrances to the town.
-EXIT
-exit label:East
-exit destination:cobbledroad
-exit direction hint:East
-exit id:morecobbledroad_to_cobbledroad
-EXIT
-exit label:West
-exit destination:westgatehouse
-exit direction hint:West
-exit id:morecobbledroad_to_westgatehouse
-
-LOCATION
-x:120
-y:240
-location id:westgatehouse
-location area id:town_area
-location description:You stand before a large gatehouse within which sit several men of the town watch. They are not doing very much and do not notice you as you pass. You wonder how much they get paid and make a mental note to consider a career change. To the north is a dirt track leading away from the town.
-EXIT
-exit label:East
-exit destination:morecobbledroad
-exit direction hint:East
-exit id:westgatehouse_to_morecobbledroad
-EXIT
-exit label:North
-exit destination:dirttrack
-exit direction hint:North
-exit id:westgatehouse_to_dirttrack
+exit id:clocktower_to_nobles_quarter_west_street
 
 LOCATION
 x:360

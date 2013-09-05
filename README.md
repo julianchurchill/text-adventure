@@ -35,6 +35,9 @@ Bugs
 Story (Part 2)
 
 - Return to the town (Perpetuity?) - extra shops open, friary is abandoned, church is a burnt shell, towns people dislike you.
+  - Enter town, find a barricade on main street, go to merchants lane, general store door is broken but enterable with the aid of a crowbar.
+  - Once inside you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is something you need. How do you get rid of the creature? You must expose it to sunlight somehow - a common theme for defeating these creatures.
+  - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
 - Bella Constantine lives! In a far away hideout plotting her revenge on you...
 - Another town/village - Ubiquity? Subdued by Bella to serve her - the future of the old town...
 - A girl named Oubliette
