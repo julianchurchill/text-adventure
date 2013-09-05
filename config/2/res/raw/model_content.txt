@@ -104,8 +104,8 @@ x:240
 y:360
 location id:merchantslane
 location area id:town_area
-text to show on first entry:Stepping over the broken pieces of crockery and half-melted knives spread across the street you start to wonder if it was a good idea to return to this town.
 location description:Merchants Lane stretches out ahead of you, abandoned and battered, not a single shop is open or has the slightest sign of life. These shops have been closed for some time now and this street hasn't seen a merry day in many a month. There is one shop door which has the corner broken in, as though something has forced it's way inside.
+text to show on first entry:Stepping over the broken pieces of crockery and half-melted knives spread across the street you start to wonder if it was a good idea to return to this town.
 EXIT
 exit label:East
 exit destination:mainstreettown
