@@ -483,9 +483,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
             addHyperLinkForExit( prefix, exit, text );
             prefix = ", ";
         }
-        // This additional space stops the spannable click region for the last
-        // spannable from extending all the way to the edge of the text view
-        text.append( " " );
+        terminateSpannableClickRegion( text );
         enableClickableLinkCallbacks();
     }
 
@@ -497,6 +495,17 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         addExitActionHandler( text, startIndex, endIndex, exit );
         text.setSpan( new ForegroundColorSpan( selectExitColor( exit ) ),
                       startIndex, endIndex, 0 );
+    }
+
+    private void terminateSpannableClickRegion( SpannableStringBuilder text ) {
+        // These additional spaces stop the spannable click region for the last
+        // spannable from extending all the way to the edge of the text view
+        // and to the bottom of the  text view too
+        float widthOfASingleTab = main_text_output.getPaint().measureText( "\t" );
+        String fullWidthLineOfTabs = "";
+        for( float size = 0; size < main_text_output.getWidth(); size += widthOfASingleTab )
+            fullWidthLineOfTabs += "\t";
+        text.append( fullWidthLineOfTabs );
     }
 
     private List<Exit> orderForDisplay( List<Exit> exits ) {
