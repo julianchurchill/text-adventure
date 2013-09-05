@@ -32,19 +32,21 @@ Bugs
 - [BUG] Lost save game when restarting phone - reported on intfiction forum here http://www.intfiction.org/forum/viewtopic.php?f=19&t=8891
   - It is possible that read/write of action history save file may clash - read is during background thread triggered from onResume, write is on UI thread triggered from onPause. This read/write should probably be a mutually exclusive critical section.
 
-Story (Part 2)
+Story - TTA2
 
-- Return to the town (Perpetuity?) - extra shops open, friary is abandoned, church is a burnt shell, towns people dislike you.
-  - Enter town, find a barricade on main street, go to merchants lane, general store door is broken but enterable with the aid of a crowbar.
-  - Once inside you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is something you need. How do you get rid of the creature? You must expose it to sunlight somehow - a common theme for defeating these creatures.
-  - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
-- Bella Constantine lives! In a far away hideout plotting her revenge on you...
-- Another town/village - Ubiquity? Subdued by Bella to serve her - the future of the old town...
-- A girl named Oubliette
+- Return to the town - Perpetuity
+- Enter town, find a barricade on main street, go to merchants lane, general store door is broken but enterable with the aid of a crowbar.
+- Once inside you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is something you need. How do you get rid of the creature? You must expose it to sunlight somehow - a common theme for defeating these creatures.
+- Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
+- You must help them repair the barricade to the north of the town before night falls.
+- Night falls and the creatures attack, you must help defend the barricade through the night and at least one ambushes you when you enter another location.
+- In the morning the towns people ask you to get help from a nearby village over the river - Ubiquity.
 - A river and bridge between the two settlements
   - Use a boat to get across initially, perhaps repair the bridge from the other side to return to the town
 - Underwater adventure of somesort - perhaps in the river. Meet water faeries
 - Magical robots - perhaps trapped water faery souls - agents for either side, initially created by the witch to serve her, wills too strong for her to control, some changed sides. Self naming, Least Chance of Failure, Random Acts of Kindness, Vengeful Beyond Death, Penchant for Foolish Bravery
+- You reach Ubiquity only to discover it has been subdued by Bella to serve her - the future of Perpetuity...
+- A girl named Oubliette
 - An ancient temple to old gods with traps and puzzles
 - A portal to a dark plane (deep inside the temple) with demon creatures you must defeat some how
 - Bellas HQ - a castle in a forest on the other side of the river.
