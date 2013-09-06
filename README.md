@@ -18,6 +18,9 @@ Technical Tasks
 
 - New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
   - Make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
+  - Add deserialisation from model text and serialisation for action history.
+  - Add to ItemActionFactory a new 'take item' action which returns a generic UserActionItemAction object that wraps an Action object - in this case specifically an TakeASpecificItemAction.
+- Smarter resume. Capture all the text from all the actions that took place in the current location - instead of playing all actions, ignoring text and reshowing the basic room description. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
 
 Bugs
 
@@ -36,14 +39,13 @@ Story - TTA2
 
 - Return to the town - Perpetuity
 - Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in.
-  - When you examine it a location change occurs and you get stuck. There are no exits and some items to help you escape.
-    - "Kneeling down you lean forward putting your hand tentatively through the hole in the door. You lie flat on your belly to extend your arm fully, gently exploring until you feel something wet and rough brush your skin. Pausing for a moment to consider the situation you hear a scampering noise and suddenly a dead weight drops on your arm trapping you in the hole, head on the oustide, arm on the inside!".
-  - This will require an 'exit action' on examine - so that we can go to a different location, with no exits.
-    - Add deserialisation from model text and serialisation for action history.
-    - Add to ItemActionFactory a new 'use exit' action which returns a generic UserActionItemAction object that wraps an Action object - in this case specifically an ExitAction.
-    - The same method can be used to introduce a 'take item' action for the technical tasks above - UserActionItemAction returned by factory wraps a TakeASpecificItemAction which inherits from Action.
+  - When you examine it a location change occurs and you get stuck. There are no exits and some items around you.
+    - "Kneeling down you lean forward putting your hand tentatively through the hole in the door. You lie flat on your belly to extend your arm fully, gently exploring until you feel something wet and rough brush your skin. Pausing for a moment to consider the situation you hear a scampering noise and suddenly a dead weight drops on your arm trapping you in the hole, head on the outside, arm on the inside!".
+  - Should be able to use on examine message, make exits invisible
   - To escape you must examine one of the items you can reach, which breaks into two and then examine another part - after which a voice says "Psst... what are you doing down there?". Then you can talk to the 'disembodied voice', who eventually frees you, leaving you outside the shop with the door open. Again needs an exit action on talk/item use, loc description change, exit visible. The owner of the disembodied voice is nowhere to be found.
-- Entering the general store you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is the back of the shop through which you can climb out of a window and get around the barricade. How do you get past/rid of the creature? Expose it to sunlight somehow? - a common theme for defeating these creatures.
+- Entering the general store you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is the back of the shop through which you can see a window that should lead you to the other side of the barricade. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
+  - You must assemble a torch from items in nearby locations, you'll need a stick, a rag, some twine, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
+  - Use with the 'fell beast' allowing you to see the exit at the back of the shop. When you leave you get first entry text for the back of the store which says "You drop the torch behind you just as it runs out of fuel and the beast bounds forward its jaws gaping. Swiftly you leap through the door and slam it shut in the beasts face. It whimpers briefly and then hurls its weight against the door again and again. You're not sure how long this door will hold out.". Normal description is "This room is mostly empty, all the supplies presumably having been rescued before the last attack took place. There is an open window on the back wall which you judge you can just about squeeze through, if you breath in deeply. The sense of urgency rises in you as you continue to hear the fell beast beat down upon the door, slavering and yowling, desperate to sinks its fangs into your flesh.". There is a one-way exit through the window, leading to the cobbled street north of the barricade.
 - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
 - You must help them repair the barricade to the north of the town before night falls.
 - Night falls and the creatures attack, you must help defend the barricade through the night and at least one ambushes you when you enter another location.
