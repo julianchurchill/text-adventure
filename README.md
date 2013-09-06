@@ -35,7 +35,11 @@ Bugs
 Story - TTA2
 
 - Return to the town - Perpetuity
-- Enter town, find a barricade on main street, go to merchants lane, general store door is broken but enterable with the aid of a crowbar.
+- Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in.
+  - When you examine it a location change occurs and you get stuck. There are no exits and some items to help you escape.
+    - "Kneeling down you lean forward putting your hand tentatively through the hole in the door. You lie flat on your belly to extend your arm fully, gently exploring until you feel something wet and rough brush you skin. Pausing for a moment to consider the situation you hear a scampering noise and suddenly a dead weight drops on your arm trapping you in the hole, head on the oustide, arm on the inside!". 
+  - This will require an 'exit action' on examine - so that we can go to a different location.
+  - Solving the puzzle to free yourself will return you to outside the shop with the door open. Again needs an exit action on item use, loc description change, exit visible.
 - Once inside you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is something you need. How do you get rid of the creature? You must expose it to sunlight somehow - a common theme for defeating these creatures.
 - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
 - You must help them repair the barricade to the north of the town before night falls.
