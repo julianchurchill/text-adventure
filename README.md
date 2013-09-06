@@ -37,13 +37,13 @@ Story - TTA2
 - Return to the town - Perpetuity
 - Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in.
   - When you examine it a location change occurs and you get stuck. There are no exits and some items to help you escape.
-    - "Kneeling down you lean forward putting your hand tentatively through the hole in the door. You lie flat on your belly to extend your arm fully, gently exploring until you feel something wet and rough brush you skin. Pausing for a moment to consider the situation you hear a scampering noise and suddenly a dead weight drops on your arm trapping you in the hole, head on the oustide, arm on the inside!". 
-  - This will require an 'exit action' on examine - so that we can go to a different location.
+    - "Kneeling down you lean forward putting your hand tentatively through the hole in the door. You lie flat on your belly to extend your arm fully, gently exploring until you feel something wet and rough brush your skin. Pausing for a moment to consider the situation you hear a scampering noise and suddenly a dead weight drops on your arm trapping you in the hole, head on the oustide, arm on the inside!".
+  - This will require an 'exit action' on examine - so that we can go to a different location, with no exits.
     - Add deserialisation from model text and serialisation for action history.
     - Add to ItemActionFactory a new 'use exit' action which returns a generic UserActionItemAction object that wraps an Action object - in this case specifically an ExitAction.
     - The same method can be used to introduce a 'take item' action for the technical tasks above - UserActionItemAction returned by factory wraps a TakeASpecificItemAction which inherits from Action.
-  - Solving the puzzle to free yourself will return you to outside the shop with the door open. Again needs an exit action on item use, loc description change, exit visible.
-- Once inside you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is something you need. How do you get rid of the creature? You must expose it to sunlight somehow - a common theme for defeating these creatures.
+  - To escape you must examine one of the items you can reach, which breaks into two and then examine another part - after which a voice says "Psst... what are you doing down there?". Then you can talk to the 'disembodied voice', who eventually frees you, leaving you outside the shop with the door open. Again needs an exit action on talk/item use, loc description change, exit visible. The owner of the disembodied voice is nowhere to be found.
+- Entering the general store you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is the back of the shop through which you can climb out of a window and get around the barricade. How do you get past/rid of the creature? Expose it to sunlight somehow? - a common theme for defeating these creatures.
 - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
 - You must help them repair the barricade to the north of the town before night falls.
 - Night falls and the creatures attack, you must help defend the barricade through the night and at least one ambushes you when you enter another location.
