@@ -125,7 +125,7 @@ item countable noun prefix:a
 item is untakeable:
 item examine action is not repeatable:
 item examine message:Kneeling down you lean forward putting your hand tentatively through the hole in the door. You lie flat on your belly to extend your arm fully, gently exploring until you feel something wet and rough brush your skin. Pausing for a moment to consider the situation you hear a scampering noise and suddenly a dead weight drops on your arm trapping you in the hole, head on the outside, arm on the inside!
-item on examine action:make exit invisible:merchantslaneeast
+item on examine action:change exit visibility:merchantslaneeast:invisible
 item on examine action:change item visibility:unidentifiable_item:visible
 ITEM
 item name:unidentifiable item
