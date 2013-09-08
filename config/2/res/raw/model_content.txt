@@ -104,7 +104,7 @@ x:240
 y:360
 location id:merchantslane
 location area id:town_area
-location description:Merchants Lane stretches out ahead of you, abandoned and battered, not a single shop is open or has the slightest sign of life. These shops have been closed for some time now and this street hasn't seen a merry day in many a month. There is one shop door which has the corner broken in, as though something has forced it's way inside.
+location description:Merchants Lane stretches out ahead of you, abandoned and battered, not a single shop is open or has the slightest sign of life. These shops have been closed for some time now and this street hasn't seen a merry day in many a month. The door to the general store has taken quite a beating. The corner is splintered and shattered, leaving a hole through which you might be able to fit your arm. A closer examination might reveal whether there is any point in doing this although it appears something has forced it's way inside so a little caution might be in order.
 text to show on first entry:Stepping over the broken pieces of crockery and half-melted knives spread across the street you start to wonder if it was a good idea to return to this town.
 EXIT
 exit label:East
@@ -117,24 +117,73 @@ exit destination:generalstore
 exit direction hint:North
 exit id:merchantslanenorth
 exit is not visible:
+ITEM
+item name:broken door
+item description:This door has seen better days. The bottom corner has been broken in and there is trace of rough animal hair caught amongst the splinters.
+item id:broken_door
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:Kneeling down you lean forward putting your hand tentatively through the hole in the door. You lie flat on your belly to extend your arm fully, gently exploring until you feel something wet and rough brush your skin. Pausing for a moment to consider the situation you hear a scampering noise and suddenly a dead weight drops on your arm trapping you in the hole, head on the outside, arm on the inside!
+item on examine action:make exit invisible:merchantslaneeast
+item on examine action:change item visibility:unidentifiable_item:visible
+ITEM
+item name:unidentifiable item
+item description:Running your fingers over the item you can only tell that it is soft and squidgy and probably very unpleasant.
+item id:unidentifiable_item
+item countable noun prefix:an
+item is untakeable:
+item visibility:invisible
+item examine action is not repeatable:
+item examine message:Squeezing it a bit harder it breaks into several pieces, some hard and sharp and others wiry. You suspect it might have been a hair ball and you involuntarily gag at the thought.
+item on examine action:change item visibility:unidentifiable_item:invisible
+item on examine action:change item visibility:indescribeable_item:visible
+item on examine action:change item visibility:deeply_unpleasant_item:visible
+ITEM
+item name:indescribeable item
+item description:This is a bizarre object, smooth on one side but rough and sharp the other. If only you could see it.
+item id:indescribeable_item
+item countable noun prefix:an
+item is untakeable:
+item visibility:invisible
+item examine action is not repeatable:
+item examine message:
+item on examine action:change item visibility:indescribeable_item:invisible
+ITEM
+item name:deeply unpleasant item
+item description:Just touching this thing makes you want to vomit, the strands of what must be hair are mixed with gross chunky pieces of soft, damp who knows what. Yuck.
+item id:deeply_unpleasant_item
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine action is not repeatable:
+item examine message:"That's disgusting. If you're hoping to find a key or a saw or a hand grenade in there then stupidity has clearly won the battle for your brain.". What was that? You can't identify where it came from, perhaps you should reply...
+item on examine action:change item visibility:deeply_unpleasant_item:invisible
+item on examine action:change item visibility:disembodied_voice:visible
+ITEM
+item name:disembodied voice
+item description:It came out of nowhere. You struggle to identify which direction the voice is coming from, when it speaks it is almost as though it comes from several directions at once.
+item id:disembodied_voice
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine action is not repeatable:
+item talk initial phrase:hello:Hello?:"Hello, who said that?" you say as you continue to struggle to free your arm.
+item talk response to:hello:"Well, it all depends on what you're doing...".
+item talk follow up phrase to:hello:whatdoesitlooklike:What does it look like?:Slightly frustrated and more than aware of the vulnerability of your situation you exclaim "What does it look like? My arm is stuck in this door and I think something is sizing it up for dinner on the other side."
+item talk follow up phrase to:hello:waitingforafriend:Waiting for a friend:"Just waiting for a friend." you say nochalantly, hoping that the voice will leave you alone to get out of this sticky situation by yourself and without further embarrassment.
 
 LOCATION
 x:240
 y:420
 location id:generalstore
 location area id:town_area
-location description:You step inside the General Store raising your hand in greeting to the shopkeeper. He stands up as you enter at once beckoning you forward and nodding his head in recognition.
+location description:It is smashed up and empty.
 EXIT
 exit label:Outside
 exit destination:merchantslane
 exit direction hint:South
 exit id:generalstoreoutside
-ITEM
-item name:Shop keeper
-item description:He looks very smart, clearly having enjoyed a good bath, a shave and an expensive haircut. His eyes are still sunken from the effects of his imprisonment but he looks in good health otherwise. You haven't noticed before now but he also has green eyes - just like you.
-item id:generalstoreshopkeeper
-item countable noun prefix:a
-item is untakeable:
 
 LOCATION
 x:300
