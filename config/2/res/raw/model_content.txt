@@ -171,7 +171,25 @@ item examine action is not repeatable:
 item talk initial phrase:hello:Hello?:"Hello, who said that?" you say as you continue to struggle to free your arm.
 item talk response to:hello:"Well, it all depends on what you're doing...".
 item talk follow up phrase to:hello:whatdoesitlooklike:What does it look like?:Slightly frustrated and more than aware of the vulnerability of your situation you exclaim "What does it look like? My arm is stuck in this door and I think something is sizing it up for dinner on the other side."
+item talk response to:whatdoesitlooklike:The voice giggles mischeviously "I think you might be right.".
 item talk follow up phrase to:hello:waitingforafriend:Waiting for a friend:"Just waiting for a friend." you say nochalantly, hoping that the voice will leave you alone to get out of this sticky situation by yourself and without further embarrassment.
+item talk response to:waitingforafriend:"You don't look like you've got many friends... I think I'll hang about and see what they're like." replies the voice.
+item talk follow up phrase to:whatdoesitlooklike:canyouhelpme:Alright, can you help me or what?:"Alright, do you suppose you could help me out a bit here?" you say, sighing with a dose of light pleading.
+item talk follow up phrase to:waitingforafriend:canyouhelpme
+item talk response to:canyouhelpme:There is a palpable pause. "Ok" replies the voice. "But it'll cost you.".
+item talk follow up phrase to:canyouhelpme:whatsyourprice:What's your price?:"What's your price? I've not got much.". Always best to sow the seeds of expectation before assumption screws up a good deal.
+item talk response to:whatsyourprice:Another pause. "Well I'm in need of one thing you have, that tool in your pocket.". You wonder how it knew what's in your pocketses. Still, at least it wants something that you actually have. "Ok" you say, "have the multitool, just get me out of here quick.". A short but rough rummage around in your pockets the likes of which you've not endured for many a year yields the multitool to your helper. Quick as a flash there is some banging, a lot of jiggling, poking and general proddery and you are standing free, arm in tact, in front of the general store with the door now slightly ajar. You look around to see if you can spot whoever helped you knowing it is futile and that they have already gone.
+item talk action in response to:whatsyourprice:destroy item:multitool
+item talk action in response to:whatsyourprice:make exit visible:merchantslaneeast
+item talk action in response to:whatsyourprice:make exit visible:merchantslanenorth
+item talk action in response to:whatsyourprice:change item visibility:disembodied_voice:invisible
+item talk action in response to:whatsyourprice:change item visibility:broken_door:invisible
+item talk follow up phrase to:canyouhelpme:notonyournelly:Not on you nelly:"Not on your nelly. I make a habit of never owing anyone and I certainly never pay up front.". You suddenly feel cold hands rifling through your pockets and as quickly as you can crane your neck back to see who it was the scoundrels have gone. "No problem. I'll just take this shiny tool thingy and call it quits.". Quick as a flash there is some banging, a lot of jiggling, poking and general proddery and you are standing free, arm in tact, in front of the general store with the door now slightly ajar. You look around to see if you can spot whoever helped you knowing it is futile and that they have already gone.
+item talk action in response to:notonyournelly:destroy item:multitool
+item talk action in response to:notonyournelly:make exit visible:merchantslaneeast
+item talk action in response to:notonyournelly:make exit visible:merchantslanenorth
+item talk action in response to:notonyournelly:change item visibility:disembodied_voice:invisible
+item talk action in response to:notonyournelly:change item visibility:broken_door:invisible
 
 LOCATION
 x:240

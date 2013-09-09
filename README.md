@@ -35,17 +35,10 @@ Bugs
 - [BUG] Lost save game when restarting phone - reported on intfiction forum here http://www.intfiction.org/forum/viewtopic.php?f=19&t=8891
   - It is possible that read/write of action history save file may clash - read is during background thread triggered from onResume, write is on UI thread triggered from onPause. This read/write should probably be a mutually exclusive critical section.
 - [BUG] Double new lines appear before and after talk phrases are printed
+- [BUG] Auto scroll to the top of the unread text is too absolute - it doesn't take into account line spacing - it could do with adding a few pixels to the top (e.g. the margin/padding/line spacing divided by 2)
 
 Story - TTA2
 
-- Return to the town - Perpetuity
-- Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in.
-  - When you examine it a location change occurs and you get stuck. There are no exits and some items around you.
-    - "Kneeling down you lean forward putting your hand tentatively through the hole in the door. You lie flat on your belly to extend your arm fully, gently exploring until you feel something wet and rough brush your skin. Pausing for a moment to consider the situation you hear a scampering noise and suddenly a dead weight drops on your arm trapping you in the hole, head on the outside, arm on the inside!".
-    - DONE Need a new item action - make exit invisible
-      - DONE NormalItemActionFactory needs to be expanded to recognise 'change exit visibility'
-      - DONE Create ChangeExitVisibilityItemAction
-  - To escape you must examine one of the items you can reach, which breaks into two and then examine another part - after which a voice says "Psst... what are you doing down there?". Then you can talk to the 'disembodied voice', who eventually frees you, leaving you outside the shop with the door open. Again needs an exit action on talk/item use, loc description change, exit visible. The owner of the disembodied voice is nowhere to be found.
 - Entering the general store you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is the back of the shop through which you can see a window that should lead you to the other side of the barricade. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
   - You must assemble a torch from items in nearby locations, you'll need a stick, a rag, some twine, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
   - Use with the 'fell beast' allowing you to see the exit at the back of the shop. When you leave you get first entry text for the back of the store which says "You drop the torch behind you just as it runs out of fuel and the beast bounds forward its jaws gaping. Swiftly you leap through the door and slam it shut in the beasts face. It whimpers briefly and then hurls its weight against the door again and again. You're not sure how long this door will hold out.". Normal description is "This room is mostly empty, all the supplies presumably having been rescued before the last attack took place. There is an open window on the back wall which you judge you can just about squeeze through, if you breath in deeply. The sense of urgency rises in you as you continue to hear the fell beast beat down upon the door, slavering and yowling, desperate to sinks its fangs into your flesh.". There is a one-way exit through the window, leading to the cobbled street north of the barricade.
@@ -129,6 +122,11 @@ TTA1 v2.2.x/TTA2 v1.0
   - Add appropriate build files for config/1 and config/2 so that only textadventureN and textadventure_common are included in the build. Worst case copy the full namespace + Activity from the config/1/2 areas and keep them in source control there instead of under src/.
   - Move Acceptance tests and activity tests so they use the Common activity not a specific one
     - Activity acceptance tests need to have data built in - not taken from loaded model_content.txt. The model content needs to be supplied to the activity when the test creates it. Without this the acceptance tests will never pass for textadventure2.
+- [TECHNICAL TASK] New item action - change exit visibility
+
+- [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in.
+  - When you examine it a location change occurs and you get stuck. There are no exits and some items around you.
+  - To escape you must examine one of the items you can reach, which breaks into two and then examine another part - after which a voice says "Psst... what are you doing down there?". Then you can talk to the 'disembodied voice', who eventually frees you in exchange for your multitool, leaving you outside the shop with the door open. The owner of the disembodied voice is nowhere to be found.
 
 2.1
 ---
