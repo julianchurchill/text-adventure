@@ -123,6 +123,7 @@ TTA1 v2.2.x/TTA2 v1.0
   - Move Acceptance tests and activity tests so they use the Common activity not a specific one
     - Activity acceptance tests need to have data built in - not taken from loaded model_content.txt. The model content needs to be supplied to the activity when the test creates it. Without this the acceptance tests will never pass for textadventure2.
 - [TECHNICAL TASK] New item action - change exit visibility
+- [TECHNICAL TASK] To avoid screen jumping BasicModel caches location description until location changes.
 
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in.
   - When you examine it a location change occurs and you get stuck. There are no exits and some items around you.

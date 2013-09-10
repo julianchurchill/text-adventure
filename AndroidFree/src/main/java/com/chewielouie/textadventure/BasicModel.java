@@ -19,7 +19,8 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     private int maximumScore = 7;
     private List<MovementEventSubscriber> eventSubscribers =
                                     new ArrayList<MovementEventSubscriber>();
-    Map<String,String> locationAreaNames = new HashMap<String,String>();
+    private Map<String,String> locationAreaNames = new HashMap<String,String>();
+    private String cachedLocationDescription = "";
 
     public BasicModel() {
     }
@@ -29,7 +30,9 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public String currentLocationDescription() {
-        return currentLocation().description();
+        if( cachedLocationDescription.equals( "" ) )
+            cachedLocationDescription = currentLocation().description();
+        return cachedLocationDescription;
     }
 
     public String availableItemsText() {
@@ -49,6 +52,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public void setCurrentLocation( String id ) {
+        cachedLocationDescription = "";
         currentLocation.exited();
         currentLocation = locations.get( id );
         for( MovementEventSubscriber s : eventSubscribers )

@@ -138,6 +138,34 @@ public class BasicModelTests {
     }
 
     @Test
+    public void if_location_description_changes_while_in_room_old_description_continues_to_be_used() {
+        ModelLocation location = mock( ModelLocation.class );
+        when( location.description() ).thenReturn( "old description", "new description" );
+        BasicModel model = new BasicModel();
+        model.addLocation( location );
+
+        assertThat( model.currentLocationDescription(), is( "old description" ) );
+        assertThat( model.currentLocationDescription(), is( "old description" ) );
+    }
+
+    @Test
+    public void if_location_changes_new_location_description_is_used() {
+        ModelLocation location1 = mock( ModelLocation.class );
+        when( location1.description() ).thenReturn( "description 1" );
+        ModelLocation location2 = mock( ModelLocation.class );
+        when( location2.description() ).thenReturn( "description 2" );
+        when( location2.id() ).thenReturn( "loc2id" );
+        BasicModel model = new BasicModel();
+        model.addLocation( location1 );
+        model.addLocation( location2 );
+
+        model.currentLocationDescription();
+        model.setCurrentLocation( "loc2id" );
+
+        assertThat( model.currentLocationDescription(), is( "description 2" ) );
+    }
+
+    @Test
     public void available_items_text_is_taken_from_the_current_location() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
         final String itemsText = "items text";
