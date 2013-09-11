@@ -98,7 +98,7 @@ item is untakeable:
 item visibility:invisible
 item can be used with:clockminutehand
 item successful use message:You push the minute hand on top of the hour hand already attached to the spindle in the centre of the clock face. It clips in place with a satisfying click. The mechanism starts to whir and the hands begin to gently jerk with the movement of the mechanism inside. In the distance you hear what sounds like a rock slide and you take a mental note to investigate this further.
-item use action:make exit visible:mineshaftentrance
+item use action:change exit visibility:mineshaftentrance:visible
 item use action:change location description:outsideamineshaft:You stand before an old mine shaft. There are some dusty footprints in the dirt around the entrance. A sign states "McCreedys Mine - Stay out or suffer the consequences!". To the east is an old ramshackle shed.
 item use action:increment score:
 item use action:change item visibility:clockmechanismwithfaceandhourhandandminutehand:visible
@@ -225,7 +225,7 @@ item successful use message:You hear a click and the door springs open.
 item use is not repeatable:
 item use action:change item description:It is unlocked. It appears to allow access to the clock tower itself.
 item use action:change item name:unlocked door
-item use action:make exit visible:clocktowerdoor
+item use action:change exit visibility:clocktowerdoor:visible
 LOCATION
 x:300
 y:360
@@ -413,7 +413,7 @@ item successful use message:You hand the map to the shop keeper who smiles and n
 item use action:change item visibility:shopkeeper:invisible
 item use action:destroy item:minemap
 item use action:increment score:
-item use action:make exit visible:merchantslaneentrance
+item use action:change exit visibility:merchantslaneentrance:visible
 ITEM
 item name:Glowing seam
 item description:A seam runs through the wall of this cavern that glows with an eerie light. It looks soft enough to mine if you have the right tools.
@@ -627,9 +627,9 @@ item talk follow up phrase to:hello:checkin:I just came to check in...:You say "
 item talk response to:checkin:The Shop keeper says "Why thank you, it's all down to you my friend.".
 item talk follow up phrase to:checkin:lookingforwork:I was looking for some work...:You say "I was looking for some work. Can you help me?".
 item talk response to:lookingforwork:The Shop keeper says "Sure, you should go to the town hall to the east of the town. There are boards where an adventurer might find a job." Placing something on the shop counter he winks and says "You might also find this useful."
-item talk action in response to:lookingforwork:make exit visible:mainstreeteast
-item talk action in response to:lookingforwork:make exit visible:clocktower_to_cobbledroad
-item talk action in response to:lookingforwork:make exit visible:clocktower_to_nobles_quarter_west_street
+item talk action in response to:lookingforwork:change exit visibility:mainstreeteast:visible
+item talk action in response to:lookingforwork:change exit visibility:clocktower_to_cobbledroad:visible
+item talk action in response to:lookingforwork:change exit visibility:clocktower_to_nobles_quarter_west_street:visible
 item talk action in response to:lookingforwork:change location description:clocktower:You stand before a mighty clock tower. The clock goes TICK! There is a cobbled road off to the west that winds its way through the back streets of the town and to the east is the Noble's Quarter.
 item talk action in response to:lookingforwork:change item visibility:decoderring:visible
 item talk action in response to:lookingforwork:change item visibility:generalstoreshopkeeper:invisible
@@ -982,7 +982,7 @@ item talk response to:can_i_enter_the_friary:The friar looks at you quizzically 
 item talk follow up phrase to:can_i_enter_the_friary:i_want_to_join_your_order:I want to join your order:You say "I've been thinking a lot recently and have decided I want to dedicate my life to good works and helping the poor.". The friar looks you up and down and clearly doesn't believe a word you're saying - as neither do you. For a hungry friar he looks quite mean.
 item talk follow up phrase to:can_i_enter_the_friary:i_am_here_to_fix_the_toilets:I'm here to fix the toilets:You say "I'm here to fix the toilets - I understand you have a very serious blockage.".
 item talk response to:i_am_here_to_fix_the_toilets:The friar looks at you with some concern, hesitates and then points at the gate, gesturing that you should proceed quickly.
-item talk action in response to:i_am_here_to_fix_the_toilets:make exit visible:friary_gates_to_friary_entrance
+item talk action in response to:i_am_here_to_fix_the_toilets:change exit visibility:friary_gates_to_friary_entrance:visible
 
 LOCATION
 x:300
@@ -1215,7 +1215,7 @@ item can be used with:multitool
 item use is not repeatable:
 item successful use message:You slide the blade of the multitool in the crack between the flagstone and the floor and ease the stone up. Gripping it by your fingertips you pull it upright and place it to the side out of the way.
 item use action:change item visibility:loose_flagstone:invisible
-item use action:make exit visible:friary_kitchen_to_friary_cellar
+item use action:change exit visibility:friary_kitchen_to_friary_cellar:visible
 ITEM
 item name:Wash basin
 item description:It is a large ceramic trough that the friars use to wash food and dishes.
@@ -1831,7 +1831,7 @@ item can be used with:frayedrope
 item use is not repeatable:
 item successful use message:You throw the frayed rope up in the air in a loop over the protruding candlestick. It lands gently and you carefully pull down. You have to pull quite hard before it gives but when it does the altar behind you begins to roll out over the stone platform, hidden gears grinding from behind a wall. A slim staircase is revealed, as a puff of stale air assails your nostrils. The frayed rope snaps as you hold it and you leave it dangling uselessly from the candlestick.
 item use action:destroy item:frayedrope
-item use action:make exit visible:churchaltar_to_churchcryptstairs
+item use action:change exit visibility:churchaltar_to_churchcryptstairs:visible
 item use action:change item description:There are many candlesticks surrounding the altar but this one is at a particularly violent angle with bits of frayed rope dangling from it.
 
 LOCATION
@@ -1895,7 +1895,7 @@ item can be used with:tastybone
 item use is not repeatable:
 item successful use message:You throw the bone at the wolf and it hits him squarely between the eyes. He growls and looks mightily unimpressed, preparing himself to pounce upon you and get a decent meal - when his nose starts to twitch and he looks down at the bone. You thank your lucky stars as the wolf sniffs and licks the bone, picking it up in his jaws and taking it to a corner of the room allowing you to reach the door at the end of the room.
 item use action:destroy item:tastybone
-item use action:make exit visible:churchcryptpassageway_to_churchcrypt_litroom
+item use action:change exit visibility:churchcryptpassageway_to_churchcrypt_litroom:visible
 
 LOCATION
 x:-540
@@ -1943,7 +1943,7 @@ item talk follow up phrase to:youcouldhavebeenmorefierce:youwereveryfierce
 item talk follow up phrase to:yourhairisshiny:youwereveryfierce:You were very fierce...:You say "Actually I thought you were very fierce and unfriendly, utterly convincing."
 item talk response to:youwereveryfierce:"Oh wonderful!" cries the brigand. "I'm so happy I think I'll just let you pass. Between you and me I couldn't stop you if I wanted to, this is just for show, and you've been so sweet.". The brigand literally skips aside, bows and motions you towards the barred door at the rear of the cavern. He whispers at you, covering his mouth as if someone might be listening "If you don't mind I'll keep up the brigand act - a jobbing actor has got to practice you know.". He signals the end of his secret missive with a wink.
 
-item talk action in response to:youwereveryfierce:make exit visible:churchcrypt_litroom_to_churchcrypt_innersanctum
+item talk action in response to:youwereveryfierce:change exit visibility:churchcrypt_litroom_to_churchcrypt_innersanctum:visible
 item talk action in response to:youwereveryfierce:change item description:The brigand looks convincingly fierce and unfriendly. As you look at him he puts on an extra grim face and gives you a cheeky wink.
 
 LOCATION
@@ -2255,7 +2255,7 @@ item talk response to:found_it_in_a_crypt:"Oh is that so?" replies Constantine. 
 item talk follow up phrase to:found_it_in_a_crypt:here_it_is:Here is the necklace:You say "Ok, well here it is." you say expectantly.
 item talk response to:here_it_is:"And here is your reward." Oren passes you a large bag of coins, which you swiftly stash in your pocket. "And whilst you're here I'm sure my wife would like to thank you personally." He motions towards the front door and you feel you cannot refuse his invitation.
 item talk action in response to:here_it_is:destroy item:sapphire_necklace
-item talk action in response to:here_it_is:make exit visible:orens_porch_to_orens_hallway
+item talk action in response to:here_it_is:change exit visibility:orens_porch_to_orens_hallway:visible
 item talk action in response to:here_it_is:change item visibility:bluenoticeboard:invisible
 item talk action in response to:here_it_is:change item visibility:bluenoticeboard_roomofdeeds:visible
 item talk action in response to:here_it_is:change item visibility:rubynoticeboard:visible

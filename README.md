@@ -16,17 +16,19 @@ Backlog
 
 Technical Tasks
 
+- Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
 - New item action - take item. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
   - Add deserialisation from model text and serialisation for action history.
   - Add to ItemActionFactory a new 'take item' action which returns a generic UserActionItemAction object that wraps an Action object - in this case specifically an TakeASpecificItemAction. Use a UserActionFactory to craete the Action object - don't use a RecordableActionFactory as this will add it to the action history and then the action will be done twice on load...
   - Update model for app 1 to do this where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 - Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 - Smarter resume. Capture all the text from all the actions that took place in the current location - instead of playing all actions, ignoring text and reshowing the basic room description. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
-- Remove 'make exit visible' and swap use of it with 'change exit visibility'
-- Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
 
 Bugs
 
+- [BUG] is/are choice for list of available items. E.g. when entering the burnt out shop the list is "There is some smouldering embers here." - more correctly it should "are some".
+  - Mark items as plural 'item is plural:' - causes 'There are' to be used instead of 'There is'.
+  - Apply to 'Bags of junk' in app 1 and 'Smouldering embers' in app 2
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
@@ -39,7 +41,6 @@ Bugs
   - It is possible that read/write of action history save file may clash - read is during background thread triggered from onResume, write is on UI thread triggered from onPause. This read/write should probably be a mutually exclusive critical section.
 - [BUG] Double new lines appear before and after talk phrases are printed
 - [BUG] Auto scroll to the top of the unread text is too absolute - it doesn't take into account line spacing - it could do with adding a few pixels to the top (e.g. the margin/padding/line spacing divided by 2)
-- [BUG] is/are choice for list of available items. E.g. when entering the burnt out shop the list is "There is some smouldering embers here." - more correctly it should "are some".
 
 Story - TTA2
 
@@ -131,6 +132,7 @@ TTA1 v2.2.x/TTA2 v1.0
     - Activity acceptance tests need to have data built in - not taken from loaded model_content.txt. The model content needs to be supplied to the activity when the test creates it. Without this the acceptance tests will never pass for textadventure2.
 - [TECHNICAL TASK] New item action - change exit visibility
 - [TECHNICAL TASK] To avoid screen jumping BasicModel caches location description until location changes.
+- [TECHNICAL TASK] Removed 'make exit visible' and swap use of it with 'change exit visibility'
 
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in.
   - When you examine it a location change occurs and you get stuck. There are no exits and some items around you.

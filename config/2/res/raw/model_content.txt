@@ -105,10 +105,11 @@ exit destination:merchantslane
 exit direction hint:West
 exit id:merchantslaneentrance
 ITEM
-item name:barricade
+item name:Barricade
 item description:The barricade is made of a variety of household furniture, wooden stools, broom handles and hay carts.
 item id:barricade
 item countable noun prefix:a
+item mid sentence cased name:barricade
 item is untakeable:
 item examine action is not repeatable:
 item examine message:Looking more closely you see that there might be a few loose parts to this barricade. Perhaps they are best removed. You tug at a stick protruding from the base and it comes out quite easily. Not much of a barricade this, how long will it last against any sort of serious assault? Tapping with your foot in a few more carefully chosen places causes more sticks to fall out.
