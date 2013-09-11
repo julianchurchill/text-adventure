@@ -94,6 +94,21 @@ public class PlainTextItemDeserialiserTests {
     }
 
     @Test
+    public void deserialise_extracts_item_is_plural() {
+        final Item item = mockery.mock( Item.class );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+        mockery.checking( new Expectations() {{
+            oneOf( item ).setPlural();
+            ignoring( item );
+        }});
+
+        d.deserialise( item,
+                       "item name:Name\n" +
+                       "item description:description\n" +
+                       "item is plural:\n" );
+    }
+
+    @Test
     public void deserialise_extracts_item_is_untakeable() {
         final Item item = mockery.mock( Item.class );
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );

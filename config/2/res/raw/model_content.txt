@@ -328,6 +328,7 @@ item name:Smouldering embers
 item description:The embers have been smouldering for a while, they look like they are ready to extinguish.
 item id:smouldering_embers
 item countable noun prefix:some
+item is plural:
 item mid sentence cased name:smouldering embers
 item is untakeable:
 item can be used with:paraffin_soaked_torch

@@ -57,6 +57,13 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
         this.midSentenceCasedName = casedName;
     }
 
+    public void setPlural() {
+    }
+
+    public boolean plural() {
+        return false;
+    }
+
     public void setName( String name ) {
         this.name = name;
     }
