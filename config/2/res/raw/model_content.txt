@@ -139,6 +139,11 @@ exit destination:mainstreettown
 exit direction hint:East
 exit id:merchantslaneeast
 EXIT
+exit label:West
+exit destination:merchantslane_west
+exit direction hint:West
+exit id:merchantslane_to_merchantslane_west
+EXIT
 exit label:General Store
 exit destination:generalstore
 exit direction hint:North
@@ -207,14 +212,14 @@ item talk response to:canyouhelpme:There is a palpable pause. "Ok" replies the v
 item talk follow up phrase to:canyouhelpme:whatsyourprice:What's your price?:"What's your price? I've not got much.". Always best to sow the seeds of expectation before assumption screws up a good deal.
 item talk response to:whatsyourprice:Another pause. "Well I'm in need of one thing you have, that tool in your pocket.". You wonder how it knew what's in your pocketses. Still, at least it wants something that you actually have. "Ok" you say, "have the multitool, just get me out of here quick.". A short but rough rummage around in your pockets the likes of which you've not endured for many a year yields the multitool to your helper. Quick as a flash there is some banging, a lot of jiggling, poking and general proddery and you are standing free, arm intact, in front of the general store with the door now slightly ajar. You look around to see if you can spot whoever helped you knowing it is futile and that they have already gone.
 item talk action in response to:whatsyourprice:destroy item:multitool
-item talk action in response to:whatsyourprice:make exit visible:merchantslaneeast
-item talk action in response to:whatsyourprice:make exit visible:merchantslanenorth
+item talk action in response to:whatsyourprice:change exit visibility:merchantslaneeast:visible
+item talk action in response to:whatsyourprice:change exit visibility:merchantslanenorth:visible
 item talk action in response to:whatsyourprice:change item visibility:disembodied_voice:invisible
 item talk action in response to:whatsyourprice:change item visibility:broken_door:invisible
 item talk follow up phrase to:canyouhelpme:notonyournelly:Not on you nelly:"Not on your nelly. I make a habit of never owing anyone and I certainly never pay up front.". You suddenly feel cold hands rifling through your pockets and as quickly as you can crane your neck back to see who it was the scoundrels have gone. "No problem. I'll just take this shiny tool thingy and call it quits.". Quick as a flash there is some banging, a lot of jiggling, poking and general proddery and you are standing free, arm in tact, in front of the general store with the door now slightly ajar. You look around to see if you can spot whoever helped you knowing it is futile and that they have already gone.
 item talk action in response to:notonyournelly:destroy item:multitool
-item talk action in response to:notonyournelly:make exit visible:merchantslaneeast
-item talk action in response to:notonyournelly:make exit visible:merchantslanenorth
+item talk action in response to:notonyournelly:change exit visibility:merchantslaneeast:visible
+item talk action in response to:notonyournelly:change exit visibility:merchantslanenorth:visible
 item talk action in response to:notonyournelly:change item visibility:disembodied_voice:invisible
 item talk action in response to:notonyournelly:change item visibility:broken_door:invisible
 
@@ -230,7 +235,7 @@ exit destination:merchantslane
 exit direction hint:South
 exit id:generalstoreoutside
 EXIT
-exit label:rear store cupboard
+exit label:Rear store cupboard
 exit destination:generalstore_cupboard
 exit direction hint:North
 exit id:generalstore_to_cupboard
@@ -243,8 +248,38 @@ item countable noun prefix:a
 item mid sentence cased name:fell beast
 item is untakeable:
 item can be used with:fiery_torch
-item successful use message:Stepping forward boldly you wave the flaming torch in front of you, praying that the beast will retreat. A little to your surprise it does, cowering away from the torch but hissing and spitting at you in frustration.
-item use action:make exit visible:generalstore_to_cupboard
+item successful use message:Stepping forward boldly you wave the flaming torch in front of you, praying that the beast will retreat. A little to your surprise it does, cowering away from the torch but hissing and spitting at you in frustration, leaving a safe path to the store cupboard door.
+item use action:change exit visibility:generalstore_to_cupboard:visible
+item use action:change location description:generalstore:Upon entering the general store you can only make out rough shapes. As your eyes adjust to the darkness you spy a creature in the corner, alert and looking directly at you. It looks like a rabid dog with deep red eyes but has no fur and it eyes you hungrily. You can see an open door at the back of the shop through which a window leads to a street on the other side of the barricade. The beast has backed away from your flaming torch leaving a path to the back of the shop. For the moment you stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
+ITEM
+item name:Jar of clear liquid
+item description:The jar contains a clear liquid. It has somehow managed to survive the devastation around it, perhaps due to it's placement on a shelf sheltered behind the door.
+item id:jar_of_clear_liquid
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:The jar is too heavy to lift so you bend forward for a closer look and immediately detect the unmistakeable whiff of paraffin.
+item on examine action:destroy item:jar_of_clear_liquid
+item on examine action:change item visibility:jar_of_paraffin:visible
+ITEM
+item name:Jar of paraffin
+item description:The jar contains some paraffin. There is quite a lot of it making the jar very heavy and practically immoveable. Not that you'd want to put this in your pocket anyway.
+item id:jar_of_paraffin
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:torch_stick
+item successful use message:Lifting the stick with the rag around it you dip the rag end into the jar of paraffin and let it soak for a moment before pulling it out.
+item use action:destroy item:torch_stick
+item use action:change item visibility:paraffin_soaked_torch:visible
+item use action:take item:paraffin_soaked_torch
+ITEM
+item name:Paraffin soaked torch
+item description:This is a makeshift torch, a rag wrapped around one end of a stick then soaked in paraffin. It looks like it will light quite nicely and the fumes are starting to make you a little light headed.
+item id:paraffin_soaked_torch
+item countable noun prefix:a
+item mid sentence cased name:paraffin soaked torch
+item visibility:invisible
 
 LOCATION
 x:240
@@ -254,10 +289,58 @@ location area id:town_area
 location description:This room is mostly empty, all the supplies presumably having been rescued before the last attack took place. There is an open window on the back wall which you judge you can just about squeeze through, if you breath in deeply. The sense of urgency rises in you as you hear the fell beast beat down upon the door, slavering and yowling, desperate to sink its fangs into your flesh.
 text to show on first entry:You drop the torch behind you just as it runs out of fuel and the beast bounds forward its jaws gaping, hungry for you. Swiftly you leap through the door and slam it shut in the beasts face. It whimpers briefly and then hurls its weight against the door again and again. You're not sure how long this door will hold out.
 EXIT
-exit label:window
+exit label:Window
 exit destination:generalstore_cupboard
 exit direction hint:North
 exit id:generalstore_cupboard_to_street
+
+LOCATION
+x:180
+y:360
+location id:merchantslane_west
+location area id:town_area
+location description:This is the west end of Merchants Lane, more shops boarded up, some doors broken in and there is nothing left of one shop but a burnt out shell. You can hear the faint crackle and pop of smouldering wood as it reluctantly gives up it's last bit of moisture to the fire.
+EXIT
+exit label:East
+exit destination:merchantslane
+exit direction hint:East
+exit id:merchantslane_west_to_merchantslane
+EXIT
+exit label:Burnt out shop
+exit destination:burnt_out_shop
+exit direction hint:South
+exit id:merchantslane_west_to_burnt_out_shop
+
+LOCATION
+x:180
+y:420
+location id:burnt_out_shop
+location area id:town_area
+location description:You step over the charred steps through what remains of the door way. Looking inside everything is black, soot covers the walls that still stand and the counter and remnants of the shelves that once hung on the walls are in blackened, crumpled pieces across the floor. There is still some warmth given off by the surrounding debris, the fire must have been intense.
+EXIT
+exit label:Outside
+exit destination:merchantslane_west
+exit direction hint:North
+exit id:burnt_out_shop_to_merchantslane_west
+ITEM
+item name:Smouldering embers
+item description:The embers have been smouldering for a while, they look like they are ready to extinguish.
+item id:smouldering_embers
+item countable noun prefix:some
+item mid sentence cased name:smouldering embers
+item is untakeable:
+item can be used with:paraffin_soaked_torch
+item successful use message:Holding the rag end of the torch against the smouldering embers you pray that there is enough heat left to catch the torch alight. You blow on the embers to enliven them, glowing brightly and suddenly - poof - the torch takes light.
+item use action:destroy item:paraffin_soaked_torch
+item use action:change item visibility:fiery_torch:visible
+item use action:take item:fiery_torch
+ITEM
+item name:Fiery torch
+item description:This is a makeshift torch, a rag wrapped around one end of a stick then soaked in paraffin. It is very much alight and burning fast and bright.
+item id:fiery_torch
+item countable noun prefix:a
+item mid sentence cased name:fiery torch
+item visibility:invisible
 
 LOCATION
 x:300

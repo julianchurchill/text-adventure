@@ -16,12 +16,14 @@ Backlog
 
 Technical Tasks
 
-- New item action - add to inventory. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
-  - Make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
+- New item action - take item. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
   - Add deserialisation from model text and serialisation for action history.
-  - Add to ItemActionFactory a new 'take item' action which returns a generic UserActionItemAction object that wraps an Action object - in this case specifically an TakeASpecificItemAction.
+  - Add to ItemActionFactory a new 'take item' action which returns a generic UserActionItemAction object that wraps an Action object - in this case specifically an TakeASpecificItemAction. Use a UserActionFactory to craete the Action object - don't use a RecordableActionFactory as this will add it to the action history and then the action will be done twice on load...
+  - Update model for app 1 to do this where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 - Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 - Smarter resume. Capture all the text from all the actions that took place in the current location - instead of playing all actions, ignoring text and reshowing the basic room description. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
+- Remove 'make exit visible' and swap use of it with 'change exit visibility'
+- Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
 
 Bugs
 
@@ -37,14 +39,17 @@ Bugs
   - It is possible that read/write of action history save file may clash - read is during background thread triggered from onResume, write is on UI thread triggered from onPause. This read/write should probably be a mutually exclusive critical section.
 - [BUG] Double new lines appear before and after talk phrases are printed
 - [BUG] Auto scroll to the top of the unread text is too absolute - it doesn't take into account line spacing - it could do with adding a few pixels to the top (e.g. the margin/padding/line spacing divided by 2)
+- [BUG] is/are choice for list of available items. E.g. when entering the burnt out shop the list is "There is some smouldering embers here." - more correctly it should "are some".
 
 Story - TTA2
 
 - Entering the general store you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is the back of the shop through which you can see a window that should lead you to the other side of the barricade. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
-  - You must assemble a torch from items in nearby locations, you'll need a stick, a rag, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
-  - Use with the 'fell beast' allowing you to see the exit at the back of the shop. When you leave you get first entry text for the back of the store which says "You drop the torch behind you just as it runs out of fuel and the beast bounds forward its jaws gaping. Swiftly you leap through the door and slam it shut in the beasts face. It whimpers briefly and then hurls its weight against the door again and again. You're not sure how long this door will hold out.". Normal description is "This room is mostly empty, all the supplies presumably having been rescued before the last attack took place. There is an open window on the back wall which you judge you can just about squeeze through, if you breath in deeply. The sense of urgency rises in you as you continue to hear the fell beast beat down upon the door, slavering and yowling, desperate to sinks its fangs into your flesh.". There is a one-way exit through the window, leading to the cobbled street north of the barricade.
+  - DONE You must assemble a torch from items in nearby locations, you'll need a stick, a rag, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
+  - DONE Use with the 'fell beast' allowing you to see the exit at the back of the shop. When you leave you get first entry text for the back of the store which says "You drop the torch behind you just as it runs out of fuel and the beast bounds forward its jaws gaping. Swiftly you leap through the door and slam it shut in the beasts face. It whimpers briefly and then hurls its weight against the door again and again. You're not sure how long this door will hold out.". Normal description is "This room is mostly empty, all the supplies presumably having been rescued before the last attack took place. There is an open window on the back wall which you judge you can just about squeeze through, if you breath in deeply. The sense of urgency rises in you as you continue to hear the fell beast beat down upon the door, slavering and yowling, desperate to sinks its fangs into your flesh.". There is a one-way exit through the window, leading to the cobbled street north of the barricade.
+  - Add 'item use action:take item' action - see technical tasks
   - Need to destroy the torch - how do I trigger this? Do we need actions triggered by entering a room/using an exit or is there a way to do it with the current implementation?
   - Increment score - needs technical task done to put max score in model_content file
+    - Also increment for getting released from the door
 - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
 - You must help them repair the barricade to the north of the town before night falls.
 - Night falls and the creatures attack, you must help defend the barricade through the night and at least one ambushes you when you enter another location.
