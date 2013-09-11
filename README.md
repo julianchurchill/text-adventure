@@ -20,6 +20,7 @@ Technical Tasks
   - Make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
   - Add deserialisation from model text and serialisation for action history.
   - Add to ItemActionFactory a new 'take item' action which returns a generic UserActionItemAction object that wraps an Action object - in this case specifically an TakeASpecificItemAction.
+- Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 - Smarter resume. Capture all the text from all the actions that took place in the current location - instead of playing all actions, ignoring text and reshowing the basic room description. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
 
 Bugs
@@ -40,9 +41,10 @@ Bugs
 Story - TTA2
 
 - Entering the general store you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is the back of the shop through which you can see a window that should lead you to the other side of the barricade. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
-  - You must assemble a torch from items in nearby locations, you'll need a stick, a rag, some twine, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
+  - You must assemble a torch from items in nearby locations, you'll need a stick, a rag, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
   - Use with the 'fell beast' allowing you to see the exit at the back of the shop. When you leave you get first entry text for the back of the store which says "You drop the torch behind you just as it runs out of fuel and the beast bounds forward its jaws gaping. Swiftly you leap through the door and slam it shut in the beasts face. It whimpers briefly and then hurls its weight against the door again and again. You're not sure how long this door will hold out.". Normal description is "This room is mostly empty, all the supplies presumably having been rescued before the last attack took place. There is an open window on the back wall which you judge you can just about squeeze through, if you breath in deeply. The sense of urgency rises in you as you continue to hear the fell beast beat down upon the door, slavering and yowling, desperate to sinks its fangs into your flesh.". There is a one-way exit through the window, leading to the cobbled street north of the barricade.
   - Need to destroy the torch - how do I trigger this? Do we need actions triggered by entering a room/using an exit or is there a way to do it with the current implementation?
+  - Increment score - needs technical task done to put max score in model_content file
 - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
 - You must help them repair the barricade to the north of the town before night falls.
 - Night falls and the creatures attack, you must help defend the barricade through the night and at least one ambushes you when you enter another location.
@@ -94,7 +96,6 @@ Features
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
 
 - [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
-- [TECHNICAL FEATURE] Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 
 - [FEATURE] In model content txt items can only be used in one direction, e.g. a spade with a mound of earth and the target item has to include the definition of what happens. If the original item (e.g. spade) includes this information it is ignored. Should this be changed to be bi-directional? It would make writing content easier but needs considering as it might not always be appropriate.
 
