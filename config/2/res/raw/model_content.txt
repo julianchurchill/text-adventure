@@ -98,6 +98,21 @@ exit label:Merchants Lane
 exit destination:merchantslane
 exit direction hint:West
 exit id:merchantslaneentrance
+ITEM
+item name:barricade
+item description:The barricade is made of a variety of household furniture, wooden stools, broom handles and hay carts.
+item id:barricade
+item countable noun prefix:a
+item is untakeable:
+item examine action is not repeatable:
+item examine message:Looking more closely you see that there might be a few loose parts to this barricade. Perhaps they are best removed. You tug at a stick protruding from the base and it comes out quite easily. Not much of a barricade this, how long will it last against any sort of serious assault? Tapping with your foot in a few more carefully chosen places causes more sticks to fall out.
+item on examine action:change item visibility:torch_stick:visible
+ITEM
+item name:stick
+item description:It is quite stick like, mostly straight with a few nobbles, about the length of your forearm with a decent girth. This could be used for a variety of tasks, hitting things, propping something up or making a torch.
+item id:torch_stick
+item countable noun prefix:a
+item visibility:invisible
 
 LOCATION
 x:240
@@ -196,12 +211,40 @@ x:240
 y:420
 location id:generalstore
 location area id:town_area
-location description:It is smashed up and empty.
+location description:Upon entering the general store you can only make out rough shapes. As your eyes adjust to the darkness you spy a creature in the corner, alert and looking directly at you. It looks like a rabid dog with deep red eyes but has no fur and it eyes you hungrily. Past the fell beast you can see an open door at the back of the shop through which a window leads to a street on the other side of the barricade but there's no way you can get past the creature without loosing a limb. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
 EXIT
 exit label:Outside
 exit destination:merchantslane
 exit direction hint:South
 exit id:generalstoreoutside
+EXIT
+exit label:rear store cupboard
+exit destination:generalstore_cupboard
+exit direction hint:North
+exit id:generalstore_to_cupboard
+exit is not visible:
+ITEM
+item name:fell beast
+item description:It has the appearance of a dog, hunched over on four limbs, a slightly elongated head with a large jaw containing two rows of razor sharp teeth covered in drool. You suspect there is a lot more saliva now that it has spotted you and you fear for your life. It's deep red eyes squint as it observes you, turning it's head slightly away from the light entering the store by the doorway.
+item id:fell_beast
+item countable noun prefix:a
+item is untakeable:
+item can be used with:fiery_torch
+item successful use message:Stepping forward boldly you wave the flaming torch in front of you, praying that the beast will retreat. A little to your surprise it does, cowering away from the torch but hissing and spitting at you in frustration.
+item use action:make exit visible:generalstore_to_cupboard
+
+LOCATION
+x:240
+y:390
+location id:generalstore_cupboard
+location area id:town_area
+location description:This room is mostly empty, all the supplies presumably having been rescued before the last attack took place. There is an open window on the back wall which you judge you can just about squeeze through, if you breath in deeply. The sense of urgency rises in you as you hear the fell beast beat down upon the door, slavering and yowling, desperate to sink its fangs into your flesh.
+text to show on first entry:You drop the torch behind you just as it runs out of fuel and the beast bounds forward its jaws gaping, hungry for you. Swiftly you leap through the door and slam it shut in the beasts face. It whimpers briefly and then hurls its weight against the door again and again. You're not sure how long this door will hold out.
+EXIT
+exit label:window
+exit destination:generalstore_cupboard
+exit direction hint:North
+exit id:generalstore_cupboard_to_street
 
 LOCATION
 x:300
