@@ -26,9 +26,6 @@ Technical Tasks
 
 Bugs
 
-- [BUG] is/are choice for list of available items. E.g. when entering the burnt out shop the list is "There is some smouldering embers here." - more correctly it should "are some".
-  - Mark items as plural 'item is plural:' - causes 'There are' to be used instead of 'There is'.
-  - Apply to 'Bags of junk' in app 1 and 'Smouldering embers' in app 2
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
@@ -133,6 +130,8 @@ TTA1 v2.2.x/TTA2 v1.0
 - [TECHNICAL TASK] New item action - change exit visibility
 - [TECHNICAL TASK] To avoid screen jumping BasicModel caches location description until location changes.
 - [TECHNICAL TASK] Removed 'make exit visible' and swap use of it with 'change exit visibility'
+- [TECHNICAL TASK] is/are choice for list of available items. E.g. when entering the burnt out shop the list is "There is some smouldering embers here." - more correctly it should "are some". Applied to 'Bags of junk' in TTA1 and 'Smouldering embers' in TTA2
+  - Items can now be marked as plural 'item is plural:' - causes 'There are' to be used instead of 'There is'.
 
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in.
   - When you examine it a location change occurs and you get stuck. There are no exits and some items around you.

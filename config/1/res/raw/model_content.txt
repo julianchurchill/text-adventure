@@ -164,6 +164,7 @@ ITEM
 item name:Bags of junk
 item description:They are full of rubbish, there might be something of interest here but it is hard to tell.
 item countable noun prefix:some
+item is plural:
 item id:bagsofjunk
 item mid sentence cased name:bags of junk
 item is untakeable:

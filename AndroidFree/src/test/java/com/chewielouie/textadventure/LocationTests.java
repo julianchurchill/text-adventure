@@ -316,6 +316,29 @@ public class LocationTests {
                       l.availableItemsText() );
     }
 
+    private Item makeMockItem( String name ) {
+        Item item = mock( Item.class );
+        when( item.countableNounPrefix() ).thenReturn( "a" );
+        when( item.name() ).thenReturn( name );
+        when( item.midSentenceCasedName() ).thenReturn( name );
+        when( item.visible() ).thenReturn( true );
+        when( item.plural() ).thenReturn( false );
+        return item;
+    }
+
+    @Test
+    public void when_first_item_in_list_plural_use_There_are() {
+        Location l = new Location( "", "Location description.", null, null );
+        Item item1 = makeMockItem( "names" );
+        when( item1.countableNounPrefix() ).thenReturn( "some" );
+        when( item1.plural() ).thenReturn( true );
+        l.addItem( item1 );
+        l.addItem( makeMockItem( "name2" ) );
+
+        assertEquals( "There are some names and a name2 here.\n",
+                      l.availableItemsText() );
+    }
+
     @Test
     public void removing_all_items_from_a_location_removes_TakeAnItem_action_from_action_list() {
         final Item takeableItem = mockery.mock( Item.class );

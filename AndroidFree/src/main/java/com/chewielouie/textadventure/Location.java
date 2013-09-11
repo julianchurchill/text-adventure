@@ -7,6 +7,12 @@ import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.item.Item;
 
 public class Location implements ModelLocation {
+    private static final String there_english = "There";
+    private static final String are_english = "are";
+    private static final String is_english = "is";
+    private static final String here_english = "here";
+    private static final String and_english = "and";
+
     private String id;
     private String description;
     private String areaID = "";
@@ -83,7 +89,8 @@ public class Location implements ModelLocation {
         if( visibleItems.size() == 0 )
             return "";
 
-        String itemsPostAmble = "There is ";
+        String itemsPostAmble = there_english + " ";
+        itemsPostAmble += is_are_PluralQualifier( items ) + " ";
         for( Item item : visibleItems )
             itemsPostAmble += item.countableNounPrefix() + " " +
                               item.midSentenceCasedName() +
@@ -91,11 +98,17 @@ public class Location implements ModelLocation {
         return itemsPostAmble;
     }
 
+    private String is_are_PluralQualifier( List<Item> items ) {
+        if( items.get( 0 ).plural() )
+            return are_english;
+        return is_english;
+    }
+
     private String itemPostfix( Item item, List<Item> items ) {
         if( item == lastOf( items ) )
-            return " here.\n";
+            return " " + here_english + ".\n";
         else if( item == secondTolastOf( items ) )
-            return " and ";
+            return " " + and_english + " ";
         return  ", ";
     }
 
