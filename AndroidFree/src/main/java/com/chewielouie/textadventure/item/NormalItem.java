@@ -26,6 +26,7 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     private boolean examineActionIsRepeatable = true;
     private boolean examined = false;
     private boolean canTalkTo = false;
+    private boolean plural = false;
 
     public String description() {
         return description;
@@ -58,10 +59,11 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     }
 
     public void setPlural() {
+        this.plural = true;
     }
 
     public boolean plural() {
-        return false;
+        return this.plural;
     }
 
     public void setName( String name ) {

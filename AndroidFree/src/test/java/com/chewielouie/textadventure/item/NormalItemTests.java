@@ -46,6 +46,19 @@ public class NormalItemTests {
     }
 
     @Test
+    public void item_is_not_plural_by_default() {
+        NormalItem item = new NormalItem();
+        assertFalse( item.plural() );
+    }
+
+    @Test
+    public void setting_plural_makes_item_plural() {
+        NormalItem item = new NormalItem();
+        item.setPlural();
+        assertTrue( item.plural() );
+    }
+
+    @Test
     public void item_is_takeable_by_default() {
         NormalItem item = new NormalItem();
         assertTrue( item.takeable() );
