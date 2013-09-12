@@ -101,5 +101,15 @@ public class NormalItemActionFactoryTests {
 
         assertTrue( action instanceof ChangeLocationDescriptionItemAction );
     }
-}
 
+    @Test
+    public void creates_TakeItemItemActions() {
+        NormalItemActionFactory factory = new NormalItemActionFactory( null );
+
+        ItemAction action = factory.create(
+               "take item:itemid",
+               null );
+
+        assertTrue( action instanceof TakeItemItemAction );
+    }
+}

@@ -43,6 +43,9 @@ public class NormalItemActionFactory implements ItemActionFactory {
             return new ChangeLocationDescriptionItemAction(
                        content.substring( changeLocationDescriptionName().length() ),
                        model );
+        else if( content.startsWith( takeItemName() ) )
+            return new TakeItemItemAction(
+                       content.substring( takeItemName().length() ), model );
         return new NullItemAction( content );
     }
 
@@ -76,6 +79,10 @@ public class NormalItemActionFactory implements ItemActionFactory {
 
     private String changeLocationDescriptionName() {
         return new ChangeLocationDescriptionItemAction( null, null ).name() + SEPERATOR;
+    }
+
+    private String takeItemName() {
+        return new TakeItemItemAction( null, null ).name() + SEPERATOR;
     }
 }
 
