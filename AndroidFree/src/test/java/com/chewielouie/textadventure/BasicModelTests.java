@@ -561,5 +561,20 @@ public class BasicModelTests {
 
         assertThat( Collections.frequency( model.inventoryItems(), item ), is( 1 ) );
     }
+
+    @Test
+    public void move_through_exit_calls_exit_use() {
+        Exit exit = mock( Exit.class );
+        ModelLocation loc = mock( ModelLocation.class );
+        when( loc.exitable( exit ) ).thenReturn( true );
+        when( loc.exitDestinationFor( exit ) ).thenReturn( "loc" );
+        BasicModel model = new BasicModel();
+        model.addLocation( loc );
+
+        model.moveThroughExit( exit );
+
+        verify( exit ).use();
+    }
+
 }
 

@@ -78,8 +78,10 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public void moveThroughExit( Exit exit ) {
-        if( currentLocation.exitable( exit ) )
+        if( currentLocation.exitable( exit ) ) {
+            exit.use();
             setCurrentLocation( currentLocation.exitDestinationFor( exit ) );
+        }
     }
 
     public ModelLocation currentLocation() {

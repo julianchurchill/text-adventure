@@ -16,11 +16,6 @@ Backlog
 
 Technical Tasks
 
-- New event trigger point
-  - "exit on use action:destroy item:fiery_torch" for TTA2 where you escape into the store cupboard but drop the torch.
-  - DONE Implement deserialisation to call Exit.addOnUseAction( ItemAction ) using ItemActionFactory to create the actions
-  - DONE Activity must pass NormalItemActionFactory to PlainTextExitDeserialiser
-  - Implement LocationExit.onUse() and addOnUseAction( ItemAction )
 - Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 - Smarter resume. Capture all the text from all the actions that took place in the current location - instead of playing all actions, ignoring text and reshowing the basic room description. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
@@ -137,6 +132,7 @@ TTA1 v2.2.x/TTA2 v1.0
 - [TECHNICAL TASK] is/are choice for list of available items. E.g. when entering the burnt out shop the list is "There is some smouldering embers here." - more correctly it should "are some". Applied to 'Bags of junk' in TTA1 and 'Smouldering embers' in TTA2
   - Items can now be marked as plural 'item is plural:' - causes 'There are' to be used instead of 'There is'.
 - [TECHNICAL TASK] New item action - take item. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
+- [TECHNICAL TASK] New event trigger 'exit on use action', e.g. 'exit on use action:destroy item:fiery_torch' for example in TTA2 where you escape into the store cupboard but drop the torch.
 
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in.
   - When you examine it a location change occurs and you get stuck. There are no exits and some items around you.

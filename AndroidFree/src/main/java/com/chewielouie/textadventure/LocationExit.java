@@ -1,5 +1,7 @@
 package com.chewielouie.textadventure;
 
+import java.util.ArrayList;
+import java.util.List;
 import com.chewielouie.textadventure.itemaction.ItemAction;
 
 public class LocationExit implements Exit {
@@ -8,6 +10,7 @@ public class LocationExit implements Exit {
     private DirectionHint directionHint = DirectionHint.DontCare;
     private boolean visible = true;
     private String id = "";
+    private List<ItemAction> onUseActions = new ArrayList<ItemAction>();
 
     public String label() {
         return this.label;
@@ -74,6 +77,12 @@ public class LocationExit implements Exit {
     }
 
     public void addOnUseAction( ItemAction action ) {
+        onUseActions.add( action );
+    }
+
+    public void use() {
+        for( ItemAction action : onUseActions )
+            action.enact();
     }
 }
 

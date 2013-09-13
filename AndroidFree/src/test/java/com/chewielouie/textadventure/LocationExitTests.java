@@ -1,8 +1,12 @@
 package com.chewielouie.textadventure;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import com.chewielouie.textadventure.itemaction.ItemAction;
 
 public class LocationExitTests {
 
@@ -144,6 +148,20 @@ public class LocationExitTests {
         exit2.setDirectionHint( Exit.DirectionHint.South );
 
         assertNotEquals( exit1.hashCode(), exit2.hashCode() );
+    }
+
+    @Test
+    public void onUse_enacts_all_added_on_use_actions() {
+        LocationExit exit = new LocationExit();
+        ItemAction action1 = mock( ItemAction.class );
+        ItemAction action2 = mock( ItemAction.class );
+        exit.addOnUseAction( action1 );
+        exit.addOnUseAction( action2 );
+
+        exit.use();
+
+        verify( action1 ).enact();
+        verify( action2 ).enact();
     }
 }
 

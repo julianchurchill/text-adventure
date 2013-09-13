@@ -18,9 +18,13 @@ public class LoggableItemAction implements ItemAction {
     }
 
     public void enact() {
-        logger.log( "'" + action.name() + "' item action enacted on item id '" +
+        if( item != null )
+            logger.log( "'" + action.name() + "' item action enacted on item id '" +
                 item.id() + "' item name '" + item.name() + "' with content '" +
                 content + "'" );
+        else
+            logger.log( "'" + action.name() + "' item action enacted on null item" +
+                " with content '" + content + "'" );
         action.enact();
     }
 

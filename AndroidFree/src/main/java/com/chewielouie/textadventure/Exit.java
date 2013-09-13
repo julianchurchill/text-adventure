@@ -16,5 +16,6 @@ public interface Exit {
     public String id();
     public void setID( String id );
     public void addOnUseAction( ItemAction action );
+    public void use();
 }
 
