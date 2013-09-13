@@ -199,5 +199,9 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     public ModelLocation findLocationByID( String id ) {
         return locations.get( id );
     }
+
+    public ModelLocation findLocationThatHasItem( String itemID ) {
+        return null;
+    }
 }
 

@@ -18,8 +18,12 @@ Technical Tasks
 
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
 - New item action - take item. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
-  - Add deserialisation from model text and serialisation for action history.
-  - Add to ItemActionFactory a new 'take item' action which returns a generic UserActionItemAction object that wraps an Action object - in this case specifically an TakeASpecificItemAction. Use a UserActionFactory to craete the Action object - don't use a RecordableActionFactory as this will add it to the action history and then the action will be done twice on load...
+  - DONE Add deserialisation from model text and serialisation for action history.
+  - Add to ItemActionFactory a new 'take item' action
+    - DONE TakeItemItemAction must remove the item from the location it is in
+    - UserInventory must be passed through - which means factory constructor must take one, given by Activity
+    - TakeItemItemAction must add the item to the inventory
+  - Implement BasicModel.findLocationThatHasItem()
   - Update model for app 1 to do this where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 - Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 - Smarter resume. Capture all the text from all the actions that took place in the current location - instead of playing all actions, ignoring text and reshowing the basic room description. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
