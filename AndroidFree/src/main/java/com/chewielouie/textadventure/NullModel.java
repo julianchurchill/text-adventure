@@ -87,4 +87,6 @@ public class NullModel implements TextAdventureModel {
         return null;
     }
 
+    public void moveItemToInventory( String itemID ) {
+    }
 }
