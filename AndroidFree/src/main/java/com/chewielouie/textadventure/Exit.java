@@ -1,5 +1,7 @@
 package com.chewielouie.textadventure;
 
+import com.chewielouie.textadventure.itemaction.ItemAction;
+
 public interface Exit {
     public enum DirectionHint { DontCare, North, South, East, West };
     public String label();
@@ -13,5 +15,6 @@ public interface Exit {
     public void setInvisible();
     public String id();
     public void setID( String id );
+    public void addOnUseAction( ItemAction action );
 }
 

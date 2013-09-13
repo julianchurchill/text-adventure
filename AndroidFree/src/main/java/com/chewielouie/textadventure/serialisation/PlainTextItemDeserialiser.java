@@ -98,8 +98,8 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     }
 
     private void extractItemOnExamineActions() {
-        List<ItemAction> actions =
-            extractMultipleActions( itemOnExamineActionTag );
+        List<ItemAction> actions = new ItemActionDeserialiser( content,
+            itemOnExamineActionTag, item, itemActionFactory ).extract();
         for( ItemAction action : actions )
             item.addOnExamineAction( action );
     }
@@ -127,27 +127,10 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     }
 
     private void extractItemUseActions() {
-        List<ItemAction> actions = extractMultipleActions( itemUseActionTag );
+        List<ItemAction> actions = new ItemActionDeserialiser( content,
+            itemUseActionTag, item, itemActionFactory ).extract();
         for( ItemAction action : actions )
             item.addOnUseAction( action );
-    }
-
-    private List<ItemAction> extractMultipleActions( String triggerEventTag ) {
-        List<ItemAction> actions = new ArrayList<ItemAction>();
-        if( itemActionFactory != null ) {
-            int nextTag = NOT_FOUND;
-            while( (nextTag=findTagFrom( nextTag, triggerEventTag )) != NOT_FOUND )
-                actions.add( createAction( nextTag, triggerEventTag ) );
-        }
-        return actions;
-    }
-
-    private ItemAction createAction( int startOfAction,
-            String triggerEventTag ) {
-        return itemActionFactory.create(
-                    extractValueUpToNewline( startOfAction +
-                                             triggerEventTag.length() ),
-                    item );
     }
 
     private int findTagFrom( int start, String tag ) {

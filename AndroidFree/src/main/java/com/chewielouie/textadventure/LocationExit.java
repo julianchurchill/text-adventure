@@ -1,5 +1,7 @@
 package com.chewielouie.textadventure;
 
+import com.chewielouie.textadventure.itemaction.ItemAction;
+
 public class LocationExit implements Exit {
     private String label = new String();
     private String destination = new String();
@@ -69,6 +71,9 @@ public class LocationExit implements Exit {
         result = prime * result + destination.hashCode();
         result = prime * result + directionHint.hashCode();
         return result;
+    }
+
+    public void addOnUseAction( ItemAction action ) {
     }
 }
 

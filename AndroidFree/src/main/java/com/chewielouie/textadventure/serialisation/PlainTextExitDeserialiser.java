@@ -1,6 +1,12 @@
 package com.chewielouie.textadventure.serialisation;
 
+import java.util.ArrayList;
+import java.util.List;
+import com.chewielouie.textadventure.DeserialiserUtils;
 import com.chewielouie.textadventure.Exit;
+import com.chewielouie.textadventure.item.Item;
+import com.chewielouie.textadventure.itemaction.ItemActionFactory;
+import com.chewielouie.textadventure.itemaction.ItemAction;
 
 public class PlainTextExitDeserialiser implements ExitDeserialiser {
     private final String exitLabelTag = "exit label:";
@@ -8,43 +14,48 @@ public class PlainTextExitDeserialiser implements ExitDeserialiser {
     private final String exitDirectionHintTag = "exit direction hint:";
     private final String exitIsNotVisibleTag = "exit is not visible:";
     private final String exitIDTag = "exit id:";
-    private String content;
+    private final String exitOnUseActionTag = "exit on use action:";
+    private String content = null;
+    private Exit exit = null;
+    private ItemActionFactory itemActionFactory = null;
+
+    public PlainTextExitDeserialiser() {
+    }
+
+    public PlainTextExitDeserialiser( ItemActionFactory f ) {
+        itemActionFactory = f;
+    }
 
     public void deserialise( Exit exit, String content ) {
         this.content = content;
-        exit.setLabel( extractNewlineDelimitedValueFor( exitLabelTag ) );
+        this.exit = exit;
+        exit.setLabel(
+            DeserialiserUtils.extractNewlineDelimitedValueFor( exitLabelTag, content ) );
         exit.setDestination(
-                extractNewlineDelimitedValueFor( exitDestinationTag ) );
+            DeserialiserUtils.extractNewlineDelimitedValueFor( exitDestinationTag, content ) );
         exit.setDirectionHint( stringToDirectionHint(
-            extractNewlineDelimitedValueFor( exitDirectionHintTag ) ) );
-        if( exitNotVisibleIsSpecifiedDiscardIt() )
+            DeserialiserUtils.extractNewlineDelimitedValueFor( exitDirectionHintTag, content ) ) );
+        if( exitNotVisibleIsSpecified() )
             exit.setInvisible();
         exit.setID( extractExitID() );
+        extractOnUseActions();
     }
 
-    private String extractNewlineDelimitedValueFor( String tag ) {
-        int startOfTag = content.indexOf( tag );
-        if( startOfTag == -1 )
-            return "";
-        int endOfTag = content.indexOf( "\n", startOfTag );
-        if( endOfTag == -1 )
-            endOfTag = content.length();
-        return content.substring( startOfTag + tag.length(), endOfTag );
+    private void extractOnUseActions() {
+        List<ItemAction> actions = new ItemActionDeserialiser( content,
+            exitOnUseActionTag, null, itemActionFactory ).extract();
+        for( ItemAction action : actions )
+            exit.addOnUseAction( action );
     }
 
-    private boolean exitNotVisibleIsSpecifiedDiscardIt() {
-        int startOfTag = content.indexOf( exitIsNotVisibleTag );
-        if( startOfTag != -1 ) {
-            extractNewlineDelimitedValueFor( exitIsNotVisibleTag );
-            return true;
-        }
-        return false;
+    private boolean exitNotVisibleIsSpecified() {
+        return content.indexOf( exitIsNotVisibleTag ) != DeserialiserUtils.NOT_FOUND;
     }
 
     private String extractExitID() {
         int startOfTag = content.indexOf( exitIDTag );
         if( startOfTag != -1 )
-            return extractNewlineDelimitedValueFor( exitIDTag );
+            return DeserialiserUtils.extractNewlineDelimitedValueFor( exitIDTag, content );
         return "";
     }
 

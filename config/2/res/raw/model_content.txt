@@ -241,6 +241,7 @@ exit destination:generalstore_cupboard
 exit direction hint:North
 exit id:generalstore_to_cupboard
 exit is not visible:
+exit on use action:destroy item:fiery_torch
 ITEM
 item name:Fell beast
 item description:It has the appearance of a dog, hunched over on four limbs, a slightly elongated head with a large jaw containing two rows of razor sharp teeth covered in drool. You suspect there is a lot more saliva now that it has spotted you and you fear for your life. It's deep red eyes squint as it observes you, turning it's head slightly away from the light entering the store by the doorway.
