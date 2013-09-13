@@ -200,8 +200,7 @@ public class BasicModel implements TextAdventureModel, UserInventory {
         return locations.get( id );
     }
 
-    public ModelLocation findLocationThatHasItem( String itemID ) {
-        return null;
+    public void moveItemToInventory( String itemID ) {
     }
 }
 

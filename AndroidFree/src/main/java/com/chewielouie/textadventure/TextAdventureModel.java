@@ -29,6 +29,6 @@ public interface TextAdventureModel {
     public void setMaximumScore( int score );
     public void subscribeForEvents( MovementEventSubscriber subscriber );
     public ModelLocation findLocationByID( String id );
-    public ModelLocation findLocationThatHasItem( String itemID );
+    public void moveItemToInventory( String itemID );
 }
 

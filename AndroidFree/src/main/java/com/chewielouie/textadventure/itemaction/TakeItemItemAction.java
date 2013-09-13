@@ -2,7 +2,6 @@
 package com.chewielouie.textadventure.itemaction;
 
 import com.chewielouie.textadventure.item.Item;
-import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.TextAdventureModel;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +22,7 @@ public class TakeItemItemAction implements ItemAction {
     }
 
     public void enact() {
-        Item item = model.findItemByID( itemID );
-        ModelLocation location = model.findLocationThatHasItem( itemID );
-        location.removeItem( item );
-        // inventory.addToInventory( item );
+        model.moveItemToInventory( itemID );
     }
 
     public String name() {

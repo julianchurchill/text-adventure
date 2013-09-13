@@ -23,28 +23,10 @@ public class TakeItemItemActionTests {
     @Test
     public void enact_removes_item_from_location() {
         TextAdventureModel model = mock( TextAdventureModel.class );
-        Item item = mock( Item.class );
-        when( model.findItemByID( "itemid" ) ).thenReturn( item );
-        ModelLocation location = mock( ModelLocation.class );
-        when( model.findLocationThatHasItem( "itemid" ) ).thenReturn( location );
         TakeItemItemAction action = new TakeItemItemAction( "itemid", model );
 
         action.enact();
 
-        verify( location ).removeItem( item );
+        verify( model ).moveItemToInventory( "itemid" );
     }
-
-    // @Test
-    // public void enact_adds_item_inventory() {
-    //     TextAdventureModel model = mock( TextAdventureModel.class );
-    //     Item item = mock( Item.class );
-    //     when( model.findItemByID( "itemid" ) ).thenReturn( item );
-    //     ModelLocation location = mock( ModelLocation.class );
-    //     when( model.findLocationThatHasItem( "itemid" ) ).thenReturn( location );
-    //     TakeItemItemAction action = new TakeItemItemAction( "itemid", model );
-
-    //     action.enact();
-
-    //     verify( inventory ).addItem( item );
-    // }
 }

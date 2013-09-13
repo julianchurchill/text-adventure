@@ -19,9 +19,8 @@ Technical Tasks
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
 - New item action - take item. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
   - DONE Add deserialisation from model text and serialisation for action history.
-  - Add to ItemActionFactory a new 'take item' action
-    - DONE TakeItemItemAction must remove the item from the location it is in
-    - Scratch the above task (tell don't ask!) - TakeItemItemAction should call Model.moveItemToInventory( itemID )
+  - DONE Add to ItemActionFactory a new 'take item' action
+  - DONE Implement TakeItemItemAction, TakeItemItemAction should call Model.moveItemToInventory( itemID )
   - Implement BasicModel.moveItemToInventory( itemID )
   - Update model for app 1 to do this where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 - New event trigger point
