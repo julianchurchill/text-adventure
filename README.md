@@ -16,17 +16,12 @@ Backlog
 
 Technical Tasks
 
-- Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
-- New item action - take item. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
-  - DONE Add deserialisation from model text and serialisation for action history.
-  - DONE Add to ItemActionFactory a new 'take item' action
-  - DONE Implement TakeItemItemAction, TakeItemItemAction should call Model.moveItemToInventory( itemID )
-  - Implement BasicModel.moveItemToInventory( itemID )
-  - Update model for app 1 to do this where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 - New event trigger point
   - "location on exit:destroy item:fiery_torch" for TTA2 where you escape into the store cupboard but drop the torch.
 - Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 - Smarter resume. Capture all the text from all the actions that took place in the current location - instead of playing all actions, ignoring text and reshowing the basic room description. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
+- Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
+- Update model for app 1 to use take item action where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 
 Bugs
 
@@ -138,6 +133,7 @@ TTA1 v2.2.x/TTA2 v1.0
 - [TECHNICAL TASK] Removed 'make exit visible' and swap use of it with 'change exit visibility'
 - [TECHNICAL TASK] is/are choice for list of available items. E.g. when entering the burnt out shop the list is "There is some smouldering embers here." - more correctly it should "are some". Applied to 'Bags of junk' in TTA1 and 'Smouldering embers' in TTA2
   - Items can now be marked as plural 'item is plural:' - causes 'There are' to be used instead of 'There is'.
+- [TECHNICAL TASK] New item action - take item. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
 
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in.
   - When you examine it a location change occurs and you get stuck. There are no exits and some items around you.

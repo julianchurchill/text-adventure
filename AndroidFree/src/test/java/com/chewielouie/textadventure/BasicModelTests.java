@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
@@ -515,6 +516,50 @@ public class BasicModelTests {
         model.addLocation( location );
 
         assertEquals( text, model.contextualText() );
+    }
+
+    @Test
+    public void move_item_to_inventory_removes_it_from_the_owning_location() {
+        Item item = mock( Item.class );
+        when( item.id() ).thenReturn( "itemid" );
+        ArrayList<Item> items = new ArrayList<Item>();
+        items.add( item );
+        ModelLocation loc1 = mock( ModelLocation.class );
+        when( loc1.items() ).thenReturn( items );
+        BasicModel model = new BasicModel();
+        model.addLocation( loc1 );
+
+        model.moveItemToInventory( "itemid" );
+
+        verify( loc1 ).removeItem( item );
+    }
+
+    @Test
+    public void move_item_to_inventory_adds_it_to_the_inventory() {
+        Item item = mock( Item.class );
+        when( item.id() ).thenReturn( "itemid" );
+        ArrayList<Item> items = new ArrayList<Item>();
+        items.add( item );
+        ModelLocation loc1 = mock( ModelLocation.class );
+        when( loc1.items() ).thenReturn( items );
+        BasicModel model = new BasicModel();
+        model.addLocation( loc1 );
+
+        model.moveItemToInventory( "itemid" );
+
+        assertThat( model.inventoryItems(), hasItem( item ) );
+    }
+
+    @Test
+    public void items_are_not_duplicated_in_the_inventory() {
+        Item item = mock( Item.class );
+        when( item.id() ).thenReturn( "itemid" );
+        BasicModel model = new BasicModel();
+
+        model.addToInventory( item );
+        model.addToInventory( item );
+
+        assertThat( Collections.frequency( model.inventoryItems(), item ), is( 1 ) );
     }
 }
 

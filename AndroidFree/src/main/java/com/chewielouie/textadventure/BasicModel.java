@@ -95,8 +95,10 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public void addToInventory( Item item ) {
-        inventoryItems.add( item );
-        items.put( item.id(), item );
+        if( findItemInInventory( item.id() ) == null ) {
+            inventoryItems.add( item );
+            items.put( item.id(), item );
+        }
     }
 
     public Collection<ModelLocation> locations() {
@@ -201,6 +203,20 @@ public class BasicModel implements TextAdventureModel, UserInventory {
     }
 
     public void moveItemToInventory( String itemID ) {
+        Item item = removeItemFromUnknownLocation( itemID );
+        addToInventory( item );
+    }
+
+    private Item removeItemFromUnknownLocation( String id ) {
+        for( ModelLocation loc : locations.values() ) {
+            for( Item item : loc.items() ) {
+                if( item.id().equals( id ) ) {
+                    loc.removeItem( item );
+                    return item;
+                }
+            }
+        }
+        return null;
     }
 }
 
