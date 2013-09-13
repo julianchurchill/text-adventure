@@ -19,7 +19,7 @@ Technical Tasks
 - New event trigger point
   - "exit on use action:destroy item:fiery_torch" for TTA2 where you escape into the store cupboard but drop the torch.
   - DONE Implement deserialisation to call Exit.addOnUseAction( ItemAction ) using ItemActionFactory to create the actions
-  - Activity must pass NormalItemActionFactory to PlainTextExitDeserialiser
+  - DONE Activity must pass NormalItemActionFactory to PlainTextExitDeserialiser
   - Implement LocationExit.onUse() and addOnUseAction( ItemAction )
 - Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 - Smarter resume. Capture all the text from all the actions that took place in the current location - instead of playing all actions, ignoring text and reshowing the basic room description. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.

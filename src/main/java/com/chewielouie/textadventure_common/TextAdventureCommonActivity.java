@@ -320,15 +320,15 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         ItemDeserialiser itemDeserialiser =
             new PlainTextItemDeserialiser( itemActionFactory );
         new PlainTextModelPopulator( model,
-                                     new LocationFactory( inventory, actionFactory() ),
-                                     inventory,
-                                     itemFactory,
-                                     new PlainTextModelLocationDeserialiser(
-                                         itemFactory, new LocationExitFactory(),
-                                         itemDeserialiser,
-                                         new PlainTextExitDeserialiser() ),
-                                     itemDeserialiser,
-                                     modelContent() );
+            new LocationFactory( inventory, actionFactory() ),
+            inventory,
+            itemFactory,
+            new PlainTextModelLocationDeserialiser(
+                itemFactory, new LocationExitFactory(),
+                itemDeserialiser,
+                new PlainTextExitDeserialiser( itemActionFactory ) ),
+            itemDeserialiser,
+            modelContent() );
         loadMapImages();
     }
 

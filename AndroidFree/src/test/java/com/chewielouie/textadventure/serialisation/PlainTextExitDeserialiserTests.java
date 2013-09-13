@@ -21,7 +21,7 @@ public class PlainTextExitDeserialiserTests {
     @Test
     public void deserialise_extracts_exit_label() {
         final Exit exit = mockery.mock( Exit.class );
-        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser();
+        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser( null );
         mockery.checking( new Expectations() {{
             oneOf( exit ).setLabel( "label" );
             ignoring( exit );
@@ -35,7 +35,7 @@ public class PlainTextExitDeserialiserTests {
     @Test
     public void deserialise_extracts_exit_destination() {
         final Exit exit = mockery.mock( Exit.class );
-        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser();
+        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser( null );
         mockery.checking( new Expectations() {{
             oneOf( exit ).setDestination( "destination" );
             ignoring( exit );
@@ -49,7 +49,7 @@ public class PlainTextExitDeserialiserTests {
     @Test
     public void deserialise_extracts_exit_direction_hint() {
         final Exit exit = mockery.mock( Exit.class );
-        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser();
+        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser( null );
         mockery.checking( new Expectations() {{
             oneOf( exit ).setDirectionHint( Exit.DirectionHint.East );
             ignoring( exit );
@@ -64,7 +64,7 @@ public class PlainTextExitDeserialiserTests {
     @Test
     public void deserialise_exit_direction_hint_defaults_to_dont_care_if_not_specified() {
         final Exit exit = mockery.mock( Exit.class );
-        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser();
+        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser( null );
         mockery.checking( new Expectations() {{
             oneOf( exit ).setDirectionHint( Exit.DirectionHint.DontCare );
             ignoring( exit );
@@ -78,7 +78,7 @@ public class PlainTextExitDeserialiserTests {
     @Test
     public void deserialise_exit_is_visible_by_default() {
         final Exit exit = mockery.mock( Exit.class );
-        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser();
+        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser( null );
         mockery.checking( new Expectations() {{
             never( exit ).setInvisible();
             ignoring( exit );
@@ -92,7 +92,7 @@ public class PlainTextExitDeserialiserTests {
     @Test
     public void deserialise_extracts_exit_is_not_visible() {
         final Exit exit = mockery.mock( Exit.class );
-        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser();
+        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser( null );
         mockery.checking( new Expectations() {{
             oneOf( exit ).setInvisible();
             ignoring( exit );
@@ -107,7 +107,7 @@ public class PlainTextExitDeserialiserTests {
     @Test
     public void deserialise_extracts_exit_id() {
         final Exit exit = mockery.mock( Exit.class );
-        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser();
+        PlainTextExitDeserialiser d = new PlainTextExitDeserialiser( null );
         mockery.checking( new Expectations() {{
             oneOf( exit ).setID( "exit id" );
             ignoring( exit );

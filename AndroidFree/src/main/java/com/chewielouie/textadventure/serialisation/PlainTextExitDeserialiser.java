@@ -19,9 +19,6 @@ public class PlainTextExitDeserialiser implements ExitDeserialiser {
     private Exit exit = null;
     private ItemActionFactory itemActionFactory = null;
 
-    public PlainTextExitDeserialiser() {
-    }
-
     public PlainTextExitDeserialiser( ItemActionFactory f ) {
         itemActionFactory = f;
     }

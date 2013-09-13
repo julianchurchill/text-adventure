@@ -31,15 +31,15 @@ public class TalkToActionAcceptanceTests {
         ItemFactory itemFactory = new NormalItemFactory();
         ItemDeserialiser itemDeserialiser = new PlainTextItemDeserialiser( itemActionFactory );
         new PlainTextModelPopulator( model,
-                                     new LocationFactory( inventory, new UserActionFactory() ),
-                                     inventory,
-                                     itemFactory,
-                                     new PlainTextModelLocationDeserialiser(
-                                         itemFactory, new LocationExitFactory(),
-                                         itemDeserialiser,
-                                         new PlainTextExitDeserialiser() ),
-                                     itemDeserialiser,
-                                     content );
+            new LocationFactory( inventory, new UserActionFactory() ),
+            inventory,
+            itemFactory,
+            new PlainTextModelLocationDeserialiser(
+                itemFactory, new LocationExitFactory(),
+                itemDeserialiser,
+                new PlainTextExitDeserialiser( itemActionFactory ) ),
+            itemDeserialiser,
+            content );
         return model;
     }
 
