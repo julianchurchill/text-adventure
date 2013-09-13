@@ -24,6 +24,8 @@ Technical Tasks
     - Scratch the above task (tell don't ask!) - TakeItemItemAction should call Model.moveItemToInventory( itemID )
   - Implement BasicModel.moveItemToInventory( itemID )
   - Update model for app 1 to do this where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
+- New event trigger point
+  - "location on exit:destroy item:fiery_torch" for TTA2 where you escape into the store cupboard but drop the torch.
 - Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 - Smarter resume. Capture all the text from all the actions that took place in the current location - instead of playing all actions, ignoring text and reshowing the basic room description. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
 
