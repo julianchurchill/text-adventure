@@ -56,8 +56,8 @@ Story - TTA2
   - Increment score - needs technical task done to put max score in model_content file
     - Also increment for getting released from the door
 - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
-- You must help them repair the barricade to the north of the town before night falls.
-- Night falls and the creatures attack, you must help defend the barricade through the night and at least one ambushes you when you enter another location.
+- You must help them repair the barricade to the north of the town before night falls. They give you a wood axe and send you out into the woods to chop trees for barricade wood. You must chop X trees and gather the wood, bringing it back to the barricade each time.
+- Night falls and the creatures attack, you must help defend the barricade through the night and at least one fell beast ambushes you when you enter another location. After defeating X beasts morning arrives.
 - In the morning the towns people ask you to get help from a nearby village over the river - Ubiquity.
 - A river and bridge between the two settlements
   - Use a boat to get across initially, perhaps repair the bridge from the other side to return to the town
