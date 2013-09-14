@@ -223,7 +223,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         }
 
          protected void onPostExecute(Void result) {
-            rendersView.resetAndRender();
+            rendersView.render();
             if( progressDialog != null ) {
                 progressDialog.dismiss();
             }
