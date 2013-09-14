@@ -218,9 +218,11 @@ item talk follow up phrase to:canyouhelpme:whatsyourprice:What's your price?:"Wh
 item talk response to:whatsyourprice:Another pause. "Well I'm in need of one thing you have, that tool in your pocket.". You wonder how it knew what's in your pocketses. Still, at least it wants something that you actually have. "Ok" you say, "have the multitool, just get me out of here quick.". A short but rough rummage around in your pockets the likes of which you've not endured for many a year yields the multitool to your helper. Quick as a flash there is some banging, a lot of jiggling, poking and general proddery and you are standing free, arm intact, in front of the general store with the door now slightly ajar. You look around to see if you can spot whoever helped you knowing it is futile and that they have already gone.
 item talk action in response to:whatsyourprice:destroy item:multitool
 item talk action in response to:whatsyourprice:change exit visibility:merchantslaneeast:visible
+item talk action in response to:whatsyourprice:change exit visibility:merchantslane_to_merchantslane_west:visible
 item talk action in response to:whatsyourprice:change exit visibility:merchantslanenorth:visible
 item talk action in response to:whatsyourprice:change item visibility:disembodied_voice:invisible
 item talk action in response to:whatsyourprice:change item visibility:broken_door:invisible
+item talk action in response to:whatsyourprice:increment score:
 item talk follow up phrase to:canyouhelpme:notonyournelly:Not on you nelly:"Not on your nelly. I make a habit of never owing anyone and I certainly never pay up front.". You suddenly feel cold hands rifling through your pockets and as quickly as you can crane your neck back to see who it was the scoundrels have gone. "No problem. I'll just take this shiny tool thingy and call it quits.". Quick as a flash there is some banging, a lot of jiggling, poking and general proddery and you are standing free, arm in tact, in front of the general store with the door now slightly ajar. You look around to see if you can spot whoever helped you knowing it is futile and that they have already gone.
 item talk action in response to:notonyournelly:destroy item:multitool
 item talk action in response to:notonyournelly:change exit visibility:merchantslaneeast:visible
