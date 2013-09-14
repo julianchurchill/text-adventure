@@ -36,13 +36,6 @@ Bugs
 
 Story - TTA2
 
-- Enter the town
-  - Entering the general store you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is the back of the shop through which you can see a window that should lead you to the other side of the barricade. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
-    - DONE You must assemble a torch from items in nearby locations, you'll need a stick, a rag, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
-    - DONE Use with the 'fell beast' allowing you to see the exit at the back of the shop. When you leave you get first entry text for the back of the store which says "You drop the torch behind you just as it runs out of fuel and the beast bounds forward its jaws gaping. Swiftly you leap through the door and slam it shut in the beasts face. It whimpers briefly and then hurls its weight against the door again and again. You're not sure how long this door will hold out.". Normal description is "This room is mostly empty, all the supplies presumably having been rescued before the last attack took place. There is an open window on the back wall which you judge you can just about squeeze through, if you breath in deeply. The sense of urgency rises in you as you continue to hear the fell beast beat down upon the door, slavering and yowling, desperate to sinks its fangs into your flesh.". There is a one-way exit through the window, leading to the cobbled street north of the barricade.
-    - DONE Destroy the torch on using the store cupboard exit
-    - DONE Increment score - needs technical task done to put max score in model_content file
-    - DONE Also increment for getting released from the door
 - Repair the barricade
   - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
   - You must help them repair the barricade to the north of the town by the guards tower/gate before night falls. They give you an impsaw 2000 and an imperator. You must use the imperator on the impsaw to enrage the imp and get it to run around causing the chain of 'dragon' teeth to spin round. You then use it to chop branches from a tree in the wood and bring the branches back to repair the barricade.
@@ -140,9 +133,12 @@ TTA1 v2.2.x/TTA2 v1.0
 - [TECHNICAL TASK] New event trigger 'exit on use action', e.g. 'exit on use action:destroy item:fiery_torch' for example in TTA2 where you escape into the store cupboard but drop the torch.
 - [TECHNICAL TASK] Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 
-- [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in.
-  - When you examine it a location change occurs and you get stuck. There are no exits and some items around you.
-  - To escape you must examine one of the items you can reach, which breaks into two and then examine another part - after which a voice says "Psst... what are you doing down there?". Then you can talk to the 'disembodied voice', who eventually frees you in exchange for your multitool, leaving you outside the shop with the door open. The owner of the disembodied voice is nowhere to be found.
+TTA2 only
+- [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in, when you examine it you get your arm stuck. There are no exits and some items around you.
+  - To escape you must examine one of the items you can reach, which breaks into two and then examine another part - after which a voice says "Psst... what are you doing down there?". Then you can talk to the 'disembodied voice', who eventually frees you in exchange for your multitool, leaving you outside the shop with the door open. The owner of the disembodied voice is nowhere to be found. Increment score.
+- [STORY] Entering the general store you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is the back of the shop through which you can see a window that should lead you to the other side of the barricade. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
+  - You must assemble a torch from items in nearby locations, you'll need a stick, a rag, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
+  - Use with the 'fell beast' allowing you to see the exit at the back of the shop. After entering the cupboard the torch is destroyed, score is incremented and you see there is a one-way exit through the window, leading to the cobbled street north of the barricade.
 
 2.1
 ---
