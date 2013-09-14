@@ -1,3 +1,6 @@
+PROPERTIES
+maximum score:2
+
 INVENTORY ITEM
 item name:Pocket lint
 item description:It's fluffy and shaped like an inverted belly button. You consider discarding it for a short moment but decide to place it back in your pocket, idly petting it like a tiny gerbil.
@@ -159,6 +162,7 @@ item is untakeable:
 item examine action is not repeatable:
 item examine message:Kneeling down you lean forward putting your hand tentatively through the hole in the door. You lie flat on your belly to extend your arm fully, gently exploring until you feel something wet and rough brush your skin. Pausing for a moment to consider the situation you hear a scampering noise and suddenly a dead weight drops on your arm trapping you in the hole, head on the outside, arm on the inside!
 item on examine action:change exit visibility:merchantslaneeast:invisible
+item on examine action:change exit visibility:merchantslane_to_merchantslane_west:invisible
 item on examine action:change item visibility:unidentifiable_item:visible
 ITEM
 item name:unidentifiable item
@@ -220,9 +224,11 @@ item talk action in response to:whatsyourprice:change item visibility:broken_doo
 item talk follow up phrase to:canyouhelpme:notonyournelly:Not on you nelly:"Not on your nelly. I make a habit of never owing anyone and I certainly never pay up front.". You suddenly feel cold hands rifling through your pockets and as quickly as you can crane your neck back to see who it was the scoundrels have gone. "No problem. I'll just take this shiny tool thingy and call it quits.". Quick as a flash there is some banging, a lot of jiggling, poking and general proddery and you are standing free, arm in tact, in front of the general store with the door now slightly ajar. You look around to see if you can spot whoever helped you knowing it is futile and that they have already gone.
 item talk action in response to:notonyournelly:destroy item:multitool
 item talk action in response to:notonyournelly:change exit visibility:merchantslaneeast:visible
+item talk action in response to:notonyournelly:change exit visibility:merchantslane_to_merchantslane_west:visible
 item talk action in response to:notonyournelly:change exit visibility:merchantslanenorth:visible
 item talk action in response to:notonyournelly:change item visibility:disembodied_voice:invisible
 item talk action in response to:notonyournelly:change item visibility:broken_door:invisible
+item talk action in response to:notonyournelly:increment score:
 
 LOCATION
 x:240
@@ -242,6 +248,7 @@ exit direction hint:North
 exit id:generalstore_to_cupboard
 exit is not visible:
 exit on use action:destroy item:fiery_torch
+exit on use action:increment score:
 ITEM
 item name:Fell beast
 item description:It has the appearance of a dog, hunched over on four limbs, a slightly elongated head with a large jaw containing two rows of razor sharp teeth covered in drool. You suspect there is a lot more saliva now that it has spotted you and you fear for your life. It's deep red eyes squint as it observes you, turning it's head slightly away from the light entering the store by the doorway.

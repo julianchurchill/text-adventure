@@ -16,7 +16,6 @@ Backlog
 
 Technical Tasks
 
-- Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 - Smarter resume. Capture all the text from all the actions that took place in the current location - instead of playing all actions, ignoring text and reshowing the basic room description. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
 - Update model for app 1 to use take item action where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
@@ -45,8 +44,8 @@ Story - TTA2
   - DONE Use with the 'fell beast' allowing you to see the exit at the back of the shop. When you leave you get first entry text for the back of the store which says "You drop the torch behind you just as it runs out of fuel and the beast bounds forward its jaws gaping. Swiftly you leap through the door and slam it shut in the beasts face. It whimpers briefly and then hurls its weight against the door again and again. You're not sure how long this door will hold out.". Normal description is "This room is mostly empty, all the supplies presumably having been rescued before the last attack took place. There is an open window on the back wall which you judge you can just about squeeze through, if you breath in deeply. The sense of urgency rises in you as you continue to hear the fell beast beat down upon the door, slavering and yowling, desperate to sinks its fangs into your flesh.". There is a one-way exit through the window, leading to the cobbled street north of the barricade.
   - Add 'item use action:take item' action - see technical tasks
   - Need to destroy the torch - how do I trigger this? Do we need actions triggered by entering a room/using an exit or is there a way to do it with the current implementation?
-  - Increment score - needs technical task done to put max score in model_content file
-    - Also increment for getting released from the door
+  - DONE Increment score - needs technical task done to put max score in model_content file
+    - DONE Also increment for getting released from the door
 - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
 - You must help them repair the barricade to the north of the town before night falls. They give you a wood axe and send you out into the woods to chop trees for barricade wood. You must chop X trees and gather the wood, bringing it back to the barricade each time.
 - Night falls and the creatures attack, you must help defend the barricade through the night and at least one fell beast ambushes you when you enter another location. After defeating X beasts morning arrives.
@@ -133,6 +132,7 @@ TTA1 v2.2.x/TTA2 v1.0
   - Items can now be marked as plural 'item is plural:' - causes 'There are' to be used instead of 'There is'.
 - [TECHNICAL TASK] New item action - take item. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
 - [TECHNICAL TASK] New event trigger 'exit on use action', e.g. 'exit on use action:destroy item:fiery_torch' for example in TTA2 where you escape into the store cupboard but drop the torch.
+- [TECHNICAL TASK] Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in.
   - When you examine it a location change occurs and you get stuck. There are no exits and some items around you.

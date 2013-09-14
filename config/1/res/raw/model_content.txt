@@ -1,3 +1,6 @@
+PROPERTIES
+maximum score:7
+
 INVENTORY ITEM
 item name:Pocket lint
 item description:It's fluffy and shaped like an inverted belly button.

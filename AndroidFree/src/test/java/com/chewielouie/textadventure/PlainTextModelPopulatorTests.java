@@ -1,5 +1,8 @@
 package com.chewielouie.textadventure;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
 import org.jmock.*;
@@ -351,6 +354,41 @@ public class PlainTextModelPopulatorTests {
                                      null,
                                      "LOCATION\nlocation_name:name1\n" +
                                      "LOCATION\nlocation_name:name2" );
+    }
+
+    @Test
+    public void maximum_score_is_extracted_and_set_on_model() {
+        TextAdventureModel model = mock( TextAdventureModel.class );
+
+        new PlainTextModelPopulator( model, null, null, null, null, null,
+                                     "PROPERTIES\n" +
+                                     "maximum score:7\n" +
+                                     "\n" +
+                                     "INVENTORY ITEM\n" +
+                                     "item name:Pocket lint\n" +
+                                     "LOCATION\nlocation_name:name1\n" +
+                                     "LOCATION\nlocation_name:name2" );
+
+        verify( model ).setMaximumScore( 7 );
+    }
+
+    @Test
+    public void properties_section_does_not_intefer_with_reading_inventory_items() {
+        TextAdventureModel model = mock( TextAdventureModel.class );
+        ItemDeserialiser itemDeserialiser = mock( ItemDeserialiser.class );
+        ItemFactory itemFactory = mock( ItemFactory.class );
+
+        new PlainTextModelPopulator( model, null, null, itemFactory, null,
+                                     itemDeserialiser,
+                                     "PROPERTIES\n" +
+                                     "maximum score:7\n" +
+                                     "\n" +
+                                     "INVENTORY ITEM\n" +
+                                     "inventory content\n" +
+                                     "LOCATION\nlocation_name:name1\n" +
+                                     "LOCATION\nlocation_name:name2" );
+
+        verify( itemDeserialiser ).deserialise( null, "inventory content\n" );
     }
 }
 

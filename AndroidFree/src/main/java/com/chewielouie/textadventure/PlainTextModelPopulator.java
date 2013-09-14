@@ -6,12 +6,14 @@ import com.chewielouie.textadventure.serialisation.ModelLocationDeserialiser;
 import com.chewielouie.textadventure.serialisation.ItemDeserialiser;
 
 public class PlainTextModelPopulator {
+    private final String propertiesTag = "PROPERTIES\n";
+    private final String maximumScoreTag = "maximum score:";
     private final String locationNameTag = "LOCATION\n";
     private final String inventoryItemNameTag = "INVENTORY ITEM\n";
     private final String locationAreaTag = "LOCATION AREA\n";
     private final String locationAreaIdTag = "location area id:";
     private final String locationAreaNameTag = "location area name:";
-    private final String[] orderedSections = { inventoryItemNameTag, locationAreaTag, locationNameTag };
+    private final String[] orderedSections = { propertiesTag, inventoryItemNameTag, locationAreaTag, locationNameTag };
     private int nextCharToParse = 0;
     private TextAdventureModel model = new NullModel();
     private ModelLocationFactory locationFactory = null;
@@ -37,9 +39,25 @@ public class PlainTextModelPopulator {
         this.itemDeserialiser = i;
         this.content = content;
 
+        extractProperties();
         extractInventory();
         extractLocationAreas();
         extractLocations();
+    }
+
+    private void extractProperties() {
+        if( content.indexOf( propertiesTag ) != DeserialiserUtils.NOT_FOUND ) {
+            String maxScore = DeserialiserUtils.extractNewlineDelimitedValueFor(
+                maximumScoreTag, content );
+            if( maxScore != "" ) {
+                try {
+                    model.setMaximumScore( Integer.parseInt( maxScore ) );
+                } catch( NumberFormatException e ) {
+                    System.out.println("Bad number format for maximum score property - '" + maxScore + "'");
+                }
+            }
+            nextCharToParse = findEndOfCurrentSection();
+        }
     }
 
     private void extractInventory() {
