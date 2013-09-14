@@ -35,7 +35,7 @@ public class SayActionTests {
 
         action.trigger();
 
-        assertThat( action.userText(), is( "my long phrase\n\nmy response\n" ) );
+        assertThat( action.userText(), is( "my long phrase\n\nmy response" ) );
     }
 
     @Test
@@ -49,7 +49,7 @@ public class SayActionTests {
 
         action.trigger();
 
-        assertThat( action.userText(), is( "my long phrase\n" ) );
+        assertThat( action.userText(), is( "my long phrase" ) );
     }
 
     @Test

@@ -21,33 +21,35 @@ Technical Tasks
 
 Bugs
 
-- [BUG] Double new lines appear before and after talk phrases are printed
-  - SayAction.getResponse() seems to add an extra '\n' that is probably not needed
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
 - [BUG] Last line with directions often is half drawn or unreadable. Perhaps the parchment image is causing this issue.
   - Also the top line can occasionally become half drawn too.
   - Is this due to something odd about the auto scrolling behaviour when new text appears?
-- [BUG] Auto scroll to the top of the unread text is too absolute - it doesn't take into account line spacing - it could do with adding a few pixels to the top (e.g. the margin/padding/line spacing divided by 2)
-  - Use TextView.getLineSpacingExtra() if it is > 0
 - [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
   - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
 - [BUG] Lost save game when restarting phone - reported on intfiction forum here http://www.intfiction.org/forum/viewtopic.php?f=19&t=8891
   - It is possible that read/write of action history save file may clash - read is during background thread triggered from onResume, write is on UI thread triggered from onPause. This read/write should probably be a mutually exclusive critical section.
+- [BUG] Auto scroll to the top of the unread text is too absolute - it doesn't take into account line spacing - it could do with adding a few pixels to the top (e.g. the margin/padding/line spacing divided by 2)
+  - Use TextView.getLineSpacingExtra() if it is > 0
 
 Story - TTA2
 
-- Entering the general store you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is the back of the shop through which you can see a window that should lead you to the other side of the barricade. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
-  - DONE You must assemble a torch from items in nearby locations, you'll need a stick, a rag, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
-  - DONE Use with the 'fell beast' allowing you to see the exit at the back of the shop. When you leave you get first entry text for the back of the store which says "You drop the torch behind you just as it runs out of fuel and the beast bounds forward its jaws gaping. Swiftly you leap through the door and slam it shut in the beasts face. It whimpers briefly and then hurls its weight against the door again and again. You're not sure how long this door will hold out.". Normal description is "This room is mostly empty, all the supplies presumably having been rescued before the last attack took place. There is an open window on the back wall which you judge you can just about squeeze through, if you breath in deeply. The sense of urgency rises in you as you continue to hear the fell beast beat down upon the door, slavering and yowling, desperate to sinks its fangs into your flesh.". There is a one-way exit through the window, leading to the cobbled street north of the barricade.
-  - Add 'item use action:take item' action - see technical tasks
-  - Need to destroy the torch - how do I trigger this? Do we need actions triggered by entering a room/using an exit or is there a way to do it with the current implementation?
-  - DONE Increment score - needs technical task done to put max score in model_content file
+- Enter the town
+  - Entering the general store you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is the back of the shop through which you can see a window that should lead you to the other side of the barricade. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
+    - DONE You must assemble a torch from items in nearby locations, you'll need a stick, a rag, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
+    - DONE Use with the 'fell beast' allowing you to see the exit at the back of the shop. When you leave you get first entry text for the back of the store which says "You drop the torch behind you just as it runs out of fuel and the beast bounds forward its jaws gaping. Swiftly you leap through the door and slam it shut in the beasts face. It whimpers briefly and then hurls its weight against the door again and again. You're not sure how long this door will hold out.". Normal description is "This room is mostly empty, all the supplies presumably having been rescued before the last attack took place. There is an open window on the back wall which you judge you can just about squeeze through, if you breath in deeply. The sense of urgency rises in you as you continue to hear the fell beast beat down upon the door, slavering and yowling, desperate to sinks its fangs into your flesh.". There is a one-way exit through the window, leading to the cobbled street north of the barricade.
+    - DONE Destroy the torch on using the store cupboard exit
+    - DONE Increment score - needs technical task done to put max score in model_content file
     - DONE Also increment for getting released from the door
-- Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
-- You must help them repair the barricade to the north of the town before night falls. They give you a wood axe and send you out into the woods to chop trees for barricade wood. You must chop X trees and gather the wood, bringing it back to the barricade each time.
-- Night falls and the creatures attack, you must help defend the barricade through the night and at least one fell beast ambushes you when you enter another location. After defeating X beasts morning arrives.
+- Repair the barricade
+  - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
+  - You must help them repair the barricade to the north of the town by the guards tower/gate before night falls. They give you an impsaw 2000 and an imperator. You must use the imperator on the impsaw to enrage the imp and get it to run around causing the chain of 'dragon' teeth to spin round. You then use it to chop branches from a tree in the wood and bring the branches back to repair the barricade.
+- The barricade attack
+  - Completing the barricade triggers night fall and the creatures attack, you must help defend the barricade through the night and at least one fell beast ambushes you when you enter another location. You defeat it using a weapon given to you by a townsperson.
+  - Then you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
+  - Finally when you leave the location to check the rest of the town defences (suggested by talking again if you don't do it anyway) you get attacked by one more fell beast, defeat it and the attack ends, day dawns.
 - In the morning the towns people ask you to get help from a nearby village over the river - Ubiquity.
 - A river and bridge between the two settlements
   - Use a boat to get across initially, perhaps repair the bridge from the other side to return to the town
@@ -113,8 +115,13 @@ TTA1 v2.2.x/TTA2 v1.0
 - [FEATURE] One shot contextual text can be displayed on entering a room and is then proceeded by the normal room description.
 - [FEATURE] Map - shows where you've been
 - [FEATURE] Added location area to title bar
+- [FEATURE] Smarter resume - all the text from the actions that have taken place in the current location is shown upon loading. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
 - [UI] Parchment background (from http://www.myfreetextures.com/worn-parchment-paper-2)
 - [UI] Full width action buttons
+
+- [BUG] Double new lines appear before and after talk phrases are printed
+  - [FIX] SayAction was adding unnecessary new lines.
+
 - [TECHNICAL TASK] Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
   - Mask images should be auto found by looking for resources starting with area-id. E.g. the mask filename for the town-area should be town-area_mask.png
   - Build system should set up Android resources and manifest for the correct app (TTA1 or TTA2). Copy files from somewhere else in the git repo. Don't save the manifest or res content to git anymore. Update README with instructions on configure before build.
@@ -132,7 +139,6 @@ TTA1 v2.2.x/TTA2 v1.0
 - [TECHNICAL TASK] New item action - take item. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
 - [TECHNICAL TASK] New event trigger 'exit on use action', e.g. 'exit on use action:destroy item:fiery_torch' for example in TTA2 where you escape into the store cupboard but drop the torch.
 - [TECHNICAL TASK] Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
-- [TECHNICAL TASK] Smarter resume - show all the text from the actions that have taken place in the current location. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
 
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in.
   - When you examine it a location change occurs and you get stuck. There are no exits and some items around you.

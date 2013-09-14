@@ -46,12 +46,12 @@ public class SayAction implements Action {
     }
 
     public String userText() {
-        return phraseSource.phraseById( id ) + "\n" + getResponse();
+        return phraseSource.phraseById( id ) + getResponse();
     }
 
     private String getResponse() {
         if( phraseSource.responseToPhraseById( id ).length() != 0 )
-            return "\n" + phraseSource.responseToPhraseById( id ) + "\n";
+            return "\n\n" + phraseSource.responseToPhraseById( id );
         return "";
     }
 
