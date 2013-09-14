@@ -208,8 +208,8 @@ item examine action is not repeatable:
 item talk initial phrase:hello:Hello?:"Hello, who said that?" you say as you continue to struggle to free your arm.
 item talk response to:hello:"Well, it all depends on what you're doing...".
 item talk follow up phrase to:hello:whatdoesitlooklike:What does it look like?:Slightly frustrated and more than aware of the vulnerability of your situation you exclaim "What does it look like? My arm is stuck in this door and I think something is sizing it up for dinner on the other side."
-item talk response to:whatdoesitlooklike:The voice giggles mischeviously "I think you might be right.".
-item talk follow up phrase to:hello:waitingforafriend:Waiting for a friend:"Just waiting for a friend." you say nochalantly, hoping that the voice will leave you alone to get out of this sticky situation by yourself and without further embarrassment.
+item talk response to:whatdoesitlooklike:The voice giggles mischievously "I think you might be right.".
+item talk follow up phrase to:hello:waitingforafriend:Waiting for a friend:"Just waiting for a friend." you say nonchalantly, hoping that the voice will leave you alone to get out of this sticky situation by yourself and without further embarrassment.
 item talk response to:waitingforafriend:"You don't look like you've got many friends... I think I'll hang about and see what they're like." replies the voice.
 item talk follow up phrase to:whatdoesitlooklike:canyouhelpme:Alright, can you help me or what?:"Alright, do you suppose you could help me out a bit here?" you say, sighing with a dose of light pleading.
 item talk follow up phrase to:waitingforafriend:canyouhelpme

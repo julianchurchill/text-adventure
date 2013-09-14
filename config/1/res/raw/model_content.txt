@@ -51,7 +51,7 @@ item countable noun prefix:a
 item mid sentence cased name:skeleton key
 ITEM
 item name:Banana peel
-item description:It is yellow and a little moldy.
+item description:It is yellow and a little mouldy.
 item id:bananapeel
 item countable noun prefix:some
 item mid sentence cased name:banana peel
@@ -377,7 +377,7 @@ x:420
 y:720
 location id:smallminechamber
 location area id:mine_area
-location description:You enter the chamber and although it is lit by a candle burning gently in an alcove you strain your eyes to peer into the shadows. Out shuffles a man, bedraggled and somber, head down muttering to himself. You notice he has a manacle around his ankle, chained to a nearby rock. Approaching him you say softly 'Hello? Who are you? What's happened here?'. The man replies 'I was taken, I don't know who it was. They hit me from behind and I woke up here, like this.' gesturing to the chain at his feet. 'Help me, please.' splutters the man as he gasps for breath. He is clearly suffering from his circumstances and you feel inclined to find a way to help him out of his predicament.
+location description:You enter the chamber and although it is lit by a candle burning gently in an alcove you strain your eyes to peer into the shadows. Out shuffles a man, bedraggled and sombre, head down muttering to himself. You notice he has a manacle around his ankle, chained to a nearby rock. Approaching him you say softly 'Hello? Who are you? What's happened here?'. The man replies 'I was taken, I don't know who it was. They hit me from behind and I woke up here, like this.' gesturing to the chain at his feet. 'Help me, please.' splutters the man as he gasps for breath. He is clearly suffering from his circumstances and you feel inclined to find a way to help him out of his predicament.
 EXIT
 exit label:North
 exit destination:darktunnel2
@@ -528,7 +528,7 @@ x:480
 y:660
 location id:candlelitchamber
 location area id:mine_area
-location description:You stand in a circular chamber with candles lining the walls in metal brakets. There is a table in the centre of the room and an exit leading deeper into the mine to what looks like a smithy. To the west a tunnel meanders back through the darkness.
+location description:You stand in a circular chamber with candles lining the walls in metal brackets. There is a table in the centre of the room and an exit leading deeper into the mine to what looks like a smithy. To the west a tunnel meanders back through the darkness.
 EXIT
 exit label:Dark tunnel
 exit destination:darktunnel2
@@ -596,7 +596,7 @@ x:240
 y:360
 location id:merchantslane
 location area id:town_area
-location description:You stand at the start of Merchants Lane looking ahead admidst the varied and wonderful shop fronts that adorn this street. There a few people milling around, nipping in and out of one or two of the shops however most of the shops look closed. Immediately to the north you see an open shop door and behind the counter sits a man with a familiar face - the shopkeeper from the mine.
+location description:You stand at the start of Merchants Lane looking ahead amidst the varied and wonderful shop fronts that adorn this street. There a few people milling around, nipping in and out of one or two of the shops however most of the shops look closed. Immediately to the north you see an open shop door and behind the counter sits a man with a familiar face - the shopkeeper from the mine.
 EXIT
 exit label:East
 exit destination:mainstreettown
@@ -1150,7 +1150,7 @@ item talk follow up phrase to:the_rightwise_face_untwistwise:back_face_upsy_forw
 item talk response to:back_face_upsy_forward_a_little:The friar follows your excellent instructions to the letter. "Looking good, what next?".
 item talk follow up phrase to:back_face_upsy_forward_a_little:lateral_hemisphere_rotation_over_5_seconds:Lateral hemisphere rotation over 5 seconds:You say "Try this one - lateral hemisphere rotation over 5 seconds.". The friar looks at you a little oddly but proceeds anyway.
 item talk response to:lateral_hemisphere_rotation_over_5_seconds:The friar follows your excellent instructions to the letter. "Looking good, what next?".
-item talk follow up phrase to:lateral_hemisphere_rotation_over_5_seconds:finish_with_a_full_rotator_cuff_backflip:Finish with a full rotator cuff backflip:You say "Final move - full rotator cuff backflip.".
+item talk follow up phrase to:lateral_hemisphere_rotation_over_5_seconds:finish_with_a_full_rotator_cuff_backflip:Finish with a full rotator cuff backflip:You say "Final move - full rotator cuff back flip.".
 item talk response to:finish_with_a_full_rotator_cuff_backflip:Without a second thought the friar leaps into the air, spins around on a pin and lands next to you with the Ruprik's Hexadecachoron held triumphantly high in his hand. "Woot!" says the friar. "Thats fantastic, you've solved it - all the sides have the same colour." - he shoves the Hexadecachoron towards you grinning manically. You look at the thing but you still can't distinguish any of its features. "Ok, a scapula was it, some sort of physician are you?". You nod cautiously. "Great, well if you pop down to the kitchen you'll find a loose flagstone, move it out of the way and you can get down to the cellar beneath the kitchen. All the brothers are laid to rest down there, if you look to the back you're bound to find what you need. Many thanks once more!". With that he sits back at his desk and ponders the wonderous object further.
 item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change item visibility:loose_flagstone:visible
 item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change item visibility:librarian_friar:invisible
@@ -1429,20 +1429,20 @@ exit direction hint:North
 exit id:north_herb_garden_track_4_to_herb_garden_track_2
 ITEM
 item name:Silk Blood
-item description:The leaves of the plant are thin and delicate with variagated shades of red to green from the central vein of the leaf to the edge. It looks fairly sturdy stuff though and you don't think you can simply dig it up with your hands.
+item description:The leaves of the plant are thin and delicate with variegated shades of red to green from the central vein of the leaf to the edge. It looks fairly sturdy stuff though and you don't think you can simply dig it up with your hands.
 item id:buried_silk_blood
 item countable noun prefix:some
 item mid sentence cased name:Silk Blood
 item is untakeable:
 item can be used with:spade
 item use is not repeatable:
-item successful use message:You dig down around the Silk Blood, having to work suprisingly deep amongst the purple roots. You eventually unearth the plant whole, shake off some earth from the roots and lay it on the ground.
+item successful use message:You dig down around the Silk Blood, having to work surprisingly deep amongst the purple roots. You eventually unearth the plant whole, shake off some earth from the roots and lay it on the ground.
 item use action:change item visibility:buried_silk_blood:invisible
 item use action:change item visibility:silk_blood:visible
 item use action:increment score:
 ITEM
 item name:Silk Blood
-item description:The leaves of the plant are thin and delicate with variagated shades of red to green from the central vein of the leaf to the edge.
+item description:The leaves of the plant are thin and delicate with variegated shades of red to green from the central vein of the leaf to the edge.
 item id:silk_blood
 item countable noun prefix:some
 item mid sentence cased name:Silk Blood
@@ -1747,11 +1747,11 @@ item id:pileofleaves_southwest
 item countable noun prefix:a
 item is untakeable:
 item examine action is not repeatable:
-item examine message:You fumble about in the leaves making a right mess until you uncover a dirty old bone. Possibly a tibula.
+item examine message:You fumble about in the leaves making a right mess until you uncover a dirty old bone. Possibly a tibia.
 item on examine action:change item visibility:tastybone:visible
 ITEM
 item name:Old dirty bone
-item description:It is a dirty bone. Probably a tibula. You can't imagine what this might be useful for unless you got desperately hungry and wanted to nibble something incredibly unpleasant and possibly lethal.
+item description:It is a dirty bone. Probably a tibia. You can't imagine what this might be useful for unless you got desperately hungry and wanted to nibble something incredibly unpleasant and possibly lethal.
 item id:tastybone
 item countable noun prefix:a
 item visibility:invisible
@@ -1761,7 +1761,7 @@ x:-120
 y:120
 location id:churchentrance
 location area id:church_area
-location description:You step inside the porch, grateful to be out of the creepy church yard. In front of you is a forboding wooden door, sturdy but weatherbeaten. It is slightly ajar letting out the barest crack of light which flickers over you.
+location description:You step inside the porch, grateful to be out of the creepy church yard. In front of you is a foreboding wooden door, sturdy but weather beaten. It is slightly ajar letting out the barest crack of light which flickers over you.
 EXIT
 exit label:East
 exit destination:churchyardwest
@@ -1812,7 +1812,7 @@ x:-300
 y:120
 location id:churchaltar
 location area id:church_area
-location description:You stand before a naked stone altar. It has been carvered from a single piece of stone and looks very heavy indeed. The light from the surrounding candles mounted on the wall dances over the surface of the stone.
+location description:You stand before a naked stone altar. It has been carved from a single piece of stone and looks very heavy indeed. The light from the surrounding candles mounted on the wall dances over the surface of the stone.
 EXIT
 exit label:East
 exit destination:churchchancel
@@ -1920,7 +1920,7 @@ exit id:churchcrypt_litroom_to_churchcrypt_innersanctum
 exit is not visible:
 ITEM
 item name:Burly Brigand
-item description:The brigand looks fierce and unfriendly, not suprising really. He glares at you, as though wishing you'd step a little closer so he can hack off your head and kick you in the crotch. He's a meany.
+item description:The brigand looks fierce and unfriendly, not surprising really. He glares at you, as though wishing you'd step a little closer so he can hack off your head and kick you in the crotch. He's a meany.
 item id:burlybrigand
 item countable noun prefix:a
 item is untakeable:
@@ -1932,7 +1932,7 @@ item talk response to:idontwanttrouble:The brigand stands a little taller and re
 item talk follow up phrase to:idontwanttrouble:ivemadeamistake:Sorry I've made a mistake...:You quickly reply "I've made a mistake, my apologies good sir - you are obviously an honourable and decent fellow!"
 item talk response to:ivemadeamistake:The brigand says "Yeah, that's right. I am. Now scarper before I come over there and split you from head to heel!"
 
-item talk initial phrase:outofmyway:Out of my way...:You puff your chest up and say in your gruffest voice "Out of my way barbarian or feel the wrath of my sword! He is sharp and eager, yes, be afeared for he is known as Shiny the Dread. Be further warned that in many parts of the land I am known as Dave the Shiv, so stand aside before I am forced to unsheath Shiny and do you an injury!"
+item talk initial phrase:outofmyway:Out of my way...:You puff your chest up and say in your gruffest voice "Out of my way barbarian or feel the wrath of my sword! He is sharp and eager, yes, be afeared for he is known as Shiny the Dread. Be further warned that in many parts of the land I am known as Dave the Shiv, so stand aside before I am forced to unsheathe Shiny and do you an injury!"
 item talk response to:outofmyway:The brigand observes you with mild disdain and you feel your ruse has not worked as well as you had hoped.
 
 item talk initial phrase:mygosh:Your costume is amazing...:You take a deep breath and say "Your costume is amazing.".
@@ -1942,7 +1942,7 @@ item talk response to:andyourshoeslookauthentic:"Shoes?" says the brigand furrow
 item talk follow up phrase to:andyourshoeslookauthentic:yourhairisshiny:Your hair is so shiny...:And now for the killer blow - all or nothing - "Your hair is so shiny - like summer rain, it has such natural elegance, just flowing over your shoulders. Magnificent!"
 item talk response to:yourhairisshiny:"Gosh." blubbers the brigand. His voice has raised an octave or two and softened considerably. "That's awfully nice of you to say so, I spent hours this morning trying to get just the right look. Of course no one's been down here all week. I've been here all by myself with that smelly dog and no one to talk to. You're the first person I've had a chance to try out my brigand act on. What do you think, were you scared when you first saw me?" he asks with a wry smile and the hint of a girlish giggle rising in his face.
 item talk follow up phrase to:yourhairisshiny:youcouldhavebeenmorefierce:You could have been more fierce...:You say "Well you could have been more fierce but on the whole I'd give you 3 out of 5."
-item talk response to:youcouldhavebeenmorefierce:"Oh dear, really? That's a shame, I'd tried so hard." The poor brigand looks decidely dejected. Positively glum.
+item talk response to:youcouldhavebeenmorefierce:"Oh dear, really? That's a shame, I'd tried so hard." The poor brigand looks decidedly dejected. Positively glum.
 item talk follow up phrase to:youcouldhavebeenmorefierce:youwereveryfierce
 item talk follow up phrase to:yourhairisshiny:youwereveryfierce:You were very fierce...:You say "Actually I thought you were very fierce and unfriendly, utterly convincing."
 item talk response to:youwereveryfierce:"Oh wonderful!" cries the brigand. "I'm so happy I think I'll just let you pass. Between you and me I couldn't stop you if I wanted to, this is just for show, and you've been so sweet.". The brigand literally skips aside, bows and motions you towards the barred door at the rear of the cavern. He whispers at you, covering his mouth as if someone might be listening "If you don't mind I'll keep up the brigand act - a jobbing actor has got to practice you know.". He signals the end of his secret missive with a wink.
@@ -2286,9 +2286,9 @@ item is untakeable:
 item visibility:invisible
 
 item talk initial phrase:didyouseeyourwife:Did you see your wife go by?:You say "Hello Mr Constantine, did you see your wife go by?".
-item talk response to:didyouseeyourwife:"Yes, yes I did." he says somberly. "I heard what happened in there - I was stopped by some unnatural force from entering to aid you.".
+item talk response to:didyouseeyourwife:"Yes, yes I did." he says sombrely. "I heard what happened in there - I was stopped by some unnatural force from entering to aid you.".
 item talk follow up phrase to:didyouseeyourwife:imsorry:I'm sorry for my part in this:You reply to Oren "I'm sorry for what she did and for my part in it. I assure you I did not know what she was doing and what she really was.".
-item talk response to:imsorry:Oren looks at you sternly but gently "I know. I often wondered if she felt some enmity towards me, there were small signs but I never thought she'd be capable of something like this. And her being a witch! Gods I've never been so suprised and horrified in my life. Anyway thank you once again stranger for coming to my rescue, I will be forever indebted to you."
+item talk response to:imsorry:Oren looks at you sternly but gently "I know. I often wondered if she felt some enmity towards me, there were small signs but I never thought she'd be capable of something like this. And her being a witch! Gods I've never been so surprised and horrified in my life. Anyway thank you once again stranger for coming to my rescue, I will be forever indebted to you."
 
 LOCATION
 x:540
@@ -2359,7 +2359,7 @@ item countable noun prefix:a
 item visibility:invisible
 item is untakeable:
 item can be used with:pickaxe
-item successful use message:You pass your pick axe to Lady Bella who takes it from you carefully and turns to the roaring fire. She bathes the axe head in the flames while muttering some indeciphirable enchantment and then places it on the desk in front of you. "And as I think of it here are some supplies to sustain you in your adventures." and she places some food and wine next to the pick axe.
+item successful use message:You pass your pick axe to Lady Bella who takes it from you carefully and turns to the roaring fire. She bathes the axe head in the flames while muttering some indecipherable enchantment and then places it on the desk in front of you. "And as I think of it here are some supplies to sustain you in your adventures." and she places some food and wine next to the pick axe.
 item use action:destroy item:pickaxe
 item use action:change item visibility:enchanted_pickaxe:visible
 item use action:change item visibility:arc_stone_seam_1:visible
@@ -2431,8 +2431,8 @@ item is untakeable:
 
 item talk initial phrase:whatishappening:What is happening?:You mumble nervously "My lady, what is happening? Is everything ok?"
 item talk response to:whatishappening:Lady Bella breaks her concentration and glares directly at you. "Be quiet you fool, you're ruining my concentration."
-item talk follow up phrase to:whatishappening:thatdoesntsmelllikealovepotion:That doesn't smell like a love potion:"That doesn't smell like a love potion to me." you reply rather meekily.
-item talk response to:thatdoesntsmelllikealovepotion:Bella stands up and strides towards you. "You idiot, I don't need you anymore! Of course it's not a love potion, what a ridiculous notion - why would I care about someones trifling daliance. This is a death potion!". Of course, you suddenly realise that is what the smell is, it's not love it's the rotting wretchedness of a man's impending doom!
+item talk follow up phrase to:whatishappening:thatdoesntsmelllikealovepotion:That doesn't smell like a love potion:"That doesn't smell like a love potion to me." you reply rather meekly.
+item talk response to:thatdoesntsmelllikealovepotion:Bella stands up and strides towards you. "You idiot, I don't need you any more! Of course it's not a love potion, what a ridiculous notion - why would I care about someone's trifling dalliance. This is a death potion!". Of course, you suddenly realise that is what the smell is, it's not love it's the rotting wretchedness of a man's impending doom!
 item talk follow up phrase to:thatdoesntsmelllikealovepotion:idontunderstand:I don't understand!:"But why? Who are you making this for? I don't understand!". Again you mumble this rather feebly and with a good dose of self pity. You resolve to be a bit more heroic with your next utterance.
 item talk response to:idontunderstand:"Weakling, pitiful fool, you really are an imbecile aren't you?". She pauses for a moment to let her tirade sink in. "This potion is for my dear husband." she sneers. "He's a waste of space too, you are peas in a pod and deserve to be crushed. I'll take his money, his house and his life!". She moves ever more closely into your personal space and you can sense her power. You're feeling really anxious now. She sweeps her arms back and screams "Get out!" swinging down towards you and at once you feel the air contract and blast you through the door. You grasp onto the door frame battling with the force of her magic.
 item talk action in response to:idontunderstand:change item visibility:lady_bella_6:invisible
@@ -2446,7 +2446,7 @@ item countable noun prefix:a
 item visibility:invisible
 item is untakeable:
 item can be used with:witches_bane
-item successful use message:You crush the Witches Bane between your fingers as you saw Bella do with the Silk Blood and throw it towards her. Splat! It hits her right on the cheek. She looks a little puzzled and you return the look of puzzlement with a slight air of suprise - that'll make her think. Slowly she sniffs the air and wiping the icky mess from her face glares at you and cries "What have you done? This is Witches Bane - my one weakness - how did you know?". You stand there and consider answering her question with the obvious reply but decide it is a little pointless now. Her face is starting to contort and she chokes and splutters "Damn you, damn you!". She knocks the bowl to the floor as the deadly herb ravages her evil body, twisting her this way and that. Bella suddenly pulls herself upright and with the last of her strength charges at the door before you realise what is happening. As she runs out she screams at you "This is not over - I'll destroy you for this, one day, I'll destroy you!". And she is gone.<newline><newline>Well done! You have completed the available content, hope you have enjoyed the game and please look out for the next installment of the Tiny Text Adventure series!
+item successful use message:You crush the Witches Bane between your fingers as you saw Bella do with the Silk Blood and throw it towards her. Splat! It hits her right on the cheek. She looks a little puzzled and you return the look of puzzlement with a slight air of surprise - that'll make her think. Slowly she sniffs the air and wiping the icky mess from her face glares at you and cries "What have you done? This is Witches Bane - my one weakness - how did you know?". You stand there and consider answering her question with the obvious reply but decide it is a little pointless now. Her face is starting to contort and she chokes and splutters "Damn you, damn you!". She knocks the bowl to the floor as the deadly herb ravages her evil body, twisting her this way and that. Bella suddenly pulls herself upright and with the last of her strength charges at the door before you realise what is happening. As she runs out she screams at you "This is not over - I'll destroy you for this, one day, I'll destroy you!". And she is gone.<newline><newline>Well done! You have completed the available content, hope you have enjoyed the game and please look out for the next instalment of the Tiny Text Adventure series!
 item use action:destroy item:lady_bella_7
 item use action:destroy item:witches_bane
 item use action:change item visibility:relieved_oren:invisible
