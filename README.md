@@ -62,7 +62,6 @@ Features
 - [FEATURE] Map - extras
     - Make better masks and a better map! Charlies on the case.
 - [UI] Parchment background extras
-  - High res image needs to be made into a 9patch to avoid the black bleeding on stretch at the top and bottom of the text view.
   - Action buttons should have a complimentary colour to the parchment.
   - Scroll bar images need to compliment the parchment background...
 - [UI] Images for inventory items to appear on buttons next to label
