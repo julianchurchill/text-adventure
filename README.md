@@ -17,6 +17,7 @@ Backlog
 Technical Tasks
 
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
+- LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 - Update model for app 1 to use take item action where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 
 Bugs
@@ -64,6 +65,7 @@ Features
 - [UI] Parchment background extras
   - Action buttons should have a complimentary colour to the parchment.
   - Scroll bar images need to compliment the parchment background...
+- [UI] New icon for TTA2
 - [UI] Images for inventory items to appear on buttons next to label
 - [UI] Images for actions to appear on buttons next to label
 - [UI] Images embedded within text to add more context for the user. Can be informational like a picture of the clock tower or non-descript paragraph seperators, i.e. a skull.
@@ -87,8 +89,6 @@ Features
 
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
-
-- [REFACTOR] LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 
 - [FEATURE] In model content txt items can only be used in one direction, e.g. a spade with a mound of earth and the target item has to include the definition of what happens. If the original item (e.g. spade) includes this information it is ignored. Should this be changed to be bi-directional? It would make writing content easier but needs considering as it might not always be appropriate.
 
