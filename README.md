@@ -64,8 +64,6 @@ Features
 - [UI] Parchment background extras
   - Action buttons should have a complimentary colour to the parchment.
   - Scroll bar images need to compliment the parchment background...
-  - Need images for drawable-mdpi|ldpi|hdpi|xhdpi
-    - Background parchment looks more rubbish as it gets stretched. Can we use a higher res image?
 - [UI] Images for inventory items to appear on buttons next to label
 - [UI] Images for actions to appear on buttons next to label
 - [UI] Images embedded within text to add more context for the user. Can be informational like a picture of the clock tower or non-descript paragraph seperators, i.e. a skull.
@@ -110,6 +108,7 @@ TTA1 v2.2.x/TTA2 v1.0
 - [FEATURE] Added location area to title bar
 - [FEATURE] Smarter resume - all the text from the actions that have taken place in the current location is shown upon loading. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
 - [UI] Parchment background (from http://www.myfreetextures.com/worn-parchment-paper-2)
+  - Added higher res background parchment image
 - [UI] Full width action buttons
 
 - [BUG] Double new lines appear before and after talk phrases are printed
