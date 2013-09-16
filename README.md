@@ -52,9 +52,9 @@ Story - TTA2
 - You reach Ubiquity only to discover it has been subdued by Bella to serve her - the future of Perpetuity...
 - A girl named Oubliette
 - An ancient temple to old gods with traps and puzzles, entrance puzzle run, a la Indiana Jones:
-  - First room, broken bridge, examine stalagtites to reveal bits you could hook a rope on, then use whip with them to swing over broken bridge
+  - First room, broken bridge, examine stalactites to reveal bits you could hook a rope on, then use whip with them to swing over broken bridge
   - Second room, stone monkey on pedestal with gems for eyes, out of reach and facing you. Skull chandelier above tied in place next to you. Use knife with chandelier rope to drop it, chandelier still out of reach, use whip to swing it into monkey which knocks it so that light from hole in the roof is directed through it's eyes into a gem in the wall and a hidden door opens.
-  - Third room
+  - Third room, south indian monkey trap, locked door, key at the bottom of a pit an arms length deep, wider at the bottom than the top. The key is encased in clear wax. You can put your arm down the pit and grab the key ball but cannot get it out of the pit. You must drop a torch down there to melt the wax and then get the key out. Objects: key in wax, pit, torch. Use torch with pit, take key.
   - Fourth room
   - Fifth room
 - A portal to a dark plane (deep inside the temple) with demon creatures you must defeat some how
