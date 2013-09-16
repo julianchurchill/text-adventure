@@ -301,7 +301,7 @@ location description:This room is mostly empty, all the supplies presumably havi
 text to show on first entry:You drop the torch behind you just as it runs out of fuel and the beast bounds forward its jaws gaping, hungry for you. Swiftly you leap through the door and slam it shut in the beasts face. It whimpers briefly and then hurls its weight against the door again and again. You're not sure how long this door will hold out.
 EXIT
 exit label:Window
-exit destination:generalstore_cupboard
+exit destination:cobbledroad
 exit direction hint:North
 exit id:generalstore_cupboard_to_street
 
@@ -355,16 +355,86 @@ item mid sentence cased name:fiery torch
 item visibility:invisible
 
 LOCATION
+x:240
+y:240
+location id:cobbledroad
+location area id:town_area
+location description:You are standing on a cobbled road that undulates between the small houses of this town. It continues west and back to the east you see an imposing clock tower looming over the houses. There is some debris on the road and the houses look as battle scarred as the rest that you have seen in this town.
+text to show on first entry:You throw yourself through the window just as the fell beast batters the door down and charges in amid a hail of splintered wood and gnashing teeth. As you scramble out the window the beast sinks it's teeth into your shoe leather holding you firmly then thrashing from side to side, wrenching your lower leg across the knee joint, you half out of the window. Desperately you kick out at the beast with your other foot catching it on the muzzle and it releases you long enough to complete your escape. You drop head first to the ground and land in an ungainly heap, slowly rising to your feet rubbing your head and looking around.<newline>Watching you in some amazement are a number of towns folk, gathering about you as one over friendly lady dusts you down before catching a glimpse of your face and starting back with a gasp. She turns and mutters to her neighbours and the mood of the mob quickly turns sour.
+EXIT
+exit label:East
+exit destination:clocktower
+exit direction hint:East
+exit id:cobbledroad_to_clocktower
+EXIT
+exit label:West
+exit destination:morecobbledroad
+exit direction hint:West
+exit id:cobbledroad_to_morecobbledroad
+EXIT
+exit label:House
+exit destination:hovel
+exit direction hint:North
+exit id:cobbledroad_to_hovel
+ITEM
+item name:angry mob
+item description:
+item id:angry_mob
+item countable noun prefix:an
+
+LOCATION
+x:240
+y:180
+location id:hovel
+location area id:town_area
+location description:You step inside the house. It might be more appropriate to call this a hovel. There is mess everywhere and it looks abandoned.
+EXIT
+exit label:Outside
+exit destination:cobbledroad
+exit direction hint:South
+exit id:hovel_to_cobbledroad
+
+LOCATION
+x:180
+y:240
+location id:morecobbledroad
+location area id:town_area
+location description:You are standing on a long cobbled road that undulates between the small houses of this town. It continues west and back to the east. Further up ahead you see a town gatehouse that guards one of the many entrances to the town.
+EXIT
+exit label:East
+exit destination:cobbledroad
+exit direction hint:East
+exit id:morecobbledroad_to_cobbledroad
+EXIT
+exit label:West
+exit destination:westgatehouse
+exit direction hint:West
+exit id:morecobbledroad_to_westgatehouse
+
+LOCATION
+x:120
+y:240
+location id:westgatehouse
+location area id:town_area
+location description:You stand before a large gatehouse within which sit several men of the town watch. They are not doing very much and do not notice you as you pass. You wonder how much they get paid and make a mental note to consider a career change. To the north is a dirt track leading away from the town.
+EXIT
+exit label:East
+exit destination:morecobbledroad
+exit direction hint:East
+exit id:westgatehouse_to_morecobbledroad
+EXIT
+exit label:North
+exit destination:dirttrack
+exit direction hint:North
+exit id:westgatehouse_to_dirttrack
+exit is not visible:
+
+LOCATION
 x:300
 y:240
 location id:clocktower
 location area id:town_area
-location description:You stand before a mighty clock tower. The clock goes TICK!
-EXIT
-exit label:South
-exit destination:mainstreettown
-exit direction hint:South
-exit id:clocktowersouth
+location description:You stand before a mighty clock tower. The clock goes TICK! South is blocked by a barricade.
 EXIT
 exit label:East
 exit destination:nobles_quarter_west_street
