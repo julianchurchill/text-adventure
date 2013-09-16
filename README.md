@@ -51,7 +51,12 @@ Story - TTA2
 - Magical robots - perhaps trapped water faery souls - agents for either side, initially created by the witch to serve her, wills too strong for her to control, some changed sides. Self naming, Least Chance of Failure, Random Acts of Kindness, Vengeful Beyond Death, Penchant for Foolish Bravery
 - You reach Ubiquity only to discover it has been subdued by Bella to serve her - the future of Perpetuity...
 - A girl named Oubliette
-- An ancient temple to old gods with traps and puzzles
+- An ancient temple to old gods with traps and puzzles, entrance puzzle run, a la Indiana Jones:
+  - First room, broken bridge, examine stalagtites to reveal bits you could hook a rope on, then use whip with them to swing over broken bridge
+  - Second room, stone monkey on pedestal with gems for eyes, out of reach and facing you. Skull chandelier above tied in place next to you. Use knife with chandelier rope to drop it, chandelier still out of reach, use whip to swing it into monkey which knocks it so that light from hole in the roof is directed through it's eyes into a gem in the wall and a hidden door opens.
+  - Third room
+  - Fourth room
+  - Fifth room
 - A portal to a dark plane (deep inside the temple) with demon creatures you must defeat some how
 - Bellas HQ - a castle in a forest on the other side of the river.
 - Sub quests
