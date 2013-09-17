@@ -60,6 +60,8 @@ Story - TTA2
   - Fifth room
 - A portal to a dark plane (deep inside the temple) with demon creatures you must defeat some how
 - Bellas HQ - a castle in a forest on the other side of the river.
+  - Final battle should be in several locations, you must beat the witch in one room in a certain way, then she flees and you follow. Repeat 3 times, different rooms and different ways to beat her.
+  - Perhaps you can fail to beat the witch in a room if you do the wrong thing. Consequence is a reset of the combat sequence to the first room.
 - Sub quests
   - Create and play a kazoo at a childrens party at a nobles house (achievement Player of the Kazoo)
   - Collect bugs - using a bug collector to make them visible and catch them. There are 12 to find and there are clues at the locations to indicate that there is a bug there. Something like "There is a flicker of movement in the corner." (Bug Collector)
