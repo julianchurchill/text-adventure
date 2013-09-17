@@ -101,6 +101,8 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     private BasicModelFactory internalModelFactory = null;
     private Logger logger = new StdoutLogger();
     private ProgressDialog progressDialog = null;
+    private boolean loading = false;
+    private AsyncTask loadingTask = null;
 
     public TextAdventureActivity() {
     }
@@ -161,10 +163,14 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
 
          protected void onPostExecute(Void result) {
             rendersView.resetAndRender();
-            if( progressDialog != null ) {
-                progressDialog.dismiss();
-            }
+            endLoading();
          }
+    }
+
+    private void endLoading() {
+        if( progressDialog != null )
+            progressDialog.dismiss();
+        loading = false;
     }
 
     @Override
@@ -172,7 +178,15 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
         super.onResume();
 
         progressDialog = ProgressDialog.show(this, "Starting...", "Loading game...", true, false);
-        new LoadTask().execute();
+        loading = true;
+        loadingTask = new LoadTask().execute();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        loadingTask.cancel( true );
+        loading = false;
     }
 
     private boolean saveJSONFileExists() {
@@ -672,9 +686,15 @@ public class TextAdventureActivity extends Activity implements TextAdventureView
     @Override
     public void onPause() {
         super.onPause();
-        writeActionHistorySaveFile();
-        if( saveJSONFileExists() )
-            deleteFile( oldJSONFormatSaveFileName );
+        if( loading ) {
+            loadingTask.cancel( true );
+            endLoading();
+        }
+        else {
+            writeActionHistorySaveFile();
+            if( saveJSONFileExists() )
+                deleteFile( oldJSONFormatSaveFileName );
+        }
     }
 
     private void writeActionHistorySaveFile() {
