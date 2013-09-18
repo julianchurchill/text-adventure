@@ -22,11 +22,6 @@ Technical Tasks
 
 Bugs
 
-- [BUG] Lost save game when restarting phone - reported on intfiction forum here http://www.intfiction.org/forum/viewtopic.php?f=19&t=8891
-  - Second report of lost saves, this time partial ('It jumped back once and made me redo a small section. Last night, though, it skipped back to almost the beginning.'). From Play reviews (Lisa Rodenberry) 16/9/13.
-  - Likely cause is overlapping load AsyncTask and onPause()/save event. If the loading task has not completed when onPause() is called it will save an empty or a partially populated action history.
-    - This could be reproduced with a very slow emulator (start then stop app). Or add a wait at the end of loadSerialisedActionHistory() after file is loaded (but before it is parsed).
-    - Solution would be to check if load has finished in onPause() and if not then cancel load task and skip saving (since nothing will have changed). Add 'loading' flag to onResume() before executing load task which is cleared in LoadTask.onPostExecute().
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
