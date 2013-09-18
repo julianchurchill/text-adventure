@@ -149,6 +149,15 @@ TTA2 only
   - You must assemble a torch from items in nearby locations, you'll need a stick, a rag, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
   - Use with the 'fell beast' allowing you to see the exit at the back of the shop. After entering the cupboard the torch is destroyed, score is incremented and you see there is a one-way exit through the window, leading to the cobbled street north of the barricade.
 
+2.1.1
+-----
+
+- [BUG] Lost save game when restarting phone - reported on intfiction forum here http://www.intfiction.org/forum/viewtopic.php?f=19&t=8891
+  - Second report of lost saves, this time partial ('It jumped back once and made me redo a small section. Last night, though, it skipped back to almost the beginning.'). From Play reviews (Lisa Rodenberry) 16/9/13.
+  - Likely cause is overlapping load AsyncTask and onPause()/save event. If the loading task has not completed when onPause() is called it will save an empty or a partially populated action history.
+    - This could be reproduced with a very slow emulator (start then stop app). Or add a wait at the end of loadSerialisedActionHistory() after file is loaded (but before it is parsed).
+    - [FIX] check if load has finished in onPause() and if not then cancel load task and skip saving (since nothing will have changed). Add 'loading' flag to onResume() before executing load task which is cleared in LoadTask.onPostExecute().
+
 2.1
 ---
 

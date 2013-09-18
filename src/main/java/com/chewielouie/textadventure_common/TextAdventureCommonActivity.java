@@ -159,6 +159,8 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private MovementMonitor movementMonitor = null;
     private Map<String, Integer> areaIDsToMaskIDs;
     private String externallySuppliedModelContent = null;
+    private boolean loading = false;
+    private AsyncTask loadingTask = null;
 
     public TextAdventureCommonActivity() {
     }
@@ -224,10 +226,14 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
          protected void onPostExecute(Void result) {
             rendersView.render();
-            if( progressDialog != null ) {
-                progressDialog.dismiss();
-            }
+            endLoading();
          }
+    }
+
+    private void endLoading() {
+        if( progressDialog != null )
+            progressDialog.dismiss();
+        loading = false;
     }
 
     @Override
@@ -235,7 +241,15 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         super.onResume();
 
         progressDialog = ProgressDialog.show(this, "Starting...", "Loading game...", true, false);
-        new LoadTask().execute();
+        loading = true;
+        loadingTask = new LoadTask().execute();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        loadingTask.cancel( true );
+        loading = false;
     }
 
     private boolean saveJSONFileExists() {
@@ -791,9 +805,15 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     @Override
     public void onPause() {
         super.onPause();
-        writeActionHistorySaveFile();
-        if( saveJSONFileExists() )
-            deleteFile( oldJSONFormatSaveFileName );
+        if( loading ) {
+            loadingTask.cancel( true );
+            endLoading();
+        }
+        else {
+            writeActionHistorySaveFile();
+            if( saveJSONFileExists() )
+                deleteFile( oldJSONFormatSaveFileName );
+        }
     }
 
     private void writeActionHistorySaveFile() {
