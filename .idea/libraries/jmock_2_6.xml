@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="jmock-2.6">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/libs/test/jmock-2.6.0-RC2" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/libs/test/jmock-2.6.0-RC2" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/libs/test/jmock-2.6.0-RC2" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/libs/test/jmock-2.6.0-RC2" recursive="false" type="SOURCES" />
+  </library>
+</component>
