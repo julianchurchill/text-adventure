@@ -24,8 +24,24 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
         super( u );
     }
 
-    protected int R_drawable_map() {
-        return R.drawable.map;
+    protected int R_drawable_none(){
+        return R.drawable.none;
+    }
+
+    protected int R_drawable_town() {
+        return R.drawable.town;
+    }
+
+    protected int R_drawable_town_mine(){
+        return R.drawable.town_mine;
+    }
+
+    protected int R_drawable_town_mine_church(){
+        return R.drawable.town_mine_church;
+    }
+
+    protected int R_drawable_town_mine_church_friary(){
+        return R.drawable.town_mine_church_friary;
     }
 
     protected int R_id_available_actions() {
