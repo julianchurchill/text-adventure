@@ -1,5 +1,7 @@
 package com.chewielouie.textadventure2;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import com.chewielouie.textadventure_common.TextAdventureCommonActivity;
 import com.chewielouie.textadventure.BasicModelFactory;
 import com.chewielouie.textadventure.RendersView;
@@ -25,6 +27,10 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
 
     public TextAdventureActivity( UserActionHandler u ) {
         super( u );
+    }
+
+    protected Bitmap getMap() {
+        return BitmapFactory.decodeResource(getResources(), R.drawable.map);
     }
 
     protected int R_drawable_map() {

@@ -93,11 +93,7 @@ import com.chewielouie.textadventure.itemaction.LoggableNormalItemActionFactory;
 
 public abstract class TextAdventureCommonActivity extends Activity implements TextAdventureView, OnClickListener {
 
-    abstract protected int R_drawable_none();
-    abstract protected int R_drawable_town();
-    abstract protected int R_drawable_town_mine();
-    abstract protected int R_drawable_town_mine_church();
-    abstract protected int R_drawable_town_mine_church_friary();
+    abstract protected Bitmap getMap();
     abstract protected int R_id_available_actions();
     abstract protected int R_id_location_text_view();
     abstract protected int R_id_map_view();
@@ -160,7 +156,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private BasicModelFactory internalModelFactory = null;
     private Logger logger = new StdoutLogger();
     private ProgressDialog progressDialog = null;
-    private MovementMonitor movementMonitor = null;
+    protected MovementMonitor movementMonitor = null;
     private Map<String, Integer> areaIDsToMaskIDs;
     private String externallySuppliedModelContent = null;
     private boolean loading = false;
@@ -751,32 +747,6 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private void showMap() {
         map_view.setVisibility( View.VISIBLE );
         map_view.setBitmap(getMap());
-    }
-
-    private Bitmap getMap() {
-        int bitmapId = R_drawable_none();
-        switch(movementMonitor.exploredAreas().size())
-        {
-            case 0:
-                bitmapId = R_drawable_none();
-                break;
-            case 1:
-                bitmapId = R_drawable_town();
-                break;
-            case 2:
-                bitmapId = R_drawable_town_mine();
-                break;
-            case 3:
-                bitmapId = R_drawable_town_mine_church();
-                break;
-            case 4:
-                bitmapId = R_drawable_town_mine_church_friary();
-                break;
-            default:
-                break;
-        }
-
-        return BitmapFactory.decodeResource(getResources(), bitmapId);
     }
 
     public void currentScore( int score ) {

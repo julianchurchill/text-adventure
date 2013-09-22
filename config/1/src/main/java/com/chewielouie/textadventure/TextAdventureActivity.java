@@ -1,5 +1,7 @@
 package com.chewielouie.textadventure;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import com.chewielouie.textadventure_common.TextAdventureCommonActivity;
 
 public class TextAdventureActivity extends TextAdventureCommonActivity {
@@ -24,23 +26,49 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
         super( u );
     }
 
-    protected int R_drawable_none(){
+    protected Bitmap getMap() {
+        int bitmapId = R_drawable_none();
+        switch(movementMonitor.exploredAreas().size())
+        {
+            case 0:
+                bitmapId = R_drawable_none();
+                break;
+            case 1:
+                bitmapId = R_drawable_town();
+                break;
+            case 2:
+                bitmapId = R_drawable_town_mine();
+                break;
+            case 3:
+                bitmapId = R_drawable_town_mine_church();
+                break;
+            case 4:
+                bitmapId = R_drawable_town_mine_church_friary();
+                break;
+            default:
+                break;
+        }
+
+        return BitmapFactory.decodeResource(getResources(), bitmapId);
+    }
+
+    private int R_drawable_none(){
         return R.drawable.none;
     }
 
-    protected int R_drawable_town() {
+    private int R_drawable_town() {
         return R.drawable.town;
     }
 
-    protected int R_drawable_town_mine(){
+    private int R_drawable_town_mine(){
         return R.drawable.town_mine;
     }
 
-    protected int R_drawable_town_mine_church(){
+    private int R_drawable_town_mine_church(){
         return R.drawable.town_mine_church;
     }
 
-    protected int R_drawable_town_mine_church_friary(){
+    private int R_drawable_town_mine_church_friary(){
         return R.drawable.town_mine_church_friary;
     }
 
