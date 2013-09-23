@@ -359,28 +359,50 @@ x:240
 y:240
 location id:cobbledroad
 location area id:town_area
-location description:You are standing on a cobbled road that undulates between the small houses of this town. It continues west and back to the east you see an imposing clock tower looming over the houses. There is some debris on the road and the houses look as battle scarred as the rest that you have seen in this town.
-text to show on first entry:You throw yourself through the window just as the fell beast batters the door down and charges in amid a hail of splintered wood and gnashing teeth. As you scramble out the window the beast sinks it's teeth into your shoe leather holding you firmly then thrashing from side to side, wrenching your lower leg across the knee joint, you half out of the window. Desperately you kick out at the beast with your other foot catching it on the muzzle and it releases you long enough to complete your escape. You drop head first to the ground and land in an ungainly heap, slowly rising to your feet rubbing your head and looking around.<newline>Watching you in some amazement are a number of towns folk, gathering about you as one over friendly lady dusts you down before catching a glimpse of your face and starting back with a gasp. She turns and mutters to her neighbours and the mood of the mob quickly turns sour.<newline>There is some hustle and then some bustle and the crowd slowly parts, a scrappy girl with a face like thunder careens out of the mob wielding a shoe above her head - Whack! - she clobbered you about the head with it! Lifting your arms to defend your face you steady yourself for another blow when a growling male voice shouts "Oubliette, Oubliette! What do you think you are doing, stop that at once! You must never beat a stranger with a shoe, you might as well tickle them, always use a good sturdy leather boot." and with that he passes her the sturdiest, leatheriest boot you've ever seen. A quick weigh of the boot, hefted from hand to hand and the girl is ready, just enough time for you catch a whiff of the well made boot before you catch it full in the face and everything goes black.<newline>You wake up some hours later, it must be late afternoon by the waning warmth of the sun, with a throbbing head ache and a mouth as dry as a desert. Sitting propped up against a wall, your hands tied behind your back, you wriggle your wrists looking for any give in the rope to no avail. Looking about you see Oubliette standing watching you with a smaller girl waiting excitedly next to her.
+location description:There is some debris on the road and the houses look as battle scarred as the rest that you have seen in this town.
+text to show on first entry:You throw yourself through the window just as the fell beast batters the door down and charges in amid a hail of splintered wood and gnashing teeth. As you scramble out the window the beast sinks it's teeth into your shoe leather holding you firmly then thrashing from side to side, wrenching your lower leg across the knee joint, you half out of the window. Desperately you kick out at the beast with your other foot catching it on the muzzle and it releases you long enough to complete your escape. You drop head first to the ground and land in an ungainly heap, slowly rising to your feet rubbing your head and looking around.<newline>Watching you in some amazement are a number of towns folk, gathering about you as one over friendly lady dusts you down before catching a glimpse of your face and starting back with a gasp. She turns and mutters to her neighbours and the mood of the mob quickly turns sour.<newline>There is some hustle and then some bustle and the crowd slowly parts, a scrappy girl with a face like thunder careens out of the mob wielding a shoe above her head - Whack! - she clobbered you about the head with it! Lifting your arms to defend your face you steady yourself for another blow when a growling male voice shouts "Oubliette, Oubliette! What do you think you are doing, stop that at once! You must never beat a stranger with a shoe, you might as well tickle them, always use a good sturdy leather boot.". With that he passes her the sturdiest, leatheriest boot you've ever seen. A quick weigh of the boot, hefted from hand to hand and the girl is ready, just enough time for you catch a whiff of the well made boot before you catch it full in the face and everything goes black.<newline>You wake up some hours later, it must be late afternoon by the waning warmth of the sun, with a throbbing head ache and a mouth as dry as a sesame cracker. Sitting propped up against a wall, your hands tied behind your back, you wriggle your wrists looking for any give in the rope to no avail. Looking about you see Oubliette standing close by, watching you with a smaller girl waiting excitedly next to her.
 EXIT
 exit label:East
 exit destination:clocktower
 exit direction hint:East
 exit id:cobbledroad_to_clocktower
+exit is not visible:
 EXIT
 exit label:West
 exit destination:morecobbledroad
 exit direction hint:West
 exit id:cobbledroad_to_morecobbledroad
+exit is not visible:
 EXIT
 exit label:House
 exit destination:hovel
 exit direction hint:North
 exit id:cobbledroad_to_hovel
+exit is not visible:
 ITEM
-item name:angry mob
-item description:
-item id:angry_mob
+item name:Small girl
+item description:She is a scrawny lass, around 12 years old with a canny glint in her eye. She looks to be concealing something behind her back, jiggling from one foot to the other with excitement that she can barely contain. The older girl next to her speaks in hushed tones, trying to keep her calm. For a moment you think you see the toe of a leather boot poking out from behind her.
+item id:flechette_mob
+item is untakeable:
+item talk initial phrase:helpme:Can you help me?:"Can you help me?" you say to the younger girl.
+item talk response to:helpme:She looks at you moving forward but the older girl pulls her back and tells her to keep away from you.
+item talk initial phrase:isthataboot:Is that a boot behind your back?:"Is that a boot behind your back?" you say to the younger girl.
+item talk response to:isthataboot: She spins round on one leg with unsettling glee so that you can clearly see the large leather boot she is holding then she sticks out her tongue and blows a big raspberry at you. The older girl looks at her sternly and tells her off in a terse whisper.
+ITEM
+item name:Older girl
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. From what you recall of the shouting man, her name is Oubliette. Fairly tall with auburn hair that shines slightly in the fading sunlight you find she catches you mildly off guard. You make a mental note not to make a fool of yourself.
+item id:oubliette_mob
 item countable noun prefix:an
+item is untakeable:
+item talk initial phrase:helpme:Can you help me?:"Can you help me?" you say to Oubliette.
+item talk response to:helpme:The girl sighs. "You're awake at last. How's your head?".
+item talk follow up phrase to:helpme:sorehead:Sore.:"Sore. Why on earth did you hit me? And why am I tied up?!". Exasperated, you feel like chucking the towel in. After fighting your way past that beast only to be knocked out cold by a girl and now with a cracking headache, you wish someone would enlighten you as to what is going on.
+item talk response to:sorehead:The girl sighs again. "You're the one aren't you. The one that fought the witch?". A rhetorical question, you nod anyway in case there is any doubt. Quick as a flash you catch the blur of swift moving leather footwear heading for your face and duck to avoid it. Unfortunately for you the boot was heading towards your chest so you take the blow right on the top of the head, fortunately it's not as strong a blow as you recall the last being. Looking up you see Oubliette restraining the younger girl who is positively gleaming with joy. You deduce it was she who cruelly swung at you.
+item talk follow up phrase to:sorehead:betterthanaseaweedfacemask:That's better than a seaweed face mask:"That's better than a seaweed face mask, I can feel the deep cleansing effect on my pores already. Thanks.". You jest hoping that you can charm the ladies with your amusing wit.
+item talk response to:betterthanaseaweedfacemask:They look at each other in puzzlement then the younger one eyes up her boot again. Oh dear.
+item talk follow up phrase to:betterthanaseaweedfacemask:whattheblazes
+item talk follow up phrase to:sorehead:whattheblazes:What the blazes!:"Alright, what the blazes was that for! Will you please stop hitting me!".
+item talk response to:whattheblazes:Oubliette looks slightly sympathetic to your plight but remains steadfast. "This is my sister Flechette. I'm afraid she's rather angry with you, as we all have been, for bringing the wrath of the witch upon us and then abandoning us like you did.".
 
 LOCATION
 x:240
