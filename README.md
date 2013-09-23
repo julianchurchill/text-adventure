@@ -5,7 +5,15 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 
 Don't forget to drive the development by producing value - the value is game content and this should drive the development of functionality to support it.
 
-To build first run './config/prepare.sh' to copy the correct resource files and AndroidManifest.xml for the app you want to build. Then run 'ant debug' or 'ant release'.
+Building
+========
+
+The easiest way to build is to choose which app you want to build then run './config/watchAndBuildApp[12].sh'. This will configure and build the app and wait for changes to the source, triggering a rebuild when a change occurs.
+
+For more control of the build process first run './config/prepare.sh [12]' to copy the correct resource files, source files and AndroidManifest.xml for the app you want to build. Then run 'ant debug' or 'ant release' to build everything, run all the unit tests and acceptance tests and create a deployable APK file. Once built the APK can be found at bin/main/TextAdventure-[debug|release].apk.
+
+Emulator
+========
 
 To run the emulator - run 'android list avd' to get all the configured virtual devices, then 'emulator @<device-name>' to run the chosen device in the emulator.
 
