@@ -396,25 +396,87 @@ item countable noun prefix:an
 item is untakeable:
 item talk initial phrase:helpme:Can you help me?:"Can you help me?" you say to Oubliette.
 item talk response to:helpme:The girl sighs. "You're awake at last. How's your head?".
+
 item talk follow up phrase to:helpme:sorehead:Sore.:"Sore. Why on earth did you hit me? And why am I tied up?!". Exasperated, you feel like chucking the towel in. After fighting your way past that beast only to be knocked out cold by a girl and now with a cracking headache, you wish someone would enlighten you as to what is going on.
 item talk response to:sorehead:The girl sighs again. "You're the one aren't you. The one that fought the witch?". A rhetorical question, you nod anyway in case there is any doubt. Quick as a flash you catch the blur of swift moving leather footwear heading for your face and duck to avoid it. Unfortunately for you the boot was heading towards your chest so you take the blow right on the top of the head, fortunately it's not as strong a blow as you recall the last being. Looking up you see Oubliette restraining the younger girl who is positively gleaming with joy. You deduce it was she who cruelly swung at you.
+
 item talk follow up phrase to:sorehead:betterthanaseaweedfacemask:That's better than a seaweed face mask:"That's better than a seaweed face mask, I can feel the deep cleansing effect on my pores already. Thanks.". You jest hoping that you can charm the ladies with your amusing wit.
 item talk response to:betterthanaseaweedfacemask:They look at each other in puzzlement then the younger one eyes up her boot again. Oh dear.
 item talk follow up phrase to:betterthanaseaweedfacemask:whattheblazes
+
 item talk follow up phrase to:sorehead:whattheblazes:What the blazes!:"Alright, what the blazes was that for! Will you please stop hitting me!".
 item talk response to:whattheblazes:Oubliette looks slightly sympathetic to your plight but remains steadfast. "This is my sister Flechette. I'm afraid she's rather angry with you, as we all have been, for bringing the wrath of the witch upon us and then abandoning us like you did.".
+
+item talk follow up phrase to:whattheblazes:thatscrazythewitchisdead:That's crazy the witch is dead:"I don't know what you're talking about, I killed the witch, she's gone, she couldn't have survived.". You sound quite desperate and don't really believe yourself. The witch must have survived.
+item talk response to:thatscrazythewitchisdead:Once more Flechette leaps forward and strikes you hard about the face with the boot. This is getting ridiculous, what do they want you to do?
+item talk follow up phrase to:thatscrazythewitchisdead:ididntabandonyou
+
+item talk follow up phrase to:whattheblazes:ididntabandonyou:I didn't abandon you:"I didn't abandon you. The witch was vanquished, she left screaming - I thought she died. I had no idea this would happen.". Shaking your head, you do your best to convince the girls of your good intent, hoping it will be enough to gain your freedom.
+item talk response to:ididntabandonyou:"In any case, the witch lives - she attacks our town every night sending foul beasts of darkness to ravage our homes, our families and friends.". Oubliette starts to cry as she talks and turns away from you - "She killed my mother, those beasts breached the barricade one night and dragged her away into the forest.". Regaining her resolve Oubliette wipes her eyes and turns to face you. "You must help us, you defeated her before, you need to finish what you started.".
+
+item talk follow up phrase to:ididntabandonyou:nowaythatwitchisdangerous:No way, that witch is dangerous:You blurt out "No way, that witch is dangerous." before realising you've lined yourself up for another boot beating.
+item talk response to:nowaythatwitchisdangerous:Flechette lifts the boot high, threatening to hit you again and pulls a sour face.
+item talk follow up phrase to:nowaythatwitchisdangerous:okillhelpyou
+
+item talk follow up phrase to:ididntabandonyou:okillhelpyou:Ok, I'll help you:"Ok, I'll help you.". Feeling a little out of your depth, you consider your situation. You only just defeated the witch the last time and it was more luck than judgement, how will you face her now with her powers even stronger than before?
+item talk response to:okillhelpyou:Oubliette and Flechette both look delighted, the older girl runs forward and flings her arm around you. "Thank you, I know you can help us.". Swiftly she unties your hands and helps you to stand.
+item talk action in response to:okillhelpyou:change exit visibility:cobbledroad_to_morecobbledroad:visible
+item talk action in response to:okillhelpyou:change exit visibility:cobbledroad_to_hovel:visible
+item talk action in response to:okillhelpyou:change exit visibility:cobbledroad_to_clocktower:visible
+item talk action in response to:okillhelpyou:change item visibility:oubliette_mob:invisible
+item talk action in response to:okillhelpyou:change item visibility:oubliette_sympathetic:visible
+
+ITEM
+item name:Older girl
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight you find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item id:oubliette_sympathetic
+item countable noun prefix:an
+item is untakeable:
+item talk initial phrase:howcanihelp:How can I help:"How can I help?" you ask Oubliette.
+item talk response to:howcanihelp:"There are two things, I need to collect some mushrooms for healing drafts from the ruins of the old castle and the barricade needs to be repaired.".
+
+item talk follow up phrase to:howcanihelp:icanhelpyoucollectthemushrooms:I can help you collect the mushrooms:"I can help you collect the mushrooms." you state assuming it will be a simple task, your keenness to impress causing you to gloss over the fact that old castle ruins might be involved. Possibly even dangerous old castle ruins.
+item talk response to:icanhelpyoucollectthemushrooms:"Ok, that would be wonderful. What I really need is a strong, tough bodyguard like you since the castle is teeming with the witches creatures.". Before you can say 'Ah...' she runs off to the east calling back "I'll just collect my basket, come with me, the ruins are this way to the east of town.".
+item talk action in response to:icanhelpyoucollectthemushrooms:change item visibility:oubliette_sympathetic:invisible
+item talk action in response to:icanhelpyoucollectthemushrooms:change item visibility:oubliette_getting_basket:visible
+
+item talk follow up phrase to:howcanihelp:icanrepairthebarricade:I can repair the barricade:"I can repair the barricade.", you say bravely, or at least as bravely as you can muster to a girl who has beaten you unconscious with a boot.
+item talk response to:icanrepairthebarricade:"Ok, that would be wonderful, go talk to my father and he'll give you instructions on what needs to be done.". She gestures towards the hovel to the north.
+item talk action in response to:icanrepairthebarricade:change item visibility:cabal_jambon_no_introduction:invisible
+item talk action in response to:icanrepairthebarricade:change item visibility:cabal_jambon_sent_to_by_oubliette:visible
+
 
 LOCATION
 x:240
 y:180
 location id:hovel
 location area id:town_area
-location description:You step inside the house. It might be more appropriate to call this a hovel. There is mess everywhere and it looks abandoned.
+location description:You step inside the house. It might be more appropriate to call this a hovel. It is very small and cramped and is now the living quarters for the Jambon family. Around you lie the accoutrements of a boot maker, some half made shoes, leather pieces and a few pots for cooking. A small stool sits in the corner next to a pile of straw which you assume is being used for bedding.
 EXIT
 exit label:Outside
 exit destination:cobbledroad
 exit direction hint:South
 exit id:hovel_to_cobbledroad
+ITEM
+item name:Gruff man
+item description:This fellow is stocky, middle aged with a shock of red hair. He looks at you suspiciously.
+item id:cabal_jambon_no_introduction
+item is untakeable:
+item talk initial phrase:hellosir:Hello sir:"Hello sir..." you say tentatively to the man.
+item talk response to:hellosir:"What is it? Oh, you're the swine that brought this catastrophe down upon us in the first place - well I'm Cabal Jambon and because of you my children have lost their house and their mother. What are you going to do about it?". You gulp.
+item talk action in response to:hellosir:change item description:cabal_jambon:This is Cabal Jambon, he doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
+ITEM
+item name:Gruff man
+item description:This fellow is stocky, middle aged with a shock of red hair. He looks at you suspiciously.
+item id:cabal_jambon_sent_to_by_oubliette
+item is untakeable:
+item talk initial phrase:hellosir:Hello sir:"Hello sir..." you say tentatively to the man.
+item talk response to:hellosir:"What is it? Oh, you're the swine that brought this catastrophe down upon us in the first place - well I'm Cabal Jambon and because of you my children have lost their house and their mother. What are you going to do about it?". You gulp.
+item talk action in response to:hellosir:change item description:cabal_jambon:This is Cabal Jambon, he doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
+
+item talk follow up phrase to:hellosir:iwassentbyyourdaughter:I was sent by your daughter:"I was sent by your daughter, Oubliette.". Ah that name, just saying it out loud lifts your spirit. "I'm here to help with the barricade.".
+item talk response to:iwassentbyyourdaughter:"Is that right, you look like a scrawny fellow, can you lift your own arms up without crying?". You reply cautiously "Um, yes...". "Hmphh." snorts Cabal, "Well you'll have to do, we're getting short on hands every day that goes by."
+
 
 LOCATION
 x:180
@@ -462,6 +524,12 @@ exit label:East
 exit destination:nobles_quarter_west_street
 exit direction hint:East
 exit id:clocktower_to_nobles_quarter_west_street
+ITEM
+item name:Older girl
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight you find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item id:oubliette_getting_basket
+item countable noun prefix:an
+item is untakeable:
 
 LOCATION
 x:360
