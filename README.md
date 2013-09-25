@@ -28,6 +28,16 @@ Technical Tasks
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
 - LocationTests and TakeSpecificItemTests are using real NormalItems - change to use mocks
 - Update model for app 1 to use take item action where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
+- Analytics
+  - https://developers.google.com/analytics/devguides/collection/android/v3/
+  - Things to capture
+    - Active time (between onResume() and onPause()) from start to finish of game/average completion time
+    - Total active time spent playing
+    - Count how many times new game is started
+    - Count how many times game is completed (to find percent of started games that are completed)
+    - Count how many actions are made to complete game
+    - Count how many times options dialog is opened
+    - Count how many times map is opened
 
 Bugs
 
