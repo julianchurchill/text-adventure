@@ -33,6 +33,9 @@ Technical Tasks
   - Things to capture
     - Active time (between onResume() and onPause()) from start to finish of game/average completion time
     - Total active time spent playing
+    - Average active time period
+    - Load time
+    - Save time
     - Count how many times new game is started
     - Count how many times game is completed (to find percent of started games that are completed)
     - Count how many actions are made to complete game
