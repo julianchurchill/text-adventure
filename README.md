@@ -41,6 +41,8 @@ Technical Tasks
     - Count how many actions are made to complete game
     - Count how many times options dialog is opened
     - Count how many times map is opened
+- Proper nouns - e.g. Oubliette. Add a flag to items to indicate if the name is a proper noun, if it is then in the item list the Location should exclude the countable noun prefix - e.g. 'There is a banana and Oubliette here.' instead of 'an Oubliette'.
+  - Also useful for Flechette and Cabal Jambon
 
 Bugs
 
