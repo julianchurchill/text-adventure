@@ -44,6 +44,10 @@ Technical Tasks
 - Proper nouns - e.g. Oubliette. Add a flag to items to indicate if the name is a proper noun, if it is then in the item list the Location should exclude the countable noun prefix - e.g. 'There is a banana and Oubliette here.' instead of '  Oubliette' - note the extra space.
   - When an item is examined the examination starts with 'You examine the x'. For proper nouns the 'the' needs to be dropped entirely.
   - Also useful for Flechette and Cabal Jambon
+- Save/restore checkpoints.
+  - Add menu items, restore is disabled if no checkpoint files available
+  - Save dumps action history to a file action_history_checkpoint_[n]
+  - Restore loads latest numbered action_history_checkpoint_[n] file and then deletes it
 
 Bugs
 
