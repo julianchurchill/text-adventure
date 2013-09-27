@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:4
+maximum score:5
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -867,7 +867,7 @@ item is plural:
 item is untakeable:
 item visibility:invisible
 item can be used with:mushroom_plucker
-item successful use message:You pop the plucker over the frilly mushrooms and one by one you extract them all from their nooks and crannies.
+item successful use message:You pop the plucker over the frilly mushrooms and one by one you extract them all from their nooks and crannies and put them delicately in your pocketses.
 item use action:change item visibility:mushrooms:invisible
 item use action:change item visibility:pocket_mushrooms:visible
 item use action:take item:pocket_mushrooms
@@ -914,14 +914,15 @@ item is proper noun:
 item is untakeable:
 item visibility:invisible
 item talk initial phrase:arethosethemushrooms:Are those the mushrooms?:"Are those the mushrooms?" you ask pointing at the rocks.
-item talk response to:arethosethemushrooms:"Yes they are, just use the mushroom plucker I gave you to pick them.". She smiles at you, like a teacher to a struggling pupil.
+item talk response to:arethosethemushrooms:"Yes they are, just use the mushroom plucker I gave you to pick them. When you've picked them give them to me and I'll check them over.". She smiles at you, like a teacher to a struggling pupil.
 
 item can be used with:pocket_mushrooms
-item successful use message:You pass the mushrooms you have gathered to Oubliette and she thanks you. Placing them in her woven basket she picks one out and passes it to you. "Here, have this for your trouble, I know it's not much but it might come in handy. These mushrooms will heal if eaten, but take care not to each too much as you will fall asleep and appear to others as though dead.". She turns away to leave - "I'm heading back to town, you know the way - thanks again!" and off she goes without glancing back. You stand alone in the courtyard shuffling your shoes and decide to head back to town with her.
+item successful use message:You pass the mushroom plucker and the mushrooms you have gathered to Oubliette. Placing them in her woven basket she picks one out and passes it to you. "Here, have this for your trouble, I know it's not much but it might come in handy. These mushrooms will heal if eaten, but take care not to each too much as you will fall asleep and appear to others as though dead.". She turns away to leave - "I'm heading back to town, you know the way - thanks again!" and off she goes without glancing back. You stand alone in the courtyard shuffling your shoes and decide to head back to town with her.
 item use action:destroy item:mushroom_plucker
 item use action:destroy item:pocket_mushrooms
-item use action:change item visibility:oubliette_in_the_north_courtyard:invisible
+item use action:change item visibility:oubliette_in_the_north_courtyard_waiting:invisible
 item use action:change item visibility:oubliette_mushrooms_collected:visible
 item use action:change item visibility:single_mushroom:visible
 item use action:take item:single_mushroom
+item use action:increment score:
 
