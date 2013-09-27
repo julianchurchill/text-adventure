@@ -41,7 +41,8 @@ Technical Tasks
     - Count how many actions are made to complete game
     - Count how many times options dialog is opened
     - Count how many times map is opened
-- Proper nouns - e.g. Oubliette. Add a flag to items to indicate if the name is a proper noun, if it is then in the item list the Location should exclude the countable noun prefix - e.g. 'There is a banana and Oubliette here.' instead of '  Oubliette' - note the extra space.
+- Proper nouns - e.g. Oubliette. Add a flag to items to indicate if the name is a proper noun
+  - DONE If no countable noun prefix is given then in the item list the Location should exclude the countable noun prefix - e.g. 'There is a banana and Oubliette here.' instead of '  Oubliette' - note the extra space.
   - When an item is examined the examination starts with 'You examine the x'. For proper nouns the 'the' needs to be dropped entirely.
   - Also useful for Flechette and Cabal Jambon
 - Save/restore checkpoints.
@@ -71,9 +72,6 @@ Story - TTA2
     - DONE You wake up in the late afternoon. You are tied up in the street, propped, sitting, against a wall. Oubliette is watching you, she apologises and introduces her sister Flechette, you notice she is holding a boot behind her back. You must talk to Oubliette to get free, she tells you all about hte witch and how it's your fault, if you say something wrong Flechette hits you with the boot. Eventually you must agree to help.
     - Implement <newline> for Location text to show on first entry as implemented in successful use message for items. This is for location after jumping through the window.
   - You must help them repair the barricade to the north of the town by the guards tower/gate before night falls. They give you a broken impsaw 2000 and an imperator. You must find teeth perhaps from vicious Spiky-toothed Goobers (fish) to repair the impsaw, then you must use the imperator on the impsaw to enrage the imp and get it to run around causing the chain of teeth to spin round. You then use it to chop branches from a tree in the wood and bring the branches back to repair the barricade.
-- Oubliette also asks (when spoken to after agreeing to help repair the barricade, she's standing around looking for someone to help...) that you help escort her for some gathering task somewhere dangerous (the mine, a field, an abandoned castle, protected by a barrelling goon)
-  - This can be completed anytime between now and before crossing the river (but not _during_ the barricade attack)
-  - Once you complete the escort quest she gives you something that will help you get over the river later on - perhaps one of the mushrooms gathered from the escort quest ("These mushrooms will heal if eaten, but take care not to each too much as you will fall asleep and appear to others as though dead.")
 - The barricade attack
   - Completing the barricade triggers night fall and the creatures attack, you must help defend the barricade through the night and at least one fell beast ambushes you when you enter another location. You defeat it using a weapon given to you by a townsperson.
   - Then you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
@@ -181,6 +179,10 @@ TTA2 only
 - [STORY] Entering the general store you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is the back of the shop through which you can see a window that should lead you to the other side of the barricade. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
   - You must assemble a torch from items in nearby locations, you'll need a stick, a rag, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
   - Use with the 'fell beast' allowing you to see the exit at the back of the shop. After entering the cupboard the torch is destroyed, score is incremented and you see there is a one-way exit through the window, leading to the cobbled street north of the barricade.
+- Oubliette asks, when spoken to after agreeing to help repair the barricade - she's standing around looking for someone to help..., that you help escort her for a mushroom gathering task to an abandoned castle in ruins protected by a barrelling goon. Once completed she gives you a mushroom - it can heal if eaten a little or cause a very deep sleep if too much is eaten.
+  - This can be completed anytime between now and before crossing the river (but not _during_ the barricade attack)
+  - The first puzzle is the portcullis, you must get an iron bar from the undergrowth next to it, unjam the mechanism, climb over the hidden path of rocks to get to the other side of the portcullis and use the winch handle to wind the winch to raise the portcullis.
+  - The second puzzle is beating the barrelling goon - you must place a hollow tree trunk so that when the goon barrels it shoots down a slide and up a ramp over the castle ruins wall leaving the area safe for gathering mushrooms.
 
 2.1.1
 -----

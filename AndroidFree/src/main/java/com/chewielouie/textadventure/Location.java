@@ -92,10 +92,16 @@ public class Location implements ModelLocation {
         String itemsPostAmble = there_english + " ";
         itemsPostAmble += is_are_PluralQualifier( items ) + " ";
         for( Item item : visibleItems )
-            itemsPostAmble += item.countableNounPrefix() + " " +
+            itemsPostAmble += generateItemNounPrefix( item ) +
                               item.midSentenceCasedName() +
                               itemPostfix( item, visibleItems );
         return itemsPostAmble;
+    }
+
+    private String generateItemNounPrefix( Item item ) {
+        if( item.countableNounPrefix() != "" )
+            return item.countableNounPrefix() + " ";
+        return "";
     }
 
     private String is_are_PluralQualifier( List<Item> items ) {

@@ -340,6 +340,16 @@ public class LocationTests {
     }
 
     @Test
+    public void names_without_a_countable_noun_prefix_have_no_prefix_added() {
+        Location l = new Location( "", "Location description.", null, null );
+        Item item = makeMockItem( "Elvis" );
+        when( item.countableNounPrefix() ).thenReturn( "" );
+        l.addItem( item );
+
+        assertThat( l.availableItemsText(), containsString( "is Elvis here" ) );
+    }
+
+    @Test
     public void removing_all_items_from_a_location_removes_TakeAnItem_action_from_action_list() {
         final Item takeableItem = mockery.mock( Item.class );
         final ActionFactory actionFactory = mockery.mock( ActionFactory.class );
