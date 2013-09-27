@@ -41,10 +41,6 @@ Technical Tasks
     - Count how many actions are made to complete game
     - Count how many times options dialog is opened
     - Count how many times map is opened
-- Proper nouns - e.g. Oubliette. Add a flag to items to indicate if the name is a proper noun
-  - DONE If no countable noun prefix is given then in the item list the Location should exclude the countable noun prefix - e.g. 'There is a banana and Oubliette here.' instead of '  Oubliette' - note the extra space.
-  - When an item is examined the examination starts with 'You examine the x'. For proper nouns the 'the' needs to be dropped entirely.
-  - Also useful for Flechette and Cabal Jambon
 - Save/restore checkpoints.
   - Add menu items, restore is disabled if no checkpoint files available
   - Save dumps action history to a file action_history_checkpoint_[n]
@@ -172,6 +168,7 @@ TTA1 v2.2.x/TTA2 v1.0
 - [TECHNICAL TASK] New item action - take item. This stops the model content having to leave items on the floor that the character would usually have picked up without an action.
 - [TECHNICAL TASK] New event trigger 'exit on use action', e.g. 'exit on use action:destroy item:fiery_torch' for example in TTA2 where you escape into the store cupboard but drop the torch.
 - [TECHNICAL TASK] Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
+- [TECHNICAL TASK] Proper nouns - e.g. Oubliette. Added 'item is proper noun:' tag for item in model_content so that on examination the 'the' is dropped - e.g. 'You examine Oubliette.'.
 
 TTA2 only
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in, when you examine it you get your arm stuck. There are no exits and some items around you.

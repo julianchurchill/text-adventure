@@ -21,10 +21,16 @@ public class Examine implements Action {
     }
 
     public void trigger() {
-        userText = "You examine the " + item.midSentenceCasedName() + ". " + item.description();
+        userText = "You examine " + generateNounWithArticle() + ". " + item.description();
         item.examine();
-        if( item.examineText().length() != 0 )
+        if( item.examineText() != "" )
             userText = userText + "\n\n" + item.examineText();
+    }
+
+    private String generateNounWithArticle() {
+        if( item.properNoun() )
+            return item.midSentenceCasedName();
+        return "the " + item.midSentenceCasedName();
     }
 
     public boolean userMustChooseFollowUpAction() {

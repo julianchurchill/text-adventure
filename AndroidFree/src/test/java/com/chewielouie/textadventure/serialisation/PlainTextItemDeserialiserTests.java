@@ -109,6 +109,19 @@ public class PlainTextItemDeserialiserTests {
     }
 
     @Test
+    public void deserialise_extracts_item_is_proper_noun() {
+        Item item = mock( Item.class );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+
+        d.deserialise( item,
+                       "item name:Name\n" +
+                       "item description:description\n" +
+                       "item is proper noun:\n" );
+
+        verify( item ).setProperNoun();
+    }
+
+    @Test
     public void deserialise_extracts_item_is_untakeable() {
         final Item item = mockery.mock( Item.class );
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );

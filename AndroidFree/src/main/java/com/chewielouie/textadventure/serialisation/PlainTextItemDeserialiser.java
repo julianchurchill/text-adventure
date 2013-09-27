@@ -15,6 +15,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private final String itemIDTag = "item id:";
     private final String itemCountableNounPrefixTag = "item countable noun prefix:";
     private final String itemMidSentenceCasedNameTag = "item mid sentence cased name:";
+    private final String itemIsProperNounTag = "item is proper noun:";
     private final String itemIsPluralTag = "item is plural:";
     private final String itemIsUntakeableTag = "item is untakeable:";
     private final String itemCanBeUsedWithTag = "item can be used with:";
@@ -56,6 +57,9 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         String m = extractNewlineDelimitedValueFor( itemMidSentenceCasedNameTag );
         if( m != "" )
             item.setMidSentenceCasedName( m );
+
+        if( findTagWithNoArgument( itemIsProperNounTag ) )
+            item.setProperNoun();
 
         if( findTagWithNoArgument( itemIsPluralTag ) )
             item.setPlural();

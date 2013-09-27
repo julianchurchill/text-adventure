@@ -46,6 +46,19 @@ public class NormalItemTests {
     }
 
     @Test
+    public void item_is_not_a_proper_noun_by_default() {
+        NormalItem item = new NormalItem();
+        assertThat( item.properNoun(), is( false ) );
+    }
+
+    @Test
+    public void setting_proper_noun_makes_item_a_proper_noun() {
+        NormalItem item = new NormalItem();
+        item.setProperNoun();
+        assertThat( item.properNoun(), is( true ) );
+    }
+
+    @Test
     public void item_is_not_plural_by_default() {
         NormalItem item = new NormalItem();
         assertFalse( item.plural() );

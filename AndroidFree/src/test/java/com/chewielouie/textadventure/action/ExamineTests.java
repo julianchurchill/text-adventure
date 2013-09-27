@@ -1,6 +1,9 @@
 package com.chewielouie.textadventure.action;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,22 +119,17 @@ public class ExamineTests {
         action.trigger();
     }
 
-    //@Test
-    //public void on_examine_text_os_gathered_after_actions() {
-        //final Item item = mockery.mock( Item.class );
-        //Examine action = new Examine( item );
-        //final Sequence examine_text_after_actions =
-            //mockery.sequence( "examine_text_after_actions" );
-        //mockery.checking( new Expectations() {{
-            //oneOf( item ).examine();
-            //inSequence( examine_text_after_actions );
-            //oneOf( item ).examineText();
-            //inSequence( examine_text_after_actions );
-            //ignoring( item );
-        //}});
+    @Test
+    public void examine_text_does_not_include_the_for_proper_nouns() {
+        Item item = mock( Item.class );
+        when( item.midSentenceCasedName() ).thenReturn( "Elvis" );
+        when( item.properNoun() ).thenReturn( true );
+        Examine action = new Examine( item );
 
-        //action.trigger();
-    //}
+        action.trigger();
+
+        assertThat( action.userText(), containsString( "examine Elvis." ) );
+    }
 }
 
 

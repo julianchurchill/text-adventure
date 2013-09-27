@@ -27,6 +27,7 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     private boolean examined = false;
     private boolean canTalkTo = false;
     private boolean plural = false;
+    private boolean properNoun = false;
 
     public String description() {
         return description;
@@ -56,6 +57,14 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
 
     public void setMidSentenceCasedName( String casedName ) {
         this.midSentenceCasedName = casedName;
+    }
+
+    public boolean properNoun() {
+        return properNoun;
+    }
+
+    public void setProperNoun() {
+        this.properNoun = true;
     }
 
     public void setPlural() {

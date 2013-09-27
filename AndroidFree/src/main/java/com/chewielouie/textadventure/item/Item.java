@@ -14,6 +14,8 @@ public interface Item {
     public void setCountableNounPrefix( String prefix );
     public String midSentenceCasedName();
     public void setMidSentenceCasedName( String casedName );
+    public boolean properNoun();
+    public void setProperNoun();
     public void setPlural();
     public boolean plural();
     public boolean takeable();
