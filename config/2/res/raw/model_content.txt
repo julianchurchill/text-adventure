@@ -438,7 +438,7 @@ item mid sentence cased name:Oubliette
 item is proper noun:
 item is untakeable:
 item visibility:invisible
-item talk initial phrase:howcanihelp:How can I help:"How can I help?" you ask Oubliette.
+item talk initial phrase:howcanihelp:How can I help?:"How can I help?" you ask Oubliette.
 item talk response to:howcanihelp:"There are two things, I need to collect some mushrooms for healing drafts from the ruins of the old castle and the barricade needs to be repaired.".
 
 item talk follow up phrase to:howcanihelp:icanhelpyoucollectthemushrooms:I can help you collect the mushrooms:"I can help you collect the mushrooms." you state assuming it will be a simple task, your keenness to impress causing you to gloss over the fact that old castle ruins might be involved. Possibly even dangerous old castle ruins.
@@ -459,10 +459,10 @@ item mid sentence cased name:Oubliette
 item is proper noun:
 item is untakeable:
 item visibility:invisible
-item talk initial phrase:howcanihelp:How can I help:"How can I help?" you ask Oubliette.
+item talk initial phrase:howcanihelp:How can I help?:"How can I help?" you ask Oubliette.
 item talk response to:howcanihelp:"Well the barricade needs to be repaired.".
 item talk follow up phrase to:howcanihelp:okicanhelptorepairthebarricade:Ok, I can help to repair the barricade:"Ok, I can help to repair the barricade.", you say bravely, or at least as bravely as you can muster to a girl who has beaten you unconscious with a boot.
-item talk response to:okicanhelptorepairthebarricade:"Ok, that would be wonderful, go talk to my father and he'll give you instructions on what needs to be done.". She gestures towards the hovel to the north.
+item talk response to:okicanhelptorepairthebarricade:"That would be wonderful, go talk to my father and he'll give you instructions on what needs to be done.". She gestures towards the hovel to the north.
 item talk action in response to:okicanhelptorepairthebarricade:change item visibility:cabal_jambon_no_introduction:invisible
 item talk action in response to:okicanhelptorepairthebarricade:change item visibility:cabal_jambon_sent_to_by_oubliette:visible
 
@@ -474,11 +474,11 @@ item mid sentence cased name:Oubliette
 item is proper noun:
 item is untakeable:
 item visibility:invisible
-item talk initial phrase:howcanihelp:How can I help:"How can I help?" you ask Oubliette.
+item talk initial phrase:howcanihelp:How can I help?:"How can I help?" you ask Oubliette.
 item talk response to:howcanihelp:"I need to collect some mushrooms for healing drafts from the ruins of the old castle.".
 
 item talk follow up phrase to:howcanihelp:okicanhelpyoucollectthemushrooms:Ok, I can help you collect the mushrooms:"Ok, I can help you collect the mushrooms." you state assuming it will be a simple task, your keenness to impress causing you to gloss over the fact that old castle ruins might be involved. Possibly even dangerous old castle ruins.
-item talk response to:okicanhelpyoucollectthemushrooms:"Ok, that would be wonderful. What I really need is a strong, tough bodyguard like you since the castle is teeming with the witch's creatures.". Before you can say "Ah..." she runs off to the east calling back "I'll just collect my basket, come with me, the ruins are this way to the east of town.".
+item talk response to:okicanhelpyoucollectthemushrooms:"That would be wonderful. What I really need is a strong, tough bodyguard like you since the castle is teeming with the witch's creatures.". Before you can say "Ah..." she runs off to the east calling back "I'll just collect my basket, come with me, the ruins are this way to the east of town.".
 item talk action in response to:okicanhelpyoucollectthemushrooms:change item visibility:oubliette_barricade_fixed:invisible
 item talk action in response to:okicanhelpyoucollectthemushrooms:change item visibility:oubliette_getting_basket:visible
 
