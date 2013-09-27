@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:3
+maximum score:4
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -636,7 +636,7 @@ item visibility:invisible
 item talk initial phrase:itssafeletsgo:It's safe, let's go:"It's safe, let's go.". You point towards the portcullis.
 item talk response to:itssafeletsgo:"Well done!" she exclaims and skips off to the courtyard.
 item talk action in response to:itssafeletsgo:change item visibility:oubliette_outside_the_ruins3:invisible
-item talk action in response to:itssafeletsgo:change item visibility:oubliette_in_the_courtyard:visible
+item talk action in response to:itssafeletsgo:change item visibility:oubliette_in_the_courtyard1:visible
 
 LOCATION
 x:260
@@ -688,9 +688,15 @@ location area id:castle_ruins_area
 location description:Like the rest of the ruins the castle courtyard is covered in plant life, which has taken a firm foothold, dislodging a large part of the foundation of many of the walls of what remains of the castle. You imagine the rest of the site must be a dangerous place, if only for the instability of the structure surrounding you. The castle gate lies on the south side of the quadrangle, where the gatehouse envelopes a sad portcullis, guarding nothing but the decaying remains of this abandoned castle.
 text to show on first entry:You clamber over the rocks and leap down into the courtyard below. Standing quietly you listen carefully for the sound of any scurrying animals or tweeting birds. Strangely you hear nothing which adds to your unsettled feeling that something else is here with you.
 EXIT
+exit label:North side of the courtyard
+exit destination:castle_courtyard_2
+exit direction hint:North
+exit id:castle_courtyard_to_castle_courtyard_2
+exit is not visible:
+EXIT
 exit label:Path over some precariously positioned rocks
 exit destination:castle_ruins_west
-exit direction hint:North
+exit direction hint:West
 exit id:castle_courtyard_to_castle_ruins_west
 EXIT
 exit label:Castle gate
@@ -723,6 +729,7 @@ item can be used with:winch_handle
 item successful use message:You slot the handle into the hole in the end of the device and start to turn it. Clunk. Clunk. Clunk. You breath a sigh of relief as it starts to turn, the portcullis squeaks and grinds and groans and finally begins to raise. You puff and pant with the exertion, the gate is very heavy and the winch occasionally slips. Eventually the portcullis is high enough to get under. Leaving the winch handle in place you push a few bricks underneath for extra support in case the winch fails to hold.
 item use action:change exit visibility:castle_courtyard_to_castle_ruins:visible
 item use action:change exit visibility:castle_ruins_to_castle_courtyard:visible
+item use action:change exit visibility:castle_courtyard_2:visible
 item use action:change item visibility:oubliette_outside_the_ruins2:invisible
 item use action:change item visibility:oubliette_outside_the_ruins3:visible
 item use action:destroy item:winch_handle
@@ -735,105 +742,93 @@ item countable noun prefix:a
 ITEM
 item name:Oubliette
 item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
-item id:oubliette_in_the_courtyard
+item id:oubliette_in_the_courtyard1
+item mid sentence cased name:Oubliette
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:wherenow:Where now?:"Where now?".
+item talk response to:wherenow:"Just over there, can you go and see if it's safe?" asks Oubliette as she points to the north side of the courtyard.
+item talk follow up phrase to:wherenow:sureillberightback:Sure I'll be right back:"Sure, I'll be right back.". With a little trepidation you look to the north of the courtyard wondering what lies ahead.
+item talk action in response to:wherenow:change item visibility:oubliette_in_the_courtyard1:invisible
+item talk action in response to:wherenow:change item visibility:oubliette_in_the_courtyard2:visible
+
+ITEM
+item name:Oubliette
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item id:oubliette_in_the_courtyard2
+item mid sentence cased name:Oubliette
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:itssafeletsgo:It's safe, let's go:"It's safe, let's go.". You point towards the north side of the courtyard.
+item talk response to:itssafeletsgo:"It doesn't look very safe - you've not even looked yet.". Oubliette furrows her brow and glares as if willing you to be the brave hero she needs. How unfortunate.
+item talk initial phrase:ivegotabadfeeling:I've got a bad feeling, let's go back:"I've got a bad feeling, let's go back." you say trying to hide your cowardice.
+item talk response to:ivegotabadfeeling:Oubliette looks at you and shakes her head. "If we go back now I won't have what I need for my healing balms and salves. The townsfolk are depending on me.". She doesn't look like she's going anywhere.
+
+ITEM
+item name:Oubliette
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item id:oubliette_in_the_courtyard3
+item mid sentence cased name:Oubliette
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:itssafeletsgo:It's safe, let's go:"It's safe, let's go.". One leg on a pile of bricks you point dramatically north.
+item talk response to:itssafeletsgo:"Excellent!" she exclaims and runs off to the north part of the courtyard.
+item talk action in response to:itssafeletsgo:change item visibility:oubliette_in_the_courtyard3:visible
+item talk action in response to:itssafeletsgo:change item visibility:oubliette_in_the_north_courtyard:visible
+
+
+LOCATION
+x:320
+y:-120
+location id:castle_courtyard_2
+location area id:castle_ruins_area
+location description:This is the north end of the quadrangle surrounded on all sides by rotting buildings in various states of decay. There is a tower in one corner that has been more resistant to the relentless encroachment of vegetation and from it seems to be a slide that has been purposely built or fashioned by repeated use. It is made of worn bricks and leads from the top of the tower to close by your feet. You can see some fungi interspersed through the ruins but there is no way it can be reached with the barrelling goon rocketing about.
+text to show on first entry:Argh! A flying ball of fur shoots at you as soon as you step foot into this area, knocking you down. It continues to barrel around the courtyard rolling from ramp to slide and inexplicably back to the top of the tower in the corner. You guess this is where the creature must have come from.
+EXIT
+exit label:South side of the courtyard
+exit destination:castle_courtyard
+exit direction hint:South
+exit id:castle_courtyard_to_castle_courtyard
+ITEM
+item name:Barrelling Goon
+item description:It is hairy and rolled up like a ball, barrelling around the structure of ramps and slides that are all around you. You can see two pink eyes tucked away in the mass of fur and there is enough of a glint of sharp spiky teeth to make you nervous about getting too close to this creature. No one would be safe in this place with this monster careering about.
+item id:barrelling_goon
+item countable noun prefix:a
+item is untakeable:
+ITEM
+item name:Ramps and slides
+item description:There are numerous ramps and slides all around you, fashioned from the ruined brick of the castle. They look to have been worn smooth through something rubbing along them. A number of the routes come to an abrupt end where the creature is fired off, some distance, to the next ramp or slide. One of the ramps leads over the castle walls but does not appear to be connected to any of the others.
+item id:ramps_and_slides
+item countable noun prefix:some
+item is untakeable:
+item can be used with:section_of_hollow_tree_trunk
+item successful use message:Placing the hollow trunk so that it connects the slide by your feet to a ramp that extends over the ruin walls you stand back and wait. Nothing occurs, the creature does not venture forth. You jump up and down shouting then suddenly you see movement at the top of the tower. A deep growling, a whoosh of air and the barrelling goon shoots out of the tower down the ramp towards your feet at a breakneck pace hurtling into the hollow section of tree trunk and out onto the connected ramp. A short squeal of surprise and the creature is launched over the castle walls, a bundle of fur flying through the air, leaving the courtyard unguarded and free for foragers to reap the mushroomy rewards within.
+item use action:change item visibility:mushrooms:visible
+item use action:change item visibility:oubliette_in_the_courtyard1:invisible
+item use action:change item visibility:oubliette_in_the_courtyard2:invisible
+item use action:change item visibility:oubliette_in_the_courtyard3:visible
+item use action:change item visibility:barrelling_goon:invisible
+item use action:destroy item:section_of_hollow_tree_trunk
+item use action:change location description:castle_courtyard_2:This is the north end of the quadrangle surrounded on all sides by rotting buildings in various states of decay. There is a tower in one corner that has been more resistant to the relentless encroachment of vegetation and from it seems to be a slide that has been purposely built or fashioned by repeated use. It is made of worn bricks and leads from the top of the tower to close by your feet. You can see some fungi interspersed through the ruins.
+item use action:increment score:
+ITEM
+item name:Section of hollow tree trunk
+item description:This is a short piece of hollowed out tree trunk, about an arms length and as long as you are tall. It is light enough that you can just about lift it.
+item id:section_of_hollow_tree_trunk
+item countable noun prefix:a
+ITEM
+item name:Mushrooms
+item description:Precious wild mushrooms that have healing powers - or so you've been told by Oubliette. They are scattered around, poking out from crevices and between rocks, frilly heads on dainty stalks, almost harmless looking.
+item id:mushrooms
+item countable noun prefix:some
+item is untakeable:
+item visibility:invisible
+ITEM
+item name:Oubliette
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item id:oubliette_in_the_north_courtyard
 item mid sentence cased name:Oubliette
 item is untakeable:
 item visibility:invisible
 
-LOCATION
-x:360
-y:240
-location id:nobles_quarter_west_street
-location area id:town_area
-location description:You stand at the west end of the main street of the Noble's Quarter. The houses around you are mansions, varying in size and grandeur to reflect the owner's wealth. The larger houses are at the far end to the east. The streets are mostly empty but there are a few merchants wandering back to their homes laden with bargains from far off lands.
-EXIT
-exit label:Clock tower
-exit destination:clocktower
-exit direction hint:West
-exit id:nobles_quarter_west_street_to_clocktower
-EXIT
-exit label:East
-exit destination:nobles_quarter_middle_street
-exit direction hint:East
-exit id:nobles_quarter_west_street_to_nobles_quarter_middle_street
 
-LOCATION
-x:420
-y:240
-location id:nobles_quarter_middle_street
-location area id:town_area
-location description:You stand in the middle of the main street that runs through the Noble's Quarter. There are impressive houses all around you, getting larger and more opulent the further east you look. Back to the west you can see a clock tower in the distance.
-EXIT
-exit label:West
-exit destination:nobles_quarter_west_street
-exit direction hint:West
-exit id:nobles_quarter_middle_street_to_nobles_quarter_west_street
-EXIT
-exit label:East
-exit destination:nobles_quarter_east_street
-exit direction hint:East
-exit id:nobles_quarter_middle_street_to_nobles_quarter_east_street
-
-LOCATION
-x:480
-y:240
-location id:nobles_quarter_east_street
-location area id:town_area
-location description:You stand at the east end of the main street that runs through the Noble's Quarter. This end has the most fantastic houses, mansions of huge proportions with people running to and fro, tending to the houses and the demands of the occupants. One house to the north has a large open porch whereupon stands a wide-shouldered man, looking out into the street expectantly.
-EXIT
-exit label:North
-exit destination:orens_porch
-exit direction hint:North
-exit id:nobles_quarter_east_street_to_orens_porch
-EXIT
-exit label:West
-exit destination:nobles_quarter_middle_street
-exit direction hint:West
-exit id:nobles_quarter_east_street_to_nobles_quarter_middle_street
-
-LOCATION
-x:540
-y:240
-location id:orens_porch
-location area id:town_area
-location description:You stand on a long porch fronting an even longer house. The house itself has several floors and extends back from the street further than you can see. You get the impression there are large grounds round the back of the house and probably a fountain or two. In front of you stands a large man looking out into the street. He has the air of importance and wealth and you deduce that this must be Oren Constantine the famous merchant.
-EXIT
-exit label:South
-exit destination:nobles_quarter_east_street
-exit direction hint:South
-exit id:orens_porch_to_nobles_quarter_east_street
-EXIT
-exit label:Front door
-exit destination:orens_hallway
-exit direction hint:North
-exit id:orens_porch_to_orens_hallway
-
-LOCATION
-x:540
-y:180
-location id:orens_hallway
-location area id:town_area
-location description:You are in the hallway of Oren's house. The floor is marbled and there is a sweeping staircase leading to the upper floors. Paintings line the walls and statues are ensconced in a number of alcoves around the hall. A fine layer of dust has settled over everything and cobwebs gather in the dark corners of the ceiling. There are several doors leading from here but one is slightly ajar and looks inviting.
-EXIT
-exit label:Porch
-exit destination:orens_porch
-exit direction hint:South
-exit id:orens_hallway_to_orens_porch
-EXIT
-exit label:Study
-exit destination:orens_study
-exit direction hint:West
-exit id:orens_hallway_to_orens_study
-
-LOCATION
-x:480
-y:180
-location id:orens_study
-location area id:town_area
-location description:You are in the study of the Constantine Mansion. There is a roaring fire on the west wall that crackles and lights the room up with flickers of flame. There is a large desk and two large chairs facing each other over it, both with high backs and wide arms.
-text to show on first entry:Staring into the fire on the far wall memories flicker back to life as you recall the last time you were here, that terrible battle with the witch Bella Constantine, her screaming as she ran through the door cursing you with her last ounce of energy.
-EXIT
-exit label:Hallway
-exit destination:orens_hallway
-exit direction hint:East
-exit id:orens_study_to_orens_hallway
