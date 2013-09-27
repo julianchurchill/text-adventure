@@ -789,6 +789,7 @@ item talk response to:wherenow:"Just over there, can you go and see if it's safe
 item talk follow up phrase to:wherenow:sureillberightback:Sure I'll be right back:"Sure, I'll be right back.". With a little trepidation you look to the north of the courtyard wondering what lies ahead.
 item talk action in response to:wherenow:change item visibility:oubliette_in_the_courtyard1:invisible
 item talk action in response to:wherenow:change item visibility:oubliette_in_the_courtyard2:visible
+item talk action in response to:wherenow:change exit visibility:castle_courtyard_to_castle_courtyard_2:visible
 
 ITEM
 item name:Oubliette
