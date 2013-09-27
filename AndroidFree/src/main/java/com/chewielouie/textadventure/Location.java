@@ -90,7 +90,7 @@ public class Location implements ModelLocation {
             return "";
 
         String itemsPostAmble = there_english + " ";
-        itemsPostAmble += is_are_PluralQualifier( items ) + " ";
+        itemsPostAmble += is_are_PluralQualifier( visibleItems ) + " ";
         for( Item item : visibleItems )
             itemsPostAmble += generateItemNounPrefix( item ) +
                               item.midSentenceCasedName() +

@@ -340,6 +340,22 @@ public class LocationTests {
     }
 
     @Test
+    public void item_must_be_visible_to_effect_choice_of_There_are() {
+        Location l = new Location( "", "Location description.", null, null );
+        Item invisibleSingularItem = makeMockItem( "invisible singular item" );
+        when( invisibleSingularItem.visible() ).thenReturn( false );
+        when( invisibleSingularItem.plural() ).thenReturn( false );
+        l.addItem( invisibleSingularItem );
+        Item pluralItem = makeMockItem( "plural items" );
+        when( pluralItem.countableNounPrefix() ).thenReturn( "some" );
+        when( pluralItem.visible() ).thenReturn( true );
+        when( pluralItem.plural() ).thenReturn( true );
+        l.addItem( pluralItem );
+
+        assertThat( l.availableItemsText(), containsString( "There are " ) );
+    }
+
+    @Test
     public void names_without_a_countable_noun_prefix_have_no_prefix_added() {
         Location l = new Location( "", "Location description.", null, null );
         Item item = makeMockItem( "Elvis" );
