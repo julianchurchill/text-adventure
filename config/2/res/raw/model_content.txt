@@ -450,6 +450,35 @@ item talk response to:icanrepairthebarricade:"Ok, that would be wonderful, go ta
 item talk action in response to:icanrepairthebarricade:change item visibility:cabal_jambon_no_introduction:invisible
 item talk action in response to:icanrepairthebarricade:change item visibility:cabal_jambon_sent_to_by_oubliette:visible
 
+ITEM
+item name:Oubliette
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item id:oubliette_mushrooms_collected
+item mid sentence cased name:Oubliette
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:howcanihelp:How can I help:"How can I help?" you ask Oubliette.
+item talk response to:howcanihelp:"Well the barricade needs to be repaired.".
+item talk follow up phrase to:howcanihelp:okicanhelptorepairthebarricade:Ok, I can help to repair the barricade:"Ok, I can help to repair the barricade.", you say bravely, or at least as bravely as you can muster to a girl who has beaten you unconscious with a boot.
+item talk response to:okicanhelptorepairthebarricade:"Ok, that would be wonderful, go talk to my father and he'll give you instructions on what needs to be done.". She gestures towards the hovel to the north.
+item talk action in response to:okicanhelptorepairthebarricade:change item visibility:cabal_jambon_no_introduction:invisible
+item talk action in response to:okicanhelptorepairthebarricade:change item visibility:cabal_jambon_sent_to_by_oubliette:visible
+
+ITEM
+item name:Oubliette
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item id:oubliette_barricade_fixed
+item mid sentence cased name:Oubliette
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:howcanihelp:How can I help:"How can I help?" you ask Oubliette.
+item talk response to:howcanihelp:"I need to collect some mushrooms for healing drafts from the ruins of the old castle.".
+
+item talk follow up phrase to:howcanihelp:okicanhelpyoucollectthemushrooms:Ok, I can help you collect the mushrooms:"Ok, I can help you collect the mushrooms." you state assuming it will be a simple task, your keenness to impress causing you to gloss over the fact that old castle ruins might be involved. Possibly even dangerous old castle ruins.
+item talk response to:okicanhelpyoucollectthemushrooms:"Ok, that would be wonderful. What I really need is a strong, tough bodyguard like you since the castle is teeming with the witch's creatures.". Before you can say "Ah..." she runs off to the east calling back "I'll just collect my basket, come with me, the ruins are this way to the east of town.".
+item talk action in response to:okicanhelpyoucollectthemushrooms:change item visibility:oubliette_barricade_fixed:invisible
+item talk action in response to:okicanhelpyoucollectthemushrooms:change item visibility:oubliette_getting_basket:visible
+
 
 LOCATION
 x:240
@@ -823,6 +852,29 @@ item id:mushrooms
 item countable noun prefix:some
 item is untakeable:
 item visibility:invisible
+item can be used with:mushroom_plucker
+item successful use message:You pop the plucker over the frilly mushrooms and one by one you extract them all from their nooks and crannies.
+item use action:change item visibility:mushrooms:invisible
+item use action:change item visibility:pocket_mushrooms:visible
+item use action:take item:pocket_mushrooms
+ITEM
+item name:Mushrooms
+item description:Precious wild mushrooms that have healing powers - or so you've been told by Oubliette. These have been professionally gathered from the courtyard of the ruined castle. They have frilly heads on dainty stalks, almost harmless looking.
+item id:pocket_mushrooms
+item countable noun prefix:some
+item visibility:invisible
+ITEM
+item name:Mushroom
+item description:A precious wild mushroom that has healing powers - or so you've been told by Oubliette. This has been professionally gathered from the courtyard of the ruined castle. It has a frilly head on a dainty stalk, almost harmless looking.
+item id:single_mushroom
+item countable noun prefix:a
+item visibility:invisible
+ITEM
+item name:Mushroom plucker
+item description:It is a long cone which you place over a mushroom, then you squeeze the trigger on the side and it pops the mushroom right out of the ground all in one piece. The best way to maintain a fresh fungus.
+item id:mushroom_plucker
+item countable noun prefix:a
+item visibility:invisible
 ITEM
 item name:Oubliette
 item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
@@ -830,5 +882,17 @@ item id:oubliette_in_the_north_courtyard
 item mid sentence cased name:Oubliette
 item is untakeable:
 item visibility:invisible
+item talk initial phrase:arethosethemushrooms:Are those the mushrooms?:"Are those the mushrooms?" you ask pointing at the rocks.
+item talk response to:arethosethemushrooms:"Yes they are, would you help me gather them?". She hands you a mushroom plucker and you blush slightly as she smiles at you.
+item talk action in response to:arethosethemushrooms:change item visibility:mushroom_plucker:visible
+item talk action:take item:mushroom_plucker
 
+item can be used with:pocket_mushrooms
+item successful use message:You pass the mushrooms you have gathered to Oubliette and she thanks you. Placing them in her woven basket she picks one out and passes it to you. "Here, have this for your trouble, I know it's not much but it might come in handy. These mushrooms will heal if eaten, but take care not to each too much as you will fall asleep and appear to others as though dead.". She turns away to leave - "I'm heading back to town, you know the way - thanks again!" and off she goes without glancing back. You stand alone in the courtyard shuffling your shoes and decide to head back to town with her.
+item use action:destroy item:mushroom_plucker
+item use action:destroy item:pocket_mushrooms
+item use action:change item visibility:oubliette_in_the_north_courtyard:invisible
+item use action:change item visibility:oubliette_mushrooms_collected:visible
+item use action:change item visibility:single_mushroom:visible
+item item action:take item:single_mushroom
 
