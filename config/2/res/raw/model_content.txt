@@ -814,7 +814,7 @@ item is untakeable:
 item visibility:invisible
 item talk initial phrase:itssafeletsgo:It's safe, let's go:"It's safe, let's go.". One leg on a pile of bricks you point dramatically north.
 item talk response to:itssafeletsgo:"Excellent!" she exclaims and runs off to the north part of the courtyard.
-item talk action in response to:itssafeletsgo:change item visibility:oubliette_in_the_courtyard3:visible
+item talk action in response to:itssafeletsgo:change item visibility:oubliette_in_the_courtyard3:invisible
 item talk action in response to:itssafeletsgo:change item visibility:oubliette_in_the_north_courtyard:visible
 
 
@@ -901,7 +901,20 @@ item visibility:invisible
 item talk initial phrase:arethosethemushrooms:Are those the mushrooms?:"Are those the mushrooms?" you ask pointing at the rocks.
 item talk response to:arethosethemushrooms:"Yes they are, would you help me gather them?". She hands you a mushroom plucker and you blush slightly as she smiles at you.
 item talk action in response to:arethosethemushrooms:change item visibility:mushroom_plucker:visible
-item talk action:take item:mushroom_plucker
+item talk action in response to:arethosethemushrooms:change item visibility:oubliette_in_the_north_courtyard:invisible
+item talk action in response to:arethosethemushrooms:change item visibility:oubliette_in_the_north_courtyard_waiting:visible
+item talk action in response to:arethosethemushrooms:take item:mushroom_plucker
+
+ITEM
+item name:Oubliette
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item id:oubliette_in_the_north_courtyard_waiting
+item mid sentence cased name:Oubliette
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:arethosethemushrooms:Are those the mushrooms?:"Are those the mushrooms?" you ask pointing at the rocks.
+item talk response to:arethosethemushrooms:"Yes they are, just use the mushroom plucker I gave you to pick them.". She smiles at you, like a teacher to a struggling pupil.
 
 item can be used with:pocket_mushrooms
 item successful use message:You pass the mushrooms you have gathered to Oubliette and she thanks you. Placing them in her woven basket she picks one out and passes it to you. "Here, have this for your trouble, I know it's not much but it might come in handy. These mushrooms will heal if eaten, but take care not to each too much as you will fall asleep and appear to others as though dead.". She turns away to leave - "I'm heading back to town, you know the way - thanks again!" and off she goes without glancing back. You stand alone in the courtyard shuffling your shoes and decide to head back to town with her.
@@ -910,5 +923,5 @@ item use action:destroy item:pocket_mushrooms
 item use action:change item visibility:oubliette_in_the_north_courtyard:invisible
 item use action:change item visibility:oubliette_mushrooms_collected:visible
 item use action:change item visibility:single_mushroom:visible
-item item action:take item:single_mushroom
+item use action:take item:single_mushroom
 
