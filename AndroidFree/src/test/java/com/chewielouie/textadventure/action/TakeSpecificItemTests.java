@@ -1,6 +1,9 @@
 package com.chewielouie.textadventure.action;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +13,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.ModelLocation;
-import com.chewielouie.textadventure.item.NormalItem;
 import com.chewielouie.textadventure.UserInventory;
 
 @RunWith(JMock.class)
 public class TakeSpecificItemTests {
 
     private Mockery mockery = new Mockery();
+
+    TakeSpecificItem createAction() {
+        return new TakeSpecificItem( null, null, null );
+    }
 
     TakeSpecificItem createAction( Item item ) {
         return new TakeSpecificItem( item, null, null );
@@ -61,8 +67,7 @@ public class TakeSpecificItemTests {
 
     @Test
     public void user_must_choose_follow_up_action_is_always_false() {
-        TakeSpecificItem object1 = createAction( new NormalItem() );
-        assertFalse( object1.userMustChooseFollowUpAction() );
+        assertFalse( createAction().userMustChooseFollowUpAction() );
     }
 
     @Test
@@ -98,25 +103,27 @@ public class TakeSpecificItemTests {
     }
 
     @Test
-    public void two_objects_with_the_same_value_should_be_equal() {
-        TakeSpecificItem object1 = createAction( new NormalItem() );
-        TakeSpecificItem object2 = createAction( new NormalItem() );
+    public void two_objects_with_the_same_item_should_be_equal() {
+        Item item = mock( Item.class );
+        TakeSpecificItem object1 = createAction( item );
+        TakeSpecificItem object2 = createAction( item );
 
         assertEquals( object1, object2 );
     }
 
     @Test
-    public void a_show_inventory_object_is_not_equal_to_a_non_object() {
-        TakeSpecificItem object = createAction( new NormalItem() );
+    public void a_take_specific_item_object_is_not_equal_to_a_non_object() {
+        TakeSpecificItem object = createAction();
         Object notATakeSpecificItem = new Object();
 
         assertNotEquals( object, notATakeSpecificItem );
     }
 
     @Test
-    public void two_objects_with_the_same_value_should_have_the_same_hashcode() {
-        TakeSpecificItem object1 = createAction( new NormalItem() );
-        TakeSpecificItem object2 = createAction( new NormalItem() );
+    public void two_objects_with_the_same_item_should_have_the_same_hashcode() {
+        Item item = mock( Item.class );
+        TakeSpecificItem object1 = createAction( item );
+        TakeSpecificItem object2 = createAction( item );
 
         assertEquals( object1.hashCode(), object2.hashCode() );
     }

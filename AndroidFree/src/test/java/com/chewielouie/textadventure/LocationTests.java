@@ -9,7 +9,6 @@ import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.action.TalkToAction;
 import com.chewielouie.textadventure.item.Item;
-import com.chewielouie.textadventure.item.NormalItem;
 import java.util.ArrayList;
 import java.util.List;
 import org.jmock.*;
@@ -141,15 +140,20 @@ public class LocationTests {
         assertEquals( exits, l.visibleExits() );
     }
 
+    List<Item> list( Item item ) {
+        List<Item> items = new ArrayList<Item>();
+        items.add( item );
+        return items;
+    }
+
     @Test
     public void added_items_are_retrieveable() {
-        List<Item> items = new ArrayList<Item>();
-        items.add( new NormalItem() );
-
+        Item item = mock( Item.class );
         Location l = createLocation();
-        l.addItem( new NormalItem() );
 
-        assertEquals( items, l.items() );
+        l.addItem( item );
+
+        assertThat( l.items(), equalTo( list( item ) ) );
     }
 
     @Test
@@ -273,18 +277,22 @@ public class LocationTests {
         verify( actionFactory, never() ).createTalkToAction( notVisibleItem );
     }
 
+    private Item makeMockItem( String name ) {
+        Item item = mock( Item.class );
+        when( item.countableNounPrefix() ).thenReturn( "a" );
+        when( item.name() ).thenReturn( name );
+        when( item.midSentenceCasedName() ).thenReturn( name );
+        when( item.visible() ).thenReturn( true );
+        when( item.plural() ).thenReturn( false );
+        return item;
+    }
+
     @Test
     public void added_items_are_added_to_available_items_text() {
         Location l = new Location( "", "Location description.", null, null );
-        NormalItem item1 = new NormalItem();
-        item1.setName( "name" );
-        l.addItem( item1 );
-        NormalItem item2 = new NormalItem();
-        item2.setName( "name2" );
-        l.addItem( item2 );
-        NormalItem item3 = new NormalItem();
-        item3.setName( "name3" );
-        l.addItem( item3 );
+        l.addItem( makeMockItem( "name" ) );
+        l.addItem( makeMockItem( "name2" ) );
+        l.addItem( makeMockItem( "name3" ) );
 
         assertEquals( "There is a name, a name2 and a name3 here.\n",
                       l.availableItemsText() );
@@ -314,16 +322,6 @@ public class LocationTests {
 
         assertEquals( "There is a visible item here.\n",
                       l.availableItemsText() );
-    }
-
-    private Item makeMockItem( String name ) {
-        Item item = mock( Item.class );
-        when( item.countableNounPrefix() ).thenReturn( "a" );
-        when( item.name() ).thenReturn( name );
-        when( item.midSentenceCasedName() ).thenReturn( name );
-        when( item.visible() ).thenReturn( true );
-        when( item.plural() ).thenReturn( false );
-        return item;
     }
 
     @Test
