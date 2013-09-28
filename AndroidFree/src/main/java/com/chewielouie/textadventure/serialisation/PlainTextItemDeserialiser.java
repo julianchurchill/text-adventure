@@ -73,7 +73,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private void extractItemUseProperties() {
         item.setCanBeUsedWith( extractNewlineDelimitedValueFor( itemCanBeUsedWithTag ) );
         item.setUsedWithText(
-            insertEncodedNewLines(
+            convertEncodedNewLines(
                 extractNewlineDelimitedValueFor( itemSuccessfulUseMessageTag ) ) );
 
         if( findTagWithNoArgument( itemUseIsNotRepeatableTag ) )
@@ -82,7 +82,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         extractItemUseActions();
     }
 
-    private String insertEncodedNewLines( String input ) {
+    private String convertEncodedNewLines( String input ) {
         return input.replace( "<newline>", "\n" );
     }
 
