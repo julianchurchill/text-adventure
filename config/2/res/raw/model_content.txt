@@ -199,6 +199,7 @@ item visibility:invisible
 item examine action is not repeatable:
 item examine message:"That's disgusting. If you're hoping to find a key or a saw or a hand grenade in there then stupidity has clearly won the battle for your brain.". What was that? You can't identify where it came from, perhaps you should reply...
 item on examine action:change item visibility:deeply_unpleasant_item:invisible
+item on examine action:change item visibility:indescribeable_item:invisible
 item on examine action:change item visibility:disembodied_voice:visible
 ITEM
 item name:disembodied voice
