@@ -523,7 +523,23 @@ item talk response to:hellosir:"What is it? Oh, you're the swine that brought th
 item talk action in response to:hellosir:change item description:This is Cabal Jambon, he doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
 
 item talk follow up phrase to:hellosir:iwassentbyyourdaughter:I was sent by your daughter:"I was sent by your daughter, Oubliette.". Ah that name, just saying it out loud lifts your spirit. "I'm here to help with the barricade.".
-item talk response to:iwassentbyyourdaughter:"Is that right, you look like a scrawny fellow, can you lift your own arms up without crying?". You reply cautiously "Um, yes...". "Hmphh." snorts Cabal, "Well you'll have to do, we're getting short on hands every day that goes by."
+item talk response to:iwassentbyyourdaughter:"Is that right, you look like a scrawny fellow, can you lift your own arms up without crying?". You reply cautiously "Um, yes...". "Hmphh." snorts Cabal, "Well you'll have to do, we're getting short on hands every day that goes by.". Turning away for a moment he fumbles about amidst the straw you assumed was bedding and pulls out an ImpSaw 2000 and it's accompanying imperator. That seems to you like a rather dangerous place to keep a chainsaw but you decide against mentioning your opinion since the same man that made that decision now wields the contraption in front of you, and as he already alluded to, he doesn't like you very much. "Use this to cut some strong branches from the wood to the north that we can use to repair the barricades and hurry, night will be upon us before we know it.". He hands you the chainsaw and the imperator.
+item talk action in response to:iwassentbyyourdaughter:change item visibility:impsaw2000:visible
+item talk action in response to:iwassentbyyourdaughter:change item visibility:imperator:visible
+
+ITEM
+item name:ImpSaw 2000
+item description:The ImpSaw 2000 is an award winning imp powered wood sawing machine. You can fell a forest in minutes with this little baby if you can get it hot enough. Unfortunately this particular device looks a little worse for wear, missing many of the razor sharp teeth that provide the smooth cutting action required to fell trees quicker than a beaver on a rampage. When you shake it, it squeaks.
+item id:impsaw2000
+item mid sentence cased name:ImpSaw 2000
+item countable noun prefix:an
+item visibility:invisible
+ITEM
+item name:Imperator
+item description:The imperator resembles a tiny cattle prod, when you squeeze one end the other sparks and the whole thing vibrates violently in your hand. It is used to start the ImpSaw once you are ready.
+item id:imperator
+item countable noun prefix:an
+item visibility:invisible
 
 
 LOCATION
