@@ -399,7 +399,7 @@ item talk response to:helpme:She looks at you moving forward but the older girl 
 item talk initial phrase:isthataboot:Is that a boot behind your back?:"Is that a boot behind your back?" you say to the younger girl.
 item talk response to:isthataboot: She spins round on one leg with unsettling glee so that you can clearly see the large leather boot she is holding then she sticks out her tongue and blows a big raspberry at you. The older girl looks at her sternly and tells her off in a terse whisper.
 ITEM
-item name:Older girl
+item name:Oubliette
 item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. From what you recall of the shouting man, her name is Oubliette. Fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself.
 item id:oubliette_mob
 item countable noun prefix:an
