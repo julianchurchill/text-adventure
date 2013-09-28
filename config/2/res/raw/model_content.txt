@@ -403,7 +403,8 @@ ITEM
 item name:Oubliette
 item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. From what you recall of the shouting man, her name is Oubliette. Fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself.
 item id:oubliette_mob
-item countable noun prefix:an
+item mid sentence cased name:Oubliette
+item is proper noun:
 item is untakeable:
 item talk initial phrase:helpme:Can you help me?:"Can you help me?" you say to Oubliette.
 item talk response to:helpme:The girl sighs. "You're awake at last. How's your head?".
