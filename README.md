@@ -135,7 +135,7 @@ Done
 
 Note: Multiple version numbers are used where changes are common to multiple apps
 
-TTA1 v2.2.x/TTA2 v1.0
+TTA1 v2.2.x/TTA2 v1.0.x
 ---
 
 - [FEATURE] Enabled 'move to sd card'
