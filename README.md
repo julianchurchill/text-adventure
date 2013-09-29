@@ -41,9 +41,12 @@ Technical Tasks
     - Count how many times options dialog is opened
     - Count how many times map is opened
 - Save/restore checkpoints.
-  - Add menu items, restore is disabled if no checkpoint files available
   - Save dumps action history to a file action_history_checkpoint_[n]
+    - Toast to show checkpoint has been saved (and which number...)
   - Restore loads latest numbered action_history_checkpoint_[n] file and then deletes it
+    - Not sure deleting is a good idea... what if you the progress and want to return to the same checkpoint, you can't because it's been deleted!
+    - Toast to show checkpoint has been restored (and which number...)
+  - Add menu items, restore is disabled if no checkpoint files available
 
 Bugs
 
