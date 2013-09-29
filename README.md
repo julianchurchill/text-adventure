@@ -40,7 +40,7 @@ Technical Tasks
     - Count how many actions are made to complete game
     - Count how many times options dialog is opened
     - Count how many times map is opened
-- Save/restore checkpoints.
+- Save/restore checkpoints - on branch 'checkpoints'
   - Save dumps action history to a file action_history_checkpoint_[n]
     - Toast to show checkpoint has been saved (and which number...)
   - Restore loads latest numbered action_history_checkpoint_[n] file and then deletes it
