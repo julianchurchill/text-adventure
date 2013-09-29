@@ -1,6 +1,7 @@
 package com.chewielouie.textadventure_common;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -119,13 +120,20 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_string_options_cancel();
     abstract protected int R_string_show_map();
     abstract protected int R_string_yes();
+    abstract protected int R_string_save_checkpoint();
+    abstract protected int R_string_restore_checkpoint();
+    abstract protected int R_string_restore_checkpoint_dialog_title();
+    abstract protected int R_string_restore_checkpoint_dialog_text();
 
     private static final int ABOUT_MENU_ITEM = 0;
     private static final int NEW_GAME_MENU_ITEM = 1;
     private static final int OPTIONS_MENU_ITEM = 2;
     private static final int SHOW_MAP_MENU_ITEM = 3;
+    private static final int SAVE_CHECKPOINT_MENU_ITEM = 4;
+    private static final int RESTORE_CHECKPOINT_MENU_ITEM = 5;
     private static String oldJSONFormatSaveFileName = "save_file_1";
     private static String actionHistorySaveFileName = "action_history_save_file_1";
+    private static final String checkpointFileNamePrefix = actionHistorySaveFileName + "_checkpoint_";
     private static String shared_prefs_root_key = "com.chewielouie.textadventure";
     private static int default_font_size = 16;
     private static String font_size_key = shared_prefs_root_key + ".fontsize";
@@ -207,9 +215,15 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private class LoadTask extends AsyncTask<Void, Void, Void> {
+        private String saveFileName;
+
+        public LoadTask( String saveFileName ) {
+            this.saveFileName = saveFileName;
+        }
+
         protected Void doInBackground(Void... args) {
-            if( saveFileExists() )
-                loadGame();
+            if( fileExists( saveFileName ) )
+                loadGame( saveFileName );
             else
                 createNewGame();
 
@@ -239,10 +253,13 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     @Override
     public void onResume() {
         super.onResume();
+        loadSavedGameWithProgressDialog( actionHistorySaveFileName );
+    }
 
+    private void loadSavedGameWithProgressDialog( String saveFileName ) {
         progressDialog = ProgressDialog.show(this, "Starting...", "Loading game...", true, false);
         loading = true;
-        loadingTask = new LoadTask().execute();
+        loadingTask = new LoadTask( saveFileName ).execute();
     }
 
     @Override
@@ -264,20 +281,16 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         return false;
     }
 
-    private boolean saveFileExists() {
-        return fileExists( actionHistorySaveFileName );
-    }
-
-    private void loadGame() {
+    private void loadGame( String saveFileName ) {
         createNewGame();
         replayActions( new ActionHistoryDeserialiser( actionFactory, inventory, model )
-                            .deserialise( loadSerialisedActionHistory() ) );
+                            .deserialise( loadSerialisedActionHistory( saveFileName ) ) );
     }
 
-    private String loadSerialisedActionHistory() {
+    private String loadSerialisedActionHistory( String saveFileName ) {
         InputStream inputStream = null;
         try {
-            inputStream = openFileInput( actionHistorySaveFileName );
+            inputStream = openFileInput( saveFileName );
         } catch( FileNotFoundException e ) {
             System.err.println("exception thrown: " + e.toString() );
         } catch( IOException e ) {
@@ -285,7 +298,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         }
         if( inputStream == null )
             return "";
-        return readRawTextFile( inputStream, actionHistorySaveFileName );
+        return readRawTextFile( inputStream, saveFileName );
     }
 
     private String readRawTextFile( InputStream input, String fileID ) {
@@ -628,6 +641,8 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         menu.add( Menu.NONE, NEW_GAME_MENU_ITEM, Menu.NONE, getText( R_string_new_game() ) );
         menu.add( Menu.NONE, OPTIONS_MENU_ITEM, Menu.NONE, getText( R_string_options() ) );
         menu.add( Menu.NONE, SHOW_MAP_MENU_ITEM, Menu.NONE, getText( R_string_show_map() ) );
+        menu.add( Menu.NONE, SAVE_CHECKPOINT_MENU_ITEM, Menu.NONE, getText( R_string_save_checkpoint() ) );
+        menu.add( Menu.NONE, RESTORE_CHECKPOINT_MENU_ITEM, Menu.NONE, getText( R_string_restore_checkpoint() ) );
         return true;
     }
 
@@ -648,6 +663,12 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
                 break;
             case SHOW_MAP_MENU_ITEM:
                 showMap();
+                break;
+            case SAVE_CHECKPOINT_MENU_ITEM:
+                saveCheckpoint();
+                break;
+            case RESTORE_CHECKPOINT_MENU_ITEM:
+                showRestoreCheckpointDialog();
                 break;
             default:
                 retVal = super.onOptionsItemSelected( item );
@@ -749,6 +770,47 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         map_view.setBitmap(getMap());
     }
 
+    private void saveCheckpoint() {
+        saveGame( nextCheckpointFileName() );
+    }
+
+    private String nextCheckpointFileName() {
+        return checkpointFileNamePrefix + Integer.toString( highestCheckpointNumber() + 1 );
+    }
+
+    private int highestCheckpointNumber() {
+        int highestCheckpointNumber = 0;
+        String[] files = new File( getFilesDir().getPath() ).list();
+        for( String f : files ) {
+            if( f.startsWith( checkpointFileNamePrefix ) ) {
+                int candidate = Integer.parseInt( f.substring( checkpointFileNamePrefix.length() ) );
+                if( candidate > highestCheckpointNumber )
+                    highestCheckpointNumber = candidate;
+            }
+        }
+        return highestCheckpointNumber;
+    }
+
+    private void restoreCheckpoint() {
+        String lastCheckpointFileName = checkpointFileNamePrefix + Integer.toString( highestCheckpointNumber() );
+        loadSavedGameWithProgressDialog( actionHistorySaveFileName );
+    }
+
+    private void showRestoreCheckpointDialog() {
+        new AlertDialog.Builder( this )
+            .setIcon( android.R.drawable.ic_dialog_alert )
+            .setTitle( R_string_restore_checkpoint_dialog_title() )
+            .setMessage( R_string_restore_checkpoint_dialog_text() )
+            .setPositiveButton( R_string_yes(), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick( DialogInterface dialog, int which ) {
+                    restoreCheckpoint();
+                }
+            })
+            .setNegativeButton( R_string_no(), null )
+            .show();
+    }
+
     public void currentScore( int score ) {
         currentScore = score;
         updateScore();
@@ -793,21 +855,29 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     @Override
     public void onPause() {
         super.onPause();
+        saveGame( actionHistorySaveFileName );
+    }
+
+    private void saveGame( String saveFileName ) {
         if( loading ) {
             loadingTask.cancel( true );
             endLoading();
         }
         else {
-            writeActionHistorySaveFile();
+            writeActionHistorySaveFile( saveFileName );
             if( saveJSONFileExists() )
                 deleteFile( oldJSONFormatSaveFileName );
         }
     }
 
-    private void writeActionHistorySaveFile() {
-        byte[] bytes = new ActionHistorySerialiser( actionHistory() ).serialise().getBytes();
+    private void writeActionHistorySaveFile( String saveFileName ) {
+        writeBytesToFile( saveFileName,
+                          new ActionHistorySerialiser( actionHistory() ).serialise().getBytes() );
+    }
+
+    private void writeBytesToFile( String saveFileName, byte[] bytes ) {
         try {
-            FileOutputStream outputStream = openFileOutput( actionHistorySaveFileName,
+            FileOutputStream outputStream = openFileOutput( saveFileName,
                                                             Context.MODE_PRIVATE );
             outputStream.write( bytes );
             outputStream.close();

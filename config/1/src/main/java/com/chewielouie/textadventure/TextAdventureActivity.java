@@ -172,4 +172,19 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
         return R.string.yes;
     }
 
+    protected int R_string_save_checkpoint() {
+        return R.string.save_checkpoint;
+    }
+
+    protected int R_string_restore_checkpoint() {
+        return R.string.restore_checkpoint;
+    }
+
+    protected int R_string_restore_checkpoint_dialog_title() {
+        return R.string.restore_checkpoint_dialog_title;
+    }
+
+    protected int R_string_restore_checkpoint_dialog_text() {
+        return R.string.restore_checkpoint_dialog_text;
+    }
 }

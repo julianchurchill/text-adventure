@@ -17,4 +17,8 @@
     <string name="completed">completed</string>
     <string name="ok">Ok</string>
     <string name="show_map">Map</string>
+    <string name="save_checkpoint">Save Checkpoint</string>
+    <string name="restore_checkpoint">Restore Checkpoint</string>
+    <string name="restore_checkpoint_dialog_title">Restore checkpoint?</string>
+    <string name="restore_checkpoint_dialog_text">Restoring to the last saved checkpoint will discard all progress made since. Are you sure you want to do this?</string>
 </resources>
