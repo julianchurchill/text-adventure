@@ -50,6 +50,8 @@ Technical Tasks
 
 Bugs
 
+- [BUG] Order of exits can be confusing - reorder to this {North, West, East, South} so that they generally appear in order
+  - Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
