@@ -17,6 +17,9 @@ location area name:Town
 LOCATION AREA
 location area id:castle_ruins_area
 location area name:Castle Ruins
+LOCATION AREA
+location area id:western_woods_area
+location area name:Western Woods
 
 LOCATION
 x:300
@@ -564,7 +567,7 @@ x:120
 y:240
 location id:westgatehouse
 location area id:town_area
-location description:You stand before a large gatehouse within which sit several men of the town watch. They are not doing very much and do not notice you as you pass. You wonder how much they get paid and make a mental note to consider a career change. To the north is a dirt track leading away from the town.
+location description:You stand before a large gatehouse containing a rabble of tired men, all of the town watch. To the north is a dirt track leading away from the town blocked by a barricade. There are numerous gaps in the barricade and parts look quite flimsy. It looks like you can squeeze past to get to the dirt track.
 EXIT
 exit label:East
 exit destination:morecobbledroad
@@ -575,7 +578,104 @@ exit label:North
 exit destination:dirttrack
 exit direction hint:North
 exit id:westgatehouse_to_dirttrack
-exit is not visible:
+
+LOCATION
+x:120
+y:180
+location id:dirttrack
+location area id:town_area
+location description:You are on a dirt track leading away from the town. There are deep furrows indicating it has been well used, probably as a trade route to other more affluent settlements. It continues to the north.
+EXIT
+exit label:North
+exit destination:moredirttrack
+exit direction hint:North
+exit id:dirttrack_to_moredirttrack
+EXIT
+exit label:South
+exit destination:westgatehouse
+exit direction hint:South
+exit id:dirttrack_to_westgatehouse
+
+LOCATION
+x:120
+y:120
+location id:moredirttrack
+location area id:town_area
+location description:You are on a dirt track leading away from the town. To the west you see a churchyard, it looks bedraggled and the gate has been firmly shut. To the north the track starts to become enshrouded in the surrounding woodland which quickly becomes too dense to pass. There is a small track around the south edge of the churchyard leading to more woodland.
+EXIT
+exit label:South
+exit destination:dirttrack
+exit direction hint:South
+exit id:moredirttrack_to_dirttrack
+EXIT
+exit label:Small track
+exit destination:church_woodland
+exit direction hint:West
+exit id:moredirttrack_to_church_woodland
+
+LOCATION
+x:120
+y:120
+location id:church_woodland
+location area id:western_woods_area
+location description:Following the path you skirt around the south edge of the churchyard, the high stone wall shading you as you tread over moss and damp grass. Continuing past the church you can see woods to the west and to the south you can hear the flow of water. Back to the east is the main path that leads back to town.
+EXIT
+exit label:South
+exit destination:river_edge
+exit direction hint:South
+exit id:church_woodland_to_river_edge
+EXIT
+exit label:Western woods
+exit destination:western_woods
+exit direction hint:West
+exit id:church_woodland_to_western_woods
+EXIT
+exit label:Small track
+exit destination:moredirttrack
+exit direction hint:East
+exit id:church_woodland_to_moredirttrack
+
+LOCATION
+x:120
+y:120
+location id:river_edge
+location area id:western_woods_area
+location description:Stepping out from the surrounding woods you come upon a river.
+EXIT
+exit label:North
+exit destination:church_woodland
+exit direction hint:North
+exit id:river_edge_to_church_woodland
+EXIT
+exit label:Fisherman's shack
+exit destination:fishermans_shack
+exit direction hint:West
+exit id:river_edge_to_fishermans_shack
+
+LOCATION
+x:120
+y:120
+location id:fishermans_shack
+location area id:western_woods_area
+location description:A fisherman's shack.
+EXIT
+exit label:Outside
+exit destination:river_edge
+exit direction hint:East
+exit id:fishermans_shack_to_river_edge
+
+LOCATION
+x:120
+y:120
+location id:western_woods
+location area id:western_woods_area
+location description:The western woods. There are trees ripe for chopping here.
+EXIT
+exit label:Southern edge of the churchyard
+exit destination:church_woodland
+exit direction hint:East
+exit id:western_woods_to_church_woodland
+
 
 LOCATION
 x:300
@@ -949,4 +1049,3 @@ item use action:change item visibility:oubliette_mushrooms_collected:visible
 item use action:change item visibility:single_mushroom:visible
 item use action:take item:single_mushroom
 item use action:increment score:
-
