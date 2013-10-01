@@ -663,6 +663,21 @@ exit label:Outside
 exit destination:river_edge
 exit direction hint:East
 exit id:fishermans_shack_to_river_edge
+ITEM
+item name:Fishing lure
+item description:It's bright and shiny with a bobbly bit on the top. Just right for attracting fish.
+item id:fishing_lure
+item countable noun prefix:a
+ITEM
+item name:Fishing rod
+item description:A pole long enough to dangle over some water and fall asleep whilst doing nothing on a lazy Sunday afternoon. It has no lure or reel and looks a little useless at the moment.
+item id:fishing_rod
+item countable noun prefix:a
+ITEM
+item name:Fishing reel
+item description:A cylindrical construction for holding fishing line, it is usually attached to a rod. This has plenty of fishing line already spooled around it.
+item id:fishing_reel
+item countable noun prefix:a
 
 LOCATION
 x:120
