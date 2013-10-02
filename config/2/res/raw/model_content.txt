@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:5
+maximum score:7
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -651,6 +651,59 @@ exit label:Fisherman's shack
 exit destination:fishermans_shack
 exit direction hint:West
 exit id:river_edge_to_fishermans_shack
+ITEM
+item name:Sleeping fisherman
+item description:Huddled under a tree by the river bank is a fisherman, sou'wester flopped down over his face, snoring loudly. Tied to one of his toes is a piece of string which leads to the river and an empty bottle of cider dangles from his hand, threatening to drop to the floor and smash.
+item id:sleeping_fisherman
+item countable noun prefix:a
+ITEM
+item name:River
+item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gentle rolling hills.
+item id:river_before_fishing
+item countable noun prefix:a
+item can be used with:fishing_rod_with_reel_and_lure
+item successful use message:As you whip the line out from behind you the reel spins quickly unleashing the line across the river, landing about midway. An excellent cast, almost as though you know what you're doing. You slowly turn the reel handle to pull the line back, staring at the water, waiting for a tug on the line to indicate something has taken a nibble. Turn, turn, turn but nothing. You wind the line right up ready for another cast.
+item use action:change item visibility:river_before_fishing:invisible
+item use action:change item visibility:river_after_the_first_fish:visible
+ITEM
+item name:River
+item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gentle rolling hills.
+item id:river_after_the_first_fish
+item countable noun prefix:a
+item visibility:invisible
+item can be used with:fishing_rod_with_reel_and_lure
+item successful use message:You cast the line out again, another good through the line drops straight into the middle of the river width. Slowly, slowly you turn that handle, dragging the line in willing the lure to entice a fish. You feel a slight tug, was a that a nibble or just the lure catching a weed? You keep turning, again the line tugs, this must be a fish - you increase the pace, hoping the fish will make a dash for the lure and suddenly the line has some weight. You pull and wind, pull and wind and out of the river it comes. Firmly attached to the lure there is a large fish, about the length of your forearm and twice as wide, almost grinning as it chomps on the lure. It's teeth are sharp and pointy and you recognise it as a Spiky-toothed Goober. You grab the fish, detach the lure and hold it flapping about in your arms.
+item use action:change item visibility:river_after_the_first_fish:invisible
+item use action:change item visibility:river_with_no_fish:visible
+item use action:change item visibility:spiky_toothed_goober:visible
+item use action:take item:spiky_toothed_goober
+ITEM
+item name:River
+item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gentle rolling hills.
+item id:river_with_no_fish
+item countable noun prefix:a
+ITEM
+item name:Spiky-toothed goober
+item description:This fish looks like a vicious fellow. It has the sharpest nippers you've ever seen on a fish and it looks like it could make a tidy meal out of any one of your limbs.
+item id:spiky_toothed_goober
+item countable noun prefix:a
+item visibility:invisible
+ITEM
+item name:Sign
+item description:The sign says "No fishing - only Spiky-toothed Goobers here, go away.". The wooden post it is mounted on is covered in flaky, glistening fish scales as though someone has beaten it with a trout.
+item id:river_sign
+item countable noun prefix:a
+item can be used with:spiky_toothed_goober
+item successful use message:Eyeing up the sign post you figure that the local fisherman must have used it as a fish bashing post, to knock the critters out before, well, eating them. You want those teeth, and you don't want to be eaten by this goober so you line it up and whack it against the post. Your weak-wristed attempt at knocking the goober out is no match for the creature itself. It flops from your hands, defiantly spits some teeth out in your direction and wriggles back to the relative comfort of the river. You swear that the fish makes a rude sign at you with it's fins before diving beneath the water.
+item use action:destroy item:spiky_toothed_goober
+item use action:change item visibility:spiky_toothed_goober_teeth:visible
+item use action:increment score:
+ITEM
+item name:Spiky-toothed goober teeth
+item description:These are teeth from a Spiky-toothed goober. They are very sharp and pointy and have an air of rude defiance.
+item id:spiky_toothed_goober_teeth
+item countable noun prefix:some
+item visibility:invisible
 
 LOCATION
 x:120
@@ -673,11 +726,34 @@ item name:Fishing rod
 item description:A pole long enough to dangle over some water and fall asleep whilst doing nothing on a lazy Sunday afternoon. It has no lure or reel and looks a little useless at the moment.
 item id:fishing_rod
 item countable noun prefix:a
+item can be used with:fishing_reel
+item successful use message:Sliding the reel onto the end of the rod it finds a notch into which it clicks satisfyingly. It gives a little weight to this end of the rod.
+item use action:destroy item:fishing_reel
+item use action:destroy item:fishing_rod
+item use action:change item visibility:fishing_rod_with_reel:visible
 ITEM
 item name:Fishing reel
 item description:A cylindrical construction for holding fishing line, it is usually attached to a rod. This has plenty of fishing line already spooled around it.
 item id:fishing_reel
 item countable noun prefix:a
+ITEM
+item name:Fishing rod
+item description:A pole long enough to dangle over some water and fall asleep whilst doing nothing on a lazy Sunday afternoon. It has no lure but the reel is well set and full of line.
+item id:fishing_rod_with_reel
+item countable noun prefix:a
+item visibility:invisible
+item can be used with:fishing_lure
+item successful use message:You tie the lure to the exposed end of the fishing line. This rod looks just about ready for action now.
+item use action:destroy item:fishing_lure
+item use action:destroy item:fishing_rod_with_reel
+item use action:change item visibility:fishing_rod_with_reel_and_lure:visible
+item use action:increment score:
+ITEM
+item name:Fishing rod
+item description:A pole long enough to dangle over some water and fall asleep whilst doing nothing on a lazy Sunday afternoon. It has a lure attached to the end of the line and is ready to catch some fish!
+item id:fishing_rod_with_reel_and_lure
+item countable noun prefix:a
+item visibility:invisible
 
 LOCATION
 x:120
