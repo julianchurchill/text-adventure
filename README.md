@@ -51,6 +51,7 @@ Technical Tasks
   - Voice recognition
   - Text to speech
 - Add keywords and description to Google Play description to include - "Story, game, puzzle"
+- Add a Google+ page for the app, add to About box and play store/amazon store listings
 
 Bugs
 
