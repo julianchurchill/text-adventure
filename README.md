@@ -47,6 +47,10 @@ Technical Tasks
     - Not sure deleting is a good idea... what if you the progress and want to return to the same checkpoint, you can't because it's been deleted!
     - Toast to show checkpoint has been restored (and which number...)
   - Add menu items, restore is disabled if no checkpoint files available
+- Accessibility
+  - Voice recognition
+  - Text to speech
+- Add keywords and description to Google Play description to include - "Story, game, puzzle"
 
 Bugs
 
