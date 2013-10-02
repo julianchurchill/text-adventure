@@ -656,6 +656,34 @@ item name:Sleeping fisherman
 item description:Huddled under a tree by the river bank is a fisherman, sou'wester flopped down over his face, snoring loudly. Tied to one of his toes is a piece of string which leads to the river and an empty bottle of cider dangles from his hand, threatening to drop to the floor and smash.
 item id:sleeping_fisherman
 item countable noun prefix:a
+item examine message:As you look at the fisherman he grumbles and moans, dropping the bottle of cider which clangs against the pebbles and tree roots he is nestled amongst. You jump and he wakes up, glares at you and shout-slurs "Geeearrr outt, myyy fish!" fumbling for his bottle of cider which he throws at you. You manage to catch it, narrowly avoiding a braining. There's no way you're getting near the fish in this river while he's awake.
+item on examine action:change item visibility:sleeping_fisherman:invisible
+item on examine action:change item visibility:angry_fisherman:visible
+item on examine action:change item visibility:river_before_fishing:invisible
+item on examine action:change item visibility:river_after_the_first_fish:invisible
+item on examine action:change item visibility:river_with_no_fish:visible
+item on examine action:change item visibility:cider_bottle:visible
+item on examine action:take item:cider_bottle
+ITEM
+item name:Angry fisherman
+item description:This fisherman is angry and obviously drunk, he's raging around, shouting about 'Fisheses!' and 'Drink!'. If you were after the fish in this river there's no way you can get to them with this maniac stumbling around and cursing the sky.
+item id:angry_fisherman
+item countable noun prefix:an
+item visibility:invisible
+item can be used with:cider_bottle
+item successful use message:You wait for the fisherman to wander away a few steps then place the cider bottle on the ground nearby. He turns back, still pacing and spots the bottle. "Arhhhh, drink!" he grabs the bottle and settles down for a snooze.
+item use action:change item visibility:cider_bottle:invisible
+item use action:change item visibility:angry_fisherman:invisible
+item use action:change item visibility:sleeping_fisherman:visible
+item use action:change item visibility:river_before_fishing:visible
+item use action:change item visibility:river_after_the_first_fish:invisible
+item use action:change item visibility:river_with_no_fish:invisible
+ITEM
+item name:Cider bottle
+item description:A half full bottle of cider, it smells like strong stuff.
+item id:cider_bottle
+item countable noun prefix:a
+item visibility:invisible
 ITEM
 item name:River
 item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gentle rolling hills.
