@@ -50,8 +50,16 @@ Technical Tasks
 - Accessibility
   - Voice recognition
   - Text to speech
+
+Marketing
+
 - Add keywords and description to Google Play description to include - "Story, game, puzzle"
+- Forums and newsgroups: intfiction.org, rec.games.int-fiction, rec.arts.int-fiction
+  - TTA1 release posted on intfiction.org
+- Game indexes and review sites: ifdb.tads.org, textadventures.co.uk, www.androidtapp.com
+  - TTA1 androidtapp review request submitted
 - Add a Google+ page for the app, add to About box and play store/amazon store listings
+  - Added Google+ page for Tiny Text Adventure https://plus.google.com/u/0/115456188877848985242
 
 Bugs
 
@@ -146,6 +154,15 @@ Done
 ====
 
 Note: Multiple version numbers are used where changes are common to multiple apps
+
+Marketing
+
+- Google Play Store
+  - Listed
+- Amazon App Store
+  - Listed
+- Facebook, Twitter, Google+
+  - Release 1.0 and 2.0 advertised on all of the above
 
 TTA1 v2.2.x/TTA2 v1.0.x
 ---
