@@ -536,9 +536,9 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     private int rankedValueOf( Exit.DirectionHint d ) {
         if(      d == Exit.DirectionHint.North ) return 10;
-        else if( d == Exit.DirectionHint.South ) return 20;
+        else if( d == Exit.DirectionHint.West ) return 20;
         else if( d == Exit.DirectionHint.East ) return 30;
-        else if( d == Exit.DirectionHint.West ) return 40;
+        else if( d == Exit.DirectionHint.South ) return 40;
         return 70;
     }
 
