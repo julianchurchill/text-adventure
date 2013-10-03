@@ -1,8 +1,9 @@
 package com.chewielouie.textadventure.action;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,32 @@ public class ShowInventoryTests {
         assertTrue( action.userMustChooseFollowUpAction() );
     }
 
+    List<Item> list( Item item1, Item item2  ) {
+        List<Item> items = new ArrayList<Item>();
+        items.add( item1 );
+        items.add( item2 );
+        return items;
+    }
+
+    @Test
+    public void only_visible_inventory_items_are_turned_into_inventory_item_actions() {
+        Item visibleItem = mock( Item.class );
+        when( visibleItem.visible() ).thenReturn( true );
+        Item invisibleItem = mock( Item.class );
+        when( invisibleItem.visible() ).thenReturn( false );
+        UserInventory inventory = mock( UserInventory.class );
+        when( inventory.inventoryItems() ).thenReturn( list( visibleItem, invisibleItem ) );
+        ActionFactory actionFactory = mock( ActionFactory.class );
+        ShowInventory showInventory =
+            new ShowInventory( inventory, null, actionFactory );
+
+        showInventory.trigger();
+        showInventory.followUpActions();
+
+        verify( actionFactory ).createInventoryItemAction( visibleItem, inventory, null );
+        verify( actionFactory, never() ).createInventoryItemAction( invisibleItem, inventory, null );
+    }
+
     @Test
     public void follow_up_actions_use_action_factory_to_get_inventory_item_actions() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
@@ -81,6 +108,12 @@ public class ShowInventoryTests {
             allowing( model ).currentLocation();
             will( returnValue( location ) );
             ignoring( model );
+            allowing( item1 ).visible();
+            will( returnValue( true ) );
+            ignoring( item1 );
+            allowing( item2 ).visible();
+            will( returnValue( true ) );
+            ignoring( item2 );
             ignoring( location );
         }});
         ShowInventory showInventory =

@@ -40,9 +40,10 @@ public class ShowInventory implements Action {
         List<Action> actions = new ArrayList<Action>();
         if( actionFactory != null )
             for( Item item : items )
-                actions.add(
-                    actionFactory.createInventoryItemAction( item, inventory,
-                        (model != null ? model.currentLocation() : null ) ) );
+                if( item.visible() )
+                    actions.add(
+                        actionFactory.createInventoryItemAction( item, inventory,
+                            (model != null ? model.currentLocation() : null ) ) );
         return actions;
     }
 
