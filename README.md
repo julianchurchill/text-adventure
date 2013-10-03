@@ -50,6 +50,7 @@ Technical Tasks
 - Accessibility
   - Voice recognition
   - Text to speech
+- Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
 
 Marketing
 
@@ -63,17 +64,16 @@ Marketing
 
 Bugs
 
-- Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
+- [BUG] Auto scroll to the top of the unread text is too absolute - it doesn't take into account line spacing - it could do with adding a few pixels to the top (e.g. the margin/padding/line spacing divided by 2)
+  - Use TextView.getLineSpacingExtra() if it is > 0
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
+- [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
+  - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
 - [BUG] Last line with directions often is half drawn or unreadable. Perhaps the parchment image is causing this issue.
   - Also the top line can occasionally become half drawn too.
   - Is this due to something odd about the auto scrolling behaviour when new text appears?
-- [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
-  - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
-- [BUG] Auto scroll to the top of the unread text is too absolute - it doesn't take into account line spacing - it could do with adding a few pixels to the top (e.g. the margin/padding/line spacing divided by 2)
-  - Use TextView.getLineSpacingExtra() if it is > 0
 
 Story - TTA2
 
@@ -112,7 +112,6 @@ Story - TTA2
   - Create and play a kazoo at a childrens party at a nobles house (achievement Player of the Kazoo)
   - Collect bugs - using a bug collector to make them visible and catch them. There are 12 to find and there are clues at the locations to indicate that there is a bug there. Something like "There is a flicker of movement in the corner." (Bug Collector)
 - Add some negative use responses. Some of these might require multiple _can be used with_ clauses - this is not yet supported by the parser and will require a technical task.
-  - fiery torch and pocket lint
 
 Features
 
