@@ -582,6 +582,13 @@ exit label:North
 exit destination:dirttrack
 exit direction hint:North
 exit id:westgatehouse_to_dirttrack
+ITEM
+item name:Barricade
+item description:The barricade is made of a variety of broken barrels and branches presumably gathered from the woods to the north of the town.
+item id:north_barricade
+item countable noun prefix:a
+item mid sentence cased name:barricade
+item is untakeable:
 
 LOCATION
 x:120
@@ -622,7 +629,7 @@ x:120
 y:120
 location id:church_woodland
 location area id:western_woods_area
-location description:Following the path you skirt around the south edge of the churchyard, the high stone wall shading you as you tread over moss and damp grass. Continuing past the church you can see woods to the west and to the south you can hear the flow of water. Back to the east is the main path that leads back to town.
+location description:Following the path you skirt around the south edge of the churchyard, the high stone wall shading you as you tread over moss and damp grass. Continuing past the church you can see woods to the west and to the south you can hear the flow of water. Back to the east along the small track is the main path that leads to town.
 EXIT
 exit label:South
 exit destination:river_edge
@@ -644,7 +651,7 @@ x:120
 y:120
 location id:river_edge
 location area id:western_woods_area
-location description:Stepping out from the surrounding woods you come upon a river.
+location description:Stepping out from the surrounding woods you come upon a river. It is full and the banks are fit to burst but the ground around you is clearly dry so you guess the swollen river has not breached it's confines yet.
 EXIT
 exit label:North
 exit destination:church_woodland
@@ -660,28 +667,47 @@ item name:Sleeping fisherman
 item description:Huddled under a tree by the river bank is a fisherman, sou'wester flopped down over his face, snoring loudly. Tied to one of his toes is a piece of string which leads to the river and an empty bottle of cider dangles from his hand, threatening to drop to the floor and smash.
 item id:sleeping_fisherman
 item countable noun prefix:a
-item examine message:As you look at the fisherman he grumbles and moans, dropping the bottle of cider which clangs against the pebbles and tree roots he is nestled amongst. You jump and he wakes up, glares at you and shout-slurs "Geeearrr outt, myyy fish!" fumbling for his bottle of cider which he throws at you. You manage to catch it, narrowly avoiding a braining. There's no way you're getting near the fish in this river while he's awake.
+item is untakeable:
+item examine message:As you look at the fisherman he grumbles and moans, dropping the bottle of cider which clangs against the pebbles and tree roots he is nestled amongst. You jump and he wakes up, glares at you and shout-slurs "Geeearrr outt, myyy fish!" fumbling for his bottle of cider which he throws at you. You manage to dodge it, narrowly avoiding a braining and swiftly pick it up and prepare to defend yourself. There's no way you're getting near the fish in this river while he's awake.
 item on examine action:change item visibility:sleeping_fisherman:invisible
 item on examine action:change item visibility:angry_fisherman:visible
 item on examine action:change item visibility:river_before_fishing:invisible
 item on examine action:change item visibility:river_after_the_first_fish:invisible
-item on examine action:change item visibility:river_with_no_fish:visible
+item on examine action:change item visibility:river_with_no_fish:invisible
+item on examine action:change item visibility:river_with_angry_fisherman:visible
 item on examine action:change item visibility:cider_bottle:visible
 item on examine action:take item:cider_bottle
 ITEM
+item name:Sleeping fisherman
+item description:Huddled under a tree by the river bank is a fisherman, sou'wester flopped down over his face, snoring loudly. Tied to one of his toes is a piece of string which leads to the river and an empty bottle of cider dangles from his hand, threatening to drop to the floor and smash.
+item id:sleeping_fisherman_after_giving_cider_bottle
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine message:As you look at the fisherman he grumbles and moans, dropping the bottle of cider which clangs against the pebbles and tree roots he is nestled amongst. You jump and he wakes up, glares at you and shout-slurs "Geeearrr outt, myyy fish!" fumbling for his bottle of cider which he throws at you. You manage to dodge it, narrowly avoiding a braining and swiftly pick it up and prepare to defend yourself. There's no way you're getting near the fish in this river while he's awake.
+item on examine action:change item visibility:sleeping_fisherman_after_giving_cider_bottle:invisible
+item on examine action:change item visibility:angry_fisherman:visible
+item on examine action:change item visibility:river_before_fishing:invisible
+item on examine action:change item visibility:river_after_the_first_fish:invisible
+item on examine action:change item visibility:river_with_no_fish:invisible
+item on examine action:change item visibility:river_with_angry_fisherman:visible
+item on examine action:change item visibility:cider_bottle:visible
+ITEM
 item name:Angry fisherman
-item description:This fisherman is angry and obviously drunk, he's raging around, shouting about 'Fisheses!' and 'Drink!'. If you were after the fish in this river there's no way you can get to them with this maniac stumbling around and cursing the sky.
+item description:This fisherman is angry and obviously drunk, he's raging around, shouting about 'Fisheses!' and 'Drink!'. If you were after the fish in this river there's no way you can get to them with this maniac stumbling around cursing the sky.
 item id:angry_fisherman
 item countable noun prefix:an
+item is untakeable:
 item visibility:invisible
 item can be used with:cider_bottle
-item successful use message:You wait for the fisherman to wander away a few steps then place the cider bottle on the ground nearby. He turns back, still pacing and spots the bottle. "Arhhhh, drink!" he grabs the bottle and settles down for a snooze.
+item successful use message:You wait for the fisherman to wander away a few steps then place the cider bottle on the ground nearby. He turns back, still pacing and spots the bottle. "Arhhhh, drink!". He grabs the bottle, takes a deep glug and settles down for a snooze.
 item use action:change item visibility:cider_bottle:invisible
 item use action:change item visibility:angry_fisherman:invisible
-item use action:change item visibility:sleeping_fisherman:visible
+item use action:change item visibility:sleeping_fisherman_after_giving_cider_bottle:visible
 item use action:change item visibility:river_before_fishing:visible
 item use action:change item visibility:river_after_the_first_fish:invisible
 item use action:change item visibility:river_with_no_fish:invisible
+item use action:change item visibility:river_with_angry_fisherman:invisible
 ITEM
 item name:Cider bottle
 item description:A half full bottle of cider, it smells like strong stuff.
@@ -690,30 +716,44 @@ item countable noun prefix:a
 item visibility:invisible
 ITEM
 item name:River
-item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gentle rolling hills.
+item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gently rolling hills.
 item id:river_before_fishing
 item countable noun prefix:a
+item is untakeable:
 item can be used with:fishing_rod_with_reel_and_lure
 item successful use message:As you whip the line out from behind you the reel spins quickly unleashing the line across the river, landing about midway. An excellent cast, almost as though you know what you're doing. You slowly turn the reel handle to pull the line back, staring at the water, waiting for a tug on the line to indicate something has taken a nibble. Turn, turn, turn but nothing. You wind the line right up ready for another cast.
 item use action:change item visibility:river_before_fishing:invisible
 item use action:change item visibility:river_after_the_first_fish:visible
 ITEM
 item name:River
-item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gentle rolling hills.
+item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gently rolling hills.
 item id:river_after_the_first_fish
 item countable noun prefix:a
+item is untakeable:
 item visibility:invisible
 item can be used with:fishing_rod_with_reel_and_lure
-item successful use message:You cast the line out again, another good through the line drops straight into the middle of the river width. Slowly, slowly you turn that handle, dragging the line in willing the lure to entice a fish. You feel a slight tug, was a that a nibble or just the lure catching a weed? You keep turning, again the line tugs, this must be a fish - you increase the pace, hoping the fish will make a dash for the lure and suddenly the line has some weight. You pull and wind, pull and wind and out of the river it comes. Firmly attached to the lure there is a large fish, about the length of your forearm and twice as wide, almost grinning as it chomps on the lure. It's teeth are sharp and pointy and you recognise it as a Spiky-toothed Goober. You grab the fish, detach the lure and hold it flapping about in your arms.
+item successful use message:You cast the line out again, another good throw the line drops straight into the middle of the river width. Slowly, slowly you turn the handle, dragging the line in willing the lure to entice a fish. You feel a slight tug, was that a nibble or just the lure catching a weed? You keep turning, again the line tugs, this must be a fish - you increase the pace, hoping the fish will make a dash for the lure and suddenly the line has some weight. You pull and wind, pull and wind and out of the river it comes. Firmly attached to the lure there is a large fish, about the length of your forearm and twice as wide, almost grinning as it chomps on the lure. It's teeth are sharp and pointy and you recognise it as a spiky-toothed goober. You grab the fish, detach the lure and hold it flapping about in your arms. You discard the rod as it is cumbersome and impractical to carry around any further.
 item use action:change item visibility:river_after_the_first_fish:invisible
 item use action:change item visibility:river_with_no_fish:visible
+item use action:destroy item:fishing_rod_with_reel_and_lure
 item use action:change item visibility:spiky_toothed_goober:visible
 item use action:take item:spiky_toothed_goober
 ITEM
 item name:River
-item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gentle rolling hills.
+item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gently rolling hills.
 item id:river_with_no_fish
 item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+ITEM
+item name:River
+item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gently rolling hills.
+item id:river_with_angry_fisherman
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:fishing_rod_with_reel_and_lure
+item successful use message:You cast the line out but as you do the angry fisherman runs at you growling and shouting unintelligibly. Quickly you wind the line back in and fend him off by swiping the rod back and forth in front of you.
 ITEM
 item name:Spiky-toothed goober
 item description:This fish looks like a vicious fellow. It has the sharpest nippers you've ever seen on a fish and it looks like it could make a tidy meal out of any one of your limbs.
@@ -722,17 +762,18 @@ item countable noun prefix:a
 item visibility:invisible
 ITEM
 item name:Sign
-item description:The sign says "No fishing - only Spiky-toothed Goobers here, go away.". The wooden post it is mounted on is covered in flaky, glistening fish scales as though someone has beaten it with a trout.
+item description:The sign says "No fishing - only spiky-toothed goobers here, go away.". The wooden post it is mounted on is covered in flaky, glistening fish scales as though someone has beaten it with a trout.
 item id:river_sign
 item countable noun prefix:a
+item is untakeable:
 item can be used with:spiky_toothed_goober
-item successful use message:Eyeing up the sign post you figure that the local fisherman must have used it as a fish bashing post, to knock the critters out before, well, eating them. You want those teeth, and you don't want to be eaten by this goober so you line it up and whack it against the post. Your weak-wristed attempt at knocking the goober out is no match for the creature itself. It flops from your hands, defiantly spits some teeth out in your direction and wriggles back to the relative comfort of the river. You swear that the fish makes a rude sign at you with it's fins before diving beneath the water.
+item successful use message:Eyeing up the sign post you figure that the local fishermen must have used it as a fish bashing post, to knock the critters out before, well, eating them. You want those teeth, and you don't want to be eaten by this goober so you line it up and whack it against the post. Your weak-wristed attempt at knocking the goober out is no match for the creature itself. It flops from your hands, defiantly spits some teeth out in your direction and wriggles back to the relative comfort of the river. You swear that the fish makes a rude sign at you with it's fins before diving beneath the water.
 item use action:destroy item:spiky_toothed_goober
 item use action:change item visibility:spiky_toothed_goober_teeth:visible
 item use action:increment score:
 ITEM
 item name:Spiky-toothed goober teeth
-item description:These are teeth from a Spiky-toothed goober. They are very sharp and pointy and have an air of rude defiance.
+item description:These are teeth from a spiky-toothed goober. They are very sharp and pointy and have an air of rude defiance.
 item id:spiky_toothed_goober_teeth
 item countable noun prefix:some
 item visibility:invisible
@@ -742,7 +783,7 @@ x:120
 y:120
 location id:fishermans_shack
 location area id:western_woods_area
-location description:A fisherman's shack.
+location description:A fisherman's shack, it smells a bit and the floor is a little slippery, almost slimy. There are a number of fishing related contraptions here, hanging from hooks on the walls or resting on the bench at the end of the shack.
 EXIT
 exit label:Outside
 exit destination:river_edge
@@ -763,6 +804,7 @@ item successful use message:Sliding the reel onto the end of the rod it finds a 
 item use action:destroy item:fishing_reel
 item use action:destroy item:fishing_rod
 item use action:change item visibility:fishing_rod_with_reel:visible
+item use action:take item:fishing_rod_with_reel
 ITEM
 item name:Fishing reel
 item description:A cylindrical construction for holding fishing line, it is usually attached to a rod. This has plenty of fishing line already spooled around it.
@@ -779,6 +821,7 @@ item successful use message:You tie the lure to the exposed end of the fishing l
 item use action:destroy item:fishing_lure
 item use action:destroy item:fishing_rod_with_reel
 item use action:change item visibility:fishing_rod_with_reel_and_lure:visible
+item use action:take item:fishing_rod_with_reel_and_lure
 item use action:increment score:
 ITEM
 item name:Fishing rod
