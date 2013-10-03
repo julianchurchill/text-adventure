@@ -6,6 +6,8 @@ item name:Pocket lint
 item description:It's fluffy and shaped like an inverted belly button. You consider discarding it for a short moment but decide to place it back in your pocket, idly petting it like a tiny gerbil.
 item countable noun prefix:some
 item id:pocketlint
+item can be used with:fiery_torch
+item successful use message:Oh dear, as soon as a source of fire appears the pyromaniacs jump out and try to burn everything down. Given this pocket fluff is in your pocket you decide that setting light to it is not in your best interests.
 INVENTORY ITEM
 item name:Multitool
 item description:Your trusty multitool, you're never caught without it. It has got a lot of tools on it. You feel like a man of the wilderness when you wield this formidable contraption.
@@ -123,6 +125,8 @@ item is untakeable:
 item examine action is not repeatable:
 item examine message:Looking more closely you see that there might be a few loose parts to this barricade. Perhaps they are best removed. You tug at a stick protruding from the base and it comes out quite easily. Not much of a barricade this, how long will it last against any sort of serious assault? Tapping with your foot in a few more carefully chosen places causes more sticks to fall out.
 item on examine action:change item visibility:torch_stick:visible
+item can be used with:fiery_torch
+item successful use message:That doesn't seem like a sensible idea given all the trouble someone has gone to creating this barrier. If you burn it down you might find out to your displeasure exactly what it was keeping out.
 ITEM
 item name:Stick
 item description:It is quite stick like, mostly straight with a few nobbles, about the length of your forearm with a decent girth. This could be used for a variety of tasks, hitting things, propping something up or making a torch.

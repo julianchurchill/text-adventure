@@ -63,8 +63,7 @@ Marketing
 
 Bugs
 
-- [BUG] Order of exits can be confusing - reorder to this {North, West, East, South} so that they generally appear in order
-  - Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
+- Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
@@ -112,6 +111,8 @@ Story - TTA2
 - Sub quests
   - Create and play a kazoo at a childrens party at a nobles house (achievement Player of the Kazoo)
   - Collect bugs - using a bug collector to make them visible and catch them. There are 12 to find and there are clues at the locations to indicate that there is a bug there. Something like "There is a flicker of movement in the corner." (Bug Collector)
+- Add some negative use responses. Some of these might require multiple _can be used with_ clauses - this is not yet supported by the parser and will require a technical task.
+  - fiery torch and pocket lint
 
 Features
 
@@ -176,6 +177,7 @@ TTA1 v2.2.x/TTA2 v1.0.x
   - Added higher res background parchment image
 - [UI] Full width action buttons
 
+- [BUG] Order of exits can be confusing - reordered to this {North, West, East, South}
 - [BUG] Double new lines appear before and after talk phrases are printed
   - [FIX] SayAction was adding unnecessary new lines.
 
