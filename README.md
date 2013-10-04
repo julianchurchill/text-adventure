@@ -24,8 +24,6 @@ Backlog
 
 Technical Tasks
 
-- Tag TTA2_v1.0.2
-- Update version number to v1.0.3
 - Rename git tags to prefix with TTA1_
 - Consider adding 'You use [the] x with [the] y.' before outputting the result. Would help when reading the transcript.
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
