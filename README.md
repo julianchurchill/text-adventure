@@ -119,6 +119,9 @@ Story - TTA2
   - These require multiple _can be used with_ clauses - this is not yet supported by the parser and will require a technical task:
     - Using rag with paraffin - "You'll get covered in paraffin if you do that which won't be very attractive to the ladies. If you were concerned with that sort of thing."
     - Using rag with glowing embers - "The rag won't light, perhaps it needs some accelerant."
+    - Pokect lint and glowing embers - "There's not really enough of it to start a fire."
+    - Stick and glowing embers - "You can try to beat the embers out but the damage has already been done."
+    - Stick and the fell beast - "Really? Do you want to fight the beast or play with it?"
 
 Features
 
