@@ -559,6 +559,25 @@ item description:The imperator resembles a tiny cattle prod, when you squeeze on
 item id:imperator
 item countable noun prefix:an
 item visibility:invisible
+ITEM
+item name:ImpSaw 2000
+item description:The ImpSaw 2000 is an award winning imp powered wood sawing machine. You can fell a forest in minutes with this little baby if you can get it hot enough. You have repaired this masterfully with some spiky-toothed goober teeth which are as sharp as your wit, you hope. When you shake it, it squeaks.
+item id:impsaw2000_fixed
+item mid sentence cased name:ImpSaw 2000
+item countable noun prefix:an
+item visibility:invisible
+item can be used with:imperator
+item successful use message:Squeezing the imperator you take a deep breath and poke the zappy end into the ImpSaw. There's plenty of squeaking and the ImpSaw bounces about in your hands. You think can make out a lot of vile cursing but you can't determine the source before the saw kicks into action, revving up, teeth spinning, making the air hum around it. This baby is ready to bring it!
+item use action:change item visibility:impsaw2000_fixed:invisible
+item use action:change item visibility:impsaw2000_running:visible
+item use action:take item:impsaw2000_running
+ITEM
+item name:ImpSaw 2000
+item description:The ImpSaw 2000 is an award winning imp powered wood sawing machine. You can fell a forest in minutes with this little baby if you can get it hot enough. You have repaired this masterfully with some spiky-toothed goober teeth which are currently whizzing around on the belt ready to get stuck into some serious wood chopping. It's giving off quite a hum and plenty of heat and the occasional expletive, which you assume must simply be a mechanical fault. When you shake it, it squeaks.
+item id:impsaw2000_running
+item mid sentence cased name:ImpSaw 2000
+item countable noun prefix:an
+item visibility:invisible
 
 
 LOCATION
@@ -847,13 +866,28 @@ x:120
 y:120
 location id:western_woods
 location area id:western_woods_area
-location description:The western woods. There are trees ripe for chopping here.
+location description:You stand in a clearing in the western woods. Not far to the north east you can see a church, bordered by a stout stone wall. There are trees ripe for chopping here.
 EXIT
 exit label:Southern edge of the churchyard
 exit destination:church_woodland
 exit direction hint:East
 exit id:western_woods_to_church_woodland
-
+ITEM
+item name:Large trees
+item description:These trees are very large indeed, the many branches are uniformly huge and would make excellent material for forming a barrier of some sort if you could find a way to cut them down.
+item id:large_trees
+item countable noun prefix:some
+item is untakeable:
+item can be used with:impsaw2000_running
+item successful use message:There are a few large branches close to where you can reach, if you stand on your tip toes and hold the chainsaw straight above your head - which you do. Toitering on your tip toes you prod at the branch above you with the end of the running ImpSaw and old bark and sawdust blast you in the face. Holding your nerve you continue to carve away from your precarious position until the branch snaps and tumbles down at your feet. You manage to do this several more times without causing yourself a fatal injury, an impressive task in itself.
+item use action:change item description:These trees are very large indeed. They have recently been pruned, cut branch stumps are evident through the foliage and many splinters and much sawdust form a blanket on the ground.
+item use action:change item visibility:tree_logs:visible
+ITEM
+item name:Tree logs
+item description:These logs have been cut from very large trees and are themselves quite large. You could probably carry them a short distance.
+item id:tree_logs
+item countable noun prefix:some
+item visibility:invisible
 
 LOCATION
 x:300
