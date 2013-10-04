@@ -24,10 +24,10 @@ Backlog
 
 Technical Tasks
 
-- Tag v1.0.2
+- Tag TTA2_v1.0.2
 - Update version number to v1.0.3
-- Consider adding 'You use [the] x with [the] y.' before outputting the result. Would help when reading the transcript.
 - Rename git tags to prefix with TTA1_
+- Consider adding 'You use [the] x with [the] y.' before outputting the result. Would help when reading the transcript.
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
 - Update model for app 1 to use take item action where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 - Analytics
