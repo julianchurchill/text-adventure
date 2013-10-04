@@ -115,7 +115,9 @@ Story - TTA2
   - Create and play a kazoo at a childrens party at a nobles house (achievement Player of the Kazoo)
   - Collect bugs - using a bug collector to make them visible and catch them. There are 12 to find and there are clues at the locations to indicate that there is a bug there. Something like "There is a flicker of movement in the corner." (Bug Collector)
 - Add some negative use responses. Some of these might require multiple _can be used with_ clauses - this is not yet supported by the parser and will require a technical task.
-  - Using Imperator with chainsaw before it's fixed
+  - Using Imperator with chainsaw before it's fixed - "It rattles and tattles and chokes to a halt. The belt ran without anything to do the slicing, these chainsaw needs teeth!"
+  - Using rag with paraffin - "You'll get covered in paraffin if you do that which won't be very attractive to ladies. If you were considering that sort of thing."
+  - Using stick with rag - "What are you going to do, beat the rag into submission?"
 
 Features
 
