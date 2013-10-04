@@ -24,6 +24,11 @@ Backlog
 
 Technical Tasks
 
+- Multiple _can be used with_ clauses
+  - UseWithSpecificItem must pass the original item id to the use() call
+  - Item must be able to accept, store and action multiple use clauses, indexed by 'use with' item id
+  - Deserialisation must be able to deserialised multiple use clauses
+  - Example is impsaw2000_broken, which should have a response for use with the imperator _and_ the teeth
 - Rename git tags to prefix with TTA1_
 - Consider adding 'You use [the] x with [the] y.' before outputting the result. Would help when reading the transcript.
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.

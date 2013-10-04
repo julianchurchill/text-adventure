@@ -121,7 +121,7 @@ public class UseWithSpecificItemTests {
             ignoring( original );
             allowing( target ).canBeUsedWith( original );
             will( returnValue( true ) );
-            oneOf( target ).use();
+            oneOf( target ).useWith( original );
             ignoring( target );
         }});
         UseWithSpecificItem action = new UseWithSpecificItem( original, target );

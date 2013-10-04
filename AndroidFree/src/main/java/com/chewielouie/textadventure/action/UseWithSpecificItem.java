@@ -39,7 +39,7 @@ public class UseWithSpecificItem implements Action {
     }
 
     private void useTargetItem() {
-        targetItem.use();
+        targetItem.useWith( originalItem );
         userText = targetItem.usedWithText();
     }
 

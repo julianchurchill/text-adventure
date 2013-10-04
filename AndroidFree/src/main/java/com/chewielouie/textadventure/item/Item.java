@@ -28,6 +28,7 @@ public interface Item {
     public void setUseIsNotRepeatable();
     public boolean useIsNotRepeatable();
     public void addOnUseAction( ItemAction action );
+    public void useWith( Item withItem );
     public void use();
     public List<ItemAction> actions();
     public void setVisible( boolean visible );

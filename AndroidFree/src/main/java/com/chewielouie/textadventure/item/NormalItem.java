@@ -150,6 +150,10 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
         this.usedWithText = text;
     }
 
+    public void useWith( Item withItem ) {
+        use();
+    }
+
     public void use() {
         if( itemCanBeUsedNow() )
             for( ItemAction action : onUseActions )
