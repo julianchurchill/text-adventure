@@ -65,7 +65,7 @@ public class UseWithSpecificItemTests {
             ignoring( original );
             allowing( target ).canBeUsedWith( original );
             will( returnValue( true ) );
-            allowing( target ).usedWithText();
+            allowing( target ).usedWithTextFor( original );
             will( returnValue( "use with text" ) );
             ignoring( target );
         }});

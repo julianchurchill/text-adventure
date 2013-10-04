@@ -40,7 +40,7 @@ public class UseWithSpecificItem implements Action {
 
     private void useTargetItem() {
         targetItem.useWith( originalItem );
-        userText = targetItem.usedWithText();
+        userText = targetItem.usedWithTextFor( originalItem );
     }
 
     public boolean userMustChooseFollowUpAction() {

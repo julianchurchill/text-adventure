@@ -23,6 +23,7 @@ public interface Item {
     public boolean canBeUsedWith( Item item );
     public void setCanBeUsedWith( String itemID );
     public List<String> canBeUsedWithItemIDs();
+    public String usedWithTextFor( Item withItem );
     public String usedWithText();
     public void setUsedWithText( String text );
     public void setUseIsNotRepeatable();

@@ -142,6 +142,10 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
         return !this.useIsRepeatable;
     }
 
+    public String usedWithTextFor( Item withItem ) {
+        return usedWithText();
+    }
+
     public String usedWithText() {
         return usedWithText;
     }

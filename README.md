@@ -25,7 +25,7 @@ Backlog
 Technical Tasks
 
 - Multiple _can be used with_ clauses
-  - UseWithSpecificItem must pass the original item id to the use() call
+  - DONE UseWithSpecificItem must pass the original item to the useWith() call
   - Item must be able to accept, store and action multiple use clauses, indexed by 'use with' item id
   - Deserialisation must be able to deserialised multiple use clauses
   - Example is impsaw2000_broken, which should have a response for use with the imperator _and_ the teeth
