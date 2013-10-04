@@ -24,6 +24,9 @@ Backlog
 
 Technical Tasks
 
+- Tag v1.0.2
+- Update version number to v1.0.3
+- Consider adding 'You use [the] x with [the] y.' before outputting the result. Would help when reading the transcript.
 - Rename git tags to prefix with TTA1_
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
 - Update model for app 1 to use take item action where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
@@ -112,6 +115,7 @@ Story - TTA2
   - Create and play a kazoo at a childrens party at a nobles house (achievement Player of the Kazoo)
   - Collect bugs - using a bug collector to make them visible and catch them. There are 12 to find and there are clues at the locations to indicate that there is a bug there. Something like "There is a flicker of movement in the corner." (Bug Collector)
 - Add some negative use responses. Some of these might require multiple _can be used with_ clauses - this is not yet supported by the parser and will require a technical task.
+  - Using Imperator with chainsaw before it's fixed
 
 Features
 
