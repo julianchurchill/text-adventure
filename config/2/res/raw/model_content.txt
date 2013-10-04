@@ -92,6 +92,8 @@ item description:This rag is fairly filthy, you're not sure whether to keep it o
 item id:dirty_rag
 item countable noun prefix:a
 item mid sentence cased name:dirty rag
+item can be used with:torch_stick
+item successful use message:What are you going to do, beat the rag into submission?
 
 LOCATION
 x:300
@@ -136,9 +138,17 @@ item mid sentence cased name:stick
 item visibility:invisible
 item can be used with:dirty_rag
 item successful use message:You wrap the rag tightly around the end of the stick holding itself in place purely with congealed filth.
-item use action:change item description:The stick fits comfortably in your hand and is slightly weighted by the rag wrapped around one end. It could be used to hit someone with, although the rag would cushion the blow or perhaps you could find a means to light it?
-item use action:change item name:Rag wrapped stick
+item use action:destroy item:torch_stick
 item use action:destroy item:dirty_rag
+item use action:change item visibility:rag_wrapped_torch_stick:visible
+item use action:take item:rag_wrapped_torch_stick
+ITEM
+item name:Rag wrapped stick
+item description:The stick fits comfortably in your hand and is slightly weighted by the rag wrapped around one end. It could be used to hit someone with, although the rag would cushion the blow or perhaps you could find a means to light it?
+item id:rag_wrapped_torch_stick
+item countable noun prefix:a
+item mid sentence cased name:rag wrapped stick
+item visibility:invisible
 
 LOCATION
 x:240
@@ -290,9 +300,9 @@ item id:jar_of_paraffin
 item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
-item can be used with:torch_stick
+item can be used with:rag_wrapped_torch_stick
 item successful use message:Lifting the stick with the rag around it you dip the rag end into the jar of paraffin and let it soak for a moment before pulling it out.
-item use action:destroy item:torch_stick
+item use action:destroy item:rag_wrapped_torch_stick
 item use action:change item visibility:paraffin_soaked_torch:visible
 item use action:take item:paraffin_soaked_torch
 ITEM
@@ -531,16 +541,18 @@ item talk action in response to:hellosir:change item description:This is Cabal J
 
 item talk follow up phrase to:hellosir:iwassentbyyourdaughter:I was sent by your daughter:"I was sent by your daughter, Oubliette.". Ah that name, just saying it out loud lifts your spirit. "I'm here to help with the barricade.".
 item talk response to:iwassentbyyourdaughter:"Is that right, you look like a scrawny fellow, can you lift your own arms up without crying?". You reply cautiously "Um, yes...". "Hmphh." snorts Cabal, "Well you'll have to do, we're getting short on hands every day that goes by.". Turning away for a moment he fumbles about amidst the straw you assumed was bedding and pulls out an ImpSaw 2000 and it's accompanying imperator. That seems to you like a rather dangerous place to keep a chainsaw but you decide against mentioning your opinion since the same man that made that decision now wields the contraption in front of you, and as he already alluded to, he doesn't like you very much. "Use this to cut some strong branches from the wood to the north that we can use to repair the barricades and hurry, night will be upon us before we know it.". He hands you the chainsaw and the imperator.
-item talk action in response to:iwassentbyyourdaughter:change item visibility:impsaw2000:visible
+item talk action in response to:iwassentbyyourdaughter:change item visibility:impsaw2000_broken:visible
 item talk action in response to:iwassentbyyourdaughter:change item visibility:imperator:visible
 
 ITEM
 item name:ImpSaw 2000
 item description:The ImpSaw 2000 is an award winning imp powered wood sawing machine. You can fell a forest in minutes with this little baby if you can get it hot enough. Unfortunately this particular device looks a little worse for wear, missing many of the razor sharp teeth that provide the smooth cutting action required to fell trees quicker than a beaver on a rampage. When you shake it, it squeaks.
-item id:impsaw2000
+item id:impsaw2000_broken
 item mid sentence cased name:ImpSaw 2000
 item countable noun prefix:an
 item visibility:invisible
+item can be used with:imperator
+item successful use message:It rattles and tattles and chokes to a halt. The belt ran without anything to do the slicing. This chainsaw needs teeth!
 ITEM
 item name:Imperator
 item description:The imperator resembles a tiny cattle prod, when you squeeze one end the other sparks and the whole thing vibrates violently in your hand. It is used to start the ImpSaw once you are ready.
