@@ -17,7 +17,10 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     private String id = "";
     private Map<String, Set<ItemAction>> onUseActionsWithItem = new HashMap<String, Set<ItemAction>>();
     private Map<String, Boolean> useIsRepeatableFor = new HashMap<String, Boolean>();
+    private Map<String, String> usedWithTextFor = new HashMap<String, String>();
     private Map<Item, Boolean> itemUsedWith = new HashMap<Item, Boolean>();
+    private final static String itemsCannotBeUsedTogetherUsedWithText = "Nothing happens.";
+    private final static String itemsAlreadyUsedText = "You have already done that.";
     private String canBeUsedWithTargetID;
     private String usedWithText = "";
     private boolean useIsRepeatable = true;
@@ -153,18 +156,36 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
         this.usedWithText = text;
     }
 
+    public void setUsedWithTextFor( String withItemID, String text ) {
+        usedWithTextFor.put( withItemID, text );
+    }
+
     public void setUseIsNotRepeatableFor( String withItemID ) {
         useIsRepeatableFor.put( withItemID, false );
     }
 
-    public String usedWithTextFor( Item withItem ) {
-        return usedWithText();
+    public void addOnUseActionFor( String withItemID, ItemAction action ) {
+        if( onUseActionsWithItem.containsKey( withItemID ) == false )
+            onUseActionsWithItem.put( withItemID , new HashSet<ItemAction>() );
+        onUseActionsWithItem.get( withItemID ).add( action );
     }
 
-    public void useWith( Item withItem ) {
-        if( itemCanBeUsedNowWith( withItem ) )
+    public String useWith( Item withItem ) {
+        if( itemCanBeUsedAtAllWith( withItem ) == false )
+            return itemsCannotBeUsedTogetherUsedWithText;
+
+        if( itemCanBeUsedNowWith( withItem ) ) {
             executeActionsForId( onUseActionsWithItem, withItem.id() );
-        itemUsedWith.put( withItem, true );
+            itemUsedWith.put( withItem, true );
+            return usedWithTextFor.get( withItem.id() );
+        }
+
+        return itemsAlreadyUsedText;
+    }
+
+    private boolean itemCanBeUsedAtAllWith( Item withItem ) {
+        return onUseActionsWithItem.containsKey( withItem.id() ) ||
+               usedWithTextFor.containsKey( withItem.id() );
     }
 
     private boolean itemCanBeUsedNowWith( Item withItem ) {
@@ -190,18 +211,12 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
                 a.enact();
     }
 
-    public void addOnUseActionFor( String withItemID, ItemAction action ) {
-        if( onUseActionsWithItem.containsKey( withItemID ) == false )
-            onUseActionsWithItem.put( withItemID , new HashSet<ItemAction>() );
-        onUseActionsWithItem.get( withItemID ).add( action );
-    }
-
     public void use() {
         if( itemCanBeUsedNow() )
             for( ItemAction action : onUseActions )
                 action.enact();
         else
-            setUsedWithText( "You have already done that." );
+            setUsedWithText( itemsAlreadyUsedText );
         used = true;
     }
 

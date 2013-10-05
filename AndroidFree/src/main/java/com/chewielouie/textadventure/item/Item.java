@@ -20,16 +20,21 @@ public interface Item {
     public boolean plural();
     public boolean takeable();
     public void setUntakeable();
+
     public boolean canBeUsedWith( Item item );
     public void setCanBeUsedWith( String itemID );
     public List<String> canBeUsedWithItemIDs();
-    public String usedWithTextFor( Item withItem );
     public String usedWithText();
     public void setUsedWithText( String text );
     public void setUseIsNotRepeatable();
     public boolean useIsNotRepeatable();
     public void addOnUseAction( ItemAction action );
-    public void useWith( Item withItem );
+
+    public void setUsedWithTextFor( String withItemID, String text );
+    public void setUseIsNotRepeatableFor( String withItemID );
+    public void addOnUseActionFor( String withItemID, ItemAction action );
+    public String useWith( Item withItem );
+
     public void use();
     public List<ItemAction> actions();
     public void setVisible( boolean visible );
