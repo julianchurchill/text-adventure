@@ -28,6 +28,8 @@ Technical Tasks
   - DONE UseWithSpecificItem must pass the original item to the useWith() call
   - DONE Item must be able to accept, store and action multiple use clauses, indexed by 'use with' item id
   - Deserialisation must be able to deserialised multiple use clauses
+    - DONE Tidy deserialisation tests so that single use clauses are a degenerative case of multiple use clauses
+    - Implement multiple use clause deserialisation
   - Remove single use clause interfaces from Item/NormalItem:
     canBeUsedWith(), setCanBeUsedWith(), canBeUsedWithItemIDs(), usedWithText(), setUsedWithText(), setUseIsNotRepeatable(), useIsNotRepeatable(), addOnUseAction()
   - Example is impsaw2000_broken, which should have a response for use with the imperator _and_ the teeth

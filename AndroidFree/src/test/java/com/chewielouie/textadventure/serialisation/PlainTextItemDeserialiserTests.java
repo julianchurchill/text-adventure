@@ -137,25 +137,6 @@ public class PlainTextItemDeserialiserTests {
     }
 
     @Test
-    public void deserialise_extracts_item_can_be_used_with() {
-        final Item item = mockery.mock( Item.class, "item" );
-        final Item target = mockery.mock( Item.class, "target" );
-        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
-        mockery.checking( new Expectations() {{
-            oneOf( item ).setCanBeUsedWith( "itemid" );
-            ignoring( item );
-            allowing( target ).id();
-            will( returnValue( "itemid" ) );
-            ignoring( target );
-        }});
-
-        d.deserialise( item,
-                       "item name:Name\n" +
-                       "item description:description\n" +
-                       "item can be used with:itemid\n" );
-    }
-
-    @Test
     public void deserialise_extracts_item_successful_use_messsage() {
         final Item item = mockery.mock( Item.class );
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
@@ -167,6 +148,7 @@ public class PlainTextItemDeserialiserTests {
         d.deserialise( item,
                        "item name:Name\n" +
                        "item description:description\n" +
+                       "item can be used with:itemid\n" +
                        "item successful use message:message\n" );
     }
 
@@ -182,9 +164,9 @@ public class PlainTextItemDeserialiserTests {
         d.deserialise( item,
                        "item name:Name\n" +
                        "item description:description\n" +
+                       "item can be used with:itemid\n" +
                        "item successful use message:<newline>mess<newline>age<newline>\n" );
     }
-
 
     @Test
     public void deserialise_extracts_item_use_is_not_repeatable() {
@@ -198,6 +180,7 @@ public class PlainTextItemDeserialiserTests {
         d.deserialise( item,
                        "item name:Name\n" +
                        "item description:description\n" +
+                       "item can be used with:itemid\n" +
                        "item use is not repeatable:\n" );
     }
 
@@ -218,6 +201,7 @@ public class PlainTextItemDeserialiserTests {
         d.deserialise( item,
                        "item name:Name\n" +
                        "item description:description\n" +
+                       "item can be used with:itemid\n" +
                        "item use action:action:action arguments\n" +
                        "item use action:action:action arguments\n" );
     }
@@ -240,6 +224,7 @@ public class PlainTextItemDeserialiserTests {
         d.deserialise( item,
                        "item name:Name\n" +
                        "item description:description\n" +
+                       "item can be used with:itemid\n" +
                        "item use action:action:action arguments\n" );
     }
 
@@ -264,6 +249,7 @@ public class PlainTextItemDeserialiserTests {
         d.deserialise( item,
                        "item name:Name\n" +
                        "item description:description\n" +
+                       "item can be used with:itemid\n" +
                        "item use action:action:action arguments\n" );
     }
 
