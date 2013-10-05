@@ -29,9 +29,11 @@ Technical Tasks
   - DONE Item must be able to accept, store and action multiple use clauses, indexed by 'use with' item id
   - Deserialisation must be able to deserialised multiple use clauses
     - DONE Tidy deserialisation tests so that single use clauses are a degenerative case of multiple use clauses
+    - DONE Convert deserialiser to use multiple use clause interfaces for single clause cases
+    - Remove single use clause interfaces from Item/NormalItem:
+      canBeUsedWith(), setCanBeUsedWith(), canBeUsedWithItemIDs(), usedWithText(), setUsedWithText(), setUseIsNotRepeatable(), useIsNotRepeatable(), addOnUseAction()
     - Implement multiple use clause deserialisation
-  - Remove single use clause interfaces from Item/NormalItem:
-    canBeUsedWith(), setCanBeUsedWith(), canBeUsedWithItemIDs(), usedWithText(), setUsedWithText(), setUseIsNotRepeatable(), useIsNotRepeatable(), addOnUseAction()
+    - Use DeserialiserUtils in PlainTextItemDeserialiser to reduce duplication
   - Example is impsaw2000_broken, which should have a response for use with the imperator _and_ the teeth
 - Rename git tags to prefix with TTA1_
 - Consider adding 'You use [the] x with [the] y.' before outputting the result. Would help when reading the transcript.

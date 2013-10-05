@@ -71,15 +71,17 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     }
 
     private void extractItemUseProperties() {
-        item.setCanBeUsedWith( extractNewlineDelimitedValueFor( itemCanBeUsedWithTag ) );
-        item.setUsedWithText(
+        String usedWithItemID = extractNewlineDelimitedValueFor( itemCanBeUsedWithTag );
+        item.setCanBeUsedWith( usedWithItemID  );
+        item.setUsedWithTextFor(
+            usedWithItemID,
             convertEncodedNewLines(
                 extractNewlineDelimitedValueFor( itemSuccessfulUseMessageTag ) ) );
 
         if( findTagWithNoArgument( itemUseIsNotRepeatableTag ) )
-            item.setUseIsNotRepeatable();
+            item.setUseIsNotRepeatableFor( usedWithItemID );
 
-        extractItemUseActions();
+        extractItemUseActions( usedWithItemID );
     }
 
     private String convertEncodedNewLines( String input ) {
@@ -130,11 +132,11 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         return content.substring( startOfValue, endOfTag );
     }
 
-    private void extractItemUseActions() {
+    private void extractItemUseActions( String usedWithItemID ) {
         List<ItemAction> actions = new ItemActionDeserialiser( content,
             itemUseActionTag, item, itemActionFactory ).extract();
         for( ItemAction action : actions )
-            item.addOnUseAction( action );
+            item.addOnUseActionFor( usedWithItemID, action );
     }
 
     private int findTagFrom( int start, String tag ) {

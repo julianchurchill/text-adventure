@@ -141,7 +141,7 @@ public class PlainTextItemDeserialiserTests {
         final Item item = mockery.mock( Item.class );
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
         mockery.checking( new Expectations() {{
-            oneOf( item ).setUsedWithText( "message" );
+            oneOf( item ).setUsedWithTextFor( "itemid", "message" );
             ignoring( item );
         }});
 
@@ -157,7 +157,7 @@ public class PlainTextItemDeserialiserTests {
         final Item item = mockery.mock( Item.class );
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
         mockery.checking( new Expectations() {{
-            oneOf( item ).setUsedWithText( "\nmess\nage\n" );
+            oneOf( item ).setUsedWithTextFor( "itemid", "\nmess\nage\n" );
             ignoring( item );
         }});
 
@@ -173,7 +173,7 @@ public class PlainTextItemDeserialiserTests {
         final Item item = mockery.mock( Item.class );
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
         mockery.checking( new Expectations() {{
-            oneOf( item ).setUseIsNotRepeatable();
+            oneOf( item ).setUseIsNotRepeatableFor( "itemid" );
             ignoring( item );
         }});
 
@@ -237,7 +237,7 @@ public class PlainTextItemDeserialiserTests {
         PlainTextItemDeserialiser d =
             new PlainTextItemDeserialiser( itemActionFactory );
         mockery.checking( new Expectations() {{
-            oneOf( item ).addOnUseAction( action );
+            oneOf( item ).addOnUseActionFor( "itemid", action );
             ignoring( item );
             allowing( itemActionFactory ).create( with( any( String.class ) ),
                with( any( Item.class ) ) );
