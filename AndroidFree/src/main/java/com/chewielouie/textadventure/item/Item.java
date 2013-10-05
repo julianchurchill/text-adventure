@@ -29,14 +29,14 @@ public interface Item {
     public void setUseIsNotRepeatable();
     public boolean useIsNotRepeatable();
     public void addOnUseAction( ItemAction action );
+    public void use();
+    public List<ItemAction> actions();
 
     public void setUsedWithTextFor( String withItemID, String text );
     public void setUseIsNotRepeatableFor( String withItemID );
     public void addOnUseActionFor( String withItemID, ItemAction action );
     public String useWith( Item withItem );
 
-    public void use();
-    public List<ItemAction> actions();
     public void setVisible( boolean visible );
     public boolean visible();
     public void examine();
