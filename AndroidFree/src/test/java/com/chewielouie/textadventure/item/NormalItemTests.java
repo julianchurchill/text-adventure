@@ -97,6 +97,65 @@ public class NormalItemTests {
         assertFalse( item.canBeUsedWith( itemWithoutID ) );
     }
 
+    Item makeMockItemWithID( String id ) {
+        Item item = mock( Item.class );
+        when( item.id() ).thenReturn( id );
+        return item;
+    }
+
+    @Test
+    public void useWith_can_call_actions_repeatedly_for_the_correct_item() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
+        ItemAction action = mock( ItemAction.class );
+        NormalItem item = new NormalItem();
+        item.addOnUseActionFor( "otherItemID", action );
+
+        item.useWith( otherItem );
+        item.useWith( otherItem );
+
+        verify( action, times(2) ).enact();
+    }
+
+    @Test
+    public void useWith_does_not_call_actions_for_other_items() {
+        Item otherItem1 = makeMockItemWithID( "otherItemID1" );
+        Item otherItem2 = makeMockItemWithID( "otherItemID2" );
+        ItemAction action = mock( ItemAction.class );
+        NormalItem item = new NormalItem();
+        item.addOnUseActionFor( "otherItemID1", action );
+
+        item.useWith( otherItem2 );
+
+        verify( action, never() ).enact();
+    }
+
+    @Test
+    public void useWith_calls_actions_only_once_if_item_use_is_not_repeateable() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
+        ItemAction action = mock( ItemAction.class );
+        NormalItem item = new NormalItem();
+        item.addOnUseActionFor( "otherItemID", action );
+        item.setUseIsNotRepeatableFor( "otherItemID" );
+
+        item.useWith( otherItem );
+        item.useWith( otherItem );
+
+        verify( action, times(1) ).enact();
+    }
+
+    // @Test
+    // public void useWith_sets_used_with_text_for_correct_item() {
+
+    // @Test
+    // public void useWith_sets_used_with_text_on_repeated_use_of_non_repeatable_combination() {
+        // i.e. to "You have already done that."
+
+    // @Test
+    // public void canBeUsedWith_is_true_for_items_with_actions_added() {
+
+    // @Test
+    // public void canBeUsedWith_is_false_for_items_with_no_actions_added() {
+
     @Test
     public void used_with_text_is_blank_by_default() {
         NormalItem item = new NormalItem();

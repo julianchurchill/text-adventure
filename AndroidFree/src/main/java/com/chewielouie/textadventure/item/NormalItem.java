@@ -15,6 +15,9 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     private String midSentenceCasedName = null;
     private boolean takeable = true;
     private String id = "";
+    private Map<String, Set<ItemAction>> onUseActionsWithItem = new HashMap<String, Set<ItemAction>>();
+    private Map<String, Boolean> useIsRepeatableFor = new HashMap<String, Boolean>();
+    private Map<Item, Boolean> itemUsedWith = new HashMap<Item, Boolean>();
     private String canBeUsedWithTargetID;
     private String usedWithText = "";
     private boolean useIsRepeatable = true;
@@ -142,10 +145,6 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
         return !this.useIsRepeatable;
     }
 
-    public String usedWithTextFor( Item withItem ) {
-        return usedWithText();
-    }
-
     public String usedWithText() {
         return usedWithText;
     }
@@ -154,8 +153,47 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
         this.usedWithText = text;
     }
 
+    public void setUseIsNotRepeatableFor( String withItemID ) {
+        useIsRepeatableFor.put( withItemID, false );
+    }
+
+    public String usedWithTextFor( Item withItem ) {
+        return usedWithText();
+    }
+
     public void useWith( Item withItem ) {
-        use();
+        if( itemCanBeUsedNowWith( withItem ) )
+            executeActionsForId( onUseActionsWithItem, withItem.id() );
+        itemUsedWith.put( withItem, true );
+    }
+
+    private boolean itemCanBeUsedNowWith( Item withItem ) {
+        return !hasItemBeenUsedWith( withItem ) || isUseRepeatableFor( withItem.id() );
+    }
+
+    private boolean hasItemBeenUsedWith( Item withItem ) {
+        if( itemUsedWith.containsKey( withItem ) )
+            return itemUsedWith.get( withItem );
+        return false;
+    }
+
+    private boolean isUseRepeatableFor( String withItemID ) {
+        if( useIsRepeatableFor.containsKey( withItemID ) )
+            return useIsRepeatableFor.get( withItemID );
+        return true;
+    }
+
+    private void executeActionsForId( Map<String, Set<ItemAction>> actions,
+        String id ) {
+        if( actions.containsKey( id ) )
+            for( ItemAction a : actions.get( id ) )
+                a.enact();
+    }
+
+    public void addOnUseActionFor( String withItemID, ItemAction action ) {
+        if( onUseActionsWithItem.containsKey( withItemID ) == false )
+            onUseActionsWithItem.put( withItemID , new HashSet<ItemAction>() );
+        onUseActionsWithItem.get( withItemID ).add( action );
     }
 
     public void use() {
@@ -316,8 +354,6 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
     }
 
     public void executeActionsForPhraseById( String id ) {
-        if( phraseActions.containsKey( id ) )
-            for( ItemAction a : phraseActions.get( id ) )
-                a.enact();
+        executeActionsForId( phraseActions, id );
     }
 }
