@@ -72,7 +72,6 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
 
     private void extractItemUseProperties() {
         String usedWithItemID = extractNewlineDelimitedValueFor( itemCanBeUsedWithTag );
-        item.setCanBeUsedWith( usedWithItemID  );
         item.setUsedWithTextFor(
             usedWithItemID,
             convertEncodedNewLines(

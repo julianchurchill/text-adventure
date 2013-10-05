@@ -57,8 +57,6 @@ public class UseWithSpecificItemTests {
         final Item target = mockery.mock( Item.class, "target" );
         mockery.checking( new Expectations() {{
             ignoring( original );
-            allowing( target ).canBeUsedWith( original );
-            will( returnValue( true ) );
             allowing( target ).useWith( original );
             will( returnValue( "use with text" ) );
             ignoring( target );

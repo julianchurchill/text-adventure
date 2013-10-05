@@ -30,7 +30,7 @@ Technical Tasks
   - Deserialisation must be able to deserialised multiple use clauses
     - DONE Tidy deserialisation tests so that single use clauses are a degenerative case of multiple use clauses
     - DONE Convert deserialiser to use multiple use clause interfaces for single clause cases
-    - Remove single use clause interfaces from Item/NormalItem:
+    - DONE Remove single use clause interfaces from Item/NormalItem:
       canBeUsedWith(), setCanBeUsedWith(), canBeUsedWithItemIDs(), usedWithText(), setUsedWithText(), setUseIsNotRepeatable(), useIsNotRepeatable(), addOnUseAction()
     - Implement multiple use clause deserialisation
     - Use DeserialiserUtils in PlainTextItemDeserialiser to reduce duplication
