@@ -283,6 +283,8 @@ item can be used with:fiery_torch
 item successful use message:Stepping forward boldly you wave the flaming torch in front of you, praying that the beast will retreat. A little to your surprise it does, cowering away from the torch but hissing and spitting at you in frustration, leaving a safe path to the store cupboard door.
 item use action:change exit visibility:generalstore_to_cupboard:visible
 item use action:change location description:generalstore:Upon entering the general store you can only make out rough shapes. As your eyes adjust to the darkness you spy a creature in the corner, alert and looking directly at you. It looks like a rabid dog with deep red eyes but has no fur and it eyes you hungrily. You can see an open door at the back of the shop through which a window leads to a street on the other side of the barricade. The beast has backed away from your flaming torch leaving a path to the back of the shop. For the moment you stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
+item can be used with:torch_stick
+item successful use message:Really? Do you want to fight the beast or play with it?
 ITEM
 item name:Jar of clear liquid
 item description:The jar contains a clear liquid. It has somehow managed to survive the devastation around it, perhaps due to it's placement on a shelf sheltered behind the door.
@@ -305,6 +307,8 @@ item successful use message:Lifting the stick with the rag around it you dip the
 item use action:destroy item:rag_wrapped_torch_stick
 item use action:change item visibility:paraffin_soaked_torch:visible
 item use action:take item:paraffin_soaked_torch
+item can be used with:dirty_rag
+item successful use message:You'll get covered in paraffin if you do that which won't be very attractive to the ladies. If you were concerned with that sort of thing.
 ITEM
 item name:Paraffin soaked torch
 item description:This is a makeshift torch, a rag wrapped around one end of a stick then soaked in paraffin. It looks like it will light quite nicely and the fumes are starting to make you a little light headed.
@@ -367,6 +371,12 @@ item successful use message:Holding the rag end of the torch against the smoulde
 item use action:destroy item:paraffin_soaked_torch
 item use action:change item visibility:fiery_torch:visible
 item use action:take item:fiery_torch
+item can be used with:dirty_rag
+item successful use message:The rag won't light, perhaps it needs an accelerant.
+item can be used with:pocket_lint
+item successful use message:There's not really enough of it to start a fire.
+item can be used with:torch_stick
+item successful use message:You can try to beat the embers out but the damage has already been done.
 ITEM
 item name:Fiery torch
 item description:This is a makeshift torch, a rag wrapped around one end of a stick then soaked in paraffin. It is very much alight and burning fast and bright.

@@ -113,15 +113,13 @@ Story - TTA2
   - Create and play a kazoo at a childrens party at a nobles house (achievement Player of the Kazoo)
   - Collect bugs - using a bug collector to make them visible and catch them. There are 12 to find and there are clues at the locations to indicate that there is a bug there. Something like "There is a flicker of movement in the corner." (Bug Collector)
 - Add some negative use responses
-  - These only need single use clauses:
-    - DONE Using Imperator with chainsaw before it's fixed - "It rattles and tattles and chokes to a halt. The belt ran without anything to do the slicing, these chainsaw needs teeth!"
-    - DONE Using stick with rag - "What are you going to do, beat the rag into submission?"
-  - These require multiple _can be used with_ clauses - this is not yet supported by the parser and will require a technical task:
-    - Using rag with paraffin - "You'll get covered in paraffin if you do that which won't be very attractive to the ladies. If you were concerned with that sort of thing."
-    - Using rag with glowing embers - "The rag won't light, perhaps it needs some accelerant."
-    - Pokect lint and glowing embers - "There's not really enough of it to start a fire."
-    - Stick and glowing embers - "You can try to beat the embers out but the damage has already been done."
-    - Stick and the fell beast - "Really? Do you want to fight the beast or play with it?"
+  - DONE Using Imperator with chainsaw before it's fixed - "It rattles and tattles and chokes to a halt. The belt ran without anything to do the slicing, these chainsaw needs teeth!"
+  - DONE Using stick with rag - "What are you going to do, beat the rag into submission?"
+  - DONE Using rag with paraffin - "You'll get covered in paraffin if you do that which won't be very attractive to the ladies. If you were concerned with that sort of thing."
+  - DONE Using rag with glowing embers - "The rag won't light, perhaps it needs an accelerant."
+  - DONE Pocket lint and glowing embers - "There's not really enough of it to start a fire."
+  - DONE Stick and glowing embers - "You can try to beat the embers out but the damage has already been done."
+  - DONE Stick and the fell beast - "Really? Do you want to fight the beast or play with it?"
 
 Features
 
@@ -213,7 +211,7 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [TECHNICAL TASK] New event trigger 'exit on use action', e.g. 'exit on use action:destroy item:fiery_torch' for example in TTA2 where you escape into the store cupboard but drop the torch.
 - [TECHNICAL TASK] Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 - [TECHNICAL TASK] Proper nouns - e.g. Oubliette. Added 'item is proper noun:' tag for item in model_content so that on examination the 'the' is dropped - e.g. 'You examine Oubliette.'.
-- [TECHINCAL TASK] Multiple _can be used with_ clauses, e.g. ImpSaw2000 (broken) and imperator _and_ spiky-toothed goober teeth
+- [TECHNICAL TASK] Multiple _can be used with_ clauses, e.g. ImpSaw2000 (broken) and imperator _and_ spiky-toothed goober teeth
 
 TTA2 only
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in, when you examine it you get your arm stuck. There are no exits and some items around you.
