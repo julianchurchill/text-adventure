@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlainTextItemDeserialiser implements ItemDeserialiser {
-    private final int NOT_FOUND = -1;
     private final String argumentSeperator = ":";
     private final String itemNameTag = "item name:";
     private final String itemDescriptionTag = "item description:";
@@ -79,8 +78,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
             item.setUsedWithTextFor( usedWithItemID, extractSuccessfulUseMessage( fromIndex ) );
 
             String itemUseContent = contentUptoNextCanBeUsedWith( fromIndex );
-            if( DeserialiserUtils.findTag( itemUseIsNotRepeatableTag, itemUseContent )
-                != DeserialiserUtils.NOT_FOUND )
+            if( findTagWithNoArgumentIn( itemUseContent, itemUseIsNotRepeatableTag ) )
                 item.setUseIsNotRepeatableFor( usedWithItemID );
 
             extractItemUseActions( usedWithItemID, itemUseContent );
@@ -112,25 +110,23 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     }
 
     private boolean findTagWithNoArgument( String tag ) {
-        return findTag( tag ) != NOT_FOUND;
+        return findTag( tag ) != DeserialiserUtils.NOT_FOUND;
+    }
+
+    private boolean findTagWithNoArgumentIn( String lookInHere, String tag ) {
+        return DeserialiserUtils.findTag( tag, lookInHere ) != DeserialiserUtils.NOT_FOUND;
     }
 
     private int findTag( String tag ) {
-        return content.indexOf( tag );
+        return DeserialiserUtils.findTag( tag, content );
     }
 
     private String extractNewlineDelimitedValueFor( String tag ) {
-        int startOfTag = findTag( tag );
-        if( startOfTag == NOT_FOUND )
-            return "";
-        return extractValueUpToNewline( startOfTag + tag.length() );
+        return DeserialiserUtils.extractNewlineDelimitedValueFor( tag, content );
     }
 
     private String extractValueUpToNewline( int startOfValue ) {
-        int endOfTag = content.indexOf( "\n", startOfValue );
-        if( endOfTag == NOT_FOUND )
-            endOfTag = content.length();
-        return content.substring( startOfValue, endOfTag );
+        return DeserialiserUtils.extractValueUpToNewline( startOfValue, content );
     }
 
     private void extractItemUseActions( String usedWithItemID, String itemUseContent ) {
@@ -141,7 +137,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     }
 
     private int findTagFrom( int start, String tag ) {
-        return content.indexOf( tag, start + 1 );
+        return DeserialiserUtils.findTagFrom( start, tag, content );
     }
 
     private void extractItemVisibilityProperties() {
@@ -189,8 +185,8 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     }
 
     private void extractFollowUpPhrases() {
-        int tagLoc = NOT_FOUND;
-        while( (tagLoc = findTagFrom( tagLoc, itemTalkFollowUpPhraseTag )) != NOT_FOUND )
+        int tagLoc = DeserialiserUtils.NOT_FOUND;
+        while( (tagLoc = findTagFrom( tagLoc, itemTalkFollowUpPhraseTag )) != DeserialiserUtils.NOT_FOUND )
             extractSingleFollowUpPhrase( tagLoc );
     }
 
@@ -204,11 +200,11 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     private void extractSingleFollowUpPhrase( int tagLoc ) {
         int startOfId = tagLoc + itemTalkFollowUpPhraseTag.length();
         int argumentSeperatorIndex = findTagFrom( startOfId, argumentSeperator );
-        if( argumentSeperatorIndex != NOT_FOUND ) {
+        if( argumentSeperatorIndex != DeserialiserUtils.NOT_FOUND ) {
             String parentPhraseId = content.substring( startOfId, argumentSeperatorIndex );
             int startOfNewId = argumentSeperatorIndex + 1;
             String restOfLine = extractValueUpToNewline( startOfNewId );
-            if( restOfLine.indexOf( ":" ) == NOT_FOUND )
+            if( restOfLine.indexOf( ":" ) == DeserialiserUtils.NOT_FOUND )
                 talkPhraseSink.addFollowUpPhrase( parentPhraseId, restOfLine );
             else
                 talkPhraseSink.addFollowUpPhrase( parentPhraseId,
@@ -230,8 +226,8 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
 
     private List<IdAndArgPair> extractAllIdAndArgPairs( String tag ) {
         List<IdAndArgPair> pairs = new ArrayList<IdAndArgPair>();
-        int currentLoc = NOT_FOUND;
-        while( (currentLoc = findTagFrom( currentLoc, tag )) != NOT_FOUND ) {
+        int currentLoc = DeserialiserUtils.NOT_FOUND;
+        while( (currentLoc = findTagFrom( currentLoc, tag )) != DeserialiserUtils.NOT_FOUND ) {
             int startOfId = currentLoc + tag.length();
             IdAndArgPair pair = extractIdAndArgPair( startOfId );
             if( pair != null )
@@ -242,7 +238,7 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
 
     private IdAndArgPair extractIdAndArgPair( int startOfId ) {
         int argumentSeperatorIndex = findTagFrom( startOfId, argumentSeperator );
-        if( argumentSeperatorIndex != NOT_FOUND ) {
+        if( argumentSeperatorIndex != DeserialiserUtils.NOT_FOUND ) {
             String id = content.substring( startOfId, argumentSeperatorIndex );
             String arg = extractValueUpToNewline( argumentSeperatorIndex + 1 );
             return new IdAndArgPair( id, arg );
