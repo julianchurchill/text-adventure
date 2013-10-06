@@ -136,6 +136,11 @@ Features
 - [UI] Images embedded within text to add more context for the user. Can be informational like a picture of the clock tower or non-descript paragraph seperators, i.e. a skull.
   - See http://stackoverflow.com/questions/8184566/show-image-in-textview
   - See here for a list of built in span types http://www.informit.com/articles/article.aspx?p=2066699&seqNum=3
+  - Examples:
+    - Fell beast (hairless dog with fiery eyes)
+    - Mushrooms
+    - Spiky-toothed goober (large vicious fish)
+    - Barrelling goon (big fur ball, shooting about like pinball)
 - [UI] Restrict action button list to half screen height
 - [FEATURE] Story log - a record of all the story text you've seen so far - i.e. the 'text on first entry to location'. Possibly also the conversation text? How much of this to store, room descriptions, item activations?
 - [FEATURE] Google games API Achievements
