@@ -373,7 +373,7 @@ item use action:change item visibility:fiery_torch:visible
 item use action:take item:fiery_torch
 item can be used with:dirty_rag
 item successful use message:The rag won't light, perhaps it needs an accelerant.
-item can be used with:pocket_lint
+item can be used with:pocketlint
 item successful use message:There's not really enough of it to start a fire.
 item can be used with:torch_stick
 item successful use message:You can try to beat the embers out but the damage has already been done.
