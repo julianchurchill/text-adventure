@@ -9,17 +9,53 @@ import java.util.Map;
 import java.util.Set;
 
 public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
+
+    private class ItemUseInfo {
+        private final static String itemsAlreadyUsedText = "You have already done that.";
+        private Set<ItemAction> actions = new HashSet<ItemAction>();
+        private boolean useIsRepeatable = true;
+        private String usedWithText = "";
+        private boolean hasBeenUsed = false;
+
+        public void setUsedWithText( String text ) {
+            usedWithText = text;
+        }
+
+        public void setUseIsNotRepeatable() {
+            useIsRepeatable = false;
+        }
+
+        public void setHasBeenUsed() {
+            hasBeenUsed = true;
+        }
+
+        public void addOnUseAction( ItemAction action ) {
+            actions.add( action );
+        }
+
+        public boolean itemCanBeUsedNow() {
+            return !hasBeenUsed || useIsRepeatable;
+        }
+
+        public String use() {
+            if( itemCanBeUsedNow() ) {
+                for( ItemAction a : actions )
+                    a.enact();
+                hasBeenUsed = true;
+                return usedWithText;
+            }
+            return itemsAlreadyUsedText;
+        }
+    }
+
+    private final static String itemsCannotBeUsedTogetherUsedWithText = "Nothing happens.";
     private String name = "";
     private String description = "";
     private String countableNounPrefix = "a";
     private String midSentenceCasedName = null;
     private boolean takeable = true;
     private String id = "";
-    private String canBeUsedWithTargetID;
-    private String usedWithText = "";
-    private boolean useIsRepeatable = true;
-    private boolean used = false;
-    private List<ItemAction> onUseActions = new ArrayList<ItemAction>();
+    private Map<String, ItemUseInfo> itemUseInfos = new HashMap<String, ItemUseInfo>();
     private boolean visible = true;
     private List<ItemAction> onExamineActions = new ArrayList<ItemAction>();
     private String examineText = "";
@@ -95,10 +131,6 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
         this.id = id;
     }
 
-    public boolean useIsRepeatable() {
-        return useIsRepeatable;
-    }
-
     @Override
     public boolean equals( Object o ) {
         if( !(o instanceof NormalItem) )
@@ -117,58 +149,32 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
         return result;
     }
 
-    public boolean canBeUsedWith( Item item ) {
-        if( item.id() == "" )
-            return false;
-        return item.id().equals( canBeUsedWithTargetID );
+    public void setUsedWithTextFor( String withItemID, String text ) {
+        getItemUseInfo( withItemID ).setUsedWithText( text );
     }
 
-    public void setCanBeUsedWith( String itemID ) {
-        this.canBeUsedWithTargetID = itemID;
+    private ItemUseInfo getItemUseInfo( String withItemID ) {
+        if( itemUseInfos.containsKey( withItemID ) == false )
+            itemUseInfos.put( withItemID, new ItemUseInfo() );
+        return itemUseInfos.get( withItemID );
     }
 
-    public List<String> canBeUsedWithItemIDs() {
-        List<String> ids = new ArrayList<String>();
-        if( this.canBeUsedWithTargetID != "" )
-            ids.add( this.canBeUsedWithTargetID );
-        return ids;
+    public void setUseIsNotRepeatableFor( String withItemID ) {
+        getItemUseInfo( withItemID ).setUseIsNotRepeatable();
     }
 
-    public void setUseIsNotRepeatable() {
-        useIsRepeatable = false;
+    public void addOnUseActionFor( String withItemID, ItemAction action ) {
+        getItemUseInfo( withItemID ).addOnUseAction( action );
     }
 
-    public boolean useIsNotRepeatable() {
-        return !this.useIsRepeatable;
+    public String useWith( Item withItem ) {
+        if( itemCanBeUsedAtAllWith( withItem ) == false )
+            return itemsCannotBeUsedTogetherUsedWithText;
+        return getItemUseInfo( withItem.id() ).use();
     }
 
-    public String usedWithText() {
-        return usedWithText;
-    }
-
-    public void setUsedWithText( String text ) {
-        this.usedWithText = text;
-    }
-
-    public void use() {
-        if( itemCanBeUsedNow() )
-            for( ItemAction action : onUseActions )
-                action.enact();
-        else
-            setUsedWithText( "You have already done that." );
-        used = true;
-    }
-
-    private boolean itemCanBeUsedNow() {
-        return !used || useIsRepeatable;
-    }
-
-    public void addOnUseAction( ItemAction action ) {
-        onUseActions.add( action );
-    }
-
-    public List<ItemAction> actions() {
-        return onUseActions;
+    private boolean itemCanBeUsedAtAllWith( Item withItem ) {
+        return itemUseInfos.containsKey( withItem.id() );
     }
 
     public void setVisible( boolean visible ) {

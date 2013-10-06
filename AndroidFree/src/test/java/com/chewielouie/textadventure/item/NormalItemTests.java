@@ -84,116 +84,94 @@ public class NormalItemTests {
         assertFalse( item.takeable() );
     }
 
-    @Test
-    public void a_target_item_needs_an_id_to_test_for_usability() {
-        NormalItem item = new NormalItem();
-        final Item itemWithoutID = mockery.mock( Item.class );
-        mockery.checking( new Expectations() {{
-            allowing( itemWithoutID ).id();
-            will( returnValue( "" ) );
-            ignoring( itemWithoutID );
-        }});
-
-        assertFalse( item.canBeUsedWith( itemWithoutID ) );
+    Item makeMockItemWithID( String id ) {
+        Item item = mock( Item.class );
+        when( item.id() ).thenReturn( id );
+        return item;
     }
 
     @Test
-    public void used_with_text_is_blank_by_default() {
+    public void useWith_can_call_actions_repeatedly_for_the_correct_item() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
+        ItemAction action1 = mock( ItemAction.class );
+        ItemAction action2 = mock( ItemAction.class );
         NormalItem item = new NormalItem();
-        assertEquals( "", item.usedWithText() );
+        item.addOnUseActionFor( "otherItemID", action1 );
+        item.addOnUseActionFor( "otherItemID", action2 );
+
+        item.useWith( otherItem );
+        item.useWith( otherItem );
+
+        verify( action1, times(2) ).enact();
+        verify( action2, times(2) ).enact();
     }
 
     @Test
-    public void item_use_is_repeatable_by_default() {
+    public void useWith_does_not_call_actions_for_other_items() {
+        Item otherItem1 = makeMockItemWithID( "otherItemID1" );
+        Item otherItem2 = makeMockItemWithID( "otherItemID2" );
+        ItemAction action = mock( ItemAction.class );
         NormalItem item = new NormalItem();
-        assertTrue( item.useIsRepeatable() );
+        item.addOnUseActionFor( "otherItemID1", action );
+
+        item.useWith( otherItem2 );
+
+        verify( action, never() ).enact();
     }
 
     @Test
-    public void item_use_is_not_repeatable_can_be_set() {
+    public void useWith_calls_actions_only_once_if_item_use_is_not_repeateable() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
+        ItemAction action = mock( ItemAction.class );
         NormalItem item = new NormalItem();
-        item.setUseIsNotRepeatable();
-        assertFalse( item.useIsRepeatable() );
+        item.addOnUseActionFor( "otherItemID", action );
+        item.setUseIsNotRepeatableFor( "otherItemID" );
+
+        item.useWith( otherItem );
+        item.useWith( otherItem );
+
+        verify( action, times(1) ).enact();
     }
 
     @Test
-    public void used_with_text_is_correct_for_non_repeatable_use_item_before_being_used() {
+    public void useWith_returns_used_with_text_for_correct_item() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
+        ItemAction action = mock( ItemAction.class );
         NormalItem item = new NormalItem();
-        item.setUsedWithText( "message" );
+        item.addOnUseActionFor( "otherItemID", action );
+        item.setUsedWithTextFor( "otherItemID", "been used" );
 
-        item.setUseIsNotRepeatable();
-
-        assertEquals( "message", item.usedWithText() );
+        assertThat( item.useWith( otherItem ), is( "been used" ) );
     }
 
     @Test
-    public void used_with_text_is_correct_for_non_repeatable_use_item_after_being_used_once() {
+    public void useWith_returns_used_with_text_for_correct_item_even_if_no_actions_to_do() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
         NormalItem item = new NormalItem();
-        item.setUsedWithText( "message" );
-        item.setUseIsNotRepeatable();
+        item.setUsedWithTextFor( "otherItemID", "been used" );
 
-        item.use();
-
-        assertEquals( "message", item.usedWithText() );
+        assertThat( item.useWith( otherItem ), is( "been used" ) );
     }
 
     @Test
-    public void used_with_text_is_failure_message_for_non_repeatable_use_item_after_being_used_twice() {
+    public void useWith_returns_used_with_text_on_repeated_use_of_non_repeatable_combination() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
+        ItemAction action = mock( ItemAction.class );
         NormalItem item = new NormalItem();
-        item.setUsedWithText( "message" );
-        item.setUseIsNotRepeatable();
+        item.addOnUseActionFor( "otherItemID", action );
+        item.setUseIsNotRepeatableFor( "otherItemID" );
 
-        item.use();
-        item.use();
+        item.useWith( otherItem );
 
-        assertEquals( "You have already done that.", item.usedWithText() );
+        assertThat( item.useWith( otherItem ), is( "You have already done that." ) );
     }
 
     @Test
-    public void used_with_text_is_successful_use_message_for_repeatable_use_item_after_being_used_twice() {
+    public void useWith_returns_used_with_text_for_items_that_cannot_be_used_together() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
         NormalItem item = new NormalItem();
-        item.setUsedWithText( "message" );
 
-        item.use();
-        item.use();
-
-        assertEquals( "message", item.usedWithText() );
-    }
-
-    @Test
-    public void item_use_actions_are_all_enacted_upon_use() {
-        final ItemAction action1 = mockery.mock( ItemAction.class, "act1" );
-        final ItemAction action2 = mockery.mock( ItemAction.class, "act2" );
-        mockery.checking( new Expectations() {{
-            oneOf( action1 ).enact();
-            ignoring( action1 );
-            oneOf( action2 ).enact();
-            ignoring( action2 );
-        }});
-        NormalItem item = new NormalItem();
-        item.addOnUseAction( action1 );
-        item.addOnUseAction( action2 );
-
-        item.use();
-    }
-
-    @Test
-    public void item_use_actions_are_not_enacted_on_repeated_use_for_an_unrepeatable_use_item() {
-        final ItemAction action1 = mockery.mock( ItemAction.class, "act1" );
-        final ItemAction action2 = mockery.mock( ItemAction.class, "act2" );
-        mockery.checking( new Expectations() {{
-            oneOf( action1 ).enact();
-            ignoring( action1 );
-            oneOf( action2 ).enact();
-            ignoring( action2 );
-        }});
-        NormalItem item = new NormalItem();
-        item.setUseIsNotRepeatable();
-        item.addOnUseAction( action1 );
-        item.addOnUseAction( action2 );
-
-        item.use();
-        item.use();
+        assertThat( item.useWith( otherItem ), is( "Nothing happens." ) );
     }
 
     @Test

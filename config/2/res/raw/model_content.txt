@@ -543,6 +543,8 @@ item talk follow up phrase to:hellosir:iwassentbyyourdaughter:I was sent by your
 item talk response to:iwassentbyyourdaughter:"Is that right, you look like a scrawny fellow, can you lift your own arms up without crying?". You reply cautiously "Um, yes...". "Hmphh." snorts Cabal, "Well you'll have to do, we're getting short on hands every day that goes by.". Turning away for a moment he fumbles about amidst the straw you assumed was bedding and pulls out an ImpSaw 2000 and it's accompanying imperator. That seems to you like a rather dangerous place to keep a chainsaw but you decide against mentioning your opinion since the same man that made that decision now wields the contraption in front of you, and as he already alluded to, he doesn't like you very much. "Use this to cut some strong branches from the wood to the north that we can use to repair the barricades and hurry, night will be upon us before we know it.". He hands you the chainsaw and the imperator.
 item talk action in response to:iwassentbyyourdaughter:change item visibility:impsaw2000_broken:visible
 item talk action in response to:iwassentbyyourdaughter:change item visibility:imperator:visible
+item talk action in response to:iwassentbyyourdaughter:take item:impsaw2000_broken
+item talk action in response to:iwassentbyyourdaughter:take item:imperator
 
 ITEM
 item name:ImpSaw 2000
@@ -553,6 +555,11 @@ item countable noun prefix:an
 item visibility:invisible
 item can be used with:imperator
 item successful use message:It rattles and tattles and chokes to a halt. The belt ran without anything to do the slicing. This chainsaw needs teeth!
+item can be used with:spiky_toothed_goober_teeth
+item successful use message:You insert the teeth one by one into the holding slots running along the chain belt. Stepping back you have a good look at what you've repaired - this is a death machine!
+item use action:change item visibility:impsaw2000_broken:invisible
+item use action:change item visibility:impsaw2000_fixed:visible
+item use action:take item:impsaw2000_fixed
 ITEM
 item name:Imperator
 item description:The imperator resembles a tiny cattle prod, when you squeeze one end the other sparks and the whole thing vibrates violently in your hand. It is used to start the ImpSaw once you are ready.
