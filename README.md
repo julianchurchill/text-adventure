@@ -24,17 +24,6 @@ Backlog
 
 Technical Tasks
 
-- Multiple _can be used with_ clauses
-  - DONE UseWithSpecificItem must pass the original item to the useWith() call
-  - DONE Item must be able to accept, store and action multiple use clauses, indexed by 'use with' item id
-  - Deserialisation must be able to deserialised multiple use clauses
-    - DONE Tidy deserialisation tests so that single use clauses are a degenerative case of multiple use clauses
-    - DONE Convert deserialiser to use multiple use clause interfaces for single clause cases
-    - DONE Remove single use clause interfaces from Item/NormalItem:
-      canBeUsedWith(), setCanBeUsedWith(), canBeUsedWithItemIDs(), usedWithText(), setUsedWithText(), setUseIsNotRepeatable(), useIsNotRepeatable(), addOnUseAction()
-    - DONE Implement multiple use clause deserialisation
-    - DONE Use DeserialiserUtils in PlainTextItemDeserialiser to reduce duplication
-  - Example is impsaw2000_broken, which should have a response for use with the imperator _and_ the teeth
 - Rename git tags to prefix with TTA1_
 - Consider adding 'You use [the] x with [the] y.' before outputting the result. Would help when reading the transcript.
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
@@ -188,11 +177,11 @@ Marketing
 TTA1 v2.2.x/TTA2 v1.0.x
 ---
 
-- [FEATURE] Enabled 'move to sd card'
 - [FEATURE] One shot contextual text can be displayed on entering a room and is then proceeded by the normal room description.
 - [FEATURE] Map - shows where you've been
 - [FEATURE] Added location area to title bar
 - [FEATURE] Smarter resume - all the text from the actions that have taken place in the current location is shown upon loading. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
+- [FEATURE] Enabled 'move to sd card'
 - [UI] Parchment background (from http://www.myfreetextures.com/worn-parchment-paper-2)
   - Added higher res background parchment image
 - [UI] Full width action buttons
@@ -219,6 +208,7 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [TECHNICAL TASK] New event trigger 'exit on use action', e.g. 'exit on use action:destroy item:fiery_torch' for example in TTA2 where you escape into the store cupboard but drop the torch.
 - [TECHNICAL TASK] Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 - [TECHNICAL TASK] Proper nouns - e.g. Oubliette. Added 'item is proper noun:' tag for item in model_content so that on examination the 'the' is dropped - e.g. 'You examine Oubliette.'.
+- [TECHINCAL TASK] Multiple _can be used with_ clauses, e.g. ImpSaw2000 (broken) and imperator _and_ spiky-toothed goober teeth
 
 TTA2 only
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in, when you examine it you get your arm stuck. There are no exits and some items around you.
@@ -226,7 +216,7 @@ TTA2 only
 - [STORY] Entering the general store you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is the back of the shop through which you can see a window that should lead you to the other side of the barricade. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
   - You must assemble a torch from items in nearby locations, you'll need a stick, a rag, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
   - Use with the 'fell beast' allowing you to see the exit at the back of the shop. After entering the cupboard the torch is destroyed, score is incremented and you see there is a one-way exit through the window, leading to the cobbled street north of the barricade.
-- Oubliette asks, when spoken to after agreeing to help repair the barricade - she's standing around looking for someone to help..., that you help escort her for a mushroom gathering task to an abandoned castle in ruins protected by a barrelling goon. Once completed she gives you a mushroom - it can heal if eaten a little or cause a very deep sleep if too much is eaten.
+- [STORY] Oubliette asks, when spoken to after agreeing to help repair the barricade - she's standing around looking for someone to help..., that you help escort her for a mushroom gathering task to an abandoned castle in ruins protected by a barrelling goon. Once completed she gives you a mushroom - it can heal if eaten a little or cause a very deep sleep if too much is eaten.
   - This can be completed anytime between now and before crossing the river (but not _during_ the barricade attack)
   - The first puzzle is the portcullis, you must get an iron bar from the undergrowth next to it, unjam the mechanism, climb over the hidden path of rocks to get to the other side of the portcullis and use the winch handle to wind the winch to raise the portcullis.
   - The second puzzle is beating the barrelling goon - you must place a hollow tree trunk so that when the goon barrels it shoots down a slide and up a ramp over the castle ruins wall leaving the area safe for gathering mushrooms.
