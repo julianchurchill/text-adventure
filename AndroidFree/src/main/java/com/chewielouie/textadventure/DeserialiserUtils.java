@@ -22,6 +22,10 @@ public class DeserialiserUtils {
                (index > 0 && content.charAt( index-1 ) == '\n');
     }
 
+    public static int findTag( String tag, String content ) {
+        return DeserialiserUtils.findTagFrom( 0, tag, content );
+    }
+
     public static int findTagFrom( int start, String tag, String content ) {
         return content.indexOf( tag, start + 1 );
     }

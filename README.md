@@ -32,7 +32,7 @@ Technical Tasks
     - DONE Convert deserialiser to use multiple use clause interfaces for single clause cases
     - DONE Remove single use clause interfaces from Item/NormalItem:
       canBeUsedWith(), setCanBeUsedWith(), canBeUsedWithItemIDs(), usedWithText(), setUsedWithText(), setUseIsNotRepeatable(), useIsNotRepeatable(), addOnUseAction()
-    - Implement multiple use clause deserialisation
+    - DONE Implement multiple use clause deserialisation
     - Use DeserialiserUtils in PlainTextItemDeserialiser to reduce duplication
   - Example is impsaw2000_broken, which should have a response for use with the imperator _and_ the teeth
 - Rename git tags to prefix with TTA1_

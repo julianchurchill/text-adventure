@@ -1,5 +1,6 @@
 package com.chewielouie.textadventure.serialisation;
 
+import com.chewielouie.textadventure.DeserialiserUtils;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.item.TalkPhraseSink;
 import com.chewielouie.textadventure.itemaction.ItemAction;
@@ -71,42 +72,43 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     }
 
     private void extractItemUseProperties() {
-        String usedWithItemID = extractNewlineDelimitedValueFor( itemCanBeUsedWithTag );
-        item.setUsedWithTextFor(
-            usedWithItemID,
-            convertEncodedNewLines(
-                extractNewlineDelimitedValueFor( itemSuccessfulUseMessageTag ) ) );
+        int fromIndex = findNextCanBeUsedWithIndex( 0 );
+        while( fromIndex != DeserialiserUtils.NOT_FOUND ) {
+            String usedWithItemID = DeserialiserUtils.extractNewlineDelimitedValueFor(
+                itemCanBeUsedWithTag, content, fromIndex );
+            item.setUsedWithTextFor( usedWithItemID, extractSuccessfulUseMessage( fromIndex ) );
 
-        if( findTagWithNoArgument( itemUseIsNotRepeatableTag ) )
-            item.setUseIsNotRepeatableFor( usedWithItemID );
+            String itemUseContent = contentUptoNextCanBeUsedWith( fromIndex );
+            if( DeserialiserUtils.findTag( itemUseIsNotRepeatableTag, itemUseContent )
+                != DeserialiserUtils.NOT_FOUND )
+                item.setUseIsNotRepeatableFor( usedWithItemID );
 
-        extractItemUseActions( usedWithItemID );
+            extractItemUseActions( usedWithItemID, itemUseContent );
+            fromIndex = findNextCanBeUsedWithIndex( fromIndex+1 );
+        }
+    }
+
+    private int findNextCanBeUsedWithIndex( int fromIndex ) {
+        return DeserialiserUtils.findTagFrom( fromIndex, itemCanBeUsedWithTag, content );
+    }
+
+    private String extractSuccessfulUseMessage( int fromIndex ) {
+        return convertEncodedNewLines(
+            DeserialiserUtils.extractNewlineDelimitedValueFor(
+                itemSuccessfulUseMessageTag, content, fromIndex ) );
     }
 
     private String convertEncodedNewLines( String input ) {
         return input.replace( "<newline>", "\n" );
     }
 
-    private void extractItemVisibilityProperties() {
-        String visibility = extractNewlineDelimitedValueFor( itemVisibilityTag );
-        if( visibility.equals( "invisible" ) )
-            item.setVisible( false );
-        else
-            item.setVisible( true );
-    }
-
-    private void extractItemExamineProperties() {
-        item.setExamineText( extractNewlineDelimitedValueFor( itemExamineMessageTag ) );
-        if( findTagWithNoArgument( itemExamineActionIsNotRepeatableTag ) )
-            item.setExamineActionIsNotRepeatable();
-        extractItemOnExamineActions();
-    }
-
-    private void extractItemOnExamineActions() {
-        List<ItemAction> actions = new ItemActionDeserialiser( content,
-            itemOnExamineActionTag, item, itemActionFactory ).extract();
-        for( ItemAction action : actions )
-            item.addOnExamineAction( action );
+    private String contentUptoNextCanBeUsedWith( int fromIndex ) {
+        int startIndex = fromIndex == -1 ? 0 : fromIndex;
+        int nextCanBeUsedWithTag = DeserialiserUtils.findTagFrom(
+            fromIndex+1, itemCanBeUsedWithTag, content );
+        if( nextCanBeUsedWithTag == DeserialiserUtils.NOT_FOUND )
+            return content.substring( startIndex );
+        return content.substring( startIndex, nextCanBeUsedWithTag );
     }
 
     private boolean findTagWithNoArgument( String tag ) {
@@ -131,15 +133,37 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
         return content.substring( startOfValue, endOfTag );
     }
 
-    private void extractItemUseActions( String usedWithItemID ) {
-        List<ItemAction> actions = new ItemActionDeserialiser( content,
-            itemUseActionTag, item, itemActionFactory ).extract();
+    private void extractItemUseActions( String usedWithItemID, String itemUseContent ) {
+        List<ItemAction> actions = new ItemActionDeserialiser(
+            itemUseContent, itemUseActionTag, item, itemActionFactory ).extract();
         for( ItemAction action : actions )
             item.addOnUseActionFor( usedWithItemID, action );
     }
 
     private int findTagFrom( int start, String tag ) {
         return content.indexOf( tag, start + 1 );
+    }
+
+    private void extractItemVisibilityProperties() {
+        String visibility = extractNewlineDelimitedValueFor( itemVisibilityTag );
+        if( visibility.equals( "invisible" ) )
+            item.setVisible( false );
+        else
+            item.setVisible( true );
+    }
+
+    private void extractItemExamineProperties() {
+        item.setExamineText( extractNewlineDelimitedValueFor( itemExamineMessageTag ) );
+        if( findTagWithNoArgument( itemExamineActionIsNotRepeatableTag ) )
+            item.setExamineActionIsNotRepeatable();
+        extractItemOnExamineActions();
+    }
+
+    private void extractItemOnExamineActions() {
+        List<ItemAction> actions = new ItemActionDeserialiser( content,
+            itemOnExamineActionTag, item, itemActionFactory ).extract();
+        for( ItemAction action : actions )
+            item.addOnExamineAction( action );
     }
 
     private void extractTalkPhraseInfo() {

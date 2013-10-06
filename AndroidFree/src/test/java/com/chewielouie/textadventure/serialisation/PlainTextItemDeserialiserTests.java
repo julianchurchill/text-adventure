@@ -254,6 +254,47 @@ public class PlainTextItemDeserialiserTests {
     }
 
     @Test
+    public void deserialise_extracts_multiple_item_use_clauses() {
+        Item item = mock( Item.class );
+        ItemAction action1 = mock( ItemAction.class );
+        ItemAction action2 = mock( ItemAction.class );
+        ItemActionFactory itemActionFactory = mock( ItemActionFactory.class );
+        when( itemActionFactory.create( "action1:action arguments1", item ) )
+            .thenReturn( action1 );
+        when( itemActionFactory.create( "action2:action arguments2", item ) )
+            .thenReturn( action2 );
+        PlainTextItemDeserialiser d =
+            new PlainTextItemDeserialiser( itemActionFactory );
+
+        d.deserialise( item,
+                       "item name:Name\n" +
+                       "item description:description\n" +
+                       "item can be used with:itemid1\n" +
+                       "item successful use message:message1\n" +
+                       "item use action:action1:action arguments1\n" +
+                       "item can be used with:itemid2\n" +
+                       "item successful use message:message2\n" +
+                       "item use is not repeatable:\n" +
+                       "item use action:action2:action arguments2\n" );
+
+// #error redo other item use tests with mockito
+
+        verify( itemActionFactory ).create( "action1:action arguments1", item );
+        verify( item ).setUsedWithTextFor( "itemid1", "message1" );
+        verify( item, never() ).setUsedWithTextFor( "itemid1", "message2" );
+        verify( item ).addOnUseActionFor( "itemid1", action1 );
+        verify( item, never() ).addOnUseActionFor( "itemid1", action2 );
+        verify( item, never() ).setUseIsNotRepeatableFor( "itemid1" );
+
+        verify( itemActionFactory ).create( "action2:action arguments2", item );
+        verify( item ).setUsedWithTextFor( "itemid2", "message2" );
+        verify( item, never() ).setUsedWithTextFor( "itemid2", "message1" );
+        verify( item ).addOnUseActionFor( "itemid2", action2 );
+        verify( item, never() ).addOnUseActionFor( "itemid2", action1 );
+        verify( item ).setUseIsNotRepeatableFor( "itemid2" );
+    }
+
+    @Test
     public void deserialise_extracts_item_visibility_and_sets_visible() {
         final Item item = mockery.mock( Item.class );
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
