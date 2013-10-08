@@ -56,7 +56,6 @@ Technical Tasks
 
 Marketing
 
-- Add to SlideME app store http://slideme.org/developers
 - Add keywords and description to Google Play description to include - "Story, game, puzzle"
 - Forums and newsgroups: intfiction.org, rec.games.int-fiction, rec.arts.int-fiction
   - TTA1 release posted on intfiction.org
@@ -175,6 +174,8 @@ Marketing
 - Google Play Store
   - Listed
 - Amazon App Store
+  - Listed
+- SlideME app store http://slideme.org/developers
   - Listed
 - Facebook, Twitter, Google+
   - Release 1.0 and 2.0 advertised on all of the above
