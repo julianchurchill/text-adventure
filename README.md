@@ -24,6 +24,7 @@ Backlog
 
 Technical Tasks
 
+- Turn on proguard for release APK generation - http://developer.android.com/tools/help/proguard.html
 - Rename git tags to prefix with TTA1_
 - Consider adding 'You use [the] x with [the] y.' before outputting the result. Would help when reading the transcript.
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
