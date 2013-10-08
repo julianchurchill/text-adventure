@@ -36,7 +36,7 @@ function copyTestFilesForPackage()
     testDirectoryRoot=src/test/java/com/chewielouie
     testDirectory=$testDirectoryRoot/$packageName
     mkdir --parents $testDirectory
-    copy config/common/test/* $testDirectory
+    copy "config/common/test/*" $testDirectory
     monkeyPatchPackageNamesForTestFiles $packageName $testDirectoryRoot
 }
 
@@ -45,7 +45,7 @@ function monkeyPatchPackageNamesForTestFiles()
     packageName=$1
     testDirectoryRoot=$2
     for file in $testDirectoryRoot/$packageName/* ; do
-        grep --quiet "package REPLACE_ME" $file && sed --eepression="s/package REPLACE_ME/package com.chewielouie.$packageName/" $file > $file.tmp && mv $file.tmp $file
+        grep --quiet "package REPLACE_ME" $file && sed --expression="s/package REPLACE_ME/package com.chewielouie.$packageName/" $file > $file.tmp && mv $file.tmp $file
     done
 }
 
