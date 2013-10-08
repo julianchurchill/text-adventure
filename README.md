@@ -25,8 +25,9 @@ Backlog
 Technical Tasks
 
 - Turn on proguard for release APK generation - http://developer.android.com/tools/help/proguard.html
-- Rename git tags to prefix with TTA1_
 - Consider adding 'You use [the] x with [the] y.' before outputting the result. Would help when reading the transcript.
+- Add cucumber test run as part of build, see https://github.com/cucumber/cucumber-jvm and config/common/test/CucumberStepDefs.java and src/test/resources/cucumber/TTA2/TTA2_entering_the_town.feature
+- Rename git tags to prefix with TTA1_
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
 - Update model for app 1 to use take item action where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 - Analytics
