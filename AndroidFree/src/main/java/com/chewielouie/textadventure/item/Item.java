@@ -21,6 +21,17 @@ public interface Item {
     public boolean takeable();
     public void setUntakeable();
 
+    public boolean canBeUsedWith( Item item );
+    public void setCanBeUsedWith( String itemID );
+    public List<String> canBeUsedWithItemIDs();
+    public String usedWithText();
+    public void setUsedWithText( String text );
+    public void setUseIsNotRepeatable();
+    public boolean useIsNotRepeatable();
+    public void addOnUseAction( ItemAction action );
+    public void use();
+    public List<ItemAction> actions();
+
     public void setUsedWithTextFor( String withItemID, String text );
     public void setUseIsNotRepeatableFor( String withItemID );
     public void addOnUseActionFor( String withItemID, ItemAction action );
