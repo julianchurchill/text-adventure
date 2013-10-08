@@ -1,5 +1,6 @@
 package REPLACE_ME;
 
+import android.graphics.Bitmap;
 import com.chewielouie.textadventure_common.TextAdventureCommonActivity;
 import com.chewielouie.textadventure.BasicModelFactory;
 import com.chewielouie.textadventure.RendersView;
@@ -27,8 +28,8 @@ public class TextAdventureDummyActivity extends TextAdventureCommonActivity {
         super( u );
     }
 
-    public int R_drawable_map() {
-        return R.drawable.map;
+    protected Bitmap getMap() {
+        return null;
     }
 
     public int R_id_available_actions() {
