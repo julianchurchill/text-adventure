@@ -352,7 +352,7 @@ x:180
 y:420
 location id:burnt_out_shop
 location area id:town_area
-location description:You step over the charred steps through what remains of the door way. Looking inside everything is black, soot covers the walls that still stand and the counter and remnants of the shelves that once hung on the walls are in blackened, crumpled pieces across the floor. There is still some warmth given off by the surrounding debris, the fire must have been intense.
+location description:You step over the charred steps through what remains of the door way. Looking inside everything is black, soot covers the walls that still stand and the counter and remnants of the shelves that once hung on the walls are in blackened, crumpled pieces across the floor.<div align="center"><img src="icon.png"/></div>There is still some warmth given off by the surrounding debris, the fire must have been intense.
 EXIT
 exit label:Outside
 exit destination:merchantslane_west

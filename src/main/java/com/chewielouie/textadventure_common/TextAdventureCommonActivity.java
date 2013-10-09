@@ -36,8 +36,11 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Html.ImageGetter;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
@@ -414,11 +417,18 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private void updateMainText() {
         scrollToTopOfNewDescriptionContent();
 
-        SpannableStringBuilder text = new SpannableStringBuilder( mainTextContent );
+        SpannableStringBuilder text = new SpannableStringBuilder();
+        parseHTMLContent( text, replaceNewlinesWithHTMLBreaks( mainTextContent ) );
         addItemsText( text );
         addExitsText( text );
 
+        System.out.println( "span=\"" + text.toString() + "\"");
+
         main_text_output.setText( text, TextView.BufferType.SPANNABLE );
+    }
+
+    private String replaceNewlinesWithHTMLBreaks( String t ) {
+        return t.replace( "\n", "<br/>" );
     }
 
     private void scrollToTopOfNewDescriptionContent() {
@@ -476,6 +486,25 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
             }
         });
     }
+
+    private void parseHTMLContent( SpannableStringBuilder spannableBuilder, String textToParse ) {
+        spannableBuilder.append( Html.fromHtml( textToParse, imgGetter, null ) );
+    }
+
+    private ImageGetter imgGetter = new ImageGetter() {
+        public Drawable getDrawable( String source ) {
+            String drawableString = "drawable/" + removeImageExtension( source );
+            int imageResource = getResources().getIdentifier( drawableString, null, getPackageName() );
+            Drawable drawable = getResources().getDrawable( imageResource );
+            drawable.setBounds( 0, 0, drawable.getIntrinsicWidth(),
+                                      drawable.getIntrinsicHeight() );
+            return drawable;
+        }
+
+        private String removeImageExtension( String filename ) {
+            return filename.replace( ".png", "" );
+        }
+    };
 
     private void addItemsText( SpannableStringBuilder text ) {
         if( availableItemsText != "" )
