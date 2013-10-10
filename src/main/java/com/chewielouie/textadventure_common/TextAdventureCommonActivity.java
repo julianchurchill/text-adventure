@@ -418,23 +418,26 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void updateMainText() {
-        scrollToTopOfNewDescriptionContent();
-
         SpannableStringBuilder text = new SpannableStringBuilder();
-        parseHTMLContent( text, replaceNewlinesWithHTMLBreaks( mainTextContent ) );
-        ensureAllImagesAreCentered( text );
+        addMainContentText( text );
         addItemsText( text );
         addExitsText( text );
 
         main_text_output.setText( text, TextView.BufferType.SPANNABLE );
     }
 
+    private void addMainContentText( SpannableStringBuilder text ) {
+        parseHTMLContent( text, replaceNewlinesWithHTMLBreaks( mainTextContent ) );
+        ensureAllImagesAreCentered( text );
+        scrollToTopOfNewMainContent( text );
+    }
+
     private String replaceNewlinesWithHTMLBreaks( String t ) {
         return t.replace( "\n", "<br/>" );
     }
 
-    private void scrollToTopOfNewDescriptionContent() {
-        main_text_output.setText( mainTextContent, TextView.BufferType.SPANNABLE );
+    private void scrollToTopOfNewMainContent( SpannableStringBuilder text ) {
+        main_text_output.setText( text, TextView.BufferType.SPANNABLE );
         if( newDescriptionIsBigger() ) {
             if( newDescriptionStartsWithTheOld() )
                 scrollToFirstNewDescriptionLine();
