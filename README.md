@@ -192,7 +192,7 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [UI] Full width action buttons
 - [UI] HTML can be embedded in text descriptions and action messages. Not all HTML tags are supported. Supported HTML tags by this method on android can be found here: http://commonsware.com/blog/Android/2010/05/26/html-tags-supported-by-textview.html
   - HTML tag support in any description or text resultant from an action
-  - Images are automatically centered
+  - Images are automatically centered, but must use wrap the img tag in <div align="center"></div> otherwise image will not be surrounded with line breaks and therefore will have nothing to be centred within. The align="center" property is redundant as it doesn't work but may be useful for future extensions so please include it.
 
 - [BUG] Order of exits can be confusing - reordered to this {North, West, East, South}
 - [BUG] Double new lines appear before and after talk phrases are printed
