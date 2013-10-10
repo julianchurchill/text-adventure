@@ -477,9 +477,15 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
                     int firstNewDescriptionLine = lastLineInOldDescription + 1;
                     main_text_output.getLineBounds( firstNewDescriptionLine, bounds );
                 }
-                scrollView.smoothScrollTo( 0, bounds.top );
+                scrollView.smoothScrollTo( 0, bounds.top - textViewLineHeightPadding() );
             }
         });
+    }
+
+    private int textViewLineHeightPadding() {
+        // TextView.getLineSpacineExtra() is not available until API level 16 (4.1)
+        // so use getCompoundPaddingTop() as the next best thing
+        return main_text_output.getCompoundPaddingTop();
     }
 
     private void scrollToTopOfMainText() {
