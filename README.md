@@ -24,6 +24,7 @@ Backlog
 
 Technical Tasks
 
+- Consider making the item and exit list italic or some other thing to distinguish them as state rather than story...
 - Turn on proguard for release APK generation - http://developer.android.com/tools/help/proguard.html
 - Add cucumber test run as part of build, see https://github.com/cucumber/cucumber-jvm and config/common/test/CucumberStepDefs.java and src/test/resources/cucumber/TTA2/TTA2_entering_the_town.feature
 - Rename git tags to prefix with TTA1_
