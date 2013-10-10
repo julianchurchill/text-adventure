@@ -41,11 +41,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Html.ImageGetter;
+import android.text.Layout;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
+import android.text.style.AlignmentSpan;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -419,10 +422,9 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
         SpannableStringBuilder text = new SpannableStringBuilder();
         parseHTMLContent( text, replaceNewlinesWithHTMLBreaks( mainTextContent ) );
+        ensureAllImagesAreCentered( text );
         addItemsText( text );
         addExitsText( text );
-
-        System.out.println( "span=\"" + text.toString() + "\"");
 
         main_text_output.setText( text, TextView.BufferType.SPANNABLE );
     }
@@ -505,6 +507,17 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
             return filename.replace( ".png", "" );
         }
     };
+
+    private void ensureAllImagesAreCentered( SpannableStringBuilder text ) {
+        Object[] obj = text.getSpans(0, text.length(), ImageSpan.class);
+        if( obj != null ) {
+            for (int i = 0; i < obj.length; i++) {
+                int start = text.getSpanStart(obj[i]);
+                int end = text.getSpanEnd(obj[i]);
+                text.setSpan( new AlignmentSpan.Standard( Layout.Alignment.ALIGN_CENTER ), start, end, 0 );
+            }
+        }
+    }
 
     private void addItemsText( SpannableStringBuilder text ) {
         if( availableItemsText != "" )

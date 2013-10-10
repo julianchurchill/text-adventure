@@ -122,18 +122,15 @@ Story - TTA2
   - DONE Pocket lint and glowing embers - "There's not really enough of it to start a fire."
   - DONE Stick and glowing embers - "You can try to beat the embers out but the damage has already been done."
   - DONE Stick and the fell beast - "Really? Do you want to fight the beast or play with it?"
-
-Features
-
-- [UI] Images embedded within text to add more context for the user. Can be informational like a picture of the clock tower or non-descript paragraph seperators, i.e. a skull.
-  - See http://stackoverflow.com/questions/8184566/show-image-in-textview
-  - DONE HTML tag support in any description or text resultant from an action
-  - Make images centered with <div align="center"><img src=""></div>
+- Add embedded images at suitable places with <img src=""/> tags
   - Examples:
     - Fell beast (hairless dog with fiery eyes)
     - Mushrooms
     - Spiky-toothed goober (large vicious fish)
     - Barrelling goon (big fur ball, shooting about like pinball)
+
+Features
+
 - [FEATURE] Map - extras
     - Make better masks and a better map! Charlies on the case.
 - [UI] Parchment background extras
@@ -193,6 +190,9 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [UI] Parchment background (from http://www.myfreetextures.com/worn-parchment-paper-2)
   - Added higher res background parchment image
 - [UI] Full width action buttons
+- [UI] HTML can be embedded in text descriptions and action messages. Not all HTML tags are supported. Supported HTML tags by this method on android can be found here: http://commonsware.com/blog/Android/2010/05/26/html-tags-supported-by-textview.html
+  - HTML tag support in any description or text resultant from an action
+  - Images are automatically centered
 
 - [BUG] Order of exits can be confusing - reordered to this {North, West, East, South}
 - [BUG] Double new lines appear before and after talk phrases are printed
