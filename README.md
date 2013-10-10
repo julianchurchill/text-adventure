@@ -25,7 +25,6 @@ Backlog
 Technical Tasks
 
 - Turn on proguard for release APK generation - http://developer.android.com/tools/help/proguard.html
-- Consider adding 'You use [the] x with [the] y.' before outputting the result. Would help when reading the transcript.
 - Add cucumber test run as part of build, see https://github.com/cucumber/cucumber-jvm and config/common/test/CucumberStepDefs.java and src/test/resources/cucumber/TTA2/TTA2_entering_the_town.feature
 - Rename git tags to prefix with TTA1_
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
@@ -214,6 +213,7 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [TECHNICAL TASK] Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 - [TECHNICAL TASK] Proper nouns - e.g. Oubliette. Added 'item is proper noun:' tag for item in model_content so that on examination the 'the' is dropped - e.g. 'You examine Oubliette.'.
 - [TECHNICAL TASK] Multiple _can be used with_ clauses, e.g. ImpSaw2000 (broken) and imperator _and_ spiky-toothed goober teeth
+- [TECHINCAL TASK] Added 'You use [the] x with [the] y.' before outputting the result.
 
 TTA2 only
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in, when you examine it you get your arm stuck. There are no exits and some items around you.

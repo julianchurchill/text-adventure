@@ -7,7 +7,6 @@ import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.hamcrest.Matcher;
 import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
@@ -143,27 +142,6 @@ public class NormalItemTests {
 
         verify( action, times(1) ).enact();
     }
-
-    @Test
-    public void useWith_returns_what_you_are_using_at_start_of_phrase() {
-        Item otherItem = makeMockItemWithID( "otherItemID" );
-        when( otherItem.midSentenceCasedName() ).thenReturn( "other item" );
-        ItemAction action = mock( ItemAction.class );
-        NormalItem item = new NormalItem();
-        item.addOnUseActionFor( "otherItemID", action );
-        item.setUsedWithTextFor( "otherItemID", "been used" );
-        item.setMidSentenceCasedName( "item" );
-
-        assertThat( item.useWith( otherItem ),
-                    stringStartsWith( "You use the item with the other item. " ) );
-    }
-
-    private Matcher<String> stringStartsWith( String prefix ) {
-        return org.hamcrest.Matchers.startsWith( prefix );
-    }
-
-    // @Test
-    // public void useWith_returns_what_you_are_using_at_start_of_phrase_without_prefixing_proper_nouns_with_the() {
 
     @Test
     public void useWith_returns_used_with_text_for_correct_item() {

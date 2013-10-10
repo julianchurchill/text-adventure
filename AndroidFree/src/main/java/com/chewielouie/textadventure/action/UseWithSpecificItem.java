@@ -33,7 +33,20 @@ public class UseWithSpecificItem implements Action {
 
     public void trigger() {
         if( targetItem != null && originalItem != null )
-            userText = targetItem.useWith( originalItem );
+            userText = createUsePrefix() + targetItem.useWith( originalItem );
+    }
+
+    private String createUsePrefix() {
+        return "You use " + pronounAndSpacingFor( originalItem )
+                          + originalItem.midSentenceCasedName() +
+               " with "   + pronounAndSpacingFor( targetItem )
+                          + targetItem.midSentenceCasedName() + ". ";
+    }
+
+    private String pronounAndSpacingFor( Item item ) {
+        if( item.properNoun() )
+            return "";
+        return "the ";
     }
 
     public boolean userMustChooseFollowUpAction() {
