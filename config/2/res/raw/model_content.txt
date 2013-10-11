@@ -418,14 +418,38 @@ exit id:cobbledroad_to_hovel
 exit is not visible:
 ITEM
 item name:Small girl
-item description:She is a scrawny lass, around 12 years old with a canny glint in her eye. She looks to be concealing something behind her back, jiggling from one foot to the other with excitement that she can barely contain. The older girl next to her speaks in hushed tones, trying to keep her calm. For a moment you think you see the toe of a leather boot poking out from behind her.
-item id:flechette_mob
+item description:She is a scrawny lass, around 12 years old with a canny glint in her eye. She looks to be concealing something behind her back, jiggling from one foot to the other with excitement that she can barely contain. Oubliette next to her speaks in hushed tones, trying to keep her calm. For a moment you think you see the toe of a leather boot poking out from behind her.
+item id:flechette_as_small_girl
 item countable noun prefix:a
 item is untakeable:
 item talk initial phrase:helpme:Can you help me?:"Can you help me?" you say to the younger girl.
-item talk response to:helpme:She looks at you moving forward but the older girl pulls her back and tells her to keep away from you.
+item talk response to:helpme:She looks at you moving forward but Oubliette pulls her back and tells her to keep away from you.
 item talk initial phrase:isthataboot:Is that a boot behind your back?:"Is that a boot behind your back?" you say to the younger girl.
-item talk response to:isthataboot: She spins round on one leg with unsettling glee so that you can clearly see the large leather boot she is holding then she sticks out her tongue and blows a big raspberry at you. The older girl looks at her sternly and tells her off in a terse whisper.
+item talk response to:isthataboot: She spins round on one leg with unsettling glee so that you can clearly see the large leather boot she is holding then she sticks out her tongue and blows a big raspberry at you. Oubliette looks at her sternly and tells her off in a terse whisper.
+ITEM
+item name:Flechette
+item description:She is a scrawny lass, around 12 years old with a canny glint in her eye. She looks to be concealing something behind her back, jiggling from one foot to the other with excitement that she can barely contain. Oubliette next to her speaks in hushed tones, trying to keep her calm. For a moment you think you see the toe of a leather boot poking out from behind her.
+item id:flechette
+item mid sentence cased name:Flechette
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:helpme:Can you help me?:"Can you help me?" you say to Flechette.
+item talk response to:helpme:She looks at you moving forward but Oubliette pulls her back and tells her to keep away from you.
+item talk initial phrase:isthataboot:Is that a boot behind your back?:"Is that a boot behind your back?" you say.
+item talk response to:isthataboot: She spins round on one leg with unsettling glee so that you can clearly see the large leather boot she is holding then she sticks out her tongue and blows a big raspberry at you. Oubliette looks at her sternly and tells her off in a terse whisper.
+ITEM
+item name:Flechette
+item description:She is a scrawny lass, around 12 years old with a canny glint in her eye. She looks to be concealing something behind her back, jiggling from one foot to the other with excitement that she can barely contain. For a moment you think you see the toe of a leather boot poking out from behind her.
+item id:flechette_when_oubliette_is_gone
+item mid sentence cased name:Flechette
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:helpme:Can you help me?:"Can you help me?" you say to Flechette.
+item talk response to:helpme:She looks at you moving forward but hesitates, turning to look for her sister who is not to be seen. She steps back thinking better of approaching you without her sister around.
+item talk initial phrase:isthataboot:Is that a boot behind your back?:"Is that a boot behind your back?" you say.
+item talk response to:isthataboot:She spins round on one leg with unsettling glee so that you can clearly see the large leather boot she is holding then she sticks out her tongue and blows a big raspberry at you.
 ITEM
 item name:Oubliette
 item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. From what you recall of the shouting man, her name is Oubliette. Fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself.
@@ -445,6 +469,8 @@ item talk follow up phrase to:betterthanaseaweedfacemask:whattheblazes
 
 item talk follow up phrase to:sorehead:whattheblazes:What the blazes!:"Alright, what the blazes was that for? Will you please stop hitting me!".
 item talk response to:whattheblazes:Oubliette looks slightly sympathetic to your plight but remains steadfast. "This is my sister Flechette. I'm afraid she's rather angry with you, as we all have been, for bringing the wrath of the witch upon us and then abandoning us like you did.".
+item talk action in response to:whattheblazes:change item visibility:flechette_as_small_girl:invisible
+item talk action in response to:whattheblazes:change item visibility:flechette:visible
 
 item talk follow up phrase to:whattheblazes:thatscrazythewitchisdead:That's crazy the witch is dead:"I don't know what you're talking about, I killed the witch, she's gone, she couldn't have survived.". You sound quite desperate and don't really believe yourself. The witch must have survived.
 item talk response to:thatscrazythewitchisdead:Once more Flechette leaps forward and strikes you hard about the face with the boot. This is getting ridiculous, what do they want you to do?
@@ -480,6 +506,8 @@ item talk follow up phrase to:howcanihelp:icanhelpyoucollectthemushrooms:I can h
 item talk response to:icanhelpyoucollectthemushrooms:"Ok, that would be wonderful. What I really need is a strong, tough bodyguard like you since the castle is teeming with the witch's creatures.". Before you can say "Ah..." she runs off to the east calling back "I'll just collect my basket, come with me, the ruins are this way to the east of town.".
 item talk action in response to:icanhelpyoucollectthemushrooms:change item visibility:oubliette_sympathetic:invisible
 item talk action in response to:icanhelpyoucollectthemushrooms:change item visibility:oubliette_getting_basket:visible
+item talk action in response to:icanhelpyoucollectthemushrooms:change item visibility:flechette:invisible
+item talk action in response to:icanhelpyoucollectthemushrooms:change item visibility:flechette_when_oubliette_is_gone:visible
 
 item talk follow up phrase to:howcanihelp:icanrepairthebarricade:I can repair the barricade:"I can repair the barricade.", you say bravely, or at least as bravely as you can muster to a girl who has beaten you unconscious with a boot.
 item talk response to:icanrepairthebarricade:"Ok, that would be wonderful, go talk to my father and he'll give you instructions on what needs to be done.". She gestures towards the hovel to the north.
@@ -516,6 +544,8 @@ item talk follow up phrase to:howcanihelp:okicanhelpyoucollectthemushrooms:Ok, I
 item talk response to:okicanhelpyoucollectthemushrooms:"That would be wonderful. What I really need is a strong, tough bodyguard like you since the castle is teeming with the witch's creatures.". Before you can say "Ah..." she runs off to the east calling back "I'll just collect my basket, come with me, the ruins are this way to the east of town.".
 item talk action in response to:okicanhelpyoucollectthemushrooms:change item visibility:oubliette_barricade_fixed:invisible
 item talk action in response to:okicanhelpyoucollectthemushrooms:change item visibility:oubliette_getting_basket:visible
+item talk action in response to:okicanhelpyoucollectthemushrooms:change item visibility:flechette:invisible
+item talk action in response to:okicanhelpyoucollectthemushrooms:change item visibility:flechette_when_oubliette_is_gone:visible
 
 
 LOCATION
@@ -1277,6 +1307,8 @@ item use action:destroy item:mushroom_plucker
 item use action:destroy item:pocket_mushrooms
 item use action:change item visibility:oubliette_in_the_north_courtyard_waiting:invisible
 item use action:change item visibility:oubliette_mushrooms_collected:visible
+item use action:change item visibility:flechette:visible
+item use action:change item visibility:flechette_when_oubliette_is_gone:invisible
 item use action:change item visibility:single_mushroom:visible
 item use action:take item:single_mushroom
 item use action:increment score:

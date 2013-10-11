@@ -75,9 +75,9 @@ Bugs
 
 Story - TTA2
 
-- Little girl is introduced as "Flechette" but her description remains a small girl".
-- Once you've accepted  Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.
 - On Entering the house Gruff man will keep repeating his request when you talk to him and continues to pass the chainsaw and imperator to you despite you already having in.
+- Two Oubliettes appear outside the castle gate portcullis if you don't talk to her first
+- Iron bar stays in your possession after unjamming the portcullis mechanism - should probably leave it in the mechanism
 
 - Repair the barricade
   - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
@@ -231,6 +231,9 @@ TTA2 only
   - This can be completed anytime between now and before crossing the river (but not _during_ the barricade attack)
   - The first puzzle is the portcullis, you must get an iron bar from the undergrowth next to it, unjam the mechanism, climb over the hidden path of rocks to get to the other side of the portcullis and use the winch handle to wind the winch to raise the portcullis.
   - The second puzzle is beating the barrelling goon - you must place a hollow tree trunk so that when the goon barrels it shoots down a slide and up a ramp over the castle ruins wall leaving the area safe for gathering mushrooms.
+
+- [MINOR STORY CORRECTION] Little girl is introduced as "Flechette" but her description remains a small girl".
+- [MINOR STORY CORRECTION] Once you've accepted Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.
 
 2.1.1
 -----
