@@ -716,7 +716,7 @@ item description:Huddled under a tree by the river bank is a fisherman, sou'west
 item id:sleeping_fisherman
 item countable noun prefix:a
 item is untakeable:
-item examine message:As you look at the fisherman he grumbles and moans, dropping the bottle of cider which clangs against the pebbles and tree roots he is nestled amongst. You jump and he wakes up, glares at you and shout-slurs "Geeearrr outt, myyy fish!" fumbling for his bottle of cider which he throws at you. You manage to dodge it, narrowly avoiding a braining and swiftly pick it up and prepare to defend yourself. There's no way you're getting near the fish in this river while he's awake.
+item examine message:As you look at the fisherman he grumbles and moans, dropping the bottle of cider which clangs against the pebbles and tree roots he is nestled amongst. You jump and he wakes up, glares at you and shout-slurs "Geeearrr outt, myyy fish!" fumbling for his bottle of cider which he throws at you. You manage to dodge it, narrowly avoiding a braining and swiftly pick it up and prepare to defend yourself. There's no way you're getting near the fish in this river while he's awake. As he bumbles about you notice a fishing lure has dropped out of his pocket and lies on the ground.
 item on examine action:change item visibility:sleeping_fisherman:invisible
 item on examine action:change item visibility:angry_fisherman:visible
 item on examine action:change item visibility:river_before_fishing:invisible
@@ -724,6 +724,7 @@ item on examine action:change item visibility:river_after_the_first_fish:invisib
 item on examine action:change item visibility:river_with_no_fish:invisible
 item on examine action:change item visibility:river_with_angry_fisherman:visible
 item on examine action:change item visibility:cider_bottle:visible
+item on examine action:change item visibility:fishing_lure:visible
 item on examine action:take item:cider_bottle
 ITEM
 item name:Sleeping fisherman
@@ -763,13 +764,19 @@ item id:cider_bottle
 item countable noun prefix:a
 item visibility:invisible
 ITEM
+item name:Fishing lure
+item description:It's bright and shiny with a bobbly bit on the top. Just right for attracting fish.
+item id:fishing_lure
+item countable noun prefix:a
+item visibility:invisible
+ITEM
 item name:River
 item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gently rolling hills.
 item id:river_before_fishing
 item countable noun prefix:a
 item is untakeable:
 item can be used with:fishing_rod_with_reel_and_lure
-item successful use message:As you whip the line out from behind you the reel spins quickly unleashing the line across the river, landing about midway. An excellent cast, almost as though you know what you're doing. You slowly turn the reel handle to pull the line back, staring at the water, waiting for a tug on the line to indicate something has taken a nibble. Turn, turn, turn but nothing. You wind the line right up ready for another cast.
+item successful use message:As you whip the line out from behind you the reel spins quickly unleashing the line across the river, landing about midway. An excellent cast, almost as though you know what you're doing. You slowly turn the reel handle to pull the line back, staring at the water, waiting for a tug on the line to indicate something has taken a nibble. Turn, turn, turn and out pops a Blue Mullet - it is very recognisable with it's silky blue sheen and toothless mouth. It pops and gasps at you with sad fishy eyes. This fish is of no use to you so you throw it back into the river. You wind the line right up ready for another cast.
 item use action:change item visibility:river_before_fishing:invisible
 item use action:change item visibility:river_after_the_first_fish:visible
 ITEM
@@ -837,11 +844,6 @@ exit label:Outside
 exit destination:river_edge
 exit direction hint:East
 exit id:fishermans_shack_to_river_edge
-ITEM
-item name:Fishing lure
-item description:It's bright and shiny with a bobbly bit on the top. Just right for attracting fish.
-item id:fishing_lure
-item countable noun prefix:a
 ITEM
 item name:Fishing rod
 item description:A pole long enough to dangle over some water and fall asleep whilst doing nothing on a lazy Sunday afternoon. It has no lure or reel and looks a little useless at the moment.

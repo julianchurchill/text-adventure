@@ -75,20 +75,21 @@ Bugs
 
 Story - TTA2
 
+- Little girl is introduced as "Flechette" but her description remains a small girl".
+- Once you've accepted  Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.
+- On Entering the house Gruff man will keep repeating his request when you talk to him and continues to pass the chainsaw and imperator to you despite you already having in.
+
 - Repair the barricade
   - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
     - DONE You are surrounded by the mob, from amongst them stands a girl wielding a shoe, she hits you, her dad cmoes over 'Oubliette, Oubliette! What do you think you are doing, stop that at once! You must never beat a stranger with a shoe, you might as well tickle them, always use a good sturdy leather boot" and he passes her sturdy leather boot. She considers it, weighs it and then beats you. Everything goes black.
     - DONE You wake up in the late afternoon. You are tied up in the street, propped, sitting, against a wall. Oubliette is watching you, she apologises and introduces her sister Flechette, you notice she is holding a boot behind her back. You must talk to Oubliette to get free, she tells you all about hte witch and how it's your fault, if you say something wrong Flechette hits you with the boot. Eventually you must agree to help.
   - You must help them repair the barricade to the north of the town by the guards tower/gate before night falls. They give you a broken impsaw 2000 and an imperator.
-    - You must find teeth perhaps from vicious Spiky-toothed Goobers (fish) to repair the impsaw.
+    - DONE You must find teeth from a vicious Spiky-toothed Goobers (fish) to repair the impsaw. You must assemble a fishing rod, wake a fisherman to get his lure and send him back to sleep with a bottle of cider. Then you can use the fishing rod on the river to retrieve a Goober (the first fish is a useless Blue Mullet).
     - Then you must use the imperator on the impsaw to enrage the imp and get it to run around causing the chain of teeth to spin round. You then use it to chop branches from a tree in the wood and bring the branches back to repair the barricade.
 - The barricade attack
   - Completing the barricade triggers night fall and the creatures attack, you must help defend the barricade through the night and at least one fell beast ambushes you when you enter another location. You defeat it using a weapon given to you by a townsperson.
   - Then you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
   - Finally when you leave the location to check the rest of the town defences (suggested by talking again if you don't do it anyway) you get attacked by one more fell beast, defeat it and the attack ends, day dawns.
-- Make the fishing task a bit more challenging
-  - The lure should be dropped by the fisherman when you first wake him up
-  - On the first fishing you should get a Blue Mullet and discard it
 - In the morning the towns people ask you to get help from a nearby village over the river - Ubiquity.
 - A river and bridge between the two settlements
   - Use a boat to get across initially, perhaps repair the bridge from the other side to return to the town
