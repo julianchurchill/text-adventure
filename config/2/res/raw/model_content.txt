@@ -493,7 +493,7 @@ item talk action in response to:okillhelpyou:change item visibility:oubliette_sy
 
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_sympathetic
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -517,7 +517,7 @@ item talk action in response to:icanrepairthebarricade:change item visibility:ca
 
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_mushrooms_collected
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -533,7 +533,7 @@ item talk action in response to:okicanhelptorepairthebarricade:change item visib
 
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_barricade_fixed
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -975,7 +975,7 @@ exit id:clocktower_to_castle_ruins
 exit is not visible:
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_getting_basket
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -1042,7 +1042,7 @@ item is untakeable:
 item visibility:invisible
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_outside_the_ruins1
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -1055,7 +1055,7 @@ item talk action in response to:wherenow:change item visibility:oubliette_outsid
 item talk action in response to:wherenow:change item visibility:oubliette_outside_the_ruins2:visible
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_outside_the_ruins2
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -1067,7 +1067,7 @@ item talk initial phrase:nowayforward:There's no way forward, let's go back:"The
 item talk response to:nowayforward:Oubliette looks at you with disappointment. "If we go back now I won't have what I need for my healing balms and salves. The townsfolk are depending on me.". She doesn't look like she's going anywhere.
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_outside_the_ruins3
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -1184,7 +1184,7 @@ item id:winch_handle
 item countable noun prefix:a
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_in_the_courtyard1
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -1199,7 +1199,7 @@ item talk action in response to:wherenow:change exit visibility:castle_courtyard
 
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_in_the_courtyard2
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -1212,7 +1212,7 @@ item talk response to:ivegotabadfeeling:Oubliette looks at you and shakes her he
 
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_in_the_courtyard3
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -1298,7 +1298,7 @@ item countable noun prefix:a
 item visibility:invisible
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_in_the_north_courtyard
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -1313,7 +1313,7 @@ item talk action in response to:arethosethemushrooms:take item:mushroom_plucker
 
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_in_the_north_courtyard_waiting
 item mid sentence cased name:Oubliette
 item is proper noun:
