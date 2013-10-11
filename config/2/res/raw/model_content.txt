@@ -511,6 +511,7 @@ item talk action in response to:icanhelpyoucollectthemushrooms:change item visib
 
 item talk follow up phrase to:howcanihelp:icanrepairthebarricade:I can repair the barricade:"I can repair the barricade.", you say bravely, or at least as bravely as you can muster to a girl who has beaten you unconscious with a boot.
 item talk response to:icanrepairthebarricade:"Ok, that would be wonderful, go talk to my father and he'll give you instructions on what needs to be done.". She gestures towards the hovel to the north.
+item talk action in response to:icanrepairthebarricade:change item visibility:gruff_man_no_introduction:invisible
 item talk action in response to:icanrepairthebarricade:change item visibility:cabal_jambon_no_introduction:invisible
 item talk action in response to:icanrepairthebarricade:change item visibility:cabal_jambon_sent_to_by_oubliette:visible
 
@@ -526,6 +527,7 @@ item talk initial phrase:howcanihelp:How can I help?:"How can I help?" you ask O
 item talk response to:howcanihelp:"Well the barricade needs to be repaired.".
 item talk follow up phrase to:howcanihelp:okicanhelptorepairthebarricade:Ok, I can help to repair the barricade:"Ok, I can help to repair the barricade.", you say bravely, or at least as bravely as you can muster to a girl who has beaten you unconscious with a boot.
 item talk response to:okicanhelptorepairthebarricade:"That would be wonderful, go talk to my father and he'll give you instructions on what needs to be done.". She gestures towards the hovel to the north.
+item talk action in response to:okicanhelptorepairthebarricade:change item visibility:gruff_man_no_introduction:invisible
 item talk action in response to:okicanhelptorepairthebarricade:change item visibility:cabal_jambon_no_introduction:invisible
 item talk action in response to:okicanhelptorepairthebarricade:change item visibility:cabal_jambon_sent_to_by_oubliette:visible
 
@@ -562,29 +564,45 @@ exit id:hovel_to_cobbledroad
 ITEM
 item name:Gruff man
 item description:This fellow is stocky, middle aged with a shock of red hair. He looks at you suspiciously.
+item id:gruff_man_no_introduction
+item is untakeable:
+item countable noun prefix:a
+item talk initial phrase:hellosir:Hello sir:"Hello sir..." you say tentatively to the man.
+item talk response to:hellosir:"What is it? Oh, you're the swine that brought this catastrophe down upon us in the first place - well I'm Cabal Jambon and because of you my children have lost their house and their mother. What are you going to do about it?". You gulp.
+item talk action in response to:hellosir:change item visibility:gruff_man_no_introduction:invisible
+item talk action in response to:hellosir:change item visibility:cabal_jambon_no_introduction:visible
+ITEM
+item name:Cabal Jambon
+item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
 item id:cabal_jambon_no_introduction
 item is untakeable:
-item countable noun prefix:a
-item talk initial phrase:hellosir:Hello sir:"Hello sir..." you say tentatively to the man.
-item talk response to:hellosir:"What is it? Oh, you're the swine that brought this catastrophe down upon us in the first place - well I'm Cabal Jambon and because of you my children have lost their house and their mother. What are you going to do about it?". You gulp.
-item talk action in response to:hellosir:change item description:This is Cabal Jambon, he doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
+item mid sentence cased name:Cabal Jambon
+item is proper noun:
+item visibility:invisible
 ITEM
-item name:Gruff man
-item description:This fellow is stocky, middle aged with a shock of red hair. He looks at you suspiciously.
+item name:Cabal Jambon
+item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
 item id:cabal_jambon_sent_to_by_oubliette
 item is untakeable:
-item countable noun prefix:a
+item mid sentence cased name:Cabal Jambon
+item is proper noun:
 item visibility:invisible
-item talk initial phrase:hellosir:Hello sir:"Hello sir..." you say tentatively to the man.
-item talk response to:hellosir:"What is it? Oh, you're the swine that brought this catastrophe down upon us in the first place - well I'm Cabal Jambon and because of you my children have lost their house and their mother. What are you going to do about it?". You gulp.
-item talk action in response to:hellosir:change item description:This is Cabal Jambon, he doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
-
-item talk follow up phrase to:hellosir:iwassentbyyourdaughter:I was sent by your daughter:"I was sent by your daughter, Oubliette.". Ah that name, just saying it out loud lifts your spirit. "I'm here to help with the barricade.".
+item talk initial phrase:iwassentbyyourdaughter:I was sent by your daughter:"I was sent by your daughter, Oubliette.". Ah that name, just saying it out loud lifts your spirit, sweet Oubliette. "I'm here to help with the barricade.".
 item talk response to:iwassentbyyourdaughter:"Is that right, you look like a scrawny fellow, can you lift your own arms up without crying?". You reply cautiously "Um, yes...". "Hmphh." snorts Cabal, "Well you'll have to do, we're getting short on hands every day that goes by.". Turning away for a moment he fumbles about amidst the straw you assumed was bedding and pulls out an ImpSaw 2000 and it's accompanying imperator. That seems to you like a rather dangerous place to keep a chainsaw but you decide against mentioning your opinion since the same man that made that decision now wields the contraption in front of you, and as he already alluded to, he doesn't like you very much. "Use this to cut some strong branches from the wood to the north that we can use to repair the barricades and hurry, night will be upon us before we know it.". He hands you the chainsaw and the imperator.
 item talk action in response to:iwassentbyyourdaughter:change item visibility:impsaw2000_broken:visible
 item talk action in response to:iwassentbyyourdaughter:change item visibility:imperator:visible
 item talk action in response to:iwassentbyyourdaughter:take item:impsaw2000_broken
 item talk action in response to:iwassentbyyourdaughter:take item:imperator
+item talk action in response to:iwassentbyyourdaughter:change item visibility:cabal_jambon_sent_to_by_oubliette:invisible
+item talk action in response to:iwassentbyyourdaughter:change item visibility:cabal_jambon_after_given_chainsaw:visible
+ITEM
+item name:Cabal Jambon
+item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
+item id:cabal_jambon_after_given_chainsaw
+item is untakeable:
+item mid sentence cased name:Cabal Jambon
+item is proper noun:
+item visibility:invisible
 
 ITEM
 item name:ImpSaw 2000
