@@ -1020,7 +1020,7 @@ item examine action is not repeatable:
 item examine message:Looking closely at the portcullis you see the metal itself is quite rusted and flakes peel off easily. The portcullis is bolted to a large mechanism in the walls of the gatehouse that would have controlled opening and closing it.
 item on examine action:change item visibility:portcullis_mechanism:visible
 ITEM
-item name:Portcullis mechanism
+item name:Jammed mechanism
 item description:The mechanism is rusty like the rest of the portcullis itself. You poke and nudge it but it appears to be jammed.
 item id:portcullis_mechanism
 item countable noun prefix:a
