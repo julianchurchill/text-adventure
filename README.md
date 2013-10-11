@@ -75,8 +75,6 @@ Bugs
 
 Story - TTA2
 
-- Two Oubliettes appear outside the castle gate portcullis if you don't talk to her first
-
 - Repair the barricade
   - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
     - DONE You are surrounded by the mob, from amongst them stands a girl wielding a shoe, she hits you, her dad cmoes over 'Oubliette, Oubliette! What do you think you are doing, stop that at once! You must never beat a stranger with a shoe, you might as well tickle them, always use a good sturdy leather boot" and he passes her sturdy leather boot. She considers it, weighs it and then beats you. Everything goes black.
@@ -235,6 +233,7 @@ TTA2 only
 - [MINOR STORY CORRECTION] Cabal Jambon no longer repeats himself when you talk to him and doesn't repeatedly pass the chainsaw and imperator to you
 - [MINOR STORY CORRECTION] Cabal Jambon is named properly after being introduced by talking to him or by Oubliette
 - [MINOR STORY CORRECTION] Iron bar left in the mechanism after unjamming the portcullis
+- [MINOR STORY CORRECTION] Two Oubliettes no longer appear outside the castle gate portcullis after opening it if you don't talk to her first
 
 2.1.1
 -----
