@@ -86,6 +86,9 @@ Story - TTA2
   - Completing the barricade triggers night fall and the creatures attack, you must help defend the barricade through the night and at least one fell beast ambushes you when you enter another location. You defeat it using a weapon given to you by a townsperson.
   - Then you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
   - Finally when you leave the location to check the rest of the town defences (suggested by talking again if you don't do it anyway) you get attacked by one more fell beast, defeat it and the attack ends, day dawns.
+- Make the fishing task a bit more challenging
+  - The lure should be dropped by the fisherman when you first wake him up
+  - On the first fishing you should get a Blue Mullet and discard it
 - In the morning the towns people ask you to get help from a nearby village over the river - Ubiquity.
 - A river and bridge between the two settlements
   - Use a boat to get across initially, perhaps repair the bridge from the other side to return to the town
@@ -93,6 +96,7 @@ Story - TTA2
 - Fastidious mim - a bird
 - Indivisible turpet. "You should have known, the fastidious mim always comes with it's companion creature - the indivisible turpet. The turpet is a big, fat worm, also known as Crane's turpet after the famous botanist, who met his maker shortly after discovering and naming the turpet and then while testing it's indivisibility, he sucumbed to blood loss from an accidentally amputated toe. Later botanists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate."
 - Underwater adventure of somesort - perhaps in the river. Meet water faeries
+- Babbages cabbage - a cabbage power steam computer, perhaps interact by placing runes
 - Magical robots - perhaps trapped water faery souls - agents for either side, initially created by the witch to serve her, wills too strong for her to control, some changed sides. Self naming, Least Chance of Failure, Random Acts of Kindness, Vengeful Beyond Death, Penchant for Foolish Bravery
 - You reach Ubiquity only to discover it has been subdued by Bella to serve her - the future of Perpetuity...
 - A girl named Oubliette
