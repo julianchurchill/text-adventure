@@ -1034,10 +1034,10 @@ item use action:change item visibility:portcullis_mechanism:invisible
 item use action:change item visibility:portcullis_mechanism_unjammed:visible
 item use action:destroy item:iron_bar
 ITEM
-item name:Portcullis mechanism
+item name:Unjammed mechanism
 item description:The mechanism is rusty like the rest of the portcullis itself. It was jammed but looks to be in working order now.
 item id:portcullis_mechanism_unjammed
-item countable noun prefix:a
+item countable noun prefix:an
 item is untakeable:
 item visibility:invisible
 ITEM
@@ -1168,9 +1168,11 @@ item is untakeable:
 item visibility:invisible
 item can be used with:winch_handle
 item successful use message:You slot the handle into the hole in the end of the device and start to turn it. Clunk. Clunk. Clunk. You breath a sigh of relief as it starts to turn, the portcullis squeaks and grinds and groans and finally begins to raise. You puff and pant with the exertion, the gate is very heavy and the winch occasionally slips. Eventually the portcullis is high enough to get under. Leaving the winch handle in place you push a few bricks underneath for extra support in case the winch fails to hold.
+item use action:change item description:The portcullis winch is embedded into the brickwork around portcullis itself. It looks undamaged, if a little weather beaten. The winch handle hangs out of a hole at one end.
 item use action:change exit visibility:castle_courtyard_to_castle_ruins:visible
 item use action:change exit visibility:castle_ruins_to_castle_courtyard:visible
 item use action:change exit visibility:castle_courtyard_2:visible
+item use action:change item visibility:oubliette_outside_the_ruins1:invisible
 item use action:change item visibility:oubliette_outside_the_ruins2:invisible
 item use action:change item visibility:oubliette_outside_the_ruins3:visible
 item use action:destroy item:winch_handle
