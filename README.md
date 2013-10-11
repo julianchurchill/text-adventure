@@ -76,7 +76,6 @@ Bugs
 Story - TTA2
 
 - Two Oubliettes appear outside the castle gate portcullis if you don't talk to her first
-- Iron bar stays in your possession after unjamming the portcullis mechanism - should probably leave it in the mechanism
 
 - Repair the barricade
   - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
@@ -235,6 +234,7 @@ TTA2 only
 - [MINOR STORY CORRECTION] Once you've accepted Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.
 - [MINOR STORY CORRECTION] Cabal Jambon no longer repeats himself when you talk to him and doesn't repeatedly pass the chainsaw and imperator to you
 - [MINOR STORY CORRECTION] Cabal Jambon is named properly after being introduced by talking to him or by Oubliette
+- [MINOR STORY CORRECTION] Iron bar left in the mechanism after unjamming the portcullis
 
 2.1.1
 -----

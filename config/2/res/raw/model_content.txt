@@ -1032,6 +1032,7 @@ item use action:change item visibility:winch_jammed:invisible
 item use action:change item visibility:winch_fixed:visible
 item use action:change item visibility:portcullis_mechanism:invisible
 item use action:change item visibility:portcullis_mechanism_unjammed:visible
+item use action:destroy item:iron_bar
 ITEM
 item name:Portcullis mechanism
 item description:The mechanism is rusty like the rest of the portcullis itself. It was jammed but looks to be in working order now.
