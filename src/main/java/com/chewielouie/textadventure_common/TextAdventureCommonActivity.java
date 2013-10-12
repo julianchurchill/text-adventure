@@ -36,13 +36,19 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Html.ImageGetter;
+import android.text.Layout;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
+import android.text.style.AlignmentSpan;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -412,17 +418,26 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void updateMainText() {
-        scrollToTopOfNewDescriptionContent();
-
-        SpannableStringBuilder text = new SpannableStringBuilder( mainTextContent );
+        SpannableStringBuilder text = new SpannableStringBuilder();
+        addMainContentText( text );
         addItemsText( text );
         addExitsText( text );
 
         main_text_output.setText( text, TextView.BufferType.SPANNABLE );
     }
 
-    private void scrollToTopOfNewDescriptionContent() {
-        main_text_output.setText( mainTextContent, TextView.BufferType.SPANNABLE );
+    private void addMainContentText( SpannableStringBuilder text ) {
+        parseHTMLContent( text, replaceNewlinesWithHTMLBreaks( mainTextContent ) );
+        ensureAllImagesAreCentered( text );
+        scrollToTopOfNewMainContent( text );
+    }
+
+    private String replaceNewlinesWithHTMLBreaks( String t ) {
+        return t.replace( "\n", "<br/>" );
+    }
+
+    private void scrollToTopOfNewMainContent( SpannableStringBuilder text ) {
+        main_text_output.setText( text, TextView.BufferType.SPANNABLE );
         if( newDescriptionIsBigger() ) {
             if( newDescriptionStartsWithTheOld() )
                 scrollToFirstNewDescriptionLine();
@@ -462,9 +477,15 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
                     int firstNewDescriptionLine = lastLineInOldDescription + 1;
                     main_text_output.getLineBounds( firstNewDescriptionLine, bounds );
                 }
-                scrollView.smoothScrollTo( 0, bounds.top );
+                scrollView.smoothScrollTo( 0, bounds.top - textViewLineHeightPadding() );
             }
         });
+    }
+
+    private int textViewLineHeightPadding() {
+        // TextView.getLineSpacineExtra() is not available until API level 16 (4.1)
+        // so use getCompoundPaddingTop() as the next best thing
+        return main_text_output.getCompoundPaddingTop();
     }
 
     private void scrollToTopOfMainText() {
@@ -475,6 +496,36 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
                 scrollView.smoothScrollTo( 0, 0 );
             }
         });
+    }
+
+    private void parseHTMLContent( SpannableStringBuilder spannableBuilder, String textToParse ) {
+        spannableBuilder.append( Html.fromHtml( textToParse, imgGetter, null ) );
+    }
+
+    private ImageGetter imgGetter = new ImageGetter() {
+        public Drawable getDrawable( String source ) {
+            String drawableString = "drawable/" + removeImageExtension( source );
+            int imageResource = getResources().getIdentifier( drawableString, null, getPackageName() );
+            Drawable drawable = getResources().getDrawable( imageResource );
+            drawable.setBounds( 0, 0, drawable.getIntrinsicWidth(),
+                                      drawable.getIntrinsicHeight() );
+            return drawable;
+        }
+
+        private String removeImageExtension( String filename ) {
+            return filename.replace( ".png", "" );
+        }
+    };
+
+    private void ensureAllImagesAreCentered( SpannableStringBuilder text ) {
+        Object[] obj = text.getSpans(0, text.length(), ImageSpan.class);
+        if( obj != null ) {
+            for (int i = 0; i < obj.length; i++) {
+                int start = text.getSpanStart(obj[i]);
+                int end = text.getSpanEnd(obj[i]);
+                text.setSpan( new AlignmentSpan.Standard( Layout.Alignment.ALIGN_CENTER ), start, end, 0 );
+            }
+        }
     }
 
     private void addItemsText( SpannableStringBuilder text ) {
@@ -536,9 +587,9 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     private int rankedValueOf( Exit.DirectionHint d ) {
         if(      d == Exit.DirectionHint.North ) return 10;
-        else if( d == Exit.DirectionHint.South ) return 20;
+        else if( d == Exit.DirectionHint.West ) return 20;
         else if( d == Exit.DirectionHint.East ) return 30;
-        else if( d == Exit.DirectionHint.West ) return 40;
+        else if( d == Exit.DirectionHint.South ) return 40;
         return 70;
     }
 

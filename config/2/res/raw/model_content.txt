@@ -1,11 +1,13 @@
 PROPERTIES
-maximum score:5
+maximum score:8
 
 INVENTORY ITEM
 item name:Pocket lint
 item description:It's fluffy and shaped like an inverted belly button. You consider discarding it for a short moment but decide to place it back in your pocket, idly petting it like a tiny gerbil.
 item countable noun prefix:some
 item id:pocketlint
+item can be used with:fiery_torch
+item successful use message:Oh dear, as soon as a source of fire appears the pyromaniacs jump out and try to burn everything down. Given this pocket fluff is in your pocket you decide that setting light to it is not in your best interests.
 INVENTORY ITEM
 item name:Multitool
 item description:Your trusty multitool, you're never caught without it. It has got a lot of tools on it. You feel like a man of the wilderness when you wield this formidable contraption.
@@ -90,6 +92,8 @@ item description:This rag is fairly filthy, you're not sure whether to keep it o
 item id:dirty_rag
 item countable noun prefix:a
 item mid sentence cased name:dirty rag
+item can be used with:torch_stick
+item successful use message:What are you going to do, beat the rag into submission?
 
 LOCATION
 x:300
@@ -123,6 +127,8 @@ item is untakeable:
 item examine action is not repeatable:
 item examine message:Looking more closely you see that there might be a few loose parts to this barricade. Perhaps they are best removed. You tug at a stick protruding from the base and it comes out quite easily. Not much of a barricade this, how long will it last against any sort of serious assault? Tapping with your foot in a few more carefully chosen places causes more sticks to fall out.
 item on examine action:change item visibility:torch_stick:visible
+item can be used with:fiery_torch
+item successful use message:That doesn't seem like a sensible idea given all the trouble someone has gone to creating this barrier. If you burn it down you might find out to your displeasure exactly what it was keeping out.
 ITEM
 item name:Stick
 item description:It is quite stick like, mostly straight with a few nobbles, about the length of your forearm with a decent girth. This could be used for a variety of tasks, hitting things, propping something up or making a torch.
@@ -132,9 +138,17 @@ item mid sentence cased name:stick
 item visibility:invisible
 item can be used with:dirty_rag
 item successful use message:You wrap the rag tightly around the end of the stick holding itself in place purely with congealed filth.
-item use action:change item description:The stick fits comfortably in your hand and is slightly weighted by the rag wrapped around one end. It could be used to hit someone with, although the rag would cushion the blow or perhaps you could find a means to light it?
-item use action:change item name:Rag wrapped stick
+item use action:destroy item:torch_stick
 item use action:destroy item:dirty_rag
+item use action:change item visibility:rag_wrapped_torch_stick:visible
+item use action:take item:rag_wrapped_torch_stick
+ITEM
+item name:Rag wrapped stick
+item description:The stick fits comfortably in your hand and is slightly weighted by the rag wrapped around one end. It could be used to hit someone with, although the rag would cushion the blow or perhaps you could find a means to light it?
+item id:rag_wrapped_torch_stick
+item countable noun prefix:a
+item mid sentence cased name:rag wrapped stick
+item visibility:invisible
 
 LOCATION
 x:240
@@ -230,7 +244,7 @@ item talk action in response to:whatsyourprice:change exit visibility:merchantsl
 item talk action in response to:whatsyourprice:change item visibility:disembodied_voice:invisible
 item talk action in response to:whatsyourprice:change item visibility:broken_door:invisible
 item talk action in response to:whatsyourprice:increment score:
-item talk follow up phrase to:canyouhelpme:notonyournelly:Not on you nelly:"Not on your nelly. I make a habit of never owing anyone and I certainly never pay up front.". You suddenly feel cold hands rifling through your pockets and as quickly as you can crane your neck back to see who it was the scoundrels have gone. "No problem. I'll just take this shiny tool thingy and call it quits.". Quick as a flash there is some banging, a lot of jiggling, poking and general proddery and you are standing free, arm in tact, in front of the general store with the door now slightly ajar. You look around to see if you can spot whoever helped you knowing it is futile and that they have already gone.
+item talk follow up phrase to:canyouhelpme:notonyournelly:Not on your nelly:"Not on your nelly. I make a habit of never owing anyone and I certainly never pay up front.". You suddenly feel cold hands rifling through your pockets and as quickly as you can crane your neck back to see who it was the scoundrels have gone. "No problem. I'll just take this shiny tool thingy and call it quits.". Quick as a flash there is some banging, a lot of jiggling, poking and general proddery and you are standing free, arm in tact, in front of the general store with the door now slightly ajar. You look around to see if you can spot whoever helped you knowing it is futile and that they have already gone.
 item talk action in response to:notonyournelly:destroy item:multitool
 item talk action in response to:notonyournelly:change exit visibility:merchantslaneeast:visible
 item talk action in response to:notonyournelly:change exit visibility:merchantslane_to_merchantslane_west:visible
@@ -269,6 +283,8 @@ item can be used with:fiery_torch
 item successful use message:Stepping forward boldly you wave the flaming torch in front of you, praying that the beast will retreat. A little to your surprise it does, cowering away from the torch but hissing and spitting at you in frustration, leaving a safe path to the store cupboard door.
 item use action:change exit visibility:generalstore_to_cupboard:visible
 item use action:change location description:generalstore:Upon entering the general store you can only make out rough shapes. As your eyes adjust to the darkness you spy a creature in the corner, alert and looking directly at you. It looks like a rabid dog with deep red eyes but has no fur and it eyes you hungrily. You can see an open door at the back of the shop through which a window leads to a street on the other side of the barricade. The beast has backed away from your flaming torch leaving a path to the back of the shop. For the moment you stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
+item can be used with:torch_stick
+item successful use message:Really? Do you want to fight the beast or play with it?
 ITEM
 item name:Jar of clear liquid
 item description:The jar contains a clear liquid. It has somehow managed to survive the devastation around it, perhaps due to it's placement on a shelf sheltered behind the door.
@@ -286,11 +302,13 @@ item id:jar_of_paraffin
 item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
-item can be used with:torch_stick
+item can be used with:rag_wrapped_torch_stick
 item successful use message:Lifting the stick with the rag around it you dip the rag end into the jar of paraffin and let it soak for a moment before pulling it out.
-item use action:destroy item:torch_stick
+item use action:destroy item:rag_wrapped_torch_stick
 item use action:change item visibility:paraffin_soaked_torch:visible
 item use action:take item:paraffin_soaked_torch
+item can be used with:dirty_rag
+item successful use message:You'll get covered in paraffin if you do that which won't be very attractive to the ladies. If you were concerned with that sort of thing.
 ITEM
 item name:Paraffin soaked torch
 item description:This is a makeshift torch, a rag wrapped around one end of a stick then soaked in paraffin. It looks like it will light quite nicely and the fumes are starting to make you a little light headed.
@@ -334,7 +352,7 @@ x:180
 y:420
 location id:burnt_out_shop
 location area id:town_area
-location description:You step over the charred steps through what remains of the door way. Looking inside everything is black, soot covers the walls that still stand and the counter and remnants of the shelves that once hung on the walls are in blackened, crumpled pieces across the floor. There is still some warmth given off by the surrounding debris, the fire must have been intense.
+location description:You step over the charred steps through what remains of the door way. Looking inside everything is black, soot covers the walls that still stand and the counter and remnants of the shelves that once hung on the walls are in blackened, crumpled pieces across the floor.<div align="center"><img src="icon.png"/></div>There is still some warmth given off by the surrounding debris, the fire must have been intense.
 EXIT
 exit label:Outside
 exit destination:merchantslane_west
@@ -353,6 +371,12 @@ item successful use message:Holding the rag end of the torch against the smoulde
 item use action:destroy item:paraffin_soaked_torch
 item use action:change item visibility:fiery_torch:visible
 item use action:take item:fiery_torch
+item can be used with:dirty_rag
+item successful use message:The rag won't light, perhaps it needs an accelerant.
+item can be used with:pocketlint
+item successful use message:There's not really enough of it to start a fire.
+item can be used with:torch_stick
+item successful use message:You can try to beat the embers out but the damage has already been done.
 ITEM
 item name:Fiery torch
 item description:This is a makeshift torch, a rag wrapped around one end of a stick then soaked in paraffin. It is very much alight and burning fast and bright.
@@ -394,14 +418,38 @@ exit id:cobbledroad_to_hovel
 exit is not visible:
 ITEM
 item name:Small girl
-item description:She is a scrawny lass, around 12 years old with a canny glint in her eye. She looks to be concealing something behind her back, jiggling from one foot to the other with excitement that she can barely contain. The older girl next to her speaks in hushed tones, trying to keep her calm. For a moment you think you see the toe of a leather boot poking out from behind her.
-item id:flechette_mob
+item description:She is a scrawny lass, around 12 years old with a canny glint in her eye. She looks to be concealing something behind her back, jiggling from one foot to the other with excitement that she can barely contain. Oubliette next to her speaks in hushed tones, trying to keep her calm. For a moment you think you see the toe of a leather boot poking out from behind her.
+item id:flechette_as_small_girl
 item countable noun prefix:a
 item is untakeable:
 item talk initial phrase:helpme:Can you help me?:"Can you help me?" you say to the younger girl.
-item talk response to:helpme:She looks at you moving forward but the older girl pulls her back and tells her to keep away from you.
+item talk response to:helpme:She looks at you moving forward but Oubliette pulls her back and tells her to keep away from you.
 item talk initial phrase:isthataboot:Is that a boot behind your back?:"Is that a boot behind your back?" you say to the younger girl.
-item talk response to:isthataboot: She spins round on one leg with unsettling glee so that you can clearly see the large leather boot she is holding then she sticks out her tongue and blows a big raspberry at you. The older girl looks at her sternly and tells her off in a terse whisper.
+item talk response to:isthataboot: She spins round on one leg with unsettling glee so that you can clearly see the large leather boot she is holding then she sticks out her tongue and blows a big raspberry at you. Oubliette looks at her sternly and tells her off in a terse whisper.
+ITEM
+item name:Flechette
+item description:She is a scrawny lass, around 12 years old with a canny glint in her eye. She looks to be concealing something behind her back, jiggling from one foot to the other with excitement that she can barely contain. Oubliette next to her speaks in hushed tones, trying to keep her calm. For a moment you think you see the toe of a leather boot poking out from behind her.
+item id:flechette
+item mid sentence cased name:Flechette
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:helpme:Can you help me?:"Can you help me?" you say to Flechette.
+item talk response to:helpme:She looks at you moving forward but Oubliette pulls her back and tells her to keep away from you.
+item talk initial phrase:isthataboot:Is that a boot behind your back?:"Is that a boot behind your back?" you say.
+item talk response to:isthataboot: She spins round on one leg with unsettling glee so that you can clearly see the large leather boot she is holding then she sticks out her tongue and blows a big raspberry at you. Oubliette looks at her sternly and tells her off in a terse whisper.
+ITEM
+item name:Flechette
+item description:She is a scrawny lass, around 12 years old with a canny glint in her eye. She looks to be concealing something behind her back, jiggling from one foot to the other with excitement that she can barely contain. For a moment you think you see the toe of a leather boot poking out from behind her.
+item id:flechette_when_oubliette_is_gone
+item mid sentence cased name:Flechette
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:helpme:Can you help me?:"Can you help me?" you say to Flechette.
+item talk response to:helpme:She looks at you moving forward but hesitates, turning to look for her sister who is not to be seen. She steps back thinking better of approaching you without her sister around.
+item talk initial phrase:isthataboot:Is that a boot behind your back?:"Is that a boot behind your back?" you say.
+item talk response to:isthataboot:She spins round on one leg with unsettling glee so that you can clearly see the large leather boot she is holding then she sticks out her tongue and blows a big raspberry at you.
 ITEM
 item name:Oubliette
 item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. From what you recall of the shouting man, her name is Oubliette. Fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself.
@@ -421,6 +469,8 @@ item talk follow up phrase to:betterthanaseaweedfacemask:whattheblazes
 
 item talk follow up phrase to:sorehead:whattheblazes:What the blazes!:"Alright, what the blazes was that for? Will you please stop hitting me!".
 item talk response to:whattheblazes:Oubliette looks slightly sympathetic to your plight but remains steadfast. "This is my sister Flechette. I'm afraid she's rather angry with you, as we all have been, for bringing the wrath of the witch upon us and then abandoning us like you did.".
+item talk action in response to:whattheblazes:change item visibility:flechette_as_small_girl:invisible
+item talk action in response to:whattheblazes:change item visibility:flechette:visible
 
 item talk follow up phrase to:whattheblazes:thatscrazythewitchisdead:That's crazy the witch is dead:"I don't know what you're talking about, I killed the witch, she's gone, she couldn't have survived.". You sound quite desperate and don't really believe yourself. The witch must have survived.
 item talk response to:thatscrazythewitchisdead:Once more Flechette leaps forward and strikes you hard about the face with the boot. This is getting ridiculous, what do they want you to do?
@@ -443,7 +493,7 @@ item talk action in response to:okillhelpyou:change item visibility:oubliette_sy
 
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_sympathetic
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -456,15 +506,18 @@ item talk follow up phrase to:howcanihelp:icanhelpyoucollectthemushrooms:I can h
 item talk response to:icanhelpyoucollectthemushrooms:"Ok, that would be wonderful. What I really need is a strong, tough bodyguard like you since the castle is teeming with the witch's creatures.". Before you can say "Ah..." she runs off to the east calling back "I'll just collect my basket, come with me, the ruins are this way to the east of town.".
 item talk action in response to:icanhelpyoucollectthemushrooms:change item visibility:oubliette_sympathetic:invisible
 item talk action in response to:icanhelpyoucollectthemushrooms:change item visibility:oubliette_getting_basket:visible
+item talk action in response to:icanhelpyoucollectthemushrooms:change item visibility:flechette:invisible
+item talk action in response to:icanhelpyoucollectthemushrooms:change item visibility:flechette_when_oubliette_is_gone:visible
 
 item talk follow up phrase to:howcanihelp:icanrepairthebarricade:I can repair the barricade:"I can repair the barricade.", you say bravely, or at least as bravely as you can muster to a girl who has beaten you unconscious with a boot.
 item talk response to:icanrepairthebarricade:"Ok, that would be wonderful, go talk to my father and he'll give you instructions on what needs to be done.". She gestures towards the hovel to the north.
+item talk action in response to:icanrepairthebarricade:change item visibility:gruff_man_no_introduction:invisible
 item talk action in response to:icanrepairthebarricade:change item visibility:cabal_jambon_no_introduction:invisible
 item talk action in response to:icanrepairthebarricade:change item visibility:cabal_jambon_sent_to_by_oubliette:visible
 
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_mushrooms_collected
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -474,12 +527,13 @@ item talk initial phrase:howcanihelp:How can I help?:"How can I help?" you ask O
 item talk response to:howcanihelp:"Well the barricade needs to be repaired.".
 item talk follow up phrase to:howcanihelp:okicanhelptorepairthebarricade:Ok, I can help to repair the barricade:"Ok, I can help to repair the barricade.", you say bravely, or at least as bravely as you can muster to a girl who has beaten you unconscious with a boot.
 item talk response to:okicanhelptorepairthebarricade:"That would be wonderful, go talk to my father and he'll give you instructions on what needs to be done.". She gestures towards the hovel to the north.
+item talk action in response to:okicanhelptorepairthebarricade:change item visibility:gruff_man_no_introduction:invisible
 item talk action in response to:okicanhelptorepairthebarricade:change item visibility:cabal_jambon_no_introduction:invisible
 item talk action in response to:okicanhelptorepairthebarricade:change item visibility:cabal_jambon_sent_to_by_oubliette:visible
 
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_barricade_fixed
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -492,6 +546,8 @@ item talk follow up phrase to:howcanihelp:okicanhelpyoucollectthemushrooms:Ok, I
 item talk response to:okicanhelpyoucollectthemushrooms:"That would be wonderful. What I really need is a strong, tough bodyguard like you since the castle is teeming with the witch's creatures.". Before you can say "Ah..." she runs off to the east calling back "I'll just collect my basket, come with me, the ruins are this way to the east of town.".
 item talk action in response to:okicanhelpyoucollectthemushrooms:change item visibility:oubliette_barricade_fixed:invisible
 item talk action in response to:okicanhelpyoucollectthemushrooms:change item visibility:oubliette_getting_basket:visible
+item talk action in response to:okicanhelpyoucollectthemushrooms:change item visibility:flechette:invisible
+item talk action in response to:okicanhelpyoucollectthemushrooms:change item visibility:flechette_when_oubliette_is_gone:visible
 
 
 LOCATION
@@ -508,39 +564,83 @@ exit id:hovel_to_cobbledroad
 ITEM
 item name:Gruff man
 item description:This fellow is stocky, middle aged with a shock of red hair. He looks at you suspiciously.
+item id:gruff_man_no_introduction
+item is untakeable:
+item countable noun prefix:a
+item talk initial phrase:hellosir:Hello sir:"Hello sir..." you say tentatively to the man.
+item talk response to:hellosir:"What is it? Oh, you're the swine that brought this catastrophe down upon us in the first place - well I'm Cabal Jambon and because of you my children have lost their house and their mother. What are you going to do about it?". You gulp.
+item talk action in response to:hellosir:change item visibility:gruff_man_no_introduction:invisible
+item talk action in response to:hellosir:change item visibility:cabal_jambon_no_introduction:visible
+ITEM
+item name:Cabal Jambon
+item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
 item id:cabal_jambon_no_introduction
 item is untakeable:
-item countable noun prefix:a
-item talk initial phrase:hellosir:Hello sir:"Hello sir..." you say tentatively to the man.
-item talk response to:hellosir:"What is it? Oh, you're the swine that brought this catastrophe down upon us in the first place - well I'm Cabal Jambon and because of you my children have lost their house and their mother. What are you going to do about it?". You gulp.
-item talk action in response to:hellosir:change item description:This is Cabal Jambon, he doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
+item mid sentence cased name:Cabal Jambon
+item is proper noun:
+item visibility:invisible
 ITEM
-item name:Gruff man
-item description:This fellow is stocky, middle aged with a shock of red hair. He looks at you suspiciously.
+item name:Cabal Jambon
+item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
 item id:cabal_jambon_sent_to_by_oubliette
 item is untakeable:
-item countable noun prefix:a
+item mid sentence cased name:Cabal Jambon
+item is proper noun:
 item visibility:invisible
-item talk initial phrase:hellosir:Hello sir:"Hello sir..." you say tentatively to the man.
-item talk response to:hellosir:"What is it? Oh, you're the swine that brought this catastrophe down upon us in the first place - well I'm Cabal Jambon and because of you my children have lost their house and their mother. What are you going to do about it?". You gulp.
-item talk action in response to:hellosir:change item description:This is Cabal Jambon, he doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
-
-item talk follow up phrase to:hellosir:iwassentbyyourdaughter:I was sent by your daughter:"I was sent by your daughter, Oubliette.". Ah that name, just saying it out loud lifts your spirit. "I'm here to help with the barricade.".
+item talk initial phrase:iwassentbyyourdaughter:I was sent by your daughter:"I was sent by your daughter, Oubliette.". Ah that name, just saying it out loud lifts your spirit, sweet Oubliette. "I'm here to help with the barricade.".
 item talk response to:iwassentbyyourdaughter:"Is that right, you look like a scrawny fellow, can you lift your own arms up without crying?". You reply cautiously "Um, yes...". "Hmphh." snorts Cabal, "Well you'll have to do, we're getting short on hands every day that goes by.". Turning away for a moment he fumbles about amidst the straw you assumed was bedding and pulls out an ImpSaw 2000 and it's accompanying imperator. That seems to you like a rather dangerous place to keep a chainsaw but you decide against mentioning your opinion since the same man that made that decision now wields the contraption in front of you, and as he already alluded to, he doesn't like you very much. "Use this to cut some strong branches from the wood to the north that we can use to repair the barricades and hurry, night will be upon us before we know it.". He hands you the chainsaw and the imperator.
-item talk action in response to:iwassentbyyourdaughter:change item visibility:impsaw2000:visible
+item talk action in response to:iwassentbyyourdaughter:change item visibility:impsaw2000_broken:visible
 item talk action in response to:iwassentbyyourdaughter:change item visibility:imperator:visible
+item talk action in response to:iwassentbyyourdaughter:take item:impsaw2000_broken
+item talk action in response to:iwassentbyyourdaughter:take item:imperator
+item talk action in response to:iwassentbyyourdaughter:change item visibility:cabal_jambon_sent_to_by_oubliette:invisible
+item talk action in response to:iwassentbyyourdaughter:change item visibility:cabal_jambon_after_given_chainsaw:visible
+ITEM
+item name:Cabal Jambon
+item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
+item id:cabal_jambon_after_given_chainsaw
+item is untakeable:
+item mid sentence cased name:Cabal Jambon
+item is proper noun:
+item visibility:invisible
 
 ITEM
 item name:ImpSaw 2000
 item description:The ImpSaw 2000 is an award winning imp powered wood sawing machine. You can fell a forest in minutes with this little baby if you can get it hot enough. Unfortunately this particular device looks a little worse for wear, missing many of the razor sharp teeth that provide the smooth cutting action required to fell trees quicker than a beaver on a rampage. When you shake it, it squeaks.
-item id:impsaw2000
+item id:impsaw2000_broken
 item mid sentence cased name:ImpSaw 2000
 item countable noun prefix:an
 item visibility:invisible
+item can be used with:imperator
+item successful use message:It rattles and tattles and chokes to a halt. The belt ran without anything to do the slicing. This chainsaw needs teeth!
+item can be used with:spiky_toothed_goober_teeth
+item successful use message:You insert the teeth one by one into the holding slots running along the chain belt. Stepping back you have a good look at what you've repaired - this is a death machine!
+item use action:change item visibility:impsaw2000_broken:invisible
+item use action:change item visibility:impsaw2000_fixed:visible
+item use action:take item:impsaw2000_fixed
 ITEM
 item name:Imperator
 item description:The imperator resembles a tiny cattle prod, when you squeeze one end the other sparks and the whole thing vibrates violently in your hand. It is used to start the ImpSaw once you are ready.
 item id:imperator
+item countable noun prefix:an
+item visibility:invisible
+ITEM
+item name:ImpSaw 2000
+item description:The ImpSaw 2000 is an award winning imp powered wood sawing machine. You can fell a forest in minutes with this little baby if you can get it hot enough. You have repaired this masterfully with some spiky-toothed goober teeth which are as sharp as your wit, you hope. When you shake it, it squeaks.
+item id:impsaw2000_fixed
+item mid sentence cased name:ImpSaw 2000
+item countable noun prefix:an
+item visibility:invisible
+item can be used with:imperator
+item successful use message:Squeezing the imperator you take a deep breath and poke the zappy end into the ImpSaw. There's plenty of squeaking and the ImpSaw bounces about in your hands. You think you can make out a lot of vile cursing but you can't determine the source before the saw kicks into action, revving up, teeth spinning, making the air hum around it. This baby is ready to bring it!
+item use action:change item visibility:impsaw2000_fixed:invisible
+item use action:change item visibility:impsaw2000_running:visible
+item use action:take item:impsaw2000_running
+ITEM
+item name:ImpSaw 2000
+item description:The ImpSaw 2000 is an award winning imp powered wood sawing machine. You can fell a forest in minutes with this little baby if you can get it hot enough. You have repaired this masterfully with some spiky-toothed goober teeth which are currently whizzing around on the belt ready to get stuck into some serious wood chopping. It's giving off quite a hum and plenty of heat and the occasional expletive, which you assume must simply be a mechanical fault. When you shake it, it squeaks.
+item id:impsaw2000_running
+item mid sentence cased name:ImpSaw 2000
 item countable noun prefix:an
 item visibility:invisible
 
@@ -578,6 +678,27 @@ exit label:North
 exit destination:dirttrack
 exit direction hint:North
 exit id:westgatehouse_to_dirttrack
+ITEM
+item name:Barricade
+item description:The barricade is made of a variety of broken barrels and branches presumably gathered from the woods to the north of the town. It looks in a bit of a state and could do with some repair.
+item id:north_barricade_broken
+item countable noun prefix:a
+item mid sentence cased name:barricade
+item is untakeable:
+item can be used with:tree_logs
+item successful use message:You heft the logs into position across the barricade, patching up the gaps and blocking yourself in on the town side.
+item use action:change location description:westgatehouse:You stand before a large gatehouse containing a rabble of tired men, all of the town watch. To the north is a dirt track leading away from the town blocked by a barricade.
+item use action:change item visibility:north_barricade_broken:invisible
+item use action:change item visibility:north_barricade_repaired:visible
+item use action:change exit visibility:westgatehouse_to_dirttrack:invisible
+item use action:increment score:
+ITEM
+item name:Barricade
+item description:The barricade is made of a variety of broken barrels and branches presumably gathered from the woods to the north of the town. It has been recently repaired, so well in fact that it is now impossible to exit the town to the north.
+item id:north_barricade_repaired
+item countable noun prefix:a
+item mid sentence cased name:barricade
+item is untakeable:
 
 LOCATION
 x:120
@@ -618,7 +739,7 @@ x:120
 y:120
 location id:church_woodland
 location area id:western_woods_area
-location description:Following the path you skirt around the south edge of the churchyard, the high stone wall shading you as you tread over moss and damp grass. Continuing past the church you can see woods to the west and to the south you can hear the flow of water. Back to the east is the main path that leads back to town.
+location description:Following the path you skirt around the south edge of the churchyard, the high stone wall shading you as you tread over moss and damp grass. Continuing past the church you can see woods to the west and to the south you can hear the flow of water. Back to the east along the small track is the main path that leads to town.
 EXIT
 exit label:South
 exit destination:river_edge
@@ -640,7 +761,7 @@ x:120
 y:120
 location id:river_edge
 location area id:western_woods_area
-location description:Stepping out from the surrounding woods you come upon a river.
+location description:Stepping out from the surrounding woods you come upon a river. It is full and the banks are fit to burst but the ground around you is clearly dry so you guess the swollen river has not breached it's confines yet.
 EXIT
 exit label:North
 exit destination:church_woodland
@@ -651,46 +772,203 @@ exit label:Fisherman's shack
 exit destination:fishermans_shack
 exit direction hint:West
 exit id:river_edge_to_fishermans_shack
+ITEM
+item name:Sleeping fisherman
+item description:Huddled under a tree by the river bank is a fisherman, sou'wester flopped down over his face, snoring loudly. Tied to one of his toes is a piece of string which leads to the river and an empty bottle of cider dangles from his hand, threatening to drop to the floor and smash.
+item id:sleeping_fisherman
+item countable noun prefix:a
+item is untakeable:
+item examine message:As you look at the fisherman he grumbles and moans, dropping the bottle of cider which clangs against the pebbles and tree roots he is nestled amongst. You jump and he wakes up, glares at you and shout-slurs "Geeearrr outt, myyy fish!" fumbling for his bottle of cider which he throws at you. You manage to dodge it, narrowly avoiding a braining and swiftly pick it up and prepare to defend yourself. There's no way you're getting near the fish in this river while he's awake. As he bumbles about you notice a fishing lure has dropped out of his pocket and lies on the ground.
+item on examine action:change item visibility:sleeping_fisherman:invisible
+item on examine action:change item visibility:angry_fisherman:visible
+item on examine action:change item visibility:river_before_fishing:invisible
+item on examine action:change item visibility:river_after_the_first_fish:invisible
+item on examine action:change item visibility:river_with_no_fish:invisible
+item on examine action:change item visibility:river_with_angry_fisherman:visible
+item on examine action:change item visibility:cider_bottle:visible
+item on examine action:change item visibility:fishing_lure:visible
+item on examine action:take item:cider_bottle
+ITEM
+item name:Sleeping fisherman
+item description:Huddled under a tree by the river bank is a fisherman, sou'wester flopped down over his face, snoring loudly. Tied to one of his toes is a piece of string which leads to the river and an empty bottle of cider dangles from his hand, threatening to drop to the floor and smash.
+item id:sleeping_fisherman_after_giving_cider_bottle
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine message:As you look at the fisherman he grumbles and moans, dropping the bottle of cider which clangs against the pebbles and tree roots he is nestled amongst. You jump and he wakes up, glares at you and shout-slurs "Geeearrr outt, myyy fish!" fumbling for his bottle of cider which he throws at you. You manage to dodge it, narrowly avoiding a braining and swiftly pick it up and prepare to defend yourself. There's no way you're getting near the fish in this river while he's awake.
+item on examine action:change item visibility:sleeping_fisherman_after_giving_cider_bottle:invisible
+item on examine action:change item visibility:angry_fisherman:visible
+item on examine action:change item visibility:river_before_fishing:invisible
+item on examine action:change item visibility:river_after_the_first_fish:invisible
+item on examine action:change item visibility:river_with_no_fish:invisible
+item on examine action:change item visibility:river_with_angry_fisherman:visible
+item on examine action:change item visibility:cider_bottle:visible
+ITEM
+item name:Angry fisherman
+item description:This fisherman is angry and obviously drunk, he's raging around, shouting about 'Fisheses!' and 'Drink!'. If you were after the fish in this river there's no way you can get to them with this maniac stumbling around cursing the sky.
+item id:angry_fisherman
+item countable noun prefix:an
+item is untakeable:
+item visibility:invisible
+item can be used with:cider_bottle
+item successful use message:You wait for the fisherman to wander away a few steps then place the cider bottle on the ground nearby. He turns back, still pacing and spots the bottle. "Arhhhh, drink!". He grabs the bottle, takes a deep glug and settles down for a snooze.
+item use action:change item visibility:cider_bottle:invisible
+item use action:change item visibility:angry_fisherman:invisible
+item use action:change item visibility:sleeping_fisherman_after_giving_cider_bottle:visible
+item use action:change item visibility:river_before_fishing:visible
+item use action:change item visibility:river_after_the_first_fish:invisible
+item use action:change item visibility:river_with_no_fish:invisible
+item use action:change item visibility:river_with_angry_fisherman:invisible
+ITEM
+item name:Cider bottle
+item description:A half full bottle of cider, it smells like strong stuff.
+item id:cider_bottle
+item countable noun prefix:a
+item visibility:invisible
+ITEM
+item name:Fishing lure
+item description:It's bright and shiny with a bobbly bit on the top. Just right for attracting fish.
+item id:fishing_lure
+item countable noun prefix:a
+item visibility:invisible
+ITEM
+item name:River
+item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gently rolling hills.
+item id:river_before_fishing
+item countable noun prefix:a
+item is untakeable:
+item can be used with:fishing_rod_with_reel_and_lure
+item successful use message:As you whip the line out from behind you the reel spins quickly unleashing the line across the river, landing about midway. An excellent cast, almost as though you know what you're doing. You slowly turn the reel handle to pull the line back, staring at the water, waiting for a tug on the line to indicate something has taken a nibble. Turn, turn, turn and out pops a Blue Mullet - it is very recognisable with it's silky blue sheen and toothless mouth. It pops and gasps at you with sad fishy eyes. This fish is of no use to you so you throw it back into the river. You wind the line right up ready for another cast.
+item use action:change item visibility:river_before_fishing:invisible
+item use action:change item visibility:river_after_the_first_fish:visible
+ITEM
+item name:River
+item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gently rolling hills.
+item id:river_after_the_first_fish
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:fishing_rod_with_reel_and_lure
+item successful use message:You cast the line out again, another good throw the line drops straight into the middle of the river width. Slowly, slowly you turn the handle, dragging the line in willing the lure to entice a fish. You feel a slight tug, was that a nibble or just the lure catching a weed? You keep turning, again the line tugs, this must be a fish - you increase the pace, hoping the fish will make a dash for the lure and suddenly the line has some weight. You pull and wind, pull and wind and out of the river it comes. Firmly attached to the lure there is a large fish, about the length of your forearm and twice as wide, almost grinning as it chomps on the lure. It's teeth are sharp and pointy and you recognise it as a spiky-toothed goober. You grab the fish, detach the lure and hold it flapping about in your arms. You discard the rod as it is cumbersome and impractical to carry around any further.
+item use action:change item visibility:river_after_the_first_fish:invisible
+item use action:change item visibility:river_with_no_fish:visible
+item use action:destroy item:fishing_rod_with_reel_and_lure
+item use action:change item visibility:spiky_toothed_goober:visible
+item use action:take item:spiky_toothed_goober
+ITEM
+item name:River
+item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gently rolling hills.
+item id:river_with_no_fish
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+ITEM
+item name:River
+item description:This is a good river, it's wet, appears to have fish and the banks are green and tree lined. Whoever put this here should be congratulated on creating such an excellent example. There are more woods on the other side but the river is too deep to cross on foot and you see no bridge near here. The river bends as it runs to the north, the bank quickly turning out of sight. To the south it is quite straight for some distance before you see it disappear into a valley of gently rolling hills.
+item id:river_with_angry_fisherman
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:fishing_rod_with_reel_and_lure
+item successful use message:You cast the line out but as you do the angry fisherman runs at you growling and shouting unintelligibly. Quickly you wind the line back in and fend him off by swiping the rod back and forth in front of you.
+ITEM
+item name:Spiky-toothed goober
+item description:This fish looks like a vicious fellow. It has the sharpest nippers you've ever seen on a fish and it looks like it could make a tidy meal out of any one of your limbs.
+item id:spiky_toothed_goober
+item countable noun prefix:a
+item visibility:invisible
+ITEM
+item name:Sign
+item description:The sign says "No fishing - only spiky-toothed goobers here, go away.". The wooden post it is mounted on is covered in flaky, glistening fish scales as though someone has beaten it with a trout.
+item id:river_sign
+item countable noun prefix:a
+item is untakeable:
+item can be used with:spiky_toothed_goober
+item successful use message:Eyeing up the sign post you figure that the local fishermen must have used it as a fish bashing post, to knock the critters out before, well, eating them. You want those teeth, and you don't want to be eaten by this goober so you line it up and whack it against the post. Your weak-wristed attempt at knocking the goober out is no match for the creature itself. It flops from your hands, defiantly spits some teeth out in your direction and wriggles back to the relative comfort of the river. You swear that the fish makes a rude sign at you with it's fins before diving beneath the water.
+item use action:destroy item:spiky_toothed_goober
+item use action:change item visibility:spiky_toothed_goober_teeth:visible
+item use action:increment score:
+ITEM
+item name:Spiky-toothed goober teeth
+item description:These are teeth from a spiky-toothed goober. They are very sharp and pointy and have an air of rude defiance.
+item id:spiky_toothed_goober_teeth
+item countable noun prefix:some
+item visibility:invisible
 
 LOCATION
 x:120
 y:120
 location id:fishermans_shack
 location area id:western_woods_area
-location description:A fisherman's shack.
+location description:A fisherman's shack, it smells a bit and the floor is a little slippery, almost slimy. There are a number of fishing related contraptions here, hanging from hooks on the walls or resting on the bench at the end of the shack.
 EXIT
 exit label:Outside
 exit destination:river_edge
 exit direction hint:East
 exit id:fishermans_shack_to_river_edge
 ITEM
-item name:Fishing lure
-item description:It's bright and shiny with a bobbly bit on the top. Just right for attracting fish.
-item id:fishing_lure
-item countable noun prefix:a
-ITEM
 item name:Fishing rod
 item description:A pole long enough to dangle over some water and fall asleep whilst doing nothing on a lazy Sunday afternoon. It has no lure or reel and looks a little useless at the moment.
 item id:fishing_rod
 item countable noun prefix:a
+item can be used with:fishing_reel
+item successful use message:Sliding the reel onto the end of the rod it finds a notch into which it clicks satisfyingly. It gives a little weight to this end of the rod.
+item use action:destroy item:fishing_reel
+item use action:destroy item:fishing_rod
+item use action:change item visibility:fishing_rod_with_reel:visible
+item use action:take item:fishing_rod_with_reel
 ITEM
 item name:Fishing reel
 item description:A cylindrical construction for holding fishing line, it is usually attached to a rod. This has plenty of fishing line already spooled around it.
 item id:fishing_reel
 item countable noun prefix:a
+ITEM
+item name:Fishing rod
+item description:A pole long enough to dangle over some water and fall asleep whilst doing nothing on a lazy Sunday afternoon. It has no lure but the reel is well set and full of line.
+item id:fishing_rod_with_reel
+item countable noun prefix:a
+item visibility:invisible
+item can be used with:fishing_lure
+item successful use message:You tie the lure to the exposed end of the fishing line. This rod looks just about ready for action now.
+item use action:destroy item:fishing_lure
+item use action:destroy item:fishing_rod_with_reel
+item use action:change item visibility:fishing_rod_with_reel_and_lure:visible
+item use action:take item:fishing_rod_with_reel_and_lure
+item use action:increment score:
+ITEM
+item name:Fishing rod
+item description:A pole long enough to dangle over some water and fall asleep whilst doing nothing on a lazy Sunday afternoon. It has a lure attached to the end of the line and is ready to catch some fish!
+item id:fishing_rod_with_reel_and_lure
+item countable noun prefix:a
+item visibility:invisible
 
 LOCATION
 x:120
 y:120
 location id:western_woods
 location area id:western_woods_area
-location description:The western woods. There are trees ripe for chopping here.
+location description:You stand in a clearing in the western woods. Not far to the north east you can see a church, bordered by a stout stone wall. There are trees ripe for chopping here.
 EXIT
 exit label:Southern edge of the churchyard
 exit destination:church_woodland
 exit direction hint:East
 exit id:western_woods_to_church_woodland
-
+ITEM
+item name:Large trees
+item description:These trees are very large indeed, the many branches are uniformly huge and would make excellent material for forming a barrier of some sort if you could find a way to cut them down.
+item id:large_trees
+item countable noun prefix:some
+item is untakeable:
+item can be used with:impsaw2000_running
+item successful use message:There are a few large branches close to where you can reach, if you stand on your tip toes and hold the chainsaw straight above your head - which you do. Toitering on your tip toes you prod at the branch above you with the end of the running ImpSaw and old bark and sawdust blast you in the face. Holding your nerve you continue to carve away from your precarious position until the branch snaps and tumbles down at your feet. You manage to do this several more times without causing yourself a fatal injury, an impressive task in itself.
+item use action:change item description:These trees are very large indeed. They have recently been pruned, cut branch stumps are evident through the foliage and many splinters and much sawdust form a blanket on the ground.
+item use action:change item visibility:tree_logs:visible
+ITEM
+item name:Tree logs
+item description:These logs have been cut from very large trees and are themselves quite large. You could probably carry them a short distance.
+item id:tree_logs
+item countable noun prefix:some
+item visibility:invisible
 
 LOCATION
 x:300
@@ -711,7 +989,7 @@ exit id:clocktower_to_castle_ruins
 exit is not visible:
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_getting_basket
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -756,7 +1034,7 @@ item examine action is not repeatable:
 item examine message:Looking closely at the portcullis you see the metal itself is quite rusted and flakes peel off easily. The portcullis is bolted to a large mechanism in the walls of the gatehouse that would have controlled opening and closing it.
 item on examine action:change item visibility:portcullis_mechanism:visible
 ITEM
-item name:Portcullis mechanism
+item name:Jammed mechanism
 item description:The mechanism is rusty like the rest of the portcullis itself. You poke and nudge it but it appears to be jammed.
 item id:portcullis_mechanism
 item countable noun prefix:a
@@ -768,16 +1046,17 @@ item use action:change item visibility:winch_jammed:invisible
 item use action:change item visibility:winch_fixed:visible
 item use action:change item visibility:portcullis_mechanism:invisible
 item use action:change item visibility:portcullis_mechanism_unjammed:visible
+item use action:destroy item:iron_bar
 ITEM
-item name:Portcullis mechanism
+item name:Unjammed mechanism
 item description:The mechanism is rusty like the rest of the portcullis itself. It was jammed but looks to be in working order now.
 item id:portcullis_mechanism_unjammed
-item countable noun prefix:a
+item countable noun prefix:an
 item is untakeable:
 item visibility:invisible
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_outside_the_ruins1
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -790,7 +1069,7 @@ item talk action in response to:wherenow:change item visibility:oubliette_outsid
 item talk action in response to:wherenow:change item visibility:oubliette_outside_the_ruins2:visible
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_outside_the_ruins2
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -802,7 +1081,7 @@ item talk initial phrase:nowayforward:There's no way forward, let's go back:"The
 item talk response to:nowayforward:Oubliette looks at you with disappointment. "If we go back now I won't have what I need for my healing balms and salves. The townsfolk are depending on me.". She doesn't look like she's going anywhere.
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_outside_the_ruins3
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -903,9 +1182,11 @@ item is untakeable:
 item visibility:invisible
 item can be used with:winch_handle
 item successful use message:You slot the handle into the hole in the end of the device and start to turn it. Clunk. Clunk. Clunk. You breath a sigh of relief as it starts to turn, the portcullis squeaks and grinds and groans and finally begins to raise. You puff and pant with the exertion, the gate is very heavy and the winch occasionally slips. Eventually the portcullis is high enough to get under. Leaving the winch handle in place you push a few bricks underneath for extra support in case the winch fails to hold.
+item use action:change item description:The portcullis winch is embedded into the brickwork around portcullis itself. It looks undamaged, if a little weather beaten. The winch handle hangs out of a hole at one end.
 item use action:change exit visibility:castle_courtyard_to_castle_ruins:visible
 item use action:change exit visibility:castle_ruins_to_castle_courtyard:visible
 item use action:change exit visibility:castle_courtyard_2:visible
+item use action:change item visibility:oubliette_outside_the_ruins1:invisible
 item use action:change item visibility:oubliette_outside_the_ruins2:invisible
 item use action:change item visibility:oubliette_outside_the_ruins3:visible
 item use action:destroy item:winch_handle
@@ -917,7 +1198,7 @@ item id:winch_handle
 item countable noun prefix:a
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_in_the_courtyard1
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -932,7 +1213,7 @@ item talk action in response to:wherenow:change exit visibility:castle_courtyard
 
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_in_the_courtyard2
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -945,7 +1226,7 @@ item talk response to:ivegotabadfeeling:Oubliette looks at you and shakes her he
 
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_in_the_courtyard3
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -1031,7 +1312,7 @@ item countable noun prefix:a
 item visibility:invisible
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_in_the_north_courtyard
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -1046,7 +1327,7 @@ item talk action in response to:arethosethemushrooms:take item:mushroom_plucker
 
 ITEM
 item name:Oubliette
-item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. Her name is Oubliette and she is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
 item id:oubliette_in_the_north_courtyard_waiting
 item mid sentence cased name:Oubliette
 item is proper noun:
@@ -1061,6 +1342,8 @@ item use action:destroy item:mushroom_plucker
 item use action:destroy item:pocket_mushrooms
 item use action:change item visibility:oubliette_in_the_north_courtyard_waiting:invisible
 item use action:change item visibility:oubliette_mushrooms_collected:visible
+item use action:change item visibility:flechette:visible
+item use action:change item visibility:flechette_when_oubliette_is_gone:invisible
 item use action:change item visibility:single_mushroom:visible
 item use action:take item:single_mushroom
 item use action:increment score:

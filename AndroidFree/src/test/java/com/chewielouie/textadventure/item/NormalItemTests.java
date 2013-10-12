@@ -97,6 +97,93 @@ public class NormalItemTests {
         assertFalse( item.canBeUsedWith( itemWithoutID ) );
     }
 
+    Item makeMockItemWithID( String id ) {
+        Item item = mock( Item.class );
+        when( item.id() ).thenReturn( id );
+        return item;
+    }
+
+    @Test
+    public void useWith_can_call_actions_repeatedly_for_the_correct_item() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
+        ItemAction action = mock( ItemAction.class );
+        NormalItem item = new NormalItem();
+        item.addOnUseActionFor( "otherItemID", action );
+
+        item.useWith( otherItem );
+        item.useWith( otherItem );
+
+        verify( action, times(2) ).enact();
+    }
+
+    @Test
+    public void useWith_does_not_call_actions_for_other_items() {
+        Item otherItem1 = makeMockItemWithID( "otherItemID1" );
+        Item otherItem2 = makeMockItemWithID( "otherItemID2" );
+        ItemAction action = mock( ItemAction.class );
+        NormalItem item = new NormalItem();
+        item.addOnUseActionFor( "otherItemID1", action );
+
+        item.useWith( otherItem2 );
+
+        verify( action, never() ).enact();
+    }
+
+    @Test
+    public void useWith_calls_actions_only_once_if_item_use_is_not_repeateable() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
+        ItemAction action = mock( ItemAction.class );
+        NormalItem item = new NormalItem();
+        item.addOnUseActionFor( "otherItemID", action );
+        item.setUseIsNotRepeatableFor( "otherItemID" );
+
+        item.useWith( otherItem );
+        item.useWith( otherItem );
+
+        verify( action, times(1) ).enact();
+    }
+
+    @Test
+    public void useWith_returns_used_with_text_for_correct_item() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
+        ItemAction action = mock( ItemAction.class );
+        NormalItem item = new NormalItem();
+        item.addOnUseActionFor( "otherItemID", action );
+        item.setUsedWithTextFor( "otherItemID", "been used" );
+
+        assertThat( item.useWith( otherItem ), is( "been used" ) );
+    }
+
+    @Test
+    public void useWith_returns_used_with_text_for_correct_item_even_if_no_actions_to_do() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
+        NormalItem item = new NormalItem();
+        item.setUsedWithTextFor( "otherItemID", "been used" );
+
+        assertThat( item.useWith( otherItem ), is( "been used" ) );
+    }
+
+    @Test
+    public void useWith_returns_used_with_text_on_repeated_use_of_non_repeatable_combination() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
+        ItemAction action = mock( ItemAction.class );
+        NormalItem item = new NormalItem();
+        item.addOnUseActionFor( "otherItemID", action );
+        item.setUseIsNotRepeatableFor( "otherItemID" );
+
+        item.useWith( otherItem );
+
+        assertThat( item.useWith( otherItem ), is( "You have already done that." ) );
+    }
+
+    @Test
+    public void useWith_returns_used_with_text_for_items_that_cannot_be_used_together() {
+        Item otherItem = makeMockItemWithID( "otherItemID" );
+        NormalItem item = new NormalItem();
+
+        assertThat( item.useWith( otherItem ), is( "Nothing happens." ) );
+    }
+
     @Test
     public void used_with_text_is_blank_by_default() {
         NormalItem item = new NormalItem();

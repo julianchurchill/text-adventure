@@ -20,6 +20,7 @@ public interface Item {
     public boolean plural();
     public boolean takeable();
     public void setUntakeable();
+
     public boolean canBeUsedWith( Item item );
     public void setCanBeUsedWith( String itemID );
     public List<String> canBeUsedWithItemIDs();
@@ -30,6 +31,12 @@ public interface Item {
     public void addOnUseAction( ItemAction action );
     public void use();
     public List<ItemAction> actions();
+
+    public void setUsedWithTextFor( String withItemID, String text );
+    public void setUseIsNotRepeatableFor( String withItemID );
+    public void addOnUseActionFor( String withItemID, ItemAction action );
+    public String useWith( Item withItem );
+
     public void setVisible( boolean visible );
     public boolean visible();
     public void examine();

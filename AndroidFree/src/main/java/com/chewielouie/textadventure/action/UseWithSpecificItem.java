@@ -8,8 +8,7 @@ public class UseWithSpecificItem implements Action {
     private List<Action> followUpActions = new ArrayList<Action>();
     private Item originalItem;
     private Item targetItem;
-    private final String failedItemUseText = "Nothing happens.";
-    private String userText = failedItemUseText;
+    private String userText = "";
 
     public UseWithSpecificItem( Item original, Item target ) {
         this.originalItem = original;
@@ -34,13 +33,20 @@ public class UseWithSpecificItem implements Action {
 
     public void trigger() {
         if( targetItem != null && originalItem != null )
-            if( targetItem.canBeUsedWith( originalItem ) )
-                useTargetItem();
+            userText = createUsePrefix() + targetItem.useWith( originalItem );
     }
 
-    private void useTargetItem() {
-        targetItem.use();
-        userText = targetItem.usedWithText();
+    private String createUsePrefix() {
+        return "You use " + pronounAndSpacingFor( originalItem )
+                          + originalItem.midSentenceCasedName() +
+               " with "   + pronounAndSpacingFor( targetItem )
+                          + targetItem.midSentenceCasedName() + ". ";
+    }
+
+    private String pronounAndSpacingFor( Item item ) {
+        if( item.properNoun() )
+            return "";
+        return "the ";
     }
 
     public boolean userMustChooseFollowUpAction() {

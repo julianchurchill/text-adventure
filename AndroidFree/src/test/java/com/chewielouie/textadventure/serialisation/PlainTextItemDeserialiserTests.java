@@ -137,36 +137,18 @@ public class PlainTextItemDeserialiserTests {
     }
 
     @Test
-    public void deserialise_extracts_item_can_be_used_with() {
-        final Item item = mockery.mock( Item.class, "item" );
-        final Item target = mockery.mock( Item.class, "target" );
-        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
-        mockery.checking( new Expectations() {{
-            oneOf( item ).setCanBeUsedWith( "itemid" );
-            ignoring( item );
-            allowing( target ).id();
-            will( returnValue( "itemid" ) );
-            ignoring( target );
-        }});
-
-        d.deserialise( item,
-                       "item name:Name\n" +
-                       "item description:description\n" +
-                       "item can be used with:itemid\n" );
-    }
-
-    @Test
     public void deserialise_extracts_item_successful_use_messsage() {
         final Item item = mockery.mock( Item.class );
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
         mockery.checking( new Expectations() {{
-            oneOf( item ).setUsedWithText( "message" );
+            oneOf( item ).setUsedWithTextFor( "itemid", "message" );
             ignoring( item );
         }});
 
         d.deserialise( item,
                        "item name:Name\n" +
                        "item description:description\n" +
+                       "item can be used with:itemid\n" +
                        "item successful use message:message\n" );
     }
 
@@ -175,29 +157,30 @@ public class PlainTextItemDeserialiserTests {
         final Item item = mockery.mock( Item.class );
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
         mockery.checking( new Expectations() {{
-            oneOf( item ).setUsedWithText( "\nmess\nage\n" );
+            oneOf( item ).setUsedWithTextFor( "itemid", "\nmess\nage\n" );
             ignoring( item );
         }});
 
         d.deserialise( item,
                        "item name:Name\n" +
                        "item description:description\n" +
+                       "item can be used with:itemid\n" +
                        "item successful use message:<newline>mess<newline>age<newline>\n" );
     }
-
 
     @Test
     public void deserialise_extracts_item_use_is_not_repeatable() {
         final Item item = mockery.mock( Item.class );
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
         mockery.checking( new Expectations() {{
-            oneOf( item ).setUseIsNotRepeatable();
+            oneOf( item ).setUseIsNotRepeatableFor( "itemid" );
             ignoring( item );
         }});
 
         d.deserialise( item,
                        "item name:Name\n" +
                        "item description:description\n" +
+                       "item can be used with:itemid\n" +
                        "item use is not repeatable:\n" );
     }
 
@@ -218,6 +201,7 @@ public class PlainTextItemDeserialiserTests {
         d.deserialise( item,
                        "item name:Name\n" +
                        "item description:description\n" +
+                       "item can be used with:itemid\n" +
                        "item use action:action:action arguments\n" +
                        "item use action:action:action arguments\n" );
     }
@@ -240,6 +224,7 @@ public class PlainTextItemDeserialiserTests {
         d.deserialise( item,
                        "item name:Name\n" +
                        "item description:description\n" +
+                       "item can be used with:itemid\n" +
                        "item use action:action:action arguments\n" );
     }
 
@@ -252,7 +237,7 @@ public class PlainTextItemDeserialiserTests {
         PlainTextItemDeserialiser d =
             new PlainTextItemDeserialiser( itemActionFactory );
         mockery.checking( new Expectations() {{
-            oneOf( item ).addOnUseAction( action );
+            oneOf( item ).addOnUseActionFor( "itemid", action );
             ignoring( item );
             allowing( itemActionFactory ).create( with( any( String.class ) ),
                with( any( Item.class ) ) );
@@ -264,7 +249,49 @@ public class PlainTextItemDeserialiserTests {
         d.deserialise( item,
                        "item name:Name\n" +
                        "item description:description\n" +
+                       "item can be used with:itemid\n" +
                        "item use action:action:action arguments\n" );
+    }
+
+    @Test
+    public void deserialise_extracts_multiple_item_use_clauses() {
+        Item item = mock( Item.class );
+        ItemAction action1 = mock( ItemAction.class );
+        ItemAction action2 = mock( ItemAction.class );
+        ItemActionFactory itemActionFactory = mock( ItemActionFactory.class );
+        when( itemActionFactory.create( "action1:action arguments1", item ) )
+            .thenReturn( action1 );
+        when( itemActionFactory.create( "action2:action arguments2", item ) )
+            .thenReturn( action2 );
+        PlainTextItemDeserialiser d =
+            new PlainTextItemDeserialiser( itemActionFactory );
+
+        d.deserialise( item,
+                       "item name:Name\n" +
+                       "item description:description\n" +
+                       "item can be used with:itemid1\n" +
+                       "item successful use message:message1\n" +
+                       "item use action:action1:action arguments1\n" +
+                       "item can be used with:itemid2\n" +
+                       "item successful use message:message2\n" +
+                       "item use is not repeatable:\n" +
+                       "item use action:action2:action arguments2\n" );
+
+// #error redo other item use tests with mockito
+
+        verify( itemActionFactory ).create( "action1:action arguments1", item );
+        verify( item ).setUsedWithTextFor( "itemid1", "message1" );
+        verify( item, never() ).setUsedWithTextFor( "itemid1", "message2" );
+        verify( item ).addOnUseActionFor( "itemid1", action1 );
+        verify( item, never() ).addOnUseActionFor( "itemid1", action2 );
+        verify( item, never() ).setUseIsNotRepeatableFor( "itemid1" );
+
+        verify( itemActionFactory ).create( "action2:action arguments2", item );
+        verify( item ).setUsedWithTextFor( "itemid2", "message2" );
+        verify( item, never() ).setUsedWithTextFor( "itemid2", "message1" );
+        verify( item ).addOnUseActionFor( "itemid2", action2 );
+        verify( item, never() ).addOnUseActionFor( "itemid2", action1 );
+        verify( item ).setUseIsNotRepeatableFor( "itemid2" );
     }
 
     @Test

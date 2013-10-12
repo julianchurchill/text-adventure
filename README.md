@@ -24,6 +24,8 @@ Backlog
 
 Technical Tasks
 
+- Consider making the item and exit list italic or some other thing to distinguish them as state rather than story...
+- Add cucumber test run as part of build, see https://github.com/cucumber/cucumber-jvm and config/common/test/CucumberStepDefs.java and src/test/resources/cucumber/TTA2/TTA2_entering_the_town.feature
 - Rename git tags to prefix with TTA1_
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
 - Update model for app 1 to use take item action where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
@@ -47,21 +49,28 @@ Technical Tasks
     - Not sure deleting is a good idea... what if you the progress and want to return to the same checkpoint, you can't because it's been deleted!
     - Toast to show checkpoint has been restored (and which number...)
   - Add menu items, restore is disabled if no checkpoint files available
+- Accessibility
+  - Voice recognition
+  - Text to speech
+- Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
+
+Marketing
+
+- Add keywords and description to Google Play description to include - "Story, game, puzzle"
+- Forums and newsgroups: intfiction.org, rec.games.int-fiction, rec.arts.int-fiction
+  - TTA1 release posted on intfiction.org
+- Game indexes and review sites: ifdb.tads.org, textadventures.co.uk, www.androidtapp.com
+  - TTA1 androidtapp review request submitted
+- Add a Google+ page for the app, add to About box and play store/amazon store listings
+  - Added Google+ page for Tiny Text Adventure https://plus.google.com/u/0/115456188877848985242
 
 Bugs
 
-- [BUG] Order of exits can be confusing - reorder to this {North, West, East, South} so that they generally appear in order
-  - Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
-- [BUG] Last line with directions often is half drawn or unreadable. Perhaps the parchment image is causing this issue.
-  - Also the top line can occasionally become half drawn too.
-  - Is this due to something odd about the auto scrolling behaviour when new text appears?
 - [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
   - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
-- [BUG] Auto scroll to the top of the unread text is too absolute - it doesn't take into account line spacing - it could do with adding a few pixels to the top (e.g. the margin/padding/line spacing divided by 2)
-  - Use TextView.getLineSpacingExtra() if it is > 0
 
 Story - TTA2
 
@@ -69,11 +78,20 @@ Story - TTA2
   - Past the barricade you meet some towns people, they distrust and dislike you but explain that the witch lives and has wrought her revenge upon the town, sending fell beasts upon them when night time falls.
     - DONE You are surrounded by the mob, from amongst them stands a girl wielding a shoe, she hits you, her dad cmoes over 'Oubliette, Oubliette! What do you think you are doing, stop that at once! You must never beat a stranger with a shoe, you might as well tickle them, always use a good sturdy leather boot" and he passes her sturdy leather boot. She considers it, weighs it and then beats you. Everything goes black.
     - DONE You wake up in the late afternoon. You are tied up in the street, propped, sitting, against a wall. Oubliette is watching you, she apologises and introduces her sister Flechette, you notice she is holding a boot behind her back. You must talk to Oubliette to get free, she tells you all about hte witch and how it's your fault, if you say something wrong Flechette hits you with the boot. Eventually you must agree to help.
-  - You must help them repair the barricade to the north of the town by the guards tower/gate before night falls. They give you a broken impsaw 2000 and an imperator. You must find teeth perhaps from vicious Spiky-toothed Goobers (fish) to repair the impsaw, then you must use the imperator on the impsaw to enrage the imp and get it to run around causing the chain of teeth to spin round. You then use it to chop branches from a tree in the wood and bring the branches back to repair the barricade.
+  - You must help them repair the barricade to the north of the town by the guards tower/gate before night falls. They give you a broken impsaw 2000 and an imperator.
+    - DONE You must find teeth from a vicious Spiky-toothed Goobers (fish) to repair the impsaw. You must assemble a fishing rod, wake a fisherman to get his lure and send him back to sleep with a bottle of cider. Then you can use the fishing rod on the river to retrieve a Goober (the first fish is a useless Blue Mullet).
+    - Then you must use the imperator on the impsaw to enrage the imp and get it to run around causing the chain of teeth to spin round. You then use it to chop branches from a tree in the wood and bring the branches back to repair the barricade.
 - The barricade attack
   - Completing the barricade triggers night fall and the creatures attack, you must help defend the barricade through the night and at least one fell beast ambushes you when you enter another location. You defeat it using a weapon given to you by a townsperson.
   - Then you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
   - Finally when you leave the location to check the rest of the town defences (suggested by talking again if you don't do it anyway) you get attacked by one more fell beast, defeat it and the attack ends, day dawns.
+  - [TECHNICAL TASK] ?How do we hide the Oubliette that offers barricade fixing quest, and leave the mushroom collection Oubliette visible for after the attack is finished?
+    - Perhaps the barricade repair hides all Oubliettes in preparation for the attack and shows only a vigilant Oubliette, who offers no quests at this time. Once the attack is finished we show the mushroom offering Oubliette and somehow stop the player progressing (leaving town?) until she is helped. How do we know if the mushroom has been got yet? Should we introduce conditional logic to the model content, i.e. an action (on finish of attack) that only occurs if the player has the mushrooms (progress to next part of story) or if the player does not have mushrooms show mushroom offering Oubliette?
+      - e.g.
+          item use action:conditional on:player has:mushroom:do_next_story_action
+          item use action:conditional on:player does not have:mushroom:change item visibility:oubliette_offering_mushroom_quest:visible
+        also e.g.
+          item talk action in response to:i_said_this:conditional on:item is:visible:do_next_story_action
 - In the morning the towns people ask you to get help from a nearby village over the river - Ubiquity.
 - A river and bridge between the two settlements
   - Use a boat to get across initially, perhaps repair the bridge from the other side to return to the town
@@ -81,6 +99,7 @@ Story - TTA2
 - Fastidious mim - a bird
 - Indivisible turpet. "You should have known, the fastidious mim always comes with it's companion creature - the indivisible turpet. The turpet is a big, fat worm, also known as Crane's turpet after the famous botanist, who met his maker shortly after discovering and naming the turpet and then while testing it's indivisibility, he sucumbed to blood loss from an accidentally amputated toe. Later botanists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate."
 - Underwater adventure of somesort - perhaps in the river. Meet water faeries
+- Babbages cabbage - a cabbage power steam computer, perhaps interact by placing runes
 - Magical robots - perhaps trapped water faery souls - agents for either side, initially created by the witch to serve her, wills too strong for her to control, some changed sides. Self naming, Least Chance of Failure, Random Acts of Kindness, Vengeful Beyond Death, Penchant for Foolish Bravery
 - You reach Ubiquity only to discover it has been subdued by Bella to serve her - the future of Perpetuity...
 - A girl named Oubliette
@@ -97,6 +116,20 @@ Story - TTA2
 - Sub quests
   - Create and play a kazoo at a childrens party at a nobles house (achievement Player of the Kazoo)
   - Collect bugs - using a bug collector to make them visible and catch them. There are 12 to find and there are clues at the locations to indicate that there is a bug there. Something like "There is a flicker of movement in the corner." (Bug Collector)
+- Add some negative use responses
+  - DONE Using Imperator with chainsaw before it's fixed - "It rattles and tattles and chokes to a halt. The belt ran without anything to do the slicing, these chainsaw needs teeth!"
+  - DONE Using stick with rag - "What are you going to do, beat the rag into submission?"
+  - DONE Using rag with paraffin - "You'll get covered in paraffin if you do that which won't be very attractive to the ladies. If you were concerned with that sort of thing."
+  - DONE Using rag with glowing embers - "The rag won't light, perhaps it needs an accelerant."
+  - DONE Pocket lint and glowing embers - "There's not really enough of it to start a fire."
+  - DONE Stick and glowing embers - "You can try to beat the embers out but the damage has already been done."
+  - DONE Stick and the fell beast - "Really? Do you want to fight the beast or play with it?"
+- Add embedded images at suitable places with <img src=""/> tags
+  - Examples:
+    - Fell beast (hairless dog with fiery eyes)
+    - Mushrooms
+    - Spiky-toothed goober (large vicious fish)
+    - Barrelling goon (big fur ball, shooting about like pinball)
 
 Features
 
@@ -108,9 +141,6 @@ Features
 - [UI] New icon for TTA2
 - [UI] Images for inventory items to appear on buttons next to label
 - [UI] Images for actions to appear on buttons next to label
-- [UI] Images embedded within text to add more context for the user. Can be informational like a picture of the clock tower or non-descript paragraph seperators, i.e. a skull.
-  - See http://stackoverflow.com/questions/8184566/show-image-in-textview
-  - See here for a list of built in span types http://www.informit.com/articles/article.aspx?p=2066699&seqNum=3
 - [UI] Restrict action button list to half screen height
 - [FEATURE] Story log - a record of all the story text you've seen so far - i.e. the 'text on first entry to location'. Possibly also the conversation text? How much of this to store, room descriptions, item activations?
 - [FEATURE] Google games API Achievements
@@ -140,20 +170,37 @@ Done
 
 Note: Multiple version numbers are used where changes are common to multiple apps
 
+Marketing
+
+- Google Play Store
+  - Listed
+- Amazon App Store
+  - Listed
+- SlideME app store http://slideme.org/developers
+  - Listed
+- Facebook, Twitter, Google+
+  - Release 1.0 and 2.0 advertised on all of the above
+
 TTA1 v2.2.x/TTA2 v1.0.x
 ---
 
-- [FEATURE] Enabled 'move to sd card'
 - [FEATURE] One shot contextual text can be displayed on entering a room and is then proceeded by the normal room description.
 - [FEATURE] Map - shows where you've been
 - [FEATURE] Added location area to title bar
 - [FEATURE] Smarter resume - all the text from the actions that have taken place in the current location is shown upon loading. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
+- [FEATURE] Enabled 'move to sd card'
 - [UI] Parchment background (from http://www.myfreetextures.com/worn-parchment-paper-2)
   - Added higher res background parchment image
 - [UI] Full width action buttons
+- [UI] HTML can be embedded in text descriptions and action messages. Not all HTML tags are supported. Supported HTML tags by this method on android can be found here: http://commonsware.com/blog/Android/2010/05/26/html-tags-supported-by-textview.html
+  - HTML tag support in any description or text resultant from an action
+  - Images are automatically centered, but must use wrap the img tag in <div align="center"></div> otherwise image will not be surrounded with line breaks and therefore will have nothing to be centred within. The align="center" property is redundant as it doesn't work but may be useful for future extensions so please include it.
 
 - [BUG] Double new lines appear before and after talk phrases are printed
   - [FIX] SayAction was adding unnecessary new lines.
+- [BUG] Order of exits can be confusing - reordered to this {North, West, East, South}
+- [BUG] Auto scroll to the top of the unread text is too absolute - it doesn't take into account line spacing - it could do with adding a few pixels to the top (e.g. the margin/padding/line spacing divided by 2)
+  - [FIX] Add a few pixels to the top of the auto scroll
 
 - [TECHNICAL TASK] Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
   - Mask images should be auto found by looking for resources starting with area-id. E.g. the mask filename for the town-area should be town-area_mask.png
@@ -173,6 +220,9 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [TECHNICAL TASK] New event trigger 'exit on use action', e.g. 'exit on use action:destroy item:fiery_torch' for example in TTA2 where you escape into the store cupboard but drop the torch.
 - [TECHNICAL TASK] Max score needs to be a value specified in the model content text file. It is currently hard coded in BasicModel.java.
 - [TECHNICAL TASK] Proper nouns - e.g. Oubliette. Added 'item is proper noun:' tag for item in model_content so that on examination the 'the' is dropped - e.g. 'You examine Oubliette.'.
+- [TECHNICAL TASK] Multiple _can be used with_ clauses, e.g. ImpSaw2000 (broken) and imperator _and_ spiky-toothed goober teeth
+- [TECHINCAL TASK] Added 'You use [the] x with [the] y.' before outputting the result.
+- [TECHINCAL TASK] Turned on proguard for release APK generation - http://developer.android.com/tools/help/proguard.html
 
 TTA2 only
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in, when you examine it you get your arm stuck. There are no exits and some items around you.
@@ -180,10 +230,17 @@ TTA2 only
 - [STORY] Entering the general store you encounter a dangerous animal, looks like a rabid dog but has no fur and deep red eyes. It eyes you hungrily. Past the animal is the back of the shop through which you can see a window that should lead you to the other side of the barricade. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
   - You must assemble a torch from items in nearby locations, you'll need a stick, a rag, dip it in a jar of clear liquid in the general store (is actually paraffin, if you examine you smell it). Light the torch from glowing embers in the shop next door which is just a burnt out shell.
   - Use with the 'fell beast' allowing you to see the exit at the back of the shop. After entering the cupboard the torch is destroyed, score is incremented and you see there is a one-way exit through the window, leading to the cobbled street north of the barricade.
-- Oubliette asks, when spoken to after agreeing to help repair the barricade - she's standing around looking for someone to help..., that you help escort her for a mushroom gathering task to an abandoned castle in ruins protected by a barrelling goon. Once completed she gives you a mushroom - it can heal if eaten a little or cause a very deep sleep if too much is eaten.
+- [STORY] Oubliette asks, when spoken to after agreeing to help repair the barricade - she's standing around looking for someone to help..., that you help escort her for a mushroom gathering task to an abandoned castle in ruins protected by a barrelling goon. Once completed she gives you a mushroom - it can heal if eaten a little or cause a very deep sleep if too much is eaten.
   - This can be completed anytime between now and before crossing the river (but not _during_ the barricade attack)
   - The first puzzle is the portcullis, you must get an iron bar from the undergrowth next to it, unjam the mechanism, climb over the hidden path of rocks to get to the other side of the portcullis and use the winch handle to wind the winch to raise the portcullis.
   - The second puzzle is beating the barrelling goon - you must place a hollow tree trunk so that when the goon barrels it shoots down a slide and up a ramp over the castle ruins wall leaving the area safe for gathering mushrooms.
+
+- [MINOR STORY CORRECTION] Little girl is introduced as "Flechette" but her description remains a small girl".
+- [MINOR STORY CORRECTION] Once you've accepted Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.
+- [MINOR STORY CORRECTION] Cabal Jambon no longer repeats himself when you talk to him and doesn't repeatedly pass the chainsaw and imperator to you
+- [MINOR STORY CORRECTION] Cabal Jambon is named properly after being introduced by talking to him or by Oubliette
+- [MINOR STORY CORRECTION] Iron bar left in the mechanism after unjamming the portcullis
+- [MINOR STORY CORRECTION] Two Oubliettes no longer appear outside the castle gate portcullis after opening it if you don't talk to her first
 
 2.1.1
 -----
