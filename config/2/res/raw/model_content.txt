@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:7
+maximum score:8
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -632,7 +632,7 @@ item mid sentence cased name:ImpSaw 2000
 item countable noun prefix:an
 item visibility:invisible
 item can be used with:imperator
-item successful use message:Squeezing the imperator you take a deep breath and poke the zappy end into the ImpSaw. There's plenty of squeaking and the ImpSaw bounces about in your hands. You think can make out a lot of vile cursing but you can't determine the source before the saw kicks into action, revving up, teeth spinning, making the air hum around it. This baby is ready to bring it!
+item successful use message:Squeezing the imperator you take a deep breath and poke the zappy end into the ImpSaw. There's plenty of squeaking and the ImpSaw bounces about in your hands. You think you can make out a lot of vile cursing but you can't determine the source before the saw kicks into action, revving up, teeth spinning, making the air hum around it. This baby is ready to bring it!
 item use action:change item visibility:impsaw2000_fixed:invisible
 item use action:change item visibility:impsaw2000_running:visible
 item use action:take item:impsaw2000_running
@@ -680,8 +680,22 @@ exit direction hint:North
 exit id:westgatehouse_to_dirttrack
 ITEM
 item name:Barricade
-item description:The barricade is made of a variety of broken barrels and branches presumably gathered from the woods to the north of the town.
-item id:north_barricade
+item description:The barricade is made of a variety of broken barrels and branches presumably gathered from the woods to the north of the town. It looks in a bit of a state and could do with some repair.
+item id:north_barricade_broken
+item countable noun prefix:a
+item mid sentence cased name:barricade
+item is untakeable:
+item can be used with:tree_logs
+item successful use message:You heft the logs into position across the barricade, patching up the gaps and blocking yourself in on the town side.
+item use action:change location description:westgatehouse:You stand before a large gatehouse containing a rabble of tired men, all of the town watch. To the north is a dirt track leading away from the town blocked by a barricade.
+item use action:change item visibility:north_barricade_broken:invisible
+item use action:change item visibility:north_barricade_repaired:visible
+item use action:change exit visibility:westgatehouse_to_dirttrack:invisible
+item use action:increment score:
+ITEM
+item name:Barricade
+item description:The barricade is made of a variety of broken barrels and branches presumably gathered from the woods to the north of the town. It has been recently repaired, so well in fact that it is now impossible to exit the town to the north.
+item id:north_barricade_repaired
 item countable noun prefix:a
 item mid sentence cased name:barricade
 item is untakeable:
