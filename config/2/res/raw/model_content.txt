@@ -724,6 +724,7 @@ item id:north_barricade_repaired
 item countable noun prefix:a
 item mid sentence cased name:barricade
 item is untakeable:
+item visibility:invisible
 
 LOCATION
 x:120
@@ -754,7 +755,7 @@ exit destination:dirttrack
 exit direction hint:South
 exit id:moredirttrack_to_dirttrack
 EXIT
-exit label:Small track
+exit label:Small track to woodland
 exit destination:church_woodland
 exit direction hint:West
 exit id:moredirttrack_to_church_woodland
@@ -766,7 +767,7 @@ location id:church_woodland
 location area id:western_woods_area
 location description:Following the path you skirt around the south edge of the churchyard, the high stone wall shading you as you tread over moss and damp grass. Continuing past the church you can see woods to the west and to the south you can hear the flow of water. Back to the east along the small track is the main path that leads to town.
 EXIT
-exit label:South
+exit label:River
 exit destination:river_edge
 exit direction hint:South
 exit id:church_woodland_to_river_edge
@@ -776,7 +777,7 @@ exit destination:western_woods
 exit direction hint:West
 exit id:church_woodland_to_western_woods
 EXIT
-exit label:Small track
+exit label:Small track to town
 exit destination:moredirttrack
 exit direction hint:East
 exit id:church_woodland_to_moredirttrack
