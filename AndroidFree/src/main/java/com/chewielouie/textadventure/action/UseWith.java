@@ -32,8 +32,9 @@ public class UseWith implements Action {
     private void extractActionsForInventoryItems() {
         if( inventory != null )
             for( Item target : inventory.inventoryItems() )
-                followUpActions.add(
-                    actionFactory.createUseWithSpecificItemAction( item, target ) );
+                if( target.visible() )
+                    followUpActions.add(
+                        actionFactory.createUseWithSpecificItemAction( item, target ) );
     }
 
     private void extractActionsForLocationItems() {

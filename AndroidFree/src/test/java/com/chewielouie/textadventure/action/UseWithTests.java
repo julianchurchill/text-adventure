@@ -3,6 +3,7 @@ package com.chewielouie.textadventure.action;
 import static org.junit.Assert.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.*;
 import static java.util.Arrays.asList;
 
 import java.util.ArrayList;
@@ -100,12 +101,46 @@ public class UseWithTests {
             oneOf( actionFactory ).createUseWithSpecificItemAction( item, inventoryItem );
             will( returnValue( inventoryAction ) );
             ignoring( actionFactory );
+            allowing( inventoryItem ).visible();
+            will( returnValue( true ) );
+            ignoring( inventoryItem );
         }});
         UseWith action = new UseWith( item, inventory, null, actionFactory );
 
         List<Action> actions = action.followUpActions();
         assertThat( actions.size(), is( greaterThan( 0 ) ) );
         assertThat( actions.get( 0 ), is( inventoryAction ) );
+    }
+
+    Item makeVisibleItem() {
+        Item item = mock( Item.class );
+        when( item.visible() ).thenReturn( true );
+        return item;
+    }
+
+    Item makeInvisibleItem() {
+        Item item = mock( Item.class );
+        when( item.visible() ).thenReturn( false );
+        return item;
+    }
+
+    UserInventory makeInventoryWithItems( Item i1, Item i2 ) {
+        UserInventory inventory = mock( UserInventory.class );
+        when( inventory.inventoryItems() ).thenReturn( asList( i1, i2 ) );
+        return inventory;
+    }
+
+    @Test
+    public void follow_up_actions_include_only_visible_items_from_inventory() {
+        Item item = mock( Item.class );
+        Item invisibleItem = makeInvisibleItem();
+        Item visibleItem = makeVisibleItem();
+        UserInventory inventory = makeInventoryWithItems( invisibleItem, visibleItem );
+        ActionFactory actionFactory = mock( ActionFactory.class );
+        UseWith u = new UseWith( item, inventory, null, actionFactory );
+
+        verify( actionFactory ).createUseWithSpecificItemAction( item, visibleItem );
+        verify( actionFactory, never() ).createUseWithSpecificItemAction( item, invisibleItem );
     }
 
     @Test
