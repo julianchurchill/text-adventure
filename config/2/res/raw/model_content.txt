@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:8
+maximum score:9
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -628,6 +628,7 @@ item talk response to:anynewsoftheattack:"Nothing yet. As I said, if you find an
 item can be used with:charred_bone_with_runes
 item successful use message:You hand Cabal the charred bone. He steps over to the fireplace to get a better look and the runes glow slightly in the dull light of the fire. He mutters darkly under his breath, "Yes, yes, this has the taint of dark magic about it. Where did you find it?". "By the castle ruins, I was helping Oubliette pick mushrooms and we came across a barrelling goon." you say, rather too quickly. Cabal gives you the stink eye at the mention of his daughter and draws in a deep breath, growling as he lets it out, slowly. Returning to the bone Cabal eyes it thoughtfully, "Well, it looks like it was burnt not long ago, I suspect she's trying to put pressure on us from the east, drawing in wild things like the goon. The attack will come soon, we must get ready immediately.".
 item use action:destroy item:charred_bone_with_runes
+item use action:increment score:
 
 ITEM
 item name:ImpSaw 2000
