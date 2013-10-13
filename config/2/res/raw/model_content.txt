@@ -555,7 +555,7 @@ x:240
 y:180
 location id:hovel
 location area id:town_area
-location description:You step inside the house. It might be more appropriate to call this a hovel. It is very small and cramped and is now the living quarters for the Jambon family. Around you lie the accoutrements of a boot maker, some half made shoes, leather pieces and a few pots for cooking. A small stool sits in the corner next to a pile of straw which you assume is being used for bedding.
+location description:You step inside the house. It might be more appropriate to call this a hovel. It is very small and cramped and is now the living quarters for the Jambon family. Around you lie the accoutrements of a boot maker, some half made shoes, leather pieces and a few pots for cooking. A small stool sits in the corner next to a pile of straw which you assume is being used for bedding and there is a small hearth with an under-nourished fire slowly fading out.
 EXIT
 exit label:Outside
 exit destination:cobbledroad
@@ -603,6 +603,31 @@ item is untakeable:
 item mid sentence cased name:Cabal Jambon
 item is proper noun:
 item visibility:invisible
+ITEM
+item name:Cabal Jambon
+item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
+item id:cabal_jambon_after_barricade_repair
+item is untakeable:
+item mid sentence cased name:Cabal Jambon
+item is proper noun:
+item visibility:invisible
+item talk initial phrase:ivefixedthebarricade:I've fixed the barricade:"I've fixed the barricade, is there anything else I can do?". Of course what you meant to say was 'I'll be off now, nice to meet you.' but you somehow feel compelled to help these people. Drat.
+item talk response to:ivefixedthebarricade:"Well done boy, but you'll have to do better than that to convince me you're not a cowardly toad." he snarls. "Have you noticed anything strange around town or on the outskirts? There was rumour of strange creatures at the old castle ruins, it would be good to know if this has anything to do with the witch's attacks." He looks at the ground mournfully, "I can feel something building, a dark pressure on the town - I'm certain we will be attacked soon. If you find any evidence of dark magic bring it to me at once, won't you?". You nod your head vigorously.
+item talk action in response to:ivefixedthebarricade:change item visibility:cabal_jambon_after_barricade_repair:invisible
+item talk action in response to:ivefixedthebarricade:change item visibility:cabal_jambon_awaiting_evidence:visible
+ITEM
+item name:Cabal Jambon
+item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
+item id:cabal_jambon_awaiting_evidence
+item is untakeable:
+item mid sentence cased name:Cabal Jambon
+item is proper noun:
+item visibility:invisible
+item talk initial phrase:anynewsoftheattack:Any news of the attack?:"Any news of the attack?" you ask.
+item talk response to:anynewsoftheattack:"Nothing yet. As I said, if you find any evidence of magical activity bring it to me at once." replies Cabal.
+item can be used with:charred_bone_with_runes
+item successful use message:You hand Cabal the charred bone. He steps over to the fireplace to get a better look and the runes glow slightly in the dull light of the fire. He mutters darkly under his breath, "Yes, yes, this has the taint of dark magic about it. Where did you find it?". "By the castle ruins, I was helping Oubliette pick mushrooms and we came across a barrelling goon." you say, rather too quickly. Cabal gives you the stink eye at the mention of his daughter and draws in a deep breath, growling as he lets it out, slowly. Returning to the bone Cabal eyes it thoughtfully, "Well, it looks like it was burnt not long ago, I suspect she's trying to put pressure on us from the east, drawing in wild things like the goon. The attack will come soon, we must get ready immediately.".
+item use action:destroy item:charred_bone_with_runes
 
 ITEM
 item name:ImpSaw 2000
@@ -1337,7 +1362,7 @@ item talk initial phrase:arethosethemushrooms:Are those the mushrooms?:"Are thos
 item talk response to:arethosethemushrooms:"Yes they are, just use the mushroom plucker I gave you to pick them. When you've picked them give them to me and I'll check them over.". She smiles at you, like a teacher to a struggling pupil.
 
 item can be used with:pocket_mushrooms
-item successful use message:You pass the mushroom plucker and the mushrooms you have gathered to Oubliette. Placing them in her woven basket she picks one out and passes it to you. "Here, have this for your trouble, I know it's not much but it might come in handy. These mushrooms will heal if eaten, but take care not to each too much as you will fall asleep and appear to others as though dead.". She turns away to leave - "I'm heading back to town, you know the way - thanks again!" and off she goes without glancing back. You stand alone in the courtyard shuffling your shoes and decide to head back to town with her.
+item successful use message:You pass the mushroom plucker and the mushrooms you have gathered to Oubliette. Placing them in her woven basket she picks one out and passes it to you. "Here, have this for your trouble, I know it's not much but it might come in handy. These mushrooms will heal if eaten, but take care not to each too much as you will fall asleep and appear to others as though dead.". She turns away to leave but hesitates - "I also found this amongst the rocks over there" she nods towards one of the barrelling goon's slides as she passes you a charred bone. You take it cautiously, noting the spiralling runes carved into the surface. "It's weird, goons don't usually come this close to town, maybe this has something to do with it." she shrugs. "Anyway I'm heading back to town, you know the way - thanks again!" and off she goes without glancing back. You stand alone in the courtyard shuffling your shoes and decide to head back to town with her.
 item use action:destroy item:mushroom_plucker
 item use action:destroy item:pocket_mushrooms
 item use action:change item visibility:oubliette_in_the_north_courtyard_waiting:invisible
@@ -1346,4 +1371,12 @@ item use action:change item visibility:flechette:visible
 item use action:change item visibility:flechette_when_oubliette_is_gone:invisible
 item use action:change item visibility:single_mushroom:visible
 item use action:take item:single_mushroom
+item use action:change item visibility:charred_bone_with_runes:visible
+item use action:take item:charred_bone_with_runes
 item use action:increment score:
+ITEM
+item name:Charred rune-covered bone
+item description:You're not sure if it's human or animal but the bone is quite large. One end has been burnt to a blackened stump and runes have been carved in a spiral pattern around the bone.
+item id:charred_bone_with_runes
+item countable noun prefix:a
+item visibility:invisible
