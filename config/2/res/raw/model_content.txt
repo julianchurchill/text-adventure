@@ -641,6 +641,7 @@ item can be used with:imperator
 item successful use message:It rattles and tattles and chokes to a halt. The belt ran without anything to do the slicing. This chainsaw needs teeth!
 item can be used with:spiky_toothed_goober_teeth
 item successful use message:You insert the teeth one by one into the holding slots running along the chain belt. Stepping back you have a good look at what you've repaired - this is a death machine!
+item use action:destroy item:spiky_toothed_goober_teeth
 item use action:change item visibility:impsaw2000_broken:invisible
 item use action:change item visibility:impsaw2000_fixed:visible
 item use action:take item:impsaw2000_fixed
@@ -985,6 +986,7 @@ item name:Large trees
 item description:These trees are very large indeed, the many branches are uniformly huge and would make excellent material for forming a barrier of some sort if you could find a way to cut them down.
 item id:large_trees
 item countable noun prefix:some
+item is plural:
 item is untakeable:
 item can be used with:impsaw2000_running
 item successful use message:There are a few large branches close to where you can reach, if you stand on your tip toes and hold the chainsaw straight above your head - which you do. Toitering on your tip toes you prod at the branch above you with the end of the running ImpSaw and old bark and sawdust blast you in the face. Holding your nerve you continue to carve away from your precarious position until the branch snaps and tumbles down at your feet. You manage to do this several more times without causing yourself a fatal injury, an impressive task in itself.
@@ -995,6 +997,7 @@ item name:Tree logs
 item description:These logs have been cut from very large trees and are themselves quite large. You could probably carry them a short distance.
 item id:tree_logs
 item countable noun prefix:some
+item is plural:
 item visibility:invisible
 
 LOCATION
