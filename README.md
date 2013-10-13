@@ -66,7 +66,6 @@ Marketing
 
 Bugs
 
-- [BUG] Invisible items appear in the 'use with' list - e.g. cider bottle after giving it to fisherman
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
@@ -195,6 +194,7 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [BUG] Order of exits can be confusing - reordered to this {North, West, East, South}
 - [BUG] Auto scroll to the top of the unread text is too absolute - it doesn't take into account line spacing - it could do with adding a few pixels to the top (e.g. the margin/padding/line spacing divided by 2)
   - [FIX] Add a few pixels to the top of the auto scroll
+- [BUG] Invisible items appeared in the 'use with' list - e.g. cider bottle after giving it to fisherman
 
 - [TECHNICAL TASK] Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
   - Mask images should be auto found by looking for resources starting with area-id. E.g. the mask filename for the town-area should be town-area_mask.png
