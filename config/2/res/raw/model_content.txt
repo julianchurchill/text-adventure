@@ -1059,6 +1059,14 @@ item examine action is not repeatable:
 item examine message:Looking closely at the portcullis you see the metal itself is quite rusted and flakes peel off easily. The portcullis is bolted to a large mechanism in the walls of the gatehouse that would have controlled opening and closing it.
 item on examine action:change item visibility:portcullis_mechanism:visible
 ITEM
+item name:Portcullis
+item description:The portcullis is embedded into brick which used to form a fortified gatehouse. Now it is fairly decayed but sturdy enough that it is clear you cannot open it. Fortunately it has been wedged open with a few bricks, high enough to scramble underneath to reach the inside of the castle ruins.
+item description:The portcullis is embedded into brick which used to form a fortified gatehouse. It looks sturdy enough but is quite rusted. It has been wedged open with a few bricks, high enough to scramble underneath to reach the outside of the castle gate.
+item id:portcullis_open
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+ITEM
 item name:Jammed mechanism
 item description:The mechanism is rusty like the rest of the portcullis itself. You poke and nudge it but it appears to be jammed.
 item id:portcullis_mechanism
@@ -1187,9 +1195,16 @@ exit is not visible:
 ITEM
 item name:Portcullis
 item description:The portcullis is embedded into brick which used to form a fortified gatehouse. It looks sturdy enough but is quite rusted.
-item id:courtyard_portcullis
+item id:courtyard_portcullis_closed
 item countable noun prefix:a
 item is untakeable:
+ITEM
+item name:Portcullis
+item description:The portcullis is embedded into brick which used to form a fortified gatehouse. It looks sturdy enough but is quite rusted. It has been wedged open with a few bricks, high enough to scramble underneath to reach the outside of the castle gate.
+item id:courtyard_portcullis_open
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
 ITEM
 item name:Winch
 item description:The portcullis winch is embedded into the brickwork around the portcullis itself. It looks undamaged, if a little weather beaten. There is a hole at one end.
@@ -1214,6 +1229,10 @@ item use action:change exit visibility:castle_courtyard_2:visible
 item use action:change item visibility:oubliette_outside_the_ruins1:invisible
 item use action:change item visibility:oubliette_outside_the_ruins2:invisible
 item use action:change item visibility:oubliette_outside_the_ruins3:visible
+item use action:change item visibility:courtyard_portcullis_closed:invisible
+item use action:change item visibility:courtyard_portcullis_open:visible
+item use action:change item visibility:portcullis:invisible
+item use action:change item visibility:portcullis_open:visible
 item use action:destroy item:winch_handle
 item use action:increment score:
 ITEM
@@ -1362,7 +1381,7 @@ item talk initial phrase:arethosethemushrooms:Are those the mushrooms?:"Are thos
 item talk response to:arethosethemushrooms:"Yes they are, just use the mushroom plucker I gave you to pick them. When you've picked them give them to me and I'll check them over.". She smiles at you, like a teacher to a struggling pupil.
 
 item can be used with:pocket_mushrooms
-item successful use message:You pass the mushroom plucker and the mushrooms you have gathered to Oubliette. Placing them in her woven basket she picks one out and passes it to you. "Here, have this for your trouble, I know it's not much but it might come in handy. These mushrooms will heal if eaten, but take care not to each too much as you will fall asleep and appear to others as though dead.". She turns away to leave but hesitates - "I also found this amongst the rocks over there" she nods towards one of the barrelling goon's slides as she passes you a charred bone. You take it cautiously, noting the spiralling runes carved into the surface. "It's weird, goons don't usually come this close to town, maybe this has something to do with it." she shrugs. "Anyway I'm heading back to town, you know the way - thanks again!" and off she goes without glancing back. You stand alone in the courtyard shuffling your shoes and decide to head back to town with her.
+item successful use message:You pass the mushroom plucker and the mushrooms you have gathered to Oubliette. Placing them in her woven basket she picks one out and passes it to you. "Here, have this for your trouble, I know it's not much but it might come in handy. These mushrooms will heal if eaten, but take care not to each too much as you will fall asleep and appear to others as though dead.". She turns away to leave but hesitates - "I also found this amongst the rocks" nodding towards one of the barrelling goon's slides as she passes you a charred bone. You take it cautiously, noting the spiralling runes carved into the surface. "It's weird, goons don't usually come this close to town, maybe this has something to do with it." she shrugs. "Anyway I'm heading back to town, you know the way - thanks again!" and off she goes without glancing back. You stand alone in the courtyard shuffling your shoes and decide to head back to town with her.
 item use action:destroy item:mushroom_plucker
 item use action:destroy item:pocket_mushrooms
 item use action:change item visibility:oubliette_in_the_north_courtyard_waiting:invisible
