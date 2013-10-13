@@ -717,6 +717,10 @@ item successful use message:You heft the logs into position across the barricade
 item use action:change location description:westgatehouse:You stand before a large gatehouse containing a rabble of tired men, all of the town watch. To the north is a dirt track leading away from the town blocked by a barricade.
 item use action:change item visibility:north_barricade_broken:invisible
 item use action:change item visibility:north_barricade_repaired:visible
+item use action:change item visibility:cabal_jambon_sent_to_by_oubliette:invisible
+item use action:change item visibility:cabal_jambon_after_given_chainsaw:invisible
+item use action:change item visibility:cabal_jambon_after_barricade_repair:visible
+item use action:change item visibility:oubliette_barricade_fixed:visible
 item use action:change exit visibility:westgatehouse_to_dirttrack:invisible
 item use action:increment score:
 ITEM
@@ -991,7 +995,17 @@ item is untakeable:
 item can be used with:impsaw2000_running
 item successful use message:There are a few large branches close to where you can reach, if you stand on your tip toes and hold the chainsaw straight above your head - which you do. Toitering on your tip toes you prod at the branch above you with the end of the running ImpSaw and old bark and sawdust blast you in the face. Holding your nerve you continue to carve away from your precarious position until the branch snaps and tumbles down at your feet. You manage to do this several more times without causing yourself a fatal injury, an impressive task in itself.
 item use action:change item description:These trees are very large indeed. They have recently been pruned, cut branch stumps are evident through the foliage and many splinters and much sawdust form a blanket on the ground.
+item use action:change item visibility:large_trees:invisible
+item use action:change item visibility:large_trees_pruned:visible
 item use action:change item visibility:tree_logs:visible
+ITEM
+item name:Large trees
+item description:These trees are very large indeed. They have recently been pruned, cut branch stumps are evident through the foliage and many splinters and much sawdust form a blanket on the ground.
+item id:large_trees_pruned
+item countable noun prefix:some
+item is plural:
+item is untakeable:
+item visibility:invisible
 ITEM
 item name:Tree logs
 item description:These logs have been cut from very large trees and are themselves quite large. You could probably carry them a short distance.
