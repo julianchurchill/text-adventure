@@ -83,7 +83,12 @@ Story - TTA2
     - DONE Then you must use the imperator on the impsaw to enrage the imp and get it to run around causing the chain of teeth to spin round. You then use it to chop branches from a tree in the wood and bring the branches back to repair the barricade.
     - DONE Once the barricade is repaired you must take evidence of an impending attack to Cabal Jambon. The evidence he wants is a charred bone with runes inscribed given to you by Oubliette after picking mushrooms by the castle ruins.
     - Issue - if you repair the barricade and then talk to Oubliette, do the mushroom quest, then you can still ask Oubliette to help repair the barricade (makes wrong Cabal visible)
-      - Could destroy the no longer needed Cabals instead of hiding them - then make turning destroyed things visible fail harmlessly (e.g. no crash)...?
+      - DONE Flechette should direct player to her dad
+      - Cabal Jambon should be introduced by name during the initial intro chat with Oubliette
+      - Cabal Jambon should give barricade quest without any extra setup (e.g. no intro needed)
+      - Once barricade quest is complete, hide Cabal (quest giver) and show Cabal (evidence waiter)
+      - Oubliette should only trigger the mushroom quest
+      - Once mushroom quest is complete, show Oubliette who directs player to her dad to see if there's any way to help further
 - The barricade attack
   - Giving the bone to Cabal triggers night fall and the creatures attack, you must help defend the barricade through the night and at least one fell beast ambushes you when you enter another location. You defeat it using a weapon given to you by a townsperson.
   - Then you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
