@@ -677,6 +677,7 @@ item use action:change item visibility:cabal_jambon_with_barricade_quest:invisib
 item use action:change item visibility:cabal_jambon_after_given_chainsaw:invisible
 item use action:change item visibility:cabal_jambon_after_barricade_repair:visible
 item use action:change exit visibility:westgatehouse_to_dirttrack:invisible
+item use action:destroy item:tree_logs
 item use action:increment score:
 ITEM
 item name:Barricade
