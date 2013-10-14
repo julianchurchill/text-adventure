@@ -25,7 +25,6 @@ Backlog
 Technical Tasks
 
 - Reduce the height of the buttons to better fit more in without squishing the text view down too much
-- Consider making the item and exit list italic or some other thing to distinguish them as state rather than story...
 - Add cucumber test run as part of build, see https://github.com/cucumber/cucumber-jvm and config/common/test/CucumberStepDefs.java and src/test/resources/cucumber/TTA2/TTA2_entering_the_town.feature
 - Rename git tags to prefix with TTA1_
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
@@ -210,6 +209,7 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [TECHNICAL TASK] Multiple _can be used with_ clauses, e.g. ImpSaw2000 (broken) and imperator _and_ spiky-toothed goober teeth
 - [TECHINCAL TASK] Added 'You use [the] x with [the] y.' before outputting the result.
 - [TECHINCAL TASK] Turned on proguard for release APK generation - http://developer.android.com/tools/help/proguard.html
+- [TECHNICAL TASK] Made the item and exit list italic to distinguish them as state rather than story
 
 TTA2 only
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in, when you examine it you get your arm stuck. There are no exits and some items around you.
