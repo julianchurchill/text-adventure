@@ -419,221 +419,239 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void updateMainText() {
-        SpannableStringBuilder text = new SpannableStringBuilder();
-        addMainContentText( text );
-        addItemsText( text );
-        addExitsText( text );
-
-        main_text_output.setText( text, TextView.BufferType.SPANNABLE );
+        new MainTextFormatter( main_text_output, mainTextContent, availableItemsText, exits )
+            .format();
     }
 
-    private void addMainContentText( SpannableStringBuilder text ) {
-        parseHTMLContent( text, replaceNewlinesWithHTMLBreaks( mainTextContent ) );
-        ensureAllImagesAreCentered( text );
-        scrollToTopOfNewMainContent( text );
-    }
+    class MainTextFormatter {
+        private TextView text_output;
+        private String mainText = "";
+        private String itemsText = "";
+        private List<Exit> exits;
+        private SpannableStringBuilder builder;
 
-    private String replaceNewlinesWithHTMLBreaks( String t ) {
-        return t.replace( "\n", "<br/>" );
-    }
+        public MainTextFormatter( TextView output, String text, String itemsText, List<Exit> exits ) {
+            this.text_output = output;
+            this.mainText = text;
+            this.itemsText = itemsText;
+            this.exits = exits;
+        }
 
-    private void scrollToTopOfNewMainContent( SpannableStringBuilder text ) {
-        main_text_output.setText( text, TextView.BufferType.SPANNABLE );
-        if( newDescriptionIsBigger() ) {
-            if( newDescriptionStartsWithTheOld() )
-                scrollToFirstNewDescriptionLine();
-            else
+        public void format() {
+            builder = new SpannableStringBuilder();
+            addMainContentText();
+            addItemsText();
+            addExitsText();
+
+            text_output.setText( builder, TextView.BufferType.SPANNABLE );
+        }
+
+        private void addMainContentText() {
+            parseHTMLContent( replaceNewlinesWithHTMLBreaks( mainText ) );
+            ensureAllImagesAreCentered();
+            scrollToTopOfNewMainContent();
+        }
+
+        private String replaceNewlinesWithHTMLBreaks( String t ) {
+            return t.replace( "\n", "<br/>" );
+        }
+
+        private void scrollToTopOfNewMainContent() {
+            text_output.setText( builder, TextView.BufferType.SPANNABLE );
+            if( newDescriptionIsBigger() ) {
+                if( newDescriptionStartsWithTheOld() )
+                    scrollToFirstNewDescriptionLine();
+                else
+                    scrollToTopOfMainText();
+            }
+            else if( newDescriptionIsSmaller() || newDescriptionIsDifferent() )
                 scrollToTopOfMainText();
-        }
-        else if( newDescriptionIsSmaller() || newDescriptionIsDifferent() )
-            scrollToTopOfMainText();
-        oldMainTextContent = mainTextContent;
-        oldDescriptionLineCount = main_text_output.getLineCount();
-    }
-
-    private boolean newDescriptionIsBigger() {
-        return main_text_output.getLineCount() > oldDescriptionLineCount;
-    }
-
-    private boolean newDescriptionIsSmaller() {
-        return main_text_output.getLineCount() < oldDescriptionLineCount;
-    }
-
-    private boolean newDescriptionStartsWithTheOld() {
-        return mainTextContent.startsWith( oldMainTextContent );
-    }
-
-    private boolean newDescriptionIsDifferent() {
-        return mainTextContent.equals( oldMainTextContent ) == false;
-    }
-
-    private void scrollToFirstNewDescriptionLine() {
-        final int lastLineInOldDescription = oldDescriptionLineCount - 1;
-        final ScrollView scrollView = (ScrollView)findViewById(
-                R_id_main_text_output_scroll_view() );
-        scrollView.post(new Runnable() {
-            public void run() {
-                Rect bounds = new Rect();
-                if( lastLineInOldDescription > 0 ) {
-                    int firstNewDescriptionLine = lastLineInOldDescription + 1;
-                    main_text_output.getLineBounds( firstNewDescriptionLine, bounds );
-                }
-                scrollView.smoothScrollTo( 0, bounds.top - textViewLineHeightPadding() );
-            }
-        });
-    }
-
-    private int textViewLineHeightPadding() {
-        // TextView.getLineSpacineExtra() is not available until API level 16 (4.1)
-        // so use getCompoundPaddingTop() as the next best thing
-        return main_text_output.getCompoundPaddingTop();
-    }
-
-    private void scrollToTopOfMainText() {
-        final ScrollView scrollView = (ScrollView)findViewById(
-                R_id_main_text_output_scroll_view() );
-        scrollView.post(new Runnable() {
-            public void run() {
-                scrollView.smoothScrollTo( 0, 0 );
-            }
-        });
-    }
-
-    private void parseHTMLContent( SpannableStringBuilder spannableBuilder, String textToParse ) {
-        spannableBuilder.append( Html.fromHtml( textToParse, imgGetter, null ) );
-    }
-
-    private ImageGetter imgGetter = new ImageGetter() {
-        public Drawable getDrawable( String source ) {
-            String drawableString = "drawable/" + removeImageExtension( source );
-            int imageResource = getResources().getIdentifier( drawableString, null, getPackageName() );
-            Drawable drawable = getResources().getDrawable( imageResource );
-            drawable.setBounds( 0, 0, drawable.getIntrinsicWidth(),
-                                      drawable.getIntrinsicHeight() );
-            return drawable;
+            oldMainTextContent = mainTextContent;
+            oldDescriptionLineCount = text_output.getLineCount();
         }
 
-        private String removeImageExtension( String filename ) {
-            return filename.replace( ".png", "" );
+        private boolean newDescriptionIsBigger() {
+            return text_output.getLineCount() > oldDescriptionLineCount;
         }
-    };
 
-    private void ensureAllImagesAreCentered( SpannableStringBuilder text ) {
-        Object[] obj = text.getSpans(0, text.length(), ImageSpan.class);
-        if( obj != null ) {
-            for (int i = 0; i < obj.length; i++) {
-                int start = text.getSpanStart(obj[i]);
-                int end = text.getSpanEnd(obj[i]);
-                text.setSpan( new AlignmentSpan.Standard( Layout.Alignment.ALIGN_CENTER ), start, end, 0 );
-            }
+        private boolean newDescriptionIsSmaller() {
+            return text_output.getLineCount() < oldDescriptionLineCount;
         }
-    }
 
-    private void addItemsText( SpannableStringBuilder text ) {
-        if( availableItemsText != "" )
-            appendToSpannableStringBuilderWithItalicStyle( text, "\n" + availableItemsText );
-    }
-
-    private void appendToSpannableStringBuilderWithItalicStyle( SpannableStringBuilder builder, String toAppend ) {
-        int startIndex = builder.length();
-        builder.append( toAppend );
-        builder.setSpan( new StyleSpan( Typeface.ITALIC ), startIndex, builder.length(), 0 );
-    }
-
-    private void addExitsText( SpannableStringBuilder text ) {
-        if( exits.size() == 0 )
-            appendToSpannableStringBuilderWithItalicStyle( text, "\nThere are no visible exits." );
-        else
-            addHyperLinkExits( text );
-    }
-
-    private void addHyperLinkExits( SpannableStringBuilder text ) {
-        appendToSpannableStringBuilderWithItalicStyle( text, "\nThe following exits are visible: " );
-
-        String prefix = "";
-        for( Exit exit : orderForDisplay( exits ) ) {
-            addHyperLinkForExit( prefix, exit, text );
-            prefix = ", ";
+        private boolean newDescriptionStartsWithTheOld() {
+            return mainTextContent.startsWith( oldMainTextContent );
         }
-        terminateSpannableClickRegion( text );
-        enableClickableLinkCallbacks();
-    }
 
-    private void addHyperLinkForExit( String prefix, Exit exit,
-                                      SpannableStringBuilder text ) {
-        int startIndex = text.length() + prefix.length();
-        int endIndex = startIndex + exit.label().length();
-        text.append( prefix + exit.label() );
-        addExitActionHandler( text, startIndex, endIndex, exit );
-        text.setSpan( new ForegroundColorSpan( selectExitColor( exit ) ),
-                      startIndex, endIndex, 0 );
-    }
+        private boolean newDescriptionIsDifferent() {
+            return mainTextContent.equals( oldMainTextContent ) == false;
+        }
 
-    private void terminateSpannableClickRegion( SpannableStringBuilder text ) {
-        // These additional spaces stop the spannable click region for the last
-        // spannable from extending all the way to the edge of the text view
-        // and to the bottom of the  text view too
-        float widthOfASingleTab = main_text_output.getPaint().measureText( "\t" );
-        String fullWidthLineOfTabs = "";
-        for( float size = 0; size < main_text_output.getWidth(); size += widthOfASingleTab )
-            fullWidthLineOfTabs += "\t";
-        text.append( fullWidthLineOfTabs );
-    }
-
-    private List<Exit> orderForDisplay( List<Exit> exits ) {
-        List<Exit> sortedExits = new ArrayList<Exit>( exits );
-        Collections.sort( sortedExits,
-            new Comparator<Exit>() {
-                @Override
-                public int compare( Exit e1, Exit e2 ) {
-                    return rankedValueOf( e1.directionHint() ) - rankedValueOf( e2.directionHint() );
+        private void scrollToFirstNewDescriptionLine() {
+            final int lastLineInOldDescription = oldDescriptionLineCount - 1;
+            final ScrollView scrollView = (ScrollView)findViewById(
+                    R_id_main_text_output_scroll_view() );
+            scrollView.post(new Runnable() {
+                public void run() {
+                    Rect bounds = new Rect();
+                    if( lastLineInOldDescription > 0 ) {
+                        int firstNewDescriptionLine = lastLineInOldDescription + 1;
+                        text_output.getLineBounds( firstNewDescriptionLine, bounds );
+                    }
+                    scrollView.smoothScrollTo( 0, bounds.top - textViewLineHeightPadding() );
                 }
             });
-        return sortedExits;
-    }
+        }
 
-    private int rankedValueOf( Exit.DirectionHint d ) {
-        if(      d == Exit.DirectionHint.North ) return 10;
-        else if( d == Exit.DirectionHint.West ) return 20;
-        else if( d == Exit.DirectionHint.East ) return 30;
-        else if( d == Exit.DirectionHint.South ) return 40;
-        return 70;
-    }
+        private int textViewLineHeightPadding() {
+            // TextView.getLineSpacineExtra() is not available until API level 16 (4.1)
+            // so use getCompoundPaddingTop() as the next best thing
+            return text_output.getCompoundPaddingTop();
+        }
 
-    private int LIGHT_BLUE = Color.rgb( 0, 154, 255 );
-    private int PURPLE = Color.rgb( 130, 0, 186 );
+        private void scrollToTopOfMainText() {
+            final ScrollView scrollView = (ScrollView)findViewById(
+                    R_id_main_text_output_scroll_view() );
+            scrollView.post(new Runnable() {
+                public void run() {
+                    scrollView.smoothScrollTo( 0, 0 );
+                }
+            });
+        }
 
-    private int selectExitColor( Exit exit )
-    {
-        if(      exit.directionHint() == Exit.DirectionHint.North ) return PURPLE;
-        else if( exit.directionHint() == Exit.DirectionHint.South ) return Color.RED;
-        else if( exit.directionHint() == Exit.DirectionHint.East ) return Color.BLUE;
-        else if( exit.directionHint() == Exit.DirectionHint.West ) return LIGHT_BLUE;
-        return Color.MAGENTA;
-    }
+        private void parseHTMLContent( String textToParse ) {
+            builder.append( Html.fromHtml( textToParse, imgGetter, null ) );
+        }
 
-    private void addExitActionHandler( SpannableStringBuilder text,
-            int startIndex, int endIndex, Exit exit ) {
-        final Exit finalExit = exit;
-        final UserActionHandler finalUserActionHandler = userActionHandler;
-        final ActionFactory factory = actionFactory();
-        final TextAdventureModel finalModel = model;
-        ClickableSpan c = new ClickableSpan() {
-            @Override
-            public void onClick( View view ) {
-                doAction( finalUserActionHandler, factory.createExitAction( finalExit,
-                                                                            finalModel ) );
+        private ImageGetter imgGetter = new ImageGetter() {
+            public Drawable getDrawable( String source ) {
+                String drawableString = "drawable/" + removeImageExtension( source );
+                int imageResource = getResources().getIdentifier( drawableString, null, getPackageName() );
+                Drawable drawable = getResources().getDrawable( imageResource );
+                drawable.setBounds( 0, 0, drawable.getIntrinsicWidth(),
+                                          drawable.getIntrinsicHeight() );
+                return drawable;
+            }
+
+            private String removeImageExtension( String filename ) {
+                return filename.replace( ".png", "" );
             }
         };
-        text.setSpan( c, startIndex, endIndex, 0 );
+
+        private void ensureAllImagesAreCentered() {
+            Object[] obj = builder.getSpans(0, builder.length(), ImageSpan.class);
+            if( obj != null ) {
+                for (int i = 0; i < obj.length; i++) {
+                    int start = builder.getSpanStart(obj[i]);
+                    int end = builder.getSpanEnd(obj[i]);
+                    builder.setSpan( new AlignmentSpan.Standard( Layout.Alignment.ALIGN_CENTER ), start, end, 0 );
+                }
+            }
+        }
+
+        private void addItemsText() {
+            if( itemsText != "" )
+                appendToSpannableStringBuilderWithItalicStyle( "\n" + itemsText );
+        }
+
+        private void appendToSpannableStringBuilderWithItalicStyle( String toAppend ) {
+            int startIndex = builder.length();
+            builder.append( toAppend );
+            builder.setSpan( new StyleSpan( Typeface.ITALIC ), startIndex, builder.length(), 0 );
+        }
+
+        private void addExitsText() {
+            if( exits.size() == 0 )
+                appendToSpannableStringBuilderWithItalicStyle( "\nThere are no visible exits." );
+            else
+                addHyperLinkExits();
+        }
+
+        private void addHyperLinkExits() {
+            appendToSpannableStringBuilderWithItalicStyle( "\nThe following exits are visible: " );
+
+            String prefix = "";
+            for( Exit exit : orderForDisplay( exits ) ) {
+                addHyperLinkForExit( prefix, exit );
+                prefix = ", ";
+            }
+            terminateSpannableClickRegion();
+            enableClickableLinkCallbacks();
+        }
+
+        private void addHyperLinkForExit( String prefix, Exit exit ) {
+            int startIndex = builder.length() + prefix.length();
+            int endIndex = startIndex + exit.label().length();
+            builder.append( prefix + exit.label() );
+            addExitActionHandler( startIndex, endIndex, exit );
+            builder.setSpan( new ForegroundColorSpan( selectExitColor( exit ) ),
+                          startIndex, endIndex, 0 );
+        }
+
+        private void terminateSpannableClickRegion() {
+            // These additional spaces stop the spannable click region for the last
+            // spannable from extending all the way to the edge of the text view
+            // and to the bottom of the  text view too
+            float widthOfASingleTab = text_output.getPaint().measureText( "\t" );
+            String fullWidthLineOfTabs = "";
+            for( float size = 0; size < text_output.getWidth(); size += widthOfASingleTab )
+                fullWidthLineOfTabs += "\t";
+            builder.append( fullWidthLineOfTabs );
+        }
+
+        private List<Exit> orderForDisplay( List<Exit> exits ) {
+            List<Exit> sortedExits = new ArrayList<Exit>( exits );
+            Collections.sort( sortedExits,
+                new Comparator<Exit>() {
+                    @Override
+                    public int compare( Exit e1, Exit e2 ) {
+                        return rankedValueOf( e1.directionHint() ) - rankedValueOf( e2.directionHint() );
+                    }
+                });
+            return sortedExits;
+        }
+
+        private int rankedValueOf( Exit.DirectionHint d ) {
+            if(      d == Exit.DirectionHint.North ) return 10;
+            else if( d == Exit.DirectionHint.West ) return 20;
+            else if( d == Exit.DirectionHint.East ) return 30;
+            else if( d == Exit.DirectionHint.South ) return 40;
+            return 70;
+        }
+
+        private int LIGHT_BLUE = Color.rgb( 0, 154, 255 );
+        private int PURPLE = Color.rgb( 130, 0, 186 );
+
+        private int selectExitColor( Exit exit )
+        {
+            if(      exit.directionHint() == Exit.DirectionHint.North ) return PURPLE;
+            else if( exit.directionHint() == Exit.DirectionHint.South ) return Color.RED;
+            else if( exit.directionHint() == Exit.DirectionHint.East ) return Color.BLUE;
+            else if( exit.directionHint() == Exit.DirectionHint.West ) return LIGHT_BLUE;
+            return Color.MAGENTA;
+        }
+
+        private void addExitActionHandler( int startIndex, int endIndex, Exit exit ) {
+            final Exit finalExit = exit;
+            final UserActionHandler finalUserActionHandler = userActionHandler;
+            final ActionFactory factory = actionFactory();
+            final TextAdventureModel finalModel = model;
+            ClickableSpan c = new ClickableSpan() {
+                @Override
+                public void onClick( View view ) {
+                    doAction( finalUserActionHandler, factory.createExitAction( finalExit,
+                                                                                finalModel ) );
+                }
+            };
+            builder.setSpan( c, startIndex, endIndex, 0 );
+        }
+
+        private void enableClickableLinkCallbacks() {
+            text_output.setMovementMethod( LinkMovementMethod.getInstance() );
+        }
     }
 
     public void useExit( Exit exit ) {
         doAction( userActionHandler, actionFactory().createExitAction( exit, model ) );
-    }
-
-    private void enableClickableLinkCallbacks() {
-        main_text_output.setMovementMethod( LinkMovementMethod.getInstance() );
     }
 
     public void showLocationExits( List<Exit> exits ) {
