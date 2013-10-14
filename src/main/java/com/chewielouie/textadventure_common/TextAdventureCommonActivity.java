@@ -49,6 +49,7 @@ import android.text.style.AlignmentSpan;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
+import android.text.style.StyleSpan;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -530,18 +531,24 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     private void addItemsText( SpannableStringBuilder text ) {
         if( availableItemsText != "" )
-            text.append( "\n" + availableItemsText );
+            appendToSpannableStringBuilderWithItalicStyle( text, "\n" + availableItemsText );
+    }
+
+    private void appendToSpannableStringBuilderWithItalicStyle( SpannableStringBuilder builder, String toAppend ) {
+        int startIndex = builder.length();
+        builder.append( toAppend );
+        builder.setSpan( new StyleSpan( Typeface.ITALIC ), startIndex, builder.length(), 0 );
     }
 
     private void addExitsText( SpannableStringBuilder text ) {
         if( exits.size() == 0 )
-            text.append( "\nThere are no visible exits." );
+            appendToSpannableStringBuilderWithItalicStyle( text, "\nThere are no visible exits." );
         else
             addHyperLinkExits( text );
     }
 
     private void addHyperLinkExits( SpannableStringBuilder text ) {
-        text.append( "\nThe following exits are visible: " );
+        appendToSpannableStringBuilderWithItalicStyle( text, "\nThe following exits are visible: " );
 
         String prefix = "";
         for( Exit exit : orderForDisplay( exits ) ) {
