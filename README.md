@@ -61,6 +61,7 @@ Marketing
   - TTA1 release posted on intfiction.org
 - Game indexes and review sites: ifdb.tads.org, textadventures.co.uk, www.androidtapp.com
   - TTA1 androidtapp review request submitted
+  - TTA1 added to ifdb - http://ifdb.tads.org/viewgame?id=6bsa13ogybwiucr0
 - Add a Google+ page for the app, add to About box and play store/amazon store listings
   - Added Google+ page for Tiny Text Adventure https://plus.google.com/u/0/115456188877848985242
 
