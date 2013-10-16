@@ -49,9 +49,6 @@ Technical Tasks
     - Not sure deleting is a good idea... what if you the progress and want to return to the same checkpoint, you can't because it's been deleted!
     - Toast to show checkpoint has been restored (and which number...)
   - Add menu items, restore is disabled if no checkpoint files available
-- Accessibility
-  - Voice recognition
-  - Text to speech
 - Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
 
 Marketing
@@ -119,6 +116,12 @@ Story - TTA2
 
 Features
 
+- [FEATURE] Accessibility - Text to speech
+  - DONE Add a check box for TTS to the options dialog, save as a preference, default is off
+  - Why does a 'Starting game' dialog appear and the save file get reloaded when turning TTS _on_ ?
+  - Only play new text, e.g. examine an object, play the description but do not play the location description again
+    - Should the item list and exit list be replayed?
+- [FEATURE] Accessibility - Voice recognition
 - [FEATURE] Map - extras
     - Make better masks and a better map! Charlies on the case.
 - [UI] Parchment background extras
@@ -181,6 +184,8 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [UI] HTML can be embedded in text descriptions and action messages. Not all HTML tags are supported. Supported HTML tags by this method on android can be found here: http://commonsware.com/blog/Android/2010/05/26/html-tags-supported-by-textview.html
   - HTML tag support in any description or text resultant from an action
   - Images are automatically centered, but must use wrap the img tag in <div align="center"></div> otherwise image will not be surrounded with line breaks and therefore will have nothing to be centred within. The align="center" property is redundant as it doesn't work but may be useful for future extensions so please include it.
+- [FEATURE] Text to speech
+  - Added a check box for TTS to the options dialog, saves as a preference, default is off
 
 - [BUG] Double new lines appear before and after talk phrases are printed
   - [FIX] SayAction was adding unnecessary new lines.

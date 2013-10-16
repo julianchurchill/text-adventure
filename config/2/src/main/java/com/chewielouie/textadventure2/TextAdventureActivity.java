@@ -65,6 +65,10 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
         return R.id.options_font_size_picker;
     }
 
+    protected int R_id_options_tts_enabled() {
+        return R.id.options_tts_enabled;
+    }
+
     protected int R_id_score_text_view() {
         return R.id.score_text_view;
     }

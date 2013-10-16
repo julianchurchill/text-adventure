@@ -15,6 +15,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import android.app.Activity;
@@ -25,6 +26,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -39,6 +41,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
 import android.text.Html;
 import android.text.Html.ImageGetter;
 import android.text.Layout;
@@ -57,6 +61,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -98,7 +103,7 @@ import com.chewielouie.textadventure.itemaction.ItemActionFactory;
 import com.chewielouie.textadventure.itemaction.NormalItemActionFactory;
 import com.chewielouie.textadventure.itemaction.LoggableNormalItemActionFactory;
 
-public abstract class TextAdventureCommonActivity extends Activity implements TextAdventureView, OnClickListener {
+public abstract class TextAdventureCommonActivity extends Activity implements TextAdventureView, OnClickListener, OnInitListener {
 
     abstract protected Bitmap getMap();
     abstract protected int R_id_available_actions();
@@ -108,6 +113,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_id_main_text_output_scroll_view();
     abstract protected int R_id_options_font_example_text();
     abstract protected int R_id_options_font_size_picker();
+    abstract protected int R_id_options_tts_enabled();
     abstract protected int R_id_score_text_view();
     abstract protected int R_layout_about_dialog();
     abstract protected int R_layout_main();
@@ -127,6 +133,8 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_string_show_map();
     abstract protected int R_string_yes();
 
+    private static final int TEXT_TO_SPEECH_DATA_CHECK_CODE = 0;
+
     private static final int ABOUT_MENU_ITEM = 0;
     private static final int NEW_GAME_MENU_ITEM = 1;
     private static final int OPTIONS_MENU_ITEM = 2;
@@ -136,6 +144,10 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private static String shared_prefs_root_key = "com.chewielouie.textadventure";
     private static int default_font_size = 16;
     private static String font_size_key = shared_prefs_root_key + ".fontsize";
+    private static final int minimumFontSize = 8;
+    private static boolean default_text_to_speech_enabled = false;
+    private static String text_to_speech_enabled_key = shared_prefs_root_key + ".texttospeechenabled";
+    private boolean textToSpeechEnabled = default_text_to_speech_enabled;
 
     private RendersView rendersView;
     private boolean externallySuppliedViewRenderer = false;
@@ -168,6 +180,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private String externallySuppliedModelContent = null;
     private boolean loading = false;
     private AsyncTask loadingTask = null;
+    private TextToSpeech textToSpeech = null;
 
     public TextAdventureCommonActivity() {
     }
@@ -211,6 +224,53 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         score_text_view = findTextView( R_id_score_text_view() );
         available_actions_view = (LinearLayout)findViewById( R_id_available_actions() );
         map_view = (ZoomableImageView)findViewById( R_id_map_view() );
+
+        reconfigureTextToSpeech();
+    }
+
+    private void reconfigureTextToSpeech() {
+        if( getTextToSpeechEnabled() )
+            initialiseTextToSpeech();
+        else
+            shutdownTextToSpeech();
+    }
+
+    private boolean textToSpeechRunning() {
+        return textToSpeech != null;
+    }
+
+    private void shutdownTextToSpeech() {
+        if( textToSpeechRunning() ) {
+            textToSpeech.shutdown();
+            textToSpeech = null;
+        }
+    }
+
+    private void initialiseTextToSpeech() {
+        Intent checkIntent = new Intent();
+        checkIntent.setAction( TextToSpeech.Engine.ACTION_CHECK_TTS_DATA );
+        startActivityForResult( checkIntent, TEXT_TO_SPEECH_DATA_CHECK_CODE );
+    }
+
+    @Override
+    protected void onActivityResult( int requestCode, int resultCode, Intent data ) {
+        if( requestCode == TEXT_TO_SPEECH_DATA_CHECK_CODE ) {
+            if( resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS )
+                textToSpeech = new TextToSpeech( this, this );
+            else
+                installTextToSpeechData();
+        }
+    }
+
+    private void installTextToSpeechData() {
+        Intent installIntent = new Intent();
+        installIntent.setAction( TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA );
+        startActivity( installIntent );
+    }
+
+    @Override
+    public void onInit (int status) {
+        textToSpeech.setLanguage( Locale.UK );
     }
 
     private class LoadTask extends AsyncTask<Void, Void, Void> {
@@ -257,6 +317,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         super.onDestroy();
         loadingTask.cancel( true );
         loading = false;
+        shutdownTextToSpeech();
     }
 
     private boolean saveJSONFileExists() {
@@ -413,14 +474,25 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         updateMainText();
     }
 
+    private String removeHTMLMarkup( String s ) {
+        return Html.fromHtml( s ).toString();
+    }
+
     public void showAvailableItemsText( String s ) {
         availableItemsText = s;
         updateMainText();
     }
 
     private void updateMainText() {
-        new MainTextFormatter( main_text_output, mainTextContent, availableItemsText, exits )
-            .format();
+        MainTextFormatter m = new MainTextFormatter( main_text_output,
+                            mainTextContent, availableItemsText, exits );
+        m.format();
+        speak( removeHTMLMarkup( m.allText() ) );
+    }
+
+    private void speak( String text ) {
+        if( textToSpeechRunning() )
+            textToSpeech.speak( text, TextToSpeech.QUEUE_FLUSH, null );
     }
 
     class MainTextFormatter {
@@ -429,12 +501,17 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         private String itemsText = "";
         private List<Exit> exits;
         private SpannableStringBuilder builder;
+        private String allText = "";
 
         public MainTextFormatter( TextView output, String text, String itemsText, List<Exit> exits ) {
             this.text_output = output;
             this.mainText = text;
             this.itemsText = itemsText;
             this.exits = exits;
+        }
+
+        public String allText() {
+            return allText;
         }
 
         public void format() {
@@ -450,6 +527,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
             parseHTMLContent( replaceNewlinesWithHTMLBreaks( mainText ) );
             ensureAllImagesAreCentered();
             scrollToTopOfNewMainContent();
+            allText += mainText;
         }
 
         private String replaceNewlinesWithHTMLBreaks( String t ) {
@@ -549,8 +627,10 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         }
 
         private void addItemsText() {
-            if( itemsText != "" )
+            if( itemsText != "" ) {
+                allText += "\n" + itemsText;
                 appendToSpannableStringBuilderWithItalicStyle( "\n" + itemsText );
+            }
         }
 
         private void appendToSpannableStringBuilderWithItalicStyle( String toAppend ) {
@@ -560,13 +640,16 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         }
 
         private void addExitsText() {
-            if( exits.size() == 0 )
+            if( exits.size() == 0 ) {
+                allText += "\nThere are no visible exits.";
                 appendToSpannableStringBuilderWithItalicStyle( "\nThere are no visible exits." );
+            }
             else
                 addHyperLinkExits();
         }
 
         private void addHyperLinkExits() {
+            allText += "\nThe following exits are visible: ";
             appendToSpannableStringBuilderWithItalicStyle( "\nThe following exits are visible: " );
 
             String prefix = "";
@@ -581,7 +664,9 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         private void addHyperLinkForExit( String prefix, Exit exit ) {
             int startIndex = builder.length() + prefix.length();
             int endIndex = startIndex + exit.label().length();
-            builder.append( prefix + exit.label() );
+            String exitPhrase = prefix + exit.label();
+            builder.append( exitPhrase );
+            allText += exitPhrase;
             addExitActionHandler( startIndex, endIndex, exit );
             builder.setSpan( new ForegroundColorSpan( selectExitColor( exit ) ),
                           startIndex, endIndex, 0 );
@@ -779,24 +864,42 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         editor.apply();
     }
 
+    private boolean getTextToSpeechEnabled() {
+        textToSpeechEnabled = getPrefs().getBoolean( text_to_speech_enabled_key, default_text_to_speech_enabled );
+        return textToSpeechEnabled;
+    }
+
+    private void saveTextToSpeechEnabled( boolean tts_on ) {
+        SharedPreferences.Editor editor = getPrefs().edit();
+        editor.putBoolean( text_to_speech_enabled_key, tts_on );
+        editor.apply();
+    }
+
     private void showOptionsDialog() {
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         View options_view = getLayoutInflater().inflate( R_layout_options_dialog(), null );
-        AlertDialog.Builder builder = new AlertDialog.Builder( this );
-        builder.setView( options_view );
-        builder.setTitle( R_string_options_title() );
+        prepareFontSizePicker( options_view );
+        prepareTTSEnabled( options_view );
+
+        AlertDialog dialog = prepareOptionsDialogBuilder( options_view ).create();
+        dialog.show();
+        // The FILL_PARENT for width from the xml is ignored for some reason by android
+        // This fix must be done after show() to override the incorrect width = WRAP_CONTENT setting
+        dialog.getWindow().setLayout( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT );
+    }
+
+    private void prepareFontSizePicker( View options_view ) {
+        final SeekBar options_font_size_picker = (SeekBar)options_view.findViewById( R_id_options_font_size_picker() );
         final TextView options_font_example_text = (TextView)options_view.findViewById( R_id_options_font_example_text() );
         options_font_example_text.setTextSize( main_text_output.getTextSize() );
-        final SeekBar options_font_size_picker = (SeekBar)options_view.findViewById( R_id_options_font_size_picker() );
-        final int minFontSize = 8;
         int font_size = getFontSize();;
-        options_font_size_picker.setProgress( font_size - minFontSize );
+        options_font_size_picker.setProgress( font_size - minimumFontSize );
         options_font_example_text.setTextSize( font_size );
         options_font_size_picker.setOnSeekBarChangeListener( new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged( SeekBar bar, int newValue, boolean fromUser ) {
-                options_font_example_text.setTextSize( newValue + minFontSize );
+                options_font_example_text.setTextSize( newValue + minimumFontSize );
             }
             @Override
             public void onStartTrackingTouch( SeekBar seekBar ) {
@@ -805,19 +908,30 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
             public void onStopTrackingTouch( SeekBar seekBar ) {
             }
         });
+    }
+
+    private void prepareTTSEnabled( View options_view ) {
+        final CheckBox options_tts_enabled = (CheckBox)options_view.findViewById( R_id_options_tts_enabled() );
+        options_tts_enabled.setChecked( getTextToSpeechEnabled() );
+    }
+
+    private AlertDialog.Builder prepareOptionsDialogBuilder( View options_view ) {
+        AlertDialog.Builder builder = new AlertDialog.Builder( this );
+        builder.setView( options_view );
+        builder.setTitle( R_string_options_title() );
+        final SeekBar options_font_size_picker = (SeekBar)options_view.findViewById( R_id_options_font_size_picker() );
+        final CheckBox options_tts_enabled = (CheckBox)options_view.findViewById( R_id_options_tts_enabled() );
         builder.setPositiveButton( R_string_options_save(), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                saveFontSize( options_font_size_picker.getProgress() + minFontSize );
+                saveFontSize( options_font_size_picker.getProgress() + minimumFontSize );
                 main_text_output.setTextSize( getFontSize() );
+                saveTextToSpeechEnabled( options_tts_enabled.isChecked() );
+                reconfigureTextToSpeech();
             }
         });
         builder.setNegativeButton( R_string_options_cancel(), null );
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        // The FILL_PARENT for width from the xml is ignored for some reason by android
-        // This fix must be done after show() to override the incorrect width = WRAP_CONTENT setting
-        dialog.getWindow().setLayout( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT );
+        return builder;
     }
 
     private void showMap() {
