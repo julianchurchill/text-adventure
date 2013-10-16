@@ -1,0 +1,109 @@
+action name:exit:exit id:townentranceeast:
+action name:exit:exit id:outsideamineshafteast:
+action name:take an item:location id:smallshed:
+action name:take specific item:item id:dirty_rag:location id:smallshed:
+action name:exit:exit id:smallshedwest:
+action name:exit:exit id:outsideamineshaftwest:
+action name:exit:exit id:townentrancewest:
+action name:exit:exit id:townoutbuildingseast:
+action name:exit:exit id:townentrancenorth:
+action name:examine an item:
+action name:examine:item id:barricade:
+action name:take an item:location id:mainstreettown:
+action name:take specific item:item id:torch_stick:location id:mainstreettown:
+action name:exit:exit id:merchantslaneentrance:
+action name:examine an item:
+action name:examine:item id:broken_door:
+action name:examine an item:
+action name:examine:item id:unidentifiable_item:
+action name:examine an item:
+action name:examine:item id:indescribeable_item:
+action name:examine an item:
+action name:examine:item id:deeply_unpleasant_item:
+action name:talk:item id:disembodied_voice:
+action name:say:string:hello:item id:disembodied_voice:
+action name:say:string:waitingforafriend:item id:disembodied_voice:
+action name:say:string:canyouhelpme:item id:disembodied_voice:
+action name:say:string:whatsyourprice:item id:disembodied_voice:
+action name:exit:exit id:merchantslane_to_merchantslane_west:
+action name:exit:exit id:merchantslane_west_to_merchantslane:
+action name:exit:exit id:merchantslanenorth:
+action name:examine an item:
+action name:examine:item id:jar_of_clear_liquid:
+action name:exit:exit id:generalstoreoutside:
+action name:exit:exit id:merchantslane_to_merchantslane_west:
+action name:show inventory:
+action name:inventory item:item id:dirty_rag:location id:merchantslane_west:
+action name:use with:item id:dirty_rag:location id:merchantslane_west:
+action name:use with specific item:item id:dirty_rag:extra item id:torch_stick:
+action name:exit:exit id:merchantslane_west_to_burnt_out_shop:
+action name:examine an item:
+action name:examine:item id:smouldering_embers:
+action name:show inventory:
+action name:inventory item:item id:rag_wrapped_torch_stick:location id:burnt_out_shop:
+action name:use with:item id:rag_wrapped_torch_stick:location id:burnt_out_shop:
+action name:use with specific item:item id:rag_wrapped_torch_stick:extra item id:smouldering_embers:
+action name:exit:exit id:burnt_out_shop_to_merchantslane_west:
+action name:exit:exit id:merchantslane_west_to_merchantslane:
+action name:exit:exit id:merchantslanenorth:
+action name:show inventory:
+action name:inventory item:item id:rag_wrapped_torch_stick:location id:generalstore:
+action name:use with:item id:rag_wrapped_torch_stick:location id:generalstore:
+action name:use with specific item:item id:rag_wrapped_torch_stick:extra item id:jar_of_paraffin:
+action name:exit:exit id:generalstoreoutside:
+action name:exit:exit id:merchantslane_to_merchantslane_west:
+action name:exit:exit id:merchantslane_west_to_burnt_out_shop:
+action name:show inventory:
+action name:inventory item:item id:paraffin_soaked_torch:location id:burnt_out_shop:
+action name:use with:item id:paraffin_soaked_torch:location id:burnt_out_shop:
+action name:use with specific item:item id:paraffin_soaked_torch:extra item id:smouldering_embers:
+action name:exit:exit id:burnt_out_shop_to_merchantslane_west:
+action name:exit:exit id:merchantslane_west_to_merchantslane:
+action name:exit:exit id:merchantslanenorth:
+action name:show inventory:
+action name:inventory item:item id:fiery_torch:location id:generalstore:
+action name:use with:item id:fiery_torch:location id:generalstore:
+action name:use with specific item:item id:fiery_torch:extra item id:fell_beast:
+action name:exit:exit id:generalstore_to_cupboard:
+action name:exit:exit id:generalstore_cupboard_to_street:
+action name:talk:item id:flechette_as_small_girl:
+action name:say:string:helpme:item id:flechette_as_small_girl:
+action name:talk:item id:flechette_as_small_girl:
+action name:say:string:isthataboot:item id:flechette_as_small_girl:
+action name:talk:item id:oubliette_mob:
+action name:say:string:helpme:item id:oubliette_mob:
+action name:say:string:sorehead:item id:oubliette_mob:
+action name:say:string:whattheblazes:item id:oubliette_mob:
+action name:say:string:ididntabandonyou:item id:oubliette_mob:
+action name:say:string:okillhelpyou:item id:oubliette_mob:
+action name:talk:item id:flechette:
+action name:say:string:isthereanythingicando:item id:flechette:
+action name:talk:item id:oubliette_sympathetic:
+action name:say:string:howcanihelp:item id:oubliette_sympathetic:
+action name:say:string:whatdoesyourfatherneed:item id:oubliette_sympathetic:
+action name:talk:item id:flechette:
+action name:say:string:isthereanythingicando:item id:flechette:
+action name:exit:exit id:cobbledroad_to_hovel:
+action name:exit:exit id:hovel_to_cobbledroad:
+action name:talk:item id:oubliette_sympathetic:
+action name:say:string:howcanihelp:item id:oubliette_sympathetic:
+action name:say:string:icanhelpyourfather:item id:oubliette_sympathetic:
+action name:exit:exit id:cobbledroad_to_hovel:
+action name:talk:item id:cabal_jambon:
+action name:say:string:hellosir:item id:cabal_jambon:
+action name:talk:item id:cabal_jambon_with_barricade_quest:
+action name:say:string:howcanihelp:item id:cabal_jambon_with_barricade_quest:
+action name:examine an item:
+action name:examine:item id:cabal_jambon_after_given_chainsaw:
+action name:talk:item id:cabal_jambon_after_given_chainsaw:
+action name:say:string:didyousayyouneededhelp:item id:cabal_jambon_after_given_chainsaw:
+action name:exit:exit id:hovel_to_cobbledroad:
+action name:exit:exit id:cobbledroad_to_morecobbledroad:
+action name:exit:exit id:morecobbledroad_to_westgatehouse:
+action name:examine an item:
+action name:examine:item id:north_barricade_broken:
+action name:exit:exit id:westgatehouse_to_dirttrack:
+action name:exit:exit id:dirttrack_to_moredirttrack:
+action name:exit:exit id:moredirttrack_to_church_woodland:
+action name:exit:exit id:church_woodland_to_river_edge:
+action name:exit:exit id:river_edge_to_fishermans_shack:
