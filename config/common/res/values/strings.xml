@@ -12,6 +12,7 @@
     <string name="options">Options</string>
     <string name="options_title">Options</string>
     <string name="options_example_font_size_text">Drag the slider to change the font size</string>
+    <string name="options_enable_text_to_speech">Enable Text To Speech (TTS)</string>
     <string name="options_cancel">Cancel</string>
     <string name="options_save">Save</string>
     <string name="completed">completed</string>
