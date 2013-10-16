@@ -111,11 +111,11 @@ Story - TTA2
   - DONE Stick and glowing embers - "You can try to beat the embers out but the damage has already been done."
   - DONE Stick and the fell beast - "Really? Do you want to fight the beast or play with it?"
 - Add embedded images at suitable places with <img src=""/> tags
-  - Examples:
-    - Fell beast (hairless dog with fiery eyes)
-    - Mushrooms
-    - Spiky-toothed goober (large vicious fish)
-    - Barrelling goon (big fur ball, shooting about like pinball)
+  - DONE Spiky-toothed goober (large vicious fish)
+  - DONE Portcullis
+  - Fell beast (hairless dog with fiery eyes)
+  - Mushrooms
+  - Barrelling goon (big fur ball, shooting about like pinball)
 
 Features
 

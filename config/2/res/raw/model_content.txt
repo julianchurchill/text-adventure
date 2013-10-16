@@ -352,7 +352,7 @@ x:180
 y:420
 location id:burnt_out_shop
 location area id:town_area
-location description:You step over the charred steps through what remains of the door way. Looking inside everything is black, soot covers the walls that still stand and the counter and remnants of the shelves that once hung on the walls are in blackened, crumpled pieces across the floor.<div align="center"><img src="icon.png"/></div>There is still some warmth given off by the surrounding debris, the fire must have been intense.
+location description:You step over the charred steps through what remains of the door way. Looking inside everything is black, soot covers the walls that still stand and the counter and remnants of the shelves that once hung on the walls are in blackened, crumpled pieces across the floor. There is still some warmth given off by the surrounding debris, the fire must have been intense.
 EXIT
 exit label:Outside
 exit destination:merchantslane_west
@@ -749,7 +749,7 @@ x:120
 y:120
 location id:river_edge
 location area id:western_woods_area
-location description:Stepping out from the surrounding woods you come upon a river. It is full and the banks are fit to burst but the ground around you is clearly dry so you guess the swollen river has not breached it's confines yet.
+location description:Stepping out from the surrounding woods you come upon a river. It is full and the banks are fit to burst but the ground around you is clearly dry so you guess the swollen river has not breached it's confines yet.<div align="center"><img src="fish_small.png"/></div>Not far from the river bank is a fisherman's shack and there is a boozy, wet smell wafting in from somewhere close by.
 EXIT
 exit label:North
 exit destination:church_woodland
@@ -1006,7 +1006,7 @@ x:320
 y:0
 location id:castle_ruins
 location area id:castle_ruins_area
-location description:Only pieces remain of what must have been a great castle, fallen arches, crumbling walls. The brick and stone is covered in plant life and many creatures once made this place their home, however looking around you see only empty nests now and abandoned hideaways. There is a great portcullis still standing, embedded in the brickwork of a gatehouse.
+location description:Only pieces remain of what must have been a great castle, fallen arches, crumbling walls. The brick and stone is covered in plant life and many creatures once made this place their home, however looking around you see only empty nests now and abandoned hideaways.<div align="center"><img src="portcullis.png"/></div>There is a great portcullis still standing, embedded in the brickwork of a gatehouse.
 text to show on first entry:Following Oubliette behind the clock tower you race to catch up to her. She is wasting no time, night is falling, the barricades must be prepared and the townsfolk must be ready for the confrontation to come. The path is overgrown with long grass, creeping thorn weeds cover the ground snatching at your feet, now and again Oubliette catches her dress and a thread is left behind. After walking for many minutes the path opens out to a clearing and you see the castle ruins laid out before you.
 EXIT
 exit label:Path to the clock tower
