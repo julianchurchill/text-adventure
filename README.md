@@ -127,7 +127,7 @@ Features
 - [UI] Parchment background extras
   - Action buttons should have a complimentary colour to the parchment.
   - Scroll bar images need to compliment the parchment background...
-- [UI] New icon for TTA2
+- ~[UI] New icon for TTA2~ DONE
 - [UI] Images for inventory items to appear on buttons next to label
 - [UI] Images for actions to appear on buttons next to label
 - [UI] Restrict action button list to half screen height

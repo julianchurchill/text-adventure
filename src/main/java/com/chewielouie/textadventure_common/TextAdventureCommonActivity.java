@@ -102,6 +102,7 @@ import com.chewielouie.textadventure.item.NormalItemFactory;
 import com.chewielouie.textadventure.itemaction.ItemActionFactory;
 import com.chewielouie.textadventure.itemaction.NormalItemActionFactory;
 import com.chewielouie.textadventure.itemaction.LoggableNormalItemActionFactory;
+import com.chewielouie.textadventure2.R;
 
 public abstract class TextAdventureCommonActivity extends Activity implements TextAdventureView, OnClickListener, OnInitListener {
 
@@ -762,6 +763,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         button.setText( action.label() );
         button.setOnClickListener( this );
         button.setTypeface( Typeface.SERIF );
+        button.setBackgroundResource(R.drawable.tta_button);
         LayoutParams lp = new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT );
         available_actions_view.addView( button, lp );
 
