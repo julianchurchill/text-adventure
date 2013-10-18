@@ -186,6 +186,7 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [FEATURE] Text to speech
   - Added a check box for TTS to the options dialog, saves as a preference, default is off
 - [UI] Action buttons have a complimentary style to the text background
+- [UI] Removed title bar to give more space for content
 
 - [BUG] Double new lines appear before and after talk phrases are printed
   - [FIX] SayAction was adding unnecessary new lines.
