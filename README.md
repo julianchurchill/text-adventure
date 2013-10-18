@@ -126,7 +126,7 @@ Features
     - Make better masks and a better map! Charlies on the case.
 - [UI] Parchment background extras
   - Scroll bar images need to compliment the parchment background...
-- ~[UI] New icon for TTA2~ DONE
+- [UI] New icon for TTA2
 - [UI] Images for inventory items to appear on buttons next to label
 - [UI] Images for actions to appear on buttons next to label
 - [UI] Restrict action button list to half screen height
