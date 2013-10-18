@@ -1262,7 +1262,7 @@ x:320
 y:-120
 location id:castle_courtyard_2
 location area id:castle_ruins_area
-location description:This is the north end of the quadrangle surrounded on all sides by rotting buildings in various states of decay. There is a tower in one corner that has been more resistant to the relentless encroachment of vegetation and from it seems to be a slide that has been purposely built or fashioned by repeated use. It is made of worn bricks and leads from the top of the tower to close by your feet. You can see some fungi interspersed through the ruins but there is no way it can be reached with the barrelling goon rocketing about.
+location description:This is the north end of the quadrangle surrounded on all sides by rotting buildings in various states of decay. There is a tower in one corner that has been more resistant to the relentless encroachment of vegetation and from it seems to be a slide that has been purposely built or fashioned by repeated use. It is made of worn bricks and leads from the top of the tower to close by your feet.<div align="center"><img src="goon.png"/></div>You can see some fungi interspersed through the ruins but there is no way it can be reached with the barrelling goon rocketing about.
 text to show on first entry:Argh! A flying ball of fur shoots at you as soon as you step foot into this area, knocking you down. It continues to barrel around the courtyard rolling from ramp to slide and inexplicably back to the top of the tower in the corner. You guess this is where the creature must have come from.
 EXIT
 exit label:South side of the courtyard

@@ -110,9 +110,9 @@ Story - TTA2
 - Add embedded images at suitable places with <img src=""/> tags
   - DONE Spiky-toothed goober (large vicious fish)
   - DONE Portcullis
+  - DONE Barrelling goon (big fur ball, shooting about like pinball)
   - Fell beast (hairless dog with fiery eyes)
   - Mushrooms
-  - Barrelling goon (big fur ball, shooting about like pinball)
 
 Features
 
