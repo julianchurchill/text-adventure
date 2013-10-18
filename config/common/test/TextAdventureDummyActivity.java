@@ -32,6 +32,10 @@ public class TextAdventureDummyActivity extends TextAdventureCommonActivity {
         return null;
     }
 
+    protected int R_drawable_tta_button() {
+        return R.drawable.tta_button;
+    }
+
     public int R_id_available_actions() {
         return R.id.available_actions;
     }

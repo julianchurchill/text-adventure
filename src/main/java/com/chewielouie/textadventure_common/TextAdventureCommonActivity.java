@@ -60,6 +60,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -106,6 +107,7 @@ import com.chewielouie.textadventure.itemaction.LoggableNormalItemActionFactory;
 public abstract class TextAdventureCommonActivity extends Activity implements TextAdventureView, OnClickListener, OnInitListener {
 
     abstract protected Bitmap getMap();
+    abstract protected int R_drawable_tta_button();
     abstract protected int R_id_available_actions();
     abstract protected int R_id_location_text_view();
     abstract protected int R_id_map_view();
@@ -218,6 +220,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        requestWindowFeature( Window.FEATURE_NO_TITLE );
         setContentView(R_layout_main());
         main_text_output = findTextView( R_id_main_text_output() );
         main_text_output.setTextSize( getFontSize() );
@@ -762,6 +765,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         button.setText( action.label() );
         button.setOnClickListener( this );
         button.setTypeface( Typeface.SERIF );
+        button.setBackgroundResource( R_drawable_tta_button() );
         LayoutParams lp = new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT );
         available_actions_view.addView( button, lp );
 

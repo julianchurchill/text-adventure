@@ -110,6 +110,7 @@ Story - TTA2
 - Add embedded images at suitable places with <img src=""/> tags
   - DONE Spiky-toothed goober (large vicious fish)
   - DONE Portcullis
+  - DONE Barrelling goon (big fur ball, shooting about like pinball)
   - Fell beast (hairless dog with fiery eyes)
   - Mushrooms
   - Barrelling goon (big fur ball, shooting about like pinball)
@@ -125,7 +126,6 @@ Features
 - [FEATURE] Map - extras
     - Make better masks and a better map! Charlies on the case.
 - [UI] Parchment background extras
-  - Action buttons should have a complimentary colour to the parchment.
   - Scroll bar images need to compliment the parchment background...
 - [UI] New icon for TTA2
 - [UI] Images for inventory items to appear on buttons next to label
@@ -186,6 +186,8 @@ TTA1 v2.2.x/TTA2 v1.0.x
   - Images are automatically centered, but must use wrap the img tag in <div align="center"></div> otherwise image will not be surrounded with line breaks and therefore will have nothing to be centred within. The align="center" property is redundant as it doesn't work but may be useful for future extensions so please include it.
 - [FEATURE] Text to speech
   - Added a check box for TTS to the options dialog, saves as a preference, default is off
+- [UI] Action buttons have a complimentary style to the text background
+- [UI] Removed title bar to give more space for content
 
 - [BUG] Double new lines appear before and after talk phrases are printed
   - [FIX] SayAction was adding unnecessary new lines.
