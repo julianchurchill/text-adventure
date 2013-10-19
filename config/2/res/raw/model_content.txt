@@ -582,9 +582,26 @@ item visibility:invisible
 item talk initial phrase:anynewsoftheattack:Any news of the attack?:"Any news of the attack?" you ask.
 item talk response to:anynewsoftheattack:"Nothing yet. As I said, if you find any evidence of magical activity bring it to me at once." replies Cabal.
 item can be used with:charred_bone_with_runes
-item successful use message:You hand Cabal the charred bone. He steps over to the fireplace to get a better look and the runes glow slightly in the dull light of the fire. He mutters darkly under his breath, "Yes, yes, this has the taint of dark magic about it. Where did you find it?". "By the castle ruins, I was helping Oubliette pick mushrooms and we came across a barrelling goon." you say, rather too quickly. Cabal gives you the stink eye at the mention of his daughter and draws in a deep breath, growling as he lets it out, slowly. Returning to the bone Cabal eyes it thoughtfully, "Well, it looks like it was burnt not long ago, I suspect she's trying to put pressure on us from the east, drawing in wild things like the goon. The attack will come soon, we must get ready immediately.".
+item successful use message:You hand Cabal the charred bone. He steps over to the fireplace to get a better look and the runes glow slightly in the dull light of the fire. He mutters darkly under his breath, "Yes, yes, this has the taint of dark magic about it. Where did you find it?". "By the castle ruins, I was helping Oubliette pick mushrooms and we came across a barrelling goon." you say, rather too quickly. Cabal gives you the stink eye at the mention of his daughter and draws in a deep breath, growling as he lets it out, slowly. Returning to the bone Cabal eyes it thoughtfully, "Well, it looks like it was burnt not long ago, I suspect she's trying to put pressure on us from the east, drawing in wild things like the goon. The attack will come soon, we must get ready immediately.". Cabal turns to you. "Go to the captain of the watch at the gate house by the north barricade. Tell him what you have found and to be prepared for an assault.". You nod, accepting his command.
 item use action:destroy item:charred_bone_with_runes
 item use action:increment score:
+item use action:change item visibility:cabal_jambon_awaiting_evidence:invisible
+item use action:change item visibility:cabal_jambon_received_evidence:visible
+item use action:change exit visibility:westgatehouse_to_gatehouse_internal:visible
+ITEM
+item name:Cabal Jambon
+item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
+item id:cabal_jambon_received_evidence
+item is untakeable:
+item mid sentence cased name:Cabal Jambon
+item is proper noun:
+item visibility:invisible
+item talk initial phrase:sowhatsgoingon:So, what's going on?:"So, what's going on?" you say, with perhaps a little too much nonchalance given recent events.
+item talk response to:sowhatsgoingon:"What do you mean what's going on?" roars Cabal. His tone makes your toes curl. You change tack and speak more cautiously - "Um, I was just wondering if there was any news yet...?". "You tell me! I sent you to see the captain of the watch, what did he say?" replies Cabal.
+item talk follow up phrase to:sowhatsgoingon:ivenotseenhimyet:I've not seen him yet:"I've not seen him yet." you mumble, almost unintelligibly.
+item talk response to:ivenotseenhimyet:"I suggest you go and see him quick before the attack starts and we're all experiencing the pointy end of the witch's broom!" he growls.
+item talk follow up phrase to:sowhatsgoingon:iveseenhimandhesfine:I've seen him and he's fine:"I've seen him and he's fine.", quick thinking, that should get you out of trouble.
+item talk response to:iveseenhimandhesfine:"Fine? That's odd, the last time I saw him he was stricken with fever, could barely command the watch but he was still the best man for it." Cabal paces pensively around his tiny house. "You had better go back to him and impress the seriousness of the situation upon him. If he can't do the job then I'll have to find someone who can!".
 
 ITEM
 item name:ImpSaw 2000
@@ -661,6 +678,12 @@ exit label:North
 exit destination:dirttrack
 exit direction hint:North
 exit id:westgatehouse_to_dirttrack
+EXIT
+exit label:Gatehouse
+exit destination:gatehouse_internal
+exit direction hint:West
+exit id:westgatehouse_to_gatehouse_internal
+exit is not visible:
 ITEM
 item name:Barricade
 item description:The barricade is made of a variety of broken barrels and branches presumably gathered from the woods to the north of the town. It looks in a bit of a state and could do with some repair.
@@ -687,6 +710,32 @@ item countable noun prefix:a
 item mid sentence cased name:barricade
 item is untakeable:
 item visibility:invisible
+
+LOCATION
+x:90
+y:240
+location id:gatehouse_internal
+location area id:town_area
+location description:Inside the gatehouse is a table with some worn wooden chairs on which are sitting the men of the town's watch. They look exhausted and somewhat beaten up, not one of them is without some recent battle scars. At the back of the room is a low bed on which lies a man, still partly dressed in his uniform.
+EXIT
+exit label:Outside
+exit destination:westgatehouse
+exit direction hint:East
+exit id:gatehouse_internal_to_westgatehouse
+ITEM
+item name:Men of the town's watch
+item description:There are several of them here, all dressed in a slightly scruffy uniform, dirty and bedraggled from recent fighting. They are currently having a drink and commiserating each other over their present situation. You catch a sentence or two of their conversation - "Mum'll have my guts for garters if I'm late tonight, it's her birthday and I promised her a night out on the town..." grumbles a particularly large and vicious looking chap with a shaved, tattooed head. Another complains as he shakes his head "We can't take much more of this, the food stores are running low and we're losing men every night.".
+item id:men_of_the_towns_watch
+item countable noun prefix:some
+item is untakeable:
+item talk initial phrase:ineedtoseethecaptainofthewatch:I need to see the captain of the watch:"I need to see the captain of the watch" you exclaim.
+item talk response to:ineedtoseethecaptainofthewatch:"That's him on the bed yonder, but you won't get much sense out of him.".
+item talk follow up phrase to:ineedtoseethecaptainofthewatch:whatswrongwithhim:What's wrong with him?:"What's wrong with him?" you ask, trying to contain a hint of nervousness.
+ITEM
+item name:Man on the bed
+item description:This fellow is laid out on a bed at the back of the room, he is sweating profusely and occasionally stirring to mumble ad turn over.
+item id:man_on_the_bed
+item is untakeable:
 
 LOCATION
 x:120
