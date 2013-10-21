@@ -131,7 +131,7 @@
             "1": { "name": "keyword.source.ssraw" },
             "2": { "name": "entity.name.function" },
             "3": { "name": "storage.type" },
-            "4": { "name": "string" },
+            "4": { "name": "variable.parameter" },
             "5": { "name": "string" }
         },
         "name": "itemtalkinitialphrase.text.tinytextadventure",
