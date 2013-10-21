@@ -73,7 +73,9 @@ Bugs
 Story - TTA2
 
 - The barricade attack
-  - Giving the bone to Cabal triggers night fall and the creatures attack, you must help defend the barricade through the night and at least one fell beast ambushes you when you enter another location. You defeat it using a weapon given to you by a townsperson.
+  - Giving the bone to Cabal triggers night fall and the creatures attack, you must help defend the barricade through the night.
+    - Cabal sends you to the captain of the watch who is non-conversive due to fever. You must get some dung from the muck seller and give it to a watchman to use as a poultice. Then the captain can speak and you can tell him Cabal's message. He gives you a weapon to help defend the town.
+    - When you leave the watch house you get attacked by a fell beast and must defeat it with the weapon you were given.
   - Then you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
   - Finally when you leave the location to check the rest of the town defences (suggested by talking again if you don't do it anyway) you get attacked by one more fell beast, defeat it and the attack ends, day dawns.
 - In the morning the towns people ask you to get help from a nearby village over the river - Ubiquity.
