@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:9
+maximum score:10
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -650,7 +650,7 @@ x:180
 y:240
 location id:morecobbledroad
 location area id:town_area
-location description:You are standing on a long cobbled road that undulates between the small houses of this town. It continues west and back to the east. Further up ahead you see a town gatehouse that guards one of the many entrances to the town.
+location description:You are standing on a long cobbled road that undulates between the small houses of this town. It continues west and back to the east. Further up ahead you see a gatehouse that guards one of the many entrances to the town.
 EXIT
 exit label:East
 exit destination:cobbledroad
@@ -663,8 +663,9 @@ exit direction hint:West
 exit id:morecobbledroad_to_westgatehouse
 ITEM
 item name:Muck seller
-item description:This lady has taken on a fine and noble profession, the trade of muck selling. Whilst not everyone's cup of tea there is a certain need amongst any medium to large settlement of peoples that, someone, must, sell muck. The main purpose of this of course is not to actually sell muck, but to make other people feel better about their own lives. As such the most common buyer of muck is the up and coming trader, the aspirer to greater things. This means that whilst the act of muck selling is not the most glamorous of jobs, it does have the advantage of providing a reliable and reasonable income. This particular lady appears some what crone-like, stooping and revelling just a little in her down and out professional persona. Her hair is matted and a dirty grey, her clothes mostly rags and she grimaces and gurns at passers combined with a well practised nasal whine as she does so. She calls out "Come get your muck. Mucky, mucky, muck. 3 for 4 crowns or 2 for 8 and 6. Finest cow dung muck, fresh as the flies on it!".
+item description:This lady has taken on a fine and noble profession, the trade of muck selling. Whilst not everyone's cup of tea there is a certain need amongst any medium to large settlement of peoples that, someone, must sell muck. The main purpose of this of course is not to actually sell muck, but to make other people feel better about their own lives. As such the most common buyer of muck is the up and coming trader, the holder of great ambitions. This means that whilst the act of muck selling is not the most glamorous of jobs, it does have the advantage of providing a reliable and reasonable income. This particular lady appears some what crone-like, stooping and revelling just a little in her down-and-out professional persona. Her hair is matted and a dirty grey, her clothes mostly rags and she grimaces and gurns at passers by combining her facial gymnastics with a well practised nasal whine. She calls out "Come get your muck. Mucky, mucky, muck. 3 for 4 crowns or 2 for 8 and 6. Finest cow dung muck, fresh as the flies on it!".
 item id:muck_seller
+item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 item talk initial phrase:outofmywayoldcrone:Out of my way old crone:"Out of my way old crone!" you exclaim.
@@ -675,6 +676,7 @@ ITEM
 item name:Muck seller
 item description:This lady has taken on a fine and noble profession, the trade of muck selling. Whilst not everyone's cup of tea there is a certain need amongst any medium to large settlement of peoples that, someone, must, sell muck. The main purpose of this of course is not to actually sell muck, but to make other people feel better about their own lives. As such the most common buyer of muck is the up and coming trader, the aspirer to greater things. This means that whilst the act of muck selling is not the most glamorous of jobs, it does have the advantage of providing a reliable and reasonable income. This particular lady appears some what crone-like, stooping and revelling just a little in her down and out professional persona. Her hair is matted and a dirty grey, her clothes mostly rags and she grimaces and gurns at passers combined with a well practised nasal whine as she does so.
 item id:muck_seller_with_poultice_dung
+item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 item talk initial phrase:outofmywayoldcrone:Out of my way old crone:"Out of my way old crone!" you exclaim.
@@ -686,7 +688,7 @@ item talk response to:ithinkineedtobuysomemuck:Her eyes light up with glee, it m
 item talk follow up phrase to:ithinkineedtobuysomemuck:canitbeusedtotreatafever:Can it be used to treat a fever?:"Can it be used to treat a fever?".
 item talk response to:canitbeusedtotreatafever:"Dung can be used for lots of things, oh yes" she grins and croons to herself. "You can use it for headaches or to treat a fever or to make a nice cup of tea.". "Tea?" you can barely say it out loud. "Why yes, I also use it as a rudimentary shampoo, keeps my hair lovely and 'ealthy looking." she grimaces at you, clearly trying to smile - a toothless grin, smacking her lips and stroking her hair awaiting your compliments.
 item talk follow up phrase to:canitbeusedtotreatafever:iseeyouuseitforyourteeth:I see you also use it for your teeth:"I see you also use it for you teeth." you state, half joking.
-item talk response to:iseeyouuseitforyourteeth:"Why yes my dear, it makes a wonderful toothpaste.". You hold back the almost uncontrollable to retch right in front of her. "Here's what you need, hold your hand out.", to which you comply and the crone swiftly slaps a large gobbet of cow dung in your out stretched hand. Carefully you cup it, hoping she doesn't expect you to pocket it.
+item talk response to:iseeyouuseitforyourteeth:"Why yes my dear, it makes a wonderful toothpaste.". You hold back the almost uncontrollable urge to retch right in front of her. "Here's what you need, hold your hand out.", to which you comply and the crone swiftly slaps a large gobbet of cow dung in your outstretched hand, passing a few coins to her with the other. Carefully you cup the dung, hoping she doesn't expect you to pocket it.
 item talk action in response to:iseeyouuseitforyourteeth:change item visibility:handful_of_dung:visible
 item talk action in response to:iseeyouuseitforyourteeth:take item:handful_of_dung
 item talk action in response to:iseeyouuseitforyourteeth:change item visibility:muck_seller:visible
@@ -762,23 +764,77 @@ item name:Men of the town's watch
 item description:There are several of them here, all dressed in a slightly scruffy uniform, dirty and bedraggled from recent fighting. They are currently having a drink and commiserating each other over their present situation. You catch a sentence or two of their conversation - "Mum'll have my guts for garters if I'm late tonight, it's her birthday and I promised her a night out on the town..." grumbles a particularly large and vicious looking chap with a shaved, tattooed head. Another complains as he shakes his head "We can't take much more of this, the food stores are running low and we're losing men every night.".
 item id:men_of_the_towns_watch
 item countable noun prefix:some
+item is plural:
 item is untakeable:
 item talk initial phrase:ineedtoseethecaptainofthewatch:I need to see the captain of the watch:"I need to see the captain of the watch" you exclaim.
 item talk response to:ineedtoseethecaptainofthewatch:"That's him on the bed yonder, but you won't get much sense out of him.".
 item talk follow up phrase to:ineedtoseethecaptainofthewatch:whatswrongwithhim:What's wrong with him?:"What's wrong with him?" you ask, trying to contain a hint of nervousness.
-item talk response to:whatswrongwithhim:"Fever." one of the men replies. "He needs a poultice, that's what my old mum would give him. A fresh dung poultice.".
+item talk response to:whatswrongwithhim:"Fever." one of the men replies. "He needs a poultice, that's what my old mum would give 'im. A fresh dung poultice. If only I 'ad some I could make 'im a poultice like my mum did.".
 item talk action in response to:whatswrongwithhim:change item visibility:muck_seller:invisible
-item talk action in response to:whatswrongwithhim:change item visibility:muck_seller_with_poultice:v_dungisible
-item talk follow up phrase to:ineedtoseethecaptainofthewatch:whosincharge:Who's in charge?:"Who's in charge?" you ask. A futile question perhaps but worth a go nonetheless.
-item talk response to:whosincharge:The men all laugh. "He is!" they all shout in well practiced unison.
+item talk action in response to:whatswrongwithhim:change item visibility:muck_seller_with_poultice_dung:visible
+item talk initial phrase:whosincharge:Who's in charge?:"Who's in charge?" you ask. A futile question perhaps but worth a go nonetheless.
+item talk response to:whosincharge:The men all laugh. "He is!" they all shout in well practiced unison pointing at the man on the bed.
+item talk follow up phrase to:whosincharge:whatswrongwithhim
+item can be used with:handful_of_dung
+item successful use message:Cup the dung in your hands you tentatively push it in the direction of the watch men. Fortunately one of them jumps up with a happy look on his face - "Aww dung! I can make a poultice for the cap'n now.". He rushes over to the captain, pulls out what looks like an old pair of pants from what you assume is his pocket and wraps the dung up tightly. Gently he places the dung poultice on the captain's head, shushing him gently at the same time.
+item use action:destroy item:handful_of_dung
+item use action:change item visibility:man_on_the_bed:invisible
+item use action:change item visibility:man_on_the_bed_with_poultice:visible
+item use action:change item visibility:men_of_the_towns_watch:invisible
+item use action:change item visibility:men_of_the_towns_watch_after_poultice:visible
+iITEM
+item name:Men of the town's watch
+item description:There are several of them here, all dressed in a slightly scruffy uniform, dirty and bedraggled from recent fighting. They are currently having a drink and commiserating each other over their present situation. You catch a sentence or two of their conversation - "Mum'll have my guts for garters if I'm late tonight, it's 'er birthday and I promised 'er a night out on the town..." grumbles a particularly large and vicious looking chap with a shaved, tattooed head. Another complains as he shakes his head "We can't take much more of this, the food stores are running low and we're losing men every night.".
+item id:men_of_the_towns_watch_after_poultice
+item countable noun prefix:some
+item is plural:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:ineedtoseethecaptainofthewatch:I need to see the captain of the watch:"I need to see the captain of the watch" you exclaim.
+item talk response to:ineedtoseethecaptainofthewatch:"That's him on the bed yonder, but you won't get much sense out of him.".
+item talk follow up phrase to:ineedtoseethecaptainofthewatch:whatswrongwithhim:What's wrong with him?:"What's wrong with him?" you ask, trying to contain a hint of nervousness.
+item talk response to:whatswrongwithhim:"Fever." one of the men replies. "He's a sufferin' for sure, but that poultice will do well enough for 'im.".
+item talk initial phrase:whosincharge:Who's in charge?:"Who's in charge?" you ask. A futile question perhaps but worth a go nonetheless.
+item talk response to:whosincharge:The men all laugh. "He is!" they all shout in well practiced unison pointing at the man on the bed.
 item talk follow up phrase to:whosincharge:whatswrongwithhim
 ITEM
-item name:Man on the bed
-item description:This fellow is laid out on a bed at the back of the room, he is sweating profusely and occasionally stirring to mumble ad turn over.
+item name:Poorly man on a bed
+item description:This fellow is laid out on a bed at the back of the room, he is sweating profusely and occasionally stirring to mumble and turn over.
 item id:man_on_the_bed
+item countable noun prefix:a
 item is untakeable:
 item talk initial phrase:ihaveurgentnews:I have urgent news:Addressing the poor man on the bed you state "I have urgent news, from Cabal Jambon.".
 item talk response to:ihaveurgentnews:He moves not a jot to acknowledge your declaration, merely mumbling "Gugghlh brrcckk fip!". One of the seated men looks up and calls over to you - "He can't talk, he's got a fever, won't get no sense out of 'im."
+ITEM
+item name:Poorly man on a bed
+item description:This fellow is laid out on a bed at the back of the room, he is sweating profusely and occasionally stirring to mumble and turn over. If the fever wasn't enough woe for this poor chap he also has a smelly dung poultice on his head.
+item id:man_on_the_bed_with_poultice
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:wereabouttobeattacked:We are about to be attacked:"We are about to be attacked!" you declare loudly to the man on the bed.
+item talk response to:wereabouttobeattacked:Immediately the watch men behind you leap to their feet. "Why didn't you say so sooner!" cries the watch man who applied the poultice. "Man the barricades!" he yells, "Defend the women and children!" again yelling, presumably at the remaining watch men who are covering their abused ears desperately trying to leave the confines of the gate house before another order is bellowed at them. "Here take this and use it with honour." he says as he passes you a broom and steps outside with his comrades. You wonder if he's mistaken or has some form of vision impairment but put it down to panic. The sick fellow says "gruesselugghslll" and slurs himself back into unconsciousness.
+item talk action in response to:wereabouttobeattacked:change item visibility:man_on_the_bed_with_poultice:invisible
+item talk action in response to:wereabouttobeattacked:change item visibility:man_on_the_bed_attack_declared:visible
+item talk action in response to:wereabouttobeattacked:change item visibility:men_of_the_towns_watch_after_poultice:invisible
+item talk action in response to:wereabouttobeattacked:change item visibility:broom:visible
+item talk action in response to:wereabouttobeattacked:take item:broom
+item talk action in response to:wereabouttobeattacked:increment score:
+ITEM
+item name:Poorly man on a bed
+item description:This fellow is laid out on a bed at the back of the room, he is sweating profusely and occasionally stirring to mumble and turn over. If the fever wasn't enough woe for this poor chap he also has a smelly dung poultice on his head.
+item id:man_on_the_bed_attack_declared
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:wereabouttobeattacked:We are about to be attacked:"We are about to be attacked!" you declare loudly to the man on the bed.
+item talk response to:wereabouttobeattacked:The sick fellow says "gruesselugghslll" and then "fnargl" and slurs himself back into unconsciousness.
+ITEM
+item name:Broom
+item description:It has a good full head of bristles, which is more than can be said for you.
+item id:broom
+item countable noun prefix:a
+item visibility:invisible
 
 LOCATION
 x:120

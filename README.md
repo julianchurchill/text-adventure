@@ -109,11 +109,15 @@ Story - TTA2
   - DONE Pocket lint and glowing embers - "There's not really enough of it to start a fire."
   - DONE Stick and glowing embers - "You can try to beat the embers out but the damage has already been done."
   - DONE Stick and the fell beast - "Really? Do you want to fight the beast or play with it?"
+  - Fishing rod and the fisherman
+  - Dung and poorly man
+  - Dung and mushrooms
 - Add embedded images at suitable places with <img src=""/> tags
   - DONE Spiky-toothed goober (large vicious fish)
   - DONE Portcullis
   - DONE Barrelling goon (big fur ball, shooting about like pinball)
   - Fell beast (hairless dog with fiery eyes)
+  - Second Fell beast for the barricade attack
   - Mushrooms
 
 Features
