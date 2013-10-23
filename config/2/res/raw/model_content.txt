@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:10
+maximum score:11
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -568,9 +568,10 @@ item mid sentence cased name:Cabal Jambon
 item is proper noun:
 item visibility:invisible
 item talk initial phrase:ivefixedthebarricade:I've fixed the barricade:"I've fixed the barricade, is there anything else I can do?". Of course what you meant to say was 'I'll be off now, nice to meet you.' but you somehow feel compelled to help these people. Drat.
-item talk response to:ivefixedthebarricade:"Well done boy, but you'll have to do better than that to convince me you're not a cowardly toad." he snarls. "Have you noticed anything strange around town or on the outskirts? There was rumour of strange creatures at the old castle ruins, it would be good to know if this has anything to do with the witch's attacks." He looks at the ground mournfully, "I can feel something building, a dark pressure on the town - I'm certain we will be attacked soon. If you find any evidence of dark magic bring it to me at once, won't you?". You nod your head vigorously.
+item talk response to:ivefixedthebarricade:"Well done boy, but you'll have to do better than that to convince me you're not a cowardly toad." he snarls. "I'd better have my ImpSaw back - it's not a toy for you to be playing around with.". You dutifully hand the ImpSaw back to Cabal, hanging onto the imperator, seeing as he didn't mention it...<br/><br/>"Have you noticed anything strange around town or on the outskirts? There was rumour of strange creatures at the old castle ruins, it would be good to know if this has anything to do with the witch's attacks." He looks at the ground mournfully, "I can feel something building, a dark pressure on the town - I'm certain we will be attacked soon. If you find any evidence of dark magic bring it to me at once, won't you?". You nod your head vigorously.
 item talk action in response to:ivefixedthebarricade:change item visibility:cabal_jambon_after_barricade_repair:invisible
 item talk action in response to:ivefixedthebarricade:change item visibility:cabal_jambon_awaiting_evidence:visible
+item talk action in response to:ivefixedthebarricade:destroy item:impsaw2000_running
 ITEM
 item name:Cabal Jambon
 item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
@@ -747,6 +748,66 @@ item countable noun prefix:a
 item mid sentence cased name:barricade
 item is untakeable:
 item visibility:invisible
+ITEM
+item name:Fell beast
+item description:It is another of the monstrosities you encountered in the wrecked general store. This one looks even more starved and desperate than the last, it's jaws laden with saliva and wild eyes blazing in the night, reflecting the light from the torches carried by the watchmen. It howls at you.
+item id:fell_beast_outside_gatehouse
+item countable noun prefix:a
+item mid sentence cased name:fell beast
+item is untakeable:
+item visibility:invisible
+item can be used with:broom
+item successful use message:Deciding to strike first to maximise what little advantage you have you thrust the broom at the beast probing for a weak spot. The beast grabs the broom from your hands with it's terrifying jaws and crushes the middle of it to splinters leaving the broom head with a small amount of handle attached and a longer piece of broom handle both of which clatter to the ground. It glares at you and prepares to move in for the kill.
+item use action:destroy item:broom
+item use action:change item visibility:broom_with_head:visible
+item use action:change item visibility:broom_handle:visible
+item can be used with:broom_handle
+item successful use message:You bravely wave the remains of the broom handle at the beast who without hesitation snatches the rod from you and chews it up to splinters quicker than you could eat a grape. It then spits the splinters back at you, showering you with spiky, sharp pieces of wood.
+item use action:destroy item:broom_handle
+item use action:change item visibility:broom_handle_splinters:visible
+item can be used with:broom_handle_splinters
+item successful use message:Initially you try to throw the splinters one by one at the fell beast. This merely enrages it, causing it to step closer to you. In a panic you fling the remaining splinter from your hand, one sailing deftly through the air to land point first in the nostril of the approaching monster. It yowls and caterwauls, railing in surprise, desperately thrashing it's head around trying to dislodge the spiky irritation. While it is distracted perhaps you can find a weak spot and gain the upper hand...
+item use action:destroy item:broom_handle_splinters
+item use action:change item visibility:fell_beast_outside_gatehouse:invisible
+item use action:change item visibility:fell_beast_outside_gatehouse_in_pain:visible
+item talk initial phrase:letsbereasonablenoonewantstogethurt:Let's be reasonable, no one wants to get hurt:"Let's be reasonable, no one wants to get hurt." you recite the words in your head and then realise that you are about to attempt to reason with a rabid beast. Which is not only rabid and out for your blood but also is most unlikely to understand a word you are saying. You stow that one away with the rest of your finest ideas.
+ITEM
+item name:Fell beast
+item description:It is another of the monstrosities you encountered in the wrecked general store. This one looks even more starved and desperate than the last, it's jaws laden with saliva and wild eyes blazing in the night, reflecting the light from the torches carried by the watchmen. It is thrashing it's head around in apparent pain and paying little attention to you at the moment.
+item id:fell_beast_outside_gatehouse_in_pain
+item countable noun prefix:a
+item mid sentence cased name:fell beast
+item is untakeable:
+item visibility:invisible
+item can be used with:broom_with_head
+item successful use message:Whilst the beast is distracted you sneak up to it, ready the broom head, bristles forward waiting for the moment to strike. The beast notices you pausing for a moment in it's thrashing and growls, opening it's mouth to snarl and spit. You jump forward shoving the broom head into the mouth of the beast, wedging it's jaws open with the short length of handle still attached to the head. It tries to crush the jam but this only causes it to yelp even more and it turns and runs off into the darkness to tend it's wounds.
+item use action:destroy item:broom_with_head
+item use action:change item visibility:fell_beast_outside_gatehouse_in_pain:invisible
+item use action:change exit visibility:westgatehouse_to_morecobbledroad:visible
+item use action:change location description:westgatehouse:You stand before a large gatehouse containing a rabble of tired men, all of the town watch. All around you is chaos in motion, men with weapons unsheathed charging to and fro fending off the evils assaulting the town, many of which have breached the barricades and roam within the town looking for easy prey.
+item use action:increment score:
+item talk initial phrase:letsbereasonablenoonewantstogethurt:Let's be reasonable, no one wants to get hurt:"Let's be reasonable, no one wants to get hurt." you recite the words in your head and then realise that you are about to attempt to reason with a rabid beast. Which is not only rabid and out for your blood but also is most unlikely to understand a word you are saying. You stow that one away with the rest of your finest ideas.
+ITEM
+item name:Broom head
+item description:It is a flat, foot long piece of wood with rough bristles embedded into it and a small amount of handle still protruding from the side, just enough to grip the head and wield it defensively.
+item id:broom_with_head
+item countable noun prefix:a
+item mid sentence cased name:broom head
+item visibility:invisible
+ITEM
+item name:Broom handle
+item description:It is a wooden pole that was previously part of a broom, the end is splintered from where it has been torn away from the rest of the broom.
+item id:broom_handle
+item countable noun prefix:a
+item mid sentence cased name:broom handle
+item visibility:invisible
+ITEM
+item name:Splinters
+item description:There are several small pieces of splintered wood from the handle of a broom that is well past it's best days.
+item id:broom_handle_splinters
+item countable noun prefix:some
+item mid sentence cased name:splinters
+item visibility:invisible
 
 LOCATION
 x:90
@@ -818,6 +879,10 @@ item talk action in response to:wereabouttobeattacked:change item visibility:man
 item talk action in response to:wereabouttobeattacked:change item visibility:man_on_the_bed_attack_declared:visible
 item talk action in response to:wereabouttobeattacked:change item visibility:men_of_the_towns_watch_after_poultice:invisible
 item talk action in response to:wereabouttobeattacked:change item visibility:broom:visible
+item talk action in response to:wereabouttobeattacked:change exit visibility:westgatehouse_to_morecobbledroad:invisible
+item talk action in response to:wereabouttobeattacked:change exit visibility:westgatehouse_to_dirttrack:invisible
+item talk action in response to:wereabouttobeattacked:change item visibility:fell_beast_outside_gatehouse:visible
+item talk action in response to:wereabouttobeattacked:change location description:westgatehouse:You stand before a large gatehouse containing a rabble of tired men, all of the town watch. All around you is chaos in motion, men with weapons unsheathed charging to and fro fending off the evils assaulting the town, many of which have breached the barricades and roam within the town looking for easy prey. In front of you stands one such monstrosity and it has noticed that you are poorly armed and look a little bit frightened. All exits except the gatehouse door are blocked with men struggling against the onslaught of foul creatures.
 item talk action in response to:wereabouttobeattacked:take item:broom
 item talk action in response to:wereabouttobeattacked:increment score:
 ITEM

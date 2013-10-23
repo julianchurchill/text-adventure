@@ -73,10 +73,7 @@ Bugs
 Story - TTA2
 
 - The barricade attack
-  - Giving the bone to Cabal triggers night fall and the creatures attack, you must help defend the barricade through the night.
-    - Cabal sends you to the captain of the watch who is non-conversive due to fever. You must get some dung from the muck seller and give it to a watchman to use as a poultice. Then the captain can speak and you can tell him Cabal's message. He gives you a weapon to help defend the town.
-    - When you leave the watch house you get attacked by a fell beast and must defeat it with the weapon you were given.
-  - Then you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
+  - After defeating the fell beast you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
   - Finally when you leave the location to check the rest of the town defences (suggested by talking again if you don't do it anyway) you get attacked by one more fell beast, defeat it and the attack ends, day dawns.
 - In the morning the towns people ask you to get help from a nearby village over the river - Ubiquity.
 - A river and bridge between the two settlements
@@ -241,6 +238,9 @@ TTA2 only
   - This can be completed in parallel to the barricade repair.
   - The first puzzle is the portcullis, you must get an iron bar from the undergrowth next to it, unjam the mechanism, climb over the hidden path of rocks to get to the other side of the portcullis and use the winch handle to wind the winch to raise the portcullis.
   - The second puzzle is beating the barrelling goon - you must place a hollow tree trunk so that when the goon barrels it shoots down a slide and up a ramp over the castle ruins wall leaving the area safe for gathering mushrooms.
+- [STORY] Giving the bone to Cabal triggers night fall and the creatures attack, you must help defend the barricade through the night.
+    - Cabal sends you to the captain of the watch who is non-conversive due to fever. You must get some dung from the muck seller and give it to a watchman to use as a poultice. The captain still cannot speak but his men listen yo your message. They give you a broom to help the defense of the town.
+    - When you leave the watch house you get attacked by a fell beast and must defeat it with the broom you were given.
 
 - [MINOR STORY CORRECTION] Little girl is introduced as "Flechette" but her description remains a small girl".
 - [MINOR STORY CORRECTION] Once you've accepted Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.
