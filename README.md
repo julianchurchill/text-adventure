@@ -78,6 +78,7 @@ Story - TTA2
 - In the morning the towns people ask you to get help from a nearby village over the river - Ubiquity.
 - A river and bridge between the two settlements
   - Use a boat to get across initially, perhaps repair the bridge from the other side to return to the town
+- On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy. You must get a yak from the yak farm, take it to Larry and get him to shave it, you can then talk to him to find out the town gossip.
 - Gibbling Boon is a good name for a creature.
 - Fastidious mim - a bird
 - Indivisible turpet. "You should have known, the fastidious mim always comes with it's companion creature - the indivisible turpet. The turpet is a big, fat worm, also known as Crane's turpet after the famous biologist, who met his maker shortly after discovering and naming the turpet and then while testing it's indivisibility, he succumbed to blood loss from an accidentally amputated toe. Later biologists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate."
