@@ -783,6 +783,8 @@ item can be used with:broom_with_head
 item successful use message:Whilst the beast is distracted you sneak up to it, ready the broom head, bristles forward waiting for the moment to strike. The beast notices you pausing for a moment in it's thrashing and growls, opening it's mouth to snarl and spit. You jump forward shoving the broom head into the mouth of the beast, wedging it's jaws open with the short length of handle still attached to the head. It tries to crush the jam but this only causes it to yelp even more and it turns and runs off into the darkness to tend it's wounds.
 item use action:destroy item:broom_with_head
 item use action:change item visibility:fell_beast_outside_gatehouse_in_pain:invisible
+item use action:change item visibility:men_of_the_towns_watch_north_barricade:invisible
+item use action:change item visibility:men_of_the_towns_watch_north_barricade_after_fell_beast:visible
 item use action:change exit visibility:westgatehouse_to_morecobbledroad:visible
 item use action:change location description:westgatehouse:You stand before a large gatehouse containing a rabble of tired men, all of the town watch. All around you is chaos in motion, men with weapons unsheathed charging to and fro fending off the evils assaulting the town, many of which have breached the barricades and roam within the town looking for easy prey.
 item use action:increment score:
@@ -807,6 +809,23 @@ item description:There are several small pieces of splintered wood from the hand
 item id:broom_handle_splinters
 item countable noun prefix:some
 item mid sentence cased name:splinters
+item visibility:invisible
+ITEM
+item name:Men of the town's watch
+item description:A gaggle of poorly armed and more poorly trained bumblers, currently leaderless as their Captain is recovering from a fever in the gatehouse. They are rushing around fending off attacking creatures and generally doing their best to defend the town and people they are sworn to protect.
+item id:men_of_the_towns_watch_north_barricade
+item countable noun prefix:some
+item is plural:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:helpme:Help me!:"Help me!" you cry feebly and to no avail, the men of the town's watch are far too busy defending themselves to help you at this time.
+ITEM
+item name:Men of the town's watch
+item description:A gaggle of poorly armed and more poorly trained bumblers, currently leaderless as their Captain is recovering from a fever in the gatehouse. They are rushing around fending off attacking creatures and generally doing their best to defend the town and people they are sworn to protect.
+item id:men_of_the_towns_watch_north_barricade_after_fell_beast
+item countable noun prefix:some
+item is plural:
+item is untakeable:
 item visibility:invisible
 
 LOCATION
@@ -882,6 +901,7 @@ item talk action in response to:wereabouttobeattacked:change item visibility:bro
 item talk action in response to:wereabouttobeattacked:change exit visibility:westgatehouse_to_morecobbledroad:invisible
 item talk action in response to:wereabouttobeattacked:change exit visibility:westgatehouse_to_dirttrack:invisible
 item talk action in response to:wereabouttobeattacked:change item visibility:fell_beast_outside_gatehouse:visible
+item talk action in response to:wereabouttobeattacked:change item visibility:men_of_the_towns_watch_north_barricade:visible
 item talk action in response to:wereabouttobeattacked:change location description:westgatehouse:You stand before a large gatehouse containing a rabble of tired men, all of the town watch. All around you is chaos in motion, men with weapons unsheathed charging to and fro fending off the evils assaulting the town, many of which have breached the barricades and roam within the town looking for easy prey. In front of you stands one such monstrosity and it has noticed that you are poorly armed and look a little bit frightened. All exits except the gatehouse door are blocked with men struggling against the onslaught of foul creatures.
 item talk action in response to:wereabouttobeattacked:take item:broom
 item talk action in response to:wereabouttobeattacked:increment score:
