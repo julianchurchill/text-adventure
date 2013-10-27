@@ -28,7 +28,7 @@ x:300
 y:480
 location id:townentrance
 location area id:town_area
-location description:You are standing outside a small town.<div align="center"><img src="goon.png"/></div><div align="center"><img src="portcullis.png"/></div><div align="center"><img src="biteyfish.png"/></div><div align="center"><img src="fellbeast.png"/></div>The main street goes north, to the west there are some small out buildings and to the east you can see what looks like an old mine shaft. The name of the town is etched on the sign above in once proud lettering - "Perpetuity".
+location description:You are standing outside a small town. The main street goes north, to the west there are some small out buildings and to the east you can see what looks like an old mine shaft. The name of the town is etched on the sign above in once proud lettering - "Perpetuity".
 text to show on first entry:Staring up at the town sign swinging across the gate above you realise it has been many years since you were last here. The town itself looks quiet but not how you left it. It looks almost defeated. Your heart starts to beat noticeably faster, pounding away in your chest as you think back, as you remember your encounter with the witch Bella Constantine.
 EXIT
 exit label:North
@@ -651,7 +651,7 @@ x:180
 y:240
 location id:morecobbledroad
 location area id:town_area
-location description:You are standing on a long cobbled road that undulates between the small houses of this town.<div align="center"><img src="goon.png"/></div><div align="center"><img src="portcullis.png"/></div><div align="center"><img src="biteyfish.png"/></div><div align="center"><img src="fellbeast.png"/></div>It continues west and back to the east. Further up ahead you see a gatehouse that guards one of the many entrances to the town.
+location description:You are standing on a long cobbled road that undulates between the small houses of this town. It continues west and back to the east. Further up ahead you see a gatehouse that guards one of the many entrances to the town.
 EXIT
 exit label:East
 exit destination:cobbledroad
