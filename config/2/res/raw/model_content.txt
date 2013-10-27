@@ -28,7 +28,7 @@ x:300
 y:480
 location id:townentrance
 location area id:town_area
-location description:You are standing outside a small town. The main street goes north, to the west there are some small out buildings and to the east you can see what looks like an old mine shaft. The name of the town is etched on the sign above in once proud lettering - "Perpetuity".
+location description:You are standing outside a small town.<div align="center"><img src="goon.png"/></div><div align="center"><img src="portcullis.png"/></div><div align="center"><img src="biteyfish.png"/></div><div align="center"><img src="fellbeast.png"/></div>The main street goes north, to the west there are some small out buildings and to the east you can see what looks like an old mine shaft. The name of the town is etched on the sign above in once proud lettering - "Perpetuity".
 text to show on first entry:Staring up at the town sign swinging across the gate above you realise it has been many years since you were last here. The town itself looks quiet but not how you left it. It looks almost defeated. Your heart starts to beat noticeably faster, pounding away in your chest as you think back, as you remember your encounter with the witch Bella Constantine.
 EXIT
 exit label:North
@@ -258,7 +258,7 @@ x:240
 y:420
 location id:generalstore
 location area id:town_area
-location description:Upon entering the general store you can only make out rough shapes. As your eyes adjust to the darkness you spy a creature in the corner, alert and looking directly at you. It looks like a rabid dog with deep red eyes but has no fur and it eyes you hungrily. Past the fell beast you can see an open door at the back of the shop through which a window leads to a street on the other side of the barricade but there's no way you can get past the creature without losing a limb. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
+location description:Upon entering the general store you can only make out rough shapes. As your eyes adjust to the darkness you spy a creature in the corner, alert and looking directly at you. It looks like a rabid dog with deep red eyes but has no fur and it eyes you hungrily.<div align="center"><img src="fellbeast.png"/></div>Past the fell beast you can see an open door at the back of the shop through which a window leads to a street on the other side of the barricade but there's no way you can get past the creature without losing a limb. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
 EXIT
 exit label:Outside
 exit destination:merchantslane
@@ -282,7 +282,7 @@ item is untakeable:
 item can be used with:fiery_torch
 item successful use message:Stepping forward boldly you wave the flaming torch in front of you, praying that the beast will retreat. A little to your surprise it does, cowering away from the torch but hissing and spitting at you in frustration, leaving a safe path to the store cupboard door.
 item use action:change exit visibility:generalstore_to_cupboard:visible
-item use action:change location description:generalstore:Upon entering the general store you can only make out rough shapes. As your eyes adjust to the darkness you spy a creature in the corner, alert and looking directly at you. It looks like a rabid dog with deep red eyes but has no fur and it eyes you hungrily. You can see an open door at the back of the shop through which a window leads to a street on the other side of the barricade. The beast has backed away from your flaming torch leaving a path to the back of the shop. For the moment you stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
+item use action:change location description:generalstore:Upon entering the general store you can only make out rough shapes. As your eyes adjust to the darkness you spy a creature in the corner, alert and looking directly at you. It looks like a rabid dog with deep red eyes but has no fur and it eyes you hungrily.<div align="center"><img src="fellbeast.png"/></div>You can see an open door at the back of the shop through which a window leads to a street on the other side of the barricade. The beast has backed away from your flaming torch leaving a path to the back of the shop. For the moment you stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
 item can be used with:torch_stick
 item successful use message:Really? Do you want to fight the beast or play with it?
 ITEM
@@ -651,7 +651,7 @@ x:180
 y:240
 location id:morecobbledroad
 location area id:town_area
-location description:You are standing on a long cobbled road that undulates between the small houses of this town. It continues west and back to the east. Further up ahead you see a gatehouse that guards one of the many entrances to the town.
+location description:You are standing on a long cobbled road that undulates between the small houses of this town.<div align="center"><img src="goon.png"/></div><div align="center"><img src="portcullis.png"/></div><div align="center"><img src="biteyfish.png"/></div><div align="center"><img src="fellbeast.png"/></div>It continues west and back to the east. Further up ahead you see a gatehouse that guards one of the many entrances to the town.
 EXIT
 exit label:East
 exit destination:cobbledroad
@@ -982,7 +982,7 @@ x:120
 y:120
 location id:river_edge
 location area id:western_woods_area
-location description:Stepping out from the surrounding woods you come upon a river. It is full and the banks are fit to burst but the ground around you is clearly dry so you guess the swollen river has not breached it's confines yet.<div align="center"><img src="fish_small.png"/></div>Not far from the river bank is a fisherman's shack and there is a boozy, wet smell wafting in from somewhere close by.
+location description:Stepping out from the surrounding woods you come upon a river. It is full and the banks are fit to burst but the ground around you is clearly dry so you guess the swollen river has not breached it's confines yet.<div align="center"><img src="biteyfish.png"/></div>Not far from the river bank is a fisherman's shack and there is a boozy, wet smell wafting in from somewhere close by.
 EXIT
 exit label:North
 exit destination:church_woodland
