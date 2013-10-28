@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:11
+maximum score:12
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -855,6 +855,13 @@ item description:This key was given to you by a watchman. It should give access 
 item id:fire_shield_key
 item countable noun prefix:a
 item visibility:invisible
+ITEM
+item name:Fire shield
+item description:It is a large contraption, mostly wood and metal, held upright on a wheeled cart so that it will protect whatever is behind it from fire attacks. There are numerous pitted scorch marks on the front plate showing it has seen plenty of use. It has come to a rest, the break handle now in the engaged position with the key still in place having rolled here from the town hall, mostly under it's own steam with a little encouragement from you.
+item id:fire_shield_north_barricade
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
 
 LOCATION
 x:90
@@ -1266,6 +1273,17 @@ item talk response to:iseeyouhaveyourbasket:Oubliette nods. "There is a clearing
 item talk action in response to:iseeyouhaveyourbasket:change item visibility:oubliette_getting_basket:invisible
 item talk action in response to:iseeyouhaveyourbasket:change item visibility:oubliette_outside_the_ruins1:visible
 item talk action in response to:iseeyouhaveyourbasket:change exit visibility:clocktower_to_castle_ruins:visible
+ITEM
+item name:Fire shield
+item description:It is a large contraption, mostly wood and metal, held upright on a wheeled cart so that it will protect whatever is behind it from fire attacks. There are numerous pitted scorch marks on the front plate showing it has seen plenty of use. It has come to a rest, the break handle now in the engaged position with the key still in place.
+item id:fire_shield_clock_tower
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine action is not repeatable:
+item examine message:The shield has rolled here from outside the town hall. You push up against it, heaving to try to budge it and ever so slightly it starts to move again. You are able to get up a little momentum before having to let it go it's own way, weaving through the streets heading towards the north barricade.
+item on examine action:change item visibility:fire_shield_clock_tower:invisible
+item on examine action:change item visibility:fire_shield_north_barricade:visible
 
 LOCATION
 x:360
@@ -1297,10 +1315,38 @@ exit direction hint:West
 exit id:outsidetownhall_to_eastofclocktower
 ITEM
 item name:Fire shield
-item description:It is a large contraption, mostly wood and metal, held upright on a wheeled cart so that it will protect whatever is behind it from fire attacks. There are numerous scorch marks on the front plate showing it has seen plenty of use. It is currently immobile as it is chained and locked to a metal ring buried in the ground.
+item description:It is a large contraption, mostly wood and metal, held upright on a wheeled cart so that it will protect whatever is behind it from fire attacks. There are numerous pitted scorch marks on the front plate showing it has seen plenty of use. It is currently immobile as it is chained and locked to a metal ring buried in the ground.
 item id:fire_shield
 item countable noun prefix:a
 item is untakeable:
+item can be used with:fire_shield_key
+item successful use message:You place the key in the lock and turn it. A click and the latch springs open and the chain drops away leaving the fire shield free.
+item use action:change item visibility:fire_shield:invisible
+item use action:change item visibility:fire_shield_unlocked:visible
+ITEM
+item name:Fire shield
+item description:It is a large contraption, mostly wood and metal, held upright on a wheeled cart so that it will protect whatever is behind it from fire attacks. There are numerous pitted scorch marks on the front plate showing it has seen plenty of use.
+item id:fire_shield_unlocked
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine action is not repeatable:
+item examine message:Studying the workings of the shield you notice that the wheels are controlled by a basic break mechanism that looks to be disengaged by pulling a handle emerging from the mess of axles and springs.
+item on examine action:change item visibility:fire_shield_break_handle:visible
+ITEM
+item name:Break handle
+item description:This is a metal bar which controls the breaks on the fire shield. It is currently engaged so that the machine will not move and there is a slot where a key might fit, an extra precaution against accidental use.
+item id:fire_shield_break_handle
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:fire_shield_key
+item successful use message:You place the key in the slot at the end of the handle which becomes moveable as you do so. Lifting the handle up and guiding it slightly out of the resting position you release the breaks and the machine starts to roll. Too late you realise it is on a slight slope, enough to cause the weight of the shield to propel it, slowly at first, away from the town hall. You fumble with the key in the break handle as you trot alongside it, attempting to engage the break once again but your fingers miss their target several times and the shield rolls off into the town without you. You hear a few cries of surprise as it disappears around the bend of the road, heading towards the clock tower.
+item use action:change item visibility:fire_shield_unlocked:invisible
+item use action:change item visibility:fire_shield_clock_tower:visible
+item use action:change item visibility:fire_shield_break_handle:invisible
+item use action:destroy item:fire_shield_key
+item use action:increment score:
 
 LOCATION
 x:320
