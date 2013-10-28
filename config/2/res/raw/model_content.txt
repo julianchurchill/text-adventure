@@ -780,7 +780,7 @@ item mid sentence cased name:fell beast
 item is untakeable:
 item visibility:invisible
 item can be used with:broom_with_head
-item successful use message:Whilst the beast is distracted you sneak up to it, ready the broom head, bristles forward waiting for the moment to strike. The beast notices you pausing for a moment in it's thrashing and growls, opening it's mouth to snarl and spit. You jump forward shoving the broom head into the mouth of the beast, wedging it's jaws open with the short length of handle still attached to the head. It tries to crush the jam but this only causes it to yelp even more and it turns and runs off into the darkness to tend it's wounds.
+item successful use message:Whilst the beast is distracted you sneak up to it, ready the broom head, bristles forward waiting for the moment to strike. The beast notices you, pausing for a moment in it's thrashing and growls, opening it's mouth to snarl and spit. You jump forward shoving the broom head into the mouth of the beast, wedging it's jaws open with the short length of handle still attached to the head. It tries to crush the jam but this only causes it to yelp even more and it turns and runs off into the darkness to tend it's wounds.
 item use action:destroy item:broom_with_head
 item use action:change item visibility:fell_beast_outside_gatehouse_in_pain:invisible
 item use action:change item visibility:men_of_the_towns_watch_north_barricade:invisible
@@ -826,6 +826,34 @@ item id:men_of_the_towns_watch_north_barricade_after_fell_beast
 item countable noun prefix:some
 item is plural:
 item is untakeable:
+item visibility:invisible
+item talk initial phrase:ineedanewweapon:I need a new weapon:Singling out the watchman who gave you the broom you say to him "I need a new weapon".
+item talk response to:ineedanewweapon:He pauses for a moment from his shouting and sword waving and asks "What happened to your broom?".
+item talk follow up phrase to:ineedanewweapon:afellbeastateit:A fell beast ate it:"A fell beast ate it." you reply, trying not to sound like you've lost your homework.
+item talk response to:afellbeastateit:The watchman grumbles "That was a good broom.", he looks genuinely sad. "We don't have any other weapons - but we could do with a hand.".
+item talk follow up phrase to:afellbeastateit:imgoingforasitdown:I'm going for a sit down:"Actually I rather thought I might go for a little sit down. It's been a long day and I am puffed!".
+item talk response to:afellbeastatimgoingforasitdowneit:He rolls his eyes as you say this and you suspect this did not go down well. He returns to battling the foes assaulting his comrades and leaves you to get on with your little sit down.
+item talk follow up phrase to:afellbeastateit:surehowcanihelp:Sure, how can I help?:"Sure, how can I help?" you state unperturbed by your recent battle.
+item talk response to:surehowcanihelp:"Great - we've had reports that a fire beast is being prepared in woods just to the north. We need the fire shield that was defending the town hall so we can hold the barricade. Without it they'll burn through us like butter. Take this key and fetch it.".
+item talk action in response to:surehowcanihelp:change item visibility:men_of_the_towns_watch_north_barricade_after_fell_beast:invisible
+item talk action in response to:surehowcanihelp:change item visibility:men_of_the_towns_watch_north_barricade_awaiting_fire_shield:visible
+item talk action in response to:surehowcanihelp:change item visibility:fire_shield_key:visible
+item talk action in response to:surehowcanihelp:take item:fire_shield_key
+ITEM
+item name:Men of the town's watch
+item description:A gaggle of poorly armed and more poorly trained bumblers, currently leaderless as their Captain is recovering from a fever in the gatehouse. They are rushing around fending off attacking creatures and generally doing their best to defend the town and people they are sworn to protect.
+item id:men_of_the_towns_watch_north_barricade_awaiting_fire_shield
+item countable noun prefix:some
+item is plural:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:whatsup:What's up?:"What's up?" you ask the watch men.
+item talk response to:whatsup:The tall scary bald one emerges from the rabble and barks at you "Where is that fire shield? Go to the town hall and fetch it!" and disappears back into the throng.
+ITEM
+item name:Key to the fire shield
+item description:This key was given to you by a watchman. It should give access to the fire shield which you have been tasked to retrieve to aid in the defense of the north barricade.
+item id:fire_shield_key
+item countable noun prefix:a
 item visibility:invisible
 
 LOCATION
@@ -1208,7 +1236,7 @@ x:300
 y:240
 location id:clocktower
 location area id:town_area
-location description:You stand before a mighty clock tower. The clock goes TICK! South is blocked by a barricade.
+location description:You stand before a mighty clock tower. The clock goes TICK! South is blocked by a barricade. There is a path amongst the rubble of several buildings to the east leading to what must be the town hall.
 EXIT
 exit label:West
 exit destination:cobbledroad
@@ -1220,6 +1248,11 @@ exit destination:castle_ruins
 exit direction hint:North
 exit id:clocktower_to_castle_ruins
 exit is not visible:
+EXIT
+exit label:East
+exit destination:eastofclocktower
+exit direction hint:East
+exit id:clocktower_to_cobbledroad
 ITEM
 item name:Oubliette
 item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
@@ -1233,6 +1266,41 @@ item talk response to:iseeyouhaveyourbasket:Oubliette nods. "There is a clearing
 item talk action in response to:iseeyouhaveyourbasket:change item visibility:oubliette_getting_basket:invisible
 item talk action in response to:iseeyouhaveyourbasket:change item visibility:oubliette_outside_the_ruins1:visible
 item talk action in response to:iseeyouhaveyourbasket:change exit visibility:clocktower_to_castle_ruins:visible
+
+LOCATION
+x:360
+y:240
+location id:eastofclocktower
+location area id:town_area
+location description:Picking your way through the remains of two ruined buildings you can see a clock tower to the west and further to the east is a large building that looks like it might be the town hall.
+EXIT
+exit label:West
+exit destination:clocktower
+exit direction hint:West
+exit id:eastofclocktower_to_clocktower
+EXIT
+exit label:East
+exit destination:outsidetownhall
+exit direction hint:East
+exit id:eastofclocktower_to_outsidetownhall
+
+LOCATION
+x:420
+y:360
+location id:outsidetownhall
+location area id:town_area
+location description:You are outside the town hall. The large wooden double doors in front of you are emblazoned with the town crest - two white dragons perched in a tree. It has been boarded up to protect it from the attacks, no doors or windows are visible.
+EXIT
+exit label:West
+exit destination:eastofclocktower
+exit direction hint:West
+exit id:outsidetownhall_to_eastofclocktower
+ITEM
+item name:Fire shield
+item description:It is a large contraption, mostly wood and metal, held upright on a wheeled cart so that it will protect whatever is behind it from fire attacks. There are numerous scorch marks on the front plate showing it has seen plenty of use. It is currently immobile as it is chained and locked to a metal ring buried in the ground.
+item id:fire_shield
+item countable noun prefix:a
+item is untakeable:
 
 LOCATION
 x:320
