@@ -26,7 +26,6 @@ Technical Tasks
 
 - Reduce the height of the buttons to better fit more in without squishing the text view down too much
 - Add cucumber test run as part of build, see https://github.com/cucumber/cucumber-jvm and config/common/test/CucumberStepDefs.java and src/test/resources/cucumber/TTA2/TTA2_entering_the_town.feature
-- Rename git tags to prefix with TTA1_
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
 - Update model for app 1 to use take item action where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
 - Analytics
@@ -72,11 +71,7 @@ Bugs
 
 Story - TTA2
 
-- The barricade attack
-  - After defeating the fell beast you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
-  - Finally when you leave the location to check the rest of the town defences (suggested by talking again if you don't do it anyway) you get attacked by one more fell beast, defeat it and the attack ends, day dawns.
-- In the morning the towns people ask you to get help from a nearby village over the river - Ubiquity and you discover Oubliette has been taken by the beasts, just like her mother.
-- Cabal directs you to use his boat moored up the river, use it to get across and back again if you wish. Use oars with boat, both untakeable.
+- You go to the river, use the oars with the boat and row across. You can row back again if you use the oars.
 - On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy. You must get a yak from the yak farm, take it to Larry and get him to shave it, you can then talk to him to find out the town gossip. He tells you about the witch and how she controls the town and takes all their bread etc... He tells you where to find her - in a castle over the hill.
   - You reach Ubiquity only to discover it has been subdued by Bella to serve her - the future of Perpetuity...
 - You go to the castle but cannot enter as it is protected by powerful magic. You return to the town and visit the soothsayer (an old lady) who gives you a variety of terrible fortunes - ["You're going to die horrrrriiblyy, probably in a very embarrassing way!", "Nice to meet you young man, I've not seen you before - 'you roll your eyes'", "What strong legs and wide child bearing hips you have, you will bear many children for your husband!"].
@@ -108,6 +103,8 @@ Story - TTA2
   - DONE Stick and glowing embers - "You can try to beat the embers out but the damage has already been done."
   - DONE Stick and the fell beast - "Really? Do you want to fight the beast or play with it?"
   - Fishing rod and the fisherman
+  - Chainsaw and fisherman
+  - Chainsaw and any of the people
   - Dung and poorly man
   - Dung and mushrooms
 - Add embedded images at suitable places with <img src=""/> tags
@@ -117,24 +114,28 @@ Story - TTA2
   - Fell beast (hairless dog with fiery eyes)
   - Second Fell beast for the barricade attack
   - Mushrooms
+  - Hearth for Cabal's house
 
 Features
 
+- [UI] New icon for TTA2
+- [FEATURE] Map - extras
+    - Make better masks and a better map! Charlies on the case.
+- [FEATURE] Story log - a record of all the story text you've seen so far - i.e. the 'text on first entry to location'. Possibly also the conversation text? How much of this to store, room descriptions, item activations?
 - [FEATURE] Accessibility - Text to speech
   - DONE Add a check box for TTS to the options dialog, save as a preference, default is off
   - Why does a 'Starting game' dialog appear and the save file get reloaded when turning TTS _on_ ?
   - Only play new text, e.g. examine an object, play the description but do not play the location description again
     - Should the item list and exit list be replayed?
-- [FEATURE] Accessibility - Voice recognition
-- [FEATURE] Map - extras
-    - Make better masks and a better map! Charlies on the case.
-- [UI] Parchment background extras
-  - Scroll bar images need to compliment the parchment background...
-- [UI] New icon for TTA2
+- [FEATURE] Sound effects
+  - Door unlocking, clock tower ticking/bells, ghostly sounds in the graveyard, mice scratching at the church, market hustle and bustle.
+  - Make on/off-able in options
 - [UI] Images for inventory items to appear on buttons next to label
 - [UI] Images for actions to appear on buttons next to label
 - [UI] Restrict action button list to half screen height
-- [FEATURE] Story log - a record of all the story text you've seen so far - i.e. the 'text on first entry to location'. Possibly also the conversation text? How much of this to store, room descriptions, item activations?
+- [UI] Parchment background extras
+  - Scroll bar images need to compliment the parchment background...
+- [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Google games API Achievements
   - Chatterbox (talk to everyone about everything)
   - Converser (talked to everyone)
@@ -143,19 +144,11 @@ Features
   - Explorer (has gone to every location)
   - Pathfinder (has gone through every exit)
   - Player of the Kazoo (completed a sub quest to create and play a kazoo at a childrens party)
-- [FEATURE] Sound effects
-  - Door unlocking, clock tower ticking/bells, ghostly sounds in the graveyard, mice scratching at the church, market hustle and bustle.
-  - Make on/off-able in options
-- [FEATURE] What's new dialog for first run of new version.
 - [FEATURE] Google games API Leaderboard - Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
+- [FEATURE] Accessibility - Voice recognition
 
 - [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
 - [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
-
-- [FEATURE] In model content txt items can only be used in one direction, e.g. a spade with a mound of earth and the target item has to include the definition of what happens. If the original item (e.g. spade) includes this information it is ignored. Should this be changed to be bi-directional? It would make writing content easier but needs considering as it might not always be appropriate.
-
-- [IDEA] Add other verbs - attack, eat, drink, dance, drop, give
-- [IDEA] Optional images to go with text?
 
 Done
 ====
@@ -240,8 +233,10 @@ TTA2 only
   - The first puzzle is the portcullis, you must get an iron bar from the undergrowth next to it, unjam the mechanism, climb over the hidden path of rocks to get to the other side of the portcullis and use the winch handle to wind the winch to raise the portcullis.
   - The second puzzle is beating the barrelling goon - you must place a hollow tree trunk so that when the goon barrels it shoots down a slide and up a ramp over the castle ruins wall leaving the area safe for gathering mushrooms.
 - [STORY] Giving the bone to Cabal triggers night fall and the creatures attack, you must help defend the barricade through the night.
-    - Cabal sends you to the captain of the watch who is non-conversive due to fever. You must get some dung from the muck seller and give it to a watchman to use as a poultice. The captain still cannot speak but his men listen yo your message. They give you a broom to help the defense of the town.
-    - When you leave the watch house you get attacked by a fell beast and must defeat it with the broom you were given.
+  - Cabal sends you to the captain of the watch who is non-conversive due to fever. You must get some dung from the muck seller and give it to a watchman to use as a poultice. The captain still cannot speak but his men listen yo your message. They give you a broom to help the defense of the town.
+  - When you leave the watch house you get attacked by a fell beast and must defeat it with the broom you were given.
+  - After defeating the fell beast you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
+  - Finally you leave to check the rest of the towns defences and speak to Cabal to learn what has happened - you discover that Oubliette has been taken by the beasts, just like her mother. Cabal asks you to find her and to defeat the witch. He directs you to go to the neighbouring town of Ubiquity and to use his boat moored up the river to get across. The day ends, you sleep at Cabals and morning comes.
 
 - [MINOR STORY CORRECTION] Little girl is introduced as "Flechette" but her description remains a small girl".
 - [MINOR STORY CORRECTION] Once you've accepted Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.
