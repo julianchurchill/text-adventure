@@ -618,6 +618,8 @@ item talk follow up phrase to:thenorthbarricadesustainedafireattack:whatdowedone
 item talk response to:whatdowedonext:Cabal hesitates, drawing a deep breath - "They took Oubliette. Just like her mother, whilst they attacked. One of those hounds dragged her off before I could stop it.". He looks at you, deadly serious but desperate. "Help us, help me and my daughters and all the people of this town. We can't continue to fend off the witch forever but we must stay and defend what we have left. Please defeat the witch.". He pauses and almost trembling says to you "If you find my daughter, bring her back to me.". You cannot refuse so you nod firmly and assure Cabal "I will, I will do my best to bring her back to you and I'll find the witch and stop her for good.". You feel relieved, purposeful and boldened by your conviction. "Stay here the night, take my bed and I'll keep watch." says Cabal, motioning to the pile of straw in the corner.". Thanking him you decide to retire for the night to get a good start on the new adventure in the morning.<newline>You awake the following morning to Cabal brewing you a strong kettle of tea and cooking some delicious smelling sausages over the hearth. "Good morning, are you still feeling stout of heart?" asks Cabal. "I am." you reply and tuck hungrily in to your breakfast. "Take my boat to cross the river, you'll find our neighbouring town of Ubiquity a short way from the other bank. We've not heard much from them recently but we have heard they have been under attack just like us. It is likely they have succumbed to the witch but see what you can find to guide you to her. Good luck!". Wth that last statement Cabal gets back to planning the town's defenses for the nights to come.
 item talk action in response to:whatdowedonext:change item visibility:cabal_jambon_after_the_attack:invisible
 item talk action in response to:whatdowedonext:change item visibility:cabal_jambon_in_the_morning:visible
+item talk action in response to:whatdowedonext:change item visibility:unmoveable_boat:invisible
+item talk action in response to:whatdowedonext:change item visibility:usable_boat:visible
 ITEM
 item name:Cabal Jambon
 item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel, although you can tell he is trying to hide it. He is stocky, middle aged with a shock of red hair and looks at you with hopeful eyes and respectful recognition.
@@ -1059,12 +1061,17 @@ x:120
 y:120
 location id:river_edge
 location area id:western_woods_area
-location description:Stepping out from the surrounding woods you come upon a river. It is full and the banks are fit to burst but the ground around you is clearly dry so you guess the swollen river has not breached it's confines yet.<div align="center"><img src="biteyfish.png"/></div>Not far from the river bank is a fisherman's shack and there is a boozy, wet smell wafting in from somewhere close by.
+location description:Stepping out from the surrounding woods you come upon a river. It is full and the banks are fit to burst but the ground around you is clearly dry so you guess the swollen river has not breached it's confines yet.<div align="center"><img src="biteyfish.png"/></div>Not far from the river bank is a fisherman's shack and there is a boozy, wet smell wafting in from somewhere close by. The river runs north to south, the bank running to the north overgrown with vegetation, however to the south there is a man made track along the rivers edge.
 EXIT
 exit label:North
 exit destination:church_woodland
 exit direction hint:North
 exit id:river_edge_to_church_woodland
+EXIT
+exit label:South
+exit destination:river_edge_south
+exit direction hint:South
+exit id:river_edge_to_river_edge_south
 EXIT
 exit label:Fisherman's shack
 exit destination:fishermans_shack
@@ -1192,6 +1199,40 @@ item description:These are teeth from a spiky-toothed goober. They are very shar
 item id:spiky_toothed_goober_teeth
 item countable noun prefix:some
 item visibility:invisible
+
+LOCATION
+x:120
+y:180
+location id:river_edge_south
+location area id:western_woods_area
+location description:Walking along the river edge you see rolling hills to the south and a clearing to the north. There is a slight sandy shallow at this part of the river where a boat gently sways in the water, moored loosely around a tree stump.
+EXIT
+exit label:North
+exit destination:river_edge
+exit direction hint:North
+exit id:river_edge_south_to_river_edge
+ITEM
+item name:boat
+item description:This boat is old, rickety and probably totally unsafe. It looks like it has sprung numerous leaks and is currently home to a small family of frogs which are huddled quite comfortably underneath the bench. There are oars sticking out of the boat which look as creaky as the boat itself. However, they might just be usable.
+item id:unmoveable_boat
+item countable noun prefix:a
+item is untakeable:
+item can be used with:oars
+item successful use message:You sit down in the boat, carefully balancing yourself and grasp the oars firmly. Just as you do a large wave lashes the side of the boat and splashes you right in the face. Coughing and spluttering you decide the water is a bit too choppy for an amateur seaman such as yourself to be messing about on the river and step out of the boat back on to the river bank.
+ITEM
+item name:boat
+item description:This boat is old, rickety and probably totally unsafe. It looks like it has sprung numerous leaks and is currently home to a small family of frogs which are huddled quite comfortably underneath the bench. There are oars sticking out of the boat which look as creaky as the boat itself. However, they might just be usable.
+item id:usable_boat
+item countable noun prefix:a
+item is untakeable:
+item can be used with:oars
+item successful use message:You sit down in the boat, carefully balancing yourself and grasp the oars firmly. Just as you do a large wave lashes the side of the boat and splashes you right in the face. Coughing and spluttering you decide the water is a bit too choppy for an amateur seaman such as yourself to be messing about on the river and step out of the boat back on to the river bank.
+ITEM
+item name:oars
+item description:These oars are balanced in the rowlocks on either side of the boat.
+item id:oars
+item countable noun prefix:some
+item is untakeable:
 
 LOCATION
 x:120
