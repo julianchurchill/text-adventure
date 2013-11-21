@@ -1397,7 +1397,7 @@ EXIT
 exit label:East
 exit destination:eastofclocktower
 exit direction hint:East
-exit id:clocktower_to_cobbledroad
+exit id:clocktower_to_eastofclocktower
 ITEM
 item name:Oubliette
 item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
