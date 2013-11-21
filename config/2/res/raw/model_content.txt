@@ -15,13 +15,16 @@ item id:multitool
 
 LOCATION AREA
 location area id:town_area
-location area name:Town
+location area name:Perpetuity
 LOCATION AREA
 location area id:castle_ruins_area
 location area name:Castle Ruins
 LOCATION AREA
 location area id:western_woods_area
 location area name:Western Woods
+LOCATION AREA
+location area id:ubiquity_area
+location area name:Ubiquity
 
 LOCATION
 x:300
@@ -619,7 +622,7 @@ item talk response to:whatdowedonext:Cabal hesitates, drawing a deep breath - "T
 item talk action in response to:whatdowedonext:change item visibility:cabal_jambon_after_the_attack:invisible
 item talk action in response to:whatdowedonext:change item visibility:cabal_jambon_in_the_morning:visible
 item talk action in response to:whatdowedonext:change item visibility:unmoveable_boat:invisible
-item talk action in response to:whatdowedonext:change item visibility:usable_boat:visible
+item talk action in response to:whatdowedonext:change item visibility:usable_boat_to_ubiquity:visible
 ITEM
 item name:Cabal Jambon
 item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel, although you can tell he is trying to hide it. He is stocky, middle aged with a shock of red hair and looks at you with hopeful eyes and respectful recognition.
@@ -1211,6 +1214,12 @@ exit label:North
 exit destination:river_edge
 exit direction hint:North
 exit id:river_edge_south_to_river_edge
+EXIT
+exit label:North
+exit destination:track_to_ubiquity_road
+exit direction hint:North
+exit id:river_edge_south_to_track_to_ubiquity_road
+exit is not visible:
 ITEM
 item name:boat
 item description:This boat is old, rickety and probably totally unsafe. It looks like it has sprung numerous leaks and is currently home to a small family of frogs which are huddled quite comfortably underneath the bench. There are oars sticking out of the boat which look as creaky as the boat itself. However, they might just be usable.
@@ -1222,11 +1231,28 @@ item successful use message:You sit down in the boat, carefully balancing yourse
 ITEM
 item name:boat
 item description:This boat is old, rickety and probably totally unsafe. It looks like it has sprung numerous leaks and is currently home to a small family of frogs which are huddled quite comfortably underneath the bench. There are oars sticking out of the boat which look as creaky as the boat itself. However, they might just be usable.
-item id:usable_boat
+item id:usable_boat_to_ubiquity
 item countable noun prefix:a
 item is untakeable:
+item visibility:invisible
 item can be used with:oars
-item successful use message:You sit down in the boat, carefully balancing yourself and grasp the oars firmly. Just as you do a large wave lashes the side of the boat and splashes you right in the face. Coughing and spluttering you decide the water is a bit too choppy for an amateur seaman such as yourself to be messing about on the river and step out of the boat back on to the river bank.
+item successful use message:You sit down in the boat, carefully balancing yourself and grasp the oars firmly. Bum bouncing a little to dislodge the boat from the silt it sits in you start to make your way across the river, pulling the oars to propel the little boat onward. In doesn't take you long to reach the other side of the river, where you pull the boat up, tying it to a rocky outcrop.
+item use action:change item visibility:usable_boat_to_ubiquity:invisible
+item use action:change item visibility:usable_boat_to_perpetuity:visible
+item use action:change exit visibility:river_edge_south_to_river_edge:invisible
+item use action:change exit visibility:river_edge_south_to_track_to_ubiquity_road:invisible
+item use action:change location description:river_edge_south:Standing on the west bank of the river you can see a small clearing with a little hut on the other side of the water. North from here there is a track that looks like it leads to a road. Surrounding you is dense woodland, largely impenetrable and in the distance to the south there a rolling hills descending to the horizon.
+ITEM
+item name:boat
+item description:This boat is old, rickety and probably totally unsafe. It looks like it has sprung numerous leaks and is currently home to a small family of frogs which are huddled quite comfortably underneath the bench. There are oars sticking out of the boat which look as creaky as the boat itself. However, they might just be usable.
+item id:usable_boat_to_perpetuity
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:oars
+item successful use message:Shoving the boat out a little to dislodge it from the bank you jump in and sit down quickly, grasping the oars firmly. You start to make your way across the river, pulling the oars to propel the little boat onward. In doesn't take you long to reach the other side of the river, where you pull the boat up, tying it to a tree stump.
+item use action:change exit visibility:river_edge_south_to_river_edge:visible
+item use action:change location description:river_edge_south:Walking along the river edge you see rolling hills to the south and a clearing to the north. There is a slight sandy shallow at this part of the river where a boat gently sways in the water, moored loosely around a tree stump.
 ITEM
 item name:oars
 item description:These oars are balanced in the rowlocks on either side of the boat.
@@ -1320,6 +1346,35 @@ item id:tree_logs
 item countable noun prefix:some
 item is plural:
 item visibility:invisible
+
+LOCATION
+x:060
+y:120
+location id:track_to_ubiquity_road
+location area id:western_woods_area
+location description:The woods are darker here, more claustrophobic. The trees creak in the wind and little light penetrates the canopy. You're glad to see that the woods open out a little further to the north and you can hear the rush of the river to the south.
+EXIT
+exit label:South
+exit destination:river_edge_south
+exit direction hint:South
+exit id:track_to_ubiquity_road_to_river_edge_south
+EXIT
+exit label:North
+exit destination:ubiquity_road
+exit direction hint:North
+exit id:track_to_ubiquity_road_to_ubiquity_road
+
+LOCATION
+x:060
+y:060
+location id:ubiquity_road
+location area id:ubiquity_area
+location description:The road you stand on has been travelled by many merchants, heading for the town of Ubiquity to sell their wares, make some profit and rest their heads. You doubt they would get a warm welcome now, sensing that the land subjugated to the will of a powerful foe and most likely the townsfolk too.
+EXIT
+exit label:South
+exit destination:track_to_ubiquity_road
+exit direction hint:South
+exit id:ubiquity_road_to_track_to_ubiquity_road
 
 LOCATION
 x:300
