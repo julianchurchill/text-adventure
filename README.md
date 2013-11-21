@@ -49,6 +49,9 @@ Technical Tasks
     - Toast to show checkpoint has been restored (and which number...)
   - Add menu items, restore is disabled if no checkpoint files available
 - Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
+- Check for syntax issues with model text at build time
+  - Non unique ids
+  - Referenced ids that have no object, e.g. exit destination that doesn't exist, can be used with target that doesn't exist
 
 Marketing
 
