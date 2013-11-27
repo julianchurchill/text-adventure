@@ -74,7 +74,6 @@ Bugs
 
 Story - TTA2
 
-- You go to the river, use the oars with the boat and row across. You can row back again if you use the oars.
 - On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy. You must get a yak from the yak farm, take it to Larry and get him to shave it, you can then talk to him to find out the town gossip. He tells you about the witch and how she controls the town and takes all their bread etc... He tells you where to find her - in a castle over the hill.
   - You reach Ubiquity only to discover it has been subdued by Bella to serve her - the future of Perpetuity...
 - You go to the castle but cannot enter as it is protected by powerful magic. You return to the town and visit the soothsayer (an old lady) who gives you a variety of terrible fortunes - ["You're going to die horrrrriiblyy, probably in a very embarrassing way!", "Nice to meet you young man, I've not seen you before - 'you roll your eyes'", "What strong legs and wide child bearing hips you have, you will bear many children for your husband!"].
@@ -240,6 +239,8 @@ TTA2 only
   - When you leave the watch house you get attacked by a fell beast and must defeat it with the broom you were given.
   - After defeating the fell beast you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
   - Finally you leave to check the rest of the towns defences and speak to Cabal to learn what has happened - you discover that Oubliette has been taken by the beasts, just like her mother. Cabal asks you to find her and to defeat the witch. He directs you to go to the neighbouring town of Ubiquity and to use his boat moored up the river to get across. The day ends, you sleep at Cabals and morning comes.
+-[STORY] You go to Ubiquity in search of the witch, Oubliette and the truth!
+  - You go to the river, use the oars with the boat and row across. You can row back again if you use the oars.
 
 - [MINOR STORY CORRECTION] Little girl is introduced as "Flechette" but her description remains a small girl".
 - [MINOR STORY CORRECTION] Once you've accepted Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.

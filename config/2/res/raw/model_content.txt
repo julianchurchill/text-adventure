@@ -1369,12 +1369,86 @@ x:060
 y:060
 location id:ubiquity_road
 location area id:ubiquity_area
-location description:The road you stand on has been travelled by many merchants, heading for the town of Ubiquity to sell their wares, make some profit and rest their heads. You doubt they would get a warm welcome now, sensing that the land subjugated to the will of a powerful foe and most likely the townsfolk too.
+location description:The road you stand on has been travelled by many merchants, heading for the town of Ubiquity to sell their wares, make some profit and rest their heads. You doubt they would get a warm welcome now, sensing that the land has been subjugated to the will of a powerful foe and most likely the townsfolk too. To the south east lies a river and further along the road you can see the remains of a bridge which once carried the road over the water, no more than splintered wood and frayed rope now. To the west the road continues past what looks like a farmstead of some sort while it winds it's way on towards a town in the distance.
 EXIT
 exit label:South
 exit destination:track_to_ubiquity_road
 exit direction hint:South
 exit id:ubiquity_road_to_track_to_ubiquity_road
+EXIT
+exit label:West
+exit destination:ubiquity_road_west
+exit direction hint:West
+exit id:ubiquity_road_to_ubiquity_road_west
+
+LOCATION
+x:000
+y:060
+location id:ubiquity_road_west
+location area id:ubiquity_area
+location description:Dust swirls around you, caught by the wind blowing along the road. A farm lies to the south, at least it looks like a farm. There are barns and some cattle roaming around fenced fields and it most certainly smells like a farm. The road continues in one direction towards the town of Ubiquity and in the other to a wide river.
+EXIT
+exit label:Farm entrance
+exit destination:yak_farm
+exit direction hint:South
+exit id:yak_farm
+EXIT
+exit label:Road to Ubiquity
+exit destination:ubiquity_entrance
+exit direction hint:West
+exit id:ubiquity_road_west_to_ubiquity_entrance
+EXIT
+exit label:Road to the river
+exit destination:ubiquity_road
+exit direction hint:East
+exit id:ubiquity_road_west_to_ubiquity_road
+
+LOCATION
+x:000
+y:000
+location id:yak_farm
+location area id:ubiquity_area
+location description:This is a farm, it stinks more than you'd expect and looking around you realise why. It's a yak farm, and there are a lot of them penned in fields far and wide. They've not been shaved for a long time, their coats long and hairy, sticky with mud and probably worse things. If there's one thing that a yak needs it's a regular shave but the farmer doesn't seem to be around. Yak farming used to be a highly profitable business and this must have been a real money spinner. It seems quite strange to you that it would have been abandoned but you decide not to over analyse the situation, after all 'don't look a gift yak in the mouth', or something.
+EXIT
+exit label:Road to Ubiquity
+exit destination:ubiquity_road_west
+exit direction hint:North
+exit id:farm_entrance_to_ubiquity_road_west
+ITEM
+item name:yak
+item description:It is slightly larger than a standard cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid.
+item id:grumpy_yak
+item countable noun prefix:a
+item is untakeable:
+
+LOCATION
+x:-060
+y:060
+location id:ubiquity_entrance
+location area id:ubiquity_area
+location description:You stand in front of the entrance to Ubiquity - the town laid out before you, slightly tapering away towards some foothills, which gently nestle against the western most boundaries of the town. It seems quiet but there is some activity, a low murmur of scurrying, people avoiding the outside by running between buildings, dodging between shadows. A strange place. The main road is before you, stretching on with only a few tributaries, homes and businesses intermingled as the road flows past. The road continues out of the town to the east and on past a farm and further on towards a river in the distance.
+EXIT
+exit label:Road leaving Ubiquity
+exit destination:ubiquity_road_west
+exit direction hint:East
+exit id:ubiquity_entrance_to_ubiquity_road_west
+EXIT
+exit label:Main road through Ubiquity
+exit destination:main_road_through_ubiquity
+exit direction hint:West
+exit id:ubiquity_entrance_to_main_road_through_ubiquity
+
+LOCATION
+x:-120
+y:060
+location id:main_road_through_ubiquity
+location area id:ubiquity_area
+location description:Main road through Ubiquity.
+EXIT
+exit label:Entrance to Ubiquity
+exit destination:ubiquity_entrance
+exit direction hint:East
+exit id:main_road_through_ubiquity_to_ubiquity_entrance
 
 LOCATION
 x:300
