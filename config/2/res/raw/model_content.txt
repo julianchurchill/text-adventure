@@ -1455,12 +1455,55 @@ x:-120
 y:060
 location id:main_road_through_ubiquity
 location area id:ubiquity_area
-location description:Main road through Ubiquity.
+location description:This appears to be the main road through Ubiquity. Most of the houses and buildings lining the street are closed or boarded up, secured from the inside as though the town has been through some tough times. The walls and doors look battered and damaged and you suspect that the people of this town endured a similar onslaught to that which you witnessed in Perpetuity. Back to the east the road winds out of the town. There are a couple of open shops which might be worth a closer look.
 EXIT
 exit label:Entrance to Ubiquity
 exit destination:ubiquity_entrance
 exit direction hint:East
 exit id:main_road_through_ubiquity_to_ubiquity_entrance
+EXIT
+exit label:Yak Parlour
+exit destination:yak_parlour
+exit direction hint:North
+exit id:main_road_through_ubiquity_to_yak_parlour
+
+LOCATION
+x:-120
+y:000
+location id:yak_parlour
+location area id:ubiquity_area
+location description:A hairy and sweaty place, a confusing melange of farm and hairdresser. There are several seated men and women, waiting, flicking through magazines with the latest hair styles in, idly chattering away whilst their charges, their yaks, are being tended to by a tall handsome man who keeps sweeping his long blonde fringe back over his head in an exaggerated motion. He's already starting to annoy you. This is a yak parlour, which explains everything.
+EXIT
+exit label:Outside
+exit destination:main_road_through_ubiquity
+exit direction hint:South
+exit id:yak_parlour_to_main_road_through_ubiquity
+ITEM
+item name:Larry
+item description:Larry the yak shaver, a popular man in Ubiquity due to his flair for turning a scruffy, straggly yak mullet into a buoyant bouffant, a coiffured comb over, a perfect perm. In any other town this man's talent would have been wasted, however since the whole socio-economic structure of Ubiquity thrives on the yak trade, the yakonomy, he's able to engage in a thriving business. One of the few left hereabouts.
+item id:larry_the_yak_shaver_without_yak
+item mid sentence cased name:Larry
+item is proper noun:
+item is untakeable:
+item talk initial phrase:howmuchtoshavemyyak:How much to shave my yak?:"How much to shave my yak?" you ask Larry.
+item talk response to:howmuchtoshavemyyak:"Ten guineas, but you'll need an actual yak, I will not cut a hair on your head, I will not dress it, trim it, pluck it or prune it and if you try to pass off a particularly hairy uncle I will know!" replies Larry. He doesn't look up at all, he's so concentrated on his work.
+item talk initial phrase:wherecanifindthewitch:Where can I find the witch?:"Where can I find the witch?" addressing Larry, whilst simultaneously raising one eyebrow and looking meaningful.
+item talk response to:wherecanifindthewitch:He doesn't look up from the yak he's working on, you don't think he heard you.
+item talk follow up phrase to:wherecanifindthewitch:excusemewheresthewitch:Excuse me, where's the witch?:With a quick leading 'Ahem' you state "Excuse me, I'm looking for the witch Bella, do you know where I can find her?".
+item talk response to:excusemewheresthewitch:The room goes silent, Larry pauses, looking up and turns to you. "I'm busy, can't you see all these people are waiting for their darlings to be groomed?". He turns back to his work.
+ITEM
+item name:Larry
+item description:Larry the yak shaver, a popular man in Ubiquity due to his flair for turning a scruffy, straggly yak mullet into a buoyant bouffant, a coiffured comb over, a perfect perm. In any other town this man's talent would have been wasted, however since the whole socio-economic structure of Ubiquity thrives on the yak trade, the yakonomy, he's able to engage in a thriving business. One of the few left hereabouts.
+item id:larry_the_yak_shaver
+item mid sentence cased name:Larry
+item is proper noun:
+item is untakeable:
+item talk initial phrase:howmuchtoshavemyyak:How much to shave my yak?:"How much to shave my yak?" you ask Larry.
+item talk response to:howmuchtoshavemyyak:"Ten guineas. But you'll need an actual yak, I will not cut a hair on your head and if you try to pass off a particularly hairy uncle I will know!" replies Larry. He doesn't look up at all, he's so concentrated on his work.
+item talk initial phrase:wherecanifindthewitch:Where can I find the witch?:"Where can I find the witch?" addressing Larry, whilst simultaneously raising one eyebrow and looking meaningful.
+item talk response to:wherecanifindthewitch:He doesn't look up from the yak he's working on, you don't think he heard you.
+item talk follow up phrase to:wherecanifindthewitch:excusemewheresthewitch:Excuse me, where's the witch?:With a quick leading 'Ahem' you state "Excuse me, I'm looking for the witch Bella, do you know where I can find her?".
+item talk response to:excusemewheresthewitch:The room goes silent, Larry pauses, looking up and turns to you. "I'm busy, can't you see all these people are waiting for their darlings to be groomed?". He turns back to his work.
 
 LOCATION
 x:300
