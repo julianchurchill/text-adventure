@@ -89,6 +89,7 @@ Story - TTA2
   - Second room, stone monkey on pedestal with gems for eyes, out of reach and facing you. Skull chandelier above tied in place next to you. Use knife with chandelier rope to drop it, chandelier still out of reach, use whip to swing it into monkey which knocks it so that light from hole in the roof is directed through it's eyes into a gem in the wall and a hidden door opens.
   - Third room, south indian monkey trap, locked door, key at the bottom of a pit an arms length deep, wider at the bottom than the top. The key is encased in clear wax. You can put your arm down the pit and grab the key ball but cannot get it out of the pit. You must drop a torch down there to melt the wax and then get the key out. Objects: key in wax, pit, torch. Use torch with pit, take key.
   - Fourth room
+    - Quaternius, Tempus and Radlican the Vast
   - Fifth room - contains the magical artifact which you can use to break into Bella's castle.
 - Gibbling Boon is a good name for a creature.
 - Fastidious mim - a bird
