@@ -1420,18 +1420,35 @@ x:000
 y:000
 location id:yak_farm
 location area id:ubiquity_area
-location description:This is a farm, it stinks more than you'd expect and looking around you realise why. It's a yak farm, and there are a lot of them penned in fields far and wide. They've not been shaved for a long time, their coats long and hairy, sticky with mud and probably worse things. If there's one thing that a yak needs it's a regular shave but the farmer doesn't seem to be around. Yak farming used to be a highly profitable business and this must have been a real money spinner. It seems quite strange to you that it would have been abandoned but you decide not to over analyse the situation, after all 'don't look a gift yak in the mouth', or something.
+location description:This is a farm, it stinks more than you'd expect and looking around you realise why. It's a yak farm, and there are a lot of them penned in fields far and wide. They've not been shaved for a long time, their coats long and hairy, sticky with mud and probably worse things. If there's one thing that a yak needs it's a regular shave but the farmer doesn't seem to be around. Yak farming used to be a highly profitable business and this must have been a real money spinner. It seems quite strange to you that it would have been abandoned but you decide not to over analyse the situation, after all 'don't look a gift yak in the mouth', or something. In the distance you can hear what might be misconstrued as singing. It appears to be coming from a nearby hillock.
 EXIT
 exit label:Road to Ubiquity
 exit destination:ubiquity_road_west
 exit direction hint:North
 exit id:farm_entrance_to_ubiquity_road_west
+EXIT
+exit label:Hillock
+exit destination:yak_farm_hillock
+exit direction hint:South
+exit id:farm_entrance_to_yak_farm_hillock
 ITEM
 item name:yak
 item description:It is slightly larger than a standard cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid.
 item id:grumpy_yak
 item countable noun prefix:a
 item is untakeable:
+
+LOCATION
+x:000
+y:060
+location id:yak_farm_hillock
+location area id:ubiquity_area
+location description:You approach the hillock, the sound of song filling the air. Sat on the grass, looking out over a small herd of yak are several yak herders, trolling out an energetic if confused ditty<newline>"Chipolatas, chipolatas, they're the best sort of sausage you can buy"<newline>"Chipolatas, chipolatas, eat them raw or put them in a pie"<newline>"Shave a yak, wear hat, wrap it in your cloak"<newline>"Feed it well, watch it swell, sell it for a groat."<newline>
+EXIT
+exit label:Farm entrance
+exit destination:yak_farm
+exit direction hint:North
+exit id:yak_farm_hillock_to_farm_entrance
 
 LOCATION
 x:-060
