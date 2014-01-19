@@ -77,7 +77,8 @@ Bugs
 Story - TTA2
 
 - On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy.
-  - Go to the bank, convince them you are a Yakuza, so you can withdraw some money.
+  - DONE Go to the bank, convince them you are a Yakuza, so you can withdraw some money.
+  - Add a sullen bank teller after he has given you the groats, so that he doesn't repeat it...
   - Go to 'Frank's Tool Shed' to buy a yak zapper.
   - Go to the yak farm outside town and use the 'yak zapper' to cow poke it to Larry.
   - Ask him to shave it, you can then talk to him to find out the town gossip.
