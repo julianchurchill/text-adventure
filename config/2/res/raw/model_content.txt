@@ -1548,9 +1548,35 @@ item talk response to:idliketoborrowsomemoney:"Hahahaha". The teller chuckles th
 item talk follow up phrase to:idliketoborrowsomemoney:wiggleyourpinky:Wiggle your pinky:You wiggle your pinky at the teller. He squints and peers, "What are you doing?". "I'm wiggling my pinky at you." you reply. "But why?" continues the delightlful conversation.
 item talk follow up phrase to:wiggleyourpinky:idontknow:I don't know:"I don't know" you state, feeling very foolish. The teller returns to work, tutting and mumbling.
 item talk follow up phrase to:wiggleyourpinky:istillhaveone:I still have one:"I still have one." you state with an air of glowering menace.
-item talk response to:istillhaveone:Suddenly the teller's mood turns sour, you sense yuo've struck a nerve. "Alright, I don't want any trouble. You know I paid my dues." he says to you. You pause before saying anything, hoping that he will elaborate so that you can discover exactly where this might lead. Eventually you start to reply "What are..." but before you can say any more he interrupts you - "How much do you need this time? You know you're bleeding me dry, you and your Yakuza pals." his tone is sullen but defeated. He clearly had a rough ride with these Yakuza chaps. You respond swiftly, thinking on your feet "Fourteen groats, this time.". The teller quickly counts out the money and hands it to you, mumbling and trying to focus on his papers again.
+item talk response to:istillhaveone:Suddenly the teller's mood turns sour, you sense you've struck a nerve. "Alright, I don't want any trouble. You know I paid my dues." he says to you. You pause before saying anything, hoping that he will elaborate so that you can discover exactly where this might lead. Eventually you start to reply "What are..." but before you can say any more he interrupts you - "How much do you need this time? You know you're bleeding me dry, you and your Yakuza pals." his tone is sullen but defeated. He clearly had a rough ride with these Yakuza chaps. You respond swiftly, thinking on your feet "Fourteen groats, this time.". The teller quickly counts out the money and hands it to you, mumbling and trying to focus on his papers again.
 item talk action in response to:istillhaveone:take item:fourteen_groats
 item talk action in response to:istillhaveone:change item visibility:fourteen_groats:visible
+item talk action in response to:istillhaveone:change item visibility:sullen_bank_teller:visible
+item talk action in response to:istillhaveone:change item visibility:friendly_bank_teller:invisible
+ITEM
+item name:Bank Teller
+item description:The bank teller is hunched over his paper work, a tiny pair of glasses balanced delicately on his nose. You notice he has the end of his little finger missing.
+item id:sullen_bank_teller
+item is untakeable:
+item talk initial phrase:idliketodepositsomemoney:I'd like to deposit some money:You approach the bank teller, coughing in advance to attract his attention. "I'd like to deposit some money." you state, aimlessly fiddling with your pockets with the intention of implying they actually contain some coin.
+item talk response to:idliketodepositsomemoney:"Why of course sir, do you have an account with us?" replies the teller.
+item talk follow up phrase to:idliketodepositsomemoney:yesido:Yes I do:"Yes I do young fellow." you say without thinking, the man behind the counter is clearly of much more advanced age than you.
+item talk response to:yesido:"Wonderful, I'm sorry I didn't recognise you. Can you confirm for me your name?".
+item talk follow up phrase to:yesido:clarenceofdavenport:Clarence of Davenport:Puffing yourself up you decide to try out a pseudonym you've been toying with "I am Clarence.". The teller cocks his head to one side, quizzically. "Of Davenport." you add for good measure.
+item talk response to:clarenceofdavenport:The teller's eyes turn wild as soon as he hears the full name - "Clarence of Davenport, the great debtor?", he grinds his gums, chomping with anxiety. You can almost see him calculating the risk to the banks reputation in quatloos. After a brief moment of consideration he snorts in disbelief, clearly he has not fallen for your rouse. He returns to shuffling his papers around his oversized desk.
+
+item talk follow up phrase to:yesido:barbara:Barbara Bagshaw:You take a deep breath, and coo in a soft lilting voice - "Barbara, Barbara Bagshaw".
+item talk response to:barbara:"Babs, is that really you? It's been so long, you said you'd never come back to this hokey poke town. To you it was just a place where dreams were crushed and dreamers were fools. What's brought you back, my love, my dearest, my darling?". The teller clearly recognizes the name, although you strongly suspect his eye sight may be in dire need of correction. Preferring to avoid any romantic proposals you quietly step back heading for the door. "Babs? Barbara? Pooky?"... You refrain from responding further and the teller settles back to his work, as though you had never approached him.
+
+item talk follow up phrase to:idliketodepositsomemoney:noidont:No I don't:"No I don't, is that necessary?".
+item talk response to:idliketodepositsomemoney:"I'd say so!" chuckles the teller. "Don't worry we'll soon get you sorted out, we're always happy to have a new depositor join our happy banking family.". The man grins a toothless grin. "Now what did you say your name was and how many head of yak do you own?" he asks peering over his glasses expectantly.
+item talk follow up phrase to:noidont:clarenceofdavenport
+item talk follow up phrase to:noidont:barabara
+
+item talk initial phrase:idliketowithdrawsomemoney:I'd like to withdraw some money:.
+item talk response to:idliketowithdrawsomemoney:"The audacity! The outrage, sir! Why you'd have a run on the bank with talk like that. A. Run. On. The. Bank! We can't simply let people withdraw their money after putting it in now can we? You clearly have not the slightest idea how a yakonomy works.".
+item talk follow up phrase to:idliketowithdrawsomemoney:whatdoyoumean:What do you mean?:"Pray good sir, what do you mean?" you ask, semi-seriously hoping for a reasonable answer.
+item talk response to:whatdoyoumean:"Well if you took money out, then someone else would have to put some in wouldn't they? That means we'd have to tell someone that we needed them to put extra money in the bank. Well, if we go round telling people that the bank needs their money they'll wonder what for and poof..." the teller mimes an elaborate gesture, presumably to indicate a run on the bank has occurred - " we have a run on the bank!". He settles back in his seat, picks up his pen and continues to work, as though everything has now been satisfactorily explained.
 
 ITEM
 item name:Fourteen groats
