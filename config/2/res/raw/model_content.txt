@@ -1472,7 +1472,7 @@ x:-120
 y:060
 location id:main_road_through_ubiquity
 location area id:ubiquity_area
-location description:This appears to be the main road through Ubiquity. Most of the houses and buildings lining the street are closed or boarded up, secured from the inside as though the town has been through some tough times. The walls and doors look battered and damaged and you suspect that the people of this town endured a similar onslaught to that which you witnessed in Perpetuity. Back to the east the road winds out of the town. There are a couple of open shops which might be worth a closer look.
+location description:This appears to be the main road through Ubiquity. Most of the houses and buildings lining the street are closed or boarded up, secured from the inside as though the town has been through some tough times. The walls and doors look battered and damaged and you suspect that the people of this town endured a similar onslaught to that which you witnessed in Perpetuity. Back to the east the road winds out of the town. There are a couple of open shops which might be worth a closer look and some further west in the area known as The Rickets that most certainly aren't.
 EXIT
 exit label:Main gate to Ubiquity
 exit destination:ubiquity_entrance
@@ -1488,6 +1488,57 @@ exit label:Bank of Ubiquity
 exit destination:bank_of_ubiquity
 exit direction hint:South
 exit id:main_road_through_ubiquity_to_bank_of_ubiquity
+EXIT
+exit label:The Rickets
+exit destination:the_rickets
+exit direction hint:West
+exit id:main_road_through_ubiquity_to_the_rickets
+
+LOCATION
+x:-180
+y:060
+location id:the_rickets
+location area id:ubiquity_area
+location description:Dank, smelly and a little sore - them's The Rickets. Dark, rank and full of vice - them's The Rickets. Looking about there's not a lot to see, hard times for everyone. There is Scabby Mary's, shabbily dressed with rotten windows like a crone's grin and Frank's Tool Shed equally uninviting.
+EXIT
+exit label:Scabby Mary the Soothsayer
+exit destination:scabby_mary_the_soothsayer
+exit direction hint:North
+exit id:the_rickets_to_scabby_mary_the_soothsayer
+EXIT
+exit label:Frank's Tool Shed
+exit destination:franks_tool_shed
+exit direction hint:South
+exit id:the_rickets_to_franks_tool_shed
+EXIT
+exit label:Main road
+exit destination:main_road_through_ubiquity
+exit direction hint:West
+exit id:the_rickets_to_main_road_through_ubiquity
+
+LOCATION
+x:-180
+y:000
+location id:scabby_mary_the_soothsayer
+location area id:ubiquity_area
+location description:
+EXIT
+exit label:Outside
+exit destination:the_rickets
+exit direction hint:South
+exit id:scabby_mary_the_soothsayer_to_the_rickets
+
+LOCATION
+x:-180
+y:120
+location id:franks_tool_shed
+location area id:ubiquity_area
+location description:
+EXIT
+exit label:Outside
+exit destination:the_rickets
+exit direction hint:North
+exit id:franks_tool_shed_to_the_rickets
 
 LOCATION
 x:-120
