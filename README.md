@@ -124,6 +124,11 @@ Story - TTA2
   - Second Fell beast for the barricade attack
   - Mushrooms
   - Hearth for Cabal's house
+  - Shaved yak
+  - Larry the Yak shaver
+  - Bank of Ubiquity
+  - Scabby Mary the soothsayer
+  - Frank's Tool Shed
 
 Features
 

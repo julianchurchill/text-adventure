@@ -1521,12 +1521,44 @@ x:-180
 y:000
 location id:scabby_mary_the_soothsayer
 location area id:ubiquity_area
-location description:
+location description:This is little more than a shack cobbled together from some loose floorboards, half an old potato sack, a pair of holey socks and a lot of yak hair. It makes your nose tickle and feel the irresistible urge to sneeze. Don't put anything down or it might get absorbed into the decor. In the centre of the room is a round table with three legs of different lengths leading it to tilt to one side, the crystal ball in the centre peaks out from under a dirty cloth draped over it. There is an empty chair in front of you and on the other side of the table waits an old woman, seated, hands crossed and staring into the middle distance. She hears you enter and cocks her head to one side.
 EXIT
 exit label:Outside
 exit destination:the_rickets
 exit direction hint:South
 exit id:scabby_mary_the_soothsayer_to_the_rickets
+ITEM
+item name:Scabby Mary
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her.
+item id:scabby_mary1
+item is proper noun:
+item is untakeable:
+item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "You're going to die horrrrriiblyy, probably in a very embarrassing way!", you start back with this revelation - "What, are you sure?" you stutter. "Sure about what?" says Mary. "The horrible dying, the embarrassing nature?". "Well nothing's for certain my dear.". She is quite noncommittal and you sense that is all the sense you will get out of her.
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary1:invisible
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary2:visible
+ITEM
+item name:Scabby Mary
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her.
+item id:scabby_mary2
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "No.". "What do you mean no?" you ask, slightly perturbed. "I mean no, there is no fortune for you, not here nor in the next world.". Oh dear, that doesn't sound good.
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary2:invisible
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary3:visible
+ITEM
+item name:Scabby Mary
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her.
+item id:scabby_mary3
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "I've not seen you before young man." begins Mary. You can't stop yourself from rolling your eyes, she's clearly batty as a fruit cake. "The ball tells me you will bear many children for your husband!". You consider asking her what that means and pointing out the obvious flaws in her prediction but quickly discard the idea.
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary3:invisible
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary1:visible
 
 LOCATION
 x:-180
@@ -1609,6 +1641,7 @@ item name:Bank Teller
 item description:The bank teller is hunched over his paper work, a tiny pair of glasses balanced delicately on his nose. You notice he has the end of his little finger missing.
 item id:sullen_bank_teller
 item is untakeable:
+item visibility:invisible
 item talk initial phrase:idliketodepositsomemoney:I'd like to deposit some money:You approach the bank teller, coughing in advance to attract his attention. "I'd like to deposit some money." you state, aimlessly fiddling with your pockets with the intention of implying they actually contain some coin.
 item talk response to:idliketodepositsomemoney:"Why of course sir, do you have an account with us?" replies the teller.
 item talk follow up phrase to:idliketodepositsomemoney:yesido:Yes I do:"Yes I do young fellow." you say without thinking, the man behind the counter is clearly of much more advanced age than you.
