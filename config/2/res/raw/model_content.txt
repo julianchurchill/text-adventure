@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:14
+maximum score:15
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -1548,7 +1548,7 @@ x:-180
 y:060
 location id:the_rickets
 location area id:ubiquity_area
-location description:Dank, smelly and a little sore - them's The Rickets. Dark, rank and full of vice - them's The Rickets. Looking about there's not a lot to see, hard times for everyone. There is Scabby Mary's, shabbily dressed with rotten windows like a crone's grin and Frank's Tool Shed equally uninviting.
+location description:Dank, smelly and a little sore - them's The Rickets. Dark, rank and full of vice - them's The Rickets. Looking about there's not a lot to see, hard times for everyone. There is Scabby Mary's, shabbily dressed with rotten windows like a crone's grin and Frank's Tool Shed, equally uninviting. There is a small alley that winds off into the darkness with a half proud sign balanced against the entrance - "Rotten Alley".
 EXIT
 exit label:Scabby Mary the Soothsayer
 exit destination:scabby_mary_the_soothsayer
@@ -1562,8 +1562,77 @@ exit id:the_rickets_to_franks_tool_shed
 EXIT
 exit label:Main road
 exit destination:main_road_through_ubiquity
-exit direction hint:West
+exit direction hint:East
 exit id:the_rickets_to_main_road_through_ubiquity
+EXIT
+exit label:Rotten Alley
+exit destination:rotten_alley
+exit direction hint:West
+exit id:the_rickets_to_rotten_alley
+
+LOCATION
+x:-240
+y:060
+location id:rotten_alley
+location area id:ubiquity_area
+location description:The Rickets lies behind you, if only because otherwise you'd have your back to the darkness of Rotten Alley just about the only place you'd rather not have yuor back to. Peering into the gloom you can make out a rusty gate ahead and nothing but mist beyond.
+EXIT
+exit label:The Rickets
+exit destination:the_rickets
+exit direction hint:East
+exit id:rotten_alley_to_the_rickets
+EXIT
+exit label:Further down the alley
+exit destination:rotten_alley_2
+exit direction hint:West
+exit id:rotten_alley_to_rotten_alley_2
+
+LOCATION
+x:-300
+y:060
+location id:rotten_alley_2
+location area id:ubiquity_area
+location description:You stand in front of a rusty gate, the walls of the alley tower around you increasing your sense of anxiety about being here. If you could get through that gate you'd feel much safer. On the other side you see mist draped hills and some scattered trees. Something in the distance moves.
+EXIT
+exit label:Towards The Rickets
+exit destination:rotten_alley
+exit direction hint:East
+exit id:rotten_alley_2_to_rotten_alley
+EXIT
+exit label:Rusty gate
+exit destination:misty_downs
+exit direction hint:West
+exit id:rotten_alley_2_to_misty_downs
+exit is not visible:
+ITEM
+item name:Rusty gate
+item description:The gate stands firmly in place despite appearing quite rusty and decrepit. There is a hole for a small key at waist height and the gate is currently locked.
+item id:rusty_gate
+item is untakeable:
+item can be used with:brass_key
+item successful use message:It fits snugly into the keyhole. You turn it, the gate creaks and the latch opens and you swing the gate outwards it, the rusty metal yawning as it drags over the bumpy cobbles onto the soft grass beyond.
+item use action:change exit visibility:rotten_alley_2_to_misty_downs:visible
+item use action:change item visibility:rusty_gate_locked:invisible
+item use action:change item visibility:rusty_gate_unlocked:visible
+item use action:increment score:
+ITEM
+item name:Rusty gate
+item description:The gate has been swung wide open and stands wedged against the ground outside. It appears quite rusty and decrepit but you can tell it is sturdy despite that. There is a hole for a small key at waist height.
+item id:rusty_gate_unlocked
+item is untakeable:
+item visibility:invisible
+
+LOCATION
+x:-360
+y:060
+location id:misty_downs
+location area id:ubiquity_area
+location description:You stand shrouded in mist, the ground beneath your feet is soft and marshy. In the distance something moves. There is an alleyway nearby with an open gate inviting you in out of the mist.
+EXIT
+exit label:Rusty gate
+exit destination:rotten_alley_2
+exit direction hint:East
+exit id:misty_down_to_srotten_alley_2
 
 LOCATION
 x:-180
