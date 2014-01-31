@@ -1810,18 +1810,27 @@ item id:larry_the_yak_shaver
 item mid sentence cased name:Larry
 item is proper noun:
 item is untakeable:
+item visibility:invisible
 item talk initial phrase:howmuchtoshavemyyak:How much to shave my yak?:"How much to shave my yak?" you ask Larry.
-item talk response to:howmuchtoshavemyyak:"Ten guineas. But you'll need an actual yak, I will not cut a hair on your head and if you try to pass off a particularly hairy uncle I will know!" replies Larry. He doesn't look up at all, he's so concentrated on his work.
-item talk initial phrase:wherecanifindthewitch:Where can I find the witch?:"Where can I find the witch?" addressing Larry, whilst simultaneously raising one eyebrow and looking meaningful.
-item talk response to:wherecanifindthewitch:He doesn't look up from the yak he's working on, you don't think he heard you.
-item talk follow up phrase to:wherecanifindthewitch:excusemewheresthewitch:Excuse me, where's the witch?:With a quick leading 'Ahem' you state "Excuse me, I'm looking for the witch Bella, do you know where I can find her?".
-item talk response to:excusemewheresthewitch:The room goes silent, Larry pauses, looking up and turns to you. "I'm busy, can't you see all these people are waiting for their darlings to be groomed?". He turns back to his work.
+item talk response to:howmuchtoshavemyyak:"Ten guineas usually but this yak looks to be in desperate need. Plus what wonderful bone structure he has. Oh yes, I could do wonderful things with this one." Larry starts muttering to himself, you catch the occasional hair dressing term "perfect length for an A-line bob", "perhaps some gentle feathering at the ends" and some unexpected nautical ones "better give this one a wide berth", "not sure about the cut of _his_ jib". You are slightly mesmerised and have to force yourself to snap back to reality.
+item talk follow up phrase to:howmuchtoshavemyyak:soyoullcuthimforfree:So you'll cut him for free?:"So you'll cut him for free?" you ask.
+item talk response to:soyoullcuthimforfree:"Of course, such a specimen, such an opportunity, I'd be honoured" replies Larry. The yak looks around the parlour, slowly chewing and contemplating the meaning of life.
+item talk follow up phrase to:soyoullcuthimforfree:wherecanifindthewitch:Where can I find the witch?:"Great! Whilst you're at it I don't suppose you know where I can find the witch Bella?". The room goes quiet, there is some foot shuffling and much staring at the floor. You glance about but no one will match your gaze.
+item talk response to:wherecanifindthewitch:"Indeed I do. You can find her in her castle fortress a small way outside of the town." replies Larry. His voice turns to a hushed whisper, "Go through The Rickets, you'll find the gate there. You'll need a key to the gate, have mine.". He passes you a small brass key and continues "Do what you can for us, the witch queen has caused us great harm and suffering. She takes our precious yak milk, yak fur and yak bread and leaves us with little. But her spies are everywhere - be careful!".
+item talk action in response to:wherecanifindthewitch:change item visibility:brass_key:visible
+item talk action in response to:wherecanifindthewitch:take item:brass_key
 ITEM
 item name:yak
 item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid. It sprays with a lot more fluid than an accidental spraying might generate, you half suspect it did it on purpose.
 item id:grumpy_yak_at_yak_parlour
 item countable noun prefix:a
 item is untakeable:
+item visibility:invisible
+ITEM
+item name:brass key
+item description:It's a key made of brass, although it has faded a little from the natural wear of being in someone's pocket for many years. This is Larry the yak shavers key to The Rickets gate exit to Ubiquity.
+item id:brass_key
+item countable noun prefix:a
 item visibility:invisible
 
 LOCATION

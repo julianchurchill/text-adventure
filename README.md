@@ -80,8 +80,8 @@ Story - TTA2
   - DONE Go to the bank, convince them you are a Yakuza, so you can withdraw some money.
   - DONE Go to 'Frank's Tool Shed' to buy a yak zapper.
   - DONE Go to the yak farm outside town and use the 'yak zapper' to cow poke it to Larry.
-  - Ask him to shave it, you can then talk to him to find out the town gossip.
-  - He tells you about the witch and how she controls the town and takes all their yak milk, yak fur, yak bread etc... He tells you where to find her - in a castle over the hill.
+  - DONE Ask him to shave it, you can then talk to him to find out the town gossip.
+  - DONE He tells you about the witch and how she controls the town and takes all their yak milk, yak fur, yak bread etc... He tells you where to find her - in a castle over the hill.
 - You go to the castle but cannot enter as it is protected by powerful magic. You return to the town and visit the soothsayer (an old lady) who gives you a variety of terrible fortunes - ["You're going to die horrrrriiblyy, probably in a very embarrassing way!", "Nice to meet you young man, I've not seen you before - 'you roll your eyes'", "What strong legs and wide child bearing hips you have, you will bear many children for your husband!"].
   - You must find her some glasses then she sees you (turns out she's blind as a bat without glasses) gives you the real fortune - "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it."
 - An ancient temple hidden under the lake - a temple to old gods with traps and puzzles, entrance puzzle run, a la Indiana Jones:
