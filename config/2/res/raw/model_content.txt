@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:13
+maximum score:14
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -1414,6 +1414,17 @@ exit label:Road to the river
 exit destination:ubiquity_road
 exit direction hint:East
 exit id:ubiquity_road_west_to_ubiquity_road
+ITEM
+item name:yak
+item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid. It sprays with a lot more fluid than an accidental spraying might generate, you half suspect it did it on purpose.
+item id:grumpy_yak_at_road
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:yak_zapper
+item successful use message:Once more you confront the yak with the zapper of yak mobility, once more the yak yields and trundles off down the road towards Ubiquity.
+item use action:change item visibility:grumpy_yak_at_road:invisible
+item use action:change item visibility:grumpy_yak_at_ubiquity_entrance:visible
 
 LOCATION
 x:000
@@ -1433,10 +1444,14 @@ exit direction hint:South
 exit id:farm_entrance_to_yak_farm_hillock
 ITEM
 item name:yak
-item description:It is slightly larger than a standard cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid.
-item id:grumpy_yak
+item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid.
+item id:grumpy_yak_at_farm
 item countable noun prefix:a
 item is untakeable:
+item can be used with:yak_zapper
+item successful use message:Sneakily approaching the yak from behind you extend the yak zapper squeezing the trigger and prod the yak in the bum. Nothing happens. You shake the zapper about willing it to work as hard as you can and then you realise the yak's coat probably protected it from the zapping. You try again, this time delving deep into the fur and the yak jumps, flings it's head about and charges off in the direction of the hillock.
+item use action:change item visibility:grumpy_yak_at_farm:invisible
+item use action:change item visibility:grumpy_yak_at_hillock:visible
 
 LOCATION
 x:000
@@ -1449,6 +1464,17 @@ exit label:Farm entrance
 exit destination:yak_farm
 exit direction hint:North
 exit id:yak_farm_hillock_to_farm_entrance
+ITEM
+item name:yak
+item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid.
+item id:grumpy_yak_at_hillock
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:yak_zapper
+item successful use message:Ok, you've got the idea now so no messing about, you thrust the zapper into the yak fur once more, approaching from the side of the yak to encourage it back through the farm towards the road. It jumps again, as if bitten by an annoying stoat and reluctantly bumbles off the way it had come.
+item use action:change item visibility:grumpy_yak_at_hillock:invisible
+item use action:change item visibility:grumpy_yak_at_road:visible
 
 LOCATION
 x:-060
@@ -1466,6 +1492,17 @@ exit label:Main road through Ubiquity
 exit destination:main_road_through_ubiquity
 exit direction hint:West
 exit id:ubiquity_entrance_to_main_road_through_ubiquity
+ITEM
+item name:yak
+item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid. It sprays with a lot more fluid than an accidental spraying might generate, you half suspect it did it on purpose.
+item id:grumpy_yak_at_ubiquity_entrance
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:yak_zapper
+item successful use message:Nearly there, you spy the yak parlour through the gates. The yak also spies it and starts to turn back. He's obviously been through this before, but not for a good long time judging by the length of his coat. Confidently you slap the yak on his bottom, in response to which he kicks back landing a hoof all too close to your delicates. You wince and have to hurry to get around the yak and zap him onwards through the town entrance before he makes his getaway.
+item use action:change item visibility:grumpy_yak_at_ubiquity_entrance:invisible
+item use action:change item visibility:grumpy_yak_at_main_road:visible
 
 LOCATION
 x:-120
@@ -1493,6 +1530,18 @@ exit label:The Rickets
 exit destination:the_rickets
 exit direction hint:West
 exit id:main_road_through_ubiquity_to_the_rickets
+ITEM
+item name:yak
+item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid. It sprays with a lot more fluid than an accidental spraying might generate, you half suspect it did it on purpose.
+item id:grumpy_yak_at_main_road
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:yak_zapper
+item successful use message:One final prod with the zapper and the yak ambles reluctantly into the Yak Parlour. The waiting clients step out of the way of the hairy behemoth.
+item use action:change item visibility:grumpy_yak_at_main_road:invisible
+item use action:change item visibility:grumpy_yak_at_yak_parlour:visible
+item use action:increment score:
 
 LOCATION
 x:-180
@@ -1767,6 +1816,13 @@ item talk initial phrase:wherecanifindthewitch:Where can I find the witch?:"Wher
 item talk response to:wherecanifindthewitch:He doesn't look up from the yak he's working on, you don't think he heard you.
 item talk follow up phrase to:wherecanifindthewitch:excusemewheresthewitch:Excuse me, where's the witch?:With a quick leading 'Ahem' you state "Excuse me, I'm looking for the witch Bella, do you know where I can find her?".
 item talk response to:excusemewheresthewitch:The room goes silent, Larry pauses, looking up and turns to you. "I'm busy, can't you see all these people are waiting for their darlings to be groomed?". He turns back to his work.
+ITEM
+item name:yak
+item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid. It sprays with a lot more fluid than an accidental spraying might generate, you half suspect it did it on purpose.
+item id:grumpy_yak_at_yak_parlour
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
 
 LOCATION
 x:300
