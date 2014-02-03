@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:9
+maximum score:15
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -15,13 +15,16 @@ item id:multitool
 
 LOCATION AREA
 location area id:town_area
-location area name:Town
+location area name:Perpetuity
 LOCATION AREA
 location area id:castle_ruins_area
 location area name:Castle Ruins
 LOCATION AREA
 location area id:western_woods_area
 location area name:Western Woods
+LOCATION AREA
+location area id:ubiquity_area
+location area name:Ubiquity
 
 LOCATION
 x:300
@@ -258,7 +261,7 @@ x:240
 y:420
 location id:generalstore
 location area id:town_area
-location description:Upon entering the general store you can only make out rough shapes. As your eyes adjust to the darkness you spy a creature in the corner, alert and looking directly at you. It looks like a rabid dog with deep red eyes but has no fur and it eyes you hungrily. Past the fell beast you can see an open door at the back of the shop through which a window leads to a street on the other side of the barricade but there's no way you can get past the creature without losing a limb. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
+location description:Upon entering the general store you can only make out rough shapes. As your eyes adjust to the darkness you spy a creature in the corner, alert and looking directly at you. It looks like a rabid dog with deep red eyes but has no fur and it eyes you hungrily.<div align="center"><img src="fellbeast.png"/></div>Past the fell beast you can see an open door at the back of the shop through which a window leads to a street on the other side of the barricade but there's no way you can get past the creature without losing a limb. You stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
 EXIT
 exit label:Outside
 exit destination:merchantslane
@@ -282,7 +285,7 @@ item is untakeable:
 item can be used with:fiery_torch
 item successful use message:Stepping forward boldly you wave the flaming torch in front of you, praying that the beast will retreat. A little to your surprise it does, cowering away from the torch but hissing and spitting at you in frustration, leaving a safe path to the store cupboard door.
 item use action:change exit visibility:generalstore_to_cupboard:visible
-item use action:change location description:generalstore:Upon entering the general store you can only make out rough shapes. As your eyes adjust to the darkness you spy a creature in the corner, alert and looking directly at you. It looks like a rabid dog with deep red eyes but has no fur and it eyes you hungrily. You can see an open door at the back of the shop through which a window leads to a street on the other side of the barricade. The beast has backed away from your flaming torch leaving a path to the back of the shop. For the moment you stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
+item use action:change location description:generalstore:Upon entering the general store you can only make out rough shapes. As your eyes adjust to the darkness you spy a creature in the corner, alert and looking directly at you. It looks like a rabid dog with deep red eyes but has no fur and it eyes you hungrily.<div align="center"><img src="fellbeast.png"/></div>You can see an open door at the back of the shop through which a window leads to a street on the other side of the barricade. The beast has backed away from your flaming torch leaving a path to the back of the shop. For the moment you stay in the daylight framing the doorway as the fell beast seems to be wary of the light and will not come closer to you while you stand there.
 item can be used with:torch_stick
 item successful use message:Really? Do you want to fight the beast or play with it?
 ITEM
@@ -568,9 +571,10 @@ item mid sentence cased name:Cabal Jambon
 item is proper noun:
 item visibility:invisible
 item talk initial phrase:ivefixedthebarricade:I've fixed the barricade:"I've fixed the barricade, is there anything else I can do?". Of course what you meant to say was 'I'll be off now, nice to meet you.' but you somehow feel compelled to help these people. Drat.
-item talk response to:ivefixedthebarricade:"Well done boy, but you'll have to do better than that to convince me you're not a cowardly toad." he snarls. "Have you noticed anything strange around town or on the outskirts? There was rumour of strange creatures at the old castle ruins, it would be good to know if this has anything to do with the witch's attacks." He looks at the ground mournfully, "I can feel something building, a dark pressure on the town - I'm certain we will be attacked soon. If you find any evidence of dark magic bring it to me at once, won't you?". You nod your head vigorously.
+item talk response to:ivefixedthebarricade:"Well done boy, but you'll have to do better than that to convince me you're not a cowardly toad." he snarls. "I'd better have my ImpSaw back - it's not a toy for you to be playing around with.". You dutifully hand the ImpSaw back to Cabal, hanging onto the imperator, seeing as he didn't mention it...<br/><br/>"Have you noticed anything strange around town or on the outskirts? There was rumour of strange creatures at the old castle ruins, it would be good to know if this has anything to do with the witch's attacks." He looks at the ground mournfully, "I can feel something building, a dark pressure on the town - I'm certain we will be attacked soon. If you find any evidence of dark magic bring it to me at once, won't you?". You nod your head vigorously.
 item talk action in response to:ivefixedthebarricade:change item visibility:cabal_jambon_after_barricade_repair:invisible
 item talk action in response to:ivefixedthebarricade:change item visibility:cabal_jambon_awaiting_evidence:visible
+item talk action in response to:ivefixedthebarricade:destroy item:impsaw2000_running
 ITEM
 item name:Cabal Jambon
 item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
@@ -582,9 +586,55 @@ item visibility:invisible
 item talk initial phrase:anynewsoftheattack:Any news of the attack?:"Any news of the attack?" you ask.
 item talk response to:anynewsoftheattack:"Nothing yet. As I said, if you find any evidence of magical activity bring it to me at once." replies Cabal.
 item can be used with:charred_bone_with_runes
-item successful use message:You hand Cabal the charred bone. He steps over to the fireplace to get a better look and the runes glow slightly in the dull light of the fire. He mutters darkly under his breath, "Yes, yes, this has the taint of dark magic about it. Where did you find it?". "By the castle ruins, I was helping Oubliette pick mushrooms and we came across a barrelling goon." you say, rather too quickly. Cabal gives you the stink eye at the mention of his daughter and draws in a deep breath, growling as he lets it out, slowly. Returning to the bone Cabal eyes it thoughtfully, "Well, it looks like it was burnt not long ago, I suspect she's trying to put pressure on us from the east, drawing in wild things like the goon. The attack will come soon, we must get ready immediately.".
+item successful use message:You hand Cabal the charred bone. He steps over to the fireplace to get a better look and the runes glow slightly in the dull light of the fire. He mutters darkly under his breath, "Yes, yes, this has the taint of dark magic about it. Where did you find it?". "By the castle ruins, I was helping Oubliette pick mushrooms and we came across a barrelling goon." you say, rather too quickly. Cabal gives you the stink eye at the mention of his daughter and draws in a deep breath, growling as he lets it out, slowly. Returning to the bone Cabal eyes it thoughtfully, "Well, it looks like it was burnt not long ago, I suspect she's trying to put pressure on us from the east, drawing in wild things like the goon. The attack will come soon, we must get ready immediately.". Cabal turns to you. "Go to the captain of the watch at the gate house by the north barricade. Tell him what you have found and to be prepared for an assault.". You nod, accepting his command.
 item use action:destroy item:charred_bone_with_runes
 item use action:increment score:
+item use action:change item visibility:cabal_jambon_awaiting_evidence:invisible
+item use action:change item visibility:cabal_jambon_received_evidence:visible
+item use action:change item visibility:muck_seller:visible
+item use action:change exit visibility:westgatehouse_to_gatehouse_internal:visible
+ITEM
+item name:Cabal Jambon
+item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
+item id:cabal_jambon_received_evidence
+item is untakeable:
+item mid sentence cased name:Cabal Jambon
+item is proper noun:
+item visibility:invisible
+item talk initial phrase:sowhatsgoingon:So, what's going on?:"So, what's going on?" you say, with perhaps a little too much nonchalance given recent events.
+item talk response to:sowhatsgoingon:"What do you mean what's going on?" roars Cabal. His tone makes your toes curl. You change tack and speak more cautiously - "Um, I was just wondering if there was any news yet...?". "You tell me! I sent you to see the captain of the watch, what did he say?" replies Cabal.
+item talk follow up phrase to:sowhatsgoingon:ivenotseenhimyet:I've not seen him yet:"I've not seen him yet." you mumble, almost unintelligibly.
+item talk response to:ivenotseenhimyet:"I suggest you go and see him quick before the attack starts and we're all experiencing the pointy end of the witch's broom!" he growls.
+item talk follow up phrase to:sowhatsgoingon:iveseenhimandhesfine:I've seen him and he's fine:"I've seen him and he's fine.", quick thinking, that should get you out of trouble.
+item talk response to:iveseenhimandhesfine:"Fine? That's odd, the last time I saw him he was stricken with fever, could barely command the watch but he was still the best man for it." Cabal paces pensively around his tiny house. "You had better go back to him and impress the seriousness of the situation upon him. If he can't do the job then I'll have to find someone who can!".
+ITEM
+item name:Cabal Jambon
+item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel. He is stocky, middle aged with a shock of red hair and looks at you suspiciously.
+item id:cabal_jambon_after_the_attack
+item is untakeable:
+item mid sentence cased name:Cabal Jambon
+item is proper noun:
+item visibility:invisible
+item talk initial phrase:thenorthbarricadesustainedafireattack:The north barricade sustained a fire attack:"The north barricade sustained a fire attack.". You don't really know how to say it, it sounds crazy - "It, it looked like a dragon. I mean, there was fire and darkness it's roar shook the earth under our feet." you gabble and splutter, the adrenaline rush still coursing through you.
+item talk response to:thenorthbarricadesustainedafireattack:"Ok, calm down." says Cabal firmly, he places both hands on your shoulders to steady and focus your eyes on him. "Tell me what happened.". You compose yourself and try to restate what had occurred more calmly than before. "The watchmen said they thought a fire attack was imminent, I went to fetch the fire shield from the town hall and when I got back, just in time, they attacked. We hid behind the shield and there was fire and smoke, then nothing, silence.". Cabal looks at the ground concentrating.
+item talk follow up phrase to:thenorthbarricadesustainedafireattack:whatdowedonext:What do we do next?:"What do we do next?" you mumble.
+item talk response to:whatdowedonext:Cabal hesitates, drawing a deep breath - "They took Oubliette. Just like her mother, whilst they attacked. One of those hounds dragged her off before I could stop it.". He looks at you, deadly serious but desperate. "Help us, help me and my daughters and all the people of this town. We can't continue to fend off the witch forever but we must stay and defend what we have left. Please defeat the witch.". He pauses and almost trembling says to you "If you find my daughter, bring her back to me.". You cannot refuse so you nod firmly and assure Cabal "I will, I will do my best to bring her back to you and I'll find the witch and stop her for good.". You feel relieved, purposeful and boldened by your conviction. "Stay here the night, take my bed and I'll keep watch." says Cabal, motioning to the pile of straw in the corner.". Thanking him you decide to retire for the night to get a good start on the new adventure in the morning.<newline>You awake the following morning to Cabal brewing you a strong kettle of tea and cooking some delicious smelling sausages over the hearth. "Good morning, are you still feeling stout of heart?" asks Cabal. "I am." you reply and tuck hungrily in to your breakfast. "Take my boat to cross the river, you'll find our neighbouring town of Ubiquity a short way from the other bank. We've not heard much from them recently but we have heard they have been under attack just like us. It is likely they have succumbed to the witch but see what you can find to guide you to her. Good luck!". Wth that last statement Cabal gets back to planning the town's defenses for the nights to come.
+item talk action in response to:whatdowedonext:change item visibility:cabal_jambon_after_the_attack:invisible
+item talk action in response to:whatdowedonext:change item visibility:cabal_jambon_in_the_morning:visible
+item talk action in response to:whatdowedonext:change item visibility:unmoveable_boat:invisible
+item talk action in response to:whatdowedonext:change item visibility:usable_boat_to_ubiquity:visible
+ITEM
+item name:Cabal Jambon
+item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel, although you can tell he is trying to hide it. He is stocky, middle aged with a shock of red hair and looks at you with hopeful eyes and respectful recognition.
+item id:cabal_jambon_in_the_morning
+item is untakeable:
+item mid sentence cased name:Cabal Jambon
+item is proper noun:
+item visibility:invisible
+item talk initial phrase:whatwasthenameofthattownagain:What was the name of that town again?:"What was the name of that town again?" you ask, feeling a little stupid at having forgotten so quickly.
+item talk response to:whatwasthenameofthattownagain:"Ubiquity.".
+item talk follow up phrase to:whatwasthenameofthattownagain:andhowdoigetthere:And how do I get there?:"Ah yes, I remember now. And I get there by going to..." you let the end of the sentence tail off, sort of a question but without really admitting to it.
+item talk response to:andhowdoigetthere:"Use my boat, down by the river.". Cabal glares at you and you feel like you should leave quickly before appearing anymore foolish.
 
 ITEM
 item name:ImpSaw 2000
@@ -627,13 +677,12 @@ item mid sentence cased name:ImpSaw 2000
 item countable noun prefix:an
 item visibility:invisible
 
-
 LOCATION
 x:180
 y:240
 location id:morecobbledroad
 location area id:town_area
-location description:You are standing on a long cobbled road that undulates between the small houses of this town. It continues west and back to the east. Further up ahead you see a town gatehouse that guards one of the many entrances to the town.
+location description:You are standing on a long cobbled road that undulates between the small houses of this town. It continues west and back to the east. Further up ahead you see a gatehouse that guards one of the many entrances to the town.
 EXIT
 exit label:East
 exit destination:cobbledroad
@@ -644,6 +693,43 @@ exit label:West
 exit destination:westgatehouse
 exit direction hint:West
 exit id:morecobbledroad_to_westgatehouse
+ITEM
+item name:Muck seller
+item description:This lady has taken on a fine and noble profession, the trade of muck selling. Whilst not everyone's cup of tea there is a certain need amongst any medium to large settlement of peoples that, someone, must sell muck. The main purpose of this of course is not to actually sell muck, but to make other people feel better about their own lives. As such the most common buyer of muck is the up and coming trader, the holder of great ambitions. This means that whilst the act of muck selling is not the most glamorous of jobs, it does have the advantage of providing a reliable and reasonable income. This particular lady appears some what crone-like, stooping and revelling just a little in her down-and-out professional persona. Her hair is matted and a dirty grey, her clothes mostly rags and she grimaces and gurns at passers by combining her facial gymnastics with a well practised nasal whine. She calls out "Come get your muck. Mucky, mucky, muck. 3 for 4 crowns or 2 for 8 and 6. Finest cow dung muck, fresh as the flies on it!".
+item id:muck_seller
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:outofmywayoldcrone:Out of my way old crone:"Out of my way old crone!" you exclaim.
+item talk response to:outofmywayoldcrone:She's not so sure about you, looking you up and down, giving you a quick sniff. Then she says "Gurrr!".
+item talk initial phrase:whatareyoudoinghere:What are you doing here?:"What are you doing here?" you ask.
+item talk response to:whatareyoudoinghere:She looks puzzled at your question, as though the answer should be obvious. "Selling muck!" she sneers.
+ITEM
+item name:Muck seller
+item description:This lady has taken on a fine and noble profession, the trade of muck selling. Whilst not everyone's cup of tea there is a certain need amongst any medium to large settlement of peoples that, someone, must, sell muck. The main purpose of this of course is not to actually sell muck, but to make other people feel better about their own lives. As such the most common buyer of muck is the up and coming trader, the aspirer to greater things. This means that whilst the act of muck selling is not the most glamorous of jobs, it does have the advantage of providing a reliable and reasonable income. This particular lady appears some what crone-like, stooping and revelling just a little in her down and out professional persona. Her hair is matted and a dirty grey, her clothes mostly rags and she grimaces and gurns at passers combined with a well practised nasal whine as she does so.
+item id:muck_seller_with_poultice_dung
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:outofmywayoldcrone:Out of my way old crone:"Out of my way old crone!" you exclaim.
+item talk response to:outofmywayoldcrone:She's not so sure about you, looking you up and down, giving you a quick sniff. Then she says "Gurrr!".
+item talk initial phrase:whatareyoudoinghere:What are you doing here?:"What are you doing here?" you ask.
+item talk response to:whatareyoudoinghere:She looks puzzled at your question, as though the answer should be obvious. "Selling muck!" she sneers.
+item talk initial phrase:ithinkineedtobuysomemuck:I think I need to buy some muck:"I think I need to buy some muck.". You don't quite believe what you just said, the thought of anything to do with muck turns your stomach over.
+item talk response to:ithinkineedtobuysomemuck:Her eyes light up with glee, it must have been a slow day. "Wonderful my lovely, my muck is made of the very finest cow dung. Nice and fresh see.". She shoves a fat handful of dung under your nose for your inspection. You quickly agree that it is quite fresh enough, especially when so close to your face.
+item talk follow up phrase to:ithinkineedtobuysomemuck:canitbeusedtotreatafever:Can it be used to treat a fever?:"Can it be used to treat a fever?".
+item talk response to:canitbeusedtotreatafever:"Dung can be used for lots of things, oh yes" she grins and croons to herself. "You can use it for headaches or to treat a fever or to make a nice cup of tea.". "Tea?" you can barely say it out loud. "Why yes, I also use it as a rudimentary shampoo, keeps my hair lovely and 'ealthy looking." she grimaces at you, clearly trying to smile - a toothless grin, smacking her lips and stroking her hair awaiting your compliments.
+item talk follow up phrase to:canitbeusedtotreatafever:iseeyouuseitforyourteeth:I see you also use it for your teeth:"I see you also use it for you teeth." you state, half joking.
+item talk response to:iseeyouuseitforyourteeth:"Why yes my dear, it makes a wonderful toothpaste.". You hold back the almost uncontrollable urge to retch right in front of her. "Here's what you need, hold your hand out.", to which you comply and the crone swiftly slaps a large gobbet of cow dung in your outstretched hand, passing a few coins to her with the other. Carefully you cup the dung, hoping she doesn't expect you to pocket it.
+item talk action in response to:iseeyouuseitforyourteeth:change item visibility:handful_of_dung:visible
+item talk action in response to:iseeyouuseitforyourteeth:take item:handful_of_dung
+item talk action in response to:iseeyouuseitforyourteeth:change item visibility:muck_seller:visible
+item talk action in response to:iseeyouuseitforyourteeth:change item visibility:muck_seller_with_poultice_dung:invisible
+ITEM
+item name:Dung
+item description:Some stinky, sloppy cow dung. The perfect amount for using in a poultice.
+item id:handful_of_dung
+item visibility:invisible
 
 LOCATION
 x:120
@@ -661,6 +747,12 @@ exit label:North
 exit destination:dirttrack
 exit direction hint:North
 exit id:westgatehouse_to_dirttrack
+EXIT
+exit label:Gatehouse
+exit destination:gatehouse_internal
+exit direction hint:West
+exit id:westgatehouse_to_gatehouse_internal
+exit is not visible:
 ITEM
 item name:Barricade
 item description:The barricade is made of a variety of broken barrels and branches presumably gathered from the woods to the north of the town. It looks in a bit of a state and could do with some repair.
@@ -686,6 +778,241 @@ item id:north_barricade_repaired
 item countable noun prefix:a
 item mid sentence cased name:barricade
 item is untakeable:
+item visibility:invisible
+ITEM
+item name:Fell beast
+item description:It is another of the monstrosities you encountered in the wrecked general store. This one looks even more starved and desperate than the last, it's jaws laden with saliva and wild eyes blazing in the night, reflecting the light from the torches carried by the watchmen. It howls at you.
+item id:fell_beast_outside_gatehouse
+item countable noun prefix:a
+item mid sentence cased name:fell beast
+item is untakeable:
+item visibility:invisible
+item can be used with:broom
+item successful use message:Deciding to strike first to maximise what little advantage you have you thrust the broom at the beast probing for a weak spot. The beast grabs the broom from your hands with it's terrifying jaws and crushes the middle of it to splinters leaving the broom head with a small amount of handle attached and a longer piece of broom handle both of which clatter to the ground. It glares at you and prepares to move in for the kill.
+item use action:destroy item:broom
+item use action:change item visibility:broom_with_head:visible
+item use action:change item visibility:broom_handle:visible
+item can be used with:broom_handle
+item successful use message:You bravely wave the remains of the broom handle at the beast who without hesitation snatches the rod from you and chews it up to splinters quicker than you could eat a grape. It then spits the splinters back at you, showering you with spiky, sharp pieces of wood.
+item use action:destroy item:broom_handle
+item use action:change item visibility:broom_handle_splinters:visible
+item can be used with:broom_handle_splinters
+item successful use message:Initially you try to throw the splinters one by one at the fell beast. This merely enrages it, causing it to step closer to you. In a panic you fling the remaining splinter from your hand, one sailing deftly through the air to land point first in the nostril of the approaching monster. It yowls and caterwauls, railing in surprise, desperately thrashing it's head around trying to dislodge the spiky irritation. While it is distracted perhaps you can find a weak spot and gain the upper hand...
+item use action:destroy item:broom_handle_splinters
+item use action:change item visibility:fell_beast_outside_gatehouse:invisible
+item use action:change item visibility:fell_beast_outside_gatehouse_in_pain:visible
+item talk initial phrase:letsbereasonablenoonewantstogethurt:Let's be reasonable, no one wants to get hurt:"Let's be reasonable, no one wants to get hurt." you recite the words in your head and then realise that you are about to attempt to reason with a rabid beast. Which is not only rabid and out for your blood but also is most unlikely to understand a word you are saying. You stow that one away with the rest of your finest ideas.
+ITEM
+item name:Fell beast
+item description:It is another of the monstrosities you encountered in the wrecked general store. This one looks even more starved and desperate than the last, it's jaws laden with saliva and wild eyes blazing in the night, reflecting the light from the torches carried by the watchmen. It is thrashing it's head around in apparent pain and paying little attention to you at the moment.
+item id:fell_beast_outside_gatehouse_in_pain
+item countable noun prefix:a
+item mid sentence cased name:fell beast
+item is untakeable:
+item visibility:invisible
+item can be used with:broom_with_head
+item successful use message:Whilst the beast is distracted you sneak up to it, ready the broom head, bristles forward waiting for the moment to strike. The beast notices you, pausing for a moment in it's thrashing and growls, opening it's mouth to snarl and spit. You jump forward shoving the broom head into the mouth of the beast, wedging it's jaws open with the short length of handle still attached to the head. It tries to crush the jam but this only causes it to yelp even more and it turns and runs off into the darkness to tend it's wounds.
+item use action:destroy item:broom_with_head
+item use action:change item visibility:fell_beast_outside_gatehouse_in_pain:invisible
+item use action:change item visibility:men_of_the_towns_watch_north_barricade:invisible
+item use action:change item visibility:men_of_the_towns_watch_north_barricade_after_fell_beast:visible
+item use action:change exit visibility:westgatehouse_to_morecobbledroad:visible
+item use action:change location description:westgatehouse:You stand before a large gatehouse. All around you is chaos in motion, men with weapons unsheathed charging to and fro fending off the evils assaulting the town, many of which have breached the barricades and roam within the town looking for easy prey.
+item use action:increment score:
+item talk initial phrase:letsbereasonablenoonewantstogethurt:Let's be reasonable, no one wants to get hurt:"Let's be reasonable, no one wants to get hurt." you recite the words in your head and then realise that you are about to attempt to reason with a rabid beast. Which is not only rabid and out for your blood but also is most unlikely to understand a word you are saying. You stow that one away with the rest of your finest ideas.
+ITEM
+item name:Broom head
+item description:It is a flat, foot long piece of wood with rough bristles embedded into it and a small amount of handle still protruding from the side, just enough to grip the head and wield it defensively.
+item id:broom_with_head
+item countable noun prefix:a
+item mid sentence cased name:broom head
+item visibility:invisible
+ITEM
+item name:Broom handle
+item description:It is a wooden pole that was previously part of a broom, the end is splintered from where it has been torn away from the rest of the broom.
+item id:broom_handle
+item countable noun prefix:a
+item mid sentence cased name:broom handle
+item visibility:invisible
+ITEM
+item name:Splinters
+item description:There are several small pieces of splintered wood from the handle of a broom that is well past it's best days.
+item id:broom_handle_splinters
+item countable noun prefix:some
+item mid sentence cased name:splinters
+item visibility:invisible
+ITEM
+item name:Men of the town's watch
+item description:A gaggle of poorly armed and more poorly trained bumblers, currently leaderless as their Captain is recovering from a fever in the gatehouse. They are rushing around fending off attacking creatures and generally doing their best to defend the town and people they are sworn to protect.
+item id:men_of_the_towns_watch_north_barricade
+item countable noun prefix:some
+item is plural:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:helpme:Help me!:"Help me!" you cry feebly and to no avail, the men of the town's watch are far too busy defending themselves to help you at this time.
+ITEM
+item name:Men of the town's watch
+item description:A gaggle of poorly armed and more poorly trained bumblers, currently leaderless as their Captain is recovering from a fever in the gatehouse. They are rushing around fending off attacking creatures and generally doing their best to defend the town and people they are sworn to protect.
+item id:men_of_the_towns_watch_north_barricade_after_fell_beast
+item countable noun prefix:some
+item is plural:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:ineedanewweapon:I need a new weapon:Singling out the watchman who gave you the broom you say to him "I need a new weapon".
+item talk response to:ineedanewweapon:He pauses for a moment from his shouting and sword waving and asks "What happened to your broom?".
+item talk follow up phrase to:ineedanewweapon:afellbeastateit:A fell beast ate it:"A fell beast ate it." you reply, trying not to sound like you've lost your homework.
+item talk response to:afellbeastateit:The watchman grumbles "That was a good broom.", he looks genuinely sad. "We don't have any other weapons - but we could do with a hand.".
+item talk follow up phrase to:afellbeastateit:imgoingforasitdown:I'm going for a sit down:"Actually I rather thought I might go for a little sit down. It's been a long day and I am puffed!".
+item talk response to:afellbeastatimgoingforasitdowneit:He rolls his eyes as you say this and you suspect this did not go down well. He returns to battling the foes assaulting his comrades and leaves you to get on with your little sit down.
+item talk follow up phrase to:afellbeastateit:surehowcanihelp:Sure, how can I help?:"Sure, how can I help?" you state unperturbed by your recent battle.
+item talk response to:surehowcanihelp:"Great - we've had reports that a fire beast is being prepared in woods just to the north. We need the fire shield that was defending the town hall so we can hold the barricade. Without it they'll burn through us like butter. Take this key and fetch it.".
+item talk action in response to:surehowcanihelp:change item visibility:men_of_the_towns_watch_north_barricade_after_fell_beast:invisible
+item talk action in response to:surehowcanihelp:change item visibility:men_of_the_towns_watch_north_barricade_awaiting_fire_shield:visible
+item talk action in response to:surehowcanihelp:change item visibility:fire_shield_key:visible
+item talk action in response to:surehowcanihelp:take item:fire_shield_key
+ITEM
+item name:Men of the town's watch
+item description:A gaggle of poorly armed and more poorly trained bumblers, currently leaderless as their Captain is recovering from a fever in the gatehouse. They are rushing around fending off attacking creatures and generally doing their best to defend the town and people they are sworn to protect.
+item id:men_of_the_towns_watch_north_barricade_awaiting_fire_shield
+item countable noun prefix:some
+item is plural:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:whatsup:What's up?:"What's up?" you ask the watch men.
+item talk response to:whatsup:The tall scary bald one emerges from the rabble and barks at you "Where is that fire shield? Go to the town hall and fetch it!" and disappears back into the throng.
+ITEM
+item name:Men of the town's watch
+item description:A gaggle of poorly armed and more poorly trained bumblers, currently leaderless as their Captain is recovering from a fever in the gatehouse. They are waiting nervously, preparing for the next breach, checking their weapons, taking a head count and saying their prayers.
+item id:men_of_the_towns_watch_north_barricade_awaiting_fire_shield2
+item countable noun prefix:some
+item is plural:
+item is untakeable:
+item visibility:invisible
+item can be used with:fire_shield_north_barricade
+item successful use message:You heft and heave the enormous shield over to where the town's watch are defending the barricade, pausing, vigilant during a break in the onslaught. Calling out to them you hide slightly behind it. "You're here, just in time lad!" puffs one of the watch men as the rest of them follow him behind the shield. "We've seen the beast over the hill, it's getting ready to blast us for all it's worth and without this we'd have ended up little more than a pile of pitiful cinders.". You all wait for what seems like hours, the tension palpable, building as you all sense something is about to happen. Lots of noise, inhuman howling but also the clear barking of orders from far over the barricade. Someone or something is commanding the assault. Poking your head out from the protection of the shield you glimpse a metal man through the fire and smoke around the barricade, standing on a hill a small distance away. It appears to be directing the assault, pointing into shadows to the side of where it stands and then looking over to you, pointing and a shout which unmistakably means "Attack!". The next thing you know a dark shadow falls over the town, encompassing you all. The watch men murmur and brace as a wave of heat, fire and smoke hits the shield knocking it backwards into everyone it is covering. You all pull together and hold the shield in place, the blast of furnace heat and light licking around the edges of the shield, the only thing keeping you alive. You all stand firm and eventually the flames subside, you hear an unearthly roar and the shadow passes over you and everything is still and quiet.<newline>"Go see Cabal, find out what's happened. It looks like they've backed off for now, let's hope that's it for the night." states one of the watchmen.
+item use action:change item visibility:cabal_jambon_received_evidence:invisible
+item use action:change item visibility:cabal_jambon_after_the_attack:visible
+item talk initial phrase:ihavethefireshield:I have the fire shield:"I have the fire shield." you call out to the watch men.
+item talk response to:ihavethefireshield:"You're here, just in time lad!" puffs one of the watch men as the rest of them follow him behind the shield. "We've seen the beast over the hill, it's getting ready to blast us for all it's worth and without this we'd have ended up little more than a pile of pitiful cinders.". You all wait for what seems like hours, the tension palpable, building as you all sense something is about to happen. Lots of noise, inhuman howling but also the clear barking of orders from far over the barricade. Someone or something is commanding the assault. Poking your head out from the protection of the shield you glimpse a metal man through the fire and smoke around the barricade, standing on a hill a small distance away. It appears to be directing the assault, pointing into shadows to the side of where it stands and then looking over to you, pointing and a shout which unmistakably means "Attack!". The next thing you know a dark shadow falls over the town, encompassing you all. The watch men murmur and brace as a wave of heat, fire and smoke hits the shield knocking it backwards into everyone it is covering. You all pull together and hold the shield in place, the blast of furnace heat and light licking around the edges of the shield, the only thing keeping you alive. You all stand firm and eventually the flames subside, you hear an unearthly roar and the shadow passes over you and everything is still and quiet.<newline>"Go see Cabal, find out what's happened. It looks like they've backed off for now, let's hope that's it for the night." states one of the watchmen.
+item talk action in response to:ihavethefireshield:change item visibility:cabal_jambon_received_evidence:invisible
+item talk action in response to:ihavethefireshield:change item visibility:cabal_jambon_after_the_attack:visible
+item talk action in response to:ihavethefireshield:change item visibility:men_of_the_towns_watch_north_barricade_awaiting_fire_shield2:invisible
+item talk action in response to:ihavethefireshield:change item visibility:men_of_the_towns_watch_north_barricade_after_fire_attack:visible
+ITEM
+item name:Men of the town's watch
+item description:A gaggle of poorly armed and more poorly trained bumblers, currently leaderless as their Captain is recovering from a fever in the gatehouse. They are waiting nervously, preparing for the next breach, checking their weapons, taking a head count and saying their prayers.
+item id:men_of_the_towns_watch_north_barricade_after_fire_attack
+item countable noun prefix:some
+item is plural:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:howgoesthebattle:How goes the battle?:"How goes the battle?" you ask.
+item talk response to:howgoesthebattle:"They've stopped attacking for now, let's hope that's all for the night. Have you been to see Cabal yet?" replies one of the watchmen inbetween checking his weapon is still sharp and in his hand.
+ITEM
+item name:Key to the fire shield
+item description:This key was given to you by a watchman. It should give access to the fire shield which you have been tasked to retrieve to aid in the defence of the north barricade.
+item id:fire_shield_key
+item countable noun prefix:a
+item visibility:invisible
+ITEM
+item name:Fire shield
+item description:It is a large contraption, mostly wood and metal, held upright on a wheeled cart so that it will protect whatever is behind it from fire attacks. There are numerous pitted scorch marks on the front plate showing it has seen plenty of use. It has come to a rest, the break handle now in the engaged position with the key still in place having rolled here from the town hall, mostly under it's own steam with a little encouragement from you.
+item id:fire_shield_north_barricade
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+
+LOCATION
+x:90
+y:240
+location id:gatehouse_internal
+location area id:town_area
+location description:Inside the gatehouse is a table with some worn wooden chairs on which are sitting the men of the town's watch. They look exhausted and somewhat beaten up, not one of them is without some recent battle scars. At the back of the room is a low bed on which lies a man, still partly dressed in his uniform.
+EXIT
+exit label:Outside
+exit destination:westgatehouse
+exit direction hint:East
+exit id:gatehouse_internal_to_westgatehouse
+ITEM
+item name:Men of the town's watch
+item description:There are several of them here, all dressed in a slightly scruffy uniform, dirty and bedraggled from recent fighting. They are currently having a drink and commiserating each other over their present situation. You catch a sentence or two of their conversation - "Mum'll have my guts for garters if I'm late tonight, it's her birthday and I promised her a night out on the town..." grumbles a particularly large and vicious looking chap with a shaved, tattooed head. Another complains as he shakes his head "We can't take much more of this, the food stores are running low and we're losing men every night.".
+item id:men_of_the_towns_watch
+item countable noun prefix:some
+item is plural:
+item is untakeable:
+item talk initial phrase:ineedtoseethecaptainofthewatch:I need to see the captain of the watch:"I need to see the captain of the watch" you exclaim.
+item talk response to:ineedtoseethecaptainofthewatch:"That's him on the bed yonder, but you won't get much sense out of him.".
+item talk follow up phrase to:ineedtoseethecaptainofthewatch:whatswrongwithhim:What's wrong with him?:"What's wrong with him?" you ask, trying to contain a hint of nervousness.
+item talk response to:whatswrongwithhim:"Fever." one of the men replies. "He needs a poultice, that's what my old mum would give 'im. A fresh dung poultice. If only I 'ad some I could make 'im a poultice like my mum did.".
+item talk action in response to:whatswrongwithhim:change item visibility:muck_seller:invisible
+item talk action in response to:whatswrongwithhim:change item visibility:muck_seller_with_poultice_dung:visible
+item talk initial phrase:whosincharge:Who's in charge?:"Who's in charge?" you ask. A futile question perhaps but worth a go nonetheless.
+item talk response to:whosincharge:The men all laugh. "He is!" they all shout in well practiced unison pointing at the man on the bed.
+item talk follow up phrase to:whosincharge:whatswrongwithhim
+item can be used with:handful_of_dung
+item successful use message:Cup the dung in your hands you tentatively push it in the direction of the watch men. Fortunately one of them jumps up with a happy look on his face - "Aww dung! I can make a poultice for the cap'n now.". He rushes over to the captain, pulls out what looks like an old pair of pants from what you assume is his pocket and wraps the dung up tightly. Gently he places the dung poultice on the captain's head, shushing him gently at the same time.
+item use action:destroy item:handful_of_dung
+item use action:change item visibility:man_on_the_bed:invisible
+item use action:change item visibility:man_on_the_bed_with_poultice:visible
+item use action:change item visibility:men_of_the_towns_watch:invisible
+item use action:change item visibility:men_of_the_towns_watch_after_poultice:visible
+iITEM
+item name:Men of the town's watch
+item description:There are several of them here, all dressed in a slightly scruffy uniform, dirty and bedraggled from recent fighting. They are currently having a drink and commiserating each other over their present situation. You catch a sentence or two of their conversation - "Mum'll have my guts for garters if I'm late tonight, it's 'er birthday and I promised 'er a night out on the town..." grumbles a particularly large and vicious looking chap with a shaved, tattooed head. Another complains as he shakes his head "We can't take much more of this, the food stores are running low and we're losing men every night.".
+item id:men_of_the_towns_watch_after_poultice
+item countable noun prefix:some
+item is plural:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:ineedtoseethecaptainofthewatch:I need to see the captain of the watch:"I need to see the captain of the watch" you exclaim.
+item talk response to:ineedtoseethecaptainofthewatch:"That's him on the bed yonder, but you won't get much sense out of him.".
+item talk follow up phrase to:ineedtoseethecaptainofthewatch:whatswrongwithhim:What's wrong with him?:"What's wrong with him?" you ask, trying to contain a hint of nervousness.
+item talk response to:whatswrongwithhim:"Fever." one of the men replies. "He's a sufferin' for sure, but that poultice will do well enough for 'im.".
+item talk initial phrase:whosincharge:Who's in charge?:"Who's in charge?" you ask. A futile question perhaps but worth a go nonetheless.
+item talk response to:whosincharge:The men all laugh. "He is!" they all shout in well practiced unison pointing at the man on the bed.
+item talk follow up phrase to:whosincharge:whatswrongwithhim
+ITEM
+item name:Poorly man on a bed
+item description:This fellow is laid out on a bed at the back of the room, he is sweating profusely and occasionally stirring to mumble and turn over.
+item id:man_on_the_bed
+item countable noun prefix:a
+item is untakeable:
+item talk initial phrase:ihaveurgentnews:I have urgent news:Addressing the poor man on the bed you state "I have urgent news, from Cabal Jambon.".
+item talk response to:ihaveurgentnews:He moves not a jot to acknowledge your declaration, merely mumbling "Gugghlh brrcckk fip!". One of the seated men looks up and calls over to you - "He can't talk, he's got a fever, won't get no sense out of 'im."
+ITEM
+item name:Poorly man on a bed
+item description:This fellow is laid out on a bed at the back of the room, he is sweating profusely and occasionally stirring to mumble and turn over. If the fever wasn't enough woe for this poor chap he also has a smelly dung poultice on his head.
+item id:man_on_the_bed_with_poultice
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:wereabouttobeattacked:We are about to be attacked:"We are about to be attacked!" you declare loudly to the man on the bed.
+item talk response to:wereabouttobeattacked:Immediately the watch men behind you leap to their feet. "Why didn't you say so sooner!" cries the watch man who applied the poultice. "Man the barricades!" he yells, "Defend the women and children!" again yelling, presumably at the remaining watch men who are covering their abused ears desperately trying to leave the confines of the gate house before another order is bellowed at them. "Here take this and use it with honour." he says as he passes you a broom and steps outside with his comrades. You wonder if he's mistaken or has some form of vision impairment but put it down to panic. The sick fellow says "gruesselugghslll" and slurs himself back into unconsciousness.
+item talk action in response to:wereabouttobeattacked:change item visibility:man_on_the_bed_with_poultice:invisible
+item talk action in response to:wereabouttobeattacked:change item visibility:man_on_the_bed_attack_declared:visible
+item talk action in response to:wereabouttobeattacked:change item visibility:men_of_the_towns_watch_after_poultice:invisible
+item talk action in response to:wereabouttobeattacked:change item visibility:broom:visible
+item talk action in response to:wereabouttobeattacked:change exit visibility:westgatehouse_to_morecobbledroad:invisible
+item talk action in response to:wereabouttobeattacked:change exit visibility:westgatehouse_to_dirttrack:invisible
+item talk action in response to:wereabouttobeattacked:change item visibility:fell_beast_outside_gatehouse:visible
+item talk action in response to:wereabouttobeattacked:change item visibility:men_of_the_towns_watch_north_barricade:visible
+item talk action in response to:wereabouttobeattacked:change location description:westgatehouse:You stand before a large gatehouse containing a rabble of tired men, all of the town watch. All around you is chaos in motion, men with weapons unsheathed charging to and fro fending off the evils assaulting the town, many of which have breached the barricades and roam within the town looking for easy prey. In front of you stands one such monstrosity and it has noticed that you are poorly armed and look a little bit frightened. All exits except the gatehouse door are blocked with men struggling against the onslaught of foul creatures.
+item talk action in response to:wereabouttobeattacked:take item:broom
+item talk action in response to:wereabouttobeattacked:increment score:
+ITEM
+item name:Poorly man on a bed
+item description:This fellow is laid out on a bed at the back of the room, he is sweating profusely and occasionally stirring to mumble and turn over. If the fever wasn't enough woe for this poor chap he also has a smelly dung poultice on his head.
+item id:man_on_the_bed_attack_declared
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:wereabouttobeattacked:We are about to be attacked:"We are about to be attacked!" you declare loudly to the man on the bed.
+item talk response to:wereabouttobeattacked:The sick fellow says "gruesselugghslll" and then "fnargl" and slurs himself back into unconsciousness.
+ITEM
+item name:Broom
+item description:It has a good full head of bristles, which is more than can be said for you.
+item id:broom
+item countable noun prefix:a
 item visibility:invisible
 
 LOCATION
@@ -749,12 +1076,17 @@ x:120
 y:120
 location id:river_edge
 location area id:western_woods_area
-location description:Stepping out from the surrounding woods you come upon a river. It is full and the banks are fit to burst but the ground around you is clearly dry so you guess the swollen river has not breached it's confines yet.<div align="center"><img src="fish_small.png"/></div>Not far from the river bank is a fisherman's shack and there is a boozy, wet smell wafting in from somewhere close by.
+location description:Stepping out from the surrounding woods you come upon a river. It is full and the banks are fit to burst but the ground around you is clearly dry so you guess the swollen river has not breached it's confines yet.<div align="center"><img src="biteyfish.png"/></div>Not far from the river bank is a fisherman's shack and there is a boozy, wet smell wafting in from somewhere close by. The river runs north to south, the bank running to the north overgrown with vegetation, however to the south there is a man made track along the rivers edge.
 EXIT
 exit label:North
 exit destination:church_woodland
 exit direction hint:North
 exit id:river_edge_to_church_woodland
+EXIT
+exit label:South
+exit destination:river_edge_south
+exit direction hint:South
+exit id:river_edge_to_river_edge_south
 EXIT
 exit label:Fisherman's shack
 exit destination:fishermans_shack
@@ -885,6 +1217,63 @@ item visibility:invisible
 
 LOCATION
 x:120
+y:180
+location id:river_edge_south
+location area id:western_woods_area
+location description:Walking along the river edge you see rolling hills to the south and a clearing to the north. There is a slight sandy shallow at this part of the river where a boat gently sways in the water, moored loosely around a tree stump.
+EXIT
+exit label:North
+exit destination:river_edge
+exit direction hint:North
+exit id:river_edge_south_to_river_edge
+EXIT
+exit label:North
+exit destination:track_to_ubiquity_road
+exit direction hint:North
+exit id:river_edge_south_to_track_to_ubiquity_road
+exit is not visible:
+ITEM
+item name:boat
+item description:This boat is old, rickety and probably totally unsafe. It looks like it has sprung numerous leaks and is currently home to a small family of frogs which are huddled quite comfortably underneath the bench. There are oars sticking out of the boat which look as creaky as the boat itself. However, they might just be usable.
+item id:unmoveable_boat
+item countable noun prefix:a
+item is untakeable:
+item can be used with:oars
+item successful use message:You sit down in the boat, carefully balancing yourself and grasp the oars firmly. Just as you do a large wave lashes the side of the boat and splashes you right in the face. Coughing and spluttering you decide the water is a bit too choppy for an amateur seaman such as yourself to be messing about on the river and step out of the boat back on to the river bank.
+ITEM
+item name:boat
+item description:This boat is old, rickety and probably totally unsafe. It looks like it has sprung numerous leaks and is currently home to a small family of frogs which are huddled quite comfortably underneath the bench. There are oars sticking out of the boat which look as creaky as the boat itself. However, they might just be usable.
+item id:usable_boat_to_ubiquity
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:oars
+item successful use message:You sit down in the boat, carefully balancing yourself and grasp the oars firmly. Bum bouncing a little to dislodge the boat from the silt it sits in you start to make your way across the river, pulling the oars to propel the little boat onward. In doesn't take you long to reach the other side of the river, where you pull the boat up, tying it to a rocky outcrop.
+item use action:change item visibility:usable_boat_to_ubiquity:invisible
+item use action:change item visibility:usable_boat_to_perpetuity:visible
+item use action:change exit visibility:river_edge_south_to_river_edge:invisible
+item use action:change exit visibility:river_edge_south_to_track_to_ubiquity_road:invisible
+item use action:change location description:river_edge_south:Standing on the west bank of the river you can see a small clearing with a little hut on the other side of the water. North from here there is a track that looks like it leads to a road. Surrounding you is dense woodland, largely impenetrable and in the distance to the south there a rolling hills descending to the horizon.
+ITEM
+item name:boat
+item description:This boat is old, rickety and probably totally unsafe. It looks like it has sprung numerous leaks and is currently home to a small family of frogs which are huddled quite comfortably underneath the bench. There are oars sticking out of the boat which look as creaky as the boat itself. However, they might just be usable.
+item id:usable_boat_to_perpetuity
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:oars
+item successful use message:Shoving the boat out a little to dislodge it from the bank you jump in and sit down quickly, grasping the oars firmly. You start to make your way across the river, pulling the oars to propel the little boat onward. In doesn't take you long to reach the other side of the river, where you pull the boat up, tying it to a tree stump.
+item use action:change exit visibility:river_edge_south_to_river_edge:visible
+item use action:change location description:river_edge_south:Walking along the river edge you see rolling hills to the south and a clearing to the north. There is a slight sandy shallow at this part of the river where a boat gently sways in the water, moored loosely around a tree stump.
+ITEM
+item name:oars
+item description:These oars are balanced in the rowlocks on either side of the boat.
+item id:oars
+item countable noun prefix:some
+item is untakeable:
+
+LOCATION
+x:120
 y:120
 location id:fishermans_shack
 location area id:western_woods_area
@@ -971,11 +1360,554 @@ item is plural:
 item visibility:invisible
 
 LOCATION
+x:060
+y:120
+location id:track_to_ubiquity_road
+location area id:western_woods_area
+location description:The woods are darker here, more claustrophobic. The trees creak in the wind and little light penetrates the canopy. You're glad to see that the woods open out a little further to the north and you can hear the rush of the river to the south.
+EXIT
+exit label:South
+exit destination:river_edge_south
+exit direction hint:South
+exit id:track_to_ubiquity_road_to_river_edge_south
+EXIT
+exit label:North
+exit destination:ubiquity_road
+exit direction hint:North
+exit id:track_to_ubiquity_road_to_ubiquity_road
+
+LOCATION
+x:060
+y:060
+location id:ubiquity_road
+location area id:ubiquity_area
+location description:The road you stand on has been travelled by many merchants, heading for the town of Ubiquity to sell their wares, make some profit and rest their heads. You doubt they would get a warm welcome now, sensing that the land has been subjugated to the will of a powerful foe and most likely the townsfolk too. To the south east lies a river and further along the road you can see the remains of a bridge which once carried the road over the water, no more than splintered wood and frayed rope now. To the west the road continues past what looks like a farmstead of some sort while it winds it's way on towards a town in the distance.
+EXIT
+exit label:South
+exit destination:track_to_ubiquity_road
+exit direction hint:South
+exit id:ubiquity_road_to_track_to_ubiquity_road
+EXIT
+exit label:West
+exit destination:ubiquity_road_west
+exit direction hint:West
+exit id:ubiquity_road_to_ubiquity_road_west
+
+LOCATION
+x:000
+y:060
+location id:ubiquity_road_west
+location area id:ubiquity_area
+location description:Dust swirls around you, caught by the wind blowing along the road. A farm lies to the south, at least it looks like a farm. There are barns and some cattle roaming around fenced fields and it most certainly smells like a farm. The road continues in one direction towards the town of Ubiquity and in the other to a wide river.
+EXIT
+exit label:Farm entrance
+exit destination:yak_farm
+exit direction hint:South
+exit id:yak_farm
+EXIT
+exit label:Road to Ubiquity
+exit destination:ubiquity_entrance
+exit direction hint:West
+exit id:ubiquity_road_west_to_ubiquity_entrance
+EXIT
+exit label:Road to the river
+exit destination:ubiquity_road
+exit direction hint:East
+exit id:ubiquity_road_west_to_ubiquity_road
+ITEM
+item name:yak
+item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid. It sprays with a lot more fluid than an accidental spraying might generate, you half suspect it did it on purpose.
+item id:grumpy_yak_at_road
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:yak_zapper
+item successful use message:Once more you confront the yak with the zapper of yak mobility, once more the yak yields and trundles off down the road towards Ubiquity.
+item use action:change item visibility:grumpy_yak_at_road:invisible
+item use action:change item visibility:grumpy_yak_at_ubiquity_entrance:visible
+
+LOCATION
+x:000
+y:000
+location id:yak_farm
+location area id:ubiquity_area
+location description:This is a farm, it stinks more than you'd expect and looking around you realise why. It's a yak farm, and there are a lot of them penned in fields far and wide. They've not been shaved for a long time, their coats long and hairy, sticky with mud and probably worse things. If there's one thing that a yak needs it's a regular shave but the farmer doesn't seem to be around. Yak farming used to be a highly profitable business and this must have been a real money spinner. It seems quite strange to you that it would have been abandoned but you decide not to over analyse the situation, after all 'don't look a gift yak in the mouth', or something. In the distance you can hear what might be misconstrued as singing. It appears to be coming from a nearby hillock.
+EXIT
+exit label:Road to Ubiquity
+exit destination:ubiquity_road_west
+exit direction hint:North
+exit id:farm_entrance_to_ubiquity_road_west
+EXIT
+exit label:Hillock
+exit destination:yak_farm_hillock
+exit direction hint:South
+exit id:farm_entrance_to_yak_farm_hillock
+ITEM
+item name:yak
+item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid.
+item id:grumpy_yak_at_farm
+item countable noun prefix:a
+item is untakeable:
+item can be used with:yak_zapper
+item successful use message:Sneakily approaching the yak from behind you extend the yak zapper squeezing the trigger and prod the yak in the bum. Nothing happens. You shake the zapper about willing it to work as hard as you can and then you realise the yak's coat probably protected it from the zapping. You try again, this time delving deep into the fur and the yak jumps, flings it's head about and charges off in the direction of the hillock.
+item use action:change item visibility:grumpy_yak_at_farm:invisible
+item use action:change item visibility:grumpy_yak_at_hillock:visible
+
+LOCATION
+x:000
+y:060
+location id:yak_farm_hillock
+location area id:ubiquity_area
+location description:You approach the hillock, the sound of song filling the air. Sat on the grass, looking out over a small herd of yak are several yak herders, trolling out an energetic if confused ditty<newline>"Chipolatas, chipolatas, they're the best sort of sausage you can buy"<newline>"Chipolatas, chipolatas, eat them raw or put them in a pie"<newline>"Shave a yak, wear hat, wrap it in your cloak"<newline>"Feed it well, watch it swell, sell it for a groat."<newline>
+EXIT
+exit label:Farm entrance
+exit destination:yak_farm
+exit direction hint:North
+exit id:yak_farm_hillock_to_farm_entrance
+ITEM
+item name:yak
+item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid.
+item id:grumpy_yak_at_hillock
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:yak_zapper
+item successful use message:Ok, you've got the idea now so no messing about, you thrust the zapper into the yak fur once more, approaching from the side of the yak to encourage it back through the farm towards the road. It jumps again, as if bitten by an annoying stoat and reluctantly bumbles off the way it had come.
+item use action:change item visibility:grumpy_yak_at_hillock:invisible
+item use action:change item visibility:grumpy_yak_at_road:visible
+
+LOCATION
+x:-060
+y:060
+location id:ubiquity_entrance
+location area id:ubiquity_area
+location description:You stand in front of the entrance to Ubiquity - the town laid out before you, slightly tapering away towards some foothills, which gently nestle against the western most boundaries of the town. It seems quiet but there is some activity, a low murmur of scurrying, people avoiding the outside by running between buildings, dodging between shadows. A strange place. The main road is before you, stretching on with only a few tributaries, homes and businesses intermingled as the road flows past. The road continues out of the town to the east and on past a farm and further on towards a river in the distance.
+EXIT
+exit label:Road leaving Ubiquity
+exit destination:ubiquity_road_west
+exit direction hint:East
+exit id:ubiquity_entrance_to_ubiquity_road_west
+EXIT
+exit label:Main road through Ubiquity
+exit destination:main_road_through_ubiquity
+exit direction hint:West
+exit id:ubiquity_entrance_to_main_road_through_ubiquity
+ITEM
+item name:yak
+item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid. It sprays with a lot more fluid than an accidental spraying might generate, you half suspect it did it on purpose.
+item id:grumpy_yak_at_ubiquity_entrance
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:yak_zapper
+item successful use message:Nearly there, you spy the yak parlour through the gates. The yak also spies it and starts to turn back. He's obviously been through this before, but not for a good long time judging by the length of his coat. Confidently you slap the yak on his bottom, in response to which he kicks back landing a hoof all too close to your delicates. You wince and have to hurry to get around the yak and zap him onwards through the town entrance before he makes his getaway.
+item use action:change item visibility:grumpy_yak_at_ubiquity_entrance:invisible
+item use action:change item visibility:grumpy_yak_at_main_road:visible
+
+LOCATION
+x:-120
+y:060
+location id:main_road_through_ubiquity
+location area id:ubiquity_area
+location description:This appears to be the main road through Ubiquity. Most of the houses and buildings lining the street are closed or boarded up, secured from the inside as though the town has been through some tough times. The walls and doors look battered and damaged and you suspect that the people of this town endured a similar onslaught to that which you witnessed in Perpetuity. Back to the east the road winds out of the town. There are a couple of open shops which might be worth a closer look and some further west in the area known as The Rickets that most certainly aren't.
+EXIT
+exit label:Main gate to Ubiquity
+exit destination:ubiquity_entrance
+exit direction hint:East
+exit id:main_road_through_ubiquity_to_ubiquity_entrance
+EXIT
+exit label:Yak Parlour
+exit destination:yak_parlour
+exit direction hint:North
+exit id:main_road_through_ubiquity_to_yak_parlour
+EXIT
+exit label:Bank of Ubiquity
+exit destination:bank_of_ubiquity
+exit direction hint:South
+exit id:main_road_through_ubiquity_to_bank_of_ubiquity
+EXIT
+exit label:The Rickets
+exit destination:the_rickets
+exit direction hint:West
+exit id:main_road_through_ubiquity_to_the_rickets
+ITEM
+item name:yak
+item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid. It sprays with a lot more fluid than an accidental spraying might generate, you half suspect it did it on purpose.
+item id:grumpy_yak_at_main_road
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:yak_zapper
+item successful use message:One final prod with the zapper and the yak ambles reluctantly into the Yak Parlour. The waiting clients step out of the way of the hairy behemoth.
+item use action:change item visibility:grumpy_yak_at_main_road:invisible
+item use action:change item visibility:grumpy_yak_at_yak_parlour:visible
+item use action:increment score:
+
+LOCATION
+x:-180
+y:060
+location id:the_rickets
+location area id:ubiquity_area
+location description:Dank, smelly and a little sore - them's The Rickets. Dark, rank and full of vice - them's The Rickets. Looking about there's not a lot to see, hard times for everyone. There is Scabby Mary's, shabbily dressed with rotten windows like a crone's grin and Frank's Tool Shed, equally uninviting. There is a small alley that winds off into the darkness with a half proud sign balanced against the entrance - "Rotten Alley".
+EXIT
+exit label:Scabby Mary the Soothsayer
+exit destination:scabby_mary_the_soothsayer
+exit direction hint:North
+exit id:the_rickets_to_scabby_mary_the_soothsayer
+EXIT
+exit label:Frank's Tool Shed
+exit destination:franks_tool_shed
+exit direction hint:South
+exit id:the_rickets_to_franks_tool_shed
+EXIT
+exit label:Main road
+exit destination:main_road_through_ubiquity
+exit direction hint:East
+exit id:the_rickets_to_main_road_through_ubiquity
+EXIT
+exit label:Rotten Alley
+exit destination:rotten_alley
+exit direction hint:West
+exit id:the_rickets_to_rotten_alley
+
+LOCATION
+x:-240
+y:060
+location id:rotten_alley
+location area id:ubiquity_area
+location description:The Rickets lies behind you, if only because otherwise you'd have your back to the darkness of Rotten Alley just about the only place you'd rather not have yuor back to. Peering into the gloom you can make out a rusty gate ahead and nothing but mist beyond.
+EXIT
+exit label:The Rickets
+exit destination:the_rickets
+exit direction hint:East
+exit id:rotten_alley_to_the_rickets
+EXIT
+exit label:Further down the alley
+exit destination:rotten_alley_2
+exit direction hint:West
+exit id:rotten_alley_to_rotten_alley_2
+
+LOCATION
+x:-300
+y:060
+location id:rotten_alley_2
+location area id:ubiquity_area
+location description:You stand in front of a rusty gate, the walls of the alley tower around you increasing your sense of anxiety about being here. If you could get through that gate you'd feel much safer. On the other side you see mist draped hills and some scattered trees. Something in the distance moves.
+EXIT
+exit label:Towards The Rickets
+exit destination:rotten_alley
+exit direction hint:East
+exit id:rotten_alley_2_to_rotten_alley
+EXIT
+exit label:Rusty gate
+exit destination:misty_downs
+exit direction hint:West
+exit id:rotten_alley_2_to_misty_downs
+exit is not visible:
+ITEM
+item name:Rusty gate
+item description:The gate stands firmly in place despite appearing quite rusty and decrepit. There is a hole for a small key at waist height and the gate is currently locked.
+item id:rusty_gate
+item is untakeable:
+item can be used with:brass_key
+item successful use message:It fits snugly into the keyhole. You turn it, the gate creaks and the latch opens and you swing the gate outwards it, the rusty metal yawning as it drags over the bumpy cobbles onto the soft grass beyond.
+item use action:change exit visibility:rotten_alley_2_to_misty_downs:visible
+item use action:change item visibility:rusty_gate_locked:invisible
+item use action:change item visibility:rusty_gate_unlocked:visible
+item use action:increment score:
+ITEM
+item name:Rusty gate
+item description:The gate has been swung wide open and stands wedged against the ground outside. It appears quite rusty and decrepit but you can tell it is sturdy despite that. There is a hole for a small key at waist height.
+item id:rusty_gate_unlocked
+item is untakeable:
+item visibility:invisible
+
+LOCATION
+x:-360
+y:060
+location id:misty_downs
+location area id:ubiquity_area
+location description:You stand shrouded in mist, the ground beneath your feet is soft and marshy. In the distance something moves. There is an alleyway nearby with an open gate inviting you in out of the mist.
+EXIT
+exit label:Rusty gate
+exit destination:rotten_alley_2
+exit direction hint:East
+exit id:misty_down_to_srotten_alley_2
+
+LOCATION
+x:-180
+y:000
+location id:scabby_mary_the_soothsayer
+location area id:ubiquity_area
+location description:This is little more than a shack cobbled together from some loose floorboards, half an old potato sack, a pair of holey socks and a lot of yak hair. It makes your nose tickle and feel the irresistible urge to sneeze. Don't put anything down or it might get absorbed into the decor. In the centre of the room is a round table with three legs of different lengths leading it to tilt to one side, the crystal ball in the centre peaks out from under a dirty cloth draped over it. There is an empty chair in front of you and on the other side of the table waits an old woman, seated, hands crossed and staring into the middle distance. She hears you enter and cocks her head to one side.
+EXIT
+exit label:Outside
+exit destination:the_rickets
+exit direction hint:South
+exit id:scabby_mary_the_soothsayer_to_the_rickets
+ITEM
+item name:Scabby Mary
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her.
+item id:scabby_mary1
+item is proper noun:
+item is untakeable:
+item can be used with:glasses_of_clear_vision
+item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears, rest the arms on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
+item use action:change item visibility:scabby_mary1:invisible
+item use action:change item visibility:scabby_mary2:invisible
+item use action:change item visibility:scabby_mary3:invisible
+item use action:change item visibility:scabby_mary_with_glasses:visible
+item use action:increment score:
+item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "You're going to die horrrrriiblyy, probably in a very embarrassing way!", you start back with this revelation - "What, are you sure?" you stutter. "Sure about what?" says Mary. "The horrible dying, the embarrassing nature?". "Well nothing's for certain my dear.". She is quite noncommittal and you sense that is all the sense you will get out of her.
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary1:invisible
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary2:visible
+ITEM
+item name:Scabby Mary
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her.
+item id:scabby_mary2
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item can be used with:glasses_of_clear_vision
+item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears, rest the arms on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
+item use action:change item visibility:scabby_mary1:invisible
+item use action:change item visibility:scabby_mary2:invisible
+item use action:change item visibility:scabby_mary3:invisible
+item use action:change item visibility:scabby_mary_with_glasses:visible
+item use action:increment score:
+item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "No.". "What do you mean no?" you ask, slightly perturbed. "I mean no, there is no fortune for you, not here nor in the next world.". Oh dear, that doesn't sound good.
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary2:invisible
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary3:visible
+ITEM
+item name:Scabby Mary
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her.
+item id:scabby_mary3
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item can be used with:glasses_of_clear_vision
+item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears, rest the arms on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
+item use action:change item visibility:scabby_mary1:invisible
+item use action:change item visibility:scabby_mary2:invisible
+item use action:change item visibility:scabby_mary3:invisible
+item use action:change item visibility:scabby_mary_with_glasses:visible
+item use action:increment score:
+item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "I've not seen you before young man." begins Mary. You can't stop yourself from rolling your eyes, she's clearly batty as a fruit cake. "The ball tells me you will bear many children for your husband!". You consider asking her what that means and pointing out the obvious flaws in her prediction but quickly discard the idea.
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary3:invisible
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary1:visible
+ITEM
+item name:Scabby Mary
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her. She can see a lot better since you gave her those glasses.
+item id:scabby_mary_with_glasses
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it.". Well that's certainly mysterious you think to yourself, exactly the sort of thing you'd expect from a soothsayer.
+ITEM
+item name:Glasses of Clear Vision
+item description:These are the legendary Glasses of Clear Vision - famed for their ability to bring better vision to those with quite bad vision. Amongst the stories told they are supposed to have restored the vision of a monk who once got some grit in his eye, the sight of a drunkard after he had sobered up and the full ocular power of a man who had married an unseemly wench during a show of independence to those who were with holding from him his inheritance.
+item id:glasses_of_clear_vision
+item countable noun prefix:some
+item visibility:invisible
+
+LOCATION
+x:-180
+y:120
+location id:franks_tool_shed
+location area id:ubiquity_area
+location description:This is Frank's Tool Shed, as much an actual tool shed as it is a shop. Racks of contraptions and mechanical gizmos line the walls and clutter the floor and benches around you. Frank moons about the place, inspecting his wares, occasionally oiling a spring or unsprunging a gimlet. He looks like he knows what he's up to but you're not sure you know what he's up to.
+EXIT
+exit label:Outside
+exit destination:the_rickets
+exit direction hint:North
+exit id:franks_tool_shed_to_the_rickets
+ITEM
+item name:Frank
+item description:The owner of Frank's tool shed stands before you, overseeing his shop, ready to answer any questions you might have and to sell you whatever you need, for a price.
+item id:frank_the_tool_man
+item is proper noun:
+item is untakeable:
+item can be used with:fourteen_groats
+item successful use message:"Oh fourteen groats is it, standard power yak zapper you after? Here you go sonny, professional use only of course, don't wanna get caught by the fuzz, now, now." says Frank as he takes the coins from you, handing you the yak zapper in exchange. "Fully charged and ready to run, if you run low on batteries I can do you a deal, just pop in any time now, now.".
+item use action:change item visibility:yak_zapper_untakeable:invisible
+item use action:change item visibility:yak_zapper:visible
+item use action:destroy item:fourteen_groats
+item use action:take item:yak_zapper
+item talk initial phrase:imlookingforsomething:I'm looking for something:"I'm looking for something." you say, addressing Frank.
+item talk response to:imlookingforsomething:"Ahh" nods Frank, giving you a sly wink. "Aren't we all sonny, now, now.".
+ITEM
+item name:Yak zapper
+item description:This is a commonly found contraption hereabouts used to direct yaks in the direction that their herders wish them to go.
+item id:yak_zapper_untakeable
+item countable noun prefix:a
+item is untakeable:
+ITEM
+item name:Yak zapper
+item description:This is a commonly found contraption hereabouts used to direct yaks in the direction that their herders wish them to go.
+item id:yak_zapper
+item countable noun prefix:a
+item visibility:invisible
+
+LOCATION
+x:-120
+y:120
+location id:bank_of_ubiquity
+location area id:ubiquity_area
+location description:This is the once-eminent Bank of Ubiquity, in it's day known for the shrewdness of it's bankers, the stoic nature of it's account holders and the thoroughness of it's money cleaners. They had to be very thorough on account of most of the money passing through the bank was generated by the local yakonomy, however the bank was brought to it's knees by revelations of it's grimy dealings with the criminal Yakuza and their black market yak dealings. A dirty business indeed.
+EXIT
+exit label:Outside
+exit destination:main_road_through_ubiquity
+exit direction hint:North
+exit id:bank_of_ubiquity_to_main_road_through_ubiquity
+exit on use action:change item visibility:bank_guard:invisible
+exit on use action:change item visibility:angry_bank_teller:invisible
+exit on use action:change item visibility:friendly_bank_teller:visible
+ITEM
+item name:Guard
+item description:The guard dead eyes you, then stink eyes you for good measure. It's likely that he wants you to leave but the implication is not clear.
+item id:bank_guard
+item is untakeable:
+item visibility:invisible
+ITEM
+item name:Bank Teller
+item description:The bank teller is fuming at the thought of money seeping from the accounts held within these walls. He's particularly angry that you are here and clearly wants you to leave.
+item id:angry_bank_teller
+item is untakeable:
+item visibility:invisible
+ITEM
+item name:Bank Teller
+item description:The bank teller is hunched over his paper work, a tiny pair of glasses balanced delicately on his nose. You notice he has the end of his little finger missing.
+item id:friendly_bank_teller
+item is untakeable:
+item talk initial phrase:idliketodepositsomemoney:I'd like to deposit some money:You approach the bank teller, coughing in advance to attract his attention. "I'd like to deposit some money." you state, aimlessly fiddling with your pockets with the intention of implying they actually contain some coin.
+item talk response to:idliketodepositsomemoney:"Why of course sir, do you have an account with us?" replies the teller.
+item talk follow up phrase to:idliketodepositsomemoney:yesido:Yes I do:"Yes I do young fellow." you say without thinking, the man behind the counter is clearly of much more advanced age than you.
+item talk response to:yesido:"Wonderful, I'm sorry I didn't recognise you. Can you confirm for me your name?".
+item talk follow up phrase to:yesido:clarenceofdavenport:Clarence of Davenport:Puffing yourself up you decide to try out a pseudonym you've been toying with "I am Clarence.". The teller cocks his head to one side, quizzically. "Of Davenport." you add for good measure.
+item talk response to:clarenceofdavenport:The teller's eyes turn wild as soon as he hears the full name - "Clarence of Davenport, the great debtor?", he grinds his gums, chomping with anxiety. You can almost see him calculating the risk to the banks reputation in quatloos. Leaning backwards whilst keeping an eagle eye on you he tugs hard on a bell string, ringing for the bank's guard who comes rushing out of a back room. "See that this man is escorted from the premises immediately!", the last word culminating in a high pitched squeak of outrage. The guard dead eyes you and you suspect you may no longer be welcome here.
+item talk action in response to:clarenceofdavenport:change item visibility:friendly_bank_teller:invisible
+item talk action in response to:clarenceofdavenport:change item visibility:angry_bank_teller:visible
+item talk action in response to:clarenceofdavenport:change item visibility:bank_guard:visible
+
+item talk follow up phrase to:yesido:barbara:Barbara Bagshaw:You take a deep breath, and coo in a soft lilting voice - "Barbara, Barbara Bagshaw".
+item talk response to:barbara:"Babs, is that really you? It's been so long, you said you'd never come back to this hokey poke town. To you it was just a place where dreams were crushed and dreamers were fools. What's brought you back, my love, my dearest, my darling?". The teller clearly recognizes the name, although you strongly suspect his eye sight may be in dire need of correction. Preferring to avoid any romantic proposals you quietly step back heading for the door. "Babs? Barbara? Pooky?"... You refrain from responding further and the teller settles back to his work, as though you had never approached him.
+
+item talk follow up phrase to:idliketodepositsomemoney:noidont:No I don't:"No I don't, is that necessary?".
+item talk response to:idliketodepositsomemoney:"I'd say so!" chuckles the teller. "Don't worry we'll soon get you sorted out, we're always happy to have a new depositor join our happy banking family.". The man grins a toothless grin. "Now what did you say your name was and how many head of yak do you own?" he asks peering over his glasses expectantly.
+item talk follow up phrase to:noidont:clarenceofdavenport
+item talk follow up phrase to:noidont:barabara
+
+item talk initial phrase:idliketowithdrawsomemoney:I'd like to withdraw some money:.
+item talk response to:idliketowithdrawsomemoney:"The audacity! The outrage, sir! Why you'd have a run on the bank with talk like that. A. Run. On. The. Bank! We can't simply let people withdraw their money after putting it in now can we? You clearly have not the slightest idea how a yakonomy works.".
+item talk follow up phrase to:idliketowithdrawsomemoney:whatdoyoumean:What do you mean?:"Pray good sir, what do you mean?" you ask, semi-seriously hoping for a reasonable answer.
+item talk response to:whatdoyoumean:"Well if you took money out, then someone else would have to put some in wouldn't they? That means we'd have to tell someone that we needed them to put extra money in the bank. Well, if we go round telling people that the bank needs their money they'll wonder what for and poof..." the teller mimes an elaborate gesture, presumably to indicate a run on the bank has occurred - " we have a run on the bank!". He settles back in his seat, picks up his pen and continues to work, as though everything has now been satisfactorily explained.
+
+item talk initial phrase:idliketoborrowsomemoney:I'd like to borrow some money:You step forward and address the teller directly "I'd like to borrow some money".
+item talk response to:idliketoborrowsomemoney:"Hahahaha". The teller chuckles through his nose before returning to his paperwork.
+item talk follow up phrase to:idliketoborrowsomemoney:wiggleyourpinky:Wiggle your pinky:You wiggle your pinky at the teller. He squints and peers, "What are you doing?". "I'm wiggling my pinky at you." you reply. "But why?" continues the delightlful conversation.
+item talk follow up phrase to:wiggleyourpinky:idontknow:I don't know:"I don't know" you state, feeling very foolish. The teller returns to work, tutting and mumbling.
+item talk follow up phrase to:wiggleyourpinky:istillhaveone:I still have one:"I still have one." you state with an air of glowering menace.
+item talk response to:istillhaveone:Suddenly the teller's mood turns sour, you sense you've struck a nerve. "Alright, I don't want any trouble. You know I paid my dues." he says to you. You pause before saying anything, hoping that he will elaborate so that you can discover exactly where this might lead. Eventually you start to reply "What are..." but before you can say any more he interrupts you - "How much do you need this time? You know you're bleeding me dry, you and your Yakuza pals." his tone is sullen but defeated. He clearly had a rough ride with these Yakuza chaps. You respond swiftly, thinking on your feet "Fourteen groats, this time.". The teller quickly counts out the money and hands it to you, mumbling and trying to focus on his papers again.
+item talk action in response to:istillhaveone:take item:fourteen_groats
+item talk action in response to:istillhaveone:change item visibility:fourteen_groats:visible
+item talk action in response to:istillhaveone:change item visibility:sullen_bank_teller:visible
+item talk action in response to:istillhaveone:change item visibility:friendly_bank_teller:invisible
+ITEM
+item name:Bank Teller
+item description:The bank teller is hunched over his paper work, a tiny pair of glasses balanced delicately on his nose. You notice he has the end of his little finger missing.
+item id:sullen_bank_teller
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:idliketodepositsomemoney:I'd like to deposit some money:You approach the bank teller, coughing in advance to attract his attention. "I'd like to deposit some money." you state, aimlessly fiddling with your pockets with the intention of implying they actually contain some coin.
+item talk response to:idliketodepositsomemoney:"Why of course sir, do you have an account with us?" replies the teller.
+item talk follow up phrase to:idliketodepositsomemoney:yesido:Yes I do:"Yes I do young fellow." you say without thinking, the man behind the counter is clearly of much more advanced age than you.
+item talk response to:yesido:"Wonderful, I'm sorry I didn't recognise you. Can you confirm for me your name?".
+item talk follow up phrase to:yesido:clarenceofdavenport:Clarence of Davenport:Puffing yourself up you decide to try out a pseudonym you've been toying with "I am Clarence.". The teller cocks his head to one side, quizzically. "Of Davenport." you add for good measure.
+item talk response to:clarenceofdavenport:The teller's eyes turn wild as soon as he hears the full name - "Clarence of Davenport, the great debtor?", he grinds his gums, chomping with anxiety. You can almost see him calculating the risk to the banks reputation in quatloos. After a brief moment of consideration he snorts in disbelief, clearly he has not fallen for your rouse. He returns to shuffling his papers around his oversized desk.
+
+item talk follow up phrase to:yesido:barbara:Barbara Bagshaw:You take a deep breath, and coo in a soft lilting voice - "Barbara, Barbara Bagshaw".
+item talk response to:barbara:"Babs, is that really you? It's been so long, you said you'd never come back to this hokey poke town. To you it was just a place where dreams were crushed and dreamers were fools. What's brought you back, my love, my dearest, my darling?". The teller clearly recognizes the name, although you strongly suspect his eye sight may be in dire need of correction. Preferring to avoid any romantic proposals you quietly step back heading for the door. "Babs? Barbara? Pooky?"... You refrain from responding further and the teller settles back to his work, as though you had never approached him.
+
+item talk follow up phrase to:idliketodepositsomemoney:noidont:No I don't:"No I don't, is that necessary?".
+item talk response to:idliketodepositsomemoney:"I'd say so!" chuckles the teller. "Don't worry we'll soon get you sorted out, we're always happy to have a new depositor join our happy banking family.". The man grins a toothless grin. "Now what did you say your name was and how many head of yak do you own?" he asks peering over his glasses expectantly.
+item talk follow up phrase to:noidont:clarenceofdavenport
+item talk follow up phrase to:noidont:barabara
+
+item talk initial phrase:idliketowithdrawsomemoney:I'd like to withdraw some money:.
+item talk response to:idliketowithdrawsomemoney:"The audacity! The outrage, sir! Why you'd have a run on the bank with talk like that. A. Run. On. The. Bank! We can't simply let people withdraw their money after putting it in now can we? You clearly have not the slightest idea how a yakonomy works.".
+item talk follow up phrase to:idliketowithdrawsomemoney:whatdoyoumean:What do you mean?:"Pray good sir, what do you mean?" you ask, semi-seriously hoping for a reasonable answer.
+item talk response to:whatdoyoumean:"Well if you took money out, then someone else would have to put some in wouldn't they? That means we'd have to tell someone that we needed them to put extra money in the bank. Well, if we go round telling people that the bank needs their money they'll wonder what for and poof..." the teller mimes an elaborate gesture, presumably to indicate a run on the bank has occurred - " we have a run on the bank!". He settles back in his seat, picks up his pen and continues to work, as though everything has now been satisfactorily explained.
+
+ITEM
+item name:Fourteen groats
+item description:A small pile of coins. Fourteen of them, each one a groat.
+item id:fourteen_groats
+item visibility:invisible
+
+LOCATION
+x:-120
+y:000
+location id:yak_parlour
+location area id:ubiquity_area
+location description:A hairy and sweaty place, a confusing melange of farm and hairdresser. There are several seated men and women, waiting, flicking through magazines with the latest hair styles in, idly chattering away whilst their charges, their yaks, are being tended to by a tall handsome man who keeps sweeping his long blonde fringe back over his head in an exaggerated motion. He's already starting to annoy you. This is a yak parlour, which explains everything.
+EXIT
+exit label:Outside
+exit destination:main_road_through_ubiquity
+exit direction hint:South
+exit id:yak_parlour_to_main_road_through_ubiquity
+ITEM
+item name:Larry
+item description:Larry the yak shaver, a popular man in Ubiquity due to his flair for turning a scruffy, straggly yak mullet into a buoyant bouffant, a coiffured comb over, a perfect perm. In any other town this man's talent would have been wasted, however since the whole socio-economic structure of Ubiquity thrives on the yak trade, the yakonomy, he's able to engage in a thriving business. One of the few left hereabouts.
+item id:larry_the_yak_shaver_without_yak
+item mid sentence cased name:Larry
+item is proper noun:
+item is untakeable:
+item talk initial phrase:howmuchtoshavemyyak:How much to shave my yak?:"How much to shave my yak?" you ask Larry.
+item talk response to:howmuchtoshavemyyak:"Ten guineas, but you'll need an actual yak, I will not cut a hair on your head, I will not dress it, trim it, pluck it or prune it and if you try to pass off a particularly hairy uncle I will know!" replies Larry. He doesn't look up at all, he's so concentrated on his work.
+item talk initial phrase:wherecanifindthewitch:Where can I find the witch?:"Where can I find the witch?" addressing Larry, whilst simultaneously raising one eyebrow and looking meaningful.
+item talk response to:wherecanifindthewitch:He doesn't look up from the yak he's working on, you don't think he heard you.
+item talk follow up phrase to:wherecanifindthewitch:excusemewheresthewitch:Excuse me, where's the witch?:With a quick leading 'Ahem' you state "Excuse me, I'm looking for the witch Bella, do you know where I can find her?".
+item talk response to:excusemewheresthewitch:The room goes silent, Larry pauses, looking up and turns to you. "I'm busy, can't you see all these people are waiting for their darlings to be groomed?". He turns back to his work.
+ITEM
+item name:Larry
+item description:Larry the yak shaver, a popular man in Ubiquity due to his flair for turning a scruffy, straggly yak mullet into a buoyant bouffant, a coiffured comb over, a perfect perm. In any other town this man's talent would have been wasted, however since the whole socio-economic structure of Ubiquity thrives on the yak trade, the yakonomy, he's able to engage in a thriving business. One of the few left hereabouts.
+item id:larry_the_yak_shaver
+item mid sentence cased name:Larry
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:howmuchtoshavemyyak:How much to shave my yak?:"How much to shave my yak?" you ask Larry.
+item talk response to:howmuchtoshavemyyak:"Ten guineas usually but this yak looks to be in desperate need. Plus what wonderful bone structure he has. Oh yes, I could do wonderful things with this one." Larry starts muttering to himself, you catch the occasional hair dressing term "perfect length for an A-line bob", "perhaps some gentle feathering at the ends" and some unexpected nautical ones "better give this one a wide berth", "not sure about the cut of _his_ jib". You are slightly mesmerised and have to force yourself to snap back to reality.
+item talk follow up phrase to:howmuchtoshavemyyak:soyoullcuthimforfree:So you'll cut him for free?:"So you'll cut him for free?" you ask.
+item talk response to:soyoullcuthimforfree:"Of course, such a specimen, such an opportunity, I'd be honoured" replies Larry. The yak looks around the parlour, slowly chewing and contemplating the meaning of life.
+item talk follow up phrase to:soyoullcuthimforfree:wherecanifindthewitch:Where can I find the witch?:"Great! Whilst you're at it I don't suppose you know where I can find the witch Bella?". The room goes quiet, there is some foot shuffling and much staring at the floor. You glance about but no one will match your gaze.
+item talk response to:wherecanifindthewitch:"Indeed I do. You can find her in her castle fortress a small way outside of the town." replies Larry. His voice turns to a hushed whisper, "Go through The Rickets, you'll find the gate there. You'll need a key to the gate, have mine.". He passes you a small brass key and continues "Do what you can for us, the witch queen has caused us great harm and suffering. She takes our precious yak milk, yak fur and yak bread and leaves us with little. But her spies are everywhere - be careful!".
+item talk action in response to:wherecanifindthewitch:change item visibility:brass_key:visible
+item talk action in response to:wherecanifindthewitch:take item:brass_key
+ITEM
+item name:yak
+item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid. It sprays with a lot more fluid than an accidental spraying might generate, you half suspect it did it on purpose.
+item id:grumpy_yak_at_yak_parlour
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+ITEM
+item name:brass key
+item description:It's a key made of brass, although it has faded a little from the natural wear of being in someone's pocket for many years. This is Larry the yak shavers key to The Rickets gate exit to Ubiquity.
+item id:brass_key
+item countable noun prefix:a
+item visibility:invisible
+
+LOCATION
 x:300
 y:240
 location id:clocktower
 location area id:town_area
-location description:You stand before a mighty clock tower. The clock goes TICK! South is blocked by a barricade.
+location description:You stand before a mighty clock tower. The clock goes TICK! South is blocked by a barricade. There is a path amongst the rubble of several buildings to the east leading to what must be the town hall.
 EXIT
 exit label:West
 exit destination:cobbledroad
@@ -987,6 +1919,11 @@ exit destination:castle_ruins
 exit direction hint:North
 exit id:clocktower_to_castle_ruins
 exit is not visible:
+EXIT
+exit label:East
+exit destination:eastofclocktower
+exit direction hint:East
+exit id:clocktower_to_eastofclocktower
 ITEM
 item name:Oubliette
 item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience, holding a woven basket. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself in front of her.
@@ -1000,6 +1937,82 @@ item talk response to:iseeyouhaveyourbasket:Oubliette nods. "There is a clearing
 item talk action in response to:iseeyouhaveyourbasket:change item visibility:oubliette_getting_basket:invisible
 item talk action in response to:iseeyouhaveyourbasket:change item visibility:oubliette_outside_the_ruins1:visible
 item talk action in response to:iseeyouhaveyourbasket:change exit visibility:clocktower_to_castle_ruins:visible
+ITEM
+item name:Fire shield
+item description:It is a large contraption, mostly wood and metal, held upright on a wheeled cart so that it will protect whatever is behind it from fire attacks. There are numerous pitted scorch marks on the front plate showing it has seen plenty of use. It has come to a rest, the break handle now in the engaged position with the key still in place.
+item id:fire_shield_clock_tower
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine action is not repeatable:
+item examine message:The shield has rolled here from outside the town hall. You push up against it, heaving to try to budge it and ever so slightly it starts to move again. You are able to get up a little momentum before having to let it go it's own way, weaving through the streets heading towards the north barricade.
+item on examine action:change item visibility:fire_shield_clock_tower:invisible
+item on examine action:change item visibility:fire_shield_north_barricade:visible
+item on examine action:change item visibility:men_of_the_towns_watch_north_barricade_awaiting_fire_shield:invisible
+item on examine action:change item visibility:men_of_the_towns_watch_north_barricade_awaiting_fire_shield2:visible
+
+LOCATION
+x:360
+y:240
+location id:eastofclocktower
+location area id:town_area
+location description:Picking your way through the remains of two ruined buildings you can see a clock tower to the west and further to the east is a large building that looks like it might be the town hall.
+EXIT
+exit label:West
+exit destination:clocktower
+exit direction hint:West
+exit id:eastofclocktower_to_clocktower
+EXIT
+exit label:East
+exit destination:outsidetownhall
+exit direction hint:East
+exit id:eastofclocktower_to_outsidetownhall
+
+LOCATION
+x:420
+y:360
+location id:outsidetownhall
+location area id:town_area
+location description:You are outside the town hall. The large wooden double doors in front of you are emblazoned with the town crest - two white dragons perched in a tree. It has been boarded up to protect it from the attacks, no doors or windows are visible.
+EXIT
+exit label:West
+exit destination:eastofclocktower
+exit direction hint:West
+exit id:outsidetownhall_to_eastofclocktower
+ITEM
+item name:Fire shield
+item description:It is a large contraption, mostly wood and metal, held upright on a wheeled cart so that it will protect whatever is behind it from fire attacks. There are numerous pitted scorch marks on the front plate showing it has seen plenty of use. It is currently immobile as it is chained and locked to a metal ring buried in the ground.
+item id:fire_shield
+item countable noun prefix:a
+item is untakeable:
+item can be used with:fire_shield_key
+item successful use message:You place the key in the lock and turn it. A click and the latch springs open and the chain drops away leaving the fire shield free.
+item use action:change item visibility:fire_shield:invisible
+item use action:change item visibility:fire_shield_unlocked:visible
+ITEM
+item name:Fire shield
+item description:It is a large contraption, mostly wood and metal, held upright on a wheeled cart so that it will protect whatever is behind it from fire attacks. There are numerous pitted scorch marks on the front plate showing it has seen plenty of use.
+item id:fire_shield_unlocked
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item examine action is not repeatable:
+item examine message:Studying the workings of the shield you notice that the wheels are controlled by a basic break mechanism that looks to be disengaged by pulling a handle emerging from the mess of axles and springs.
+item on examine action:change item visibility:fire_shield_break_handle:visible
+ITEM
+item name:Break handle
+item description:This is a metal bar which controls the breaks on the fire shield. It is currently engaged so that the machine will not move and there is a slot where a key might fit, an extra precaution against accidental use.
+item id:fire_shield_break_handle
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:fire_shield_key
+item successful use message:You place the key in the slot at the end of the handle which becomes moveable as you do so. Lifting the handle up and guiding it slightly out of the resting position you release the breaks and the machine starts to roll. Too late you realise it is on a slight slope, enough to cause the weight of the shield to propel it, slowly at first, away from the town hall. You fumble with the key in the break handle as you trot alongside it, attempting to engage the break once again but your fingers miss their target several times and the shield rolls off into the town without you. You hear a few cries of surprise as it disappears around the bend of the road, heading towards the clock tower.
+item use action:change item visibility:fire_shield_unlocked:invisible
+item use action:change item visibility:fire_shield_clock_tower:visible
+item use action:change item visibility:fire_shield_break_handle:invisible
+item use action:destroy item:fire_shield_key
+item use action:increment score:
 
 LOCATION
 x:320

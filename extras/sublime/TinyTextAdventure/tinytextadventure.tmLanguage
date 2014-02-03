@@ -423,7 +423,7 @@
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>string</string>
+					<string>variable.parameter</string>
 				</dict>
 				<key>5</key>
 				<dict>
