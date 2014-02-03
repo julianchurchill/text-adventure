@@ -25,6 +25,9 @@ location area name:Western Woods
 LOCATION AREA
 location area id:ubiquity_area
 location area name:Ubiquity
+LOCATION AREA
+location area id:misty_downs_area
+location area name:Misty Downs
 
 LOCATION
 x:300
@@ -1626,13 +1629,64 @@ LOCATION
 x:-360
 y:060
 location id:misty_downs
-location area id:ubiquity_area
+location area id:misty_downs_area
 location description:You stand shrouded in mist, the ground beneath your feet is soft and marshy. In the distance something moves. There is an alleyway nearby with an open gate inviting you in out of the mist.
 EXIT
 exit label:Rusty gate
 exit destination:rotten_alley_2
 exit direction hint:East
-exit id:misty_down_to_srotten_alley_2
+exit id:misty_downs_to_rotten_alley_2
+EXIT
+exit label:Roughly west
+exit destination:misty_downs_stream
+exit direction hint:West
+exit id:misty_downs_to_misty_downs_stream
+
+LOCATION
+x:-420
+y:060
+location id:misty_downs_stream
+location area id:misty_downs_area
+location description:The mist around you laps at your heels, cloaking your movement as you step cautiously onward. The ground tilts downwards into a shallow nook and it becomes ever damper at your feet until you standing in a stream with water trickling over your boots. The other side of the stream is too craggy and strewn with precariously balanced rocks to be able to safely navigate it.
+EXIT
+exit label:Higher ground
+exit destination:misty_downs
+exit direction hint:East
+exit id:misty_downs_stream_to_misty_downs
+EXIT
+exit label:Downstream
+exit destination:misty_downs_downstream
+exit direction hint:North
+exit id:misty_downs_stream_to_misty_downs_downstream
+
+LOCATION
+x:-420
+y:000
+location id:misty_downs_downstream
+location area id:misty_downs_area
+location description:The mist seems to have no end. The stream continues winding it's way between rocks and over pebbles, the dense air settling momentarily on the waters surface before lifting and floating further on. A little further ahead there is a gap in the scree lining the stream. You think you might be able to scramble up.
+EXIT
+exit label:Upstream
+exit destination:misty_downs_stream
+exit direction hint:South
+exit id:misty_downs_downstream_to_misty_downs_stream
+EXIT
+exit label:Gap in the scree
+exit destination:misty_downs_barrow
+exit direction hint:West
+exit id:misty_downs_downstream_to_misty_downs_barrow
+
+LOCATION
+x:-480
+y:000
+location id:misty_downs_barrow
+location area id:misty_downs_area
+location description:As you scramble up through the scree, feet slipping occasionally, the mist starts to clear and you see a what looks like a barrow sitting on top of the hill. The scree is cleared around it, some grass poking through the otherwise barren land around the barrow. It has been formed with several massive boulders and two giant slabs of rock creating a roof to the enclosure.
+EXIT
+exit label:Gap in the scree
+exit destination:misty_downs_downstream
+exit direction hint:East
+exit id:misty_downs_barrow_to_misty_downs_downstream
 
 LOCATION
 x:-180

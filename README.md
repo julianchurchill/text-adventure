@@ -82,7 +82,7 @@ Story - TTA2
   - DONE Go to the yak farm outside town and use the 'yak zapper' to cow poke it to Larry.
   - DONE Ask him to shave it, you can then talk to him to find out the town gossip.
   - DONE He tells you about the witch and how she controls the town and takes all their yak milk, yak fur, yak bread etc... He tells you where to find her - in a castle over the hill.
-- You go to the castle but cannot enter as it is protected by powerful magic. You return to the town and visit the soothsayer (an old lady) who gives you a variety of terrible fortunes - ["You're going to die horrrrriiblyy, probably in a very embarrassing way!", "Nice to meet you young man, I've not seen you before - 'you roll your eyes'", "What strong legs and wide child bearing hips you have, you will bear many children for your husband!"].
+- You go to the castle through the misty downs but cannot enter as it is protected by powerful magic. You return to the town and visit the soothsayer (an old lady) who gives you a variety of terrible fortunes - ["You're going to die horrrrriiblyy, probably in a very embarrassing way!", "Nice to meet you young man, I've not seen you before - 'you roll your eyes'", "What strong legs and wide child bearing hips you have, you will bear many children for your husband!"].
   - You must find her some glasses then she sees you (turns out she's blind as a bat without glasses) gives you the real fortune - "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it."
 - An ancient temple hidden under the lake - a temple to old gods with traps and puzzles, entrance puzzle run, a la Indiana Jones:
   - First room, broken bridge, examine stalactites to reveal bits you could hook a rope on, then use whip with them to swing over broken bridge
@@ -98,6 +98,7 @@ Story - TTA2
 - Magical robots - perhaps trapped water imps - agents for either side, initially created by the witch to serve her, wills too strong for her to control, some changed sides. Self naming, Least Chance of Failure, Random Acts of Kindness, Vengeful Beyond Death, Penchant for Foolish Bravery
 - A portal to a dark plane (deep inside the temple) with demon creatures you must defeat some how
 - Bellas HQ - a castle in a forest on the other side of the river.
+  - As you cross the Misty Downs to get to the castle a wight from a barrow which you could not earlier get into is awoken. You must defeat it to proceed.
   - Final battle should be in several locations, you must beat the witch in one room in a certain way, then she flees and you follow. Repeat 3 times, different rooms and different ways to beat her.
   - Perhaps you can fail to beat the witch in a room if you do the wrong thing. Consequence is a reset of the combat sequence to the first room.
 - Sub quests
