@@ -1681,12 +1681,29 @@ x:-480
 y:000
 location id:misty_downs_barrow
 location area id:misty_downs_area
-location description:As you scramble up through the scree, feet slipping occasionally, the mist starts to clear and you see a what looks like a barrow sitting on top of the hill. The scree is cleared around it, some grass poking through the otherwise barren land around the barrow. It has been formed with several massive boulders and two giant slabs of rock creating a roof to the enclosure.
+location description:As you scramble up through the scree, feet slipping occasionally, the mist starts to clear and you see what looks like a barrow sitting in a clearing on the slope. The scree is cleared around it, some grass poking through the otherwise barren land. The barrow itself has been formed with several massive boulders and two giant slabs of rock creating a roof to the enclosure. The wind softly whistles through gaps in the stone blowing an occasional whiff of stale air in your direction. A gentle tapping sound seems to emanate from somewhere below your feet, which you find unnerving to say the least. There is a small path which climbs slightly higher up through the rocks behind the barrow.
 EXIT
 exit label:Gap in the scree
 exit destination:misty_downs_downstream
 exit direction hint:East
 exit id:misty_downs_barrow_to_misty_downs_downstream
+EXIT
+exit label:Path behind the barrow
+exit destination:misty_downs_path_behind_barrow
+exit direction hint:North
+exit id:misty_downs_barrow_to_misty_downs_path_behind_barrow
+
+LOCATION
+x:-480
+y:-060
+location id:misty_downs_path_behind_barrow
+location area id:misty_downs_area
+location description:The path on which you walk is unstable and rough, although well trodden. Below you can see the smooth long slabs of stone which cover the barrow beneath and further up ahead the path winds its way between increasingly large boulders. The mist still shrouds the landscape so you cannot see too far ahead but you sense from the sound of the wind and the flow of air up here that there is a something large ahead.
+EXIT
+exit label:Path to the barrow
+exit destination:misty_downs_barrow
+exit direction hint:South
+exit id:misty_downs_path_behind_barrow_to_misty_downs_barrow
 
 LOCATION
 x:-180
