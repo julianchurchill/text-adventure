@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 VAGRANTFILE_API_VERSION = "2"
-VM_HOSTNAME = "android-dev-environment"
+VM_HOSTNAME = "Tiny-Text-Adventure-Android-dev-environment"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
