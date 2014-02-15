@@ -5,6 +5,11 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 
 Don't forget to drive the development by producing value - the value is game content and this should drive the development of functionality to support it.
 
+Vagrant Development Environment
+===============================
+
+This project is supplied with a vagrant file to initialise a virtual machine using [Vagrant](http://www.vagrantup.com/) that can be used to build the application and to run it in an android emulator. This is fairly untested so use at your own risk. The vagrant file is based upon work from https://github.com/rickfarmer/android-vm
+
 Building
 ========
 
