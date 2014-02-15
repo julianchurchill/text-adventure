@@ -10,6 +10,10 @@ Vagrant Development Environment
 
 This project is supplied with a vagrant file to initialise a virtual machine using [Vagrant](http://www.vagrantup.com/) that can be used to build the application and to run it in an android emulator. This is fairly untested so use at your own risk. The vagrant file is based upon work from https://github.com/rickfarmer/android-vm
 
+Make sure you have installed [Vagrant](http://www.vagrantup.com/) and at least [VirtualBox](https://www.virtualbox.org/) to allow virtual machines to be run. Then in the root directory of this project run 'vagrant up'. You will have to wait a jolly long time the first run through but then you will be able to log in to a graphical Ubuntu and build the project. All files in the current directory are shared as /vagrant in the vm. Login username and password are both 'vagrant'.
+
+Be sure _not_ to check in through git _within_ the vm - the username will be vagrant and won't work! Do git operations through the host OS, it also a good idea to use the host OS for file editing as it will be quicker. Just use the VM for building and running in the emulator.
+
 Building
 ========
 
