@@ -26,7 +26,11 @@ Emulator
 
 To run the emulator - run 'android list avd' to get all the configured virtual devices, then 'emulator @<device-name>' to run the chosen device in the emulator.
 
+To install the built app run 'adb install -r bin/main/TextAdventure-debug.apk'.
+
 Save files are stored on the emulated device under /data/data/com.chewielouie.textadventure/files. Run 'adb shell' to get access to the file system.
+
+Run 'adb logcat' to see the system log tailed to your terminal.
 
 Backlog
 =======
@@ -121,6 +125,7 @@ Story - TTA2
   - DONE Pocket lint and glowing embers - "There's not really enough of it to start a fire."
   - DONE Stick and glowing embers - "You can try to beat the embers out but the damage has already been done."
   - DONE Stick and the fell beast - "Really? Do you want to fight the beast or play with it?"
+  - Fiery torch and jar of paraffin - should explode or some comedy outcome
   - Fishing rod and the fisherman
   - Chainsaw and fisherman
   - Chainsaw and any of the people
@@ -130,7 +135,9 @@ Story - TTA2
   - DONE Spiky-toothed goober (large vicious fish)
   - DONE Portcullis
   - DONE Barrelling goon (big fur ball, shooting about like pinball)
-  - Fell beast (hairless dog with fiery eyes)
+  - DONE Fell beast (hairless dog with fiery eyes)
+  - DONE Muck selling crone
+  - DONE barricade for first entrance to Perpetuity
   - Second Fell beast for the barricade attack
   - Mushrooms
   - Hearth for Cabal's house

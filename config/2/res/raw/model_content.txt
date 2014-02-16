@@ -106,7 +106,7 @@ x:300
 y:360
 location id:mainstreettown
 location area id:town_area
-location description:You are on the main street of the town. There is a clock tower further to the north but a large barricade of furniture, barrels and hay carts blocks your way. The only way to continue is through Merchants Lane and perhaps you can circle around the barricade. Besides the jumbled barrier there is further evidence of a large disturbance all around - the walls of the nearby buildings appear to have deep gouged claw marks and a number of the barrels have been rendered to splinters.
+location description:You are on the main street of the town. There is a clock tower further to the north but a large barricade of furniture, barrels and hay carts blocks your way. The only way to continue is through Merchants Lane and perhaps you can circle around the barricade. Besides the jumbled barrier there is further evidence of a large disturbance all around - the walls of the nearby buildings appear to have deep gouged claw marks and a number of the barrels have been rendered to splinters.<div><img src="town_barricade.png"/></div>
 EXIT
 exit label:North
 exit destination:clocktower
@@ -595,6 +595,7 @@ item use action:increment score:
 item use action:change item visibility:cabal_jambon_awaiting_evidence:invisible
 item use action:change item visibility:cabal_jambon_received_evidence:visible
 item use action:change item visibility:muck_seller:visible
+item use action:change location description:morecobbledroad:You are standing on a long cobbled road that undulates between the small houses of this town. It continues west and back to the east. Further up ahead you see a gatehouse that guards one of the many entrances to the town.<div align="center"><img src="crone.png"/></div>
 item use action:change exit visibility:westgatehouse_to_gatehouse_internal:visible
 ITEM
 item name:Cabal Jambon
