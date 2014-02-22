@@ -46,6 +46,9 @@ sudo aptitude install -y --without-recommends ubuntu-desktop >/dev/null 2>&1
 #echo "Installing Ubuntu KDE Desktop..."
 #sudo apt-get install -y kubuntu-desktop >/dev/null 2>&1
 
+echo "Installing ant..."
+sudo apt-get install ant
+
 echo "Installing Android ADT Bundle with SDK and Eclipse..."
 cd /tmp
 sudo curl -O http://dl.google.com/android/adt/adt-bundle-linux-x86_64-20130729.zip
