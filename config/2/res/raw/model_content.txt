@@ -1699,12 +1699,12 @@ item description:The barrow is made of lots of stones, placed carefully together
 item id:barrow_1
 item is proper noun:
 item is untakeable:
-item examine message:The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. Its probably a bear.
+item examine message:The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. Its probably a bear. You feel anxious about examining any further.
 item on examine action:change item visibility:barrow_1:invisible
 item on examine action:change item visibility:barrow_2:visible
 ITEM
 item name:Barrow
-item description:The barrow is made of lots of stones, placed carefully together to form a roofed enclosure. You've heard that these ancient structures were used to bury high ranking members of the hill dwelling clans but that practice went out of favour thousands of years ago. The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. Listening closer still you think you can make out some words, almost rhythmic utterings, whispered and groaning, perhaps something like "I'm in the mood for dancing"... no that can't be right. You hear it again, slightly louder this time "I'm in the mood for dancing, necromancing, doo doo doo, do doo, do doo, doo doo.". This place gives you the willies.
+item description:The barrow is made of lots of stones, placed carefully together to form a roofed enclosure. You've heard that these ancient structures were used to bury high ranking members of the hill dwelling clans but that practice went out of favour thousands of years ago. The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. Listening closer still you think you can make out some words, almost rhythmic utterings, whispered and groaning, perhaps something like "I'm in the mood for dancing"... no that can't be right. You hear it again, slightly louder this time "I'm in the mood for dancing, necromancing, doo doo doo, do doo, do doo, doo doo.". This place gives you the willies, far too much doo doo.
 item id:barrow_2
 item is proper noun:
 item is untakeable:
