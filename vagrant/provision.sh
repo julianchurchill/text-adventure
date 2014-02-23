@@ -71,10 +71,10 @@ sudo ln -s /usr/local/android/sdk/tools/android /usr/bin/android
 sudo ln -s /usr/local/android/sdk/platform-tools/adb /usr/bin/adb
 
 echo "Updating ANDROID_HOME..."
-cd ~/
+cd /home/vagrant/
 cat << End >> .profile
 export ANDROID_HOME="/usr/local/android/sdk"
-export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+export PATH=\$ANDROID_HOME/tools:\$ANDROID_HOME/platform-tools:\$PATH
 End
 
 
