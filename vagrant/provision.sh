@@ -77,6 +77,11 @@ export ANDROID_HOME="/usr/local/android/sdk"
 export PATH=\$ANDROID_HOME/tools:\$ANDROID_HOME/platform-tools:\$PATH
 End
 
+echo "Setting X-windows keyboard layout to GB in .profile - probably the wrong place!"
+cd /home/vagrant/
+cat << End >> .profile
+setxkbmap gb
+End
 
 echo "Adding USB device driver information..."
 echo "For more detail see http://developer.android.com/tools/device.html"
