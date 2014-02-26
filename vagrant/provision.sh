@@ -83,6 +83,9 @@ cat << End >> .profile
 setxkbmap gb
 End
 
+echo "Installing missing monospace terminal fonts from ttf-ubuntu-font-family..."
+sudo apt-get install ttf-ubuntu-font-family >/dev/null 2>&1
+
 echo "Adding USB device driver information..."
 echo "For more detail see http://developer.android.com/tools/device.html"
 
