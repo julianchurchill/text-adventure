@@ -147,10 +147,13 @@ Story - TTA2
   - Bank of Ubiquity
   - Scabby Mary the soothsayer
   - Frank's Tool Shed
+  - Barrow for the barrow wight to live in
+  - Barry Wight
 
 Features
 
 - [UI] New icon for TTA2
+- [UI] Vary the images for buttons, i.e. on looking at a large inventory all the buttons are the same, would look nice if they varied at bit
 - [FEATURE] Map - extras
     - Make better masks and a better map! Charlies on the case.
 - [FEATURE] Story log - a record of all the story text you've seen so far - i.e. the 'text on first entry to location'. Possibly also the conversation text? How much of this to store, room descriptions, item activations?
