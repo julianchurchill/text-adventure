@@ -1752,30 +1752,30 @@ exit direction hint:South
 exit id:scabby_mary_the_soothsayer_to_the_rickets
 ITEM
 item name:Scabby Mary
-item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her.
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her but also that she is quite short sighted. And probably long sighted too. You'd be surprised if she could tell you from an armchair so you wonder how she might be able to give a useful fortune at all.
 item id:scabby_mary1
 item is proper noun:
 item is untakeable:
 item can be used with:glasses_of_clear_vision
-item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears, rest the arms on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
+item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears and rest them on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
 item use action:change item visibility:scabby_mary1:invisible
 item use action:change item visibility:scabby_mary2:invisible
 item use action:change item visibility:scabby_mary3:invisible
 item use action:change item visibility:scabby_mary_with_glasses:visible
 item use action:increment score:
 item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
-item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "You're going to die horrrrriiblyy, probably in a very embarrassing way!", you start back with this revelation - "What, are you sure?" you stutter. "Sure about what?" says Mary. "The horrible dying, the embarrassing nature?". "Well nothing's for certain my dear.". She is quite noncommittal and you sense that is all the sense you will get out of her.
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "You're going to die horrrrriiblyy, probably in a very embarrassing way!", you start back with this revelation - "What, are you sure?" you stutter. "Sure about what?" says Mary. "The horrible dying, the embarrassing nature? But take heart fledgling, nothing yet happened is truly for certain.". She is quite noncommittal and you sense that is all the sense you will get out of her.
 item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary1:invisible
 item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary2:visible
 ITEM
 item name:Scabby Mary
-item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her.
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her but also that she is quite short sighted. And probably long sighted too. You'd be surprised if she could tell you from an armchair so you wonder how she might be able to give a useful fortune at all.
 item id:scabby_mary2
 item is proper noun:
 item is untakeable:
 item visibility:invisible
 item can be used with:glasses_of_clear_vision
-item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears, rest the arms on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
+item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears rest them on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
 item use action:change item visibility:scabby_mary1:invisible
 item use action:change item visibility:scabby_mary2:invisible
 item use action:change item visibility:scabby_mary3:invisible
@@ -1787,7 +1787,7 @@ item talk action in response to:doyouhaveafortuneforme:change item visibility:sc
 item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary3:visible
 ITEM
 item name:Scabby Mary
-item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her.
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her but also that she is quite short sighted. And probably long sighted too. You'd be surprised if she could tell you from an armchair so you wonder how she might be able to give a useful fortune at all.
 item id:scabby_mary3
 item is proper noun:
 item is untakeable:
@@ -1800,7 +1800,7 @@ item use action:change item visibility:scabby_mary3:invisible
 item use action:change item visibility:scabby_mary_with_glasses:visible
 item use action:increment score:
 item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
-item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "I've not seen you before young man." begins Mary. You can't stop yourself from rolling your eyes, she's clearly batty as a fruit cake. "The ball tells me you will bear many children for your husband!". You consider asking her what that means and pointing out the obvious flaws in her prediction but quickly discard the idea.
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "I've not seen you before young man however..." begins Mary. You can't stop yourself from rolling your eyes, she's clearly batty as a fruit cake. "The ball tells me you will bear many children for your husband!". You consider asking her what that means and pointing out the obvious flaws in her prediction but quickly discard the idea.
 item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary3:invisible
 item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary1:visible
 ITEM
@@ -1814,7 +1814,7 @@ item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"D
 item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it.". Well that's certainly mysterious you think to yourself, exactly the sort of thing you'd expect from a soothsayer.
 ITEM
 item name:Glasses of Clear Vision
-item description:These are the legendary Glasses of Clear Vision - famed for their ability to bring better vision to those with quite bad vision. Amongst the stories told they are supposed to have restored the vision of a monk who once got some grit in his eye, the sight of a drunkard after he had sobered up and the full ocular power of a man who had married an unseemly wench during a show of independence to those who were with holding from him his inheritance.
+item description:These are the legendary Glasses of Clear Vision - famed for their ability to bring better vision to those with quite bad vision. Amongst the stories told of them they are supposed to have restored the vision of a monk who once got some grit in his eye, the sight of a drunkard after he had sobered up and the full ocular power of a man who had married an unseemly wench during a show of independence to those who were withholding from him his inheritance.
 item id:glasses_of_clear_vision
 item countable noun prefix:some
 item visibility:invisible
