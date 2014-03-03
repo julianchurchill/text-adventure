@@ -148,7 +148,7 @@ Story - TTA2
   - Scabby Mary the soothsayer
   - Frank's Tool Shed
   - Barrow for the barrow wight to live in
-  - Barry Wight
+  - Barry Wight - the Nec-romancer
 
 Features
 

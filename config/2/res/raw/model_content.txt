@@ -1721,6 +1721,23 @@ exit label:Path to the barrow
 exit destination:misty_downs_barrow
 exit direction hint:South
 exit id:misty_downs_path_behind_barrow_to_misty_downs_barrow
+EXIT
+exit label:Onwards and upwards
+exit destination:front_of_the_castle
+exit direction hint:North
+exit id:misty_downs_path_behind_barrow_to_front_of_castle
+
+LOCATION
+x:-480
+y:-120
+location id:front_of_the_castle
+location area id:misty_downs_area
+location description:You stand at the top of a slope which descends into mist. The wet air lingers about your feet, eddies forming as you move. The plateau on which you find yourself is desolate save for a few dead trees marking the edge of a path leading to a rotten yet imposing stone gate. The iron work which would have formed the gate itself is missing but leaves the surrounding stone supports as an appropriate frame for what lies further on - a black, dead castle. This must be the castle that Larry the Yak Shaver told you about, this must be the Witch Bella's stronghold. Shadows seem to dance playfully over the cold stone turrets and vanish into windows and doorways to reappear from another nearby but you cannot tell if it is simply the reflected movement of the seemingly permanent clouds overhead, looming angrily and with menace.<newline>Stepping closer to the gate you feel the air tighten about you, almost pushing you back. You persist but the more you push forward the harder you are repelled, the feeling is both bizarre and uncomfortable, as though being grasped by mighty fluid hands. There is no way forward here. You sense that powerful forces are at work and you will have to fight them with something of equal measure.
+EXIT
+exit label:Down into the mist
+exit destination:misty_downs_path_behind_barrow
+exit direction hint:South
+exit id:front_of_the_castle_to_misty_downs_path_behind_barrow
 
 LOCATION
 x:-180
