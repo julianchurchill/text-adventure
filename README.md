@@ -151,9 +151,16 @@ Story - TTA2
   - Frank's Tool Shed
   - Barrow for the barrow wight to live in
   - Barry Wight - the Nec-romancer
+- Add slightly animated images (3-5 frames)
+  - A mouse scampering around the base of the barricade
+  - Juddering hour hand on the clock tower
+  - An unshaved yak with hair blowing in the wind
 
 Features
 
+- [DEV] A cheat sheet solution - perhaps in a text file, in plain English.
+- [DEV] Waypoints to allow the player to skip ahead through the story, only for debug builds, through extra menu items. Perhaps use multiple save files at different states and simply load them.
+- [FEATURE] Hints?  Possibly based on cheat sheet progress?
 - [UI] New icon for TTA2
 - [UI] Vary the images for buttons, i.e. on looking at a large inventory all the buttons are the same, would look nice if they varied at bit
 - [FEATURE] Map - extras
