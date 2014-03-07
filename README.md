@@ -37,6 +37,7 @@ Backlog
 
 Technical Tasks
 
+- Protect all logging with 'isDebugMode()' to prevent hitting the filesystem when running release
 - Reduce the height of the buttons to better fit more in without squishing the text view down too much
 - Add cucumber test run as part of build, see https://github.com/cucumber/cucumber-jvm and config/common/test/CucumberStepDefs.java and src/test/resources/cucumber/TTA2/TTA2_entering_the_town.feature
 - Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
