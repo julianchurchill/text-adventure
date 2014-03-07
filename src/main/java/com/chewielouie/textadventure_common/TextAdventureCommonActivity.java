@@ -988,6 +988,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
                     String strName = arrayAdapter.getItem(which);
                     String resourceName = "waypoint_" + strName;
                     loadGameFromString( readRawTextFileFromResource( resourceName ) );
+                    rendersView.render();
                 }
             });
         builder.show();
