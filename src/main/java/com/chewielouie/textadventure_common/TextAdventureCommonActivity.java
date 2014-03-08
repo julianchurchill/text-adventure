@@ -56,6 +56,7 @@ import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
+import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -138,6 +139,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_string_show_map();
     abstract protected int R_string_yes();
     abstract protected Field[] R_raw_class_getFields();
+    abstract protected int R_style_WaypointDialogTheme();
 
     private static final int TEXT_TO_SPEECH_DATA_CHECK_CODE = 0;
 
@@ -969,8 +971,9 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void showWaypointsList() {
-        AlertDialog.Builder builder = new AlertDialog.Builder( this );
-        builder.setTitle("Choose a waypoint - THIS WILL OVERWRITE YOUR CURRENT GAME:-");
+        ContextThemeWrapper waypointThemedContext = new ContextThemeWrapper( this, R_style_WaypointDialogTheme() );
+        AlertDialog.Builder builder = new AlertDialog.Builder( waypointThemedContext );
+        builder.setTitle("Choose waypoint - CURRENT GAME WILL BE OVERWRITTEN");
         builder.setNegativeButton("Cancel",
             new DialogInterface.OnClickListener() {
                 @Override
@@ -979,7 +982,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
                 }
             });
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-            this, android.R.layout.select_dialog_singlechoice);
+            waypointThemedContext, android.R.layout.select_dialog_singlechoice);
         fillListWithWaypoints( arrayAdapter );
         builder.setAdapter(arrayAdapter,
             new DialogInterface.OnClickListener() {

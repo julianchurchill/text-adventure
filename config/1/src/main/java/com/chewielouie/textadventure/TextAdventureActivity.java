@@ -184,4 +184,8 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
     protected Field[] R_raw_class_getFields() {
         return R.raw.class.getFields();
     }
+
+    protected int R_style_WaypointDialogTheme() {
+        return R.style.WaypointDialogTheme;
+    }
 }

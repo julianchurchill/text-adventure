@@ -153,7 +153,6 @@ Story - TTA2
 Features
 
 - [DEV] Waypoints to allow the player to skip ahead through the story, only for debug builds, through extra menu items. Perhaps use multiple save files at different states and simply load them.
-  - Reduce the size of the font in the waypoint list
   - Add more waypoints
 - [DEV] A cheat sheet solution - perhaps in a text file, in plain English.
 - [FEATURE] Hints?  Possibly based on cheat sheet progress?
