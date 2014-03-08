@@ -93,6 +93,7 @@ import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.action.ActionHistory;
 import com.chewielouie.textadventure.action.BasicActionHistory;
+import com.chewielouie.textadventure.action.LoggableActionFactory;
 import com.chewielouie.textadventure.action.RecordableActionFactory;
 import com.chewielouie.textadventure.action.UserActionFactory;
 import com.chewielouie.textadventure.serialisation.ActionHistoryDeserialiser;
@@ -449,9 +450,15 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     private ActionFactory actionFactory() {
         if( actionFactory == null )
-            actionFactory = new RecordableActionFactory( new UserActionFactory(),
-                                                         actionHistory() );
-        return actionFactory;
+        {
+            RecordableActionFactory r = new RecordableActionFactory(
+                new UserActionFactory(), actionHistory() );
+            if( isDebugMode() )
+                actionFactory = new LoggableActionFactory( logger, r );
+            else
+                actionFactory = r;
+        }
+       return actionFactory;
     }
 
     private ActionHistory actionHistory() {
