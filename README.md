@@ -35,14 +35,54 @@ Run 'adb logcat' to see the system log tailed to your terminal.
 Backlog
 =======
 
-Technical Tasks
+Ordered by priority, first to do at the top.
 
-- Protect all logging with 'isDebugMode()' to prevent hitting the filesystem when running release
-- Reduce the height of the buttons to better fit more in without squishing the text view down too much
-- Add cucumber test run as part of build, see https://github.com/cucumber/cucumber-jvm and config/common/test/CucumberStepDefs.java and src/test/resources/cucumber/TTA2/TTA2_entering_the_town.feature
-- Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
-- Update model for app 1 to use take item action where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
-- Analytics
+- [DEV] Waypoints to allow the player to skip ahead through the story, only for debug builds, through extra menu items. Perhaps use multiple save files at different states and simply load them.
+  - Add more waypoints
+- [DEV] A cheat sheet solution - perhaps in a text file, in plain English.
+  - Add 'score n' lines to indicate expected score at this point
+  - Add 'go <exit label>', 'use <item label> with <item label>', 'talk to <name>', 'say <phrase>', 'examine <item label>' instructions
+  - Show text in a plain window, remove lines starting with '#'
+  - Add solution verification unit test to play through solution and check score is as expected at each stage
+  - Add '# waypoint <name>' into solution text and auto generate waypoint files during build
+  - Solution text should be faded for instructions before current score
+- [BUG] <newline> in 'talk responses' don't seem to be obeyed. See newline before "You awake the following morning to Cabal brewing you".
+  - Also search for ""Go see Cabal, find out" in the 'successful use message' version and check that is obeyed too.
+- [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
+  - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
+    - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
+- [TECHNICAL TASK] Protect all logging with 'isDebugMode()' to prevent hitting the filesystem when running release
+- [FEATURE] Hints?  Possibly based on cheat sheet progress?
+- [UI] New icon for TTA2
+- [UI] Vary the images for buttons, i.e. on looking at a large inventory all the buttons are the same, would look nice if they varied at bit
+- [UI] Reduce the height of the buttons to better fit more in without squishing the text view down too much
+- [FEATURE] Map - extras
+    - Make better masks and a better map! Charlies on the case.
+- [TECHNICAL TASK] Add cucumber test run as part of build, see https://github.com/cucumber/cucumber-jvm and config/common/test/CucumberStepDefs.java and src/test/resources/cucumber/TTA2/TTA2_entering_the_town.feature
+- [FEATURE] Story log - a record of all the story text you've seen so far - i.e. the 'text on first entry to location'. Possibly also the conversation text? How much of this to store, room descriptions, item activations?
+- [TECHNICAL TASK] Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
+- [TECHNICAL TASK] Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
+- [TECHNICAL TASK] Check for syntax issues with model text at build time
+  - Non unique ids
+  - Referenced ids that have no object, e.g. exit destination that doesn't exist, can be used with target that doesn't exist
+- [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
+  - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
+- [FEATURE] Accessibility - Text to speech
+  - DONE Add a check box for TTS to the options dialog, save as a preference, default is off
+  - Why does a 'Starting game' dialog appear and the save file get reloaded when turning TTS _on_ ?
+  - Only play new text, e.g. examine an object, play the description but do not play the location description again
+    - Should the item list and exit list be replayed?
+- [TECHNICAL TASK] Update model for app 1 to use take item action where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
+- [FEATURE] Sound effects
+  - Door unlocking, clock tower ticking/bells, ghostly sounds in the graveyard, mice scratching at the church, market hustle and bustle.
+  - Make on/off-able in options
+- [UI] Images for inventory items to appear on buttons next to label
+- [UI] Images for actions to appear on buttons next to label
+- [UI] Restrict action button list to half screen height
+- [UI] Parchment background extras
+  - Scroll bar images need to compliment the parchment background...
+- [FEATURE] What's new dialog for first run of new version.
+- [TECHNICAL TASK] Analytics
   - https://developers.google.com/analytics/devguides/collection/android/v3/
   - Things to capture
     - Active time (between onResume() and onPause()) from start to finish of game/average completion time
@@ -55,31 +95,19 @@ Technical Tasks
     - Count how many actions are made to complete game
     - Count how many times options dialog is opened
     - Count how many times map is opened
-- Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
-- Check for syntax issues with model text at build time
-  - Non unique ids
-  - Referenced ids that have no object, e.g. exit destination that doesn't exist, can be used with target that doesn't exist
+- [FEATURE] Google games API Achievements
+  - Chatterbox (talk to everyone about everything)
+  - Converser (talked to everyone)
+  - Champion (complete the game)
+  - Perfect (complete game in minimal moves) - questionable worth and hard to calculate
+  - Explorer (has gone to every location)
+  - Pathfinder (has gone through every exit)
+  - Player of the Kazoo (completed a sub quest to create and play a kazoo at a childrens party)
+- [FEATURE] Google games API Leaderboard - Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
+- [FEATURE] Accessibility - Voice recognition
+- [TECHNICAL TASK] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
+- [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
 
-Marketing
-
-- Add keywords and description to Google Play description to include - "Story, game, puzzle"
-- Forums and newsgroups: intfiction.org, rec.games.int-fiction, rec.arts.int-fiction
-  - TTA1 release posted on intfiction.org
-- Game indexes and review sites: ifdb.tads.org, textadventures.co.uk, www.androidtapp.com
-  - TTA1 androidtapp review request submitted
-  - TTA1 added to ifdb - http://ifdb.tads.org/viewgame?id=6bsa13ogybwiucr0
-- Add a Google+ page for the app, add to About box and play store/amazon store listings
-  - Added Google+ page for Tiny Text Adventure https://plus.google.com/u/0/115456188877848985242
-
-Bugs
-
-- [BUG] <newline> in 'talk responses' don't seem to be obeyed. See newline before "You awake the following morning to Cabal brewing you".
-  - Also search for ""Go see Cabal, find out" in the 'successful use message' version and check that is obeyed too.
-- [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
-  - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
-    - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
-- [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
-  - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
 
 Story - TTA2
 
@@ -150,44 +178,17 @@ Story - TTA2
   - Juddering hour hand on the clock tower
   - An unshaved yak with hair blowing in the wind
 
-Features
+Marketing
 
-- [DEV] Waypoints to allow the player to skip ahead through the story, only for debug builds, through extra menu items. Perhaps use multiple save files at different states and simply load them.
-  - Add more waypoints
-- [DEV] A cheat sheet solution - perhaps in a text file, in plain English.
-- [FEATURE] Hints?  Possibly based on cheat sheet progress?
-- [UI] New icon for TTA2
-- [UI] Vary the images for buttons, i.e. on looking at a large inventory all the buttons are the same, would look nice if they varied at bit
-- [FEATURE] Map - extras
-    - Make better masks and a better map! Charlies on the case.
-- [FEATURE] Story log - a record of all the story text you've seen so far - i.e. the 'text on first entry to location'. Possibly also the conversation text? How much of this to store, room descriptions, item activations?
-- [FEATURE] Accessibility - Text to speech
-  - DONE Add a check box for TTS to the options dialog, save as a preference, default is off
-  - Why does a 'Starting game' dialog appear and the save file get reloaded when turning TTS _on_ ?
-  - Only play new text, e.g. examine an object, play the description but do not play the location description again
-    - Should the item list and exit list be replayed?
-- [FEATURE] Sound effects
-  - Door unlocking, clock tower ticking/bells, ghostly sounds in the graveyard, mice scratching at the church, market hustle and bustle.
-  - Make on/off-able in options
-- [UI] Images for inventory items to appear on buttons next to label
-- [UI] Images for actions to appear on buttons next to label
-- [UI] Restrict action button list to half screen height
-- [UI] Parchment background extras
-  - Scroll bar images need to compliment the parchment background...
-- [FEATURE] What's new dialog for first run of new version.
-- [FEATURE] Google games API Achievements
-  - Chatterbox (talk to everyone about everything)
-  - Converser (talked to everyone)
-  - Champion (complete the game)
-  - Perfect (complete game in minimal moves) - questionable worth and hard to calculate
-  - Explorer (has gone to every location)
-  - Pathfinder (has gone through every exit)
-  - Player of the Kazoo (completed a sub quest to create and play a kazoo at a childrens party)
-- [FEATURE] Google games API Leaderboard - Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
-- [FEATURE] Accessibility - Voice recognition
+- Add keywords and description to Google Play description to include - "Story, game, puzzle"
+- Forums and newsgroups: intfiction.org, rec.games.int-fiction, rec.arts.int-fiction
+  - TTA1 release posted on intfiction.org
+- Game indexes and review sites: ifdb.tads.org, textadventures.co.uk, www.androidtapp.com
+  - TTA1 androidtapp review request submitted
+  - TTA1 added to ifdb - http://ifdb.tads.org/viewgame?id=6bsa13ogybwiucr0
+- Add a Google+ page for the app, add to About box and play store/amazon store listings
+  - Added Google+ page for Tiny Text Adventure https://plus.google.com/u/0/115456188877848985242
 
-- [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
-- [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
 
 Done
 ====
