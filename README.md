@@ -82,6 +82,7 @@ Ordered by priority, first to do at the top.
 - [UI] Parchment background extras
   - Scroll bar images need to compliment the parchment background...
 - [FEATURE] What's new dialog for first run of new version.
+- [FEATURE] Harcore mode - no or reduced graphics, white monospace font, black background
 - [TECHNICAL TASK] Analytics
   - https://developers.google.com/analytics/devguides/collection/android/v3/
   - Things to capture
