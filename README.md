@@ -38,7 +38,7 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - [DEV] Waypoints to allow the player to skip ahead through the story, only for debug builds, through extra menu items. Perhaps use multiple save files at different states and simply load them.
-  - Add more waypoints - add shaved yak image to content and add a waypoint for it
+  - Add more waypoints - add a waypoint for shaved yak
 - [DEV] A cheat sheet solution - perhaps in a text file, in plain English.
   - Add 'score n' lines to indicate expected score at this point
   - Add 'go <exit label>', 'use <item label> with <item label>', 'talk to <name>', 'say <phrase>', 'examine <item label>' instructions
@@ -164,10 +164,10 @@ Story - TTA2
   - DONE Fell beast (hairless dog with fiery eyes)
   - DONE Muck selling crone
   - DONE barricade for first entrance to Perpetuity
+  - DONE Shaved yak
   - Second Fell beast for the barricade attack
   - Mushrooms
   - Hearth for Cabal's house
-  - Shaved yak
   - Larry the Yak shaver
   - Bank of Ubiquity
   - Scabby Mary the soothsayer
