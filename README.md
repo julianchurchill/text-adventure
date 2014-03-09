@@ -37,6 +37,7 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
+- [BUG] Oars are not usable with the boat after fire attack...
 - [DEV] Waypoints to allow the player to skip ahead through the story, only for debug builds, through extra menu items. Perhaps use multiple save files at different states and simply load them.
   - Add more waypoints - add a waypoint for shaved yak
 - [DEV] A cheat sheet solution - perhaps in a text file, in plain English.
