@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.lang.StringBuilder;
 import java.lang.StringBuffer;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -24,6 +25,7 @@ import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -54,6 +56,7 @@ import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
+import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -61,6 +64,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -89,6 +93,7 @@ import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.action.ActionFactory;
 import com.chewielouie.textadventure.action.ActionHistory;
 import com.chewielouie.textadventure.action.BasicActionHistory;
+import com.chewielouie.textadventure.action.LoggableActionFactory;
 import com.chewielouie.textadventure.action.RecordableActionFactory;
 import com.chewielouie.textadventure.action.UserActionFactory;
 import com.chewielouie.textadventure.serialisation.ActionHistoryDeserialiser;
@@ -134,6 +139,8 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_string_options_cancel();
     abstract protected int R_string_show_map();
     abstract protected int R_string_yes();
+    abstract protected Field[] R_raw_class_getFields();
+    abstract protected int R_style_WaypointDialogTheme();
 
     private static final int TEXT_TO_SPEECH_DATA_CHECK_CODE = 0;
 
@@ -141,6 +148,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private static final int NEW_GAME_MENU_ITEM = 1;
     private static final int OPTIONS_MENU_ITEM = 2;
     private static final int SHOW_MAP_MENU_ITEM = 3;
+    private static final int DEBUG_WAYPOINTS_MENU_ITEM = 4;
     private static String oldJSONFormatSaveFileName = "save_file_1";
     private static String actionHistorySaveFileName = "action_history_save_file_1";
     private static String shared_prefs_root_key = "com.chewielouie.textadventure";
@@ -340,15 +348,19 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void loadGame() {
-        createNewGame();
-        replayActions( new ActionHistoryDeserialiser( actionFactory, inventory, model )
-                            .deserialise( loadSerialisedActionHistory() ) );
+        loadGameFromString( loadSerialisedActionHistory( actionHistorySaveFileName ) );
     }
 
-    private String loadSerialisedActionHistory() {
+    private void loadGameFromString( String content ) {
+        createNewGame();
+        replayActions( new ActionHistoryDeserialiser( actionFactory, inventory, model )
+                            .deserialise( content ) );
+    }
+
+    private String loadSerialisedActionHistory( String filename ) {
         InputStream inputStream = null;
         try {
-            inputStream = openFileInput( actionHistorySaveFileName );
+            inputStream = openFileInput( filename );
         } catch( FileNotFoundException e ) {
             System.err.println("exception thrown: " + e.toString() );
         } catch( IOException e ) {
@@ -356,7 +368,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         }
         if( inputStream == null )
             return "";
-        return readRawTextFile( inputStream, actionHistorySaveFileName );
+        return readRawTextFile( inputStream, filename );
     }
 
     private String readRawTextFile( InputStream input, String fileID ) {
@@ -438,9 +450,15 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     private ActionFactory actionFactory() {
         if( actionFactory == null )
-            actionFactory = new RecordableActionFactory( new UserActionFactory(),
-                                                         actionHistory() );
-        return actionFactory;
+        {
+            RecordableActionFactory r = new RecordableActionFactory(
+                new UserActionFactory(), actionHistory() );
+            if( isDebugMode() )
+                actionFactory = new LoggableActionFactory( logger, r );
+            else
+                actionFactory = r;
+        }
+       return actionFactory;
     }
 
     private ActionHistory actionHistory() {
@@ -453,6 +471,11 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         if( externallySuppliedModelContent != null )
             return externallySuppliedModelContent;
         return readRawTextFileFromResource( R_raw_model_content() );
+    }
+
+    private String readRawTextFileFromResource( String resourceName ) {
+        return readRawTextFileFromResource(
+            getResources().getIdentifier( resourceName, "raw", getPackageName() ) );
     }
 
     private String readRawTextFileFromResource( int resId ) {
@@ -793,7 +816,14 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         menu.add( Menu.NONE, NEW_GAME_MENU_ITEM, Menu.NONE, getText( R_string_new_game() ) );
         menu.add( Menu.NONE, OPTIONS_MENU_ITEM, Menu.NONE, getText( R_string_options() ) );
         menu.add( Menu.NONE, SHOW_MAP_MENU_ITEM, Menu.NONE, getText( R_string_show_map() ) );
+        if( isDebugMode() )
+            menu.add( Menu.NONE, DEBUG_WAYPOINTS_MENU_ITEM, Menu.NONE, "Waypoints" );
         return true;
+    }
+
+    public boolean isDebugMode()
+    {
+        return (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
     }
 
     @Override
@@ -813,6 +843,10 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
                 break;
             case SHOW_MAP_MENU_ITEM:
                 showMap();
+                break;
+            case DEBUG_WAYPOINTS_MENU_ITEM:
+                if( isDebugMode() )
+                    showWaypointsList();
                 break;
             default:
                 retVal = super.onOptionsItemSelected( item );
@@ -941,6 +975,47 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private void showMap() {
         map_view.setVisibility( View.VISIBLE );
         map_view.setBitmap(getMap());
+    }
+
+    private void showWaypointsList() {
+        ContextThemeWrapper waypointThemedContext = new ContextThemeWrapper( this, R_style_WaypointDialogTheme() );
+        AlertDialog.Builder builder = new AlertDialog.Builder( waypointThemedContext );
+        builder.setTitle("Choose waypoint - CURRENT GAME WILL BE OVERWRITTEN");
+        builder.setNegativeButton("Cancel",
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+            waypointThemedContext, android.R.layout.select_dialog_singlechoice);
+        fillListWithWaypoints( arrayAdapter );
+        builder.setAdapter(arrayAdapter,
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String strName = arrayAdapter.getItem(which);
+                    String resourceName = "waypoint_" + strName;
+                    loadGameFromString( readRawTextFileFromResource( resourceName ) );
+                    rendersView.render();
+                }
+            });
+        builder.show();
+    }
+
+    private void fillListWithWaypoints( ArrayAdapter<String> arrayAdapter )
+    {
+        String waypointResourcePrefix = "waypoint_";
+        Field[] fields = R_raw_class_getFields();
+        for(Field f : fields)
+        {
+            try {
+               if( f.getName().startsWith( waypointResourcePrefix ) )
+                    arrayAdapter.add( f.getName().substring( waypointResourcePrefix.length() ) );
+            } catch (IllegalArgumentException e) {
+            }
+        }
     }
 
     public void currentScore( int score ) {

@@ -1,5 +1,6 @@
 package com.chewielouie.textadventure2;
 
+import java.lang.reflect.Field;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import com.chewielouie.textadventure_common.TextAdventureCommonActivity;
@@ -145,4 +146,11 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
         return R.string.yes;
     }
 
+    protected Field[] R_raw_class_getFields() {
+        return R.raw.class.getFields();
+    }
+
+    protected int R_style_WaypointDialogTheme() {
+        return R.style.WaypointDialogTheme;
+    }
 }

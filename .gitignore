@@ -35,3 +35,6 @@ local.properties
 /src/test/java/com/chewielouie/textadventure
 /src/main/java/com/chewielouie/textadventure2
 /src/test/java/com/chewielouie/textadventure2
+
+# vagrant files
+.vagrant

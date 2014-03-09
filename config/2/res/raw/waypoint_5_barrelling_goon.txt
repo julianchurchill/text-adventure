@@ -1,0 +1,109 @@
+action name:exit:exit id:townentrancenorth:
+action name:examine an item:
+action name:examine:item id:barricade:
+action name:take an item:location id:mainstreettown:
+action name:take specific item:item id:torch_stick:location id:mainstreettown:
+action name:exit:exit id:mainstreettownsouth:
+action name:exit:exit id:townentranceeast:
+action name:exit:exit id:outsideamineshafteast:
+action name:take an item:location id:smallshed:
+action name:take specific item:item id:dirty_rag:location id:smallshed:
+action name:exit:exit id:smallshedwest:
+action name:exit:exit id:outsideamineshaftwest:
+action name:exit:exit id:townentrancewest:
+action name:exit:exit id:townoutbuildingseast:
+action name:exit:exit id:townentrancenorth:
+action name:exit:exit id:merchantslaneentrance:
+action name:examine an item:
+action name:examine:item id:broken_door:
+action name:examine an item:
+action name:examine:item id:unidentifiable_item:
+action name:examine an item:
+action name:examine:item id:deeply_unpleasant_item:
+action name:talk:item id:disembodied_voice:
+action name:say:string:hello:item id:disembodied_voice:
+action name:say:string:whatdoesitlooklike:item id:disembodied_voice:
+action name:say:string:canyouhelpme:item id:disembodied_voice:
+action name:say:string:whatsyourprice:item id:disembodied_voice:
+action name:show inventory:
+action name:exit:exit id:merchantslane_to_merchantslane_west:
+action name:exit:exit id:merchantslane_west_to_merchantslane:
+action name:show inventory:
+action name:inventory item:item id:dirty_rag:location id:merchantslane:
+action name:use with:item id:dirty_rag:location id:merchantslane:
+action name:use with specific item:item id:dirty_rag:extra item id:torch_stick:
+action name:exit:exit id:merchantslanenorth:
+action name:examine an item:
+action name:examine:item id:jar_of_clear_liquid:
+action name:show inventory:
+action name:inventory item:item id:rag_wrapped_torch_stick:location id:generalstore:
+action name:use with:item id:rag_wrapped_torch_stick:location id:generalstore:
+action name:use with specific item:item id:rag_wrapped_torch_stick:extra item id:jar_of_paraffin:
+action name:exit:exit id:generalstoreoutside:
+action name:exit:exit id:merchantslane_to_merchantslane_west:
+action name:exit:exit id:merchantslane_west_to_burnt_out_shop:
+action name:examine an item:
+action name:examine:item id:smouldering_embers:
+action name:show inventory:
+action name:inventory item:item id:paraffin_soaked_torch:location id:burnt_out_shop:
+action name:use with:item id:paraffin_soaked_torch:location id:burnt_out_shop:
+action name:use with specific item:item id:paraffin_soaked_torch:extra item id:smouldering_embers:
+action name:exit:exit id:burnt_out_shop_to_merchantslane_west:
+action name:exit:exit id:merchantslane_west_to_merchantslane:
+action name:exit:exit id:merchantslanenorth:
+action name:show inventory:
+action name:inventory item:item id:fiery_torch:location id:generalstore:
+action name:use with:item id:fiery_torch:location id:generalstore:
+action name:use with specific item:item id:fiery_torch:extra item id:fell_beast:
+action name:exit:exit id:generalstore_to_cupboard:
+action name:exit:exit id:generalstore_cupboard_to_street:
+action name:talk:item id:oubliette_mob:
+action name:say:string:helpme:item id:oubliette_mob:
+action name:say:string:sorehead:item id:oubliette_mob:
+action name:say:string:betterthanaseaweedfacemask:item id:oubliette_mob:
+action name:say:string:whattheblazes:item id:oubliette_mob:
+action name:say:string:thatscrazythewitchisdead:item id:oubliette_mob:
+action name:say:string:ididntabandonyou:item id:oubliette_mob:
+action name:say:string:okillhelpyou:item id:oubliette_mob:
+action name:talk:item id:oubliette_sympathetic:
+action name:say:string:howcanihelp:item id:oubliette_sympathetic:
+action name:say:string:icanhelpyoucollectthemushrooms:item id:oubliette_sympathetic:
+action name:exit:exit id:cobbledroad_to_clocktower:
+action name:talk:item id:oubliette_getting_basket:
+action name:say:string:iseeyouhaveyourbasket:item id:oubliette_getting_basket:
+action name:exit:exit id:clocktower_to_eastofclocktower:
+action name:exit:exit id:eastofclocktower_to_outsidetownhall:
+action name:exit:exit id:outsidetownhall_to_eastofclocktower:
+action name:exit:exit id:eastofclocktower_to_clocktower:
+action name:exit:exit id:clocktower_to_castle_ruins:
+action name:examine an item:
+action name:examine:item id:portcullis:
+action name:examine an item:
+action name:examine:item id:portcullis_mechanism:
+action name:exit:exit id:castle_ruins_to_castle_ruins_west:
+action name:examine an item:
+action name:examine:item id:castle_ruins_crumbling_rocks:
+action name:examine an item:
+action name:examine:item id:castle_ruins_undergrowth:
+action name:take an item:location id:castle_ruins_west:
+action name:take specific item:item id:iron_bar:location id:castle_ruins_west:
+action name:exit:exit id:castle_ruins_west_to_castle_ruins:
+action name:show inventory:
+action name:inventory item:item id:iron_bar:location id:castle_ruins:
+action name:use with:item id:iron_bar:location id:castle_ruins:
+action name:use with specific item:item id:iron_bar:extra item id:portcullis_mechanism:
+action name:exit:exit id:castle_ruins_to_castle_ruins_west:
+action name:exit:exit id:castle_ruins_west_to_castle_courtyard:
+action name:take an item:location id:castle_courtyard:
+action name:take specific item:item id:winch_handle:location id:castle_courtyard:
+action name:show inventory:
+action name:inventory item:item id:winch_handle:location id:castle_courtyard:
+action name:use with:item id:winch_handle:location id:castle_courtyard:
+action name:use with specific item:item id:winch_handle:extra item id:winch_fixed:
+action name:exit:exit id:castle_courtyard_to_castle_ruins:
+action name:talk:item id:oubliette_outside_the_ruins3:
+action name:say:string:itssafeletsgo:item id:oubliette_outside_the_ruins3:
+action name:exit:exit id:castle_ruins_to_castle_courtyard:
+action name:talk:item id:oubliette_in_the_courtyard1:
+action name:say:string:wherenow:item id:oubliette_in_the_courtyard1:
+action name:exit:exit id:castle_courtyard_to_castle_courtyard_2:

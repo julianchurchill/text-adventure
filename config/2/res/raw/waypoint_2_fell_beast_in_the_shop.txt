@@ -1,0 +1,35 @@
+action name:exit:exit id:townentrancenorth:
+action name:examine an item:
+action name:examine:item id:barricade:
+action name:take an item:location id:mainstreettown:
+action name:take specific item:item id:torch_stick:location id:mainstreettown:
+action name:exit:exit id:mainstreettownsouth:
+action name:exit:exit id:townentranceeast:
+action name:exit:exit id:outsideamineshafteast:
+action name:take an item:location id:smallshed:
+action name:take specific item:item id:dirty_rag:location id:smallshed:
+action name:exit:exit id:smallshedwest:
+action name:exit:exit id:outsideamineshaftwest:
+action name:exit:exit id:townentrancewest:
+action name:exit:exit id:townoutbuildingseast:
+action name:exit:exit id:townentrancenorth:
+action name:exit:exit id:merchantslaneentrance:
+action name:examine an item:
+action name:examine:item id:broken_door:
+action name:examine an item:
+action name:examine:item id:unidentifiable_item:
+action name:examine an item:
+action name:examine:item id:deeply_unpleasant_item:
+action name:talk:item id:disembodied_voice:
+action name:say:string:hello:item id:disembodied_voice:
+action name:say:string:whatdoesitlooklike:item id:disembodied_voice:
+action name:say:string:canyouhelpme:item id:disembodied_voice:
+action name:say:string:whatsyourprice:item id:disembodied_voice:
+action name:show inventory:
+action name:exit:exit id:merchantslane_to_merchantslane_west:
+action name:exit:exit id:merchantslane_west_to_merchantslane:
+action name:show inventory:
+action name:inventory item:item id:dirty_rag:location id:merchantslane:
+action name:use with:item id:dirty_rag:location id:merchantslane:
+action name:use with specific item:item id:dirty_rag:extra item id:torch_stick:
+action name:exit:exit id:merchantslanenorth:

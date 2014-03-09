@@ -1,5 +1,6 @@
 package REPLACE_ME;
 
+import java.lang.reflect.Field;
 import android.graphics.Bitmap;
 import com.chewielouie.textadventure_common.TextAdventureCommonActivity;
 import com.chewielouie.textadventure.BasicModelFactory;
@@ -140,4 +141,11 @@ public class TextAdventureDummyActivity extends TextAdventureCommonActivity {
         return R.string.yes;
     }
 
+    protected Field[] R_raw_class_getFields() {
+        return R.raw.class.getFields();
+    }
+
+    protected int R_style_WaypointDialogTheme() {
+        return R.style.WaypointDialogTheme;
+    }
 }

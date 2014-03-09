@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="WaypointDialogTheme" parent="android:Theme.Dialog">
+        <item name="android:windowTitleSize">12sp</item>
+        <item name="android:windowTitleStyle">@style/WaypointDialogTitleTextStyle</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="WaypointDialogTitleTextStyle" >
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>

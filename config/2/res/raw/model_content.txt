@@ -25,6 +25,9 @@ location area name:Western Woods
 LOCATION AREA
 location area id:ubiquity_area
 location area name:Ubiquity
+LOCATION AREA
+location area id:misty_downs_area
+location area name:Misty Downs
 
 LOCATION
 x:300
@@ -103,7 +106,7 @@ x:300
 y:360
 location id:mainstreettown
 location area id:town_area
-location description:You are on the main street of the town. There is a clock tower further to the north but a large barricade of furniture, barrels and hay carts blocks your way. The only way to continue is through Merchants Lane and perhaps you can circle around the barricade. Besides the jumbled barrier there is further evidence of a large disturbance all around - the walls of the nearby buildings appear to have deep gouged claw marks and a number of the barrels have been rendered to splinters.
+location description:You are on the main street of the town. There is a clock tower further to the north but a large barricade of furniture, barrels and hay carts blocks your way. The only way to continue is through Merchants Lane and perhaps you can circle around the barricade. Besides the jumbled barrier there is further evidence of a large disturbance all around - the walls of the nearby buildings appear to have deep gouged claw marks and a number of the barrels have been rendered to splinters.<div><img src="town_barricade.png"/></div>
 EXIT
 exit label:North
 exit destination:clocktower
@@ -592,6 +595,7 @@ item use action:increment score:
 item use action:change item visibility:cabal_jambon_awaiting_evidence:invisible
 item use action:change item visibility:cabal_jambon_received_evidence:visible
 item use action:change item visibility:muck_seller:visible
+item use action:change location description:morecobbledroad:You are standing on a long cobbled road that undulates between the small houses of this town. It continues west and back to the east. Further up ahead you see a gatehouse that guards one of the many entrances to the town.<div align="center"><img src="crone.png"/></div>
 item use action:change exit visibility:westgatehouse_to_gatehouse_internal:visible
 ITEM
 item name:Cabal Jambon
@@ -1626,13 +1630,114 @@ LOCATION
 x:-360
 y:060
 location id:misty_downs
-location area id:ubiquity_area
+location area id:misty_downs_area
 location description:You stand shrouded in mist, the ground beneath your feet is soft and marshy. In the distance something moves. There is an alleyway nearby with an open gate inviting you in out of the mist.
 EXIT
 exit label:Rusty gate
 exit destination:rotten_alley_2
 exit direction hint:East
-exit id:misty_down_to_srotten_alley_2
+exit id:misty_downs_to_rotten_alley_2
+EXIT
+exit label:Roughly west
+exit destination:misty_downs_stream
+exit direction hint:West
+exit id:misty_downs_to_misty_downs_stream
+
+LOCATION
+x:-420
+y:060
+location id:misty_downs_stream
+location area id:misty_downs_area
+location description:The mist around you laps at your heels, cloaking your movement as you step cautiously onward. The ground tilts downwards into a shallow nook and it becomes ever damper at your feet until you standing in a stream with water trickling over your boots. The other side of the stream is too craggy and strewn with precariously balanced rocks to be able to safely navigate it.
+EXIT
+exit label:Higher ground
+exit destination:misty_downs
+exit direction hint:East
+exit id:misty_downs_stream_to_misty_downs
+EXIT
+exit label:Downstream
+exit destination:misty_downs_downstream
+exit direction hint:North
+exit id:misty_downs_stream_to_misty_downs_downstream
+
+LOCATION
+x:-420
+y:000
+location id:misty_downs_downstream
+location area id:misty_downs_area
+location description:The mist seems to have no end. The stream continues winding it's way between rocks and over pebbles, the dense air settling momentarily on the waters surface before lifting and floating further on. A little further ahead there is a gap in the scree lining the stream. You think you might be able to scramble up.
+EXIT
+exit label:Upstream
+exit destination:misty_downs_stream
+exit direction hint:South
+exit id:misty_downs_downstream_to_misty_downs_stream
+EXIT
+exit label:Gap in the scree
+exit destination:misty_downs_barrow
+exit direction hint:West
+exit id:misty_downs_downstream_to_misty_downs_barrow
+
+LOCATION
+x:-480
+y:000
+location id:misty_downs_barrow
+location area id:misty_downs_area
+location description:As you scramble up through the scree, feet slipping occasionally, the mist starts to clear and you see what looks like a barrow sitting in a clearing on the slope. The scree is cleared around it, some grass poking through the otherwise barren land. The barrow itself has been formed with several massive boulders and two giant slabs of rock creating a roof to the enclosure. The wind softly whistles through gaps in the stone blowing an occasional whiff of stale air in your direction. A gentle tapping sound seems to emanate from somewhere below your feet, which you find unnerving to say the least. There is a small path which climbs slightly higher up through the rocks behind the barrow.
+EXIT
+exit label:Gap in the scree
+exit destination:misty_downs_downstream
+exit direction hint:East
+exit id:misty_downs_barrow_to_misty_downs_downstream
+EXIT
+exit label:Path behind the barrow
+exit destination:misty_downs_path_behind_barrow
+exit direction hint:North
+exit id:misty_downs_barrow_to_misty_downs_path_behind_barrow
+ITEM
+item name:Barrow
+item description:The barrow is made of lots of stones, placed carefully together to form a roofed enclosure. You've heard that these ancient structures were used to bury high ranking members of the hill dwelling clans but that practice went out of favour thousands of years ago.
+item id:barrow_1
+item is proper noun:
+item is untakeable:
+item examine message:The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. Its probably a bear. You feel anxious about examining any further.
+item on examine action:change item visibility:barrow_1:invisible
+item on examine action:change item visibility:barrow_2:visible
+ITEM
+item name:Barrow
+item description:The barrow is made of lots of stones, placed carefully together to form a roofed enclosure. You've heard that these ancient structures were used to bury high ranking members of the hill dwelling clans but that practice went out of favour thousands of years ago. The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. Listening closer still you think you can make out some words, almost rhythmic utterings, whispered and groaning, perhaps something like "I'm in the mood for dancing"... no that can't be right. You hear it again, slightly louder this time "I'm in the mood for dancing, necromancing, doo doo doo, do doo, do doo, doo doo.". This place gives you the willies, far too much doo doo.
+item id:barrow_2
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+
+LOCATION
+x:-480
+y:-060
+location id:misty_downs_path_behind_barrow
+location area id:misty_downs_area
+location description:The path on which you walk is unstable and rough, although well trodden. Below you can see the smooth long slabs of stone which cover the barrow beneath and further up ahead the path winds its way between increasingly large boulders. The mist still shrouds the landscape so you cannot see too far ahead but you sense from the sound of the wind and the flow of air up here that there is a something large ahead.
+EXIT
+exit label:Path to the barrow
+exit destination:misty_downs_barrow
+exit direction hint:South
+exit id:misty_downs_path_behind_barrow_to_misty_downs_barrow
+EXIT
+exit label:Onwards and upwards
+exit destination:front_of_the_castle
+exit direction hint:North
+exit id:misty_downs_path_behind_barrow_to_front_of_castle
+
+LOCATION
+x:-480
+y:-120
+location id:front_of_the_castle
+location area id:misty_downs_area
+location description:You stand at the top of a slope which descends into mist. The wet air lingers about your feet, eddies forming as you move. The plateau on which you find yourself is desolate save for a few dead trees marking the edge of a path leading to a rotten yet imposing stone gate. The iron work which would have formed the gate itself is missing but leaves the surrounding stone supports as an appropriate frame for what lies further on - a black, dead castle. This must be the castle that Larry the Yak Shaver told you about, this must be the Witch Bella's stronghold. Shadows seem to dance playfully over the cold stone turrets and vanish into windows and doorways to reappear from another nearby but you cannot tell if it is simply the reflected movement of the seemingly permanent clouds overhead, looming angrily and with menace.<newline>Stepping closer to the gate you feel the air tighten about you, almost pushing you back. You persist but the more you push forward the harder you are repelled, the feeling is both bizarre and uncomfortable, as though being grasped by mighty fluid hands. There is no way forward here. You sense that powerful forces are at work and you will have to fight them with something of equal measure.
+EXIT
+exit label:Down into the mist
+exit destination:misty_downs_path_behind_barrow
+exit direction hint:South
+exit id:front_of_the_castle_to_misty_downs_path_behind_barrow
 
 LOCATION
 x:-180
@@ -1647,30 +1752,30 @@ exit direction hint:South
 exit id:scabby_mary_the_soothsayer_to_the_rickets
 ITEM
 item name:Scabby Mary
-item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her.
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her but also that she is quite short sighted. And probably long sighted too. You'd be surprised if she could tell you from an armchair so you wonder how she might be able to give a useful fortune at all.
 item id:scabby_mary1
 item is proper noun:
 item is untakeable:
 item can be used with:glasses_of_clear_vision
-item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears, rest the arms on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
+item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears and rest them on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
 item use action:change item visibility:scabby_mary1:invisible
 item use action:change item visibility:scabby_mary2:invisible
 item use action:change item visibility:scabby_mary3:invisible
 item use action:change item visibility:scabby_mary_with_glasses:visible
 item use action:increment score:
 item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
-item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "You're going to die horrrrriiblyy, probably in a very embarrassing way!", you start back with this revelation - "What, are you sure?" you stutter. "Sure about what?" says Mary. "The horrible dying, the embarrassing nature?". "Well nothing's for certain my dear.". She is quite noncommittal and you sense that is all the sense you will get out of her.
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "You're going to die horrrrriiblyy, probably in a very embarrassing way!", you start back with this revelation - "What, are you sure?" you stutter. "Sure about what?" says Mary. "The horrible dying, the embarrassing nature? But take heart fledgling, nothing yet happened is truly for certain.". She is quite noncommittal and you sense that is all the sense you will get out of her.
 item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary1:invisible
 item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary2:visible
 ITEM
 item name:Scabby Mary
-item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her.
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her but also that she is quite short sighted. And probably long sighted too. You'd be surprised if she could tell you from an armchair so you wonder how she might be able to give a useful fortune at all.
 item id:scabby_mary2
 item is proper noun:
 item is untakeable:
 item visibility:invisible
 item can be used with:glasses_of_clear_vision
-item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears, rest the arms on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
+item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears rest them on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
 item use action:change item visibility:scabby_mary1:invisible
 item use action:change item visibility:scabby_mary2:invisible
 item use action:change item visibility:scabby_mary3:invisible
@@ -1682,7 +1787,7 @@ item talk action in response to:doyouhaveafortuneforme:change item visibility:sc
 item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary3:visible
 ITEM
 item name:Scabby Mary
-item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her.
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her but also that she is quite short sighted. And probably long sighted too. You'd be surprised if she could tell you from an armchair so you wonder how she might be able to give a useful fortune at all.
 item id:scabby_mary3
 item is proper noun:
 item is untakeable:
@@ -1695,7 +1800,7 @@ item use action:change item visibility:scabby_mary3:invisible
 item use action:change item visibility:scabby_mary_with_glasses:visible
 item use action:increment score:
 item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
-item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "I've not seen you before young man." begins Mary. You can't stop yourself from rolling your eyes, she's clearly batty as a fruit cake. "The ball tells me you will bear many children for your husband!". You consider asking her what that means and pointing out the obvious flaws in her prediction but quickly discard the idea.
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "I've not seen you before young man however..." begins Mary. You can't stop yourself from rolling your eyes, she's clearly batty as a fruit cake. "The ball tells me you will bear many children for your husband!". You consider asking her what that means and pointing out the obvious flaws in her prediction but quickly discard the idea.
 item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary3:invisible
 item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary1:visible
 ITEM
@@ -1709,7 +1814,7 @@ item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"D
 item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it.". Well that's certainly mysterious you think to yourself, exactly the sort of thing you'd expect from a soothsayer.
 ITEM
 item name:Glasses of Clear Vision
-item description:These are the legendary Glasses of Clear Vision - famed for their ability to bring better vision to those with quite bad vision. Amongst the stories told they are supposed to have restored the vision of a monk who once got some grit in his eye, the sight of a drunkard after he had sobered up and the full ocular power of a man who had married an unseemly wench during a show of independence to those who were with holding from him his inheritance.
+item description:These are the legendary Glasses of Clear Vision - famed for their ability to bring better vision to those with quite bad vision. Amongst the stories told of them they are supposed to have restored the vision of a monk who once got some grit in his eye, the sight of a drunkard after he had sobered up and the full ocular power of a man who had married an unseemly wench during a show of independence to those who were withholding from him his inheritance.
 item id:glasses_of_clear_vision
 item countable noun prefix:some
 item visibility:invisible
