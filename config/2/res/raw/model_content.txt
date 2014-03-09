@@ -627,6 +627,7 @@ item talk action in response to:whatdowedonext:change item visibility:cabal_jamb
 item talk action in response to:whatdowedonext:change item visibility:cabal_jambon_in_the_morning:visible
 item talk action in response to:whatdowedonext:change item visibility:unmoveable_boat:invisible
 item talk action in response to:whatdowedonext:change item visibility:usable_boat_to_ubiquity:visible
+item talk action in response to:whatdowedonext:change exit visibility:westgatehouse_to_dirttrack:visible
 ITEM
 item name:Cabal Jambon
 item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel, although you can tell he is trying to hide it. He is stocky, middle aged with a shock of red hair and looks at you with hopeful eyes and respectful recognition.

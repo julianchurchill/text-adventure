@@ -37,7 +37,6 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [BUG] After completing the fire attack defense and talking to Cabal I cannot leave the town through the north barricade.
 - [BUG] Oubliette is not removed from the area with Flechette after the fire attack finishes. I completed the mushroom task first, then spoke to Oubliette once to find her father.
 - [DEV] Waypoints to allow the player to skip ahead through the story, only for debug builds, through extra menu items. Perhaps use multiple save files at different states and simply load them.
   - Add more waypoints - add a waypoint for shaved yak
