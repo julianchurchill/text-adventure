@@ -1,0 +1,45 @@
+score 0
+# waypoint 00_start_of_game
+go east
+go Ramshackle Shed
+take dirty rag
+go west
+go west
+go north
+# waypoint 01_south_barricade_in_perpetuity
+examine barricade
+take stick
+go Merchants Lane
+examine broken door
+examine unidentifiable item
+examine deeply unpleasant item
+talk to disembodied voice
+say Hello?
+say Waiting for a friend
+say Alright, can you help me or what?
+say What's your price?
+score +1
+use dirty rag with stick
+go General Store
+# waypoint 02_fell_beast_in_the_shop
+examine jar of clear liquid
+use Rag wrapped stick with jar of paraffin
+go Outside
+go west
+go Burnt out shop
+use Paraffin soaked torch with Smouldering embers
+go Outside
+go east
+go General Store
+use Fiery torch with Fell beast
+go Rear store cupboard
+score +1
+go Window
+# waypoint 03_first_meeting_with_oubliette
+# waypoint 04_outside_portcullis
+# waypoint 05_barrelling_goon
+# waypoint 06_beaten_the_barrelling_goon
+# waypoint 07_gone_fishing
+# waypoint 08_fixed_the_barricade
+# waypoint 09_the_muck_seller_appears
+# waypoint 10_south_barricade_in_perpetuity
