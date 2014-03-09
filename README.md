@@ -37,7 +37,6 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [BUG] Oubliette is not removed from the area with Flechette after the fire attack finishes. I completed the mushroom task first, then spoke to Oubliette once to find her father.
 - [DEV] Waypoints to allow the player to skip ahead through the story, only for debug builds, through extra menu items. Perhaps use multiple save files at different states and simply load them.
   - Add more waypoints - add a waypoint for shaved yak
 - [DEV] A cheat sheet solution - perhaps in a text file, in plain English.
@@ -113,6 +112,7 @@ Ordered by priority, first to do at the top.
 
 Story - TTA2
 
+- After fire attack Flechette should be distraught that her sister has been taken.
 - On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy.
   - DONE Go to the bank, convince them you are a Yakuza, so you can withdraw some money.
   - DONE Go to 'Frank's Tool Shed' to buy a yak zapper.
