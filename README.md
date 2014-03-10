@@ -37,6 +37,7 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
+- [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
 - [BUG] Oars are not usable with the boat after fire attack...
 - [DEV] Waypoints to allow the player to skip ahead through the story, only for debug builds, through extra menu items. Perhaps use multiple save files at different states and simply load them.
   - Add more waypoints - add a waypoint for shaved yak

@@ -71,17 +71,136 @@ go castle gate
 talk to Oubliette
 say It's safe, let's go
 go castle courtyard
+talk to Oubliette
+say Where now?
+go north side of the courtyard
 #
-
 # waypoint 05_barrelling_goon
+take section of hollow tree trunk
+use section of hollow tree trunk with ramps and slides
+# score +1
 #
 # waypoint 06_beaten_the_barrelling_goon
+go south side of the courtyard
+talk to Oubliette
+say It's safe, let's go
+go North side of the courtyard
+talk to Oubliette
+say Are those the mushrooms?
+use mushroom plucker with mushrooms
+use mushrooms with oubliette
+# score +1
+go south side of the courtyard
+go castle gate
+go path to the clock tower
+go west
+go house
+talk to Cabal Jambon
+say Hello sir
+talk to Cabal Jambon
+say How can I help?
+go outside
+go west
+go west
+go north
+go north
+go small track in woodland
+go river
 #
 # waypoint 07_gone_fishing
+go fisherman's shack
+take fishing rod
+take fishing reel
+use fishing reel with fishing rod
+go outside
+examine sleeping fisherman
+take fishing lure
+use fishing lure with fishing rod
+# score +1
+use cider bottle with angry fisherman
+use fishing rod with river
+use fishing rod with river
+use spiky-toothed goober with sign
+# score +1
+take spiky-toothed goober teeth
+use spiky-toothed goober teeth with ImpSaw 2000
+go north
+go western woods
+use imperator with ImpSaw 2000
+use ImpSaw 2000 with large trees
+take tree logs
+go southern edge of the churchyard
+go small track to town
+go south
+go south
+use tree logs with barricade
+# score +1
 #
 # waypoint 08_fixed_the_barricade
+go east
+go east
+go house
+talk to Cabal Jambon
+say I've fixed the barricade
+use charred run-covered bone with cabal jambon
+# score +1
+go outside
+go west
 #
 # waypoint 09_the_muck_seller_appears
+go west
+go gatehouse
+talk to men of the town's watch
+say I need to see the captain of the watch
+say what's wrong with him?
+go outside
+go east
+talk to muck seller
+say I think I need to buy some muck
+say can it be used to treat a fever?
+say I see you also use it for your teeth
+go west
+go gatehouse
+use dung with men of the town's watch
+talk to poorly man on a bed
+say We are about to be attacked
+# score +1
+go outside
+use broom with fell beast
+take broom head
+take broom handle
+use broom handle with fell beast
+take splinters
+use splinters with fell beast
+use broom head with fell beast
+# score +1
+talk to men of the town's watch
+say I need a new weapon
+say a fell beast ate it
+say sure, how can I help?
+go east
+go east
+go east
+go east
+go east
+use key to the fire shield with fire shield
+examine fire shield
+use key to the fire shield with break handle
+# score +1
+go west
+go west
+examine fire shield
+go west
+go west
+go west
+talk to men of the town's watch
+say I have the fire shield!
+go east
+go east
+go house
+talk to cabal jambon
+say the north barricade sustained a fire attack
+say what do we do next?
+go outside
 #
-# waypoint 10_south_barricade_in_perpetuity
-#
+# waypoint 10_after_defence_of_perpetuity
