@@ -38,7 +38,6 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
-- [BUG] Oars are not usable with the boat after fire attack...
 - [DEV] Waypoints to allow the player to skip ahead through the story, only for debug builds, through extra menu items. Perhaps use multiple save files at different states and simply load them.
   - Add more waypoints - add a waypoint for shaved yak
 - [DEV] A cheat sheet solution - perhaps in a text file, in plain English.
@@ -282,7 +281,7 @@ TTA2 only
   - After defeating the fell beast you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
   - Finally you leave to check the rest of the towns defences and speak to Cabal to learn what has happened - you discover that Oubliette has been taken by the beasts, just like her mother. Cabal asks you to find her and to defeat the witch. He directs you to go to the neighbouring town of Ubiquity and to use his boat moored up the river to get across. The day ends, you sleep at Cabals and morning comes.
 -[STORY] You go to Ubiquity in search of the witch, Oubliette and the truth!
-  - You go to the river, use the oars with the boat and row across. You can row back again if you use the oars.
+  - You go to the river, use the key with the boat and row across. You can row back again if you use the key again.
 
 - [MINOR STORY CORRECTION] Little girl is introduced as "Flechette" but her description remains a small girl".
 - [MINOR STORY CORRECTION] Once you've accepted Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.

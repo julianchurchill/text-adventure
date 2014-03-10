@@ -626,9 +626,9 @@ item talk response to:whatdowedonext:Cabal hesitates, drawing a deep breath - "T
 item talk action in response to:whatdowedonext:change item visibility:cabal_jambon_after_the_attack:invisible
 item talk action in response to:whatdowedonext:change item visibility:cabal_jambon_in_the_morning:visible
 item talk action in response to:whatdowedonext:change item visibility:oubliette_mushrooms_collected:invisible
-item talk action in response to:whatdowedonext:change item visibility:unmoveable_boat:invisible
-item talk action in response to:whatdowedonext:change item visibility:usable_boat_to_ubiquity:visible
 item talk action in response to:whatdowedonext:change exit visibility:westgatehouse_to_dirttrack:visible
+item talk action in response to:whatdowedonext:change item visibility:key_to_cabals_boat:visible
+item talk action in response to:whatdowedonext:take item:key_to_cabals_boat
 ITEM
 item name:Cabal Jambon
 item description:He doesn't like you very much and blames you for the loss of his house leading to him having to move his children into this hovel, although you can tell he is trying to hide it. He is stocky, middle aged with a shock of red hair and looks at you with hopeful eyes and respectful recognition.
@@ -642,6 +642,13 @@ item talk response to:whatwasthenameofthattownagain:"Ubiquity.".
 item talk follow up phrase to:whatwasthenameofthattownagain:andhowdoigetthere:And how do I get there?:"Ah yes, I remember now. And I get there by going to..." you let the end of the sentence tail off, sort of a question but without really admitting to it.
 item talk response to:andhowdoigetthere:"Use my boat, down by the river.". Cabal glares at you and you feel like you should leave quickly before appearing anymore foolish.
 
+ITEM
+item name:Key to Cabal's boat oars
+item description:This key has been fashioned from a sharp fish bone, presumably one of Cabal's catch. He told you to use it to unlock his boat by the river.
+item id:key_to_cabals_boat
+item mid sentence cased name:key to Cabal's boat oars
+item countable noun prefix:a
+item visibility:invisible
 ITEM
 item name:ImpSaw 2000
 item description:The ImpSaw 2000 is an award winning imp powered wood sawing machine. You can fell a forest in minutes with this little baby if you can get it hot enough. Unfortunately this particular device looks a little worse for wear, missing many of the razor sharp teeth that provide the smooth cutting action required to fell trees quicker than a beaver on a rampage. When you shake it, it squeaks.
@@ -1226,7 +1233,7 @@ x:120
 y:180
 location id:river_edge_south
 location area id:western_woods_area
-location description:Walking along the river edge you see rolling hills to the south and a clearing to the north. There is a slight sandy shallow at this part of the river where a boat gently sways in the water, moored loosely around a tree stump.
+location description:Walking along the river edge you see rolling hills to the south and a clearing to the north. There is a slight sandy shallow at this part of the river where a boat gently sways in the water, chained to a metal peg buried into the river bank.
 EXIT
 exit label:North
 exit destination:river_edge
@@ -1240,43 +1247,31 @@ exit id:river_edge_south_to_track_to_ubiquity_road
 exit is not visible:
 ITEM
 item name:boat
-item description:This boat is old, rickety and probably totally unsafe. It looks like it has sprung numerous leaks and is currently home to a small family of frogs which are huddled quite comfortably underneath the bench. There are oars sticking out of the boat which look as creaky as the boat itself. However, they might just be usable.
-item id:unmoveable_boat
-item countable noun prefix:a
-item is untakeable:
-item can be used with:oars
-item successful use message:You sit down in the boat, carefully balancing yourself and grasp the oars firmly. Just as you do a large wave lashes the side of the boat and splashes you right in the face. Coughing and spluttering you decide the water is a bit too choppy for an amateur seaman such as yourself to be messing about on the river and step out of the boat back on to the river bank.
-ITEM
-item name:boat
-item description:This boat is old, rickety and probably totally unsafe. It looks like it has sprung numerous leaks and is currently home to a small family of frogs which are huddled quite comfortably underneath the bench. There are oars sticking out of the boat which look as creaky as the boat itself. However, they might just be usable.
+item description:This boat is old, rickety and probably totally unsafe. It looks like it has sprung numerous leaks and is currently home to a small family of frogs which are huddled quite comfortably underneath the bench. There are oars sticking out of the boat which look as creaky as the boat itself. However, they might just be usable. The boat and oars are padlocked with a length of chain attached to a large metal peg protruding from the river bank.
 item id:usable_boat_to_ubiquity
 item countable noun prefix:a
 item is untakeable:
-item visibility:invisible
-item can be used with:oars
-item successful use message:You sit down in the boat, carefully balancing yourself and grasp the oars firmly. Bum bouncing a little to dislodge the boat from the silt it sits in you start to make your way across the river, pulling the oars to propel the little boat onward. In doesn't take you long to reach the other side of the river, where you pull the boat up, tying it to a rocky outcrop.
+item can be used with:key_to_cabals_boat
+item successful use message:Using the key you unlock the padlock and remove the chain from the metal peg on the bank. You sit down in the boat, carefully balancing yourself and grasp the oars firmly. Bum bouncing a little to dislodge the boat from the silt it sits in you start to make your way across the river, pulling the oars to propel the little boat onward. It doesn't take you long to reach the other side of the river, where you pull the boat up and chain and padlock it to a metal peg nearby.
 item use action:change item visibility:usable_boat_to_ubiquity:invisible
 item use action:change item visibility:usable_boat_to_perpetuity:visible
 item use action:change exit visibility:river_edge_south_to_river_edge:invisible
-item use action:change exit visibility:river_edge_south_to_track_to_ubiquity_road:invisible
-item use action:change location description:river_edge_south:Standing on the west bank of the river you can see a small clearing with a little hut on the other side of the water. North from here there is a track that looks like it leads to a road. Surrounding you is dense woodland, largely impenetrable and in the distance to the south there a rolling hills descending to the horizon.
+item use action:change exit visibility:river_edge_south_to_track_to_ubiquity_road:visible
+item use action:change location description:river_edge_south:Standing on the west bank of the river you can see a small clearing with a little hut on the other side of the water. North from here there is a track that looks like it leads to a road. Surrounding you is dense woodland, largely impenetrable and in the distance to the south there are rolling hills descending to the horizon.
 ITEM
 item name:boat
-item description:This boat is old, rickety and probably totally unsafe. It looks like it has sprung numerous leaks and is currently home to a small family of frogs which are huddled quite comfortably underneath the bench. There are oars sticking out of the boat which look as creaky as the boat itself. However, they might just be usable.
+item description:This boat is old, rickety and probably totally unsafe. It looks like it has sprung numerous leaks and is currently home to a small family of frogs which are huddled quite comfortably underneath the bench. There are oars sticking out of the boat which look as creaky as the boat itself. However, they might just be usable. The boat and oars are padlocked with a length of chain attached to a large metal peg protruding from the river bank.
 item id:usable_boat_to_perpetuity
 item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
-item can be used with:oars
-item successful use message:Shoving the boat out a little to dislodge it from the bank you jump in and sit down quickly, grasping the oars firmly. You start to make your way across the river, pulling the oars to propel the little boat onward. In doesn't take you long to reach the other side of the river, where you pull the boat up, tying it to a tree stump.
+item can be used with:key_to_cabals_boat
+item successful use message:Unlocking the padlock you pull the chain from the metal peg. Shoving the boat out a little to dislodge it from the bank you jump in and sit down quickly, grasping the oars firmly. You start to make your way across the river, pulling the oars to propel the little boat onward. In doesn't take you long to reach the other side of the river, where you pull the boat up and chain and padlock it to a metal peg nearby.
+item use action:change item visibility:usable_boat_to_ubiquity:visible
+item use action:change item visibility:usable_boat_to_perpetuity:invisible
 item use action:change exit visibility:river_edge_south_to_river_edge:visible
-item use action:change location description:river_edge_south:Walking along the river edge you see rolling hills to the south and a clearing to the north. There is a slight sandy shallow at this part of the river where a boat gently sways in the water, moored loosely around a tree stump.
-ITEM
-item name:oars
-item description:These oars are balanced in the rowlocks on either side of the boat.
-item id:oars
-item countable noun prefix:some
-item is untakeable:
+item use action:change exit visibility:river_edge_south_to_track_to_ubiquity_road:invisible
+item use action:change location description:river_edge_south:Walking along the river edge you see rolling hills to the south and a clearing to the north. There is a slight sandy shallow at this part of the river where a boat gently sways in the water, chained to a metal peg buried into the river bank.
 
 LOCATION
 x:120
