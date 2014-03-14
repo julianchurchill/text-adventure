@@ -141,6 +141,10 @@ public class TextAdventureDummyActivity extends TextAdventureCommonActivity {
         return R.string.yes;
     }
 
+    protected int R_string_walkthrough() {
+        return R.string.walkthrough;
+    }
+
     protected Field[] R_raw_class_getFields() {
         return R.raw.class.getFields();
     }

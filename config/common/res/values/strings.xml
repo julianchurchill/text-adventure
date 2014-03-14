@@ -18,4 +18,5 @@
     <string name="completed">completed</string>
     <string name="ok">Ok</string>
     <string name="show_map">Map</string>
+    <string name="walkthrough">Walkthrough</string>
 </resources>

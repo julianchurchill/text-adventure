@@ -139,6 +139,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_string_options_cancel();
     abstract protected int R_string_show_map();
     abstract protected int R_string_yes();
+    abstract protected int R_string_walkthrough();
     abstract protected Field[] R_raw_class_getFields();
     abstract protected int R_style_WaypointDialogTheme();
 
@@ -149,6 +150,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private static final int OPTIONS_MENU_ITEM = 2;
     private static final int SHOW_MAP_MENU_ITEM = 3;
     private static final int DEBUG_WAYPOINTS_MENU_ITEM = 4;
+    private static final int WALKTHROUGH_MENU_ITEM = 5;
     private static String oldJSONFormatSaveFileName = "save_file_1";
     private static String actionHistorySaveFileName = "action_history_save_file_1";
     private static String shared_prefs_root_key = "com.chewielouie.textadventure";
@@ -818,6 +820,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         menu.add( Menu.NONE, SHOW_MAP_MENU_ITEM, Menu.NONE, getText( R_string_show_map() ) );
         if( isDebugMode() )
             menu.add( Menu.NONE, DEBUG_WAYPOINTS_MENU_ITEM, Menu.NONE, "Waypoints" );
+        menu.add( Menu.NONE, WALKTHROUGH_MENU_ITEM, Menu.NONE, getText( R_string_walkthrough() ) );
         return true;
     }
 
@@ -847,6 +850,9 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
             case DEBUG_WAYPOINTS_MENU_ITEM:
                 if( isDebugMode() )
                     showWaypointsList();
+                break;
+            case WALKTHROUGH_MENU_ITEM:
+                showWalkthrough();
                 break;
             default:
                 retVal = super.onOptionsItemSelected( item );
@@ -975,6 +981,10 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private void showMap() {
         map_view.setVisibility( View.VISIBLE );
         map_view.setBitmap(getMap());
+    }
+
+    private void showWalkthrough() {
+        // walkthrough_view.setVisibility( View.VISIBLE );
     }
 
     private void showWaypointsList() {
