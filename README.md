@@ -47,6 +47,7 @@ Ordered by priority, first to do at the top.
   - Add solution verification unit test to play through solution and check score is as expected at each stage
   - Add '# waypoint <name>' into solution text and auto generate waypoint files during build
   - Solution text should be faded for instructions before current score
+  - Write a walkthrough for TTA1!!!
 - [BUG] <newline> in 'talk responses' don't seem to be obeyed. See newline before "You awake the following morning to Cabal brewing you".
   - Also search for ""Go see Cabal, find out" in the 'successful use message' version and check that is obeyed too.
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
