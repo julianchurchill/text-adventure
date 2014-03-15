@@ -116,6 +116,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_id_available_actions();
     abstract protected int R_id_location_text_view();
     abstract protected int R_id_map_view();
+    abstract protected int R_id_walkthrough_view();
     abstract protected int R_id_main_text_output();
     abstract protected int R_id_main_text_output_scroll_view();
     abstract protected int R_id_options_font_example_text();
@@ -177,6 +178,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private Map<Button,Action> actionButtons = new HashMap<Button,Action>();
     private LinearLayout available_actions_view;
     private ZoomableImageView map_view;
+    private ZoomableImageView walkthrough_view;
     private int currentScore = 0;
     private int maximumScore = 0;
     private BasicModel model = null;
@@ -237,6 +239,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         score_text_view = findTextView( R_id_score_text_view() );
         available_actions_view = (LinearLayout)findViewById( R_id_available_actions() );
         map_view = (ZoomableImageView)findViewById( R_id_map_view() );
+        walkthrough_view = (ZoomableImageView)findViewById( R_id_walkthrough_view() );
 
         reconfigureTextToSpeech();
     }
@@ -984,7 +987,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void showWalkthrough() {
-        // walkthrough_view.setVisibility( View.VISIBLE );
+        walkthrough_view.setVisibility( View.VISIBLE );
     }
 
     private void showWaypointsList() {
@@ -1063,6 +1066,8 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     public void onBackPressed() {
         if( map_view.getVisibility() == View.VISIBLE )
             map_view.setVisibility( View.GONE );
+        else if( walkthrough_view.getVisibility() == View.VISIBLE )
+            walkthrough_view.setVisibility( View.GONE );
         else if( userActionHandler.inAnActionChain() )
             userActionHandler.cancelActionChain();
         else

@@ -86,5 +86,17 @@
         android:layout_centerVertical="true"
         android:scaleType="matrix"
         />
+    <com.chewielouie.textadventure_common.ZoomableImageView
+        android:id="@+id/walkthrough_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:background="#000000"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:scaleType="matrix"
+        />
 </RelativeLayout>
 
