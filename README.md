@@ -37,24 +37,23 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
+- [FEATURE] Provide a walkthrough as a text file, in plain English.
+  - Show text in a plain window, remove lines starting with '#'
+  - Solution text should be faded for instructions before current score
+  - Write a walkthrough for TTA1!!!
+- [FEATURE] Add 'quick hint' in parallel to walkthrough. Add lines like '# quick hint: Have you tried the butchers?' and present the next one after the current score as a toast.
+- [TECHNICAL TASK] Refactor TextAdventureCommonActivity, it's madness - pull out some classes.
 - [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
 - [DEV] Waypoints to allow the player to skip ahead through the story, only for debug builds, through extra menu items. Perhaps use multiple save files at different states and simply load them.
   - Add more waypoints - add a waypoint for shaved yak
-- [DEV] A cheat sheet solution - perhaps in a text file, in plain English.
-  - Add 'score n' lines to indicate expected score at this point
-  - Add 'go <exit label>', 'use <item label> with <item label>', 'talk to <name>', 'say <phrase>', 'examine <item label>' instructions
-  - Show text in a plain window, remove lines starting with '#'
-  - Add solution verification unit test to play through solution and check score is as expected at each stage
-  - Add '# waypoint <name>' into solution text and auto generate waypoint files during build
-  - Solution text should be faded for instructions before current score
-  - Write a walkthrough for TTA1!!!
+- [DEV] Add walkthrough verification unit test to play through walkthrough and check score is as expected at each stage
+- [DEV] Add '# waypoint <name>' into walkthrough text file and auto generate waypoint files during build
 - [BUG] <newline> in 'talk responses' don't seem to be obeyed. See newline before "You awake the following morning to Cabal brewing you".
   - Also search for ""Go see Cabal, find out" in the 'successful use message' version and check that is obeyed too.
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
 - [TECHNICAL TASK] Protect all logging with 'isDebugMode()' to prevent hitting the filesystem when running release
-- [FEATURE] Hints?  Possibly based on cheat sheet progress?
 - [UI] New icon for TTA2
 - [UI] Vary the images for buttons, i.e. on looking at a large inventory all the buttons are the same, would look nice if they varied at bit
 - [UI] Reduce the height of the buttons to better fit more in without squishing the text view down too much
