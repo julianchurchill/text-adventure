@@ -178,7 +178,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private Map<Button,Action> actionButtons = new HashMap<Button,Action>();
     private LinearLayout available_actions_view;
     private ZoomableImageView map_view;
-    private ZoomableImageView walkthrough_view;
+    private TextView walkthrough_view;
     private int currentScore = 0;
     private int maximumScore = 0;
     private BasicModel model = null;
@@ -239,7 +239,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         score_text_view = findTextView( R_id_score_text_view() );
         available_actions_view = (LinearLayout)findViewById( R_id_available_actions() );
         map_view = (ZoomableImageView)findViewById( R_id_map_view() );
-        walkthrough_view = (ZoomableImageView)findViewById( R_id_walkthrough_view() );
+        walkthrough_view = (TextView)findViewById( R_id_walkthrough_view() );
 
         reconfigureTextToSpeech();
     }
@@ -988,6 +988,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     private void showWalkthrough() {
         walkthrough_view.setVisibility( View.VISIBLE );
+        walkthrough_view.setText( "Walkthrough text view, all the contents goes here............." );
     }
 
     private void showWaypointsList() {

@@ -86,7 +86,7 @@
         android:layout_centerVertical="true"
         android:scaleType="matrix"
         />
-    <com.chewielouie.textadventure_common.ZoomableImageView
+    <TextView
         android:id="@+id/walkthrough_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
