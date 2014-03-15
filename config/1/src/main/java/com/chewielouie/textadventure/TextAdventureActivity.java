@@ -89,8 +89,12 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
         return R.id.map_view;
     }
 
-    protected int R_id_walkthrough_view() {
-        return R.id.walkthrough_view;
+    protected int R_id_walkthrough_scroll_view() {
+        return R.id.walkthrough_scroll_view;
+    }
+
+    protected int R_id_walkthrough_text_view() {
+        return R.id.walkthrough_text_view;
     }
 
     protected int R_id_main_text_output() {

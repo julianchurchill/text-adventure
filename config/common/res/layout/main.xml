@@ -86,17 +86,25 @@
         android:layout_centerVertical="true"
         android:scaleType="matrix"
         />
-    <TextView
-        android:id="@+id/walkthrough_view"
+    <ScrollView
+        android:id="@+id/walkthrough_scroll_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:background="#000000"
+        android:scrollbars="vertical"
+        android:fillViewport="true"
         android:visibility="gone"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:scaleType="matrix"
-        />
+        >
+        <TextView
+            android:id="@+id/walkthrough_text_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#000000"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:scaleType="matrix"
+            />
+    </ScrollView>
 </RelativeLayout>
 

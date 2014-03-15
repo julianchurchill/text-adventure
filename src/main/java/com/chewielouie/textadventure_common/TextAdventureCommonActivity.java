@@ -116,7 +116,8 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_id_available_actions();
     abstract protected int R_id_location_text_view();
     abstract protected int R_id_map_view();
-    abstract protected int R_id_walkthrough_view();
+    abstract protected int R_id_walkthrough_scroll_view();
+    abstract protected int R_id_walkthrough_text_view();
     abstract protected int R_id_main_text_output();
     abstract protected int R_id_main_text_output_scroll_view();
     abstract protected int R_id_options_font_example_text();
@@ -178,7 +179,8 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private Map<Button,Action> actionButtons = new HashMap<Button,Action>();
     private LinearLayout available_actions_view;
     private ZoomableImageView map_view;
-    private TextView walkthrough_view;
+    private ScrollView walkthrough_scroll_view;
+    private TextView walkthrough_text_view;
     private int currentScore = 0;
     private int maximumScore = 0;
     private BasicModel model = null;
@@ -239,7 +241,8 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         score_text_view = findTextView( R_id_score_text_view() );
         available_actions_view = (LinearLayout)findViewById( R_id_available_actions() );
         map_view = (ZoomableImageView)findViewById( R_id_map_view() );
-        walkthrough_view = (TextView)findViewById( R_id_walkthrough_view() );
+        walkthrough_scroll_view = (ScrollView)findViewById( R_id_walkthrough_scroll_view() );
+        walkthrough_text_view = (TextView)findViewById( R_id_walkthrough_text_view() );
 
         reconfigureTextToSpeech();
     }
@@ -987,15 +990,17 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void showWalkthrough() {
-        walkthrough_view.setVisibility( View.VISIBLE );
-        walkthrough_view.setText( "Walkthrough text view, all the contents goes here............." );
+        walkthrough_scroll_view.setVisibility( View.VISIBLE );
+        walkthrough_text_view.setText( "Loading..." );
+        String walkthroughText = readRawTextFileFromResource( "walkthrough" );
+        walkthrough_text_view.setText( walkthroughText );
     }
 
     private void showWaypointsList() {
         ContextThemeWrapper waypointThemedContext = new ContextThemeWrapper( this, R_style_WaypointDialogTheme() );
         AlertDialog.Builder builder = new AlertDialog.Builder( waypointThemedContext );
         builder.setTitle("Choose waypoint - CURRENT GAME WILL BE OVERWRITTEN");
-        builder.setNegativeButton("Cancel",
+        builder.setNegativeButton( R_string_options_cancel(),
             new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -1067,8 +1072,8 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     public void onBackPressed() {
         if( map_view.getVisibility() == View.VISIBLE )
             map_view.setVisibility( View.GONE );
-        else if( walkthrough_view.getVisibility() == View.VISIBLE )
-            walkthrough_view.setVisibility( View.GONE );
+        else if( walkthrough_scroll_view.getVisibility() == View.VISIBLE )
+            walkthrough_scroll_view.setVisibility( View.GONE );
         else if( userActionHandler.inAnActionChain() )
             userActionHandler.cancelActionChain();
         else
