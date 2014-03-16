@@ -241,15 +241,35 @@ public class TextAdventureActivityTests {
     public void selecting_walkthrough_menu_item_shows_walkthrough_view() {
         TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
         activity.onCreate( null );
-        ScrollView scrollView = (ScrollView)activity.findViewById( activity.R_id_walkthrough_scroll_view() );
-        assertEquals( View.GONE, scrollView.getVisibility() );
+        assertEquals( View.GONE, walkthroughScrollView().getVisibility() );
 
         activity.onOptionsItemSelected( new TestMenuItem( activity.WALKTHROUGH_MENU_ITEM ) );
 
-        assertEquals( View.VISIBLE, scrollView.getVisibility() );
+        assertEquals( View.VISIBLE, walkthroughScrollView().getVisibility() );
     }
 
-    // @Test
-    // public void walkthrough_does_not_show_lines_starting_with_hash() {
+    private ScrollView walkthroughScrollView() {
+        return (ScrollView)activity.findViewById( activity.R_id_walkthrough_scroll_view() );
+    }
+
+    @Test
+    public void walkthrough_does_not_show_lines_starting_with_hash() {
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
+        activity.onCreate( null );
+        activity.onOptionsItemSelected( new TestMenuItem( activity.WALKTHROUGH_MENU_ITEM ) );
+
+        assertThatNoLinesStartWithAHash( walkthroughTextView().getText().toString() );
+    }
+
+    private TextView walkthroughTextView() {
+        return (TextView)activity.findViewById( activity.R_id_walkthrough_text_view() );
+    }
+
+    private void assertThatNoLinesStartWithAHash( String text ) {
+        String[] lines = text.split( "\\r?\\n|\\r" );
+        for( int i = 0; i < lines.length; ++i )
+            assertFalse( lines[i].startsWith( "#" ) );
+    }
+
 }
 
