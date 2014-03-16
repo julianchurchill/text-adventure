@@ -259,11 +259,7 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
         activity.onOptionsItemSelected( new TestMenuItem( activity.WALKTHROUGH_MENU_ITEM ) );
 
-        assertThatNoLinesStartWithAHash( walkthroughTextView( activity ).getText().toString() );
-    }
-
-    private TextView walkthroughTextView( TextAdventureDummyActivity activity ) {
-        return (TextView)activity.findViewById( activity.R_id_walkthrough_text_view() );
+        assertThatNoLinesStartWithAHash( walkthroughText( activity ) );
     }
 
     private void assertThatNoLinesStartWithAHash( String text ) {
@@ -272,5 +268,30 @@ public class TextAdventureActivityTests {
             assertFalse( lines[i].startsWith( "#" ) );
     }
 
+    private String walkthroughText( TextAdventureDummyActivity activity ) {
+        return walkthroughTextView( activity ).getText().toString();
+    }
+
+    private TextView walkthroughTextView( TextAdventureDummyActivity activity ) {
+        return (TextView)activity.findViewById( activity.R_id_walkthrough_text_view() );
+    }
+
+    @Test
+    public void walkthrough_text_is_added_to_text_view() {
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
+        activity.onCreate( null );
+        activity.onOptionsItemSelected( new TestMenuItem( activity.WALKTHROUGH_MENU_ITEM ) );
+
+        assertTrue( walkthroughText( activity ).startsWith( "go east" ) );
+    }
+
+    // @Test
+    // public void walkthrough_text_is_greyed_out_up_to_current_score() {
+    //     TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
+    //     activity.onCreate( null );
+    //     activity.onOptionsItemSelected( new TestMenuItem( activity.WALKTHROUGH_MENU_ITEM ) );
+
+        // assertThatTextContainsAppropriateColourSpanForCurrentScore( walkthroughTextView( activity ).getText().toString() );
+    // }
 }
 
