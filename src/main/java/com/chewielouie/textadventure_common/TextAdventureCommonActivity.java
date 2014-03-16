@@ -148,12 +148,12 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     private static final int TEXT_TO_SPEECH_DATA_CHECK_CODE = 0;
 
-    private static final int ABOUT_MENU_ITEM = 0;
-    private static final int NEW_GAME_MENU_ITEM = 1;
-    private static final int OPTIONS_MENU_ITEM = 2;
-    private static final int SHOW_MAP_MENU_ITEM = 3;
-    private static final int DEBUG_WAYPOINTS_MENU_ITEM = 4;
-    private static final int WALKTHROUGH_MENU_ITEM = 5;
+    public static final int ABOUT_MENU_ITEM = 0;
+    public static final int NEW_GAME_MENU_ITEM = 1;
+    public static final int OPTIONS_MENU_ITEM = 2;
+    public static final int SHOW_MAP_MENU_ITEM = 3;
+    public static final int DEBUG_WAYPOINTS_MENU_ITEM = 4;
+    public static final int WALKTHROUGH_MENU_ITEM = 5;
     private static final String lineEndingsRegex = "\\r?\\n|\\r";
     private static String oldJSONFormatSaveFileName = "save_file_1";
     private static String actionHistorySaveFileName = "action_history_save_file_1";

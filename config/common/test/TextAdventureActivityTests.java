@@ -7,9 +7,11 @@ import java.util.List;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import com.xtremelabs.robolectric.Robolectric;
+import com.xtremelabs.robolectric.tester.android.view.TestMenuItem;
 import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
@@ -234,5 +236,20 @@ public class TextAdventureActivityTests {
 
         mockery.assertIsSatisfied();
     }
+
+    @Test
+    public void selecting_walkthrough_menu_item_shows_walkthrough_view() {
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
+        activity.onCreate( null );
+        ScrollView scrollView = (ScrollView)activity.findViewById( activity.R_id_walkthrough_scroll_view() );
+        assertEquals( View.GONE, scrollView.getVisibility() );
+
+        activity.onOptionsItemSelected( new TestMenuItem( activity.WALKTHROUGH_MENU_ITEM ) );
+
+        assertEquals( View.VISIBLE, scrollView.getVisibility() );
+    }
+
+    // @Test
+    // public void walkthrough_does_not_show_lines_starting_with_hash() {
 }
 
