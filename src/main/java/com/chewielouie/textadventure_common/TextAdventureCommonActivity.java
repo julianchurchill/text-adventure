@@ -18,6 +18,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.Set;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -48,6 +50,7 @@ import android.speech.tts.TextToSpeech.OnInitListener;
 import android.text.Html;
 import android.text.Html.ImageGetter;
 import android.text.Layout;
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
@@ -994,27 +997,64 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private void showWalkthrough() {
         walkthrough_scroll_view.setVisibility( View.VISIBLE );
         walkthrough_text_view.setText( R_string_loading() );
-        String walkthroughText = removeNonPrintableWalkthroughLines( readRawTextFileFromResource( "walkthrough" ) );
-        walkthrough_text_view.setText( walkthroughText );
+        new WalkthroughTextFormatter( walkthrough_text_view, readRawTextFileFromResource( "walkthrough" ), currentScore );
     }
 
-    private String removeNonPrintableWalkthroughLines( String text ) {
-        String[] lines = text.split( lineEndingsRegex );
-        StringBuffer buffer = new StringBuffer();
-        for( int i = 0; i < lines.length; ++i )
-            if( isPrintableWalkthroughLine( lines[i] ) )
-                addLineToBuffer( lines[i], buffer, lines.length, i );
-        return buffer.toString();
-    }
+    private class WalkthroughTextFormatter
+    {
+        private final String specialFlagsToMakeDotMatchNewlines = "(?s)";
+        private final Pattern scoreWithDigitsRegex = Pattern.compile(
+            specialFlagsToMakeDotMatchNewlines + "# score (\\d+).*" );
+        private final Pattern scoreWithIncrementRegex = Pattern.compile(
+            specialFlagsToMakeDotMatchNewlines + "# score \\+(\\d+).*" );
 
-    private boolean isPrintableWalkthroughLine( String text ) {
-        return text.startsWith( "#" ) == false;
-    }
+        private int observedScore = 0;
+        private int activeWalkthroughPosition = 0;
+        private int score = 0;
 
-    private void addLineToBuffer( String line, StringBuffer buffer, int totalLines, int currentLine ) {
-        buffer.append( line );
-        if( currentLine != (totalLines-1) )
-            buffer.append( System.getProperty( "line.separator" ) );
+        public WalkthroughTextFormatter( TextView textView, String walkthroughText, int score )
+        {
+            this.score = score;
+            SpannableStringBuilder builder = new SpannableStringBuilder();
+            builder.append( removeNonPrintableWalkthroughLines( walkthroughText ) );
+            int startIndex = 0;
+            int endIndex = activeWalkthroughPosition;
+            int flags = 0;
+            builder.setSpan( new ForegroundColorSpan( Color.DKGRAY ), startIndex, endIndex, flags );
+            textView.setText( builder, TextView.BufferType.SPANNABLE );
+        }
+
+        private String removeNonPrintableWalkthroughLines( String text ) {
+            String[] lines = text.split( lineEndingsRegex );
+            StringBuffer buffer = new StringBuffer();
+            for( int i = 0; i < lines.length; ++i )
+            {
+                if( i != (lines.length-1) )
+                    lines[i] += System.getProperty( "line.separator" );
+                if( isPrintableWalkthroughLine( lines[i] ) )
+                    buffer.append( lines[i] );
+                updateActivePositionInWalkthrough( lines[i] );
+            }
+            return buffer.toString();
+        }
+
+        private void updateActivePositionInWalkthrough( String line ) {
+            Matcher scoreWithIncrementMatcher = scoreWithIncrementRegex.matcher( line );
+            if( scoreWithIncrementMatcher.matches() )
+                observedScore += Integer.parseInt( scoreWithIncrementMatcher.group(1) );
+            else
+            {
+                Matcher scoreWithDigitsMatcher = scoreWithDigitsRegex.matcher( line );
+                if( scoreWithDigitsMatcher.matches() )
+                    observedScore = Integer.parseInt( scoreWithDigitsMatcher.group(1) );
+            }
+            if( isPrintableWalkthroughLine( line ) && observedScore < score )
+                activeWalkthroughPosition += line.length();
+        }
+
+        private boolean isPrintableWalkthroughLine( String text ) {
+            return text.startsWith( "#" ) == false;
+        }
     }
 
     private void showWaypointsList() {

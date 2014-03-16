@@ -39,7 +39,8 @@ Ordered by priority, first to do at the top.
 
 - [FEATURE] Provide a walkthrough as a text file, in plain English.
   - DONE Show text in a plain window, remove lines starting with '#'
-  - Solution text should be faded for instructions before current score
+  - DONE Solution text should be faded for instructions before current score
+  - Pull out WalkthroughTextFormatter into its own file
   - Write a walkthrough for TTA1!!!
 - [FEATURE] Add 'quick hint' in parallel to walkthrough. Add lines like '# quick hint: Have you tried the butchers?' and present the next one after the current score as a toast.
 - [TECHNICAL TASK] Refactor TextAdventureCommonActivity, it's madness - pull out some classes.
