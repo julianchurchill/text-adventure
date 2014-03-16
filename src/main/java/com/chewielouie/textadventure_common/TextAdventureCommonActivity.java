@@ -153,6 +153,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private static final int SHOW_MAP_MENU_ITEM = 3;
     private static final int DEBUG_WAYPOINTS_MENU_ITEM = 4;
     private static final int WALKTHROUGH_MENU_ITEM = 5;
+    private static final String lineEndingsRegex = "\\r?\\n|\\r";
     private static String oldJSONFormatSaveFileName = "save_file_1";
     private static String actionHistorySaveFileName = "action_history_save_file_1";
     private static String shared_prefs_root_key = "com.chewielouie.textadventure";
@@ -997,19 +998,22 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private String removeNonPrintableWalkthroughLines( String text ) {
-        final String lineEndingsRegex = "\\r?\\n|\\r";
         String[] lines = text.split( lineEndingsRegex );
         StringBuffer buffer = new StringBuffer();
         for( int i = 0; i < lines.length; ++i )
-        {
-            if( lines[i].startsWith( "#" ) == false )
-            {
-                buffer.append( lines[i] );
-                if( i != (lines.length-1) )
-                    buffer.append( System.getProperty( "line.separator" ) );
-            }
-        }
+            if( isPrintableWalkthroughLine( lines[i] ) )
+                addLineToBuffer( lines[i], buffer, lines.length, i );
         return buffer.toString();
+    }
+
+    private boolean isPrintableWalkthroughLine( String text ) {
+        return text.startsWith( "#" ) == false;
+    }
+
+    private void addLineToBuffer( String line, StringBuffer buffer, int totalLines, int currentLine ) {
+        buffer.append( line );
+        if( currentLine != (totalLines-1) )
+            buffer.append( System.getProperty( "line.separator" ) );
     }
 
     private void showWaypointsList() {
