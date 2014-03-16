@@ -193,6 +193,10 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
         return R.string.walkthrough;
     }
 
+    protected int R_string_loading() {
+        return R.string.loading;
+    }
+
     protected Field[] R_raw_class_getFields() {
         return R.raw.class.getFields();
     }

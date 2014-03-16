@@ -142,6 +142,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_string_show_map();
     abstract protected int R_string_yes();
     abstract protected int R_string_walkthrough();
+    abstract protected int R_string_loading();
     abstract protected Field[] R_raw_class_getFields();
     abstract protected int R_style_WaypointDialogTheme();
 
@@ -992,7 +993,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     private void showWalkthrough() {
         walkthrough_scroll_view.setVisibility( View.VISIBLE );
-        walkthrough_text_view.setText( "Loading..." );
+        walkthrough_text_view.setText( R_string_loading() );
         String walkthroughText = removeNonPrintableWalkthroughLines( readRawTextFileFromResource( "walkthrough" ) );
         walkthrough_text_view.setText( walkthroughText );
     }

@@ -38,7 +38,7 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - [FEATURE] Provide a walkthrough as a text file, in plain English.
-  - Show text in a plain window, remove lines starting with '#'
+  - DONE Show text in a plain window, remove lines starting with '#'
   - Solution text should be faded for instructions before current score
   - Write a walkthrough for TTA1!!!
 - [FEATURE] Add 'quick hint' in parallel to walkthrough. Add lines like '# quick hint: Have you tried the butchers?' and present the next one after the current score as a toast.
