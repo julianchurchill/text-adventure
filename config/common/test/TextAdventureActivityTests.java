@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -241,14 +242,14 @@ public class TextAdventureActivityTests {
     public void selecting_walkthrough_menu_item_shows_walkthrough_view() {
         TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
         activity.onCreate( null );
-        assertEquals( View.GONE, walkthroughScrollView().getVisibility() );
+        assertEquals( View.GONE, walkthroughScrollView( activity ).getVisibility() );
 
         activity.onOptionsItemSelected( new TestMenuItem( activity.WALKTHROUGH_MENU_ITEM ) );
 
-        assertEquals( View.VISIBLE, walkthroughScrollView().getVisibility() );
+        assertEquals( View.VISIBLE, walkthroughScrollView( activity ).getVisibility() );
     }
 
-    private ScrollView walkthroughScrollView() {
+    private ScrollView walkthroughScrollView( TextAdventureDummyActivity activity ) {
         return (ScrollView)activity.findViewById( activity.R_id_walkthrough_scroll_view() );
     }
 
@@ -258,10 +259,10 @@ public class TextAdventureActivityTests {
         activity.onCreate( null );
         activity.onOptionsItemSelected( new TestMenuItem( activity.WALKTHROUGH_MENU_ITEM ) );
 
-        assertThatNoLinesStartWithAHash( walkthroughTextView().getText().toString() );
+        assertThatNoLinesStartWithAHash( walkthroughTextView( activity ).getText().toString() );
     }
 
-    private TextView walkthroughTextView() {
+    private TextView walkthroughTextView( TextAdventureDummyActivity activity ) {
         return (TextView)activity.findViewById( activity.R_id_walkthrough_text_view() );
     }
 
