@@ -992,8 +992,24 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private void showWalkthrough() {
         walkthrough_scroll_view.setVisibility( View.VISIBLE );
         walkthrough_text_view.setText( "Loading..." );
-        String walkthroughText = readRawTextFileFromResource( "walkthrough" );
+        String walkthroughText = removeNonPrintableWalkthroughLines( readRawTextFileFromResource( "walkthrough" ) );
         walkthrough_text_view.setText( walkthroughText );
+    }
+
+    private String removeNonPrintableWalkthroughLines( String text ) {
+        final String lineEndingsRegex = "\\r?\\n|\\r";
+        String[] lines = text.split( lineEndingsRegex );
+        StringBuffer buffer = new StringBuffer();
+        for( int i = 0; i < lines.length; ++i )
+        {
+            if( lines[i].startsWith( "#" ) == false )
+            {
+                buffer.append( lines[i] );
+                if( i != (lines.length-1) )
+                    buffer.append( System.getProperty( "line.separator" ) );
+            }
+        }
+        return buffer.toString();
     }
 
     private void showWaypointsList() {
