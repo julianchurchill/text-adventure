@@ -42,6 +42,7 @@ Ordered by priority, first to do at the top.
   - DONE Solution text should be faded for instructions before current score
   - Pull out WalkthroughTextFormatter into its own file
   - Write a walkthrough for TTA1!!!
+- [BUG] Walkthrough _and_ waypoints buttons do not appear on nexus 4. Is ok for emulator, nexus 5 and nexus 7.
 - [FEATURE] Add 'quick hint' in parallel to walkthrough. Add lines like '# quick hint: Have you tried the butchers?' and present the next one after the current score as a toast.
 - [TECHNICAL TASK] Refactor TextAdventureCommonActivity, it's madness - pull out some classes.
 - [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
