@@ -1542,6 +1542,8 @@ item can be used with:yak_zapper
 item successful use message:One final prod with the zapper and the yak ambles reluctantly into the Yak Parlour. The waiting clients step out of the way of the hairy behemoth.
 item use action:change item visibility:grumpy_yak_at_main_road:invisible
 item use action:change item visibility:grumpy_yak_at_yak_parlour:visible
+item use action:change item visibility:larry_the_yak_shaver_without_yak:invisible
+item use action:change item visibility:larry_the_yak_shaver:visible
 item use action:increment score:
 
 LOCATION
