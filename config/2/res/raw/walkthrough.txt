@@ -201,6 +201,32 @@ go house
 talk to cabal jambon
 say the north barricade sustained a fire attack
 say what do we do next?
-go outside
 #
 # waypoint 10_after_defence_of_perpetuity
+go outside
+go west
+go west
+go north
+go north
+go small track to woodland
+go river
+go south
+use key to cabal's boat oars with boat
+go north
+go north
+go west
+go road to ubiquity
+go main road through ubiquity
+go bank of ubiquity
+talk to bank teller
+say I'd like to borrow some money
+say wiggle your pinky
+say I still have one
+go outside
+go the rickets
+go frank's tool shed
+use fourteen groats with frank
+go outside
+#
+# waypoint 11_bought_the_yak_zapper
+

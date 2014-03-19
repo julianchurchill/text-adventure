@@ -1,0 +1,462 @@
+action name:exit:exit id:townentranceeast:
+action name:exit:exit id:outsideamineshafteast:
+action name:take an item:location id:smallshed:
+action name:take specific item:item id:dirty_rag:location id:smallshed:
+action name:exit:exit id:smallshedwest:
+action name:exit:exit id:outsideamineshaftwest:
+action name:exit:exit id:townentrancewest:
+action name:exit:exit id:townoutbuildingseast:
+action name:exit:exit id:townentrancenorth:
+action name:examine an item:
+action name:examine:item id:barricade:
+action name:take an item:location id:mainstreettown:
+action name:take specific item:item id:torch_stick:location id:mainstreettown:
+action name:exit:exit id:merchantslaneentrance:
+action name:examine an item:
+action name:examine:item id:broken_door:
+action name:examine an item:
+action name:examine:item id:unidentifiable_item:
+action name:examine an item:
+action name:examine:item id:indescribeable_item:
+action name:examine an item:
+action name:examine:item id:deeply_unpleasant_item:
+action name:talk:item id:disembodied_voice:
+action name:say:string:hello:item id:disembodied_voice:
+action name:say:string:waitingforafriend:item id:disembodied_voice:
+action name:say:string:canyouhelpme:item id:disembodied_voice:
+action name:say:string:whatsyourprice:item id:disembodied_voice:
+action name:exit:exit id:merchantslane_to_merchantslane_west:
+action name:exit:exit id:merchantslane_west_to_merchantslane:
+action name:exit:exit id:merchantslanenorth:
+action name:examine an item:
+action name:examine:item id:jar_of_clear_liquid:
+action name:exit:exit id:generalstoreoutside:
+action name:exit:exit id:merchantslane_to_merchantslane_west:
+action name:show inventory:
+action name:inventory item:item id:dirty_rag:location id:merchantslane_west:
+action name:use with:item id:dirty_rag:location id:merchantslane_west:
+action name:use with specific item:item id:dirty_rag:extra item id:torch_stick:
+action name:exit:exit id:merchantslane_west_to_burnt_out_shop:
+action name:examine an item:
+action name:examine:item id:smouldering_embers:
+action name:show inventory:
+action name:inventory item:item id:rag_wrapped_torch_stick:location id:burnt_out_shop:
+action name:use with:item id:rag_wrapped_torch_stick:location id:burnt_out_shop:
+action name:use with specific item:item id:rag_wrapped_torch_stick:extra item id:smouldering_embers:
+action name:exit:exit id:burnt_out_shop_to_merchantslane_west:
+action name:exit:exit id:merchantslane_west_to_merchantslane:
+action name:exit:exit id:merchantslanenorth:
+action name:show inventory:
+action name:inventory item:item id:rag_wrapped_torch_stick:location id:generalstore:
+action name:use with:item id:rag_wrapped_torch_stick:location id:generalstore:
+action name:use with specific item:item id:rag_wrapped_torch_stick:extra item id:jar_of_paraffin:
+action name:exit:exit id:generalstoreoutside:
+action name:exit:exit id:merchantslane_to_merchantslane_west:
+action name:exit:exit id:merchantslane_west_to_burnt_out_shop:
+action name:show inventory:
+action name:inventory item:item id:paraffin_soaked_torch:location id:burnt_out_shop:
+action name:use with:item id:paraffin_soaked_torch:location id:burnt_out_shop:
+action name:use with specific item:item id:paraffin_soaked_torch:extra item id:smouldering_embers:
+action name:exit:exit id:burnt_out_shop_to_merchantslane_west:
+action name:exit:exit id:merchantslane_west_to_merchantslane:
+action name:exit:exit id:merchantslanenorth:
+action name:show inventory:
+action name:inventory item:item id:fiery_torch:location id:generalstore:
+action name:use with:item id:fiery_torch:location id:generalstore:
+action name:use with specific item:item id:fiery_torch:extra item id:fell_beast:
+action name:exit:exit id:generalstore_to_cupboard:
+action name:exit:exit id:generalstore_cupboard_to_street:
+action name:talk:item id:flechette_as_small_girl:
+action name:say:string:helpme:item id:flechette_as_small_girl:
+action name:talk:item id:flechette_as_small_girl:
+action name:say:string:isthataboot:item id:flechette_as_small_girl:
+action name:talk:item id:oubliette_mob:
+action name:say:string:helpme:item id:oubliette_mob:
+action name:say:string:sorehead:item id:oubliette_mob:
+action name:say:string:whattheblazes:item id:oubliette_mob:
+action name:say:string:ididntabandonyou:item id:oubliette_mob:
+action name:say:string:okillhelpyou:item id:oubliette_mob:
+action name:talk:item id:flechette:
+action name:say:string:isthereanythingicando:item id:flechette:
+action name:talk:item id:oubliette_sympathetic:
+action name:say:string:howcanihelp:item id:oubliette_sympathetic:
+action name:say:string:whatdoesyourfatherneed:item id:oubliette_sympathetic:
+action name:talk:item id:flechette:
+action name:say:string:isthereanythingicando:item id:flechette:
+action name:exit:exit id:cobbledroad_to_hovel:
+action name:exit:exit id:hovel_to_cobbledroad:
+action name:talk:item id:oubliette_sympathetic:
+action name:say:string:howcanihelp:item id:oubliette_sympathetic:
+action name:say:string:icanhelpyourfather:item id:oubliette_sympathetic:
+action name:exit:exit id:cobbledroad_to_hovel:
+action name:talk:item id:cabal_jambon:
+action name:say:string:hellosir:item id:cabal_jambon:
+action name:talk:item id:cabal_jambon_with_barricade_quest:
+action name:say:string:howcanihelp:item id:cabal_jambon_with_barricade_quest:
+action name:examine an item:
+action name:examine:item id:cabal_jambon_after_given_chainsaw:
+action name:talk:item id:cabal_jambon_after_given_chainsaw:
+action name:say:string:didyousayyouneededhelp:item id:cabal_jambon_after_given_chainsaw:
+action name:exit:exit id:hovel_to_cobbledroad:
+action name:exit:exit id:cobbledroad_to_morecobbledroad:
+action name:exit:exit id:morecobbledroad_to_westgatehouse:
+action name:examine an item:
+action name:examine:item id:north_barricade_broken:
+action name:exit:exit id:westgatehouse_to_dirttrack:
+action name:exit:exit id:dirttrack_to_moredirttrack:
+action name:exit:exit id:moredirttrack_to_church_woodland:
+action name:exit:exit id:church_woodland_to_river_edge:
+action name:exit:exit id:river_edge_to_fishermans_shack:
+action name:exit:exit id:fishermans_shack_to_river_edge:
+action name:exit:exit id:river_edge_to_fishermans_shack:
+action name:exit:exit id:fishermans_shack_to_river_edge:
+action name:exit:exit id:river_edge_to_church_woodland:
+action name:exit:exit id:church_woodland_to_river_edge:
+action name:exit:exit id:river_edge_to_church_woodland:
+action name:show inventory:
+action name:inventory item:item id:pocketlint:location id:church_woodland:
+action name:examine:item id:pocketlint:
+action name:show inventory:
+action name:inventory item:item id:impsaw2000_broken:location id:church_woodland:
+action name:use with:item id:impsaw2000_broken:location id:church_woodland:
+action name:use with specific item:item id:impsaw2000_broken:extra item id:imperator:
+action name:exit:exit id:church_woodland_to_moredirttrack:
+action name:exit:exit id:moredirttrack_to_dirttrack:
+action name:exit:exit id:dirttrack_to_westgatehouse:
+action name:exit:exit id:westgatehouse_to_morecobbledroad:
+action name:exit:exit id:morecobbledroad_to_cobbledroad:
+action name:exit:exit id:cobbledroad_to_clocktower:
+action name:exit:exit id:clocktower_to_cobbledroad:
+action name:talk:item id:oubliette_sympathetic:
+action name:say:string:howcanihelp:item id:oubliette_sympathetic:
+action name:say:string:icanhelpyoucollectthemushrooms:item id:oubliette_sympathetic:
+action name:exit:exit id:cobbledroad_to_clocktower:
+action name:talk:item id:oubliette_getting_basket:
+action name:say:string:iseeyouhaveyourbasket:item id:oubliette_getting_basket:
+action name:exit:exit id:clocktower_to_castle_ruins:
+action name:examine an item:
+action name:examine:item id:portcullis:
+action name:exit:exit id:castle_ruins_to_castle_ruins_west:
+action name:examine an item:
+action name:examine:item id:castle_ruins_crumbling_rocks:
+action name:examine an item:
+action name:examine:item id:castle_ruins_undergrowth:
+action name:take an item:location id:castle_ruins_west:
+action name:take specific item:item id:iron_bar:location id:castle_ruins_west:
+action name:exit:exit id:castle_ruins_west_to_castle_ruins:
+action name:show inventory:
+action name:inventory item:item id:iron_bar:location id:castle_ruins:
+action name:use with:item id:iron_bar:location id:castle_ruins:
+action name:use with specific item:item id:iron_bar:extra item id:portcullis:
+action name:show inventory:
+action name:inventory item:item id:iron_bar:location id:castle_ruins:
+action name:use with:item id:iron_bar:location id:castle_ruins:
+action name:use with specific item:item id:iron_bar:extra item id:portcullis_mechanism:
+action name:exit:exit id:castle_ruins_to_castle_ruins_west:
+action name:exit:exit id:castle_ruins_west_to_castle_courtyard:
+action name:take an item:location id:castle_courtyard:
+action name:take specific item:item id:winch_handle:location id:castle_courtyard:
+action name:show inventory:
+action name:inventory item:item id:winch_handle:location id:castle_courtyard:
+action name:use with:item id:winch_handle:location id:castle_courtyard:
+action name:use with specific item:item id:winch_handle:extra item id:winch_fixed:
+action name:exit:exit id:castle_courtyard_to_castle_ruins:
+action name:talk:item id:oubliette_outside_the_ruins3:
+action name:say:string:itssafeletsgo:item id:oubliette_outside_the_ruins3:
+action name:exit:exit id:castle_ruins_to_castle_courtyard:
+action name:talk:item id:oubliette_in_the_courtyard1:
+action name:say:string:wherenow:item id:oubliette_in_the_courtyard1:
+action name:say:string:sureillberightback:item id:oubliette_in_the_courtyard1:
+action name:exit:exit id:castle_courtyard_to_castle_courtyard_2:
+action name:take an item:location id:castle_courtyard_2:
+action name:take specific item:item id:section_of_hollow_tree_trunk:location id:castle_courtyard_2:
+action name:show inventory:
+action name:inventory item:item id:section_of_hollow_tree_trunk:location id:castle_courtyard_2:
+action name:use with:item id:section_of_hollow_tree_trunk:location id:castle_courtyard_2:
+action name:use with specific item:item id:section_of_hollow_tree_trunk:extra item id:ramps_and_slides:
+action name:exit:exit id:castle_courtyard_to_castle_courtyard:
+action name:talk:item id:oubliette_in_the_courtyard3:
+action name:say:string:itssafeletsgo:item id:oubliette_in_the_courtyard3:
+action name:exit:exit id:castle_courtyard_to_castle_courtyard_2:
+action name:talk:item id:oubliette_in_the_north_courtyard:
+action name:say:string:arethosethemushrooms:item id:oubliette_in_the_north_courtyard:
+action name:show inventory:
+action name:inventory item:item id:mushroom_plucker:location id:castle_courtyard_2:
+action name:use with:item id:mushroom_plucker:location id:castle_courtyard_2:
+action name:use with specific item:item id:mushroom_plucker:extra item id:mushrooms:
+action name:talk:item id:oubliette_in_the_north_courtyard_waiting:
+action name:say:string:arethosethemushrooms:item id:oubliette_in_the_north_courtyard_waiting:
+action name:show inventory:
+action name:inventory item:item id:pocket_mushrooms:location id:castle_courtyard_2:
+action name:use with:item id:pocket_mushrooms:location id:castle_courtyard_2:
+action name:use with specific item:item id:pocket_mushrooms:extra item id:oubliette_in_the_north_courtyard_waiting:
+action name:exit:exit id:castle_courtyard_to_castle_courtyard:
+action name:exit:exit id:castle_courtyard_to_castle_ruins:
+action name:exit:exit id:castle_ruins_to_clocktower:
+action name:exit:exit id:clocktower_to_cobbledroad:
+action name:show inventory:
+action name:exit:exit id:cobbledroad_to_morecobbledroad:
+action name:exit:exit id:morecobbledroad_to_westgatehouse:
+action name:exit:exit id:westgatehouse_to_dirttrack:
+action name:exit:exit id:dirttrack_to_moredirttrack:
+action name:exit:exit id:moredirttrack_to_church_woodland:
+action name:exit:exit id:church_woodland_to_western_woods:
+action name:exit:exit id:western_woods_to_church_woodland:
+action name:exit:exit id:church_woodland_to_river_edge:
+action name:exit:exit id:river_edge_to_fishermans_shack:
+action name:take an item:location id:fishermans_shack:
+action name:take specific item:item id:fishing_rod:location id:fishermans_shack:
+action name:take an item:location id:fishermans_shack:
+action name:take specific item:item id:fishing_reel:location id:fishermans_shack:
+action name:show inventory:
+action name:inventory item:item id:fishing_reel:location id:fishermans_shack:
+action name:use with:item id:fishing_reel:location id:fishermans_shack:
+action name:use with specific item:item id:fishing_reel:extra item id:fishing_rod:
+action name:exit:exit id:fishermans_shack_to_river_edge:
+action name:examine an item:
+action name:examine:item id:sleeping_fisherman:
+action name:take an item:location id:river_edge:
+action name:take specific item:item id:fishing_lure:location id:river_edge:
+action name:show inventory:
+action name:inventory item:item id:cider_bottle:location id:river_edge:
+action name:use with:item id:cider_bottle:location id:river_edge:
+action name:use with specific item:item id:cider_bottle:extra item id:angry_fisherman:
+action name:show inventory:
+action name:inventory item:item id:fishing_lure:location id:river_edge:
+action name:use with:item id:fishing_lure:location id:river_edge:
+action name:use with specific item:item id:fishing_lure:extra item id:fishing_rod_with_reel:
+action name:show inventory:
+action name:inventory item:item id:fishing_rod_with_reel_and_lure:location id:river_edge:
+action name:use with:item id:fishing_rod_with_reel_and_lure:location id:river_edge:
+action name:use with specific item:item id:fishing_rod_with_reel_and_lure:extra item id:river_before_fishing:
+action name:show inventory:
+action name:inventory item:item id:fishing_rod_with_reel_and_lure:location id:river_edge:
+action name:use with:item id:fishing_rod_with_reel_and_lure:location id:river_edge:
+action name:use with specific item:item id:fishing_rod_with_reel_and_lure:extra item id:river_after_the_first_fish:
+action name:show inventory:
+action name:inventory item:item id:spiky_toothed_goober:location id:river_edge:
+action name:use with:item id:spiky_toothed_goober:location id:river_edge:
+action name:use with specific item:item id:spiky_toothed_goober:extra item id:river_sign:
+action name:take an item:location id:river_edge:
+action name:take specific item:item id:spiky_toothed_goober_teeth:location id:river_edge:
+action name:show inventory:
+action name:inventory item:item id:spiky_toothed_goober_teeth:location id:river_edge:
+action name:use with:item id:spiky_toothed_goober_teeth:location id:river_edge:
+action name:use with specific item:item id:spiky_toothed_goober_teeth:extra item id:impsaw2000_broken:
+action name:exit:exit id:river_edge_to_church_woodland:
+action name:exit:exit id:church_woodland_to_moredirttrack:
+action name:exit:exit id:moredirttrack_to_dirttrack:
+action name:exit:exit id:dirttrack_to_westgatehouse:
+action name:examine an item:
+action name:show inventory:
+action name:inventory item:item id:imperator:location id:westgatehouse:
+action name:use with:item id:imperator:location id:westgatehouse:
+action name:use with specific item:item id:imperator:extra item id:impsaw2000_fixed:
+action name:exit:exit id:westgatehouse_to_dirttrack:
+action name:exit:exit id:dirttrack_to_moredirttrack:
+action name:exit:exit id:moredirttrack_to_church_woodland:
+action name:exit:exit id:church_woodland_to_western_woods:
+action name:show inventory:
+action name:inventory item:item id:impsaw2000_running:location id:western_woods:
+action name:use with:item id:impsaw2000_running:location id:western_woods:
+action name:use with specific item:item id:impsaw2000_running:extra item id:large_trees:
+action name:take an item:location id:western_woods:
+action name:take specific item:item id:tree_logs:location id:western_woods:
+action name:exit:exit id:western_woods_to_church_woodland:
+action name:exit:exit id:church_woodland_to_moredirttrack:
+action name:exit:exit id:moredirttrack_to_dirttrack:
+action name:exit:exit id:dirttrack_to_westgatehouse:
+action name:show inventory:
+action name:inventory item:item id:tree_logs:location id:westgatehouse:
+action name:use with:item id:tree_logs:location id:westgatehouse:
+action name:use with specific item:item id:tree_logs:extra item id:north_barricade_broken:
+action name:exit:exit id:westgatehouse_to_morecobbledroad:
+action name:exit:exit id:morecobbledroad_to_cobbledroad:
+action name:exit:exit id:cobbledroad_to_hovel:
+action name:show inventory:
+action name:show inventory:
+action name:talk:item id:cabal_jambon_after_barricade_repair:
+action name:talk:item id:cabal_jambon_after_barricade_repair:
+action name:say:string:ivefixedthebarricade:item id:cabal_jambon_after_barricade_repair:
+action name:show inventory:
+action name:inventory item:item id:charred_bone_with_runes:location id:hovel:
+action name:use with:item id:charred_bone_with_runes:location id:hovel:
+action name:use with specific item:item id:charred_bone_with_runes:extra item id:cabal_jambon_awaiting_evidence:
+action name:show inventory:
+action name:exit:exit id:hovel_to_cobbledroad:
+action name:exit:exit id:cobbledroad_to_morecobbledroad:
+action name:talk:item id:muck_seller:
+action name:exit:exit id:morecobbledroad_to_westgatehouse:
+action name:examine an item:
+action name:examine:item id:north_barricade_repaired:
+action name:exit:exit id:westgatehouse_to_gatehouse_internal:
+action name:talk:item id:man_on_the_bed:
+action name:say:string:ihaveurgentnews:item id:man_on_the_bed:
+action name:talk:item id:men_of_the_towns_watch:
+action name:say:string:ineedtoseethecaptainofthewatch:item id:men_of_the_towns_watch:
+action name:say:string:whatswrongwithhim:item id:men_of_the_towns_watch:
+action name:exit:exit id:gatehouse_internal_to_westgatehouse:
+action name:exit:exit id:westgatehouse_to_morecobbledroad:
+action name:talk:item id:muck_seller_with_poultice_dung:
+action name:say:string:ithinkineedtobuysomemuck:item id:muck_seller_with_poultice_dung:
+action name:say:string:canitbeusedtotreatafever:item id:muck_seller_with_poultice_dung:
+action name:say:string:iseeyouuseitforyourteeth:item id:muck_seller_with_poultice_dung:
+action name:show inventory:
+action name:inventory item:item id:handful_of_dung:location id:morecobbledroad:
+action name:examine:item id:handful_of_dung:
+action name:exit:exit id:morecobbledroad_to_westgatehouse:
+action name:exit:exit id:westgatehouse_to_gatehouse_internal:
+action name:show inventory:
+action name:inventory item:item id:handful_of_dung:location id:gatehouse_internal:
+action name:use with:item id:handful_of_dung:location id:gatehouse_internal:
+action name:use with specific item:item id:handful_of_dung:extra item id:men_of_the_towns_watch:
+action name:talk:item id:men_of_the_towns_watch_after_poultice:
+action name:say:string:ineedtoseethecaptainofthewatch:item id:men_of_the_towns_watch_after_poultice:
+action name:say:string:whatswrongwithhim:item id:men_of_the_towns_watch_after_poultice:
+action name:talk:item id:man_on_the_bed_with_poultice:
+action name:say:string:wereabouttobeattacked:item id:man_on_the_bed_with_poultice:
+action name:show inventory:
+action name:inventory item:item id:broom:location id:gatehouse_internal:
+action name:examine:item id:broom:
+action name:exit:exit id:gatehouse_internal_to_westgatehouse:
+action name:show inventory:
+action name:inventory item:item id:broom:location id:westgatehouse:
+action name:use with:item id:broom:location id:westgatehouse:
+action name:use with specific item:item id:broom:extra item id:fell_beast_outside_gatehouse:
+action name:take an item:location id:westgatehouse:
+action name:take specific item:item id:broom_with_head:location id:westgatehouse:
+action name:take an item:location id:westgatehouse:
+action name:take specific item:item id:broom_handle:location id:westgatehouse:
+action name:show inventory:
+action name:inventory item:item id:broom_handle:location id:westgatehouse:
+action name:use with:item id:broom_handle:location id:westgatehouse:
+action name:use with specific item:item id:broom_handle:extra item id:fell_beast_outside_gatehouse:
+action name:take an item:location id:westgatehouse:
+action name:take specific item:item id:broom_handle_splinters:location id:westgatehouse:
+action name:show inventory:
+action name:inventory item:item id:broom_handle_splinters:location id:westgatehouse:
+action name:use with:item id:broom_handle_splinters:location id:westgatehouse:
+action name:use with specific item:item id:broom_handle_splinters:extra item id:fell_beast_outside_gatehouse:
+action name:show inventory:
+action name:inventory item:item id:broom_with_head:location id:westgatehouse:
+action name:use with:item id:broom_with_head:location id:westgatehouse:
+action name:use with specific item:item id:broom_with_head:extra item id:fell_beast_outside_gatehouse_in_pain:
+action name:exit:exit id:westgatehouse_to_morecobbledroad:
+action name:show inventory:
+action name:talk:item id:muck_seller:
+action name:say:string:outofmywayoldcrone:item id:muck_seller:
+action name:talk:item id:muck_seller:
+action name:say:string:whatareyoudoinghere:item id:muck_seller:
+action name:examine an item:
+action name:examine:item id:muck_seller:
+action name:exit:exit id:morecobbledroad_to_westgatehouse:
+action name:exit:exit id:westgatehouse_to_morecobbledroad:
+action name:exit:exit id:morecobbledroad_to_cobbledroad:
+action name:exit:exit id:cobbledroad_to_clocktower:
+action name:exit:exit id:clocktower_to_cobbledroad:
+action name:talk:item id:oubliette_mushrooms_collected:
+action name:say:string:howcanihelp:item id:oubliette_mushrooms_collected:
+action name:say:string:icanhelpyourfather:item id:oubliette_mushrooms_collected:
+action name:talk:item id:oubliette_mushrooms_collected:
+action name:talk:item id:flechette:
+action name:say:string:isthereanythingicando:item id:flechette:
+action name:exit:exit id:cobbledroad_to_clocktower:
+action name:exit:exit id:clocktower_to_eastofclocktower:
+action name:exit:exit id:eastofclocktower_to_outsidetownhall:
+action name:examine an item:
+action name:examine:item id:fire_shield:
+action name:show inventory:
+action name:exit:exit id:outsidetownhall_to_eastofclocktower:
+action name:exit:exit id:eastofclocktower_to_clocktower:
+action name:exit:exit id:clocktower_to_cobbledroad:
+action name:exit:exit id:cobbledroad_to_morecobbledroad:
+action name:exit:exit id:morecobbledroad_to_westgatehouse:
+action name:talk:item id:men_of_the_towns_watch_north_barricade_after_fell_beast:
+action name:say:string:ineedanewweapon:item id:men_of_the_towns_watch_north_barricade_after_fell_beast:
+action name:say:string:afellbeastateit:item id:men_of_the_towns_watch_north_barricade_after_fell_beast:
+action name:say:string:surehowcanihelp:item id:men_of_the_towns_watch_north_barricade_after_fell_beast:
+action name:show inventory:
+action name:inventory item:item id:fire_shield_key:location id:westgatehouse:
+action name:examine:item id:fire_shield_key:
+action name:exit:exit id:westgatehouse_to_morecobbledroad:
+action name:exit:exit id:morecobbledroad_to_cobbledroad:
+action name:exit:exit id:cobbledroad_to_clocktower:
+action name:exit:exit id:clocktower_to_eastofclocktower:
+action name:exit:exit id:eastofclocktower_to_outsidetownhall:
+action name:show inventory:
+action name:inventory item:item id:fire_shield_key:location id:outsidetownhall:
+action name:use with:item id:fire_shield_key:location id:outsidetownhall:
+action name:use with specific item:item id:fire_shield_key:extra item id:fire_shield:
+action name:examine an item:
+action name:examine:item id:fire_shield_unlocked:
+action name:show inventory:
+action name:examine an item:
+action name:examine:item id:fire_shield_break_handle:
+action name:show inventory:
+action name:inventory item:item id:fire_shield_key:location id:outsidetownhall:
+action name:use with:item id:fire_shield_key:location id:outsidetownhall:
+action name:use with specific item:item id:fire_shield_key:extra item id:fire_shield_unlocked:
+action name:show inventory:
+action name:inventory item:item id:fire_shield_key:location id:outsidetownhall:
+action name:use with:item id:fire_shield_key:location id:outsidetownhall:
+action name:use with specific item:item id:fire_shield_key:extra item id:fire_shield_break_handle:
+action name:exit:exit id:outsidetownhall_to_eastofclocktower:
+action name:exit:exit id:eastofclocktower_to_clocktower:
+action name:examine an item:
+action name:examine:item id:fire_shield_clock_tower:
+action name:show inventory:
+action name:exit:exit id:clocktower_to_cobbledroad:
+action name:exit:exit id:cobbledroad_to_morecobbledroad:
+action name:exit:exit id:morecobbledroad_to_westgatehouse:
+action name:examine an item:
+action name:examine:item id:fire_shield_north_barricade:
+action name:talk:item id:men_of_the_towns_watch_north_barricade_awaiting_fire_shield2:
+action name:say:string:ihavethefireshield:item id:men_of_the_towns_watch_north_barricade_awaiting_fire_shield2:
+action name:examine an item:
+action name:examine:item id:fire_shield_north_barricade:
+action name:examine an item:
+action name:examine:item id:men_of_the_towns_watch_north_barricade_awaiting_fire_shield2:
+action name:examine an item:
+action name:talk:item id:men_of_the_towns_watch_north_barricade_awaiting_fire_shield2:
+action name:say:string:ihavethefireshield:item id:men_of_the_towns_watch_north_barricade_awaiting_fire_shield2:
+action name:talk:item id:men_of_the_towns_watch_north_barricade_after_fire_attack:
+action name:say:string:howgoesthebattle:item id:men_of_the_towns_watch_north_barricade_after_fire_attack:
+action name:examine an item:
+action name:examine:item id:men_of_the_towns_watch_north_barricade_after_fire_attack:
+action name:exit:exit id:westgatehouse_to_morecobbledroad:
+action name:exit:exit id:morecobbledroad_to_cobbledroad:
+action name:exit:exit id:cobbledroad_to_hovel:
+action name:talk:item id:cabal_jambon_after_the_attack:
+action name:say:string:thenorthbarricadesustainedafireattack:item id:cabal_jambon_after_the_attack:
+action name:say:string:whatdowedonext:item id:cabal_jambon_after_the_attack:
+action name:exit:exit id:hovel_to_cobbledroad:
+action name:exit:exit id:cobbledroad_to_morecobbledroad:
+action name:exit:exit id:morecobbledroad_to_westgatehouse:
+action name:exit:exit id:westgatehouse_to_dirttrack:
+action name:exit:exit id:dirttrack_to_moredirttrack:
+action name:exit:exit id:moredirttrack_to_church_woodland:
+action name:exit:exit id:church_woodland_to_river_edge:
+action name:exit:exit id:river_edge_to_river_edge_south:
+action name:show inventory:
+action name:inventory item:item id:key_to_cabals_boat:location id:river_edge_south:
+action name:use with:item id:key_to_cabals_boat:location id:river_edge_south:
+action name:use with specific item:item id:key_to_cabals_boat:extra item id:usable_boat_to_ubiquity:
+action name:exit:exit id:river_edge_south_to_track_to_ubiquity_road:
+action name:exit:exit id:track_to_ubiquity_road_to_ubiquity_road:
+action name:exit:exit id:ubiquity_road_to_ubiquity_road_west:
+action name:exit:exit id:ubiquity_road_west_to_ubiquity_entrance:
+action name:exit:exit id:ubiquity_entrance_to_main_road_through_ubiquity:
+action name:exit:exit id:main_road_through_ubiquity_to_bank_of_ubiquity:
+action name:talk:item id:friendly_bank_teller:
+action name:say:string:idliketoborrowsomemoney:item id:friendly_bank_teller:
+action name:say:string:wiggleyourpinky:item id:friendly_bank_teller:
+action name:say:string:istillhaveone:item id:friendly_bank_teller:
+action name:exit:exit id:bank_of_ubiquity_to_main_road_through_ubiquity:
+action name:exit:exit id:main_road_through_ubiquity_to_the_rickets:
+action name:exit:exit id:the_rickets_to_franks_tool_shed:
+action name:show inventory:
+action name:inventory item:item id:fourteen_groats:location id:franks_tool_shed:
+action name:use with:item id:fourteen_groats:location id:franks_tool_shed:
+action name:use with specific item:item id:fourteen_groats:extra item id:frank_the_tool_man:
+action name:show inventory:
+action name:exit:exit id:franks_tool_shed_to_the_rickets:
