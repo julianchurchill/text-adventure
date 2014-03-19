@@ -229,4 +229,25 @@ use fourteen groats with frank
 go outside
 #
 # waypoint 11_bought_the_yak_zapper
-
+go main road
+go main gate to ubiquity
+go road leaving ubiquity
+go farm entrance
+use yak zapper with yak
+go hillock
+use yak zapper with yak
+go farm entrance
+go road to ubiquity
+use yak zapper with yak
+go road to ubiquity
+use yak zapper with yak
+go main road through ubiquity
+use yak zapper with yak
+# score +1
+go yak parlour
+talk to larry
+say how much to shave my yaK_without_yak?
+say so you'll cut him for free?
+say where can I find the witch?
+#
+# waypoint 11_larry_shaving_my_yak

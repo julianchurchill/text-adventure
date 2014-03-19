@@ -42,7 +42,6 @@ Ordered by priority, first to do at the top.
   - DONE Solution text should be faded for instructions before current score
   - Pull out WalkthroughTextFormatter into its own file
   - Write a walkthrough for TTA1!!!
-- [BUG] Walkthrough _and_ waypoints buttons do not appear on nexus 4. Is ok for emulator, nexus 5 and nexus 7.
 - [FEATURE] Add 'quick hint' in parallel to walkthrough. Add lines like '# quick hint: Have you tried the butchers?' and present the next one after the current score as a toast.
 - [TECHNICAL TASK] Refactor TextAdventureCommonActivity, it's madness - pull out some classes.
 - [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
@@ -125,6 +124,7 @@ Story - TTA2
   - [FIX] Could change to 'Say "I'm wiggling my pinky at you"' ?
 - [BUG] 'frank' in Frank's tool shed should be a proper noun
 - [BUG] after giving Frank the groats the yak zapper in the shop is still visible - it should be invisible now
+- [BUG] Shaved yak picture needs moving to Larry's after the shaving
 - You go to the castle through the misty downs but cannot enter as it is protected by powerful magic. You return to the town and visit the soothsayer (an old lady) who gives you a variety of terrible fortunes - ["You're going to die horrrrriiblyy, probably in a very embarrassing way!", "Nice to meet you young man, I've not seen you before - 'you roll your eyes'", "What strong legs and wide child bearing hips you have, you will bear many children for your husband!"].
   - You must find her some glasses then she sees you (turns out she's blind as a bat without glasses) gives you the real fortune - "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it."
 - An ancient temple hidden under the lake - a temple to old gods with traps and puzzles, entrance puzzle run, a la Indiana Jones:
