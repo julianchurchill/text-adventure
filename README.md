@@ -112,8 +112,6 @@ Ordered by priority, first to do at the top.
 
 Story - TTA2
 
-- After fire attack Flechette should be distraught that her sister has been taken.
-  - "Where is she? She was right here with me, I, I..." she breaks down and starts to cry, holding her head in her hands. "I just turned away for a moment, there was a scuffle behind me and when I turned back Oubliette was gone. I called for her, I shouted and yelled but she wasn't there.". You try to console her, reassuring her that you'll find her sister no matter what it takes.
 - On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy.
   - DONE Go to the bank, convince them you are a Yakuza, so you can withdraw some money.
   - DONE Go to 'Frank's Tool Shed' to buy a yak zapper.

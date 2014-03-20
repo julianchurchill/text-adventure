@@ -443,6 +443,16 @@ item visibility:invisible
 item talk initial phrase:isthereanythingicando:Is there anything I can do to help?:"Is there anything I can do to help?" you ask Flechette.
 item talk response to:isthereanythingicando:She looks at you moving forward and you think she might be about to wollup you again with the boot but she whispers "You should go see my dad, he's the boss around here.".
 ITEM
+item name:Flechette
+item description:She is a scrawny lass, around 12 years old with a canny glint in her eye. She looks upset and seems to have been crying judging from her red eyes and tear stained cheeks.
+item id:flechette_distraught
+item mid sentence cased name:Flechette
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:whatsthematter:What is the matter?:"What is the matter?" you ask Flechette, concerned at her sad appearance.
+item talk response to:whatsthematter:"Where is she? She was right here with me, I, I..." she breaks down and starts to cry, holding her head in her hands. "I just turned away for a moment, there was a scuffle behind me and when I turned back Oubliette was gone. I called for her, I shouted and yelled but she wasn't there.". You try to console her, reassuring her that you'll find her sister no matter what it takes.
+ITEM
 item name:Oubliette
 item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. From what you recall of the shouting man, her name is Oubliette. Fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself.
 item id:oubliette_mob
@@ -626,6 +636,8 @@ item talk response to:whatdowedonext:Cabal hesitates, drawing a deep breath - "T
 item talk action in response to:whatdowedonext:change item visibility:cabal_jambon_after_the_attack:invisible
 item talk action in response to:whatdowedonext:change item visibility:cabal_jambon_in_the_morning:visible
 item talk action in response to:whatdowedonext:change item visibility:oubliette_mushrooms_collected:invisible
+item talk action in response to:whatdowedonext:change item visibility:flechette:invisible
+item talk action in response to:whatdowedonext:change item visibility:flechette_distraught:visible
 item talk action in response to:whatdowedonext:change exit visibility:westgatehouse_to_dirttrack:visible
 item talk action in response to:whatdowedonext:change item visibility:key_to_cabals_boat:visible
 item talk action in response to:whatdowedonext:take item:key_to_cabals_boat
