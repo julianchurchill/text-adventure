@@ -112,6 +112,8 @@ Ordered by priority, first to do at the top.
 
 Story - TTA2
 
+- [BUG] There are two bank tellers visible after getting the fourteen groats. It appears that the friendly bank teller is still visible when he shouldn't be, as well as the sullen bank teller who should be (and is) visible.
+- [BUG] after giving Frank the groats the yak zapper in the shop is still visible - it appears to be the yak zapper that we have auto-picked up, so why is it still in the shop?
 - On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy.
   - DONE Go to the bank, convince them you are a Yakuza, so you can withdraw some money.
   - DONE Go to 'Frank's Tool Shed' to buy a yak zapper.
@@ -120,7 +122,6 @@ Story - TTA2
   - DONE He tells you about the witch and how she controls the town and takes all their yak milk, yak fur, yak bread etc... He tells you where to find her - in a castle over the hill.
 - [BUG] say "Wiggle your pinky" doesn't read very well - it should simply be 'Wiggle you pinky' instead of a say option...
   - [FIX] Could change to 'Say "I'm wiggling my pinky at you"' ?
-- [BUG] after giving Frank the groats the yak zapper in the shop is still visible - it should be invisible now
 - [BUG] Shaved yak picture needs moving to Larry's after the shaving
 - You go to the castle through the misty downs but cannot enter as it is protected by powerful magic. You return to the town and visit the soothsayer (an old lady) who gives you a variety of terrible fortunes - ["You're going to die horrrrriiblyy, probably in a very embarrassing way!", "Nice to meet you young man, I've not seen you before - 'you roll your eyes'", "What strong legs and wide child bearing hips you have, you will bear many children for your husband!"].
   - You must find her some glasses then she sees you (turns out she's blind as a bat without glasses) gives you the real fortune - "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it."
