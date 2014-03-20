@@ -1845,14 +1845,15 @@ ITEM
 item name:Frank
 item description:The owner of Frank's tool shed stands before you, overseeing his shop, ready to answer any questions you might have and to sell you whatever you need, for a price.
 item id:frank_the_tool_man
+item mid sentence cased name:Frank
 item is proper noun:
 item is untakeable:
 item can be used with:fourteen_groats
 item successful use message:"Oh fourteen groats is it, standard power yak zapper you after? Here you go sonny, professional use only of course, don't wanna get caught by the fuzz, now, now." says Frank as he takes the coins from you, handing you the yak zapper in exchange. "Fully charged and ready to run, if you run low on batteries I can do you a deal, just pop in any time now, now.".
 item use action:change item visibility:yak_zapper_untakeable:invisible
 item use action:change item visibility:yak_zapper:visible
-item use action:destroy item:fourteen_groats
 item use action:take item:yak_zapper
+item use action:destroy item:fourteen_groats
 item talk initial phrase:imlookingforsomething:I'm looking for something:"I'm looking for something." you say, addressing Frank.
 item talk response to:imlookingforsomething:"Ahh" nods Frank, giving you a sly wink. "Aren't we all sonny, now, now.".
 ITEM
