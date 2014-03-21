@@ -113,7 +113,9 @@ Ordered by priority, first to do at the top.
 Story - TTA2
 
 - [BUG] There are two bank tellers visible after getting the fourteen groats. It appears that the friendly bank teller is still visible when he shouldn't be, as well as the sullen bank teller who should be (and is) visible.
+  - [FIX] The friendly bank teller is being made visible everytime you use the 'outside' exit from the bank.
 - [BUG] after giving Frank the groats the yak zapper in the shop is still visible - it appears to be the yak zapper that we have auto-picked up, so why is it still in the shop?
+  - [FIX] NormalItems are equal in terms of 'name' and 'description', making the two yak_zappers equivalent for Location.removeItem()::ArrayList::remove() cos it uses the hashCode. This also the same for LocationExit objects... Very bad!!!
 - On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy.
   - DONE Go to the bank, convince them you are a Yakuza, so you can withdraw some money.
   - DONE Go to 'Frank's Tool Shed' to buy a yak zapper.
@@ -139,7 +141,7 @@ Story - TTA2
   - Third room, south indian monkey trap, locked door, key at the bottom of a pit an arms length deep, wider at the bottom than the top. The key is encased in clear wax. You can put your arm down the pit and grab the key ball but cannot get it out of the pit. You must drop a torch down there to melt the wax and then get the key out. Objects: key in wax, pit, torch. Use torch with pit, take key.
   - Fourth room
     - Quaternius, Tempus and Radlican the Vast. Quaternius - a science dwarf. Tempus - a talking dog and Radlican a giant, their bodyguard.
-  - Fifth room - contains the magical artifact which you can use to break into Bella's castle. Whirligig's Shattering Star Mace.
+  - Fifth room - contains the magical artifact which you can use to break into Bella's castle. Whirligig's Shattering Star Mace. Also contains a mirror suspended so you can spin it, when you examine it, it spins and you see Oubliette imprisoned in the witch's castle. She is in a hanging cage. Add a hint of seeing Oubliette to some other places with mirrors - Larrys yak shaving parlour, the soothsayers crystal ball etc...
 - The Menagerie
   - Fastidious mim - a bird
   - Indivisible turpet. "You should have known, the fastidious mim always comes with it's companion creature - the indivisible turpet. The turpet is a big, fat worm, also known as Crane's turpet after the famous biologist, who met his maker shortly after discovering and naming the turpet and then while testing it's indivisibility, he succumbed to blood loss from an accidentally amputated toe. Later biologists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate."
