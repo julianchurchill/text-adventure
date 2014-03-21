@@ -546,21 +546,21 @@ public class NormalItemTests {
     }
 
     @Test
-    public void two_objects_with_the_same_value_should_be_equal() {
+    public void two_objects_with_the_same_id_should_be_equal() {
         NormalItem object1 = new NormalItem();
-        object1.setName( "name" );
+        object1.setId( "id" );
         NormalItem object2 = new NormalItem();
-        object2.setName( "name" );
+        object2.setId( "id" );
 
         assertEquals( object1, object2 );
     }
 
     @Test
-    public void two_objects_with_different_values_should_not_be_equal() {
+    public void two_objects_with_different_ids_should_not_be_equal() {
         NormalItem item1 = new NormalItem();
-        item1.setName( "name a" );
+        item1.setId( "id a" );
         NormalItem item2 = new NormalItem();
-        item2.setName( "name b" );
+        item2.setId( "id b" );
 
         assertNotEquals( item1, item2 );
     }
@@ -574,21 +574,21 @@ public class NormalItemTests {
     }
 
     @Test
-    public void two_objects_with_the_same_value_should_have_the_same_hashcode() {
+    public void two_objects_with_the_same_id_should_have_the_same_hashcode() {
         NormalItem object1 = new NormalItem();
-        object1.setName( "name" );
+        object1.setId( "id" );
         NormalItem object2 = new NormalItem();
-        object2.setName( "name" );
+        object2.setId( "id" );
 
         assertEquals( object1.hashCode(), object2.hashCode() );
     }
 
     @Test
-    public void two_objects_with_different_values_should_have_different_hashcodes() {
+    public void two_objects_with_different_ids_should_have_different_hashcodes() {
         NormalItem item1 = new NormalItem();
-        item1.setName( "name a" );
+        item1.setId( "id a" );
         NormalItem item2 = new NormalItem();
-        item2.setName( "name b" );
+        item2.setId( "id b" );
 
         assertNotEquals( item1.hashCode(), item2.hashCode() );
     }

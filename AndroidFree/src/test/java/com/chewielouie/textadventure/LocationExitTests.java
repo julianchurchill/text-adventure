@@ -59,45 +59,21 @@ public class LocationExitTests {
     }
 
     @Test
-    public void two_exits_with_the_same_value_should_be_equal() {
+    public void two_exits_with_the_same_id_should_be_equal() {
         LocationExit exit1 = new LocationExit();
-        exit1.setLabel( "label" );
-        exit1.setDestination( "destination" );
+        exit1.setID( "id" );
         LocationExit exit2 = new LocationExit();
-        exit2.setLabel( "label" );
-        exit2.setDestination( "destination" );
+        exit2.setID( "id" );
 
         assertEquals( exit1, exit2 );
     }
 
     @Test
-    public void two_exits_with_different_labels_should_not_be_equal() {
+    public void two_exits_with_different_ids_should_not_be_equal() {
         LocationExit exit1 = new LocationExit();
-        exit1.setLabel( "label 1" );
+        exit1.setID( "id 1" );
         LocationExit exit2 = new LocationExit();
-        exit2.setLabel( "label 2" );
-
-        assertNotEquals( exit1, exit2 );
-    }
-
-
-    @Test
-    public void two_exits_with_different_destinations_should_not_be_equal() {
-        LocationExit exit1 = new LocationExit();
-        exit1.setDestination( "destination 1" );
-        LocationExit exit2 = new LocationExit();
-        exit2.setDestination( "destination 2" );
-
-        assertNotEquals( exit1, exit2 );
-    }
-
-
-    @Test
-    public void two_exits_with_different_direction_hints_should_not_be_equal() {
-        LocationExit exit1 = new LocationExit();
-        exit1.setDirectionHint( Exit.DirectionHint.North );
-        LocationExit exit2 = new LocationExit();
-        exit2.setDirectionHint( Exit.DirectionHint.South );
+        exit2.setID( "id 2" );
 
         assertNotEquals( exit1, exit2 );
     }
@@ -111,41 +87,21 @@ public class LocationExitTests {
     }
 
     @Test
-    public void two_exits_with_the_same_value_should_have_the_same_hashcode() {
+    public void two_exits_with_the_same_id_should_have_the_same_hashcode() {
         LocationExit exit1 = new LocationExit();
-        exit1.setLabel( "label" );
+        exit1.setID( "id" );
         LocationExit exit2 = new LocationExit();
-        exit2.setLabel( "label" );
+        exit2.setID( "id" );
 
         assertEquals( exit1.hashCode(), exit2.hashCode() );
     }
 
     @Test
-    public void two_exits_with_different_labels_should_have_different_hashcodes() {
+    public void two_exits_with_different_ids_should_have_different_hashcodes() {
         LocationExit exit1 = new LocationExit();
-        exit1.setLabel( "label 1" );
+        exit1.setID( "id 1" );
         LocationExit exit2 = new LocationExit();
-        exit2.setLabel( "label 2" );
-
-        assertNotEquals( exit1.hashCode(), exit2.hashCode() );
-    }
-
-    @Test
-    public void two_exits_with_different_destinations_should_have_different_hashcodes() {
-        LocationExit exit1 = new LocationExit();
-        exit1.setDestination( "destination 1" );
-        LocationExit exit2 = new LocationExit();
-        exit2.setDestination( "destination 2" );
-
-        assertNotEquals( exit1.hashCode(), exit2.hashCode() );
-    }
-
-    @Test
-    public void two_exits_with_different_direction_hints_should_have_different_hashcodes() {
-        LocationExit exit1 = new LocationExit();
-        exit1.setDirectionHint( Exit.DirectionHint.North );
-        LocationExit exit2 = new LocationExit();
-        exit2.setDirectionHint( Exit.DirectionHint.South );
+        exit2.setID( "id 2" );
 
         assertNotEquals( exit1.hashCode(), exit2.hashCode() );
     }

@@ -61,18 +61,14 @@ public class LocationExit implements Exit {
         if( !(o instanceof LocationExit) )
             return false;
         LocationExit other = (LocationExit)o;
-        return label == other.label &&
-               destination == other.destination &&
-               directionHint == other.directionHint;
+        return id.equals( other.id );
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + label.hashCode();
-        result = prime * result + destination.hashCode();
-        result = prime * result + directionHint.hashCode();
+        result = prime * result + id.hashCode();
         return result;
     }
 

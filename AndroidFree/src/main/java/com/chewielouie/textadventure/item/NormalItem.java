@@ -145,16 +145,14 @@ public class NormalItem implements Item, TalkPhraseSink, TalkPhraseSource {
         if( !(o instanceof NormalItem) )
             return false;
         NormalItem other = (NormalItem)o;
-        return name.equals( other.name ) &&
-               description.equals( other.description );
+        return id.equals( other.id );
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + name.hashCode();
-        result = prime * result + description.hashCode();
+        result = prime * result + id.hashCode();
         return result;
     }
 

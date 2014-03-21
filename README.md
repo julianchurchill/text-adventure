@@ -114,8 +114,6 @@ Story - TTA2
 
 - [BUG] There are two bank tellers visible after getting the fourteen groats. It appears that the friendly bank teller is still visible when he shouldn't be, as well as the sullen bank teller who should be (and is) visible.
   - [FIX] The friendly bank teller is being made visible everytime you use the 'outside' exit from the bank.
-- [BUG] after giving Frank the groats the yak zapper in the shop is still visible - it appears to be the yak zapper that we have auto-picked up, so why is it still in the shop?
-  - [FIX] NormalItems are equal in terms of 'name' and 'description', making the two yak_zappers equivalent for Location.removeItem()::ArrayList::remove() cos it uses the hashCode. This also the same for LocationExit objects... Very bad!!!
 - On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy.
   - DONE Go to the bank, convince them you are a Yakuza, so you can withdraw some money.
   - DONE Go to 'Frank's Tool Shed' to buy a yak zapper.
@@ -244,6 +242,8 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [BUG] Auto scroll to the top of the unread text is too absolute - it doesn't take into account line spacing - it could do with adding a few pixels to the top (e.g. the margin/padding/line spacing divided by 2)
   - [FIX] Add a few pixels to the top of the auto scroll
 - [BUG] Invisible items appeared in the 'use with' list - e.g. cider bottle after giving it to fisherman
+- [BUG] after giving Frank the groats the yak zapper in the shop is still visible - it appears to be the yak zapper that we have auto-picked up, so why is it still in the shop?
+  - [FIX] NormalItems are equal in terms of 'name' and 'description', making the two yak_zappers equivalent for Location.removeItem()::ArrayList::remove() cos it uses the hashCode. This also the same for LocationExit objects... Very bad!!!
 
 - [TECHNICAL TASK] Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
   - Mask images should be auto found by looking for resources starting with area-id. E.g. the mask filename for the town-area should be town-area_mask.png
