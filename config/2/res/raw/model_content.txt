@@ -1934,11 +1934,16 @@ exit label:Outside
 exit destination:main_road_through_ubiquity
 exit direction hint:North
 exit id:bank_of_ubiquity_to_main_road_through_ubiquity
+EXIT
+exit label:Outside
+exit destination:main_road_through_ubiquity
+exit direction hint:North
+exit id:bank_of_ubiquity_to_main_road_through_ubiquity_for_friendly_bank_teller
 exit on use action:change item visibility:bank_guard:invisible
 exit on use action:change item visibility:angry_bank_teller:invisible
 exit on use action:change item visibility:friendly_bank_teller:visible
-exit on use action:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity:invisible
-exit on use action:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity_with_no_actions:visible
+exit on use action:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity_for_friendly_bank_teller:invisible
+exit on use action:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity:visible
 exit is not visible:
 EXIT
 exit label:Outside
@@ -1949,13 +1954,8 @@ exit on use action:change item visibility:bank_guard:invisible
 exit on use action:change item visibility:angry_bank_teller:invisible
 exit on use action:change item visibility:sullen_bank_teller:visible
 exit on use action:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity_for_sullen_bank_teller:invisible
-exit on use action:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity_with_no_actions:visible
+exit on use action:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity:visible
 exit is not visible:
-EXIT
-exit label:Outside
-exit destination:main_road_through_ubiquity
-exit direction hint:North
-exit id:bank_of_ubiquity_to_main_road_through_ubiquity_with_no_actions
 ITEM
 item name:Guard
 item description:The guard dead eyes you, then stink eyes you for good measure. It's likely that he wants you to leave but the implication is not clear.
@@ -1982,8 +1982,8 @@ item talk response to:clarenceofdavenport:The teller's eyes turn wild as soon as
 item talk action in response to:clarenceofdavenport:change item visibility:friendly_bank_teller:invisible
 item talk action in response to:clarenceofdavenport:change item visibility:angry_bank_teller:visible
 item talk action in response to:clarenceofdavenport:change item visibility:bank_guard:visible
-item talk action in response to:clarenceofdavenport:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity:visible
-item talk action in response to:clarenceofdavenport:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity_with_no_actions:invisible
+item talk action in response to:clarenceofdavenport:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity_for_friendly_bank_teller:visible
+item talk action in response to:clarenceofdavenport:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity:invisible
 
 item talk follow up phrase to:yesido:barbara:Barbara Bagshaw:You take a deep breath, and coo in a soft lilting voice - "Barbara, Barbara Bagshaw".
 item talk response to:barbara:"Babs, is that really you? It's been so long, you said you'd never come back to this hokey poke town. To you it was just a place where dreams were crushed and dreamers were fools. What's brought you back, my love, my dearest, my darling?". The teller clearly recognizes the name, although you strongly suspect his eye sight may be in dire need of correction. Preferring to avoid any romantic proposals you quietly step back heading for the door. "Babs? Barbara? Pooky?"... You refrain from responding further and the teller settles back to his work, as though you had never approached him.
@@ -2000,7 +2000,7 @@ item talk response to:whatdoyoumean:"Well if you took money out, then someone el
 
 item talk initial phrase:idliketoborrowsomemoney:I'd like to borrow some money:You step forward and address the teller directly "I'd like to borrow some money".
 item talk response to:idliketoborrowsomemoney:"Hahahaha". The teller chuckles through his nose before returning to his paperwork.
-item talk follow up phrase to:idliketoborrowsomemoney:wiggleyourpinky:Wiggle your pinky:You wiggle your pinky at the teller. He squints and peers, "What are you doing?". "I'm wiggling my pinky at you." you reply. "But why?" continues the delightlful conversation.
+item talk follow up phrase to:idliketoborrowsomemoney:wiggleyourpinky:Wiggle your pinky:You wiggle your pinky at the teller. He squints and peers, "What are you doing?". "I'm wiggling my pinky at you." you reply. "But why?" continues the delightful conversation.
 item talk follow up phrase to:wiggleyourpinky:idontknow:I don't know:"I don't know" you state, feeling very foolish. The teller returns to work, tutting and mumbling.
 item talk follow up phrase to:wiggleyourpinky:istillhaveone:I still have one:"I still have one." you state with an air of glowering menace.
 item talk response to:istillhaveone:Suddenly the teller's mood turns sour, you sense you've struck a nerve. "Alright, I don't want any trouble. You know I paid my dues." he says to you. You pause before saying anything, hoping that he will elaborate so that you can discover exactly where this might lead. Eventually you start to reply "What are..." but before you can say any more he interrupts you - "How much do you need this time? You know you're bleeding me dry, you and your Yakuza pals." his tone is sullen but defeated. He clearly had a rough ride with these Yakuza chaps. You respond swiftly, thinking on your feet "Fourteen groats, this time.". The teller quickly counts out the money and hands it to you, mumbling and trying to focus on his papers again.
@@ -2024,7 +2024,7 @@ item talk action in response to:clarenceofdavenport:change item visibility:sulle
 item talk action in response to:clarenceofdavenport:change item visibility:angry_bank_teller:visible
 item talk action in response to:clarenceofdavenport:change item visibility:bank_guard:visible
 item talk action in response to:clarenceofdavenport:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity_for_sullen_bank_teller:visible
-item talk action in response to:clarenceofdavenport:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity_with_no_actions:invisible
+item talk action in response to:clarenceofdavenport:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity:invisible
 
 item talk follow up phrase to:yesido:barbara:Barbara Bagshaw:You take a deep breath, and coo in a soft lilting voice - "Barbara, Barbara Bagshaw".
 item talk response to:barbara:"Babs, is that really you? It's been so long, you said you'd never come back to this hokey poke town. To you it was just a place where dreams were crushed and dreamers were fools. What's brought you back, my love, my dearest, my darling?". The teller clearly recognizes the name, although you strongly suspect his eye sight may be in dire need of correction. Preferring to avoid any romantic proposals you quietly step back heading for the door. "Babs? Barbara? Pooky?"... You refrain from responding further and the teller settles back to his work, as though you had never approached him.

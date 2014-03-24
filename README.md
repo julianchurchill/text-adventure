@@ -53,6 +53,8 @@ Ordered by priority, first to do at the top.
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
 - [TECHNICAL TASK] Protect all logging with 'isDebugMode()' to prevent hitting the filesystem when running release
+- [TECHNICAL TASK] Make CommonActivity create a LoggableLocationFactory, which wraps the LocationFactory to decorate Location objects with LoggableLocation objects to use a logger to record failed uses of exitable() on ids that are not exits for this location.
+  - OR perhaps the BasicModel should be the object that gets logged in moveThroughExit() ???
 - [UI] New icon for TTA2
 - [UI] Vary the images for buttons, i.e. on looking at a large inventory all the buttons are the same, would look nice if they varied at bit
 - [UI] Reduce the height of the buttons to better fit more in without squishing the text view down too much
@@ -112,6 +114,7 @@ Ordered by priority, first to do at the top.
 
 Story - TTA2
 
+- [BUG] On starting up when in the bank after having bought the zapper from frank and returned to the bank there is _far_ too much history text. It should have been cleared when triggering an exit...
 - On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy.
   - DONE Go to the bank, convince them you are a Yakuza, so you can withdraw some money.
   - DONE Go to 'Frank's Tool Shed' to buy a yak zapper.
