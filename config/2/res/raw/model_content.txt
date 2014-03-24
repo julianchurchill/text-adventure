@@ -1944,6 +1944,17 @@ EXIT
 exit label:Outside
 exit destination:main_road_through_ubiquity
 exit direction hint:North
+exit id:bank_of_ubiquity_to_main_road_through_ubiquity_for_sullen_bank_teller
+exit on use action:change item visibility:bank_guard:invisible
+exit on use action:change item visibility:angry_bank_teller:invisible
+exit on use action:change item visibility:sullen_bank_teller:visible
+exit on use action:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity_for_sullen_bank_teller:invisible
+exit on use action:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity_with_no_actions:visible
+exit is not visible:
+EXIT
+exit label:Outside
+exit destination:main_road_through_ubiquity
+exit direction hint:North
 exit id:bank_of_ubiquity_to_main_road_through_ubiquity_with_no_actions
 ITEM
 item name:Guard
@@ -2008,7 +2019,12 @@ item talk response to:idliketodepositsomemoney:"Why of course sir, do you have a
 item talk follow up phrase to:idliketodepositsomemoney:yesido:Yes I do:"Yes I do young fellow." you say without thinking, the man behind the counter is clearly of much more advanced age than you.
 item talk response to:yesido:"Wonderful, I'm sorry I didn't recognise you. Can you confirm for me your name?".
 item talk follow up phrase to:yesido:clarenceofdavenport:Clarence of Davenport:Puffing yourself up you decide to try out a pseudonym you've been toying with "I am Clarence.". The teller cocks his head to one side, quizzically. "Of Davenport." you add for good measure.
-item talk response to:clarenceofdavenport:The teller's eyes turn wild as soon as he hears the full name - "Clarence of Davenport, the great debtor?", he grinds his gums, chomping with anxiety. You can almost see him calculating the risk to the banks reputation in quatloos. After a brief moment of consideration he snorts in disbelief, clearly he has not fallen for your rouse. He returns to shuffling his papers around his oversized desk.
+item talk response to:clarenceofdavenport:The teller's eyes turn wild as soon as he hears the full name - "Clarence of Davenport, the great debtor?", he grinds his gums, chomping with anxiety. You can almost see him calculating the risk to the banks reputation in quatloos. Leaning backwards whilst keeping an eagle eye on you he tugs hard on a bell string, ringing for the bank's guard who comes rushing out of a back room. "See that this man is escorted from the premises immediately!", the last word culminating in a high pitched squeak of outrage. The guard dead eyes you and you suspect you may no longer be welcome here.
+item talk action in response to:clarenceofdavenport:change item visibility:sullen_bank_teller:invisible
+item talk action in response to:clarenceofdavenport:change item visibility:angry_bank_teller:visible
+item talk action in response to:clarenceofdavenport:change item visibility:bank_guard:visible
+item talk action in response to:clarenceofdavenport:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity_for_sullen_bank_teller:visible
+item talk action in response to:clarenceofdavenport:change exit visibility:bank_of_ubiquity_to_main_road_through_ubiquity_with_no_actions:invisible
 
 item talk follow up phrase to:yesido:barbara:Barbara Bagshaw:You take a deep breath, and coo in a soft lilting voice - "Barbara, Barbara Bagshaw".
 item talk response to:barbara:"Babs, is that really you? It's been so long, you said you'd never come back to this hokey poke town. To you it was just a place where dreams were crushed and dreamers were fools. What's brought you back, my love, my dearest, my darling?". The teller clearly recognizes the name, although you strongly suspect his eye sight may be in dire need of correction. Preferring to avoid any romantic proposals you quietly step back heading for the door. "Babs? Barbara? Pooky?"... You refrain from responding further and the teller settles back to his work, as though you had never approached him.
