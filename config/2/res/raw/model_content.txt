@@ -28,6 +28,9 @@ location area name:Ubiquity
 LOCATION AREA
 location area id:misty_downs_area
 location area name:Misty Downs
+LOCATION AREA
+location area id:breakwater_lake_area
+location area name:Breakwater Lake
 
 LOCATION
 x:300
@@ -1413,10 +1416,15 @@ location id:ubiquity_road_west
 location area id:ubiquity_area
 location description:Dust swirls around you, caught by the wind blowing along the road. A farm lies to the south, at least it looks like a farm. There are barns and some cattle roaming around fenced fields and it most certainly smells like a farm. The road continues in one direction towards the town of Ubiquity and in the other to a wide river.
 EXIT
+exit label:Overgrown shrubbery
+exit destination:overgrown_shrubbery
+exit direction hint:North
+exit id:ubiquity_road_west_to_overgrown_shrubbery
+EXIT
 exit label:Farm entrance
 exit destination:yak_farm
 exit direction hint:South
-exit id:yak_farm
+exit id:ubiquity_road_west_to yak_farm
 EXIT
 exit label:Road to Ubiquity
 exit destination:ubiquity_entrance
@@ -1442,6 +1450,51 @@ item use action:change item visibility:grumpy_yak_at_ubiquity_entrance:visible
 LOCATION
 x:000
 y:000
+location id:overgrown_shrubbery
+location area id:ubiquity_area
+location description:This area is covered with dense shrubbery, not a lot to see, just bushes of varying sorts. There is some movement in the foliage but nothing to be alarmed about.
+EXIT
+exit label:Crossroads
+exit destination:ubiquity_road_west
+exit direction hint:South
+exit id:overgrown_shrubbery_to_ubiquity_road_west
+EXIT
+exit label:Path to Breakwater Lake
+exit destination:path_to_breakwater_lake
+exit direction hint:North
+exit id:overgrown_shrubbery_to_path_to_breakwater_lake
+exit is not visible:
+ITEM
+item name:Bushes
+item description:A dense thicket of overgrown bushery covering the ground.
+item id:shrubbery_bushes
+item countable noun prefix:some
+item is untakeable:
+item visibility:invisible
+item examine message:Tugging at the vines, branches and layers of moss and leaves you uncover an old path. It was clearly once well-trodden but now disused. You wonder how long this route has remained hidden. The path seems to lead down towards a lake in the distance.
+item on examine action:change exit visibility:overgrown_shrubbery_to_path_to_breakwater_lake:visible
+
+LOCATION
+x:000
+y:-060
+location id:path_to_breakwater_lake
+location area id:breakwater_lake_area
+location description:You stand at the edge of a large expanse of water, nestled within a horseshoe of low hills. A path rises up the slope behind you, back towards the town of Ubiquity.
+EXIT
+exit label:Path back to Ubiquity
+exit destination:overgrown_shrubbery
+exit direction hint:South
+exit id:path_to_breakwater_lake_to_overgrown_shrubbery
+ITEM
+item name:Breakwater Lake
+item description:The water shimmers, crystalline reflections dancing upon the surface of the unnaturally dark water. You spy brief glimpses of something deep down, something massive. The water looks murky, touching it chills your finger tips rising through your arm and into your chest making you gasp and quickly retract your hand. You never did like the water.
+item id:breakwater_lake
+item is untakeable:
+item is proper noun:
+
+LOCATION
+x:000
+y:120
 location id:yak_farm
 location area id:ubiquity_area
 location description:This is a farm, it stinks more than you'd expect and looking around you realise why. It's a yak farm, and there are a lot of them penned in fields far and wide. They've not been shaved for a long time, their coats long and hairy, sticky with mud and probably worse things. If there's one thing that a yak needs it's a regular shave but the farmer doesn't seem to be around.<div align="center"><img src="shaved_yak.png"/></div>Yak farming used to be a highly profitable business and this must have been a real money spinner. It seems quite strange to you that it would have been abandoned but you decide not to over analyse the situation, after all 'don't look a gift yak in the mouth', or something. In the distance you can hear what might be misconstrued as singing. It appears to be coming from a nearby hillock.
@@ -1468,7 +1521,7 @@ item use action:change item visibility:grumpy_yak_at_hillock:visible
 
 LOCATION
 x:000
-y:060
+y:180
 location id:yak_farm_hillock
 location area id:ubiquity_area
 location description:You approach the hillock, the sound of song filling the air. Sat on the grass, looking out over a small herd of yak are several yak herders, trolling out an energetic if confused ditty<newline>"Chipolatas, chipolatas, they're the best sort of sausage you can buy"<newline>"Chipolatas, chipolatas, eat them raw or put them in a pie"<newline>"Shave a yak, wear hat, wrap it in your cloak"<newline>"Feed it well, watch it swell, sell it for a groat."<newline>
@@ -1590,7 +1643,7 @@ x:-240
 y:060
 location id:rotten_alley
 location area id:ubiquity_area
-location description:The Rickets lies behind you, if only because otherwise you'd have your back to the darkness of Rotten Alley just about the only place you'd rather not have yuor back to. Peering into the gloom you can make out a rusty gate ahead and nothing but mist beyond.
+location description:The Rickets lies behind you, if only because otherwise you'd have your back to the darkness of Rotten Alley just about the only place you'd rather not have your back to. Peering into the gloom you can make out a rusty gate ahead and nothing but mist beyond.
 EXIT
 exit label:The Rickets
 exit destination:the_rickets
@@ -1822,7 +1875,8 @@ item is proper noun:
 item is untakeable:
 item visibility:invisible
 item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
-item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it.". Well that's certainly mysterious you think to yourself, exactly the sort of thing you'd expect from a soothsayer.
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it.". Well that's certainly mysterious you think to yourself, exactly the sort of thing you'd expect from a soothsayer. "Look closely at the crossroads east of town and you'll find your way to the lake."
+item use action:change item visibility:shrubbery_bushes:visible
 ITEM
 item name:Glasses of Clear Vision
 item description:These are the legendary Glasses of Clear Vision - famed for their ability to bring better vision to those with quite bad vision. Amongst the stories told of them they are supposed to have restored the vision of a monk who once got some grit in his eye, the sight of a drunkard after he had sobered up and the full ocular power of a man who had married an unseemly wench during a show of independence to those who were withholding from him his inheritance.
