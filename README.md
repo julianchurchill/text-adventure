@@ -112,8 +112,6 @@ Ordered by priority, first to do at the top.
 
 Story - TTA2
 
-- [BUG] There are two bank tellers visible after getting the fourteen groats. It appears that the friendly bank teller is still visible when he shouldn't be, as well as the sullen bank teller who should be (and is) visible.
-  - [FIX] The friendly bank teller is being made visible everytime you use the 'outside' exit from the bank.
 - On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy.
   - DONE Go to the bank, convince them you are a Yakuza, so you can withdraw some money.
   - DONE Go to 'Frank's Tool Shed' to buy a yak zapper.
