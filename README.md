@@ -114,7 +114,6 @@ Ordered by priority, first to do at the top.
 
 Story - TTA2
 
-- [BUG] On starting up when in the bank after having bought the zapper from frank and returned to the bank there is _far_ too much history text. It should have been cleared when triggering an exit...
 - On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy.
   - DONE Go to the bank, convince them you are a Yakuza, so you can withdraw some money.
   - DONE Go to 'Frank's Tool Shed' to buy a yak zapper.
