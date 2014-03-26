@@ -37,13 +37,9 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [FEATURE] Provide a walkthrough as a text file, in plain English.
-  - DONE Show text in a plain window, remove lines starting with '#'
-  - DONE Solution text should be faded for instructions before current score
-  - Pull out WalkthroughTextFormatter into its own file
-  - Write a walkthrough for TTA1!!!
-- [FEATURE] Add 'quick hint' in parallel to walkthrough. Add lines like '# quick hint: Have you tried the butchers?' and present the next one after the current score as a toast.
 - [TECHNICAL TASK] Refactor TextAdventureCommonActivity, it's madness - pull out some classes.
+- [FEATURE] Add 'quick hint' in parallel to walkthrough. Add lines like '# quick hint: Have you tried the butchers?' and present the next one after the current score as a toast.
+- [FEATURE] Write a walkthrough for TTA1
 - [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
 - [DEV] Add walkthrough verification unit test to play through walkthrough and check score is as expected at each stage
 - [DEV] Add '# waypoint <name>' into walkthrough text file and auto generate waypoint files during build
@@ -220,6 +216,7 @@ Marketing
 TTA1 v2.2.x/TTA2 v1.0.x
 ---
 
+- [FEATURE] A step-by-step walkthrough in plain English is now available. The displayed text is faded up to the current scored position.
 - [FEATURE] One shot contextual text can be displayed on entering a room and is then proceeded by the normal room description.
 - [FEATURE] Map - shows where you've been
 - [FEATURE] Added location area to title bar

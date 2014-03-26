@@ -246,7 +246,7 @@ use yak zapper with yak
 # score +1
 go yak parlour
 talk to larry
-say how much to shave my yaK_without_yak?
+say how much to shave my yak?
 say so you'll cut him for free?
 say where can I find the witch?
 #

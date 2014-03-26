@@ -157,7 +157,6 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     public static final int SHOW_MAP_MENU_ITEM = 3;
     public static final int DEBUG_WAYPOINTS_MENU_ITEM = 4;
     public static final int WALKTHROUGH_MENU_ITEM = 5;
-    private static final String lineEndingsRegex = "\\r?\\n|\\r";
     private static String oldJSONFormatSaveFileName = "save_file_1";
     private static String actionHistorySaveFileName = "action_history_save_file_1";
     private static String shared_prefs_root_key = "com.chewielouie.textadventure";
@@ -998,63 +997,6 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         walkthrough_scroll_view.setVisibility( View.VISIBLE );
         walkthrough_text_view.setText( R_string_loading() );
         new WalkthroughTextFormatter( walkthrough_text_view, readRawTextFileFromResource( "walkthrough" ), currentScore );
-    }
-
-    private class WalkthroughTextFormatter
-    {
-        private final String specialFlagsToMakeDotMatchNewlines = "(?s)";
-        private final Pattern scoreWithDigitsRegex = Pattern.compile(
-            specialFlagsToMakeDotMatchNewlines + "# score (\\d+).*" );
-        private final Pattern scoreWithIncrementRegex = Pattern.compile(
-            specialFlagsToMakeDotMatchNewlines + "# score \\+(\\d+).*" );
-
-        private int observedScore = 0;
-        private int activeWalkthroughPosition = 0;
-        private int score = 0;
-
-        public WalkthroughTextFormatter( TextView textView, String walkthroughText, int score )
-        {
-            this.score = score;
-            SpannableStringBuilder builder = new SpannableStringBuilder();
-            builder.append( removeNonPrintableWalkthroughLines( walkthroughText ) );
-            int startIndex = 0;
-            int endIndex = activeWalkthroughPosition;
-            int flags = 0;
-            builder.setSpan( new ForegroundColorSpan( Color.DKGRAY ), startIndex, endIndex, flags );
-            textView.setText( builder, TextView.BufferType.SPANNABLE );
-        }
-
-        private String removeNonPrintableWalkthroughLines( String text ) {
-            String[] lines = text.split( lineEndingsRegex );
-            StringBuffer buffer = new StringBuffer();
-            for( int i = 0; i < lines.length; ++i )
-            {
-                if( i != (lines.length-1) )
-                    lines[i] += System.getProperty( "line.separator" );
-                if( isPrintableWalkthroughLine( lines[i] ) )
-                    buffer.append( lines[i] );
-                updateActivePositionInWalkthrough( lines[i] );
-            }
-            return buffer.toString();
-        }
-
-        private void updateActivePositionInWalkthrough( String line ) {
-            Matcher scoreWithIncrementMatcher = scoreWithIncrementRegex.matcher( line );
-            if( scoreWithIncrementMatcher.matches() )
-                observedScore += Integer.parseInt( scoreWithIncrementMatcher.group(1) );
-            else
-            {
-                Matcher scoreWithDigitsMatcher = scoreWithDigitsRegex.matcher( line );
-                if( scoreWithDigitsMatcher.matches() )
-                    observedScore = Integer.parseInt( scoreWithDigitsMatcher.group(1) );
-            }
-            if( isPrintableWalkthroughLine( line ) && observedScore < score )
-                activeWalkthroughPosition += line.length();
-        }
-
-        private boolean isPrintableWalkthroughLine( String text ) {
-            return text.startsWith( "#" ) == false;
-        }
     }
 
     private void showWaypointsList() {
