@@ -37,7 +37,6 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [TECHNICAL TASK] Refactor TextAdventureCommonActivity, it's madness - pull out some classes.
 - [FEATURE] Add 'quick hint' in parallel to walkthrough. Add lines like '# quick hint: Have you tried the butchers?' and present the next one after the current score as a toast.
 - [FEATURE] Write a walkthrough for TTA1
 - [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
