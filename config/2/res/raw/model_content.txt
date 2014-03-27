@@ -1479,18 +1479,54 @@ x:000
 y:-060
 location id:path_to_breakwater_lake
 location area id:breakwater_lake_area
-location description:You stand at the edge of a large expanse of water, nestled within a horseshoe of low hills. A path rises up the slope behind you, back towards the town of Ubiquity.
+location description:You stand at the edge of a large expanse of water, nestled within a horseshoe of low hills. A path rises up the slope behind you, back towards the town of Ubiquity and running further away between the hills is a small track that looks like it was used by a horse and cart a long time ago.
 EXIT
 exit label:Path back to Ubiquity
 exit destination:overgrown_shrubbery
 exit direction hint:South
 exit id:path_to_breakwater_lake_to_overgrown_shrubbery
+EXIT
+exit label:Cart track
+exit destination:disused_field
+exit direction hint:North
+exit id:path_to_breakwater_lake_to_disused_field
 ITEM
 item name:Breakwater Lake
 item description:The water shimmers, crystalline reflections dancing upon the surface of the unnaturally dark water. You spy brief glimpses of something deep down, something massive. The water looks murky, touching it chills your finger tips rising through your arm and into your chest making you gasp and quickly retract your hand. You never did like the water.
 item id:breakwater_lake
 item is untakeable:
 item is proper noun:
+
+LOCATION
+x:000
+y:-120
+location id:disused_field
+location area id:breakwater_lake_area
+location description:Standing at the end of a cart track before you lies a large ploughed field with a higgledy piggledy mishmash of roots and squashes scattered about. Half of them are completely uprooted and lying on the surface of the soil slowly rotting in the cold winter sun.
+EXIT
+exit label:Cart track
+exit destination:path_to_breakwater_lake
+exit direction hint:South
+exit id:disused_field_to_path_to_breakwater_lake
+ITEM
+item name:Pile of root vegetables
+item description:
+item id:pile_of_root_vegetables
+item is untakeable:
+item examine action is not repeatable:
+item examine message:Rustling through the dirty pile of vile vegetables you discover a couple of treasures - the most plumptuous turnip you have ever encountered and an entire string of parsnips.
+item on examine action:change item visibility:turnip:visible
+item on examine action:change item visibility:string_of_parsnips:visible
+ITEM
+item name:Turnip
+item description:A nice fat turnip, round and podgy, strangely it reminds you of the torso of an ape. It looks highly plumptuous.
+item id:turnip
+item visibility:invisible
+ITEM
+item name:String of parsnips
+item description:Each of the parsnips are long and pointy at one end. You dangle the string of parsnips and play with it like a puppet, although it looks like a pair of arms missing a body at the moment.
+item id:string_of_parsnips
+item visibility:invisible
 
 LOCATION
 x:000
