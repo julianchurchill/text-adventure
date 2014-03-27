@@ -172,7 +172,6 @@ Story - TTA2
   - DONE Shaved yak
   - Second Fell beast for the barricade attack
   - Mushrooms
-  - Barrelling goon (big fur ball, shooting about like pinball)
   - Hearth for Cabal's house
   - Larry the Yak shaver
   - Bank of Ubiquity
