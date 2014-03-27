@@ -5,15 +5,6 @@ An Android old-skool text adventure game. This is another exercise in TDD in an 
 
 Don't forget to drive the development by producing value - the value is game content and this should drive the development of functionality to support it.
 
-Vagrant Development Environment
-===============================
-
-This project is supplied with a vagrant file to initialise a virtual machine using [Vagrant](http://www.vagrantup.com/) that can be used to build the application and to run it in an android emulator. This is fairly untested so use at your own risk. The vagrant file is based upon work from https://github.com/rickfarmer/android-vm
-
-Make sure you have installed [Vagrant](http://www.vagrantup.com/) and at least [VirtualBox](https://www.virtualbox.org/) to allow virtual machines to be run. Then in the root directory of this project run 'vagrant up'. You will have to wait a jolly long time the first run through but then you will be able to log in to a graphical Ubuntu and build the project. All files in the current directory are shared as /vagrant in the vm. Login username and password are both 'vagrant'.
-
-Be sure _not_ to check in through git _within_ the vm - the username will be vagrant and won't work! Do git operations through the host OS, it also a good idea to use the host OS for file editing as it will be quicker. Just use the VM for building and running in the emulator.
-
 Building
 ========
 
@@ -26,61 +17,18 @@ Emulator
 
 To run the emulator - run 'android list avd' to get all the configured virtual devices, then 'emulator @<device-name>' to run the chosen device in the emulator.
 
-To install the built app run 'adb install -r bin/main/TextAdventure-debug.apk'.
-
 Save files are stored on the emulated device under /data/data/com.chewielouie.textadventure/files. Run 'adb shell' to get access to the file system.
-
-Run 'adb logcat' to see the system log tailed to your terminal.
 
 Backlog
 =======
 
-Ordered by priority, first to do at the top.
+Technical Tasks
 
-- [FEATURE] Add 'quick hint' in parallel to walkthrough. Add lines like '# quick hint: Have you tried the butchers?' and present the next one after the current score as a toast.
-- [FEATURE] Write a walkthrough for TTA1
-- [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
-- [DEV] Add walkthrough verification unit test to play through walkthrough and check score is as expected at each stage
-- [DEV] Add '# waypoint <name>' into walkthrough text file and auto generate waypoint files during build
-- [BUG] <newline> in 'talk responses' don't seem to be obeyed. See newline before "You awake the following morning to Cabal brewing you".
-  - Also search for ""Go see Cabal, find out" in the 'successful use message' version and check that is obeyed too.
-- [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
-  - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
-    - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
-- [TECHNICAL TASK] Protect all logging with 'isDebugMode()' to prevent hitting the filesystem when running release
-- [TECHNICAL TASK] Make CommonActivity create a LoggableLocationFactory, which wraps the LocationFactory to decorate Location objects with LoggableLocation objects to use a logger to record failed uses of exitable() on ids that are not exits for this location.
-  - OR perhaps the BasicModel should be the object that gets logged in moveThroughExit() ???
-- [UI] New icon for TTA2
-- [UI] Vary the images for buttons, i.e. on looking at a large inventory all the buttons are the same, would look nice if they varied at bit
-- [UI] Reduce the height of the buttons to better fit more in without squishing the text view down too much
-- [FEATURE] Map - extras
-    - Make better masks and a better map! Charlies on the case.
-- [TECHNICAL TASK] Add cucumber test run as part of build, see https://github.com/cucumber/cucumber-jvm and config/common/test/CucumberStepDefs.java and src/test/resources/cucumber/TTA2/TTA2_entering_the_town.feature
-- [FEATURE] Story log - a record of all the story text you've seen so far - i.e. the 'text on first entry to location'. Possibly also the conversation text? How much of this to store, room descriptions, item activations?
-- [TECHNICAL TASK] Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
-- [TECHNICAL TASK] Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
-- [TECHNICAL TASK] Check for syntax issues with model text at build time
-  - Non unique ids
-  - Referenced ids that have no object, e.g. exit destination that doesn't exist, can be used with target that doesn't exist
-- [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
-  - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
-- [FEATURE] Accessibility - Text to speech
-  - DONE Add a check box for TTS to the options dialog, save as a preference, default is off
-  - Why does a 'Starting game' dialog appear and the save file get reloaded when turning TTS _on_ ?
-  - Only play new text, e.g. examine an object, play the description but do not play the location description again
-    - Should the item list and exit list be replayed?
-- [TECHNICAL TASK] Update model for app 1 to use take item action where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
-- [FEATURE] Sound effects
-  - Door unlocking, clock tower ticking/bells, ghostly sounds in the graveyard, mice scratching at the church, market hustle and bustle.
-  - Make on/off-able in options
-- [UI] Images for inventory items to appear on buttons next to label
-- [UI] Images for actions to appear on buttons next to label
-- [UI] Restrict action button list to half screen height
-- [UI] Parchment background extras
-  - Scroll bar images need to compliment the parchment background...
-- [FEATURE] What's new dialog for first run of new version.
-- [FEATURE] Harcore mode - no or reduced graphics, white monospace font, black background
-- [TECHNICAL TASK] Analytics
+- Reduce the height of the buttons to better fit more in without squishing the text view down too much
+- Add cucumber test run as part of build, see https://github.com/cucumber/cucumber-jvm and config/common/test/CucumberStepDefs.java and src/test/resources/cucumber/TTA2/TTA2_entering_the_town.feature
+- Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
+- Update model for app 1 to use take item action where appropriate - make sure this will be backwards compatible with current behaviour - save files will have 'pick up' actions for items that will now be automatically picked up. So the original extra 'pick up' must be harmless and just fail silently since the user already has the item in their inventory.
+- Analytics
   - https://developers.google.com/analytics/devguides/collection/android/v3/
   - Things to capture
     - Active time (between onResume() and onPause()) from start to finish of game/average completion time
@@ -93,19 +41,38 @@ Ordered by priority, first to do at the top.
     - Count how many actions are made to complete game
     - Count how many times options dialog is opened
     - Count how many times map is opened
-- [FEATURE] Google games API Achievements
-  - Chatterbox (talk to everyone about everything)
-  - Converser (talked to everyone)
-  - Champion (complete the game)
-  - Perfect (complete game in minimal moves) - questionable worth and hard to calculate
-  - Explorer (has gone to every location)
-  - Pathfinder (has gone through every exit)
-  - Player of the Kazoo (completed a sub quest to create and play a kazoo at a childrens party)
-- [FEATURE] Google games API Leaderboard - Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
-- [FEATURE] Accessibility - Voice recognition
-- [TECHNICAL TASK] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
-- [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
+- Save/restore checkpoints - on branch 'checkpoints'
+  - Save dumps action history to a file action_history_checkpoint_[n]
+    - Toast to show checkpoint has been saved (and which number...)
+  - Restore loads latest numbered action_history_checkpoint_[n] file and then deletes it
+    - Not sure deleting is a good idea... what if you the progress and want to return to the same checkpoint, you can't because it's been deleted!
+    - Toast to show checkpoint has been restored (and which number...)
+  - Add menu items, restore is disabled if no checkpoint files available
+- Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
+- Check for syntax issues with model text at build time
+  - Non unique ids
+  - Referenced ids that have no object, e.g. exit destination that doesn't exist, can be used with target that doesn't exist
 
+Marketing
+
+- Add keywords and description to Google Play description to include - "Story, game, puzzle"
+- Forums and newsgroups: intfiction.org, rec.games.int-fiction, rec.arts.int-fiction
+  - TTA1 release posted on intfiction.org
+- Game indexes and review sites: ifdb.tads.org, textadventures.co.uk, www.androidtapp.com
+  - TTA1 androidtapp review request submitted
+  - TTA1 added to ifdb - http://ifdb.tads.org/viewgame?id=6bsa13ogybwiucr0
+- Add a Google+ page for the app, add to About box and play store/amazon store listings
+  - Added Google+ page for Tiny Text Adventure https://plus.google.com/u/0/115456188877848985242
+
+Bugs
+
+- [BUG] <newline> in 'talk responses' don't seem to be obeyed. See newline before "You awake the following morning to Cabal brewing you".
+  - Also search for ""Go see Cabal, find out" in the 'successful use message' version and check that is obeyed too.
+- [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
+  - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
+    - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
+- [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
+  - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
 
 Story - TTA2
 
@@ -115,34 +82,22 @@ Story - TTA2
   - DONE Go to the yak farm outside town and use the 'yak zapper' to cow poke it to Larry.
   - DONE Ask him to shave it, you can then talk to him to find out the town gossip.
   - DONE He tells you about the witch and how she controls the town and takes all their yak milk, yak fur, yak bread etc... He tells you where to find her - in a castle over the hill.
-- [BUG] say "Wiggle your pinky" doesn't read very well - it should simply be 'Wiggle you pinky' instead of a say option...
-  - [FIX] Could change to 'Say "I'm wiggling my pinky at you"' ?
-- [BUG] Shaved yak picture needs moving to Larry's after the shaving
-- You go to the castle through the misty downs but cannot enter as it is protected by powerful magic. You return to the town and visit the soothsayer (an old lady) who gives you a variety of terrible fortunes - ["You're going to die horrrrriiblyy, probably in a very embarrassing way!", "Nice to meet you young man, I've not seen you before - 'you roll your eyes'", "What strong legs and wide child bearing hips you have, you will bear many children for your husband!"].
+- You go to the castle but cannot enter as it is protected by powerful magic. You return to the town and visit the soothsayer (an old lady) who gives you a variety of terrible fortunes - ["You're going to die horrrrriiblyy, probably in a very embarrassing way!", "Nice to meet you young man, I've not seen you before - 'you roll your eyes'", "What strong legs and wide child bearing hips you have, you will bear many children for your husband!"].
   - You must find her some glasses then she sees you (turns out she's blind as a bat without glasses) gives you the real fortune - "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it."
 - An ancient temple hidden under the lake - a temple to old gods with traps and puzzles, entrance puzzle run, a la Indiana Jones:
-  - "The water shimmers, crystalline reflections dancing upon the surface of the unnaturally dark water. You spy brief glimpses of something deep down, something massive. The water looks murky, touching it chills your finger tips and anxiety rises in your chest. You never did like the water."
-  - You need some sort of aqualung or magic to dive deep enough to enter the temple.
-  - Gibbling Boon is a good name for a creature. The entrance to the temple is guarded by a gibbling boon. After you emerge from the water, having held your breath for a long time you climb out of a pool of water to stand in front of a glowing green door - its eery and metallic but the only way forward. Approaching the door you hear a series of levers change position, ratchets latch, cogs tick round and a trapdoor from above drops a Gibbling Boon in between you and the door. From where you stand you can see the door is slightly raised, as though stuck, if you can get around the Boon you might be able to slide under the door and escape. The creature itself appears to be quite unhinged, it gabbles and gibbles to itself, long ape like arms, one longer than the other, swaying from side to side, its face racing through contorted expressions faster than you can recognise them. This creature is a created thing, a monstrous mix up of natural animals with heightened intelligence. You've heard that dark magicians often employed such creatures to guard their lairs, but this one seems almost broken. Perhaps it has been here all alone for a very long time.
-    - If you examine the boon: "The creature looks terribly lonely. It mutters and mumurs to itself and upon spotting you rushes forward only to stop and shriek at you in fear. Perhaps it thought you were one of its own kind."
-    - To get past the Gibbling Boon you must make a dummy Boon, a mop for its head, a turnip for its body with the mop handle running through it, parsnips threaded together with string for long dangly arms.
-      - Description for the mop "This mop almost looks like a hairy head on a stick."
-      - Description for the turnip "A nice fat turnip, round and podgy, strangely it reminds you of the torso of an ape."
-      - Description for the parnsips "Long and pointy at one end. You dangle the string of parsnips and play with it like a puppet, although it looks like a pair of arms missing a body at the moment."
   - First room, broken bridge, examine stalactites to reveal bits you could hook a rope on, then use whip with them to swing over broken bridge
   - Second room, stone monkey on pedestal with gems for eyes, out of reach and facing you. Skull chandelier above tied in place next to you. Use knife with chandelier rope to drop it, chandelier still out of reach, use whip to swing it into monkey which knocks it so that light from hole in the roof is directed through it's eyes into a gem in the wall and a hidden door opens.
   - Third room, south indian monkey trap, locked door, key at the bottom of a pit an arms length deep, wider at the bottom than the top. The key is encased in clear wax. You can put your arm down the pit and grab the key ball but cannot get it out of the pit. You must drop a torch down there to melt the wax and then get the key out. Objects: key in wax, pit, torch. Use torch with pit, take key.
   - Fourth room
-    - Quaternius, Tempus and Radlican the Vast. Quaternius - a science dwarf. Tempus - a talking dog and Radlican a giant, their bodyguard.
-  - Fifth room - contains the magical artifact which you can use to break into Bella's castle. Whirligig's Shattering Star Mace. Also contains a mirror suspended so you can spin it, when you examine it, it spins and you see Oubliette imprisoned in the witch's castle. She is in a hanging cage. Add a hint of seeing Oubliette to some other places with mirrors - Larrys yak shaving parlour, the soothsayers crystal ball etc...
-- The Menagerie
-  - Fastidious mim - a bird
-  - Indivisible turpet. "You should have known, the fastidious mim always comes with it's companion creature - the indivisible turpet. The turpet is a big, fat worm, also known as Crane's turpet after the famous biologist, who met his maker shortly after discovering and naming the turpet and then while testing it's indivisibility, he succumbed to blood loss from an accidentally amputated toe. Later biologists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate."
+    - Quaternius, Tempus and Radlican the Vast
+  - Fifth room - contains the magical artifact which you can use to break into Bella's castle.
+- Gibbling Boon is a good name for a creature.
+- Fastidious mim - a bird
+- Indivisible turpet. "You should have known, the fastidious mim always comes with it's companion creature - the indivisible turpet. The turpet is a big, fat worm, also known as Crane's turpet after the famous biologist, who met his maker shortly after discovering and naming the turpet and then while testing it's indivisibility, he succumbed to blood loss from an accidentally amputated toe. Later biologists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate."
 - Babbages cabbage - a cabbage power steam computer, perhaps interact by placing runes
 - Magical robots - perhaps trapped water imps - agents for either side, initially created by the witch to serve her, wills too strong for her to control, some changed sides. Self naming, Least Chance of Failure, Random Acts of Kindness, Vengeful Beyond Death, Penchant for Foolish Bravery
 - A portal to a dark plane (deep inside the temple) with demon creatures you must defeat some how
 - Bellas HQ - a castle in a forest on the other side of the river.
-  - As you cross the Misty Downs to get to the castle a wight from a barrow which you could not earlier get into is awoken. You must defeat it to proceed.
   - Final battle should be in several locations, you must beat the witch in one room in a certain way, then she flees and you follow. Repeat 3 times, different rooms and different ways to beat her.
   - Perhaps you can fail to beat the witch in a room if you do the wrong thing. Consequence is a reset of the combat sequence to the first room.
 - Sub quests
@@ -156,7 +111,6 @@ Story - TTA2
   - DONE Pocket lint and glowing embers - "There's not really enough of it to start a fire."
   - DONE Stick and glowing embers - "You can try to beat the embers out but the damage has already been done."
   - DONE Stick and the fell beast - "Really? Do you want to fight the beast or play with it?"
-  - Fiery torch and jar of paraffin - should explode or some comedy outcome
   - Fishing rod and the fisherman
   - Chainsaw and fisherman
   - Chainsaw and any of the people
@@ -166,36 +120,53 @@ Story - TTA2
   - DONE Spiky-toothed goober (large vicious fish)
   - DONE Portcullis
   - DONE Barrelling goon (big fur ball, shooting about like pinball)
-  - DONE Fell beast (hairless dog with fiery eyes)
-  - DONE Muck selling crone
-  - DONE barricade for first entrance to Perpetuity
-  - DONE Shaved yak
+  - Fell beast (hairless dog with fiery eyes)
   - Second Fell beast for the barricade attack
   - Mushrooms
+<<<<<<< HEAD
   - Barrelling goon (big fur ball, shooting about like pinball)
+=======
   - Hearth for Cabal's house
+  - Shaved yak
   - Larry the Yak shaver
   - Bank of Ubiquity
   - Scabby Mary the soothsayer
   - Frank's Tool Shed
-  - Barrow for the barrow wight to live in
-  - Barry Wight - the Nec-romancer
-- Add slightly animated images (3-5 frames)
-  - A mouse scampering around the base of the barricade
-  - Juddering hour hand on the clock tower
-  - An unshaved yak with hair blowing in the wind
+>>>>>>> d35d8d911175c88eda0842a0ea876a0c2e969f91
 
-Marketing
+Features
 
-- Add keywords and description to Google Play description to include - "Story, game, puzzle"
-- Forums and newsgroups: intfiction.org, rec.games.int-fiction, rec.arts.int-fiction
-  - TTA1 release posted on intfiction.org
-- Game indexes and review sites: ifdb.tads.org, textadventures.co.uk, www.androidtapp.com
-  - TTA1 androidtapp review request submitted
-  - TTA1 added to ifdb - http://ifdb.tads.org/viewgame?id=6bsa13ogybwiucr0
-- Add a Google+ page for the app, add to About box and play store/amazon store listings
-  - Added Google+ page for Tiny Text Adventure https://plus.google.com/u/0/115456188877848985242
+- [UI] New icon for TTA2
+- [FEATURE] Map - extras
+    - Make better masks and a better map! Charlies on the case.
+- [FEATURE] Story log - a record of all the story text you've seen so far - i.e. the 'text on first entry to location'. Possibly also the conversation text? How much of this to store, room descriptions, item activations?
+- [FEATURE] Accessibility - Text to speech
+  - DONE Add a check box for TTS to the options dialog, save as a preference, default is off
+  - Why does a 'Starting game' dialog appear and the save file get reloaded when turning TTS _on_ ?
+  - Only play new text, e.g. examine an object, play the description but do not play the location description again
+    - Should the item list and exit list be replayed?
+- [FEATURE] Sound effects
+  - Door unlocking, clock tower ticking/bells, ghostly sounds in the graveyard, mice scratching at the church, market hustle and bustle.
+  - Make on/off-able in options
+- [UI] Images for inventory items to appear on buttons next to label
+- [UI] Images for actions to appear on buttons next to label
+- [UI] Restrict action button list to half screen height
+- [UI] Parchment background extras
+  - Scroll bar images need to compliment the parchment background...
+- [FEATURE] What's new dialog for first run of new version.
+- [FEATURE] Google games API Achievements
+  - Chatterbox (talk to everyone about everything)
+  - Converser (talked to everyone)
+  - Champion (complete the game)
+  - Perfect (complete game in minimal moves) - questionable worth and hard to calculate
+  - Explorer (has gone to every location)
+  - Pathfinder (has gone through every exit)
+  - Player of the Kazoo (completed a sub quest to create and play a kazoo at a childrens party)
+- [FEATURE] Google games API Leaderboard - Record the number of moves taken so far, present as a form of score on the about dialog or a stats page?
+- [FEATURE] Accessibility - Voice recognition
 
+- [TECHNICAL FEATURE] Incremental saving - save the game every 10 actions or something, in case of a crash this avoids the user losing too much progress
+- [FEATURE] Tablet improvements - make work in landscape, use bigger font depending on screen size
 
 Done
 ====
@@ -216,7 +187,6 @@ Marketing
 TTA1 v2.2.x/TTA2 v1.0.x
 ---
 
-- [FEATURE] A step-by-step walkthrough in plain English is now available. The displayed text is faded up to the current scored position.
 - [FEATURE] One shot contextual text can be displayed on entering a room and is then proceeded by the normal room description.
 - [FEATURE] Map - shows where you've been
 - [FEATURE] Added location area to title bar
@@ -239,8 +209,6 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [BUG] Auto scroll to the top of the unread text is too absolute - it doesn't take into account line spacing - it could do with adding a few pixels to the top (e.g. the margin/padding/line spacing divided by 2)
   - [FIX] Add a few pixels to the top of the auto scroll
 - [BUG] Invisible items appeared in the 'use with' list - e.g. cider bottle after giving it to fisherman
-- [BUG] after giving Frank the groats the yak zapper in the shop is still visible - it appears to be the yak zapper that we have auto-picked up, so why is it still in the shop?
-  - [FIX] NormalItems are equal in terms of 'name' and 'description', making the two yak_zappers equivalent for Location.removeItem()::ArrayList::remove() cos it uses the hashCode. This also the same for LocationExit objects... Very bad!!!
 
 - [TECHNICAL TASK] Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
   - Mask images should be auto found by looking for resources starting with area-id. E.g. the mask filename for the town-area should be town-area_mask.png
@@ -264,7 +232,6 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [TECHINCAL TASK] Added 'You use [the] x with [the] y.' before outputting the result.
 - [TECHINCAL TASK] Turned on proguard for release APK generation - http://developer.android.com/tools/help/proguard.html
 - [TECHNICAL TASK] Made the item and exit list italic to distinguish them as state rather than story
-- [DEV] Waypoints added to allow the player to skip ahead through the story, only for debug builds, through extra menu items.
 
 TTA2 only
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in, when you examine it you get your arm stuck. There are no exits and some items around you.
@@ -289,7 +256,7 @@ TTA2 only
   - After defeating the fell beast you must talk to the people manning the barricade to glean that they expect a fire attack to be imminent and are calling out for the 'fire shield'. You must repair it (there is a wheel missing) and push it from the town hall (which it had been protecting) to the barricade, upon which the people shelter with you behind it and are protected from being engulfed by flames. You see a glimpse through the fire of a metal man a small distance from the other side of the barricade seemingly directing the beasts where to attack and controlling a dragon.
   - Finally you leave to check the rest of the towns defences and speak to Cabal to learn what has happened - you discover that Oubliette has been taken by the beasts, just like her mother. Cabal asks you to find her and to defeat the witch. He directs you to go to the neighbouring town of Ubiquity and to use his boat moored up the river to get across. The day ends, you sleep at Cabals and morning comes.
 -[STORY] You go to Ubiquity in search of the witch, Oubliette and the truth!
-  - You go to the river, use the key with the boat and row across. You can row back again if you use the key again.
+  - You go to the river, use the oars with the boat and row across. You can row back again if you use the oars.
 
 - [MINOR STORY CORRECTION] Little girl is introduced as "Flechette" but her description remains a small girl".
 - [MINOR STORY CORRECTION] Once you've accepted Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.
