@@ -109,23 +109,16 @@ Ordered by priority, first to do at the top.
 
 Story - TTA2
 
-- On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy.
-  - DONE Go to the bank, convince them you are a Yakuza, so you can withdraw some money.
-  - DONE Go to 'Frank's Tool Shed' to buy a yak zapper.
-  - DONE Go to the yak farm outside town and use the 'yak zapper' to cow poke it to Larry.
-  - DONE Ask him to shave it, you can then talk to him to find out the town gossip.
-  - DONE He tells you about the witch and how she controls the town and takes all their yak milk, yak fur, yak bread etc... He tells you where to find her - in a castle over the hill.
 - [BUG] say "Wiggle your pinky" doesn't read very well - it should simply be 'Wiggle you pinky' instead of a say option...
   - [FIX] Could change to 'Say "I'm wiggling my pinky at you"' ?
 - [BUG] Shaved yak picture needs moving to Larry's after the shaving
-- You go to the castle through the misty downs but cannot enter as it is protected by powerful magic. You return to the town and visit the soothsayer (an old lady) who gives you a variety of terrible fortunes - ["You're going to die horrrrriiblyy, probably in a very embarrassing way!", "Nice to meet you young man, I've not seen you before - 'you roll your eyes'", "What strong legs and wide child bearing hips you have, you will bear many children for your husband!"].
-  - You must find her some glasses then she sees you (turns out she's blind as a bat without glasses) gives you the real fortune - "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it."
-- An ancient temple hidden under the lake - a temple to old gods with traps and puzzles, entrance puzzle run, a la Indiana Jones:
-  - "The water shimmers, crystalline reflections dancing upon the surface of the unnaturally dark water. You spy brief glimpses of something deep down, something massive. The water looks murky, touching it chills your finger tips and anxiety rises in your chest. You never did like the water."
-  - You need some sort of aqualung or magic to dive deep enough to enter the temple.
+- Receiving the fortune from the soothsayer opens the route to breakwater lake/or gets you an aqualung to get there...
+  - Consider making the path always visible (make the shrubbery bushes always visible) as it is counter-intuitive to suddenly have something visible when it wasn't when you looked there before. Better to have the soothsayer give you an aqualung.
+- Breakwater Temple - an ancient temple hidden under the lake - a temple to old gods with traps and puzzles, entrance puzzle run, a la Indiana Jones:
+  - You need an aqualung or magic to dive deep enough to enter the temple.
   - Gibbling Boon is a good name for a creature. The entrance to the temple is guarded by a gibbling boon. After you emerge from the water, having held your breath for a long time you climb out of a pool of water to stand in front of a glowing green door - its eery and metallic but the only way forward. Approaching the door you hear a series of levers change position, ratchets latch, cogs tick round and a trapdoor from above drops a Gibbling Boon in between you and the door. From where you stand you can see the door is slightly raised, as though stuck, if you can get around the Boon you might be able to slide under the door and escape. The creature itself appears to be quite unhinged, it gabbles and gibbles to itself, long ape like arms, one longer than the other, swaying from side to side, its face racing through contorted expressions faster than you can recognise them. This creature is a created thing, a monstrous mix up of natural animals with heightened intelligence. You've heard that dark magicians often employed such creatures to guard their lairs, but this one seems almost broken. Perhaps it has been here all alone for a very long time.
     - If you examine the boon: "The creature looks terribly lonely. It mutters and mumurs to itself and upon spotting you rushes forward only to stop and shriek at you in fear. Perhaps it thought you were one of its own kind. It sort of reminds you of a large root vegetable with messy hair and dangly arms."
-    - To get past the Gibbling Boon you must make a dummy Boon, a mop for its head, a turnip for its body with the mop handle running through it, parsnips threaded together with string for long dangly arms.
+    - DONE To get past the Gibbling Boon you must make a dummy Boon, a mop for its head, a turnip for its body with the mop handle running through it, parsnips threaded together with string for long dangly arms.
       - Description for the mop "This mop almost looks like a hairy head on a stick."
       - Description for the turnip "A nice fat turnip, round and podgy, strangely it reminds you of the torso of an ape."
       - Description for the parnsips "Long and pointy at one end. You dangle the string of parsnips and play with it like a puppet, although it looks like a pair of arms missing a body at the moment."
@@ -133,7 +126,8 @@ Story - TTA2
   - Second room, stone monkey on pedestal with gems for eyes, out of reach and facing you. Skull chandelier above tied in place next to you. Use knife with chandelier rope to drop it, chandelier still out of reach, use whip to swing it into monkey which knocks it so that light from hole in the roof is directed through it's eyes into a gem in the wall and a hidden door opens.
   - Third room, south indian monkey trap, locked door, key at the bottom of a pit an arms length deep, wider at the bottom than the top. The key is encased in clear wax. You can put your arm down the pit and grab the key ball but cannot get it out of the pit. You must drop a torch down there to melt the wax and then get the key out. Objects: key in wax, pit, torch. Use torch with pit, take key.
   - Fourth room
-    - Quaternius, Tempus and Radlican the Vast. Quaternius - a science dwarf. Tempus - a talking dog and Radlican a giant, their bodyguard.
+    - Quaternius, Tempus and Radlican the Vast. Quaternius - a science dwarf. Tempus - a talking dog made by Quaternius and Radlican a giant, their bodyguard.
+      - You are in Quaternius' lab and he requires some help or an answer to a quiz or riddle before you can progress. A talking game.
   - Fifth room - contains the magical artifact which you can use to break into Bella's castle. Whirligig's Shattering Star Mace. Also contains a mirror suspended so you can spin it, when you examine it, it spins and you see Oubliette imprisoned in the witch's castle. She is in a hanging cage. Add a hint of seeing Oubliette to some other places with mirrors - Larrys yak shaving parlour, the soothsayers crystal ball etc...
 - The Menagerie
   - Fastidious mim - a bird
@@ -162,6 +156,9 @@ Story - TTA2
   - Chainsaw and any of the people
   - Dung and poorly man
   - Dung and mushrooms
+  - Mop and parsnips
+  - Mop and turnip
+  - Glasses and Larry, yak, bank teller
 - Add embedded images at suitable places with <img src=""/> tags
   - DONE Spiky-toothed goober (large vicious fish)
   - DONE Portcullis
@@ -289,6 +286,12 @@ TTA2 only
   - Finally you leave to check the rest of the towns defences and speak to Cabal to learn what has happened - you discover that Oubliette has been taken by the beasts, just like her mother. Cabal asks you to find her and to defeat the witch. He directs you to go to the neighbouring town of Ubiquity and to use his boat moored up the river to get across. The day ends, you sleep at Cabals and morning comes.
 -[STORY] You go to Ubiquity in search of the witch, Oubliette and the truth!
   - You go to the river, use the key with the boat and row across. You can row back again if you use the key again.
+- [STORY] On arriving at Ubiquity you walk past a yak farm. You enter the town and there is a yak shaving parlour, in which is Larry the yak shaver chatting away to the locals whilst he shaves their yaks. He will not talk to you because he is busy.
+  - You must go to the bank, convince them you are a Yakuza, so you can withdraw some money.
+  - Then go to 'Frank's Tool Shed' to buy a yak zapper, go to the yak farm outside town and use the 'yak zapper' to cow poke it to Larry
+  - Ask him to shave it, you can then talk to him to find out the town gossip. He tells you about the witch and how she controls the town and takes all their yak milk, yak fur, yak bread etc... He tells you where to find her - in a castle over the hill and gives you a key to the gate at the back of town to get there.
+- [STORY] You go to the castle through the misty downs but cannot enter as it is protected by powerful magic. You return to the town and visit the soothsayer (an old lady) who gives you a variety of terrible fortunes.
+  - You must find her some glasses hidden in the rocks of the barrow near the castle entrance, give them to her then she sees you and gives you the real fortune, telling you about the temple under breakwater lake.
 
 - [MINOR STORY CORRECTION] Little girl is introduced as "Flechette" but her description remains a small girl".
 - [MINOR STORY CORRECTION] Once you've accepted Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.
