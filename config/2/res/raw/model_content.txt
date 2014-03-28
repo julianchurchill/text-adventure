@@ -1822,6 +1822,7 @@ item description:The barrow is made of lots of stones, placed carefully together
 item id:barrow_1
 item is proper noun:
 item is untakeable:
+item examine action is not repeatable:
 item examine message:The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. Its probably a bear. You feel anxious about examining any further.
 item on examine action:change item visibility:barrow_1:invisible
 item on examine action:change item visibility:barrow_2:visible
@@ -1831,6 +1832,17 @@ item description:The barrow is made of lots of stones, placed carefully together
 item id:barrow_2
 item is proper noun:
 item is untakeable:
+item visibility:invisible
+item examine action is not repeatable:
+item examine message:Searching between the stones that make up the barrow you spy a little twinkling object, the sun reflecting off metal and glass. Reaching in gently you pull out a pair of glasses. Inspect the spectacles you realise these are probably very useful for someone who might not have the best of vision and put them in your pocket in case you come across someone in need.
+item on examine action:change item visibility:glasses_of_clear_vision:visible
+item on examine action:take item:glasses_of_clear_vision
+ITEM
+item name:Glasses of Clear Vision
+item description:These are the legendary Glasses of Clear Vision - famed for their ability to bring better vision to those with quite bad vision. Amongst the stories told of them they are supposed to have restored the vision of a monk who once got some grit in his eye, the sight of a drunkard after he had sobered up and the full ocular power of a man who had married an unseemly wench during a show of independence to those who were withholding from him his inheritance.
+item id:glasses_of_clear_vision
+item is proper noun:
+item countable noun prefix:some
 item visibility:invisible
 
 LOCATION
@@ -1936,12 +1948,6 @@ item visibility:invisible
 item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
 item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it.". Well that's certainly mysterious you think to yourself, exactly the sort of thing you'd expect from a soothsayer. "Look closely at the crossroads east of town and you'll find your way to the lake."
 item use action:change item visibility:shrubbery_bushes:visible
-ITEM
-item name:Glasses of Clear Vision
-item description:These are the legendary Glasses of Clear Vision - famed for their ability to bring better vision to those with quite bad vision. Amongst the stories told of them they are supposed to have restored the vision of a monk who once got some grit in his eye, the sight of a drunkard after he had sobered up and the full ocular power of a man who had married an unseemly wench during a show of independence to those who were withholding from him his inheritance.
-item id:glasses_of_clear_vision
-item countable noun prefix:some
-item visibility:invisible
 
 LOCATION
 x:-180
