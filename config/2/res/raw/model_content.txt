@@ -1514,18 +1514,41 @@ item description:
 item id:pile_of_root_vegetables
 item is untakeable:
 item examine action is not repeatable:
-item examine message:Rustling through the dirty pile of vile vegetables you discover a couple of treasures - the most plumptuous turnip you have ever encountered and an entire string of parsnips.
+item examine message:Rustling through the dirty pile of vile vegetables you discover a couple of treasures - the most plumptuous turnip you have ever encountered and an entire string of parsnips. In addition there is a rather foul looking mop head wrapped up in its own ragged tassles.
 item on examine action:change item visibility:turnip:visible
 item on examine action:change item visibility:string_of_parsnips:visible
+item on examine action:change item visibility:mop_head:visible
 ITEM
 item name:Turnip
 item description:A nice fat turnip, round and podgy, strangely it reminds you of the torso of an ape. It looks highly plumptuous.
 item id:turnip
 item visibility:invisible
+item can be used with:string_of_parsnips
+item successful use message:You dangle the parsnip string loosely around the turnip, dressing it so the parsnips dangle to each side like a pair of floppy arms.
+item use action:change item visibility:turnip_with_string_of_parsnips:visible
+item use action:take item:turnip_with_string_of_parsnips
+item use action:destroy item:string_of_parsnips
+item use action:destroy item:turnip
 ITEM
 item name:String of parsnips
 item description:Each of the parsnips are long and pointy at one end. You dangle the string of parsnips and play with it like a puppet, although it looks like a pair of arms missing a body at the moment.
 item id:string_of_parsnips
+item visibility:invisible
+ITEM
+item name:Turnip and parsnip melange
+item description:A plumptuous turnip garnered with a string of parsnips which look like dangly arms. The only thing missing is a straggly mop of hair, then it would really resemble something... umm just like a, errr well, you'll know it when you see it.
+item id:turnip_with_string_of_parsnips
+item visibility:invisible
+item can be used with:mop_head
+item successful use message:
+item use action:change item visibility:pretend_gibbling_boon:visible
+item use action:take item:pretend_gibbling_boon
+item use action:destroy item:turnip_with_string_of_parsnips
+item use action:destroy item:mop_head
+ITEM
+item name:Mop head
+item description:At first glance this could be a freshly harvested scalp or a very bad wig. Its actually a dirty old mop head which wafts a lingering stench of stale water and filth through the air. You try not to fling it around too much as the aroma gets worse.
+item id:mop_head
 item visibility:invisible
 
 LOCATION
