@@ -53,7 +53,7 @@ Ordered by priority, first to do at the top.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
 - [TECHNICAL TASK] Protect all logging with 'isDebugMode()' to prevent hitting the filesystem when running release
 - [FEATURE] Hints?  Possibly based on cheat sheet progress?
-- [UI] New icon for TTA2
+- [UI] New icon for TTA2 - DONE
 - [UI] Vary the images for buttons, i.e. on looking at a large inventory all the buttons are the same, would look nice if they varied at bit
 - [UI] Reduce the height of the buttons to better fit more in without squishing the text view down too much
 - [FEATURE] Map - extras
