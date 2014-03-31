@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/julianchurchill/text-adventure.png?branch=master)](https://travis-ci.org/julianchurchill/text-adventure)
+
 Text Adventure
 ==============
 
