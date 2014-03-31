@@ -113,8 +113,6 @@ Story - TTA2
 - [BUG] say "Wiggle your pinky" doesn't read very well - it should simply be 'Wiggle you pinky' instead of a say option...
   - [FIX] Could change to 'Say "I'm wiggling my pinky at you"' ?
 - [BUG] Shaved yak picture needs moving to Larry's after the shaving
-- Receiving the fortune from the soothsayer opens the route to breakwater lake/or gets you an aqualung to get there...
-  - Consider making the path always visible (make the shrubbery bushes always visible) as it is counter-intuitive to suddenly have something visible when it wasn't when you looked there before. Better to have the soothsayer give you an aqualung.
 - Breakwater Temple - an ancient temple hidden under the lake - a temple to old gods with traps and puzzles, entrance puzzle run, a la Indiana Jones:
   - You need an aqualung or magic to dive deep enough to enter the temple.
   - Gibbling Boon is a good name for a creature. The entrance to the temple is guarded by a gibbling boon. After you emerge from the water, having held your breath for a long time you climb out of a pool of water to stand in front of a glowing green door - its eery and metallic but the only way forward. Approaching the door you hear a series of levers change position, ratchets latch, cogs tick round and a trapdoor from above drops a Gibbling Boon in between you and the door. From where you stand you can see the door is slightly raised, as though stuck, if you can get around the Boon you might be able to slide under the door and escape. The creature itself appears to be quite unhinged, it gabbles and gibbles to itself, long ape like arms, one longer than the other, swaying from side to side, its face racing through contorted expressions faster than you can recognise them. This creature is a created thing, a monstrous mix up of natural animals with heightened intelligence. You've heard that dark magicians often employed such creatures to guard their lairs, but this one seems almost broken. Perhaps it has been here all alone for a very long time.
@@ -293,7 +291,7 @@ TTA2 only
   - Then go to 'Frank's Tool Shed' to buy a yak zapper, go to the yak farm outside town and use the 'yak zapper' to cow poke it to Larry
   - Ask him to shave it, you can then talk to him to find out the town gossip. He tells you about the witch and how she controls the town and takes all their yak milk, yak fur, yak bread etc... He tells you where to find her - in a castle over the hill and gives you a key to the gate at the back of town to get there.
 - [STORY] You go to the castle through the misty downs but cannot enter as it is protected by powerful magic. You return to the town and visit the soothsayer (an old lady) who gives you a variety of terrible fortunes.
-  - You must find her some glasses hidden in the rocks of the barrow near the castle entrance, give them to her then she sees you and gives you the real fortune, telling you about the temple under breakwater lake.
+  - You must find her some glasses hidden in the rocks of the barrow near the castle entrance, give them to her then she sees you and gives you the real fortune, telling you about the temple under breakwater lake. She also gives you an aqualung to help get there.
 
 - [MINOR STORY CORRECTION] Little girl is introduced as "Flechette" but her description remains a small girl".
 - [MINOR STORY CORRECTION] Once you've accepted Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.

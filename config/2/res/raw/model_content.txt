@@ -1470,7 +1470,6 @@ item description:A dense thicket of overgrown bushery covering the ground.
 item id:shrubbery_bushes
 item countable noun prefix:some
 item is untakeable:
-item visibility:invisible
 item examine message:Tugging at the vines, branches and layers of moss and leaves you uncover an old path. It was clearly once well-trodden but now disused. You wonder how long this route has remained hidden. The path seems to lead down towards a lake in the distance.
 item on examine action:change exit visibility:overgrown_shrubbery_to_path_to_breakwater_lake:visible
 
@@ -1490,12 +1489,39 @@ exit label:Cart track
 exit destination:disused_field
 exit direction hint:North
 exit id:path_to_breakwater_lake_to_disused_field
+EXIT
+exit label:Down, down, down into the depths
+exit destination:breakwater_temple_entrance
+exit direction hint:North
+exit id:path_to_breakwater_lake_to_breakwater_temple_entrance
+exit on use action:change location description:path_to_breakwater_lake:You stand at the edge of a large expanse of water, nestled within a horseshoe of low hills. A path rises up the slope behind you, back towards the town of Ubiquity and running further away between the hills is a small track that looks like it was used by a horse and cart a long time ago.
+exit on use action:change exit visibility:path_to_breakwater_lake_to_breakwater_temple_entrance:invisible
+exit on use action:change exit visibility:path_to_breakwater_lake_to_overgrown_shrubbery:visible
+exit on use action:change exit visibility:path_to_breakwater_lake_to_disused_field:visible
 ITEM
 item name:Breakwater Lake
 item description:The water shimmers, crystalline reflections dancing upon the surface of the unnaturally dark water. You spy brief glimpses of something deep down, something massive. The water looks murky, touching it chills your finger tips rising through your arm and into your chest making you gasp and quickly retract your hand. You never did like the water.
 item id:breakwater_lake
 item is untakeable:
 item is proper noun:
+item can be used with:aqualung
+item successful use message:Hoisting the aqualung over your shoulder you position your arms within the straps and suck upon the mouth piece.
+item use action:change location description:path_to_breakwater_lake:Floating weightlessly, held buoyant by the slowly depleting bladder sac strapped to your back to peer around in the murky water. Further below there is a structure, some sort of building and up above the cold sun filters through the water. There is no place to go but down.
+item use action:change exit visibility:path_to_breakwater_lake_to_overgrown_shrubbery:invisible
+item use action:change exit visibility:path_to_breakwater_lake_to_disused_field:invisible
+item use action:change exit visibility:path_to_breakwater_lake_to_breakwater_temple_entrance:visible
+
+LOCATION
+x:000
+y:-060
+location id:breakwater_temple_entrance
+location area id:breakwater_lake_area
+location description:Great stone pillars rise around you, framing the dark entrance to the temple. The pool from which you emerged is behind, reflecting the light of an absent moon. It unnerves you greatly, this place doesn't play by the rules.
+EXIT
+exit label:Moon pool
+exit destination:path_to_breakwater_lake
+exit direction hint:South
+exit id:breakwater_temple_entrance_to_path_to_breakwater_lake
 
 LOCATION
 x:000
@@ -1946,8 +1972,24 @@ item is proper noun:
 item is untakeable:
 item visibility:invisible
 item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
-item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it.". Well that's certainly mysterious you think to yourself, exactly the sort of thing you'd expect from a soothsayer. "Look closely at the crossroads east of town and you'll find your way to the lake."
-item use action:change item visibility:shrubbery_bushes:visible
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it.". Well that's certainly mysterious you think to yourself, exactly the sort of thing you'd expect from a soothsayer. "Look closely at the crossroads east of town and you'll find your way to the lake and take this, I don't know what it is but the spirits tell me you might need it." She tails off with a mysterious descending howl that turns into a dramatic whisper - "Whoaoaahhahaaaaaaa....aaaaaaa".
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary_with_glasses:invisible
+item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary_with_glasses2:visible
+ITEM
+item name:Scabby Mary
+item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her. She can see a lot better since you gave her those glasses.
+item id:scabby_mary_with_glasses2
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it.". Well that's certainly mysterious you think to yourself, exactly the sort of thing you'd expect from a soothsayer. "Look closely at the crossroads east of town and you'll find your way to the lake." She tails off with a mysterious descending howl that turns into a dramatic whisper - "Whoaoaahhahaaaaaaa....aaaaaaa".
+ITEM
+item name:Aqualung
+item description:This contraption provides a means by which you can breathe underwater. It has a goat's bladder sac full of air and a mouth piece carved from the horn of a gazelle. The idea is you breathe through the mouth piece, taking in the air from the bladder sac. It's very basic and has been hand stitched together, the seams look a little shoddy. It won't get you far underwater, but maybe just far enough.
+item id:aqualung
+item countable noun prefix:an
+item visibility:invisible
 
 LOCATION
 x:-180
