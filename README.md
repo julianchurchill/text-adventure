@@ -52,7 +52,6 @@ Ordered by priority, first to do at the top.
 - [TECHNICAL TASK] Protect all logging with 'isDebugMode()' to prevent hitting the filesystem when running release
 - [TECHNICAL TASK] Make CommonActivity create a LoggableLocationFactory, which wraps the LocationFactory to decorate Location objects with LoggableLocation objects to use a logger to record failed uses of exitable() on ids that are not exits for this location.
   - OR perhaps the BasicModel should be the object that gets logged in moveThroughExit() ???
-- [UI] New icon for TTA2
 - [UI] Vary the images for buttons, i.e. on looking at a large inventory all the buttons are the same, would look nice if they varied at bit
 - [UI] Reduce the height of the buttons to better fit more in without squishing the text view down too much
 - [FEATURE] Map - extras
@@ -230,6 +229,7 @@ TTA1 v2.2.x/TTA2 v1.0.x
   - Added a check box for TTS to the options dialog, saves as a preference, default is off
 - [UI] Action buttons have a complimentary style to the text background
 - [UI] Removed title bar to give more space for content
+- [UI] New icon for TTA2
 
 - [BUG] Double new lines appear before and after talk phrases are printed
   - [FIX] SayAction was adding unnecessary new lines.
