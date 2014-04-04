@@ -1493,7 +1493,7 @@ EXIT
 exit label:Down, down, down into the depths
 exit destination:breakwater_temple_entrance
 exit direction hint:North
-exit id:path_to_breakwater_lake_to_breakwater_temple_entrance
+exit id:path_to_breakwater_lake_to_breakwater_temple_entrance_pool
 exit on use action:change location description:path_to_breakwater_lake:You stand at the edge of a large expanse of water, nestled within a horseshoe of low hills. A path rises up the slope behind you, back towards the town of Ubiquity and running further away between the hills is a small track that looks like it was used by a horse and cart a long time ago.
 exit on use action:change exit visibility:path_to_breakwater_lake_to_breakwater_temple_entrance:invisible
 exit on use action:change exit visibility:path_to_breakwater_lake_to_overgrown_shrubbery:visible
@@ -1506,22 +1506,92 @@ item is untakeable:
 item is proper noun:
 item can be used with:aqualung
 item successful use message:Hoisting the aqualung over your shoulder you position your arms within the straps and suck upon the mouth piece.
-item use action:change location description:path_to_breakwater_lake:Floating weightlessly, held buoyant by the slowly depleting bladder sac strapped to your back to peer around in the murky water. Further below there is a structure, some sort of building and up above the cold sun filters through the water. There is no place to go but down.
+item use action:change location description:path_to_breakwater_lake:Floating weightlessly, held buoyant by the slowly depleting bladder sac strapped to your back you peer around in the murky water. Further below there is a structure, some sort of building and up above the cold sun filters through the water. There is no place to go but down.
 item use action:change exit visibility:path_to_breakwater_lake_to_overgrown_shrubbery:invisible
 item use action:change exit visibility:path_to_breakwater_lake_to_disused_field:invisible
 item use action:change exit visibility:path_to_breakwater_lake_to_breakwater_temple_entrance:visible
 
 LOCATION
 x:000
-y:-060
+y:-120
+location id:breakwater_temple_entrance_pool
+location area id:breakwater_lake_area
+location description:Diving deeper you see a light ahead, the glittering point of illumination guiding you down, then flat through a short tunnel. Finally you emerge, surfacing from a shallow pool of water and stand slightly stooped to avoid the low ceiling. Ahead of you the cave opens out and you see a great door flanked by two large stone pillars.
+EXIT
+exit label:Leave the pool
+exit destination:breakwater_temple_entrance
+exit direction hint:North
+exit id:breakwater_temple_entrance_pool_to_breakwater_temple_entrance
+
+LOCATION
+x:000
+y:-120
+location id:breakwater_temple_entrance_pool_outwards
+location area id:breakwater_lake_area
+location description:You step into the pool, unable to see beneath the water due to the reflection of the absent moon. Behind you is the entrance to the temple, dark and foreboding. It is a short swim back to the surface using your aqualung.
+EXIT
+exit label:Leave the pool
+exit destination:breakwater_temple_entrance
+exit direction hint:North
+exit id:breakwater_temple_entrance_pool_outwards_to_breakwater_temple_entrance
+EXIT
+exit label:Swim back to the surface
+exit destination:path_to_breakwater_lake
+exit direction hint:South
+exit id:breakwater_temple_entrance_pool_outwards_to_path_to_breakwater_lake
+
+LOCATION
+x:000
+y:-180
 location id:breakwater_temple_entrance
 location area id:breakwater_lake_area
 location description:Great stone pillars rise around you, framing the dark entrance to the temple. The pool from which you emerged is behind, reflecting the light of an absent moon. It unnerves you greatly, this place doesn't play by the rules.
 EXIT
 exit label:Moon pool
-exit destination:path_to_breakwater_lake
+exit destination:breakwater_temple_entrance_pool_outwards
 exit direction hint:South
-exit id:breakwater_temple_entrance_to_path_to_breakwater_lake
+exit id:breakwater_temple_entrance_to_breakwater_temple_entrance_pool
+EXIT
+exit label:The pillars
+exit destination:breakwater_temple_entrance_pillars
+exit direction hint:North
+exit id:breakwater_temple_entrance_to_breakwater_temple_entrance_pillars
+
+LOCATION
+x:000
+y:-240
+location id:breakwater_temple_entrance_pillars
+location area id:breakwater_lake_area
+location description:Standing between the pillars they tower over you like the legs of a mighty giant. The door which they frame is mighty too, wooden and thick, yet even here the water has crept in and the bottom edges are starting to rot. There is an encroaching carpet of algae climbing the doors, draped from them like a shaggy green coat. Over in one corner you notice movement, something hiding next to one of the great pillars. It slowly emerges, shuffling towards you, groaning. The creature itself appears to be quite unhinged, it gabbles and gibbles to itself, long ape like arms, one longer than the other, swaying from side to side, its face racing through contorted expressions faster than you can recognise them. This creature is a created thing, a monstrous mix up of natural animals with heightened intelligence. You've heard that dark magicians often employed such creatures to guard their lairs, but this one seems almost broken. Perhaps it has been here all alone for a very long time.
+EXIT
+exit label:Towards the moon pool
+exit destination:breakwater_temple_entrance
+exit direction hint:South
+exit id:breakwater_temple_entrance_pillars_to_breakwater_temple_entrance
+EXIT
+exit label:Temple door
+exit destination:breakwater_temple_first_room
+exit direction hint:North
+exit id:breakwater_temple_door
+exit is not visible:
+ITEM
+item name:Gibbling Boon
+item description:The creature looks terribly lonely. It mutters and murmurs to itself and upon spotting you rushes forward only to stop and shriek at you in fear. Perhaps it thought you were one of its own kind. It sort of reminds you of a large root vegetable with messy hair and dangly arms. If you want to get to that door you're going to have to distract it somehow.
+item id:lonely_gibbling_boon
+item is untakeable:
+item can be used with:pretend_gibbling_boon
+item successful use message:Lifting the ape-like construction up you wiggle it about in a friendly manner, hoping to calm the Gibbling Boon. It notices the turnip-parsnip creation immediately and shuffles tentatively closer. You put it on the floor and back away, leaving the Gibbling Boon to get acquainted with its new found friend. It looks like you might be able to make it to the door now.
+item use action:change item visibility:lonely_gibbling_boon:invisible
+item use action:change item visibility:happy_gibbling_boon:visible
+item use action:destroy item:pretend_gibbling_boon
+item use action:change exit visibility:breakwater_temple_door:visible
+item use action:change location description:breakwater_temple_entrance_pillars:Standing between the pillars they tower over you like the legs of a mighty giant. The door which they frame is mighty too, wooden and thick, yet even here the water has crept in and the bottom edges are starting to rot. There is an encroaching carpet of algae climbing the doors, draped from them like a shaggy green coat. Just in front of the door is a Gibbling Boon playing with your ape-friend creation. It looks like they're having a tea party.
+ITEM
+item name:Gibbling Boon
+item description:It sort of reminds you of a large root vegetable with messy hair and dangly arms. This equally applies to its friend, which is a large root vegetable with parsnips for arms and a mop for hair. They're having a lovely time together and neither of them pay you any attention at all.
+item id:happy_gibbling_boon
+item is untakeable:
+item visibility:invisible
 
 LOCATION
 x:000
@@ -1566,7 +1636,7 @@ item description:A plumptuous turnip garnered with a string of parsnips which lo
 item id:turnip_with_string_of_parsnips
 item visibility:invisible
 item can be used with:mop_head
-item successful use message:
+item successful use message:Placing the mop head carefully on top of the turnip you twist some of the dirty fronds around the parsnip string to hold it in place. Standing back it and squinting you can almost believe that it is some sort of creature, a bizarre ape-like vegetable confusion. You lift it up and put it in your enormous pockets for later.
 item use action:change item visibility:pretend_gibbling_boon:visible
 item use action:take item:pretend_gibbling_boon
 item use action:destroy item:turnip_with_string_of_parsnips
@@ -1575,6 +1645,11 @@ ITEM
 item name:Mop head
 item description:At first glance this could be a freshly harvested scalp or a very bad wig. Its actually a dirty old mop head which wafts a lingering stench of stale water and filth through the air. You try not to fling it around too much as the aroma gets worse.
 item id:mop_head
+item visibility:invisible
+ITEM
+item name:Ape-like vegetable confusion
+item description:It looks a bit like an ape, with dangling strung parsnips for arms and a mop on top of a turnip for a torso and head. You're not sure this would fool many people, they'd have to be blind, desperate or very lonely.
+item id:pretend_gibbling_boon
 item visibility:invisible
 
 LOCATION
