@@ -1609,6 +1609,7 @@ exit label:Door further into the temple
 exit destination:breakwater_temple_quaternius_lab
 exit direction hint:North
 exit id:breakwater_temple_pit_door
+exit is not visible:
 ITEM
 item name:Pit
 item description:It is about 4 feet long and an arms length deep, wider at the top than at the bottom. You think you can make out a key encased in something almost transparent at the bottom of the pit.
@@ -1654,6 +1655,48 @@ ITEM
 item name:Torch
 item description:The torch burns brightly and remains steady and hot.
 item id:breakwater_temple_pit_torch
+
+LOCATION
+x:000
+y:-360
+location id:breakwater_temple_quaternius_lab
+location area id:breakwater_lake_area
+location description:
+EXIT
+exit label:Door towards the temple entrance
+exit destination:breakwater_temple_pit_room
+exit direction hint:South
+exit id:breakwater_temple_quaternius_lab_to breakwater_temple_pit_room
+EXIT
+exit label:Door further into the temple
+exit destination:breakwater_temple_next_puzzle_room
+exit direction hint:North
+exit id:breakwater_temple_quaternius_lab_door
+exit is not visible:
+ITEM
+item name:Quaternius
+item description:
+item id:quaternius
+item is proper noun:
+item is untakeable:
+item talk initial phrase:hi:Hi!:"Hi!"
+item talk response to:hi:"Whatever." he replies.
+ITEM
+item name:Tempus
+item description:
+item id:tempus
+item is proper noun:
+item is untakeable:
+item talk initial phrase:hi:Hi!:"Hi!"
+item talk response to:hi:"Ruuuuuuffff!" he replies.
+ITEM
+item name:Radlican the Vast
+item description:
+item id:radlican_the_vast
+item is proper noun:
+item is untakeable:
+item talk initial phrase:hi:Hi!:"Hi!"
+item talk response to:hi:"Grrrrrrr." he replies.
 
 LOCATION
 x:000
