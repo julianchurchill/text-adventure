@@ -1623,6 +1623,7 @@ item name:Pit
 item description:It is about 4 feet long and an arms length deep, wider at the top than at the bottom. You can see a key encased in wax at the bottom of the pit but you cannot get it out.
 item id:breakwater_temple_pit_with_key_in_wax
 item is untakeable:
+item visibility:invisible
 item can be used with:breakwater_temple_pit_torch
 item successful use message:You throw the torch down into the pit and watch as the torch melts the wax surrounding the key. Once the key is free enough you reach in, careful to avoid the still burning torch and pull the key out. Using the key in the locked door you turn and open it ready for the next challenge.
 item use action:change item visibility:key_in_wax:invisible
@@ -1636,11 +1637,13 @@ item name:Pit
 item description:It is about 4 feet long and an arms length deep, wider at the top than at the bottom. There is a burning torch at the bottom and a pool of melted wax slowly mixing with the dripping water from above.
 item id:breakwater_temple_pit_after_key_is_taken
 item is untakeable:
+item visibility:invisible
 ITEM
 item name:Key in transparent block
 item description:Reaching down to pull the key out you discover that when you clasp it in your hand you cannot pull it out. While holding the key you cannot remove your hand and it from the pit! As you let go you notice that some of the transparent material scrapes off from the block under your finger nails. A closer inspection confirms it is wax.
 item id:key_in_tranparent_block
 item is untakeable:
+item visibility:invisible
 item examine action is not repeatable:
 item examine message:
 item on examine action:change item visibility:key_in_wax
@@ -1651,6 +1654,7 @@ item name:Key in wax
 item description:It is a block of wax in which a key has been placed and then put down this pit. You've already tried to pull the key out but discovered that while holding the key you cannot remove your hand and it from the pit.
 item id:key_in_wax
 item is untakeable:
+item visibility:invisible
 ITEM
 item name:Torch
 item description:The torch burns brightly and remains steady and hot.
@@ -1661,7 +1665,7 @@ x:000
 y:-360
 location id:breakwater_temple_quaternius_lab
 location area id:breakwater_lake_area
-location description:There is a desk in the middle of the room covered in papers over which a squat little chap is muttering and making notes. Around the edges of the room are a series of sterile surfaces, clean white laminate tops with a large variety of equipment, consumables and comestibles. Standing by the door on the opposite side of the room, leading deeper into the temple is a giant of a humanoid with a dog lying sleepily at his feet.
+location description:There is a desk in the middle of the room covered in papers over which a squat little chap is muttering and making notes. Around the edges of the room are a series of sterile surfaces, clean white laminate tops with a large variety of equipment, consumables and comestibles. Standing by the door on the opposite side of the room, leading deeper into the temple is a giant of a humanoid with a large dog lying sleepily at his feet.
 EXIT
 exit label:Door towards the temple entrance
 exit destination:breakwater_temple_pit_room
@@ -1674,27 +1678,54 @@ exit direction hint:North
 exit id:breakwater_temple_quaternius_lab_door
 exit is not visible:
 ITEM
+item name:Science dwarf
+item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
+item id:quaternius_unknown
+item is untakeable:
+item talk initial phrase:hi:Hi!:"Hi!"
+item talk response to:hi:"Hmm? What's that?" he looks up, lifting his glasses from his nose. "Ah, hello. I'm Quaternius, that is Tempus my dog and that is Radlican the Vast my bodyguard. You must be lost."
+item talk action in response to:hi:change item visibility:quaternius_unknown:invisible
+item talk action in response to:hi:change item visibility:quaternius:visible
+item talk action in response to:hi:change item visibility:tempus_unknown:invisible
+item talk action in response to:hi:change item visibility:tempus:visible
+item talk action in response to:hi:change item visibility:radlican_the_vast_unknown:invisible
+item talk action in response to:hi:change item visibility:radlican_the_vast:visible
+ITEM
 item name:Quaternius
-item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room.
+item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
 item id:quaternius
 item is proper noun:
 item is untakeable:
-item talk initial phrase:hi:Hi!:"Hi!"
-item talk response to:hi:"Whatever." he replies.
+item visibility:invisible
 ITEM
-item name:Tempus
-item description:
-item id:tempus
-item is proper noun:
+item name:Large dog
+item description:It is lying lazily on the ground at the feet of the giant, gently snoozing. Its not really noticed you at all.
+item id:tempus_unknown
 item is untakeable:
 item talk initial phrase:hi:Hi!:"Hi!"
 item talk response to:hi:"Ruuuuuuffff!" he replies.
 ITEM
-item name:Radlican the Vast
-item description:
-item id:radlican_the_vast
+item name:Tempus
+item description:It is lying lazily on the ground at the feet of the giant, gently snoozing. Its not really noticed you at all.
+item id:tempus
 item is proper noun:
 item is untakeable:
+item visibility:invisible
+item talk initial phrase:hi:Hi!:"Hi!"
+item talk response to:hi:"Ruuuuuuffff!" he replies.
+ITEM
+item name:Hairy giant
+item description:This giant is exactly that, giant. He is enormous - his beard alone covers most of the door he is standing in front of. He is slightly hunched over due to the ceiling, whilst being quite high is still too low for a humanoid of his size.
+item id:radlican_the_vast_unknown
+item is untakeable:
+item talk initial phrase:hi:Hi!:"Hi!"
+item talk response to:hi:"Grrrrrrr." he replies.
+ITEM
+item name:Radlican the Vast
+item description:This giant is exactly that, giant. He is enormous - his beard alone covers most of the door he is standing in front of. He is slightly hunched over due to the ceiling, whilst being quite high is still too low for a humanoid of his size.
+item id:radlican_the_vast
+item is untakeable:
+item visibility:invisible
 item talk initial phrase:hi:Hi!:"Hi!"
 item talk response to:hi:"Grrrrrrr." he replies.
 ITEM
