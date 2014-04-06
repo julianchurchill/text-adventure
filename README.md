@@ -115,9 +115,11 @@ Story - TTA2
 - [BUG] Shaved yak picture needs moving to Larry's after the shaving
 - Breakwater Temple - an ancient temple hidden under the lake - a temple to old gods with traps and puzzles, entrance puzzle run, a la Indiana Jones:
   - DONE Puzzle room, south indian monkey trap, locked door, key at the bottom of a pit an arms length deep, wider at the bottom than the top. The key is encased in clear wax. You can put your arm down the pit and grab the key ball but cannot get it out of the pit. You must drop a torch down there to melt the wax and then get the key out. Objects: key in wax, pit, torch. Use torch with pit, take key.
+  - Add a 'torch use failure' messages if you use the torch with the pit before you have discovered it is a key in _wax_. Also allow the torch to be used with the key in wax directly for the same result.
   - Puzzle room
     - Quaternius, Tempus and Radlican the Vast. Quaternius - a science dwarf. Tempus - a talking dog made by Quaternius and Radlican a giant, their bodyguard.
       - You are in Quaternius' lab and he requires some help or an answer to a quiz or riddle before you can progress. A talking game.
+        - You have to follow his instructions to use a large number of objects with each other in the right order
   - Puzzle room, broken bridge, examine stalactites to reveal bits you could hook a rope on, then use whip with them to swing over broken bridge
   - Puzzle room, stone monkey on pedestal with gems for eyes, out of reach and facing you. Skull chandelier above tied in place next to you. Use knife with chandelier rope to drop it, chandelier still out of reach, use whip to swing it into monkey which knocks it so that light from hole in the roof is directed through it's eyes into a gem in the wall and a hidden door opens.
   - Puzzle room - The Menagerie

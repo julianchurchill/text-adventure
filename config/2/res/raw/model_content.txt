@@ -1661,7 +1661,7 @@ x:000
 y:-360
 location id:breakwater_temple_quaternius_lab
 location area id:breakwater_lake_area
-location description:
+location description:There is a desk in the middle of the room covered in papers over which a squat little chap is muttering and making notes. Around the edges of the room are a series of sterile surfaces, clean white laminate tops with a large variety of equipment, consumables and comestibles. Standing by the door on the opposite side of the room, leading deeper into the temple is a giant of a humanoid with a dog lying sleepily at his feet.
 EXIT
 exit label:Door towards the temple entrance
 exit destination:breakwater_temple_pit_room
@@ -1675,7 +1675,7 @@ exit id:breakwater_temple_quaternius_lab_door
 exit is not visible:
 ITEM
 item name:Quaternius
-item description:
+item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room.
 item id:quaternius
 item is proper noun:
 item is untakeable:
@@ -1697,6 +1697,55 @@ item is proper noun:
 item is untakeable:
 item talk initial phrase:hi:Hi!:"Hi!"
 item talk response to:hi:"Grrrrrrr." he replies.
+ITEM
+item name:Red beaker
+item description:
+item id:red_beaker
+item is proper noun:
+item is untakeable:
+ITEM
+item name:Yellow beaker
+item description:
+item id:yellow_beaker
+item is proper noun:
+item is untakeable:
+ITEM
+item name:Blue beaker
+item description:
+item id:blue_beaker
+item is proper noun:
+item is untakeable:
+ITEM
+item name:Higgs-Boson Funnel
+item description:
+item id:higgs_boson_funnel
+item is proper noun:
+item is untakeable:
+ITEM
+item name:Micro Macro-matter Transducer
+item description:
+item id:micro_macro_matter_transducer
+item is proper noun:
+item is untakeable:
+ITEM
+item name:Re-Poly-Enhancer
+item description:
+item id:re_poly_enhancer
+item is proper noun:
+item is untakeable:
+ITEM
+item name:Unbearable Grin
+item description:This is a container of green liquid, it is thick and dark. From the smell you identify it as Unbearable Grin, a highly potent alcoholic beverage which as far as you know is banned in all the states from the hinterlands to the topside regions.
+item id:unbearable_grin
+item is proper noun:
+item is untakeable:
+item countable noun prefix:a
+ITEM
+item name:Wodge of toffee
+item description:A large clump of toffee, sweet and sticky and full of sugar.
+item id:wodge_of_toffee
+item is untakeable:
+item countable noun prefix:a
 
 LOCATION
 x:000
