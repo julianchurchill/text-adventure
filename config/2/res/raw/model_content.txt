@@ -1697,6 +1697,48 @@ item id:quaternius
 item is proper noun:
 item is untakeable:
 item visibility:invisible
+item talk initial phrase:imnotlost:I'm not lost:"I'm not lost - I'm looking for an artifact, something powerful to help me in my quest to find the witch Bella."
+item talk response to:imnotlost:"Oh, I see, but I don't know anything about that. I'm far too busy." says Quaternius.
+item talk follow up phrase to:imnotlost:whatareyouworkingon:What are you working on?:Curious as to the papers strewn about Quaternius you ask "What are you working on?". He perks up immediately. "I'm so close, so very close.". He talks energetically, clearly enthused by his work. "There is a power here, within these walls, I think I can capture it. Harness some of its essence, bottle it. If so then there are limitless applications for such a source of power." As he speaks he gets increasingly excited.
+item talk response to:whatareyouworkingon:"I don't suppose you have some free time? Can you help me? These dunderheads are fine company but no use for the sort of delicate manipulations that I need to perform." he asks.
+item talk follow up phrase to:whatareyouworkingon:notreallyimtoobusy:Not really, I'm too busy:"Not really, I'm too busy" you reply, realising too late that perhaps you may have been able to get help in return. Quaternius turns away from you back to his papers and calculations.
+item talk follow up phrase to:whatareyouworkingon:ofcourseican:Of course I can:You quickly accept his offer, hoping that he will be able to help you in return. "Would you be able to help me with my quest?" you ask Quaternius. Immediately he nods - "Of course my boy, absolutely."
+item talk action in response to:ofcourseican:change item visibility:quaternius:invisible
+item talk action in response to:ofcourseican:change item visibility:quaternius_in_action_1:visible
+ITEM
+item name:Quaternius
+item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
+item id:quaternius_in_action_1
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:whatdowedofirst:What do we do first?:"What do we do first?" you ask, ready and waiting to help Quaternius.
+item talk response to:whatdowedofirst:"Ok, I'll need the blue beaker to start with." says Quaternius.
+item can be used with:blue_beaker
+item successful use message:Quaternius takes the beaker from you and places it on one of the lab tables to one side.
+item use action:change item visibility:quaternius_in_action_1:invisible
+item use action:change item visibility:quaternius_in_action_2:visible
+item use action:destroy item:blue_beaker
+item can be used with:red_beaker
+item successful use message:"That beaker is clearly red." he scowls at you. Not a great start.
+item can be used with:yellow_beaker
+item successful use message:"That beaker is clearly yellow." he frowns. You could try a little harder.
+ITEM
+item name:Quaternius
+item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
+item id:quaternius_in_action_2
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:whatdowedonext:What do we do next?:"What do we do next?" you ask, keen and willing to help.
+item talk response to:whatdowedonext:"Now get me the red beaker." instructs Quaternius.
+item can be used with:red_beaker
+item successful use message:"Excellent." Quaternius takes the beaker from you and places it next to the other one.
+item use action:change item visibility:quaternius_in_action_2:invisible
+item use action:change item visibility:quaternius_in_action_3:visible
+item use action:destroy item:red_beaker
+item can be used with:yellow_beaker
+item successful use message:"A yellow beaker ay? Do you take me for some sort of chump!" That was embarrassing.
 ITEM
 item name:Large dog
 item description:It is lying lazily on the ground at the feet of the giant, gently snoozing. Its not really noticed you at all.
