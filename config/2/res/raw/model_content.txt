@@ -1723,6 +1723,16 @@ item can be used with:red_beaker
 item successful use message:"That beaker is clearly red." he scowls at you. Not a great start.
 item can be used with:yellow_beaker
 item successful use message:"That beaker is clearly yellow." he frowns. You could try a little harder.
+item can be used with:higgs_boson_funnel
+item successful use message:"I did say blue beaker didn't I?" he looks at you quizzically, quite unsure of himself.
+item can be used with:micro_macro_matter_transducer
+item successful use message:"What must I do to find a competent assistant?" he glares at you and nods towards the blue beaker.
+item can be used with:re_poly_enhancer
+item successful use message:"I did say blue beaker didn't I?" he looks at you quizzically, quite unsure of himself.
+item can be used with:unbearable_grin
+item successful use message:"What must I do to find a competent assistant?" he glares at you and nods towards the blue beaker.
+item can be used with:wodge_of_toffee
+item successful use message:"I did say blue beaker didn't I?" he looks at you quizzically, quite unsure of himself.
 ITEM
 item name:Quaternius
 item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
@@ -1739,6 +1749,62 @@ item use action:change item visibility:quaternius_in_action_3:visible
 item use action:destroy item:red_beaker
 item can be used with:yellow_beaker
 item successful use message:"A yellow beaker ay? Do you take me for some sort of chump!" That was embarrassing.
+item can be used with:higgs_boson_funnel
+item successful use message:"I did say red beaker didn't I?" he looks at you quizzically, quite unsure of himself.
+item can be used with:micro_macro_matter_transducer
+item successful use message:"What must I do to find a competent assistant?" he glares at you and nods towards the red beaker.
+item can be used with:re_poly_enhancer
+item successful use message:"I did say red beaker didn't I?" he looks at you quizzically, quite unsure of himself.
+item can be used with:unbearable_grin
+item successful use message:"What must I do to find a competent assistant?" he glares at you and nods towards the red beaker.
+item can be used with:wodge_of_toffee
+item successful use message:"What must I do to find a competent assistant?" he glares at you and nods towards the red beaker.
+ITEM
+item name:Quaternius
+item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
+item id:quaternius_in_action_3
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:whatdoyouneednow:What do you need now?:"What do you need now?" you ask, ready for the next task.
+item talk response to:whatdoyouneednow:"Ok, now we're motoring! I need the Higgs Boson Funnel next." states Quaternius. He does a little jiggle and slide before returning to the desk. You suspect he may have a slight case of the funk.
+item can be used with:higgs_boson_funnel
+item successful use message:You pass the funnel to Quaternius. He carefully places it in the neck of one of the beakers stretching its flexible neck to the other beaker while keeping the convex protrusion upright. "Good, very good." he mutters.
+item use action:change item visibility:quaternius_in_action_3:invisible
+item use action:change item visibility:quaternius_in_action_4:visible
+item use action:destroy item:higgs_boson_funnel
+item can be used with:yellow_beaker
+item successful use message:Quaternius shakes his head. "No, no more beakers."
+item can be used with:micro_macro_matter_transducer
+item successful use message:He scoffs and chides you. "I don't know what you expect me to do with this, we only have half the assembly!"
+item can be used with:re_poly_enhancer
+item successful use message:"You do know what this is don't you? I have no idea what you are thinking but it is entirely inappropriate!". After this admonishment he points quite clearly at the funnel.
+item can be used with:unbearable_grin
+item successful use message:"Hmm, it might work but its just too daring - I'd be thrown out of the Guild of Science Dwarves for certain." he says tapping his finger on his lips thoughtfully. "Perhaps another time..."
+item can be used with:wodge_of_toffee
+item successful use message:"I'm not hungry right now." he states waving his hand, dismissing the toffee.
+ITEM
+item name:Quaternius
+item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
+item id:quaternius_in_action_4
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:okimreadyforthenextitem:Ok, I'm ready for the next item:"Ok, I'm ready for the next item." you say to Quaternius.
+item talk response to:okimreadyforthenextitem:"Well, it's either the Re-Poly-Enhancer or the Micro-Macro Matter Transducer. I can never remember the order!" Quaternius scratches his head and consults his papers. "It's in here somewhere." he mumbles. You notice he can't help but wiggle his prosterior, as though boogieing to a song in his head.
+item can be used with:micro_macro_matter_transducer
+item successful use message:
+item use action:change item visibility:quaternius_in_action_4:invisible
+item use action:change item visibility:quaternius_in_action_5:visible
+item use action:destroy item:micro_macro_matter_transducer
+item can be used with:yellow_beaker
+item successful use message:Quaternius shakes his head irritably. "No, no more chuffing beakers!"
+item can be used with:re_poly_enhancer
+item successful use message:
+item can be used with:unbearable_grin
+item successful use message:
+item can be used with:wodge_of_toffee
+item successful use message:
 ITEM
 item name:Large dog
 item description:It is lying lazily on the ground at the feet of the giant, gently snoozing. Its not really noticed you at all.
