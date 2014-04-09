@@ -120,6 +120,7 @@ Story - TTA2
     - Quaternius, Tempus and Radlican the Vast. Quaternius - a science dwarf. Tempus - a talking dog made by Quaternius and Radlican a giant, their bodyguard.
       - You are in Quaternius' lab and he requires some help or an answer to a quiz or riddle before you can progress. A talking game.
         - You have to follow his instructions to use a large number of objects with each other in the right order
+        - He becomes a funky science wizard!
   - Puzzle room, broken bridge, examine stalactites to reveal bits you could hook a rope on, then use whip with them to swing over broken bridge
   - Puzzle room, stone monkey on pedestal with gems for eyes, out of reach and facing you. Skull chandelier above tied in place next to you. Use knife with chandelier rope to drop it, chandelier still out of reach, use whip to swing it into monkey which knocks it so that light from hole in the roof is directed through it's eyes into a gem in the wall and a hidden door opens.
   - Puzzle room - The Menagerie
