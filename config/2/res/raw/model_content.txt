@@ -1793,18 +1793,69 @@ item visibility:invisible
 item talk initial phrase:okimreadyforthenextitem:Ok, I'm ready for the next item:"Ok, I'm ready for the next item." you say to Quaternius.
 item talk response to:okimreadyforthenextitem:"Well, it's either the Re-Poly-Enhancer or the Micro-Macro Matter Transducer. I can never remember the order!" Quaternius scratches his head and consults his papers. "It's in here somewhere." he mumbles. You notice he can't help but wiggle his prosterior, as though boogieing to a song in his head.
 item can be used with:micro_macro_matter_transducer
-item successful use message:
+item successful use message:The transducer is a little heavy and Quaternius puffs slightly as you pass it to him. He attaches it to the protruding connection from the Higgs Boson Funnel and steps back nodding happily to himself.
 item use action:change item visibility:quaternius_in_action_4:invisible
 item use action:change item visibility:quaternius_in_action_5:visible
+item use action:change item visibility:tempus:invisible
+item use action:change item visibility:tempus_with_groove_thang:visible
 item use action:destroy item:micro_macro_matter_transducer
 item can be used with:yellow_beaker
 item successful use message:Quaternius shakes his head irritably. "No, no more chuffing beakers!"
 item can be used with:re_poly_enhancer
-item successful use message:
+item successful use message:"It's nearly time for that but too early would be catastrophic!" exclaims Quaternius.
 item can be used with:unbearable_grin
-item successful use message:
+item successful use message:"I don't really know what to make of that. It's kind of freaking me out." he says.
 item can be used with:wodge_of_toffee
-item successful use message:
+item successful use message:"Hmm maybe later." he replies.
+ITEM
+item name:Quaternius
+item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
+item id:quaternius_in_action_5
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:goodtogogovenorwhatnow:Good to go Gov'nor, what now?:"I'm good to go Gov'nor, what now?" you ask Quaternius.
+item talk response to:goodtogogovenorwhatnow:"Now I need my Groove Thang." You're not sure you heard him right but he continues. "That dog stole it from me I'm sure, can you go and have a look?". Quaternius has a glint in his eye, there's something funky about that science dwarf.
+item can be used with:groove_thang
+item successful use message:Passing him the Groove Thang you see his mood lighten considerably. He puts the chain over his head and opens a drawer to retrieve a pair of large sunglasses, perhaps he's expecting a bright chemical reaction. The sunglasses suit him very well, especially now he's got his Groove Thang on. They're bright yellow and the rims are star-shaped, not your cup of tea but he likes them. There's a certain glide in his stride, a dip in his hip and he looks like he's ready to get down.
+item use action:change item visibility:quaternius_in_action_5:invisible
+item use action:change item visibility:quaternius_in_action_6:visible
+item use action:destroy item:groove_thang
+item can be used with:yellow_beaker
+item successful use message:Quaternius shakes his head irritably. "No, no more chuffing beakers!"
+item can be used with:re_poly_enhancer
+item successful use message:In response to your offering Quaternius says "That's not cool man, I need my Thang.".
+item can be used with:unbearable_grin
+item successful use message:"I can't use that right now." he says.
+item can be used with:wodge_of_toffee
+item successful use message:"I'm still not hungry." says Quaternius.
+ITEM
+item name:Quaternius
+item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf. There's a little jiggle in his wiggle and he's wearing a giant medallion and some huge yellow star-shaped sunglasses.
+item id:quaternius_in_action_6
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:arewenearlydone:Are we nearly done?:"Are we nearly done?" you ask Quaternius. That little guy is just bopping around like some whacked out party freak. The air is getting a little thick in here and you're starting to feel light headed. It's kinda crept up on you.
+item talk response to:arewenearlydone:"It's time to land the mothership - I'll need the Re-Poly-Enhanced for the final stage." That funky science dwarf is getting more excited by the second, you'd better get him what he needs before he pops.
+item can be used with:re_poly_enhancer
+item successful use message:He eagerly takes the Re-Poly-Enhancer from you and aims it at the Micro-Macro Matter Transducer's receiver orifice. "Stand back, we're coming into land!" he's now shouting with excitement, giggling a little, so you step an extra pace back just to be sure. Then he pulls the trigger. Bam! There's a great puff of purple smoke surrounding the apparatus on the lab top which extends to envelop Quaternius. You hear him cough and splutter and try to waft the smoke away. After a moment it clears naturally and you see the apparatus is seemingly undisturbed except that the liquid in the beakers has gone. Quaternius has also gone, gone from the land of the sane and into a freaky, funky unsane land! His hair is blue, sticking right out from underneath a wide brimmed hat covered in feathers, he stands a foot taller than before, the silver platform boots now on his feet raising him precariously high from the ground. His eyes are wild and music seems to be resonating around him, whispers of grace notes and slap bass licks pinging from his vicinity. You're not at all sure what just happened.
+item use action:change item visibility:quaternius_in_action_6:invisible
+item use action:change item visibility:quaternius_in_action_7:visible
+item use action:destroy item:re_poly_enhancer
+item can be used with:yellow_beaker
+item successful use message:Quaternius says "No, we don't need any more beakers."
+item can be used with:unbearable_grin
+item successful use message:"I can't use that right now." he says.
+item can be used with:wodge_of_toffee
+item successful use message:"I'm still not hungry." says Quaternius.
+ITEM
+item name:Quaternius
+item description:He was fairly short being a dwarf but is not of reasonable average height, for non-dwarves thanks to his foot high silver platform boots. He is wearing a white lab coat, a giant medallion, some huge yellow star-shaped sunglasses and a wide brimmed hat covered in feathers which intermingle with his own crazy hair that pokes out from underneath. He's basically a funky science dwarf.
+item id:quaternius_in_action_7
+item is proper noun:
+item is untakeable:
+item visibility:invisible
 ITEM
 item name:Large dog
 item description:It is lying lazily on the ground at the feet of the giant, gently snoozing. Its not really noticed you at all.
@@ -1821,6 +1872,36 @@ item is untakeable:
 item visibility:invisible
 item talk initial phrase:hi:Hi!:"Hi!"
 item talk response to:hi:"Ruuuuuuffff!" he replies.
+ITEM
+item name:Tempus
+item description:It is lying lazily on the ground at the feet of the giant, gently snoozing. Its not really noticed you at all.
+item id:tempus_with_groove_thang
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:heydog:Hey dog!:"Hey dog!"
+item talk response to:heydog:"What up?" he replies. You shake your head and choose to ignore this unexpected response.
+item examine action is not repeatable:
+item examine message:You bend down to have a closer look at this hairy mutt, suspecting he might be lying on something. Carefully you feel around under his belly, giving him a half-tummy rub at the same time and discover a medallion. It is large, glittery and sparkles in the light and hangs from an equally glittery chain.
+item on examine action:change item visibility:groove_thang:visible
+item on examine action:take item:groove_thang
+item on examine action:change item visibility:tempus_with_groove_thang:invisible
+item on examine action:change item visibility:tempus_regrooved:visible
+ITEM
+item name:Groove Thang
+item description:
+item id:groove_thang
+item is proper noun:
+item visibility:invisible
+ITEM
+item name:Tempus
+item description:It is sitting leaning against the wall in a half sit, half lie down posture, holding a gnawed stick in its mouth which it chews slowly. One end of the stick rests on the ground with a paw lazily draped over it, the dogs head rhythmically moving back and forth as though a song was running through its head. You double take for a moment when you think you see the dog slapping the stick like a bass guitar but it must have been your imagination.
+item id:tempus_regrooved
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:heydog:Hey dog!:"Hey dog!"
+item talk response to:heydog:"What up?" he replies. You shake your head and choose to ignore this unexpected response.
 ITEM
 item name:Hairy giant
 item description:This giant is exactly that, giant. He is enormous - his beard alone covers most of the door he is standing in front of. He is slightly hunched over due to the ceiling, whilst being quite high is still too low for a humanoid of his size.
