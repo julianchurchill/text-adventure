@@ -114,18 +114,16 @@ Story - TTA2
   - [FIX] Could change to 'Say "I'm wiggling my pinky at you"' ?
 - [BUG] Shaved yak picture needs moving to Larry's after the shaving
 - Breakwater Temple - an ancient temple hidden under the lake - a temple to old gods with traps and puzzles, entrance puzzle run, a la Indiana Jones:
+  - Add a 'torch use failure' message to the south indian monkey trap room if you use the torch with the pit before you have discovered it is a key in _wax_. Also allow the torch to be used with the key in wax directly for the same result.
   - DONE Puzzle room, south indian monkey trap, locked door, key at the bottom of a pit an arms length deep, wider at the bottom than the top. The key is encased in clear wax. You can put your arm down the pit and grab the key ball but cannot get it out of the pit. You must drop a torch down there to melt the wax and then get the key out. Objects: key in wax, pit, torch. Use torch with pit, take key.
-  - Add a 'torch use failure' messages if you use the torch with the pit before you have discovered it is a key in _wax_. Also allow the torch to be used with the key in wax directly for the same result.
-  - Puzzle room
-    - Quaternius, Tempus and Radlican the Vast. Quaternius - a science dwarf. Tempus - a talking dog made by Quaternius and Radlican a giant, their bodyguard.
+  - DONE Puzzle room, Quaternius, Tempus and Radlican the Vast. Quaternius - a science dwarf. Tempus - a talking dog made by Quaternius and Radlican a giant, their bodyguard.
       - You are in Quaternius' lab and he requires some help or an answer to a quiz or riddle before you can progress. A talking game.
-        - You have to follow his instructions to use a large number of objects with each other in the right order
-        - He becomes a funky science wizard!
-  - Puzzle room, broken bridge, examine stalactites to reveal bits you could hook a rope on, then use whip with them to swing over broken bridge
-  - Puzzle room, stone monkey on pedestal with gems for eyes, out of reach and facing you. Skull chandelier above tied in place next to you. Use knife with chandelier rope to drop it, chandelier still out of reach, use whip to swing it into monkey which knocks it so that light from hole in the roof is directed through it's eyes into a gem in the wall and a hidden door opens.
+        - You have to follow his instructions to use a large number of objects with each other in the right order and then he becomes a funky science wizard and lets you out of the door leading further into the temple.
   - Puzzle room - The Menagerie
     - Fastidious mim - a bird
     - Indivisible turpet. "You should have known, the fastidious mim always comes with it's companion creature - the indivisible turpet. The turpet is a big, fat worm, also known as Crane's turpet after the famous biologist, who met his maker shortly after discovering and naming the turpet and then while testing it's indivisibility, he succumbed to blood loss from an accidentally amputated toe. Later biologists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate."
+  - Puzzle room, broken bridge, examine stalactites to reveal bits you could hook a rope on, then use whip with them to swing over broken bridge
+  - Puzzle room, stone monkey on pedestal with gems for eyes, out of reach and facing you. Skull chandelier above tied in place next to you. Use knife with chandelier rope to drop it, chandelier still out of reach, use whip to swing it into monkey which knocks it so that light from hole in the roof is directed through it's eyes into a gem in the wall and a hidden door opens.
   - Last puzzle room - contains the magical artifact which you can use to break into Bella's castle. Whirligig's Shattering Star Mace. Also contains a mirror suspended so you can spin it, when you examine it, it spins and you see Oubliette imprisoned in the witch's castle. She is in a hanging cage. Add a hint of seeing Oubliette to some other places with mirrors - Larrys yak shaving parlour, the soothsayers crystal ball etc...
 - Babbages cabbage - a cabbage power steam computer, perhaps interact by placing runes
 - Magical robots - perhaps trapped water imps - agents for either side, initially created by the witch to serve her, wills too strong for her to control, some changed sides. Self naming, Least Chance of Failure, Random Acts of Kindness, Vengeful Beyond Death, Penchant for Foolish Bravery

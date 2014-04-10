@@ -1673,7 +1673,7 @@ exit direction hint:South
 exit id:breakwater_temple_quaternius_lab_to breakwater_temple_pit_room
 EXIT
 exit label:Door further into the temple
-exit destination:breakwater_temple_next_puzzle_room
+exit destination:breakwater_temple_corridor
 exit direction hint:North
 exit id:breakwater_temple_quaternius_lab_door
 exit is not visible:
@@ -1851,11 +1851,29 @@ item can be used with:wodge_of_toffee
 item successful use message:"I'm still not hungry." says Quaternius.
 ITEM
 item name:Quaternius
-item description:He was fairly short being a dwarf but is not of reasonable average height, for non-dwarves thanks to his foot high silver platform boots. He is wearing a white lab coat, a giant medallion, some huge yellow star-shaped sunglasses and a wide brimmed hat covered in feathers which intermingle with his own crazy hair that pokes out from underneath. He's basically a funky science dwarf.
+item description:He is fairly short being a dwarf but is of reasonable average height for non-dwarves thanks to his foot high silver platform boots. He is wearing a white lab coat, a giant medallion, some huge yellow star-shaped sunglasses and a wide brimmed hat covered in feathers which intermingle with his own crazy hair that pokes out from underneath. He's basically a funky science dwarf.
 item id:quaternius_in_action_7
 item is proper noun:
 item is untakeable:
 item visibility:invisible
+item talk initial phrase:sowhatjusthappened:So, what just happened?:"So, what just happened?" you ask the funky little dwarf while he's a-jigging and a-jiving all over the laboratory like a gnome in heat. The dog and the giant look at each other and roll their eyes.
+item talk response to:sowhatjusthappened:"Well my man, what do you think just happened!?" says Quaternius as he shimmies over to you. "We just had a blast from the past, an intergalactic intervention enlightening us in the ways of the universe. We have acheived the key to unlocking the power of mother nature and the wonders of the firmament above!"
+item talk follow up phrase to:sowhatjusthappened:imnotreallyfollowingyou:I'm not really following you:You try to calm the little fellow down to get some sense out of him by gently patting him on the top of his hat but he doesn't seem to like it. "I'm not really following you, the experiment was a success?" You struggle to choke down a burgeoning sense of incredulity.
+item talk response to:imnotreallyfollowingyou:"Yes, yes, of course it was." To impress the point he does a little spin so you can check out his natty gear. "Right. So I helped you out, can you help me? I really want to get through that door." you say impatiently as you point towards the dog and the giant. "Of course, if that's all you wanted you should have said right away." replies Quaternius. You can't wait to get out of this room. You should have expected something like this, after all what is a dwarf boffin doing in a funky lab in the middle of an ancient underwater temple? The only possible reason can be that he is completely and utterly mad. And possibly a funky genius.<newline>Tempus and Radlican the Vast step aside with one nod from Quaternius and you are free to leave.
+item talk action in response to:imnotreallyfollowingyou:change item visibility:quaternius_in_action_7:invisible
+item talk action in response to:imnotreallyfollowingyou:change item visibility:quaternius_in_action_8:visible
+item talk action in response to:imnotreallyfollowingyou:change item visibility:radlican_the_vast:invisible
+item talk action in response to:imnotreallyfollowingyou:change item visibility:radlican_the_vast_to_the_side:visible
+item talk action in response to:imnotreallyfollowingyou:change exit visibility:breakwater_temple_quaternius_lab_door:visible
+ITEM
+item name:Quaternius
+item description:He is fairly short being a dwarf but is of reasonable average height for non-dwarves thanks to his foot high silver platform boots. He is wearing a white lab coat, a giant medallion, some huge yellow star-shaped sunglasses and a wide brimmed hat covered in feathers which intermingle with his own crazy hair that pokes out from underneath. He's basically a funky science dwarf.
+item id:quaternius_in_action_8
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:wereyougoingtohelpme:Were you going to help me?:"Were you going to help me?" you ask Quaternius.
+item talk response to:wereyougoingtohelpme:"I did, the door is yours to avail yourself of." he replies.
 ITEM
 item name:Large dog
 item description:It is lying lazily on the ground at the feet of the giant, gently snoozing. Its not really noticed you at all.
@@ -1918,6 +1936,14 @@ item visibility:invisible
 item talk initial phrase:hi:Hi!:"Hi!"
 item talk response to:hi:"Grrrrrrr." he replies.
 ITEM
+item name:Radlican the Vast
+item description:This giant is exactly that, giant. He is enormous - his beard alone would cover most of the door he is standing beside. He is slightly hunched over due to the ceiling, whilst being quite high is still too low for a humanoid of his size.
+item id:radlican_the_vast_to_the_side
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:hi:Hi!:"Hi!"
+item talk response to:hi:"Grrrrrrr." he replies.
+ITEM
 item name:Red beaker
 item description:
 item id:red_beaker
@@ -1966,6 +1992,23 @@ item description:A large clump of toffee, sweet and sticky and full of sugar.
 item id:wodge_of_toffee
 item is untakeable:
 item countable noun prefix:a
+
+LOCATION
+x:000
+y:-420
+location id:breakwater_temple_corridor
+location area id:breakwater_lake_area
+location description:An empty corridor meanders off in front of you. Unusually for corridor it winds almost like the path of a river deeper into the temple.
+EXIT
+exit label:Door towards the temple entrance
+exit destination:breakwater_temple_quaternius_lab
+exit direction hint:South
+exit id:breakwater_temple_corridor_to_breakwater_temple_quaternius_lab
+EXIT
+exit label:Door further into the temple
+exit destination:breakwater_temple_corridor2
+exit direction hint:North
+exit id:breakwater_temple_corridor_to_breakwater_temple_corridor2
 
 LOCATION
 x:000
