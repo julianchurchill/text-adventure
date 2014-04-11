@@ -1948,49 +1948,41 @@ item name:Red beaker
 item description:
 item id:red_beaker
 item is proper noun:
-item is untakeable:
 ITEM
 item name:Yellow beaker
 item description:
 item id:yellow_beaker
 item is proper noun:
-item is untakeable:
 ITEM
 item name:Blue beaker
 item description:
 item id:blue_beaker
 item is proper noun:
-item is untakeable:
 ITEM
 item name:Higgs-Boson Funnel
 item description:
 item id:higgs_boson_funnel
 item is proper noun:
-item is untakeable:
 ITEM
 item name:Micro Macro-matter Transducer
 item description:
 item id:micro_macro_matter_transducer
 item is proper noun:
-item is untakeable:
 ITEM
 item name:Re-Poly-Enhancer
 item description:
 item id:re_poly_enhancer
 item is proper noun:
-item is untakeable:
 ITEM
 item name:Unbearable Grin
 item description:This is a container of green liquid, it is thick and dark. From the smell you identify it as Unbearable Grin, a highly potent alcoholic beverage which as far as you know is banned in all the states from the hinterlands to the topside regions.
 item id:unbearable_grin
 item is proper noun:
-item is untakeable:
 item countable noun prefix:a
 ITEM
 item name:Wodge of toffee
 item description:A large clump of toffee, sweet and sticky and full of sugar.
 item id:wodge_of_toffee
-item is untakeable:
 item countable noun prefix:a
 
 LOCATION
@@ -1998,17 +1990,64 @@ x:000
 y:-420
 location id:breakwater_temple_corridor
 location area id:breakwater_lake_area
-location description:An empty corridor meanders off in front of you. Unusually for corridor it winds almost like the path of a river deeper into the temple.
+location description:An empty corridor meanders off in front of you. Unusually for a corridor it winds almost like the path of a river deeper into the temple. You feel a breeze coming from up ahead and the soft wind whistles slightly as it blows past you.
 EXIT
 exit label:Door towards the temple entrance
 exit destination:breakwater_temple_quaternius_lab
 exit direction hint:South
 exit id:breakwater_temple_corridor_to_breakwater_temple_quaternius_lab
 EXIT
-exit label:Door further into the temple
+exit label:Follow the meandering corridor
 exit destination:breakwater_temple_corridor2
 exit direction hint:North
 exit id:breakwater_temple_corridor_to_breakwater_temple_corridor2
+
+LOCATION
+x:000
+y:-480
+location id:breakwater_temple_corridor2
+location area id:breakwater_lake_area
+location description:The wind blows more strongly here, coming the room up ahead that opens out from the corridor. Behind you the corridor leads back towards the entrance to the temple. There are some strange sounds up ahead and what looks like a sign written on the wall. You can barely make out the lettering as it is covered in damp grime, wiping away the surface layer you can make out the words 'The Menagerie'.
+EXIT
+exit label:Corridor towards the temple entrance
+exit destination:breakwater_temple_corridor
+exit direction hint:South
+exit id:breakwater_temple_corridor2_to_breakwater_temple_corridor
+EXIT
+exit label:The Menagerie
+exit destination:breakwater_temple_the_menagerie
+exit direction hint:North
+exit id:breakwater_temple_corridor2_to_breakwater_temple_the_menagerie
+
+LOCATION
+x:000
+y:-540
+location id:breakwater_temple_the_menagerie
+location area id:breakwater_lake_area
+location description:Looking around you can see an abundance of life, creatures roaming around pens lining the walls of the room with a thin walkway winding between them. You can see over the barriers quite clearly and look down to see what is contained within, some of which you recognise and some you don't. You wonder to yourself how these creatures are being fed and looked after, they certainly appear to be in good health. From somewhere nearby you can hear a dull thump, rhythmic and familiar, it seems to be timed with the breeze emanating from deeper still within the temple.
+EXIT
+exit label:Corridor towards the temple entrance
+exit destination:breakwater_temple_corridor2
+exit direction hint:South
+exit id:breakwater_temple_the_menagerie_to_breakwater_temple_corridor2
+EXIT
+exit label:The Beating Heart
+exit destination:breakwater_temple_the_beating_heart
+exit direction hint:North
+exit id:breakwater_temple_corridor2_to_breakwater_temple_the_menagerie
+exit is not visible:
+ITEM
+item name:Fastidious Mim
+item description:Standing tall on one of its three legs is the pink bobbined fastidious mim, preening its wings and eyeing you with a sideways glance.
+item id:fastidious_mim
+item is untakeable:
+item countable noun prefix:a
+ITEM
+item name:Indivisible Turpet
+item description:Peering into one of the pens you spy movement on the floor. As you suspected, this is an indivisible turpet the companion creature of the fastidious mim. The turpet is a big, fat worm, also known as Crane's turpet after the famous biologist, who met his maker shortly after discovering and naming the turpet and then while testing it's indivisibility, he succumbed to blood loss from an accidentally toe amputation. Later biologists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate.
+item id:indivisible_turpet
+item is untakeable:
+item countable noun prefix:an
 
 LOCATION
 x:000
