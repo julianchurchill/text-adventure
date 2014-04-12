@@ -2038,7 +2038,7 @@ exit id:breakwater_temple_corridor2_to_breakwater_temple_the_menagerie
 exit is not visible:
 ITEM
 item name:Fastidious Mim
-item description:Standing tall on one of its three legs is the pink bobbined fastidious mim, preening its wings and eyeing you with a sideways glance.
+item description:Standing tall on one of its three legs is the pink bobbined fastidious mim, preening its wings and eyeing you with a sideways glance. It lets out a curious squawk, as much a throaty croak as a bird call. Every few seconds it stops preening and peers into its neighbouring pen to check on the indivisible turpet.
 item id:fastidious_mim
 item is untakeable:
 item countable noun prefix:a
@@ -2048,6 +2048,18 @@ item description:Peering into one of the pens you spy movement on the floor. As 
 item id:indivisible_turpet
 item is untakeable:
 item countable noun prefix:an
+ITEM
+item name:Backwards-facing Couch Fish
+item description:The creature in this pen swims about in clear water with some aquatic plants swaying as the motion of the couch fish passing by disturbs them. The couch fish is quite unusual to watch as it appears to be swimming backwards, however it is simply that its head is on the rear of its body such that the tail goes first with the main body and head following. It blows a trail of bubbles from its mouth as it glides elegantly through the water.
+item id:couch_fish
+item is untakeable:
+item countable noun prefix:a
+ITEM
+item name:Plethora of Harmonizing Gibbets
+item description:Much like a cricket might produce a loud chirping the harmonizing gibbets create an intense blanket of noise through rubbing parts of their bodies together. However a single gibbet cannot make any sound at all as the body parts required to produce the sound are at opposing and unreachable ends of the fist-sized insect's body. When one or more gibbets come together they will often conjoin so that the dorsal fin can rub against the ventral fin to produce a piercing but specific note. Each pair of gibbets will produce a different note depending on the size of their fins so that a sort of choir effect will fill the air, hence their common name of harmonizing gibbets.
+item id:plethora_of_harmonizing_gibbets
+item is untakeable:
+item countable noun prefix:a
 
 LOCATION
 x:000
