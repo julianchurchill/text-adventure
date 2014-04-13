@@ -2035,7 +2035,6 @@ exit label:The Beating Heart
 exit destination:breakwater_temple_the_beating_heart
 exit direction hint:North
 exit id:breakwater_temple_corridor2_to_breakwater_temple_the_menagerie
-exit is not visible:
 ITEM
 item name:Fastidious Mim
 item description:Standing tall on one of its three legs is the pink bobbined fastidious mim, preening its wings and eyeing you with a sideways glance. It lets out a curious squawk, as much a throaty croak as a bird call. Every few seconds it stops preening and peers into its neighbouring pen to check on the indivisible turpet.
@@ -2060,6 +2059,50 @@ item description:Much like a cricket might produce a loud chirping the harmonizi
 item id:plethora_of_harmonizing_gibbets
 item is untakeable:
 item countable noun prefix:a
+
+LOCATION
+x:000
+y:-600
+location id:breakwater_temple_the_beating_heart
+location area id:breakwater_lake_area
+location description:Inside this room the air is cooler and you feel as though the atmosphere is pulsating, being periodically pushed out through the door behind you to The Menagerie. As you pause to take in your surroundings you notice that the walls pulsate in time with movement of the air. A very odd phenomenon which begins to add up as you notice the veins which wind through the material that constitutes the wall. You stand on the boundary of two areas, a smaller chamber serving as the entrance to this room and a larger chamber that has a font with some murky water in. Next to the font there is a large flanged mace - highly decorated it looks almost ornamental aside from some obvious battle damage. It is encased in a clear, slightly reflective case.
+EXIT
+exit label:The Menagerie
+exit destination:breakwater_temple_the_menagerie
+exit direction hint:South
+exit id:breakwater_temple_the_beating_heart_to_breakwater_temple_the_menagerie
+ITEM
+item name:Flanged mace
+item description:You can't get close enough to have a good look at it whilst this barrier is in the way.
+item id:unreachable_flanged_mace
+item is untakeable:
+item countable noun prefix:a
+ITEM
+item name:Flanged mace
+item description:The mace is flanged; the head is split into multiple protrusions of metal to cause devastating effect when striking an armoured foe but you have a feeling that it is not armour that this mace has been created to penetrate. The shaft has the name of the mace carved into it and is a hefty foot and a half long pole of strong iron oakwood.
+item id:flanged_mace
+item is untakeable:
+item countable noun prefix:a
+item visibility:invisible
+item examine action is not repeatable:
+item examine message:Carved into the shaft are the words "Whirligig's Shattering Star Mace".
+item on examine action:change item visibility:flanged_mace:invisible
+item on examine action:change item visibility:whirligigs_shattering_star_mace:visible
+ITEM
+item name:Whirligig's Shattering Star Mace
+item description:The mace is flanged; the head is split into multiple protrusions of metal to cause devastating effect when striking an armoured foe but you have a feeling that it is not armour that this mace has been created to penetrate. The shaft has the name of the mace carved into it and is a hefty foot and a half long pole of strong iron oakwood.
+item id:whirligigs_shattering_star_mace
+item is proper noun:
+item visibility:invisible
+ITEM
+item name:Font
+item description:The font itself is made of distressed stone and looks like it has almost grown organically out of the floor. It harbours a fair quantity of dark water which is cold to the touch.
+item id:font
+item is untakeable:
+item examine action is not repeatable:
+item examine message:Peering into the murky water in the font you start to see it clear. As it does an image reveals itself, not a still image - parts are in motion, an image of someone in a cage hanging from the ceiling of a huge room. Surrounding the cage are many lit braziers giving a deep red glow to the occupant. The image becomes clearer still and you recognise who it is - it's Oubliette. Is this a trick, what are you seeing? She looks tired, distressed but unhurt however you sense great menace and you fear for her safety. Is this real?
+item on examine action:change item visibility:flanged_mace:invisible
+item on examine action:change item visibility:whirligigs_shattering_star_mace:visible
 
 LOCATION
 x:000
