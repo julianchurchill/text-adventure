@@ -1984,6 +1984,12 @@ item name:Wodge of toffee
 item description:A large clump of toffee, sweet and sticky and full of sugar.
 item id:wodge_of_toffee
 item countable noun prefix:a
+item can be used with:sleepy_stick_beast
+item successful use message:The stick beast is nice and sleepy making it trivial to attach the clump of toffee to its head. What a mess.
+item use action:change item visibility:wodge_of_toffee:invisible
+item use action:change item visibility:sleepy_stick_beast:invisible
+item use action:change item visibility:sticky_stick_beast:visible
+item use action:take item:sticky_stick_beast
 
 LOCATION
 x:000
@@ -2041,6 +2047,16 @@ item description:Standing tall on one of its three legs is the pink bobbined fas
 item id:fastidious_mim
 item is untakeable:
 item countable noun prefix:a
+item examine action is not repeatable:
+item examine message:Just by your feet you spot a sharp claw, presumably shed by the flightless bird in front of you. You pick it up just in case.
+item on examine action:change item visibility:claw_of_a_fastidious_mim:visible
+item on examine action:take item:claw_of_a_fastidious_mim
+ITEM
+item name:Claw of a Fastidious Mim
+item description:This claw is quite sharp, having been recently shed by a fastidious mim. It looks like it could cut glass.
+item id:claw_of_a_fastidious_mim
+item countable noun prefix:a
+item visibility:invisible
 ITEM
 item name:Indivisible Turpet
 item description:Peering into one of the pens you spy movement on the floor. As you suspected, this is an indivisible turpet the companion creature of the fastidious mim. The turpet is a big, fat worm, also known as Crane's turpet after the famous biologist, who met his maker shortly after discovering and naming the turpet and then while testing it's indivisibility, he succumbed to blood loss from an accidentally toe amputation. Later biologists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate.
@@ -2059,38 +2075,76 @@ item description:Much like a cricket might produce a loud chirping the harmonizi
 item id:plethora_of_harmonizing_gibbets
 item is untakeable:
 item countable noun prefix:a
+ITEM
+item name:Sleepy Stick Beast
+item description:At first look the stick beast appears just like a stick but when you listen carefully you can hear it snoring. There is also an occasional whimper is it seems to be having a dream.
+item id:sleepy_stick_beast
+item countable noun prefix:a
+ITEM
+item name:Sticky Stick Beast
+item description:This is a large clump of toffee, sweet and sticky and full of sugar attached by its own gooeyness to the end of an unfortunate sleepy stick beast. Fortunately for it, the stick beast is very sleepy.
+item id:sticky_stick_beast
+item countable noun prefix:a
+item visibility:invisible
 
 LOCATION
 x:000
 y:-600
 location id:breakwater_temple_the_beating_heart
 location area id:breakwater_lake_area
-location description:Inside this room the air is cooler and you feel as though the atmosphere is pulsating, being periodically pushed out through the door behind you to The Menagerie. As you pause to take in your surroundings you notice that the walls pulsate in time with movement of the air. A very odd phenomenon which begins to add up as you notice the veins which wind through the material that constitutes the wall. You stand on the boundary of two areas, a smaller chamber serving as the entrance to this room and a larger chamber that has a font with some murky water in. Next to the font there is a large flanged mace - highly decorated it looks almost ornamental aside from some obvious battle damage. It is encased in a clear, slightly reflective case.
+location description:Inside this room the air is cooler and you feel as though the atmosphere is pulsating, being periodically pushed out through the door behind you to The Menagerie. As you pause to take in your surroundings you notice that the walls pulsate in time with movement of the air. A very odd phenomenon which begins to add up as you notice the veins which wind through the material that constitutes the wall. You stand on the boundary of two areas, a smaller chamber serving as the entrance to this room and a larger chamber that has a font with some murky water in. Next to the font there is a large flanged mace - highly decorated it looks almost ornamental aside from some obvious battle damage. It is encased in a clear, slightly reflective glass cylinder case.
 EXIT
 exit label:The Menagerie
 exit destination:breakwater_temple_the_menagerie
 exit direction hint:South
 exit id:breakwater_temple_the_beating_heart_to_breakwater_temple_the_menagerie
 ITEM
-item name:Flanged mace
-item description:You can't get close enough to have a good look at it whilst this barrier is in the way.
-item id:unreachable_flanged_mace
+item name:Glass barrier
+item description:Encasing the mace is a clear glass cylinder, three feet in diameter with the mace balanced on a pillar in the centre.
+item id:glass_barrier
 item is untakeable:
 item countable noun prefix:a
+item can be used with:claw_of_a_fastidious_mim
+item successful use message:Using the claw like a scalpel you carefully carve a circle into the glass and gently tap it to knock the disc inwards where it lands on the floor and shatters into several pieces leaving a hole big enough for you to reach inside and touch the mace.
+item use action:change item visibility:glass_barrier:invisible
+item use action:change item visibility:glass_barrier_with_a_hole_in_it:visible
+item use action:change item visibility:whirligigs_shattering_star_mace_behind_glass:invisible
+item use action:change item visibility:whirligigs_shattering_star_mace_unreachable:visible
 ITEM
-item name:Flanged mace
-item description:The mace is flanged; the head is split into multiple protrusions of metal to cause devastating effect when striking an armoured foe but you have a feeling that it is not armour that this mace has been created to penetrate. The shaft has the name of the mace carved into it and is a hefty foot and a half long pole of strong iron oakwood.
-item id:flanged_mace
+item name:Glass barrier
+item description:Encasing the mace is a clear glass cylinder, three feet in diameter with the mace balanced on a pillar in the centre. There is a hole cut into the glass large enough to reach inside.
+item id:glass_barrier_with_a_hole_in_it
 item is untakeable:
-item countable noun prefix:a
 item visibility:invisible
-item examine action is not repeatable:
-item examine message:Carved into the shaft are the words "Whirligig's Shattering Star Mace".
-item on examine action:change item visibility:flanged_mace:invisible
-item on examine action:change item visibility:whirligigs_shattering_star_mace:visible
+ITEM
+item name:Glass barrier
+item description:This is a clear glass cylinder, three feet in diameter which used to house a mace balanced on a pillar in the centre. The mace is now gone, you took it shortly after carving a hole in the glass through which to retrieve it.
+item id:glass_barrier_without_mace
+item is untakeable:
+item visibility:invisible
 ITEM
 item name:Whirligig's Shattering Star Mace
-item description:The mace is flanged; the head is split into multiple protrusions of metal to cause devastating effect when striking an armoured foe but you have a feeling that it is not armour that this mace has been created to penetrate. The shaft has the name of the mace carved into it and is a hefty foot and a half long pole of strong iron oakwood.
+item description:The mace is flanged; the head is split into multiple protrusions of metal to cause devastating effect when striking an armoured foe but you have a feeling that it is not armour that this mace has been created to penetrate. The shaft has the name of the mace carved into it and is a hefty foot and a half long pole of strong iron oakwood. It is encased in a glass tube and is unreachable by any means that you can see at this point.
+item id:whirligigs_shattering_star_mace_behind_glass
+item is proper noun:
+item is untakeable:
+ITEM
+item name:Whirligig's Shattering Star Mace
+item description:The mace is flanged; the head is split into multiple protrusions of metal to cause devastating effect when striking an armoured foe but you have a feeling that it is not armour that this mace has been created to penetrate. The shaft has the name of the mace carved into it and is a hefty foot and a half long pole of strong iron oakwood. You can nearly reach it but not be able to get a firm grip, something sticky might help.
+item id:whirligigs_shattering_star_mace_unreachable
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item can be used with:sticky_stick_beast
+item successful use message:You cautiously poke the toffee ended stick through the hole in the glass and squish it against the handle of the mace. It sticks like a chameleon's tongue and you drag the mace handle so that the mace pivots towards you and you pull it close enough to reach with your hand. You grab it and pull the mace through the hole.
+item use action:change item visibility:whirligigs_shattering_star_mace_unreachable:invisible
+item use action:change item visibility:whirligigs_shattering_star_mace:visible
+item use action:change item visibility:glass_barrier_with_a_hole_in_it:invisible
+item use action:change item visibility:glass_barrier_without_mace:visible
+item use action:take item:whirligigs_shattering_star_mace
+ITEM
+item name:Whirligig's Shattering Star Mace
+item description:The mace is flanged; the head is split into multiple protrusions of metal to cause devastating effect when striking an armoured foe but you have a feeling that it is not armour that this mace has been created to penetrate. The shaft has the name of the mace carved into it and is a hefty foot and a half long pole of strong iron oakwood. You can nearly reach it but not be able to get a firm grip, something sticky might help.
 item id:whirligigs_shattering_star_mace
 item is proper noun:
 item visibility:invisible
