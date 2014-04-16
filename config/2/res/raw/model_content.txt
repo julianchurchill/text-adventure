@@ -31,6 +31,9 @@ location area name:Misty Downs
 LOCATION AREA
 location area id:breakwater_lake_area
 location area name:Breakwater Lake
+LOCATION AREA
+location area id:bellas_castle_area
+location area name:The Witch's Castle
 
 LOCATION
 x:300
@@ -3329,3 +3332,248 @@ item description:You're not sure if it's human or animal but the bone is quite l
 item id:charred_bone_with_runes
 item countable noun prefix:a
 item visibility:invisible
+
+LOCATION
+x:000
+y:000
+location id:bella_hq_central_room
+location area id:bellas_castle_area
+location description:In the centre of the room a hanging cage draws your attention, the primary feature it looks like it has been put to much use. Scattered scraps of food litter the floor beneath it and you see the odd glint of white-grey bone fragments on the floor - the remains of dinner or just remains?
+text to show on first entry:You walk into the room and pause for a moment to take in your surroundings. Your attention is immediately drawn to the girl in a cage suspended from the ceiling in the centre of the room, it looks like Oubliette. You hear a chuckle from the shadows - "So it was you who broke my barrier." The voice sounds familiar but is very croaky. Before you realise it the witch is upon you, Bella Constantine! You recognise her face as she rushes at you from one of the platforms at the edges of the room, a great leap and a glide through the air she levitates across the space to land only a few feet away from you.<newline>The witch mocks you. "Welcome hero. You have come for your revenge, your reckoning for this world upon me? I think you are weak. You cannot stop me. You are no hero, just weak flesh and bone, flawed and scared. This isn't honourable, this isn't justice despite what you may think, you are no better than I. I'll warrant there are moments, in your grave and fearsome determination when you would collapse this hate filled, miserable world in on itself if given the power. Scream at the empty, pitiless sky - it will not listen to you.". She screams herself to emphasise the point and leaps away again into the shadows.
+EXIT
+exit label:North platform
+exit destination:bella_hq_central_room_north_platform
+exit direction hint:North
+exit id:bella_hq_central_room_to_bella_hq_central_room_north_platform
+EXIT
+exit label:South platform
+exit destination:bella_hq_central_room_south_platform
+exit direction hint:South
+exit id:bella_hq_central_room_to_bella_hq_central_room_south_platform
+EXIT
+exit label:East platform
+exit destination:bella_hq_central_room_east_platform
+exit direction hint:East
+exit id:bella_hq_central_room_to_bella_hq_central_room_east_platform
+EXIT
+exit label:West platform
+exit destination:bella_hq_central_room_west_platform
+exit direction hint:West
+exit id:bella_hq_central_room_to_bella_hq_central_room_west_platform
+ITEM
+item name:Hanging Cage
+item description:The cage is suspended from the ceiling by a metal chain. It looks very well constructed and there is not a chance that you could open it by force. There is a small door on the side, large enough for a person to squeeze in and out. The door is shut and you notice a small key hole to the side of it.
+item id:hanging_cage_locked
+item countable noun prefix:a
+item is untakeable:
+ITEM
+item name:Wyrm's Tongue Powder
+item description:It is a small pot of potent red powder, a quick whiff of it makes you cough and splutter. When a small amount is combined with fire it can produce a startling effect.
+item id:wyrms_tongue_powder
+item countable noun prefix:some
+item mid sentence cased name:Wyrm's Tongue Powder
+item visibility:invisible
+ITEM
+item name:Oubliette
+item description:She is sitting on the floor of a metal cage suspended from the ceiling of this room. She noticed you when you entered the room and has been following your movements since. Her eyes are wet from crying and her clothes are dirty but she is very glad to see you.
+item id:oubliette_in_the_cage
+item mid sentence cased name:Oubliette
+item is proper noun:
+item is untakeable:
+item talk initial phrase:isitreallyyou:Is it really you?:"Is it really you?" you ask the girl, overwhelmed with relief at having found her but also aware of the imminent danger she is still in whilst trapped in the cage.
+item talk response to:isitreallyyou:She looks up as you speak to her, grabbing the bars of her cage. "Yes, it's me.". She smiles at you hopefully but clearly frightened.
+ITEM
+item name:Bella's corpse
+item description:The witch has been burnt by the green flames produced from the Wyrm's Tongue Powder.
+item id:bella_playing_dead
+item mid sentence cased name:Bella's corpse
+item is untakeable:
+item visibility:invisible
+item examine action is not repeatable:
+item examine message:You bend down to search the body for the key to Oubliette's cage but as you do you see movement under the robes. Stepping cautiously back the movement increases and the robes start to rise up as smoke emanates from underneath them. A shape forms behind the cloth, getting larger until it stands taller than you - then the robe slips off to reveal a creature of nightmares. A horned demon pierces your mind with it's hateful gaze, focusing all of it's will upon you. Under this psychic weight you fall down to your knees and hear the demon snarl, lifting one clawed foot and stepping slowly towards you.
+item on examine action:change item visibility:bella_playing_dead:invisible
+item on examine action:change item visibility:demon_witch:visible
+ITEM
+item name:Demon Witch
+item description:
+item id:demon_witch
+item mid sentence cased name:Demon Witch
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+
+LOCATION
+x:000
+y:000
+location id:bella_hq_central_room_north_platform
+location area id:bellas_castle_area
+location description:This is the north platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.
+EXIT
+exit label:Centre of the room
+exit destination:bella_hq_central_room
+exit direction hint:South
+exit id:bella_hq_central_room_north_platform_to_bella_hq_central_room
+ITEM
+item name:Burning brazier
+item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
+item id:burning_brazier_north
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item successful use message:It would be a shame to waste any of this precious powder to simply make pretty patterns in the fire. you're best off waiting for a more useful opportunity.
+ITEM
+item name:Burning brazier
+item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
+item id:burning_brazier_north_usable
+item countable noun prefix:a
+item is untakeable:
+item can be used with:wyrms_tongue_powder
+item successful use message:You cast the powder into the flames which greedy consumes it and belches out great green tongues of fire. They strike the witch and she screams and leaps away, off of the platform.
+item use action:change item visibility:burning_brazier_north_usable:invisible
+item use action:change item visibility:burning_brazier_north:visible
+item use action:change item visibility:burning_brazier_south_usable:visible
+item use action:change item visibility:burning_brazier_south:invisible
+item use action:change item visibility:bella_north_platform:invisible
+item use action:change item visibility:bella_south_platform:visible
+ITEM
+item name:The Witch Bella Constantine
+item description:She looks at you with mild amusement, as though you are an insignificant plaything and toys with the flickering flames from the brazier letting them run through her fingers. She seems to suffer no burns or pain from doing this.
+item id:bella_north_platform
+item mid sentence cased name:Bella Constantine
+item is proper noun:
+item is untakeable:
+item talk initial phrase:idemandyoufreeoubliette:I demand you free Oubliette:You clear your throat and state as confidently as you can - "I demand you free Oubliette.".
+item talk response to:idemandyoufreeoubliette:"You demand? Who are you to demand anything of me, I might just smite you down where you stand." she replies nonchalantly, clearly unperturbed by your attitude.
+
+LOCATION
+x:000
+y:000
+location id:bella_hq_central_room_south_platform
+location area id:bellas_castle_area
+location description:This is the south platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.
+EXIT
+exit label:Centre of the room
+exit destination:bella_hq_central_room
+exit direction hint:North
+exit id:bella_hq_central_room_south_platform_to_bella_hq_central_room
+ITEM
+item name:Burning brazier
+item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
+item id:burning_brazier_south
+item countable noun prefix:a
+item is untakeable:
+item can be used with:wyrms_tongue_powder
+item successful use message:It would be a shame to waste any of this precious powder to simply make pretty patterns in the fire. you're best off waiting for a more useful opportunity.
+ITEM
+item name:Burning brazier
+item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
+item id:burning_brazier_south_usable
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:wyrms_tongue_powder
+item successful use message:You cast the powder into the flames which greedy consumes it and belches out great green tongues of fire. They strike the witch and she screams and leaps away, off of the platform.
+item use action:change item visibility:burning_brazier_south_usable:invisible
+item use action:change item visibility:burning_brazier_south:visible
+item use action:change item visibility:burning_brazier_east_usable:visible
+item use action:change item visibility:burning_brazier_east:invisible
+item use action:change item visibility:bella_south_platform:invisible
+item use action:change item visibility:bella_east_platform:visible
+ITEM
+item name:The Witch Bella Constantine
+item description:She glares at you as you approach, glancing at Oubliette in the cage below and lets out a shriek which you assume was some sort of evil laughter.
+item id:bella_south_platform
+item mid sentence cased name:Bella Constantine
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:stopattackingthetownsfolk:Stop attacking the townsfolk:"Stop attacking the townsfolk, they've done nothing to you.". You are becoming bolder, her reaction to the fire on the north platform has boosted your confidence and she can tell.
+item talk response to:stopattackingthetownsfolk:She sneers at you "Nothing? They took everything from me, pitiful, stupid people like that are always the same. They welcomed me in when I first arrived but when I married Oren Constantine they shunned me, they were jealous, pathetic wretches."
+
+LOCATION
+x:000
+y:000
+location id:bella_hq_central_room_east_platform
+location area id:bellas_castle_area
+location description:This is the east platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.
+EXIT
+exit label:Centre of the room
+exit destination:bella_hq_central_room
+exit direction hint:West
+exit id:bella_hq_central_room_east_platform_to_bella_hq_central_room
+ITEM
+item name:Burning brazier
+item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
+item id:burning_brazier_east
+item countable noun prefix:a
+item is untakeable:
+item can be used with:wyrms_tongue_powder
+item successful use message:It would be a shame to waste any of this precious powder to simply make pretty patterns in the fire. you're best off waiting for a more useful opportunity.
+ITEM
+item name:Burning brazier
+item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
+item id:burning_brazier_east_usable
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:wyrms_tongue_powder
+item successful use message:You cast the powder into the flames which greedy consumes it and belches out great green tongues of fire. They strike the witch and she screams and leaps away, off of the platform.
+item use action:change item visibility:burning_brazier_east_usable:invisible
+item use action:change item visibility:burning_brazier_east:visible
+item use action:change item visibility:burning_brazier_west_usable:visible
+item use action:change item visibility:burning_brazier_west:invisible
+item use action:change item visibility:bella_east_platform:invisible
+item use action:change item visibility:bella_west_platform:visible
+ITEM
+item name:The Witch Bella Constantine
+item description:She looks at you with some degree of annoyance, you are clearly starting to vex her.
+item id:bella_east_platform
+item mid sentence cased name:Bella Constantine
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:youwillnotwin:You will not win:Your burgeoning confidence fills you and you defiantly state "You will not win. Give up now and I will let you go free."
+item talk response to:youwillnotwin:"You will never beat me, you have not seen my true power yet." she screams at you.
+
+LOCATION
+x:000
+y:000
+location id:bella_hq_central_room_west_platform
+location area id:bellas_castle_area
+location description:This is the west platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.
+EXIT
+exit label:Centre of the room
+exit destination:bella_hq_central_room
+exit direction hint:East
+exit id:bella_hq_central_room_west_platform_to_bella_hq_central_room
+ITEM
+item name:Burning brazier
+item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
+item id:burning_brazier_west
+item countable noun prefix:a
+item is untakeable:
+item can be used with:wyrms_tongue_powder
+item successful use message:It would be a shame to waste any of this precious powder to simply make pretty patterns in the fire. you're best off waiting for a more useful opportunity.
+ITEM
+item name:Burning brazier
+item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
+item id:burning_brazier_west_usable
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+item can be used with:wyrms_tongue_powder
+item successful use message:You cast the powder into the flames which greedy consumes it and belches out great green tongues of fire. They strike the witch and she screams and leaps away, off of the platform into the centre of the room. She collapses writhing on the floor covered in the green flame that has caught on her clothes. After a few moments she lies still.
+item use action:change item visibility:burning_brazier_west_usable:invisible
+item use action:change item visibility:burning_brazier_west:visible
+item use action:change item visibility:bella_west_platform:invisible
+item use action:change item visibility:bella_playing_dead:visible
+ITEM
+item name:The Witch Bella Constantine
+item description:She hisses at you and backs away as you approach. The Wyrm's Tongue Powder has clearly done its job although she is trying her best to hide any damage it may have done to her.
+item id:bella_west_platform
+item mid sentence cased name:Bella Constantine
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:ipromisedtosaveoubliette:I promised to save Oubliette:"I promised Oubliette's father and sister that I'd bring her back, I'll not fail them." You are clear in your intentions, your purpose fuels you onward.
+item talk response to:ipromisedtosaveoubliette:"I care nothing for your girl or her family, she is my hostage. Perpetuity will bow down to me just as Ubiquity has." Greed and a desperate desire for power lights her eyes and makes them burn red like the fires surrounding her.
