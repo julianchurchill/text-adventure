@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:20
+maximum score:21
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -2602,6 +2602,23 @@ exit label:Down into the mist
 exit destination:misty_downs_path_behind_barrow
 exit direction hint:South
 exit id:front_of_the_castle_to_misty_downs_path_behind_barrow
+EXIT
+exit label:Castle entrance
+exit destination:bellas_castle_entrance
+exit direction hint:North
+exit id:front_of_the_castle_to_bellas_castle_entrance
+exit is not visible:
+ITEM
+item name:Magical barrier
+item description:The barrier repels you with impenetrable force. You need a means to shatter this barrier so that you can proceed into the castle.
+item id:magical_barrier
+item is untakeable:
+item can be used with:whirligigs_shattering_star_mace
+item successful use message:Wielding the mace like a hobo's bindle stick you strike the barrier awkwardly. It doesn't matter as the magical mace does its job and shatters the barrier utterly. You hear the sound of a million shards of glass land on the ground but see nothing, they are invisible to your eyes and impossible to touch. The route to the castle is now clear.
+item use action:change item visibility:magical_barrier:invisible
+item use action:change exit visibility:front_of_the_castle_to_bellas_castle_entrance:visible
+item use action:change location description:front_of_the_castle:You stand at the top of a slope which descends into mist. The wet air lingers about your feet, eddies forming as you move. The plateau on which you find yourself is desolate save for a few dead trees marking the edge of a path leading to a rotten yet imposing stone gate. The iron work which would have formed the gate itself is missing but leaves the surrounding stone supports as an appropriate frame for what lies further on - a black, dead castle. This must be the castle that Larry the Yak Shaver told you about, this must be the Witch Bella's stronghold. Shadows seem to dance playfully over the cold stone turrets and vanish into windows and doorways to reappear from another nearby but you cannot tell if it is simply the reflected movement of the seemingly permanent clouds overhead, looming angrily and with menace.
+item use action:increment score:
 
 LOCATION
 x:-180
@@ -3394,32 +3411,54 @@ item countable noun prefix:a
 item visibility:invisible
 
 LOCATION
-x:000
-y:000
-location id:bella_hq_central_room
+x:-480
+y:-180
+location id:bellas_castle_entrance
+location area id:bellas_castle_area
+location description:You stand inside the castle walls, in the main entrance. It was once opulent, with velvet curtains two men high draping the walls but has now been corrupted by the decay and evil that has taken control of the castle. The curtains are in tatters and leaves rustle with the wind as they blow along the stone floor. Further in you can see the flicker of flames lighting the great hall up ahead.
+EXIT
+exit label:Outside of the castle
+exit destination:front_of_the_castle
+exit direction hint:South
+exit id:bellas_castle_entrance_to_front_of_the_castle
+EXIT
+exit label:The Great Hall
+exit destination:bellas_castle_great_hall
+exit direction hint:North
+exit id:bellas_castle_entrance_to_the_great_hall
+
+LOCATION
+x:-480
+y:-240
+location id:bellas_castle_great_hall
 location area id:bellas_castle_area
 location description:In the centre of the room a hanging cage draws your attention, the primary feature it looks like it has been put to much use. Scattered scraps of food litter the floor beneath it and you see the odd glint of white-grey bone fragments on the floor - the remains of dinner or just remains?
 text to show on first entry:You walk into the room and pause for a moment to take in your surroundings. Your attention is immediately drawn to the girl in a cage suspended from the ceiling in the centre of the room, it looks like Oubliette. You hear a chuckle from the shadows - "So it was you who broke my barrier." The voice sounds familiar but is very croaky. Before you realise it the witch is upon you, Bella Constantine! You recognise her face as she rushes at you from one of the platforms at the edge of the room, a great leaping glide through the air and she levitates across the space to land only a few feet away from you.<newline>The witch mocks you. "Welcome hero. You have come for your revenge, your reckoning for this world upon me? I think you are weak. You cannot stop me. You are no hero, just weak flesh and bone, flawed and scared. This isn't honourable, this isn't justice despite what you may think, you are no better than I. I'll warrant there are moments, in your grave and fearsome determination when you would collapse this hate filled, miserable world in on itself if given the power. Scream at the empty, pitiless sky - it will not listen to you.". She screams herself to emphasise the point and leaps away again into the shadows.
 EXIT
+exit label:Castle entrance
+exit destination:bellas_castle_entrance
+exit direction hint:South
+exit id:bellas_castle_great_hall_to_bellas_castle_entrance
+EXIT
 exit label:North platform
-exit destination:bella_hq_central_room_north_platform
+exit destination:bellas_castle_great_hall_north_platform
 exit direction hint:North
-exit id:bella_hq_central_room_to_bella_hq_central_room_north_platform
+exit id:bellas_castle_great_hall_to_bellas_castle_great_hall_north_platform
 EXIT
 exit label:South platform
-exit destination:bella_hq_central_room_south_platform
+exit destination:bellas_castle_great_hall_south_platform
 exit direction hint:South
-exit id:bella_hq_central_room_to_bella_hq_central_room_south_platform
+exit id:bellas_castle_great_hall_to_bellas_castle_great_hall_south_platform
 EXIT
 exit label:East platform
-exit destination:bella_hq_central_room_east_platform
+exit destination:bellas_castle_great_hall_east_platform
 exit direction hint:East
-exit id:bella_hq_central_room_to_bella_hq_central_room_east_platform
+exit id:bellas_castle_great_hall_to_bellas_castle_great_hall_east_platform
 EXIT
 exit label:West platform
-exit destination:bella_hq_central_room_west_platform
+exit destination:bellas_castle_great_hall_west_platform
 exit direction hint:West
-exit id:bella_hq_central_room_to_bella_hq_central_room_west_platform
+exit id:bellas_castle_great_hall_to_bellas_castle_great_hall_west_platform
 ITEM
 item name:Hanging Cage
 item description:The cage is suspended from the ceiling by a metal chain. It looks very well constructed and there is not a chance that you could open it by force. There is a small door on the side, large enough for a person to squeeze in and out. The door is shut and you notice a small key hole to the side of it.
@@ -3492,13 +3531,14 @@ item examine action is not repeatable:
 item examine message:You bend down to search the body for the key to Oubliette's cage but as you do you see movement under the robes. Stepping cautiously back the movement increases and the robes start to rise up as smoke emanates from underneath them. A shape forms behind the cloth, getting larger until it stands taller than you - then the robe slips off to reveal a creature of nightmares. A horned demon pierces your mind with it's hateful gaze, focusing all of it's will upon you. Under this psychic weight you fall down to your knees and hear the demon snarl, lifting one clawed foot and stepping slowly towards you.
 item on examine action:change item visibility:bella_playing_dead:invisible
 item on examine action:change item visibility:demon_witch:visible
-item on examine action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_north_platform:invisible
-item on examine action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_south_platform:invisible
-item on examine action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_east_platform:invisible
-item on examine action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_west_platform:invisible
+item on examine action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_entrance:invisible
+item on examine action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_great_hall_north_platform:invisible
+item on examine action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_great_hall_south_platform:invisible
+item on examine action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_great_hall_east_platform:invisible
+item on examine action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_great_hall_west_platform:invisible
 ITEM
 item name:Demon Witch
-item description:Your mind does somersaults as you try to reason how this monster before you was once the beautiful lady that you first encountered in Oren Constantine's mansion study. Now turned to her true nature by whatever pacts with hell she must have made, she stands as a monsterous demon before you, glowering down with intense rage.
+item description:Your mind does somersaults as you try to reason how this monster before you was once the beautiful lady that you first encountered in Oren Constantine's mansion study. Now turned to her true nature by whatever pacts with hell she must have made, she stands as a monstrous demon before you, glowering down with intense rage.
 item id:demon_witch
 item mid sentence cased name:Demon Witch
 item is proper noun:
@@ -3509,10 +3549,11 @@ item successful use message:As the demon steps forward you thrust the kris knife
 item use action:change item visibility:demon_witch:invisible
 item use action:change item visibility:demon_witch_corpse:visible
 item use action:destroy item:kris_knife
-item use action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_north_platform:visible
-item use action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_south_platform:visible
-item use action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_east_platform:visible
-item use action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_west_platform:visible
+item use action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_entrance:visible
+item use action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_great_hall_north_platform:visible
+item use action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_great_hall_south_platform:visible
+item use action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_great_hall_east_platform:visible
+item use action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_great_hall_west_platform:visible
 item use action:increment score:
 ITEM
 item name:Demon Witch corpse
@@ -3528,16 +3569,16 @@ item on examine action:change item visibility:hanging_cage_key:visible
 item on examine action:take item:hanging_cage_key
 
 LOCATION
-x:000
-y:000
-location id:bella_hq_central_room_north_platform
+x:-480
+y:-270
+location id:bellas_castle_great_hall_north_platform
 location area id:bellas_castle_area
 location description:This is the north platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.
 EXIT
 exit label:Centre of the room
-exit destination:bella_hq_central_room
+exit destination:bellas_castle_great_hall
 exit direction hint:South
-exit id:bella_hq_central_room_north_platform_to_bella_hq_central_room
+exit id:bellas_castle_great_hall_north_platform_to_bellas_castle_great_hall
 ITEM
 item name:Burning brazier
 item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
@@ -3571,16 +3612,16 @@ item talk initial phrase:idemandyoufreeoubliette:I demand you free Oubliette:You
 item talk response to:idemandyoufreeoubliette:"You demand? Who are you to demand anything of me, I might just smite you down where you stand." she replies nonchalantly, clearly unperturbed by your attitude.
 
 LOCATION
-x:000
-y:000
-location id:bella_hq_central_room_south_platform
+x:-480
+y:-210
+location id:bellas_castle_great_hall_south_platform
 location area id:bellas_castle_area
 location description:This is the south platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.
 EXIT
 exit label:Centre of the room
-exit destination:bella_hq_central_room
+exit destination:bellas_castle_great_hall
 exit direction hint:North
-exit id:bella_hq_central_room_south_platform_to_bella_hq_central_room
+exit id:bellas_castle_great_hall_south_platform_to_bellas_castle_great_hall
 ITEM
 item name:Burning brazier
 item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
@@ -3616,16 +3657,16 @@ item talk initial phrase:stopattackingthetownsfolk:Stop attacking the townsfolk:
 item talk response to:stopattackingthetownsfolk:She sneers at you "Nothing? They took everything from me, pitiful, stupid people like that are always the same. They welcomed me in when I first arrived but when I married Oren Constantine they shunned me, they were jealous, pathetic wretches."
 
 LOCATION
-x:000
-y:000
-location id:bella_hq_central_room_east_platform
+x:-450
+y:-240
+location id:bellas_castle_great_hall_east_platform
 location area id:bellas_castle_area
 location description:This is the east platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.
 EXIT
 exit label:Centre of the room
-exit destination:bella_hq_central_room
+exit destination:bellas_castle_great_hall
 exit direction hint:West
-exit id:bella_hq_central_room_east_platform_to_bella_hq_central_room
+exit id:bellas_castle_great_hall_east_platform_to_bellas_castle_great_hall
 ITEM
 item name:Burning brazier
 item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
@@ -3661,16 +3702,16 @@ item talk initial phrase:youwillnotwin:You will not win:Your burgeoning confiden
 item talk response to:youwillnotwin:"You will never beat me, you have not seen my true power yet." she screams at you.
 
 LOCATION
-x:000
-y:000
-location id:bella_hq_central_room_west_platform
+x:-510
+y:-240
+location id:bellas_castle_great_hall_west_platform
 location area id:bellas_castle_area
 location description:This is the west platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.
 EXIT
 exit label:Centre of the room
-exit destination:bella_hq_central_room
+exit destination:bellas_castle_great_hall
 exit direction hint:East
-exit id:bella_hq_central_room_west_platform_to_bella_hq_central_room
+exit id:bellas_castle_great_hall_west_platform_to_bellas_castle_great_hall
 ITEM
 item name:Burning brazier
 item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.

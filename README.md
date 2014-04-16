@@ -127,8 +127,8 @@ Story - TTA2
   - DONE As you cross the Misty Downs to get to the castle a wight from a barrow which you could not earlier get into is awoken. You must defeat it to proceed.
     - "I love you baby - but you're so baaad for me. Like salt and cheese, but we should be like garlic and coffeeeee, in perfect harmonyyyyy". Clearly this wight's brains have been addled more than most by his after death experience. You pity him but you'd rather not get into a relationship right now, your heart belongs to another. However he will not let you pass to continue your quest. The quickest way to resolve this may be a quick whack on the noggin with something heavy.
     - You use the mace with the wight and knock him out, then you can proceed. When he is knocked out you notice he drops a wavy blade and you pick it up, it's the kris knife.
-  - You must smash the invisible magic barrier with the shattering mace.
-  - Entrance to the castle leading to the central room. Make sure the new exit is shown/hidden as appropriate while fighting the demon.
+  - DONE You must smash the invisible magic barrier with the shattering mace.
+  - DONE Entrance to the castle leading to the central room. Make sure the new exit is shown/hidden as appropriate while fighting the demon.
   - Final battle is in a central room with four platforms, north, south, east and west. On entering the witch gives a diatribe about how badass she is then appears on the north platform. She does not move if you go there and if you talk to her she mocks you.
     - DONE Oubliette is in the centre in a hanging cage. You speak to her and she gives you some Wyrm's Tongue Powder and tells you to use it with fire as the witch hates it. Use it with the brazier on each platform to get the witch to move around the room, once al platforms are done she goes to the centre, playus dead until you examine here and t0hen transforms into a demon.
     - DONE To beat her demon form you must use the kris knife and then you can get the cage key from the body . You free Oubliette, celebrate and the game ends.
