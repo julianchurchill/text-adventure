@@ -39,6 +39,7 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
+- [FEATURE] Complete walkthrough for TTA2
 - [FEATURE] Add 'quick hint' in parallel to walkthrough. Add lines like '# quick hint: Have you tried the butchers?' and present the next one after the current score as a toast.
 - [FEATURE] Write a walkthrough for TTA1
 - [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
@@ -113,33 +114,9 @@ Story - TTA2
 - [BUG] say "Wiggle your pinky" doesn't read very well - it should simply be 'Wiggle you pinky' instead of a say option...
   - [FIX] Could change to 'Say "I'm wiggling my pinky at you"' ?
 - [BUG] Shaved yak picture needs moving to Larry's after the shaving
-- Breakwater Temple - an ancient temple hidden under the lake - a temple to old gods with traps and puzzles, entrance puzzle run, a la Indiana Jones:
-  - Add a 'torch use failure' message to the south indian monkey trap room if you use the torch with the pit before you have discovered it is a key in _wax_. Also allow the torch to be used with the key in wax directly for the same result.
-  - DONE Puzzle room, south indian monkey trap, locked door, key at the bottom of a pit an arms length deep, wider at the bottom than the top. The key is encased in clear wax. You can put your arm down the pit and grab the key ball but cannot get it out of the pit. You must drop a torch down there to melt the wax and then get the key out. Objects: key in wax, pit, torch. Use torch with pit, take key.
-  - DONE Puzzle room, Quaternius, Tempus and Radlican the Vast. Quaternius - a science dwarf. Tempus - a talking dog made by Quaternius and Radlican a giant, their bodyguard.
-      - You are in Quaternius' lab and he requires some help or an answer to a quiz or riddle before you can progress. A talking game.
-        - You have to follow his instructions to use a large number of objects with each other in the right order and then he becomes a funky science wizard and lets you out of the door leading further into the temple.
-  - DONE Puzzle room - The Menagerie
-    - DONE Fastidious mim - a bird
-    - DONE Indivisible turpet. "You should have known, the fastidious mim always comes with it's companion creature - the indivisible turpet. The turpet is a big, fat worm, also known as Crane's turpet after the famous biologist, who met his maker shortly after discovering and naming the turpet and then while testing it's indivisibility, he succumbed to blood loss from an accidentally amputated toe. Later biologists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate."
-  - DONE Last puzzle room - The Beating Heart - Is a room which is actually a giant heart, pumping oxygen around the temple to the menagerie and the lab. Tubes providing water and food for the creatures in the menagerie are also controlled from here by the organism that is the heart. The room contains the magical artifact which you can use to break into Bella's castle. Whirligig's Shattering Star Mace. Also contains a mirror suspended so you can spin it, when you examine it, it spins and you see Oubliette imprisoned in the witch's castle. She is in a hanging cage. Add a hint of seeing Oubliette to some other places with mirrors - Larrys yak shaving parlour, the soothsayers crystal ball etc...
-- Bellas HQ - a castle in a forest on the other side of the river.
-  - DONE As you cross the Misty Downs to get to the castle a wight from a barrow which you could not earlier get into is awoken. You must defeat it to proceed.
-    - "I love you baby - but you're so baaad for me. Like salt and cheese, but we should be like garlic and coffeeeee, in perfect harmonyyyyy". Clearly this wight's brains have been addled more than most by his after death experience. You pity him but you'd rather not get into a relationship right now, your heart belongs to another. However he will not let you pass to continue your quest. The quickest way to resolve this may be a quick whack on the noggin with something heavy.
-    - You use the mace with the wight and knock him out, then you can proceed. When he is knocked out you notice he drops a wavy blade and you pick it up, it's the kris knife.
-  - DONE You must smash the invisible magic barrier with the shattering mace.
-  - DONE Entrance to the castle leading to the central room. Make sure the new exit is shown/hidden as appropriate while fighting the demon.
-  - Final battle is in a central room with four platforms, north, south, east and west. On entering the witch gives a diatribe about how badass she is then appears on the north platform. She does not move if you go there and if you talk to her she mocks you.
-    - DONE Oubliette is in the centre in a hanging cage. You speak to her and she gives you some Wyrm's Tongue Powder and tells you to use it with fire as the witch hates it. Use it with the brazier on each platform to get the witch to move around the room, once al platforms are done she goes to the centre, playus dead until you examine here and t0hen transforms into a demon.
-    - DONE To beat her demon form you must use the kris knife and then you can get the cage key from the body . You free Oubliette, celebrate and the game ends.
-      - Oubliette's father and sister are happy you've rescued her and congratulate you if you return to town.
-    - DONE Increment score on knocking Bella into central room and increment upon stabbing the demon and increment on opening the cage to complete the game.
-- Babbages cabbage - a cabbage power steam computer, perhaps interact by placing runes
-- Magical robots - perhaps trapped water imps - agents for either side, initially created by the witch to serve her, wills too strong for her to control, some changed sides. Self naming, Least Chance of Failure, Random Acts of Kindness, Vengeful Beyond Death, Penchant for Foolish Bravery
-- A portal to a dark plane (deep inside the temple) with demon creatures you must defeat some how
-- Sub quests
-  - Create and play a kazoo at a childrens party at a nobles house (achievement Player of the Kazoo)
-  - Collect bugs - using a bug collector to make them visible and catch them. There are 12 to find and there are clues at the locations to indicate that there is a bug there. Something like "There is a flicker of movement in the corner." (Bug Collector)
+- Oubliette's father and sister are happy you've rescued her and congratulate you if you return to town. Add some chit chat with them.
+- Add a 'torch use failure' message to the south indian monkey trap room in breakwater temple if you use the torch with the pit before you have discovered it is a key in _wax_. Also allow the torch to be used with the key in wax directly for the same result.
+- Add a hint of seeing Oubliette to some other places with mirrors - Larrys yak shaving parlour, the soothsayers crystal ball etc...
 - Add some negative use responses
   - DONE Using Imperator with chainsaw before it's fixed - "It rattles and tattles and chokes to a halt. The belt ran without anything to do the slicing, these chainsaw needs teeth!"
   - DONE Using stick with rag - "What are you going to do, beat the rag into submission?"
@@ -174,10 +151,20 @@ Story - TTA2
   - Frank's Tool Shed
   - Barrow for the barrow wight to live in
   - Barry Wight - the Nec-romancer
+  - The magical barrier in front of the castle
+  - The Great Hall with Oubliette in a hanging cage
+  - A brazier for the great hall 4 platforms
+  - The demon witch
 - Add slightly animated images (3-5 frames)
   - A mouse scampering around the base of the barricade
   - Juddering hour hand on the clock tower
   - An unshaved yak with hair blowing in the wind
+- Crazy ideas
+  - Babbages cabbage - a cabbage power steam computer, perhaps interact by placing runes
+  - Magical robots - perhaps trapped water imps - agents for either side, initially created by the witch to serve her, wills too strong for her to control, some changed sides. Self naming, Least Chance of Failure, Random Acts of Kindness, Vengeful Beyond Death, Penchant for Foolish Bravery
+  - Sub quests
+    - Create and play a kazoo at a childrens party at a nobles house (achievement Player of the Kazoo)
+    - Collect bugs - using a bug collector to make them visible and catch them. There are 12 to find and there are clues at the locations to indicate that there is a bug there. Something like "There is a flicker of movement in the corner." (Bug Collector)
 
 Marketing
 
@@ -294,6 +281,17 @@ TTA2 only
 - [STORY] Breakwater lake
   - You must use the aqualung to dive into Breakwater Lake and swim down to the temple
   - Make an ape-like dummy from the parsnips, turnip and mop head in the field by the lake. Use the dummy with the Gibbling Boon to gain access to the temple.
+- [STORY] Breakwater Temple - an ancient temple hidden under the lake - a temple to old gods with traps and puzzles
+  - Puzzle room - South Indian Monkey Trap - locked door, key at the bottom of a pit an arms length deep, wider at the bottom than the top. The key is encased in clear wax. You can put your arm down the pit and grab the key ball but cannot get it out of the pit. You must drop a torch down there to melt the wax and then get the key out. Objects: key in wax, pit, torch. Use torch with pit, take key.
+  - Puzzle room - Quaternius lab - Occupants are Quaternius - a science dwarf, Tempus - a talking dog made by Quaternius and Radlican the Vast his giant bodyguard. You are in Quaternius' lab and he requires some help before you can progress. You have to follow his instructions to use a number of objects with each other in the right order and then he becomes a funky science wizard and lets you out of the door leading further into the temple.
+  - Puzzle room - The Menagerie - examining the creatures reveals some items that you need to complete the puzzle in the beating heart room.
+  - Puzzle room - The Beating Heart - Is a room which is actually a giant heart, pumping oxygen around the temple to the menagerie and the lab. Tubes providing water and food for the creatures in the menagerie are also controlled from here by the organism that is the heart. The room contains the magical artifact which you can use to break into Bella's castle. Whirligig's Shattering Star Mace. Also contains a font of murky water, when you examine it you see Oubliette imprisoned in the witch's castle. She is in a hanging cage.
+- [STORY] Bellas HQ - a castle in a forest on the other side of the river.
+  - As you cross the Misty Downs to get to the castle a wight from a barrow which you could not earlier get into is awoken. You must defeat it to proceed. You use the mace with the wight and knock him out, then you can proceed. When he is knocked out you notice he drops a wavy blade and you pick it up, it's the kris knife.
+  - You must smash the invisible magic barrier with the shattering mace to get into the castle.
+  - Final battle is in a central room with four platforms, north, south, east and west. On entering the witch gives a diatribe about how badass she is then appears on the north platform. She does not move if you go there and if you talk to her she mocks you.
+    - Oubliette is in the centre in a hanging cage. You speak to her and she gives you some Wyrm's Tongue Powder and tells you to use it with fire as the witch hates it. Use it with the brazier on each platform to get the witch to move around the room, once al platforms are done she goes to the centre, plays dead until you examine her and then transforms into a demon.
+    - To beat her demon form you must use the kris knife and then you can get the cage key from the body . You free Oubliette, celebrate and the game ends.
 
 - [MINOR STORY CORRECTION] Little girl is introduced as "Flechette" but her description remains a small girl".
 - [MINOR STORY CORRECTION] Once you've accepted Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.
