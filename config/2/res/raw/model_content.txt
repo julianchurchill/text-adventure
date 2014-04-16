@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:18
+maximum score:20
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -2168,7 +2168,12 @@ item use action:change item visibility:whirligigs_shattering_star_mace_unreachab
 item use action:change item visibility:whirligigs_shattering_star_mace:visible
 item use action:change item visibility:glass_barrier_with_a_hole_in_it:invisible
 item use action:change item visibility:glass_barrier_without_mace:visible
+item use action:change item visibility:barrow_2:invisible
+item use action:change item visibility:barrow_after_finding_the_mace:visible
+item use action:change item visibility:barry_wight:visible
+item use action:change exit visibility:misty_downs_barrow_to_misty_downs_path_behind_barrow:invisible
 item use action:take item:whirligigs_shattering_star_mace
+item use action:increment score:
 ITEM
 item name:Whirligig's Shattering Star Mace
 item description:The mace is flanged; the head is split into multiple protrusions of metal to cause devastating effect when striking an armoured foe but you have a feeling that it is not armour that this mace has been created to penetrate. The shaft has the name of the mace carved into it and is a hefty foot and a half long pole of strong iron oakwood. You can nearly reach it but not be able to get a firm grip, something sticky might help.
@@ -2516,7 +2521,7 @@ item id:barrow_1
 item is proper noun:
 item is untakeable:
 item examine action is not repeatable:
-item examine message:The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. Its probably a bear. You feel anxious about examining any further.
+item examine message:The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. Its probably a bear. You feel anxious about examining any further but feel there might be more to learn about this barrow.
 item on examine action:change item visibility:barrow_1:invisible
 item on examine action:change item visibility:barrow_2:visible
 ITEM
@@ -2531,11 +2536,42 @@ item examine message:Searching between the stones that make up the barrow you sp
 item on examine action:change item visibility:glasses_of_clear_vision:visible
 item on examine action:take item:glasses_of_clear_vision
 ITEM
+item name:Barrow
+item description:The barrow is made of lots of stones, placed carefully together to form a roofed enclosure. You've heard that these ancient structures were used to bury high ranking members of the hill dwelling clans but that practice went out of favour thousands of years ago.
+item id:barrow_after_finding_the_mace
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+ITEM
 item name:Glasses of Clear Vision
 item description:These are the legendary Glasses of Clear Vision - famed for their ability to bring better vision to those with quite bad vision. Amongst the stories told of them they are supposed to have restored the vision of a monk who once got some grit in his eye, the sight of a drunkard after he had sobered up and the full ocular power of a man who had married an unseemly wench during a show of independence to those who were withholding from him his inheritance.
 item id:glasses_of_clear_vision
 item is proper noun:
 item countable noun prefix:some
+item visibility:invisible
+ITEM
+item name:Barry Wight
+item description:The creature before you is a wight, an undead wraith, a former occupant of the barrow which you both stand aside. He is blocking your path and mumbling to himself in a sing-song memory game, seeming to grasp something for it to slips away just as quickly. You can sense his deep frustration. "I'm Barry Wight, oooo baby, I'm Barry Wight, alright, yeah!".
+item id:barry_wight
+item is proper noun:
+item is untakeable:
+item can be used with:whirligigs_shattering_star_mace
+item successful use message:You clobber the wight soundly around the head with the mace. He stumbles backwards, stunned and even more confused but clear that you are not someone he wants to tackle. He backs up to the barrow and disappears inside, and you hear him clattering between the walls all the while trying to maintain a tune. As you turn to leave you notice a blade glinting on the ground, the wight must have dropped it. You pick it up for a closer look. It is a Kris Knife, an expensive one. There is something about it that draws you to it so you decide to hang on to it for now.
+item use action:change item visibility:barry_wight:invisible
+item use action:change item visibility:barrow_after_finding_the_mace:invisible
+item use action:change item visibility:barrow_2:visible
+item use action:change item visibility:kris_knife:visible
+item use action:change exit visibility:misty_downs_barrow_to_misty_downs_path_behind_barrow:visible
+item use action:take item:kris_knife
+item use action:increment score:
+item talk initial phrase:letmepast:Let me past:"Let me past." you command, directing your authority at the wight.
+item talk response to:letmepast:"I love you baby - but you're so baaad for me. Like salt and cheese, but we should be like garlic and coffeeeee, in perfect harmonyyyyy". Clearly this wight's brains have been addled more than most by his after death experience. You pity him but you'd rather not get into a relationship right now, your heart belongs to another. However he will not let you pass to continue your quest. The quickest way to resolve this may be a quick whack on the noggin with something heavy.
+ITEM
+item name:Kris Knife
+item description:This is an unusual dagger with a long waved blade and etchings in the blade itself and the handle. You suspect it may be magical and recognise some of the symbols from old folklore. In particular on the handle there appears to be a scene showing some sort of demonic creature being confronted by a kneeling man holding a waved dagger.
+item id:kris_knife
+item countable noun prefix:a
+item mid sentence cased name:kris knife
 item visibility:invisible
 
 LOCATION
@@ -3490,13 +3526,6 @@ item examine action is not repeatable:
 item examine message:You bend down to search the body for the key to Oubliette's cage this time wary of surprises. A moment of rummaging and you uncover a small black metal key and much to your relief there is no sign of movement from this corpse.
 item on examine action:change item visibility:hanging_cage_key:visible
 item on examine action:take item:hanging_cage_key
-ITEM
-item name:Kris Knife
-item description:This is an unusual dagger with a long waved blade and etchings in the blade itself and the handle. You suspect it may be magical and recognise some of the symbols from old folklore. In particular on the handle there appears to be a scene showing some sort of demonic creature being confronted by a kneeling man holding a waved dagger.
-item id:kris_knife
-item countable noun prefix:a
-item mid sentence cased name:kris knife
-item visibility:invisible
 
 LOCATION
 x:000
