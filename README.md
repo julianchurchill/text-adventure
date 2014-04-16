@@ -126,12 +126,13 @@ Story - TTA2
 - Bellas HQ - a castle in a forest on the other side of the river.
   - As you cross the Misty Downs to get to the castle a wight from a barrow which you could not earlier get into is awoken. You must defeat it to proceed.
   - You must smash the invisible magic barrier with the shattering mace.
+  - Entrance to the castle leading to the central room. Make sure the new exit is shown/hidden as appropriate while fighting the demon.
+  - Kris knife to defeat the witch's demon form - where do you get it from?
   - Final battle is in a central room with four platforms, north, south, east and west. On entering the witch gives a diatribe about how badass she is then appears on the north platform. She does not move if you go there and if you talk to her she mocks you.
     - DONE Oubliette is in the centre in a hanging cage. You speak to her and she gives you some Wyrm's Tongue Powder and tells you to use it with fire as the witch hates it. Use it with the brazier on each platform to get the witch to move around the room, once al platforms are done she goes to the centre, playus dead until you examine here and t0hen transforms into a demon.
-    - You battle her demon form, defeat her and get the cage key from her body or talk to Oubliette who tells you to get the key. You free Oubliette, celebrate and the game ends.
+    - DONE To beat her demon form you must use the kris knife and then you can get the cage key from the body . You free Oubliette, celebrate and the game ends.
       - Oubliette's father and sister are happy you've rescued her and congratulate you if you return to town.
-  - Final battle should be in several locations, you must beat the witch in one room in a certain way, then she flees and you follow. Repeat 3 times, different rooms and different ways to beat her.
-  - Perhaps you can fail to beat the witch in a room if you do the wrong thing. Consequence is a reset of the combat sequence to the first room.
+    - DONE Increment score on knocking Bella into central room and increment upon stabbing the demon and increment on opening the cage to complete the game.
 - Babbages cabbage - a cabbage power steam computer, perhaps interact by placing runes
 - Magical robots - perhaps trapped water imps - agents for either side, initially created by the witch to serve her, wills too strong for her to control, some changed sides. Self naming, Least Chance of Failure, Random Acts of Kindness, Vengeful Beyond Death, Penchant for Foolish Bravery
 - A portal to a dark plane (deep inside the temple) with demon creatures you must defeat some how

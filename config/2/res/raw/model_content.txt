@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:15
+maximum score:18
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -459,6 +459,14 @@ item visibility:invisible
 item talk initial phrase:whatsthematter:What is the matter?:"What is the matter?" you ask Flechette, concerned at her sad appearance.
 item talk response to:whatsthematter:"Where is she? She was right here with me, I, I..." she breaks down and starts to cry, holding her head in her hands. "I just turned away for a moment, there was a scuffle behind me and when I turned back Oubliette was gone. I called for her, I shouted and yelled but she wasn't there.". You try to console her, reassuring her that you'll find her sister no matter what it takes.
 ITEM
+item name:Flechette
+item description:She is a scrawny lass, around 12 years old and is the sister of Oubliette. She has a mischievous glint in her eye, you suspect she is planning something involving you, some glue and a whole heap of duck feathers.
+item id:flechette_after_rescuing_oubliette
+item mid sentence cased name:Flechette
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+ITEM
 item name:Oubliette
 item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. From what you recall of the shouting man, her name is Oubliette. Fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. You make a mental note not to make a fool of yourself.
 item id:oubliette_mob
@@ -531,6 +539,14 @@ item talk response to:howcanihelp:"My father needs help preparing the town defen
 item talk follow up phrase to:howcanihelp:icanhelpyourfather:I can help your father:"I can help your father.", you say bravely, or at least as bravely as you can muster to a girl who has beaten you unconscious with a boot.
 item talk response to:icanhelpyourfather:"Ok, wonderful - go talk to him and he'll give you instructions on what needs to be done.". She gestures towards the hovel to the north.
 
+ITEM
+item name:Oubliette
+item description:She is a slight girl with a strong boot wielding arm, of which you have had first hand experience. She is fairly tall with auburn hair that shines slightly in the fading sunlight. You find she catches you mildly off guard. As soon as she sees you she rushes up and throws her arms around you.
+item id:oubliette_after_rescuing_oubliette
+item mid sentence cased name:Oubliette
+item is proper noun:
+item is untakeable:
+item visibility:invisible
 
 LOCATION
 x:240
@@ -659,6 +675,14 @@ item talk initial phrase:whatwasthenameofthattownagain:What was the name of that
 item talk response to:whatwasthenameofthattownagain:"Ubiquity.".
 item talk follow up phrase to:whatwasthenameofthattownagain:andhowdoigetthere:And how do I get there?:"Ah yes, I remember now. And I get there by going to..." you let the end of the sentence tail off, sort of a question but without really admitting to it.
 item talk response to:andhowdoigetthere:"Use my boat, down by the river.". Cabal glares at you and you feel like you should leave quickly before appearing anymore foolish.
+ITEM
+item name:Cabal Jambon
+item description:He welcomes you with a heartfelt smile and open arms. He is stocky, middle aged with a shock of red hair and looks at you with respectful recognition, gushing with gratefulness for rescuing his daughter Oubliette from the witch Bella Constantine.
+item id:cabal_jambon_after_rescuing_oubliette
+item is untakeable:
+item mid sentence cased name:Cabal Jambon
+item is proper noun:
+item visibility:invisible
 
 ITEM
 item name:Key to Cabal's boat oars
@@ -3339,7 +3363,7 @@ y:000
 location id:bella_hq_central_room
 location area id:bellas_castle_area
 location description:In the centre of the room a hanging cage draws your attention, the primary feature it looks like it has been put to much use. Scattered scraps of food litter the floor beneath it and you see the odd glint of white-grey bone fragments on the floor - the remains of dinner or just remains?
-text to show on first entry:You walk into the room and pause for a moment to take in your surroundings. Your attention is immediately drawn to the girl in a cage suspended from the ceiling in the centre of the room, it looks like Oubliette. You hear a chuckle from the shadows - "So it was you who broke my barrier." The voice sounds familiar but is very croaky. Before you realise it the witch is upon you, Bella Constantine! You recognise her face as she rushes at you from one of the platforms at the edges of the room, a great leap and a glide through the air she levitates across the space to land only a few feet away from you.<newline>The witch mocks you. "Welcome hero. You have come for your revenge, your reckoning for this world upon me? I think you are weak. You cannot stop me. You are no hero, just weak flesh and bone, flawed and scared. This isn't honourable, this isn't justice despite what you may think, you are no better than I. I'll warrant there are moments, in your grave and fearsome determination when you would collapse this hate filled, miserable world in on itself if given the power. Scream at the empty, pitiless sky - it will not listen to you.". She screams herself to emphasise the point and leaps away again into the shadows.
+text to show on first entry:You walk into the room and pause for a moment to take in your surroundings. Your attention is immediately drawn to the girl in a cage suspended from the ceiling in the centre of the room, it looks like Oubliette. You hear a chuckle from the shadows - "So it was you who broke my barrier." The voice sounds familiar but is very croaky. Before you realise it the witch is upon you, Bella Constantine! You recognise her face as she rushes at you from one of the platforms at the edge of the room, a great leaping glide through the air and she levitates across the space to land only a few feet away from you.<newline>The witch mocks you. "Welcome hero. You have come for your revenge, your reckoning for this world upon me? I think you are weak. You cannot stop me. You are no hero, just weak flesh and bone, flawed and scared. This isn't honourable, this isn't justice despite what you may think, you are no better than I. I'll warrant there are moments, in your grave and fearsome determination when you would collapse this hate filled, miserable world in on itself if given the power. Scream at the empty, pitiless sky - it will not listen to you.". She screams herself to emphasise the point and leaps away again into the shadows.
 EXIT
 exit label:North platform
 exit destination:bella_hq_central_room_north_platform
@@ -3366,6 +3390,31 @@ item description:The cage is suspended from the ceiling by a metal chain. It loo
 item id:hanging_cage_locked
 item countable noun prefix:a
 item is untakeable:
+item can be used with:hanging_cage_key
+item successful use message:You put the key in the lock, turn it and throw the door wide open. Oubliette leaps out as fast as she can, into your waiting arms. Putting her down gently she puts her arms around your neck and gives you a passionate kiss. "You saved me." she says and holds onto you as though she will never let go. You grasp her in return, relief rushing from you as you realise your quest is over. The witch is vanquished forever and Oubliette is safe, you have kept your promise to her father and sister and to the townsfolk of Ubiquity and Perpetuity. Oubliette kisses your cheek and leaves to return to her waiting father and sister, allowing you a moment to contemplate everything you have done.
+item use action:change item visibility:hanging_cage_locked:invisible
+item use action:change item visibility:hanging_cage_unlocked:visible
+item use action:change item visibility:oubliette_in_the_cage:invisible
+item use action:change item visibility:oubliette_after_rescuing_oubliette:visible
+item use action:change item visibility:cabal_jambon_in_the_morning:invisible
+item use action:change item visibility:cabal_jambon_after_rescuing_oubliette:visible
+item use action:change item visibility:flechette_distraught:invisible
+item use action:change item visibility:flechette_after_rescuing_oubliette:visible
+item use action:destroy item:hanging_cage_key
+item use action:increment score:
+ITEM
+item name:Hanging Cage
+item description:The cage is suspended from the ceiling by a metal chain. It is very well constructed and was occupied very recently by Oubliette. There is a small door on the side, large enough for a person to squeeze in and out, now hanging open with a small black key in the lock.
+item id:hanging_cage_unlocked
+item countable noun prefix:a
+item is untakeable:
+item visibility:invisible
+ITEM
+item name:Small black key
+item description:It is made of an unidentifiable metal and looks like it should fit perfectly in the lock on the hanging cage door.
+item id:hanging_cage_key
+item countable noun prefix:a
+item visibility:invisible
 ITEM
 item name:Wyrm's Tongue Powder
 item description:It is a small pot of potent red powder, a quick whiff of it makes you cough and splutter. When a small amount is combined with fire it can produce a startling effect.
@@ -3376,12 +3425,26 @@ item visibility:invisible
 ITEM
 item name:Oubliette
 item description:She is sitting on the floor of a metal cage suspended from the ceiling of this room. She noticed you when you entered the room and has been following your movements since. Her eyes are wet from crying and her clothes are dirty but she is very glad to see you.
-item id:oubliette_in_the_cage
+item id:oubliette_in_the_cage_with_powder
 item mid sentence cased name:Oubliette
 item is proper noun:
 item is untakeable:
 item talk initial phrase:isitreallyyou:Is it really you?:"Is it really you?" you ask the girl, overwhelmed with relief at having found her but also aware of the imminent danger she is still in whilst trapped in the cage.
-item talk response to:isitreallyyou:She looks up as you speak to her, grabbing the bars of her cage. "Yes, it's me.". She smiles at you hopefully but clearly frightened.
+item talk response to:isitreallyyou:She looks up as you speak to her, grabbing the bars of her cage. "Yes, it's me.". She smiles at you hopefully but clearly frightened. "Here take this, I managed to steal it when the witch kidnapped me, she's afraid of magical fire and I think that is Wyrm's Tongue Powder. It should make ordinary fire magical." She drops a small pot between the bars to you.
+item talk action in response to:isitreallyyou:change item visibility:oubliette_in_the_cage_with_powder:invisible
+item talk action in response to:isitreallyyou:change item visibility:oubliette_in_the_cage:visible
+item talk action in response to:isitreallyyou:change item visibility:wyrms_tongue_powder:visible
+item talk action in response to:isitreallyyou:take item:wyrms_tongue_powder
+ITEM
+item name:Oubliette
+item description:She is sitting on the floor of a metal cage suspended from the ceiling of this room. She noticed you when you entered the room and has been following your movements since. Her eyes are wet from crying and her clothes are dirty but she is very glad to see you.
+item id:oubliette_in_the_cage
+item mid sentence cased name:Oubliette
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:illgetyouout:I'll get you out:"Hang in there, I'll get you out" you try to reassure Oubliette.
+item talk response to:illgetyouout:You don't know if it's working as she still looks quite concerned. "The witch has the key." she calls out to you as you nod determinedly.
 ITEM
 item name:Bella's corpse
 item description:The witch has been burnt by the green flames produced from the Wyrm's Tongue Powder.
@@ -3393,13 +3456,46 @@ item examine action is not repeatable:
 item examine message:You bend down to search the body for the key to Oubliette's cage but as you do you see movement under the robes. Stepping cautiously back the movement increases and the robes start to rise up as smoke emanates from underneath them. A shape forms behind the cloth, getting larger until it stands taller than you - then the robe slips off to reveal a creature of nightmares. A horned demon pierces your mind with it's hateful gaze, focusing all of it's will upon you. Under this psychic weight you fall down to your knees and hear the demon snarl, lifting one clawed foot and stepping slowly towards you.
 item on examine action:change item visibility:bella_playing_dead:invisible
 item on examine action:change item visibility:demon_witch:visible
+item on examine action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_north_platform:invisible
+item on examine action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_south_platform:invisible
+item on examine action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_east_platform:invisible
+item on examine action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_west_platform:invisible
 ITEM
 item name:Demon Witch
-item description:
+item description:Your mind does somersaults as you try to reason how this monster before you was once the beautiful lady that you first encountered in Oren Constantine's mansion study. Now turned to her true nature by whatever pacts with hell she must have made, she stands as a monsterous demon before you, glowering down with intense rage.
 item id:demon_witch
 item mid sentence cased name:Demon Witch
 item is proper noun:
 item is untakeable:
+item visibility:invisible
+item can be used with:kris_knife
+item successful use message:As the demon steps forward you thrust the kris knife upwards into its belly. It cries out and rages against you but you hold it back on the end of the knife before it flails one last time and collapses on top of you. The stench of the beast is overpowering and you scramble quickly to get out from under its dead weight.
+item use action:change item visibility:demon_witch:invisible
+item use action:change item visibility:demon_witch_corpse:visible
+item use action:destroy item:kris_knife
+item use action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_north_platform:visible
+item use action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_south_platform:visible
+item use action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_east_platform:visible
+item use action:change exit visibility:bella_hq_central_room_to_bella_hq_central_room_west_platform:visible
+item use action:increment score:
+ITEM
+item name:Demon Witch corpse
+item description:This is the puffy dead corpse of the defeated witch in her demon form. In her belly is the kris knife with which you killed her.
+item id:demon_witch_corpse
+item mid sentence cased name:Demon Witch corpse
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item examine action is not repeatable:
+item examine message:You bend down to search the body for the key to Oubliette's cage this time wary of surprises. A moment of rummaging and you uncover a small black metal key and much to your relief there is no sign of movement from this corpse.
+item on examine action:change item visibility:hanging_cage_key:visible
+item on examine action:take item:hanging_cage_key
+ITEM
+item name:Kris Knife
+item description:This is an unusual dagger with a long waved blade and etchings in the blade itself and the handle. You suspect it may be magical and recognise some of the symbols from old folklore. In particular on the handle there appears to be a scene showing some sort of demonic creature being confronted by a kneeling man holding a waved dagger.
+item id:kris_knife
+item countable noun prefix:a
+item mid sentence cased name:kris knife
 item visibility:invisible
 
 LOCATION
@@ -3567,6 +3663,7 @@ item use action:change item visibility:burning_brazier_west_usable:invisible
 item use action:change item visibility:burning_brazier_west:visible
 item use action:change item visibility:bella_west_platform:invisible
 item use action:change item visibility:bella_playing_dead:visible
+item use action:increment score:
 ITEM
 item name:The Witch Bella Constantine
 item description:She hisses at you and backs away as you approach. The Wyrm's Tongue Powder has clearly done its job although she is trying her best to hide any damage it may have done to her.
