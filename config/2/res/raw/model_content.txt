@@ -2687,6 +2687,7 @@ item use action:change item visibility:scabby_mary1:invisible
 item use action:change item visibility:scabby_mary2:invisible
 item use action:change item visibility:scabby_mary3:invisible
 item use action:change item visibility:scabby_mary_with_glasses:visible
+item use action:destroy item:glasses_of_clear_vision
 item use action:increment score:
 item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
 item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "You're going to die horrrrriiblyy, probably in a very embarrassing way!", you start back with this revelation - "What, are you sure?" you stutter. "Sure about what?" says Mary. "The horrible dying, the embarrassing nature? But take heart fledgling, nothing yet happened is truly for certain.". She is quite noncommittal and you sense that is all the sense you will get out of her.
@@ -2701,11 +2702,12 @@ item is proper noun:
 item is untakeable:
 item visibility:invisible
 item can be used with:glasses_of_clear_vision
-item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears rest them on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
+item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears and rest them on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
 item use action:change item visibility:scabby_mary1:invisible
 item use action:change item visibility:scabby_mary2:invisible
 item use action:change item visibility:scabby_mary3:invisible
 item use action:change item visibility:scabby_mary_with_glasses:visible
+item use action:destroy item:glasses_of_clear_vision
 item use action:increment score:
 item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
 item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "No.". "What do you mean no?" you ask, slightly perturbed. "I mean no, there is no fortune for you, not here nor in the next world.". Oh dear, that doesn't sound good.
@@ -2720,11 +2722,12 @@ item is proper noun:
 item is untakeable:
 item visibility:invisible
 item can be used with:glasses_of_clear_vision
-item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears, rest the arms on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
+item successful use message:You put the glasses into Scabby Mary's hands, who grabs at them and furrows her brow confused and unsure what you've passed to her. "These will help you see more clearly Mary, wrap the arms around your ears and rest them on your nose.". After a moment of bemused fumbling she manages to follow your instructions and peers out through the lenses at you. She smiles - "Thank you, I can see clearly now, I've not been able to see like this for so many years.".
 item use action:change item visibility:scabby_mary1:invisible
 item use action:change item visibility:scabby_mary2:invisible
 item use action:change item visibility:scabby_mary3:invisible
 item use action:change item visibility:scabby_mary_with_glasses:visible
+item use action:destroy item:glasses_of_clear_vision
 item use action:increment score:
 item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
 item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "I've not seen you before young man however..." begins Mary. You can't stop yourself from rolling your eyes, she's clearly batty as a fruit cake. "The ball tells me you will bear many children for your husband!". You consider asking her what that means and pointing out the obvious flaws in her prediction but quickly discard the idea.
@@ -2739,9 +2742,11 @@ item is proper noun:
 item is untakeable:
 item visibility:invisible
 item talk initial phrase:doyouhaveafortuneforme:Do you have a fortune for me?:"Do you have a fortune for me?" you ask Scabby Mary, sitting on the chair in front of the table.
-item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it.". Well that's certainly mysterious you think to yourself, exactly the sort of thing you'd expect from a soothsayer. "Look closely at the crossroads east of town and you'll find your way to the lake and take this, I don't know what it is but the spirits tell me you might need it." She tails off with a mysterious descending howl that turns into a dramatic whisper - "Whoaoaahhahaaaaaaa....aaaaaaa".
+item talk response to:doyouhaveafortuneforme:"Ah let me see." she replies, fondling her crystal ball. "Hmm yes, ah... ok. I see. Prepare yourself young one." she pauses for a second then wipes her nose on her sleeve. "Arghhhh your future is very eventful, full of danger and excitement, and danger. To further your quest you must seek out a powerful artifact from the dark temple in the deep. Go to Breakwater Lake and you will find it.". Well that's certainly mysterious you think to yourself, exactly the sort of thing you'd expect from a soothsayer. "Look closely at the crossroads east of town and you'll find your way to the lake and take this, I don't know what it is but the spirits tell me you might need it." She passes you what looks like a bladder of air with a mouth piece attached, you assume it is some form of aqualung. She tails off with a mysterious descending howl that turns into a dramatic whisper - "Whoaoaahhahaaaaaaa....aaaaaaa".
 item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary_with_glasses:invisible
 item talk action in response to:doyouhaveafortuneforme:change item visibility:scabby_mary_with_glasses2:visible
+item talk action in response to:doyouhaveafortuneforme:change item visibility:aqualung:visible
+item talk action in response to:doyouhaveafortuneforme:take item:aqualung
 ITEM
 item name:Scabby Mary
 item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her. She can see a lot better since you gave her those glasses.
