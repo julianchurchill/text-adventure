@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:21
+maximum score:23
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -1621,6 +1621,7 @@ item use action:change item visibility:happy_gibbling_boon:visible
 item use action:destroy item:pretend_gibbling_boon
 item use action:change exit visibility:breakwater_temple_door:visible
 item use action:change location description:breakwater_temple_entrance_pillars:Standing between the pillars they tower over you like the legs of a mighty giant. The door which they frame is mighty too, wooden and thick, yet even here the water has crept in and the bottom edges are starting to rot. There is an encroaching carpet of algae climbing the doors, draped from them like a shaggy green coat. Just in front of the door is a gibbling boon playing with your ape-friend creation. It looks like they're having a tea party.
+item use action:increment score:
 ITEM
 item name:Gibbling boon
 item description:It sort of reminds you of a large root vegetable with messy hair and dangly arms. This equally applies to its friend, which is a large root vegetable with parsnips for arms and a mop for hair. They're having a lovely time together and neither of them pay you any attention at all.
@@ -1651,51 +1652,68 @@ ITEM
 item name:Pit
 item description:It is about 4 feet long and an arms length deep, wider at the top than at the bottom. You think you can make out a key encased in something almost transparent at the bottom of the pit.
 item id:breakwater_temple_pit_before_key_in_wax_found
+item countable noun prefix:a
 item is untakeable:
 item examine action is not repeatable:
-item examine message:
+item examine message:It is probably worth taking a closer look at that key to figure out how to retrieve it from the pit.
 item on examine action:change item visibility:key_in_transparent_block:visible
 ITEM
 item name:Pit
 item description:It is about 4 feet long and an arms length deep, wider at the top than at the bottom. You can see a key encased in wax at the bottom of the pit but you cannot get it out.
 item id:breakwater_temple_pit_with_key_in_wax
+item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 item can be used with:breakwater_temple_pit_torch
-item successful use message:You throw the torch down into the pit and watch as the torch melts the wax surrounding the key. Once the key is free enough you reach in, careful to avoid the still burning torch and pull the key out. Using the key in the locked door you turn and open it ready for the next challenge.
+item successful use message:You throw the torch down into the pit and watch as the torch melts the wax surrounding the key. Once the key is free enough you reach in, careful to avoid the still burning torch and pull the key out. Using the key in the locked door you turn and open it ready for the next challenge leaving the key in the door in case you need to make a quick escape.
 item use action:change item visibility:key_in_wax:invisible
 item use action:change item visibility:breakwater_temple_pit_with_key_in_wax:invisible
 item use action:change item visibility:breakwater_temple_pit_after_key_is_taken:visible
 item use action:change exit visibility:breakwater_temple_pit_door_to_breakwater_temple_quaternius_lab:visible
 item use action:destroy item:breakwater_temple_pit_torch
 item use action:change location description:breakwater_temple_pit_room:This room is mostly empty, a little dusty and the sound of dripping water echoes around. The source is not immediately obvious until you realise there is a pit in the centre of the room, into which a slow drip falls from a tiny burgeoning stalactite forming on the ceiling. There is a door on the other side of the room which you have already unlocked with the key from the pit. Torches line the walls making shadows dance about eerily and there is a door leading out of the temple to the south.
+item use action:increment score:
 ITEM
 item name:Pit
 item description:It is about 4 feet long and an arms length deep, wider at the top than at the bottom. There is a burning torch at the bottom and a pool of melted wax slowly mixing with the dripping water from above.
 item id:breakwater_temple_pit_after_key_is_taken
+item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 ITEM
-item name:Key in transparent block
-item description:Reaching down to pull the key out you discover that when you clasp it in your hand you cannot pull it out. While holding the key you cannot remove your hand and it from the pit! As you let go you notice that some of the transparent material scrapes off from the block under your finger nails. A closer inspection confirms it is wax.
-item id:key_in_tranparent_block
+item name:Key in a transparent block
+item description:Reaching down to pull the key out you discover that when you clasp it in your hand you cannot pull it out. While holding the key you cannot remove your hand and it from the pit!
+item id:key_in_transparent_block
+item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 item examine action is not repeatable:
-item examine message:
-item on examine action:change item visibility:key_in_wax
+item examine message:As you let go you notice that some of the transparent material scrapes off from the block under your finger nails. A closer inspection confirms it is wax.
+item on examine action:change item visibility:key_in_transparent_block:invisible
+item on examine action:change item visibility:key_in_wax:visible
 item on examine action:change item visibility:breakwater_temple_pit_before_key_in_wax_found:invisible
 item on examine action:change item visibility:breakwater_temple_pit_with_key_in_wax:visible
 ITEM
 item name:Key in wax
 item description:It is a block of wax in which a key has been placed and then put down this pit. You've already tried to pull the key out but discovered that while holding the key you cannot remove your hand and it from the pit.
 item id:key_in_wax
+item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
+item can be used with:breakwater_temple_pit_torch
+item successful use message:You throw the torch down into the pit and watch as the torch melts the wax surrounding the key. Once the key is free enough you reach in, careful to avoid the still burning torch and pull the key out. Using the key in the locked door you turn and open it ready for the next challenge leaving the key in the door in case you need to make a quick escape.
+item use action:change item visibility:key_in_wax:invisible
+item use action:change item visibility:breakwater_temple_pit_with_key_in_wax:invisible
+item use action:change item visibility:breakwater_temple_pit_after_key_is_taken:visible
+item use action:change exit visibility:breakwater_temple_pit_door_to_breakwater_temple_quaternius_lab:visible
+item use action:destroy item:breakwater_temple_pit_torch
+item use action:change location description:breakwater_temple_pit_room:This room is mostly empty, a little dusty and the sound of dripping water echoes around. The source is not immediately obvious until you realise there is a pit in the centre of the room, into which a slow drip falls from a tiny burgeoning stalactite forming on the ceiling. There is a door on the other side of the room which you have already unlocked with the key from the pit. Torches line the walls making shadows dance about eerily and there is a door leading out of the temple to the south.
+item use action:increment score:
 ITEM
 item name:Torch
 item description:The torch burns brightly and remains steady and hot.
 item id:breakwater_temple_pit_torch
+item countable noun prefix:a
 
 LOCATION
 x:000
