@@ -1526,7 +1526,7 @@ exit destination:breakwater_temple_entrance
 exit direction hint:North
 exit id:path_to_breakwater_lake_to_breakwater_temple_entrance
 exit is not visible:
-exit on use action:change location description:path_to_breakwater_lake:You stand at the edge of a large expanse of water, nestled within a horseshoe of low hills. A path rises up the slope behind you, back towards the town of Ubiquity and running further away between the hills is a small track that looks like it was used by a horse and cart a long time ago.
+exit on use action:change item visibility:breakwater_lake:visible
 exit on use action:change exit visibility:path_to_breakwater_lake_to_breakwater_temple_entrance:invisible
 exit on use action:change exit visibility:path_to_breakwater_lake_to_overgrown_shrubbery:visible
 exit on use action:change exit visibility:path_to_breakwater_lake_to_disused_field:visible
@@ -1538,8 +1538,8 @@ item is untakeable:
 item mid sentence cased name:Breakwater Lake
 item is proper noun:
 item can be used with:aqualung
-item successful use message:Hoisting the aqualung over your shoulder you position your arms within the straps and suck upon the mouth piece.
-item use action:change location description:path_to_breakwater_lake:Floating weightlessly, held buoyant by the slowly depleting bladder sac strapped to your back you peer around in the murky water. Further below there is a structure, some sort of building and up above the cold sun filters through the water. There is no place to go but down.
+item successful use message:Hoisting the aqualung over your shoulder you position your arms within the straps and suck upon the mouth piece. Floating weightlessly, held buoyant by the slowly depleting bladder sac strapped to your back you peer around in the murky water. Further below there is a structure, some sort of building and up above the cold sun filters through the water. There is no place to go but down.
+item use action:change item visibility:breakwater_lake:invisible
 item use action:change exit visibility:path_to_breakwater_lake_to_overgrown_shrubbery:invisible
 item use action:change exit visibility:path_to_breakwater_lake_to_disused_field:invisible
 item use action:change exit visibility:path_to_breakwater_lake_to_breakwater_temple_entrance:visible
