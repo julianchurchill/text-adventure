@@ -1531,6 +1531,7 @@ item name:Breakwater Lake
 item description:The water shimmers, crystalline reflections dancing upon the surface of the unnaturally dark water. You spy brief glimpses of something deep down, something massive. The water looks murky, touching it chills your finger tips rising through your arm and into your chest making you gasp and quickly retract your hand. You never did like the water.
 item id:breakwater_lake
 item is untakeable:
+item mid sentence cased name:Breakwater Lake
 item is proper noun:
 item can be used with:aqualung
 item successful use message:Hoisting the aqualung over your shoulder you position your arms within the straps and suck upon the mouth piece.
@@ -1722,6 +1723,7 @@ ITEM
 item name:Quaternius
 item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
 item id:quaternius
+item mid sentence cased name:Quaternius
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -1737,6 +1739,7 @@ ITEM
 item name:Quaternius
 item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
 item id:quaternius_in_action_1
+item mid sentence cased name:Quaternius
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -1765,6 +1768,7 @@ ITEM
 item name:Quaternius
 item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
 item id:quaternius_in_action_2
+item mid sentence cased name:Quaternius
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -1791,6 +1795,7 @@ ITEM
 item name:Quaternius
 item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
 item id:quaternius_in_action_3
+item mid sentence cased name:Quaternius
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -1815,6 +1820,7 @@ ITEM
 item name:Quaternius
 item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
 item id:quaternius_in_action_4
+item mid sentence cased name:Quaternius
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -1839,6 +1845,7 @@ ITEM
 item name:Quaternius
 item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
 item id:quaternius_in_action_5
+item mid sentence cased name:Quaternius
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -1861,6 +1868,7 @@ ITEM
 item name:Quaternius
 item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf. There's a little jiggle in his wiggle and he's wearing a giant medallion and some huge yellow star-shaped sunglasses.
 item id:quaternius_in_action_6
+item mid sentence cased name:Quaternius
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -1881,6 +1889,7 @@ ITEM
 item name:Quaternius
 item description:He is fairly short being a dwarf but is of reasonable average height for non-dwarves thanks to his foot high silver platform boots. He is wearing a white lab coat, a giant medallion, some huge yellow star-shaped sunglasses and a wide brimmed hat covered in feathers which intermingle with his own crazy hair that pokes out from underneath. He's basically a funky science dwarf.
 item id:quaternius_in_action_7
+item mid sentence cased name:Quaternius
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -1897,6 +1906,7 @@ ITEM
 item name:Quaternius
 item description:He is fairly short being a dwarf but is of reasonable average height for non-dwarves thanks to his foot high silver platform boots. He is wearing a white lab coat, a giant medallion, some huge yellow star-shaped sunglasses and a wide brimmed hat covered in feathers which intermingle with his own crazy hair that pokes out from underneath. He's basically a funky science dwarf.
 item id:quaternius_in_action_8
+item mid sentence cased name:Quaternius
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -1913,6 +1923,7 @@ ITEM
 item name:Tempus
 item description:It is lying lazily on the ground at the feet of the giant, gently snoozing. Its not really noticed you at all.
 item id:tempus
+item mid sentence cased name:Tempus
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -1922,6 +1933,7 @@ ITEM
 item name:Tempus
 item description:It is lying lazily on the ground at the feet of the giant, gently snoozing. Its not really noticed you at all.
 item id:tempus_with_groove_thang
+item mid sentence cased name:Tempus
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -1937,12 +1949,14 @@ ITEM
 item name:Groove Thang
 item description:
 item id:groove_thang
+item mid sentence cased name:Groove Thang
 item is proper noun:
 item visibility:invisible
 ITEM
 item name:Tempus
 item description:It is sitting leaning against the wall in a half sit, half lie down posture, holding a gnawed stick in its mouth which it chews slowly. One end of the stick rests on the ground with a paw lazily draped over it, the dogs head rhythmically moving back and forth as though a song was running through its head. You double take for a moment when you think you see the dog slapping the stick like a bass guitar but it must have been your imagination.
 item id:tempus_regrooved
+item mid sentence cased name:Tempus
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -1975,38 +1989,45 @@ ITEM
 item name:Red beaker
 item description:
 item id:red_beaker
+item mid sentence cased name:Red beaker
 item is proper noun:
 ITEM
 item name:Yellow beaker
 item description:
 item id:yellow_beaker
+item mid sentence cased name:Yellow beaker
 item is proper noun:
 ITEM
 item name:Blue beaker
 item description:
 item id:blue_beaker
+item mid sentence cased name:Blue beaker
 item is proper noun:
 ITEM
 item name:Higgs-Boson Funnel
 item description:
 item id:higgs_boson_funnel
+item mid sentence cased name:Higgs-Boson Funnel
 item is proper noun:
 ITEM
 item name:Micro Macro-matter Transducer
 item description:
 item id:micro_macro_matter_transducer
+item mid sentence cased name:Micro Macro-matter Transducer
 item is proper noun:
 ITEM
 item name:Re-Poly-Enhancer
 item description:
 item id:re_poly_enhancer
+item mid sentence cased name:Re-Poly-Enhancer
 item is proper noun:
 ITEM
 item name:Unbearable Grin
 item description:This is a container of green liquid, it is thick and dark. From the smell you identify it as Unbearable Grin, a highly potent alcoholic beverage which as far as you know is banned in all the states from the hinterlands to the topside regions.
 item id:unbearable_grin
+item mid sentence cased name:Unbearable Grin
 item is proper noun:
-item countable noun prefix:a
+item countable noun prefix:an
 ITEM
 item name:Wodge of toffee
 item description:A large clump of toffee, sweet and sticky and full of sugar.
@@ -2154,12 +2175,14 @@ ITEM
 item name:Whirligig's Shattering Star Mace
 item description:The mace is flanged; the head is split into multiple protrusions of metal to cause devastating effect when striking an armoured foe but you have a feeling that it is not armour that this mace has been created to penetrate. The shaft has the name of the mace carved into it and is a hefty foot and a half long pole of strong iron oakwood. It is encased in a glass tube and is unreachable by any means that you can see at this point.
 item id:whirligigs_shattering_star_mace_behind_glass
+item mid sentence cased name:Whirligig's Shattering Star Mace
 item is proper noun:
 item is untakeable:
 ITEM
 item name:Whirligig's Shattering Star Mace
 item description:The mace is flanged; the head is split into multiple protrusions of metal to cause devastating effect when striking an armoured foe but you have a feeling that it is not armour that this mace has been created to penetrate. The shaft has the name of the mace carved into it and is a hefty foot and a half long pole of strong iron oakwood. You can nearly reach it but not be able to get a firm grip, something sticky might help.
 item id:whirligigs_shattering_star_mace_unreachable
+item mid sentence cased name:Whirligig's Shattering Star Mace
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -2179,6 +2202,7 @@ ITEM
 item name:Whirligig's Shattering Star Mace
 item description:The mace is flanged; the head is split into multiple protrusions of metal to cause devastating effect when striking an armoured foe but you have a feeling that it is not armour that this mace has been created to penetrate. The shaft has the name of the mace carved into it and is a hefty foot and a half long pole of strong iron oakwood. You can nearly reach it but not be able to get a firm grip, something sticky might help.
 item id:whirligigs_shattering_star_mace
+item mid sentence cased name:Whirligig's Shattering Star Mace
 item is proper noun:
 item visibility:invisible
 ITEM
@@ -2532,6 +2556,7 @@ ITEM
 item name:Barrow
 item description:The barrow is made of lots of stones, placed carefully together to form a roofed enclosure. You've heard that these ancient structures were used to bury high ranking members of the hill dwelling clans but that practice went out of favour thousands of years ago.
 item id:barrow_1
+item mid sentence cased name:Barrow
 item is proper noun:
 item is untakeable:
 item examine action is not repeatable:
@@ -2542,6 +2567,7 @@ ITEM
 item name:Barrow
 item description:The barrow is made of lots of stones, placed carefully together to form a roofed enclosure. You've heard that these ancient structures were used to bury high ranking members of the hill dwelling clans but that practice went out of favour thousands of years ago. The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. Listening closer still you think you can make out some words, almost rhythmic utterings, whispered and groaning, perhaps something like "I'm in the mood for dancing"... no that can't be right. You hear it again, slightly louder this time "I'm in the mood for dancing, necromancing, doo doo doo, do doo, do doo, doo doo.". This place gives you the willies, far too much doo doo.
 item id:barrow_2
+item mid sentence cased name:Barrow
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -2553,6 +2579,7 @@ ITEM
 item name:Barrow
 item description:The barrow is made of lots of stones, placed carefully together to form a roofed enclosure. You've heard that these ancient structures were used to bury high ranking members of the hill dwelling clans but that practice went out of favour thousands of years ago.
 item id:barrow_after_finding_the_mace
+item mid sentence cased name:Barrow
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -2560,6 +2587,7 @@ ITEM
 item name:Glasses of Clear Vision
 item description:These are the legendary Glasses of Clear Vision - famed for their ability to bring better vision to those with quite bad vision. Amongst the stories told of them they are supposed to have restored the vision of a monk who once got some grit in his eye, the sight of a drunkard after he had sobered up and the full ocular power of a man who had married an unseemly wench during a show of independence to those who were withholding from him his inheritance.
 item id:glasses_of_clear_vision
+item mid sentence cased name:Glasses of Clear Vision
 item is proper noun:
 item countable noun prefix:some
 item visibility:invisible
@@ -2567,6 +2595,7 @@ ITEM
 item name:Barry Wight
 item description:The creature before you is a wight, an undead wraith, a former occupant of the barrow which you both stand aside. He is blocking your path and mumbling to himself in a sing-song memory game, seeming to grasp something for it to slips away just as quickly. You can sense his deep frustration. "I'm Barry Wight, oooo baby, I'm Barry Wight, alright, yeah!".
 item id:barry_wight
+item mid sentence cased name:Barry Wight
 item is proper noun:
 item is untakeable:
 item can be used with:whirligigs_shattering_star_mace
@@ -2649,6 +2678,7 @@ ITEM
 item name:Scabby Mary
 item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her but also that she is quite short sighted. And probably long sighted too. You'd be surprised if she could tell you from an armchair so you wonder how she might be able to give a useful fortune at all.
 item id:scabby_mary1
+item mid sentence cased name:Scabby Mary
 item is proper noun:
 item is untakeable:
 item can be used with:glasses_of_clear_vision
@@ -2666,6 +2696,7 @@ ITEM
 item name:Scabby Mary
 item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her but also that she is quite short sighted. And probably long sighted too. You'd be surprised if she could tell you from an armchair so you wonder how she might be able to give a useful fortune at all.
 item id:scabby_mary2
+item mid sentence cased name:Scabby Mary
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -2684,6 +2715,7 @@ ITEM
 item name:Scabby Mary
 item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her but also that she is quite short sighted. And probably long sighted too. You'd be surprised if she could tell you from an armchair so you wonder how she might be able to give a useful fortune at all.
 item id:scabby_mary3
+item mid sentence cased name:Scabby Mary
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -2702,6 +2734,7 @@ ITEM
 item name:Scabby Mary
 item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her. She can see a lot better since you gave her those glasses.
 item id:scabby_mary_with_glasses
+item mid sentence cased name:Scabby Mary
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -2713,6 +2746,7 @@ ITEM
 item name:Scabby Mary
 item description:Scabby Mary sits before you, in front of her fortune telling table, cogitating your future. You can sense a great intensity about her. She can see a lot better since you gave her those glasses.
 item id:scabby_mary_with_glasses2
+item mid sentence cased name:Scabby Mary
 item is proper noun:
 item is untakeable:
 item visibility:invisible
@@ -2888,6 +2922,7 @@ ITEM
 item name:Fourteen groats
 item description:A small pile of coins. Fourteen of them, each one a groat.
 item id:fourteen_groats
+item mid sentence cased name:fourteen groats
 item is proper noun:
 item visibility:invisible
 
