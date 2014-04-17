@@ -47,6 +47,7 @@ Ordered by priority, first to do at the top.
 - [DEV] Add '# waypoint <name>' into walkthrough text file and auto generate waypoint files during build
 - [BUG] <newline> in 'talk responses' don't seem to be obeyed. See newline before "You awake the following morning to Cabal brewing you".
   - Also search for ""Go see Cabal, find out" in the 'successful use message' version and check that is obeyed too.
+  - <newline> also not working in location descriptions, see yak_farm_hillock
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
@@ -144,6 +145,7 @@ Story - TTA2
   - Second Fell beast for the barricade attack
   - Mushrooms
   - Hearth for Cabal's house
+  - Entrance for Ubiquity town
   - Larry the Yak shaver
   - Bank of Ubiquity
   - Scabby Mary the soothsayer
