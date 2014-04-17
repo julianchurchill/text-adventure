@@ -131,8 +131,7 @@ Story - TTA2
   - Chainsaw and any of the people
   - Dung and poorly man
   - Dung and mushrooms
-  - Mop and parsnips
-  - Mop and turnip
+  - Mop and parsnips, parsnips and mop, mop and turnip, turnip and mop - all should suggets the correct order to put them together
   - Glasses and Larry, yak, bank teller
 - Add embedded images at suitable places with <img src=""/> tags
   - DONE Spiky-toothed goober (large vicious fish)

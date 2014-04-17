@@ -2207,6 +2207,7 @@ item name:Pile of root vegetables
 item description:
 item id:pile_of_root_vegetables
 item is untakeable:
+item countable noun prefix:a
 item examine action is not repeatable:
 item examine message:Rustling through the dirty pile of vile vegetables you discover a couple of treasures - the most plumptuous turnip you have ever encountered and an entire string of parsnips. In addition there is a rather foul looking mop head wrapped up in its own ragged tassles.
 item on examine action:change item visibility:turnip:visible
@@ -2228,6 +2229,12 @@ item name:String of parsnips
 item description:Each of the parsnips are long and pointy at one end. You dangle the string of parsnips and play with it like a puppet, although it looks like a pair of arms missing a body at the moment.
 item id:string_of_parsnips
 item visibility:invisible
+item can be used with:turnip
+item successful use message:You dangle the parsnip string loosely around the turnip, dressing it so the parsnips dangle to each side like a pair of floppy arms.
+item use action:change item visibility:turnip_with_string_of_parsnips:visible
+item use action:take item:turnip_with_string_of_parsnips
+item use action:destroy item:string_of_parsnips
+item use action:destroy item:turnip
 ITEM
 item name:Turnip and parsnip melange
 item description:A plumptuous turnip garnered with a string of parsnips which look like dangly arms. The only thing missing is a straggly mop of hair, then it would really resemble something... umm just like a, errr well, you'll know it when you see it.
@@ -2244,6 +2251,12 @@ item name:Mop head
 item description:At first glance this could be a freshly harvested scalp or a very bad wig. Its actually a dirty old mop head which wafts a lingering stench of stale water and filth through the air. You try not to fling it around too much as the aroma gets worse.
 item id:mop_head
 item visibility:invisible
+item can be used with:turnip_with_string_of_parsnips
+item successful use message:Placing the mop head carefully on top of the turnip you twist some of the dirty fronds around the parsnip string to hold it in place. Standing back it and squinting you can almost believe that it is some sort of creature, a bizarre ape-like vegetable confusion. You lift it up and put it in your enormous pockets for later.
+item use action:change item visibility:pretend_gibbling_boon:visible
+item use action:take item:pretend_gibbling_boon
+item use action:destroy item:turnip_with_string_of_parsnips
+item use action:destroy item:mop_head
 ITEM
 item name:Ape-like vegetable confusion
 item description:It looks a bit like an ape, with dangling strung parsnips for arms and a mop on top of a turnip for a torso and head. You're not sure this would fool many people, they'd have to be blind, desperate or very lonely.
