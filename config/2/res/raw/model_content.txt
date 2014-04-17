@@ -1827,7 +1827,7 @@ item is proper noun:
 item is untakeable:
 item visibility:invisible
 item talk initial phrase:whatdoyouneednow:What do you need now?:"What do you need now?" you ask, ready for the next task.
-item talk response to:whatdoyouneednow:"Ok, now we're motoring! I need the Higgs Boson Funnel next." states Quaternius. He does a little jiggle and slide before returning to the desk. You suspect he may have a slight case of the funk.
+item talk response to:whatdoyouneednow:"Ok, now we're motoring! I need the Higgs-Boson Funnel next." states Quaternius. He does a little jiggle and slide before returning to the desk. You suspect he may have a slight case of the funk.
 item can be used with:higgs_boson_funnel
 item successful use message:You pass the funnel to Quaternius. He carefully places it in the neck of one of the beakers stretching its flexible neck to the other beaker while keeping the convex protrusion upright. "Good, very good." he mutters.
 item use action:change item visibility:quaternius_in_action_3:invisible
@@ -1976,7 +1976,7 @@ item on examine action:change item visibility:tempus_with_groove_thang:invisible
 item on examine action:change item visibility:tempus_regrooved:visible
 ITEM
 item name:Groove Thang
-item description:
+item description:This is a giant medallion on an equally impressive chain. Anyone would be hip to this, you know what I mean?
 item id:groove_thang
 item mid sentence cased name:Groove Thang
 item is proper noun:
@@ -2021,34 +2021,34 @@ item talk initial phrase:hi:Hi!:"Hi!"
 item talk response to:hi:"Grrrrrrr." he replies.
 ITEM
 item name:Red beaker
-item description:
+item description:It is a beaker containing a red hued liquid.
 item id:red_beaker
 item countable noun prefix:a
 ITEM
 item name:Yellow beaker
-item description:
+item description:It is a beaker containing a yellow hued liquid.
 item id:yellow_beaker
 item countable noun prefix:a
 ITEM
 item name:Blue beaker
-item description:
+item description:It is a beaker containing a blue hued liquid.
 item id:blue_beaker
 item countable noun prefix:a
 ITEM
 item name:Higgs-Boson Funnel
-item description:
+item description:The Higgs-Boson Funnel has two flexible protrusions to allow beakers to be connected to it. There is a sealed valve which leads to a central chamber that the Higgs-Boson is contained within. Whatever passes through the feeding tubes will be consumed by the Higgs-Boson and spat out, transformed in a vector flux manipulation of high intensity particle radiation, thereby ensuring that the input is adequately converted such that it can be output again.
 item id:higgs_boson_funnel
 item mid sentence cased name:Higgs-Boson Funnel
 item countable noun prefix:a
 ITEM
 item name:Micro Macro-matter Transducer
-item description:
+item description:The Micro Macro-matter Transducer takes tiny things and turns them into slightly bigger things. Looking at it from the outside this is completely counter-intuitive.
 item id:micro_macro_matter_transducer
 item mid sentence cased name:Micro Macro-matter Transducer
 item countable noun prefix:a
 ITEM
 item name:Re-Poly-Enhancer
-item description:
+item description:The Re-Poly-Enhancer improves any substance that is impelled through it by re-poly-enhancing it. That is to say, it increases the substance's existing poly-nature by enhancing it with more poly.
 item id:re_poly_enhancer
 item mid sentence cased name:Re-Poly-Enhancer
 item countable noun prefix:a
@@ -2258,7 +2258,7 @@ exit direction hint:South
 exit id:disused_field_to_path_to_breakwater_lake
 ITEM
 item name:Pile of root vegetables
-item description:
+item description:This is a non-descript pile of assorted root vegetables. You think you can identify at least 14, amongst them being turnips, potatoes, pumpkins, butternut squash and a roobiknob.
 item id:pile_of_root_vegetables
 item is untakeable:
 item countable noun prefix:a
