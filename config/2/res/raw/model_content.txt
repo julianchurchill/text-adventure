@@ -2556,10 +2556,9 @@ exit direction hint:North
 exit id:misty_downs_barrow_to_misty_downs_path_behind_barrow
 ITEM
 item name:Barrow
-item description:The barrow is made of lots of stones, placed carefully together to form a roofed enclosure. You've heard that these ancient structures were used to bury high ranking members of the hill dwelling clans but that practice went out of favour thousands of years ago.
+item description:The barrow is made of lots of stones, placed carefully together to form a roofed enclosure.
 item id:barrow_1
-item mid sentence cased name:Barrow
-item is proper noun:
+item countable noun prefix:a
 item is untakeable:
 item examine action is not repeatable:
 item examine message:The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. Its probably a bear. You feel anxious about examining any further but feel there might be more to learn about this barrow.
@@ -2567,22 +2566,20 @@ item on examine action:change item visibility:barrow_1:invisible
 item on examine action:change item visibility:barrow_2:visible
 ITEM
 item name:Barrow
-item description:The barrow is made of lots of stones, placed carefully together to form a roofed enclosure. You've heard that these ancient structures were used to bury high ranking members of the hill dwelling clans but that practice went out of favour thousands of years ago. The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. Listening closer still you think you can make out some words, almost rhythmic utterings, whispered and groaning, perhaps something like "I'm in the mood for dancing"... no that can't be right. You hear it again, slightly louder this time "I'm in the mood for dancing, necromancing, doo doo doo, do doo, do doo, doo doo.". This place gives you the willies, far too much doo doo.
+item description:The barrow is made of lots of stones, placed carefully together to form a roofed enclosure. You've heard that these ancient structures were used to bury high ranking members of the hill dwelling clans but that practice went out of favour thousands of years ago. For a moment you think you hear the sound of a human voice but it's more animalistic than that. Listening closer still you think you can make out some words, almost rhythmic utterings, whispered and groaning, perhaps something like "I'm in the mood for dancing"... no that can't be right. You hear it again, slightly louder this time "I'm in the mood for dancing, necromancing, doo doo doo, do doo, do doo, doo doo.". This place gives you the willies, far too much doo doo.
 item id:barrow_2
-item mid sentence cased name:Barrow
-item is proper noun:
+item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 item examine action is not repeatable:
-item examine message:Searching between the stones that make up the barrow you spy a little twinkling object, the sun reflecting off metal and glass. Reaching in gently you pull out a pair of glasses. Inspect the spectacles you realise these are probably very useful for someone who might not have the best of vision and put them in your pocket in case you come across someone in need.
+item examine message:Searching between the stones that make up the barrow you spy a little twinkling object, the sun reflecting off metal and glass. Reaching in gently you pull out a pair of glasses. Inspecting the spectacles you realise these are probably very useful for someone who might not have the best of vision and put them in your pocket in case you come across someone in need.
 item on examine action:change item visibility:glasses_of_clear_vision:visible
 item on examine action:take item:glasses_of_clear_vision
 ITEM
 item name:Barrow
 item description:The barrow is made of lots of stones, placed carefully together to form a roofed enclosure. You've heard that these ancient structures were used to bury high ranking members of the hill dwelling clans but that practice went out of favour thousands of years ago.
 item id:barrow_after_finding_the_mace
-item mid sentence cased name:Barrow
-item is proper noun:
+item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 ITEM
@@ -2590,7 +2587,6 @@ item name:Glasses of Clear Vision
 item description:These are the legendary Glasses of Clear Vision - famed for their ability to bring better vision to those with quite bad vision. Amongst the stories told of them they are supposed to have restored the vision of a monk who once got some grit in his eye, the sight of a drunkard after he had sobered up and the full ocular power of a man who had married an unseemly wench during a show of independence to those who were withholding from him his inheritance.
 item id:glasses_of_clear_vision
 item mid sentence cased name:Glasses of Clear Vision
-item is proper noun:
 item countable noun prefix:some
 item visibility:invisible
 ITEM
@@ -2600,6 +2596,7 @@ item id:barry_wight
 item mid sentence cased name:Barry Wight
 item is proper noun:
 item is untakeable:
+item visibility:invisible
 item can be used with:whirligigs_shattering_star_mace
 item successful use message:You clobber the wight soundly around the head with the mace. He stumbles backwards, stunned and even more confused but clear that you are not someone he wants to tackle. He backs up to the barrow and disappears inside, and you hear him clattering between the walls all the while trying to maintain a tune. As you turn to leave you notice a blade glinting on the ground, the wight must have dropped it. You pick it up for a closer look. It is a Kris Knife, an expensive one. There is something about it that draws you to it so you decide to hang on to it for now.
 item use action:change item visibility:barry_wight:invisible
