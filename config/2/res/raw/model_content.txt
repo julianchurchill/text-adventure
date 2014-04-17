@@ -2471,17 +2471,19 @@ ITEM
 item name:Rusty gate
 item description:The gate stands firmly in place despite appearing quite rusty and decrepit. There is a hole for a small key at waist height and the gate is currently locked.
 item id:rusty_gate
+item countable noun prefix:a
 item is untakeable:
 item can be used with:brass_key
 item successful use message:It fits snugly into the keyhole. You turn it, the gate creaks and the latch opens and you swing the gate outwards it, the rusty metal yawning as it drags over the bumpy cobbles onto the soft grass beyond.
 item use action:change exit visibility:rotten_alley_2_to_misty_downs:visible
-item use action:change item visibility:rusty_gate_locked:invisible
+item use action:change item visibility:rusty_gate:invisible
 item use action:change item visibility:rusty_gate_unlocked:visible
 item use action:increment score:
 ITEM
 item name:Rusty gate
 item description:The gate has been swung wide open and stands wedged against the ground outside. It appears quite rusty and decrepit but you can tell it is sturdy despite that. There is a hole for a small key at waist height.
 item id:rusty_gate_unlocked
+item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 
