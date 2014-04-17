@@ -5,6 +5,7 @@ INVENTORY ITEM
 item name:Pocket lint
 item description:It's fluffy and shaped like an inverted belly button. You consider discarding it for a short moment but decide to place it back in your pocket, idly petting it like a tiny gerbil.
 item countable noun prefix:some
+item is plural:
 item id:pocketlint
 item can be used with:fiery_torch
 item successful use message:Oh dear, as soon as a source of fire appears the pyromaniacs jump out and try to burn everything down. Given this pocket fluff is in your pocket you decide that setting light to it is not in your best interests.
@@ -894,6 +895,7 @@ item name:Splinters
 item description:There are several small pieces of splintered wood from the handle of a broom that is well past it's best days.
 item id:broom_handle_splinters
 item countable noun prefix:some
+item is plural:
 item mid sentence cased name:splinters
 item visibility:invisible
 ITEM
@@ -1268,6 +1270,7 @@ item name:Spiky-toothed goober teeth
 item description:These are teeth from a spiky-toothed goober. They are very sharp and pointy and have an air of rude defiance.
 item id:spiky_toothed_goober_teeth
 item countable noun prefix:some
+item is plural:
 item visibility:invisible
 
 LOCATION
@@ -1496,6 +1499,7 @@ item name:Bushes
 item description:A dense thicket of overgrown bushery covering the ground.
 item id:shrubbery_bushes
 item countable noun prefix:some
+item is plural:
 item is untakeable:
 item examine message:Tugging at the vines, branches and layers of moss and leaves you uncover an old path. It was clearly once well-trodden but now disused. You wonder how long this route has remained hidden. The path seems to lead down towards a lake in the distance.
 item on examine action:change exit visibility:overgrown_shrubbery_to_path_to_breakwater_lake:visible
@@ -2588,6 +2592,7 @@ item description:These are the legendary Glasses of Clear Vision - famed for the
 item id:glasses_of_clear_vision
 item mid sentence cased name:Glasses of Clear Vision
 item countable noun prefix:some
+item is plural:
 item visibility:invisible
 ITEM
 item name:Barry Wight
@@ -3230,6 +3235,7 @@ item name:Undergrowth
 item description:The undergrowth is thick and verdant, there could be all manner of things hidden within.
 item id:castle_ruins_undergrowth
 item countable noun prefix:some
+item is plural:
 item is untakeable:
 item examine action is not repeatable:
 item examine message:You prod around the undergrowth with the tip of your boot, clearing an area large enough to stand in the middle of. From there you examine the area in greater detail and find a rod of some sort, entangled in the morass of vegetation. Tearing away the plants covering it you unveil a large iron bar.
