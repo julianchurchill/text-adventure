@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:23
+maximum score:24
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -1736,6 +1736,7 @@ ITEM
 item name:Science dwarf
 item description:He is a fairly short but not that short for a dwarf. You could say he was a fairly tall dwarf. He is wearing a white lab coat and is deeply focussed on some research papers of some sort that he has spread out all over the desk in the middle of the room. He's basically a science dwarf.
 item id:quaternius_unknown
+item countable noun prefix:a
 item is untakeable:
 item talk initial phrase:hi:Hi!:"Hi!"
 item talk response to:hi:"Hmm? What's that?" he looks up, lifting his glasses from his nose. "Ah, hello. I'm Quaternius, that is Tempus my dog and that is Radlican the Vast my bodyguard. You must be lost."
@@ -1756,7 +1757,7 @@ item visibility:invisible
 item talk initial phrase:imnotlost:I'm not lost:"I'm not lost - I'm looking for an artifact, something powerful to help me in my quest to find the witch Bella."
 item talk response to:imnotlost:"Oh, I see, but I don't know anything about that. I'm far too busy." says Quaternius.
 item talk follow up phrase to:imnotlost:whatareyouworkingon:What are you working on?:Curious as to the papers strewn about Quaternius you ask "What are you working on?". He perks up immediately. "I'm so close, so very close.". He talks energetically, clearly enthused by his work. "There is a power here, within these walls, I think I can capture it. Harness some of its essence, bottle it. If so then there are limitless applications for such a source of power." As he speaks he gets increasingly excited.
-item talk response to:whatareyouworkingon:"I don't suppose you have some free time? Can you help me? These dunderheads are fine company but no use for the sort of delicate manipulations that I need to perform." he asks.
+item talk response to:whatareyouworkingon:"I don't suppose you have some free time? Can you help me? These dunderheads are fine company but no use for the sort of delicate manipulations that I need to perform." he says.
 item talk follow up phrase to:whatareyouworkingon:notreallyimtoobusy:Not really, I'm too busy:"Not really, I'm too busy" you reply, realising too late that perhaps you may have been able to get help in return. Quaternius turns away from you back to his papers and calculations.
 item talk follow up phrase to:whatareyouworkingon:ofcourseican:Of course I can:You quickly accept his offer, hoping that he will be able to help you in return. "Would you be able to help me with my quest?" you ask Quaternius. Immediately he nods - "Of course my boy, absolutely."
 item talk action in response to:ofcourseican:change item visibility:quaternius:invisible
@@ -1928,6 +1929,7 @@ item talk action in response to:imnotreallyfollowingyou:change item visibility:q
 item talk action in response to:imnotreallyfollowingyou:change item visibility:radlican_the_vast:invisible
 item talk action in response to:imnotreallyfollowingyou:change item visibility:radlican_the_vast_to_the_side:visible
 item talk action in response to:imnotreallyfollowingyou:change exit visibility:breakwater_temple_quaternius_lab_door:visible
+item talk action in response to:imnotreallyfollowingyou:increment score:
 ITEM
 item name:Quaternius
 item description:He is fairly short being a dwarf but is of reasonable average height for non-dwarves thanks to his foot high silver platform boots. He is wearing a white lab coat, a giant medallion, some huge yellow star-shaped sunglasses and a wide brimmed hat covered in feathers which intermingle with his own crazy hair that pokes out from underneath. He's basically a funky science dwarf.
@@ -1942,12 +1944,13 @@ ITEM
 item name:Large dog
 item description:It is lying lazily on the ground at the feet of the giant, gently snoozing. Its not really noticed you at all.
 item id:tempus_unknown
+item countable noun prefix:a
 item is untakeable:
 item talk initial phrase:hi:Hi!:"Hi!"
 item talk response to:hi:"Ruuuuuuffff!" he replies.
 ITEM
 item name:Tempus
-item description:It is lying lazily on the ground at the feet of the giant, gently snoozing. Its not really noticed you at all.
+item description:The great hairy mound of a dog is lying lazily on the ground at the feet of the giant, gently snoozing. It has not really noticed you at all.
 item id:tempus
 item mid sentence cased name:Tempus
 item is proper noun:
@@ -1957,7 +1960,7 @@ item talk initial phrase:hi:Hi!:"Hi!"
 item talk response to:hi:"Ruuuuuuffff!" he replies.
 ITEM
 item name:Tempus
-item description:It is lying lazily on the ground at the feet of the giant, gently snoozing. Its not really noticed you at all.
+item description:The great hairy mound of a dog is lying lazily on the ground at the feet of the giant, gently snoozing. It has not really noticed you at all.
 item id:tempus_with_groove_thang
 item mid sentence cased name:Tempus
 item is proper noun:
@@ -1980,7 +1983,7 @@ item is proper noun:
 item visibility:invisible
 ITEM
 item name:Tempus
-item description:It is sitting leaning against the wall in a half sit, half lie down posture, holding a gnawed stick in its mouth which it chews slowly. One end of the stick rests on the ground with a paw lazily draped over it, the dogs head rhythmically moving back and forth as though a song was running through its head. You double take for a moment when you think you see the dog slapping the stick like a bass guitar but it must have been your imagination.
+item description:The dog is sitting leaning against the wall in a half sit, half lie down posture, holding a gnawed stick in its mouth which it chews slowly. One end of the stick rests on the ground with a paw lazily draped over it, the dogs head rhythmically moving back and forth as though a song was running through its head. You double take for a moment when you think you see the dog slapping the stick like a bass guitar but it must have been your imagination.
 item id:tempus_regrooved
 item mid sentence cased name:Tempus
 item is proper noun:
@@ -1992,6 +1995,7 @@ ITEM
 item name:Hairy giant
 item description:This giant is exactly that, giant. He is enormous - his beard alone covers most of the door he is standing in front of. He is slightly hunched over due to the ceiling, whilst being quite high is still too low for a humanoid of his size.
 item id:radlican_the_vast_unknown
+item countable noun prefix:a
 item is untakeable:
 item talk initial phrase:hi:Hi!:"Hi!"
 item talk response to:hi:"Grrrrrrr." he replies.
@@ -1999,6 +2003,8 @@ ITEM
 item name:Radlican the Vast
 item description:This giant is exactly that, giant. He is enormous - his beard alone covers most of the door he is standing in front of. He is slightly hunched over due to the ceiling, whilst being quite high is still too low for a humanoid of his size.
 item id:radlican_the_vast
+item mid sentence cased name:Radlican the Vast
+item is proper noun:
 item is untakeable:
 item visibility:invisible
 item talk initial phrase:hi:Hi!:"Hi!"
@@ -2007,6 +2013,8 @@ ITEM
 item name:Radlican the Vast
 item description:This giant is exactly that, giant. He is enormous - his beard alone would cover most of the door he is standing beside. He is slightly hunched over due to the ceiling, whilst being quite high is still too low for a humanoid of his size.
 item id:radlican_the_vast_to_the_side
+item mid sentence cased name:Radlican the Vast
+item is proper noun:
 item is untakeable:
 item visibility:invisible
 item talk initial phrase:hi:Hi!:"Hi!"
@@ -2015,44 +2023,40 @@ ITEM
 item name:Red beaker
 item description:
 item id:red_beaker
-item mid sentence cased name:Red beaker
-item is proper noun:
+item countable noun prefix:a
 ITEM
 item name:Yellow beaker
 item description:
 item id:yellow_beaker
-item mid sentence cased name:Yellow beaker
-item is proper noun:
+item countable noun prefix:a
 ITEM
 item name:Blue beaker
 item description:
 item id:blue_beaker
-item mid sentence cased name:Blue beaker
-item is proper noun:
+item countable noun prefix:a
 ITEM
 item name:Higgs-Boson Funnel
 item description:
 item id:higgs_boson_funnel
 item mid sentence cased name:Higgs-Boson Funnel
-item is proper noun:
+item countable noun prefix:a
 ITEM
 item name:Micro Macro-matter Transducer
 item description:
 item id:micro_macro_matter_transducer
 item mid sentence cased name:Micro Macro-matter Transducer
-item is proper noun:
+item countable noun prefix:a
 ITEM
 item name:Re-Poly-Enhancer
 item description:
 item id:re_poly_enhancer
 item mid sentence cased name:Re-Poly-Enhancer
-item is proper noun:
+item countable noun prefix:a
 ITEM
 item name:Unbearable Grin
 item description:This is a container of green liquid, it is thick and dark. From the smell you identify it as Unbearable Grin, a highly potent alcoholic beverage which as far as you know is banned in all the states from the hinterlands to the topside regions.
 item id:unbearable_grin
 item mid sentence cased name:Unbearable Grin
-item is proper noun:
 item countable noun prefix:an
 ITEM
 item name:Wodge of toffee
