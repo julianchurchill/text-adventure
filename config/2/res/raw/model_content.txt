@@ -2924,13 +2924,25 @@ item is proper noun:
 item is untakeable:
 item visibility:invisible
 item talk initial phrase:howmuchtoshavemyyak:How much to shave my yak?:"How much to shave my yak?" you ask Larry.
-item talk response to:howmuchtoshavemyyak:"Ten guineas usually but this yak looks to be in desperate need. Plus what wonderful bone structure he has. Oh yes, I could do wonderful things with this one." Larry starts muttering to himself, you catch the occasional hair dressing term "perfect length for an A-line bob", "perhaps some gentle feathering at the ends" and some unexpected nautical ones "better give this one a wide berth", "not sure about the cut of _his_ jib". You are slightly mesmerised and have to force yourself to snap back to reality.
+item talk response to:howmuchtoshavemyyak:"Ten guineas usually but this yak looks to be in desperate need. Plus what wonderful bone structure he has. Oh yes, I could do wonderful things with this one." Larry starts muttering to himself, you catch the occasional hair dressing term "perfect length for an A-line bob", "perhaps some gentle feathering at the ends" and some unexpected nautical ones "better give this one a wide berth", "not sure about the cut of his jib". You are slightly mesmerised and have to force yourself to snap back to reality.
 item talk follow up phrase to:howmuchtoshavemyyak:soyoullcuthimforfree:So you'll cut him for free?:"So you'll cut him for free?" you ask.
 item talk response to:soyoullcuthimforfree:"Of course, such a specimen, such an opportunity, I'd be honoured" replies Larry. The yak looks around the parlour, slowly chewing and contemplating the meaning of life.
 item talk follow up phrase to:soyoullcuthimforfree:wherecanifindthewitch:Where can I find the witch?:"Great! Whilst you're at it I don't suppose you know where I can find the witch Bella?". The room goes quiet, there is some foot shuffling and much staring at the floor. You glance about but no one will match your gaze.
 item talk response to:wherecanifindthewitch:"Indeed I do. You can find her in her castle fortress a small way outside of the town." replies Larry. His voice turns to a hushed whisper, "Go through The Rickets, you'll find the gate there. You'll need a key to the gate, have mine.". He passes you a small brass key and continues "Do what you can for us, the witch queen has caused us great harm and suffering. She takes our precious yak milk, yak fur and yak bread and leaves us with little. But her spies are everywhere - be careful!".
 item talk action in response to:wherecanifindthewitch:change item visibility:brass_key:visible
+item talk action in response to:wherecanifindthewitch:change item visibility:larry_the_yak_shaver:invisible
+item talk action in response to:wherecanifindthewitch:change item visibility:larry_the_yak_shaver_shaving_your_yak:visible
 item talk action in response to:wherecanifindthewitch:take item:brass_key
+ITEM
+item name:Larry
+item description:Larry the yak shaver, a popular man in Ubiquity due to his flair for turning a scruffy, straggly yak mullet into a buoyant bouffant, a coiffured comb over, a perfect perm. In any other town this man's talent would have been wasted, however since the whole socio-economic structure of Ubiquity thrives on the yak trade, the yakonomy, he's able to engage in a thriving business. One of the few left hereabouts.
+item id:larry_the_yak_shaver_shaving_your_yak
+item mid sentence cased name:Larry
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:howsitgoing:How's it going?:"How's it going?" you ask Larry. He is deep in meditation, considering what to do with your yak.
+item talk response to:howsitgoing:"It's going fine. Have you been out of the gate with that key I gave you yet?" he asks. You decide to not disturb him any further so that he can concentrate on his masterwork.
 ITEM
 item name:yak
 item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid. It sprays with a lot more fluid than an accidental spraying might generate, you half suspect it did it on purpose.
