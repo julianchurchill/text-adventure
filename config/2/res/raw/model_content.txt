@@ -2979,14 +2979,14 @@ item visibility:invisible
 item talk initial phrase:howsitgoing:How's it going?:"How's it going?" you ask Larry. He is deep in meditation, considering what to do with your yak.
 item talk response to:howsitgoing:"It's going fine. Have you been out of the gate with that key I gave you yet?" he asks. You decide to not disturb him any further so that he can concentrate on his masterwork.
 ITEM
-item name:yak
+item name:Yak
 item description:It is slightly larger than a metric cow but smaller than an average horse. It's hairy, bad tempered and prone to biting so you stay well back. This particular yak has a very shaggy coat, you reckon it would make at least four good sized winter jackets or a single yacket. The yak notices you looking at it and snorts loudly in your direction, partly spraying you with nasal fluid. It sprays with a lot more fluid than an accidental spraying might generate, you half suspect it did it on purpose.
 item id:grumpy_yak_at_yak_parlour
 item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 ITEM
-item name:brass key
+item name:Brass key
 item description:It's a key made of brass, although it has faded a little from the natural wear of being in someone's pocket for many years. This is Larry the yak shavers key to The Rickets gate exit to Ubiquity.
 item id:brass_key
 item countable noun prefix:a
