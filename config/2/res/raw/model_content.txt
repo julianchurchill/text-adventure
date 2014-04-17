@@ -2654,6 +2654,7 @@ ITEM
 item name:Magical barrier
 item description:The barrier repels you with impenetrable force. You need a means to shatter this barrier so that you can proceed into the castle.
 item id:magical_barrier
+item countable noun prefix:a
 item is untakeable:
 item can be used with:whirligigs_shattering_star_mace
 item successful use message:Wielding the mace like a hobo's bindle stick you strike the barrier awkwardly. It doesn't matter as the magical mace does its job and shatters the barrier utterly. You hear the sound of a million shards of glass land on the ground but see nothing, they are invisible to your eyes and impossible to touch. The route to the castle is now clear.
