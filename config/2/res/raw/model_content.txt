@@ -2738,7 +2738,7 @@ exit direction hint:North
 exit id:franks_tool_shed_to_the_rickets
 ITEM
 item name:Frank
-item description:The owner of Frank's tool shed stands before you, overseeing his shop, ready to answer any questions you might have and to sell you whatever you need, for a price.
+item description:The owner of Frank's tool shed stands before you, overseeing his shop, ready to answer any questions you might have and to sell you whatever you need, for a price. But before he'll do anything he'll want to see the colour of your money.
 item id:frank_the_tool_man
 item mid sentence cased name:Frank
 item is proper noun:
