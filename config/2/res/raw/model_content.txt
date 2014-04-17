@@ -1520,7 +1520,8 @@ EXIT
 exit label:Down, down, down into the depths
 exit destination:breakwater_temple_entrance
 exit direction hint:North
-exit id:path_to_breakwater_lake_to_breakwater_temple_entrance_pool
+exit id:path_to_breakwater_lake_to_breakwater_temple_entrance
+exit is not visible:
 exit on use action:change location description:path_to_breakwater_lake:You stand at the edge of a large expanse of water, nestled within a horseshoe of low hills. A path rises up the slope behind you, back towards the town of Ubiquity and running further away between the hills is a small track that looks like it was used by a horse and cart a long time ago.
 exit on use action:change exit visibility:path_to_breakwater_lake_to_breakwater_temple_entrance:invisible
 exit on use action:change exit visibility:path_to_breakwater_lake_to_overgrown_shrubbery:visible
