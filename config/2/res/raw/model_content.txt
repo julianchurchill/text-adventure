@@ -2158,6 +2158,12 @@ item name:Sleepy Stick Beast
 item description:At first look the stick beast appears just like a stick but when you listen carefully you can hear it snoring. There is also an occasional whimper as it seems to be having a dream.
 item id:sleepy_stick_beast
 item countable noun prefix:a
+item can be used with:wodge_of_toffee
+item successful use message:The stick beast is nice and sleepy making it trivial to attach the clump of toffee to its head. What a mess.
+item use action:change item visibility:wodge_of_toffee:invisible
+item use action:change item visibility:sleepy_stick_beast:invisible
+item use action:change item visibility:sticky_stick_beast:visible
+item use action:take item:sticky_stick_beast
 ITEM
 item name:Sticky Stick Beast
 item description:This is a large clump of toffee, sweet and sticky and full of sugar attached by its own gooeyness to the end of an unfortunate sleepy stick beast. Fortunately for it, the stick beast is very sleepy.
@@ -2231,7 +2237,7 @@ item use action:take item:whirligigs_shattering_star_mace
 item use action:increment score:
 ITEM
 item name:Whirligig's Shattering Star Mace
-item description:The mace is flanged; the head is split into multiple protrusions of metal to cause devastating effect when striking an armoured foe but you have a feeling that it is not armour that this mace has been created to penetrate. The shaft has the name of the mace carved into it and is a hefty foot and a half long pole of strong iron oakwood. You can nearly reach it but not be able to get a firm grip, something sticky might help.
+item description:The mace is flanged; the head is split into multiple protrusions of metal to cause devastating effect when striking an armoured foe but you have a feeling that it is not armour that this mace has been created to penetrate. The shaft has the name of the mace carved into it and is a hefty foot and a half long pole of strong iron oakwood. You can nearly reach it but not close enough to get a firm grip, something sticky might help.
 item id:whirligigs_shattering_star_mace
 item mid sentence cased name:Whirligig's Shattering Star Mace
 item is proper noun:
