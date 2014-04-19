@@ -2130,14 +2130,14 @@ item examine message:Just by your feet you spot a sharp claw, presumably shed by
 item on examine action:change item visibility:claw_of_a_fastidious_mim:visible
 item on examine action:take item:claw_of_a_fastidious_mim
 ITEM
-item name:Claw of a Fastidious Mim
+item name:Claw of a fastidious mim
 item description:This claw is quite sharp, having been recently shed by a fastidious mim. It looks like it could cut glass.
 item id:claw_of_a_fastidious_mim
 item countable noun prefix:a
 item visibility:invisible
 ITEM
 item name:Indivisible Turpet
-item description:Peering into one of the pens you spy movement on the floor. As you suspected, this is an indivisible turpet the companion creature of the fastidious mim. The turpet is a big, fat worm, also known as Crane's turpet after the famous biologist, who met his maker shortly after discovering and naming the turpet and then while testing it's indivisibility, he succumbed to blood loss from an accidentally toe amputation. Later biologists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate.
+item description:Peering into one of the pens you spy movement on the floor. As you suspected, this is an indivisible turpet the companion creature of the fastidious mim. The turpet is a big, fat worm, also known as Crane's turpet after the famous biologist, who met his maker shortly after discovering and naming the turpet and then while testing it's indivisibility, he succumbed to blood loss from an accidental toe amputation. Later biologists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate.
 item id:indivisible_turpet
 item is untakeable:
 item countable noun prefix:an
@@ -2149,13 +2149,13 @@ item is untakeable:
 item countable noun prefix:a
 ITEM
 item name:Plethora of Harmonizing Gibbets
-item description:Much like a cricket might produce a loud chirping the harmonizing gibbets create an intense blanket of noise through rubbing parts of their bodies together. However a single gibbet cannot make any sound at all as the body parts required to produce the sound are at opposing and unreachable ends of the fist-sized insect's body. When one or more gibbets come together they will often conjoin so that the dorsal fin can rub against the ventral fin to produce a piercing but specific note. Each pair of gibbets will produce a different note depending on the size of their fins so that a sort of choir effect will fill the air, hence their common name of harmonizing gibbets.
+item description:Much like a cricket might produce a loud chirping the harmonizing gibbets create an intense blanket of noise through rubbing parts of their bodies together. However a single gibbet cannot make any sound at all as the body parts required to produce the sound are at opposing and unreachable ends of the fist-sized insect's body. When one or more gibbets come together they will often conjoin so that the dorsal fin can rub against the ventral fin to produce a piercing but specific note. Each pair of gibbets will produce a different note depending on the size of their fins so that a sort of choir effect will fill the air, hence their common name 'harmonizing gibbets'.
 item id:plethora_of_harmonizing_gibbets
 item is untakeable:
 item countable noun prefix:a
 ITEM
 item name:Sleepy Stick Beast
-item description:At first look the stick beast appears just like a stick but when you listen carefully you can hear it snoring. There is also an occasional whimper is it seems to be having a dream.
+item description:At first look the stick beast appears just like a stick but when you listen carefully you can hear it snoring. There is also an occasional whimper as it seems to be having a dream.
 item id:sleepy_stick_beast
 item countable noun prefix:a
 ITEM
@@ -2170,7 +2170,7 @@ x:000
 y:-600
 location id:breakwater_temple_the_beating_heart
 location area id:breakwater_lake_area
-location description:Inside this room the air is cooler and you feel as though the atmosphere is pulsating, being periodically pushed out through the door behind you to The Menagerie. As you pause to take in your surroundings you notice that the walls pulsate in time with movement of the air. A very odd phenomenon which begins to add up as you notice the veins which wind through the material that constitutes the wall. You stand on the boundary of two areas, a smaller chamber serving as the entrance to this room and a larger chamber that has a font with some murky water in. Next to the font there is a large flanged mace - highly decorated it looks almost ornamental aside from some obvious battle damage. It is encased in a clear, slightly reflective glass cylinder case.
+location description:Inside this room the air is cooler and you feel as though the atmosphere is pulsating, being periodically pushed out through the door behind you to The Menagerie. As you pause to take in your surroundings you notice that the walls pulsate in time with the movement of the air. A very odd phenomenon which begins to add up as you notice the veins which wind through the material that constitutes the wall. You stand on the boundary of two areas, a smaller chamber serving as the entrance to this room and a larger chamber that has a font with some murky water in. Next to the font there is a large flanged mace - highly decorated it looks almost ornamental aside from some obvious battle damage. It is encased in a clear, slightly reflective glass cylinder.
 EXIT
 exit label:The Menagerie
 exit destination:breakwater_temple_the_menagerie
