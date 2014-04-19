@@ -2193,12 +2193,14 @@ item name:Glass barrier
 item description:Encasing the mace is a clear glass cylinder, three feet in diameter with the mace balanced on a pillar in the centre. There is a hole cut into the glass large enough to reach inside.
 item id:glass_barrier_with_a_hole_in_it
 item is untakeable:
+item countable noun prefix:a
 item visibility:invisible
 ITEM
 item name:Glass barrier
 item description:This is a clear glass cylinder, three feet in diameter which used to house a mace balanced on a pillar in the centre. The mace is now gone, you took it shortly after carving a hole in the glass through which to retrieve it.
 item id:glass_barrier_without_mace
 item is untakeable:
+item countable noun prefix:a
 item visibility:invisible
 ITEM
 item name:Whirligig's Shattering Star Mace
@@ -2239,10 +2241,9 @@ item name:Font
 item description:The font itself is made of distressed stone and looks like it has almost grown organically out of the floor. It harbours a fair quantity of dark water which is cold to the touch.
 item id:font
 item is untakeable:
+item countable noun prefix:a
 item examine action is not repeatable:
 item examine message:Peering into the murky water in the font you start to see it clear. As it does an image reveals itself, not a still image - parts are in motion, an image of someone in a cage hanging from the ceiling of a huge room. Surrounding the cage are many lit braziers giving a deep red glow to the occupant. The image becomes clearer still and you recognise who it is - it's Oubliette. Is this a trick, what are you seeing? She looks tired, distressed but unhurt however you sense great menace and you fear for her safety. Is this real?
-item on examine action:change item visibility:flanged_mace:invisible
-item on examine action:change item visibility:whirligigs_shattering_star_mace:visible
 
 LOCATION
 x:000
