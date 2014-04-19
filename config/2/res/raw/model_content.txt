@@ -1886,7 +1886,7 @@ item use action:destroy item:groove_thang
 item can be used with:yellow_beaker
 item successful use message:Quaternius shakes his head irritably. "No, no more chuffing beakers!"
 item can be used with:re_poly_enhancer
-item successful use message:In response to your offering Quaternius says "That's not cool man, I need my Thang.".
+item successful use message:In response to your offering Quaternius says "That's not cool man, I need my Thang."
 item can be used with:unbearable_grin
 item successful use message:"I can't use that right now." he says.
 item can be used with:wodge_of_toffee
