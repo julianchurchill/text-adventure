@@ -1852,9 +1852,9 @@ item is proper noun:
 item is untakeable:
 item visibility:invisible
 item talk initial phrase:okimreadyforthenextitem:Ok, I'm ready for the next item:"Ok, I'm ready for the next item." you say to Quaternius.
-item talk response to:okimreadyforthenextitem:"Well, it's either the Re-Poly-Enhancer or the Micro-Macro Matter Transducer. I can never remember the order!" Quaternius scratches his head and consults his papers. "It's in here somewhere." he mumbles. You notice he can't help but wiggle his prosterior, as though boogieing to a song in his head.
+item talk response to:okimreadyforthenextitem:"Well, it's either the Re-Poly-Enhancer or the Micro-Macro Matter Transducer. I can never remember the order!" Quaternius scratches his head and consults his papers. "It's in here somewhere." he mumbles. You notice he can't help but wiggle his posterior, as though boogieing to a song in his head.
 item can be used with:micro_macro_matter_transducer
-item successful use message:The transducer is a little heavy and Quaternius puffs slightly as you pass it to him. He attaches it to the protruding connection from the Higgs Boson Funnel and steps back nodding happily to himself.
+item successful use message:The transducer is a little heavy and Quaternius puffs slightly as you pass it to him. He attaches it to the protruding connection from the Higgs-Boson Funnel and steps back nodding happily to himself.
 item use action:change item visibility:quaternius_in_action_4:invisible
 item use action:change item visibility:quaternius_in_action_5:visible
 item use action:change item visibility:tempus:invisible
