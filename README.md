@@ -42,6 +42,7 @@ Ordered by priority, first to do at the top.
 - [FEATURE] Complete walkthrough for TTA2
 - [FEATURE] Add 'quick hint' in parallel to walkthrough. Add lines like '# quick hint: Have you tried the butchers?' and present the next one after the current score as a toast.
 - [FEATURE] Write a walkthrough for TTA1
+- [BUG] Occasionally the 9-patch bottom strip is partially drawn over the text at the bottom of the screen. Ensure the bottom padding is enough that the text is never drawn at the same position as the 9-patch strip.
 - [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
 - [DEV] Add walkthrough verification unit test to play through walkthrough and check score is as expected at each stage
 - [DEV] Add '# waypoint <name>' into walkthrough text file and auto generate waypoint files during build
@@ -138,6 +139,8 @@ Story - TTA2
   - Sleepy stick beast and whirligig's mace
   - Sticky stick beast and Barry Wight
   - Yak zapper and Barry Wight
+  - Wyrm's Tongue Powder and Bella
+  - Kris knife and Bella
 - Add embedded images at suitable places with <img src=""/> tags
   - DONE Spiky-toothed goober (large vicious fish)
   - DONE Portcullis

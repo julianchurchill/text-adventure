@@ -3541,8 +3541,8 @@ x:-480
 y:-240
 location id:bellas_castle_great_hall
 location area id:bellas_castle_area
-location description:In the centre of the room a hanging cage draws your attention, the primary feature it looks like it has been put to much use. Scattered scraps of food litter the floor beneath it and you see the odd glint of white-grey bone fragments on the floor - the remains of dinner or just remains?
-text to show on first entry:You walk into the room and pause for a moment to take in your surroundings. Your attention is immediately drawn to the girl in a cage suspended from the ceiling in the centre of the room, it looks like Oubliette. You hear a chuckle from the shadows - "So it was you who broke my barrier." The voice sounds familiar but is very croaky. Before you realise it the witch is upon you, Bella Constantine! You recognise her face as she rushes at you from one of the platforms at the edge of the room, a great leaping glide through the air and she levitates across the space to land only a few feet away from you.<newline>The witch mocks you. "Welcome hero. You have come for your revenge, your reckoning for this world upon me? I think you are weak. You cannot stop me. You are no hero, just weak flesh and bone, flawed and scared. This isn't honourable, this isn't justice despite what you may think, you are no better than I. I'll warrant there are moments, in your grave and fearsome determination when you would collapse this hate filled, miserable world in on itself if given the power. Scream at the empty, pitiless sky - it will not listen to you.". She screams herself to emphasise the point and leaps away again into the shadows.
+location description:In the centre of the room a hanging cage draws your attention. It looks like it has been put to much use. Scattered scraps of food litter the floor beneath it and you see the odd glint of white-grey bone fragments on the floor - the remains of dinner or just remains?
+text to show on first entry:You walk into the room and pause for a moment to take in your surroundings. Your attention is immediately drawn to the girl in a cage suspended from the ceiling in the centre of the room, it looks like Oubliette. You hear a chuckle from the shadows - "So it was you who broke my barrier." The voice sounds familiar but is very croaky. Before you realise it the witch is upon you, Bella Constantine! You recognise her face as she rushes at you from one of the platforms at the edge of the room, a great leaping glide through the air and she levitates across the space to land only a few feet away from you.<newline>The witch mocks you. "Welcome hero. You have come for your revenge, your reckoning for this world upon me? I think you are weak. You cannot stop me. You are no hero, just flesh and bone, flawed and scared. This isn't honourable, this isn't justice despite what you may think, you are no better than I. I'll warrant there are moments, in your grave and fearsome determination when you would collapse this hate filled, miserable world in on itself if given the power. Scream at the empty, pitiless sky - it will not listen to you.". She screams herself to emphasise the point and leaps away with a dramatic flourish into the shadows.
 EXIT
 exit label:Castle entrance
 exit destination:bellas_castle_entrance
@@ -3570,7 +3570,7 @@ exit direction hint:West
 exit id:bellas_castle_great_hall_to_bellas_castle_great_hall_west_platform
 ITEM
 item name:Hanging Cage
-item description:The cage is suspended from the ceiling by a metal chain. It looks very well constructed and there is not a chance that you could open it by force. There is a small door on the side, large enough for a person to squeeze in and out. The door is shut and you notice a small key hole to the side of it.
+item description:The cage is suspended from the ceiling by a metal chain. There is a small door on the side, large enough for a person to squeeze in and out. It looks very well constructed and there is not a chance that you could open it by force. The door is shut and you notice a small key hole to the side of it.
 item id:hanging_cage_locked
 item countable noun prefix:a
 item is untakeable:
@@ -3614,7 +3614,7 @@ item mid sentence cased name:Oubliette
 item is proper noun:
 item is untakeable:
 item talk initial phrase:isitreallyyou:Is it really you?:"Is it really you?" you ask the girl, overwhelmed with relief at having found her but also aware of the imminent danger she is still in whilst trapped in the cage.
-item talk response to:isitreallyyou:She looks up as you speak to her, grabbing the bars of her cage. "Yes, it's me.". She smiles at you hopefully but clearly frightened. "Here take this, I managed to steal it when the witch kidnapped me, she's afraid of magical fire and I think that is Wyrm's Tongue Powder. It should make ordinary fire magical." She drops a small pot between the bars to you.
+item talk response to:isitreallyyou:She looks up as you speak to her, grabbing the bars of her cage. "Yes, it's me." She smiles at you hopefully but clearly frightened. "Here take this, I managed to steal it when the witch kidnapped me, she's afraid of magical fire and I think that is Wyrm's Tongue Powder. It should make ordinary fire magical." She drops a small pot between the bars to you.
 item talk action in response to:isitreallyyou:change item visibility:oubliette_in_the_cage_with_powder:invisible
 item talk action in response to:isitreallyyou:change item visibility:oubliette_in_the_cage:visible
 item talk action in response to:isitreallyyou:change item visibility:wyrms_tongue_powder:visible
@@ -3627,19 +3627,32 @@ item mid sentence cased name:Oubliette
 item is proper noun:
 item is untakeable:
 item visibility:invisible
-item talk initial phrase:illgetyouout:I'll get you out:"Hang in there, I'll get you out" you try to reassure Oubliette.
-item talk response to:illgetyouout:You don't know if it's working as she still looks quite concerned. "The witch has the key." she calls out to you as you nod determinedly.
+item talk initial phrase:illgetyouout:I'll get you out:"Hang in there, I'll get you out" you try to reassure Oubliette. You don't know if it's working as she still looks quite concerned.
+item talk response to:illgetyouout:"The witch has the key." she calls out to you as you nod determinedly.
+ITEM
+item name:Oubliette
+item description:She is sitting on the floor of a metal cage suspended from the ceiling of this room. She noticed you when you entered the room and has been following your movements since. Her eyes are wet from crying and her clothes are dirty but she is very glad to see you.
+item id:oubliette_in_the_cage_after_demon_appears
+item mid sentence cased name:Oubliette
+item is proper noun:
+item is untakeable:
+item visibility:invisible
+item talk initial phrase:hangonoubliette:Hang on Oubliette:"Hang on Oubliette, I'm coming" you cry out, half gasping against the mental pressure of being forced to your knees but unable to give up.
+item talk response to:hangonoubliette:Oubliette cowers in the corner of the cage, terrified by the appearance of the demon.
 ITEM
 item name:Bella's corpse
 item description:The witch has been burnt by the green flames produced from the Wyrm's Tongue Powder.
 item id:bella_playing_dead
 item mid sentence cased name:Bella's corpse
+item is proper noun:
 item is untakeable:
 item visibility:invisible
 item examine action is not repeatable:
-item examine message:You bend down to search the body for the key to Oubliette's cage but as you do you see movement under the robes. Stepping cautiously back the movement increases and the robes start to rise up as smoke emanates from underneath them. A shape forms behind the cloth, getting larger until it stands taller than you - then the robe slips off to reveal a creature of nightmares. A horned demon pierces your mind with it's hateful gaze, focusing all of it's will upon you. Under this psychic weight you fall down to your knees and hear the demon snarl, lifting one clawed foot and stepping slowly towards you.
+item examine message:You bend down to search the body for the key to Oubliette's cage but as you do you see movement under the robes. Stepping cautiously back the movement increases and the robes start to rise up as smoke emanates from underneath them. A shape forms behind the cloth, getting larger until it stands taller than you - then the robe slips off to reveal a creature of nightmares. The horned demon pierces your mind with its hateful gaze, focusing all of its will upon you. Under this psychic weight you fall down to your knees and hear the demon snarl, lifting one clawed foot, scraping on the floor like fingernails on a blackboard and stepping slowly towards you.
 item on examine action:change item visibility:bella_playing_dead:invisible
 item on examine action:change item visibility:demon_witch:visible
+item on examine action:change item visibility:oubliette_in_the_cage:invisible
+item on examine action:change item visibility:oubliette_in_the_cage_after_demon_appears:visible
 item on examine action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_entrance:invisible
 item on examine action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_great_hall_north_platform:invisible
 item on examine action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_great_hall_south_platform:invisible
@@ -3650,7 +3663,7 @@ item name:Demon Witch
 item description:Your mind does somersaults as you try to reason how this monster before you was once the beautiful lady that you first encountered in Oren Constantine's mansion study. Now turned to her true nature by whatever pacts with hell she must have made, she stands as a monstrous demon before you, glowering down with intense rage.
 item id:demon_witch
 item mid sentence cased name:Demon Witch
-item is proper noun:
+item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 item can be used with:kris_knife
@@ -3669,7 +3682,7 @@ item name:Demon Witch corpse
 item description:This is the puffy dead corpse of the defeated witch in her demon form. In her belly is the kris knife with which you killed her.
 item id:demon_witch_corpse
 item mid sentence cased name:Demon Witch corpse
-item is proper noun:
+item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 item examine action is not repeatable:
@@ -3695,7 +3708,8 @@ item id:burning_brazier_north
 item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
-item successful use message:It would be a shame to waste any of this precious powder to simply make pretty patterns in the fire. you're best off waiting for a more useful opportunity.
+item can be used with:wyrms_tongue_powder
+item successful use message:It would be a shame to waste any of this precious powder to simply make pretty patterns in the fire. You are best off waiting for a more timely opportunity.
 ITEM
 item name:Burning brazier
 item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
@@ -3738,7 +3752,7 @@ item id:burning_brazier_south
 item countable noun prefix:a
 item is untakeable:
 item can be used with:wyrms_tongue_powder
-item successful use message:It would be a shame to waste any of this precious powder to simply make pretty patterns in the fire. you're best off waiting for a more useful opportunity.
+item successful use message:It would be a shame to waste any of this precious powder to simply make pretty patterns in the fire. You are best off waiting for a more timely opportunity.
 ITEM
 item name:Burning brazier
 item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
@@ -3762,7 +3776,7 @@ item mid sentence cased name:Bella Constantine
 item is proper noun:
 item is untakeable:
 item visibility:invisible
-item talk initial phrase:stopattackingthetownsfolk:Stop attacking the townsfolk:"Stop attacking the townsfolk, they've done nothing to you.". You are becoming bolder, her reaction to the fire on the north platform has boosted your confidence and she can tell.
+item talk initial phrase:stopattackingthetownsfolk:Stop attacking the townsfolk:"Stop attacking the townsfolk, they've done nothing to you." You are becoming bolder, her reaction to the fire on the north platform has boosted your confidence and she can tell.
 item talk response to:stopattackingthetownsfolk:She sneers at you "Nothing? They took everything from me, pitiful, stupid people like that are always the same. They welcomed me in when I first arrived but when I married Oren Constantine they shunned me, they were jealous, pathetic wretches."
 
 LOCATION
@@ -3783,7 +3797,7 @@ item id:burning_brazier_east
 item countable noun prefix:a
 item is untakeable:
 item can be used with:wyrms_tongue_powder
-item successful use message:It would be a shame to waste any of this precious powder to simply make pretty patterns in the fire. you're best off waiting for a more useful opportunity.
+item successful use message:It would be a shame to waste any of this precious powder to simply make pretty patterns in the fire. You are best off waiting for a more timely opportunity.
 ITEM
 item name:Burning brazier
 item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
@@ -3828,7 +3842,7 @@ item id:burning_brazier_west
 item countable noun prefix:a
 item is untakeable:
 item can be used with:wyrms_tongue_powder
-item successful use message:It would be a shame to waste any of this precious powder to simply make pretty patterns in the fire. you're best off waiting for a more useful opportunity.
+item successful use message:It would be a shame to waste any of this precious powder to simply make pretty patterns in the fire. You are best off waiting for a more timely opportunity.
 ITEM
 item name:Burning brazier
 item description:It burns strongly, lighting up the platform and casting angry flickering shadows through the wrought iron work that contains the flame.
