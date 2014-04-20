@@ -143,7 +143,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected Field[] R_raw_class_getFields();
     abstract protected int R_style_WaypointDialogTheme();
 
-    private static final int NUMBER_OF_TTA_BUTTONS = 6;
+    private static final int NUMBER_OF_TTA_BUTTONS = 7;
     private static final int TEXT_TO_SPEECH_DATA_CHECK_CODE = 0;
 
     private static final int ABOUT_MENU_ITEM = 0;
