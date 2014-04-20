@@ -136,6 +136,8 @@ Story - TTA2
   - Glasses and Larry, yak, bank teller
   - Yak zapper and frank, bank teller, larry, scabby mary
   - Sleepy stick beast and whirligig's mace
+  - Sticky stick beast and Barry Wight
+  - Yak zapper and Barry Wight
 - Add embedded images at suitable places with <img src=""/> tags
   - DONE Spiky-toothed goober (large vicious fish)
   - DONE Portcullis

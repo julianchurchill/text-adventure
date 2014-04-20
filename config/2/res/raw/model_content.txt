@@ -2628,14 +2628,14 @@ item is plural:
 item visibility:invisible
 ITEM
 item name:Barry Wight
-item description:The creature before you is a wight, an undead wraith, a former occupant of the barrow which you both stand aside. He is blocking your path and mumbling to himself in a sing-song memory game, seeming to grasp something for it to slips away just as quickly. You can sense his deep frustration. "I'm Barry Wight, oooo baby, I'm Barry Wight, alright, yeah!".
+item description:The creature before you is a wight, an undead wraith, a former occupant of the barrow which you both stand aside. He is blocking your path and mumbling to himself in a sing-song memory game, seeming to grasp something before it slips away just as quickly. You can sense his deep frustration. "I'm Barry Wight, oooo baby, I'm Barry Wight, alright, yeah!".
 item id:barry_wight
 item mid sentence cased name:Barry Wight
 item is proper noun:
 item is untakeable:
 item visibility:invisible
 item can be used with:whirligigs_shattering_star_mace
-item successful use message:You clobber the wight soundly around the head with the mace. He stumbles backwards, stunned and even more confused but clear that you are not someone he wants to tackle. He backs up to the barrow and disappears inside, and you hear him clattering between the walls all the while trying to maintain a tune. As you turn to leave you notice a blade glinting on the ground, the wight must have dropped it. You pick it up for a closer look. It is a Kris Knife, an expensive one. There is something about it that draws you to it so you decide to hang on to it for now.
+item successful use message:You clobber the wight soundly around the head with the mace. He stumbles backwards, stunned and even more confused but clear that you are not someone he wants to tackle. He backs up to the barrow and disappears inside. You hear him clattering between the walls all the while trying to maintain a tune. As you turn to leave you notice a blade glinting on the ground, the wight must have dropped it. You pick it up for a closer look. It is a Kris knife, an expensive one. There is something about it that draws you to it so you decide to hang on to the knife for now.
 item use action:change item visibility:barry_wight:invisible
 item use action:change item visibility:barrow_after_finding_the_mace:invisible
 item use action:change item visibility:barrow_2:visible
@@ -2646,8 +2646,8 @@ item use action:increment score:
 item talk initial phrase:letmepast:Let me past:"Let me past." you command, directing your authority at the wight.
 item talk response to:letmepast:"I love you baby - but you're so baaad for me. Like salt and cheese, but we should be like garlic and coffeeeee, in perfect harmonyyyyy". Clearly this wight's brains have been addled more than most by his after death experience. You pity him but you'd rather not get into a relationship right now, your heart belongs to another. However he will not let you pass to continue your quest. The quickest way to resolve this may be a quick whack on the noggin with something heavy.
 ITEM
-item name:Kris Knife
-item description:This is an unusual dagger with a long waved blade and etchings in the blade itself and the handle. You suspect it may be magical and recognise some of the symbols from old folklore. In particular on the handle there appears to be a scene showing some sort of demonic creature being confronted by a kneeling man holding a waved dagger.
+item name:Kris knife
+item description:This is an unusual dagger with a long waved blade and etchings in the blade itself and the handle. You suspect it may be magical and recognise some of the symbols from old folklore. In particular on the handle there is a scene showing some sort of demonic creature being confronted by a kneeling man holding a waved dagger.
 item id:kris_knife
 item countable noun prefix:a
 item mid sentence cased name:kris knife
