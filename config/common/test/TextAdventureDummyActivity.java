@@ -2,6 +2,8 @@ package REPLACE_ME;
 
 import java.lang.reflect.Field;
 import android.graphics.Bitmap;
+
+import com.chewielouie.textadventure2.R;
 import com.chewielouie.textadventure_common.TextAdventureCommonActivity;
 import com.chewielouie.textadventure.BasicModelFactory;
 import com.chewielouie.textadventure.RendersView;
@@ -34,6 +36,10 @@ public class TextAdventureDummyActivity extends TextAdventureCommonActivity {
     }
 
     protected int R_drawable_tta_button() {
+        return R.drawable.tta_button00;
+    }
+
+    protected int R_drawable_tta_button(String buttonName) {
         return R.drawable.tta_button00;
     }
 
