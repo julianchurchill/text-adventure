@@ -251,3 +251,28 @@ say so you'll cut him for free?
 say where can I find the witch?
 #
 # waypoint 12_larry_shaving_my_yak
+go outside
+go the rickets
+go rotten alley
+go further down the alley
+use brass key with rusty gate
+# score +1
+go rusty gate
+go roughly west
+go downstream
+go gap in the scree
+examine barrow
+examine barrow
+go gap in the scree
+go upstream
+go higher ground
+go rusty gate
+go towards the rickets
+go the rickets
+go scabby mary the soothsayer
+use glasses of clear vision with scabby mary
+talk to scabby mary
+say do you have a fortune for me
+# score +1
+#
+# waypoint 13_received_scabby_marys_fortune
