@@ -79,8 +79,6 @@ go north side of the courtyard
 take section of hollow tree trunk
 use section of hollow tree trunk with ramps and slides
 # score +1
-#
-# waypoint 06_beaten_the_barrelling_goon
 go south side of the courtyard
 talk to Oubliette
 say It's safe, let's go
@@ -90,6 +88,8 @@ say Are those the mushrooms?
 use mushroom plucker with mushrooms
 use mushrooms with oubliette
 # score +1
+#
+# waypoint 06_beaten_the_barrelling_goon
 go south side of the courtyard
 go castle gate
 go path to the clock tower
@@ -250,4 +250,4 @@ say how much to shave my yak?
 say so you'll cut him for free?
 say where can I find the witch?
 #
-# waypoint 11_larry_shaving_my_yak
+# waypoint 12_larry_shaving_my_yak

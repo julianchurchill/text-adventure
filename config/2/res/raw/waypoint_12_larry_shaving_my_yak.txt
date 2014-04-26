@@ -463,24 +463,16 @@ action name:exit:exit id:franks_tool_shed_to_the_rickets:
 action name:exit:exit id:the_rickets_to_main_road_through_ubiquity:
 action name:exit:exit id:main_road_through_ubiquity_to_ubiquity_entrance:
 action name:exit:exit id:ubiquity_entrance_to_ubiquity_road_west:
-action name:exit:exit id:yak_farm:
+action name:exit:exit id:ubiquity_road_west_to yak_farm:
 action name:show inventory:
 action name:inventory item:item id:yak_zapper:location id:yak_farm:
 action name:use with:item id:yak_zapper:location id:yak_farm:
 action name:use with specific item:item id:yak_zapper:extra item id:grumpy_yak_at_farm:
-action name:exit:exit id:farm_entrance_to_ubiquity_road_west:
-action name:exit:exit id:yak_farm:
 action name:exit:exit id:farm_entrance_to_yak_farm_hillock:
 action name:show inventory:
 action name:inventory item:item id:yak_zapper:location id:yak_farm_hillock:
 action name:use with:item id:yak_zapper:location id:yak_farm_hillock:
 action name:use with specific item:item id:yak_zapper:extra item id:grumpy_yak_at_hillock:
-action name:exit:exit id:yak_farm_hillock_to_farm_entrance:
-action name:exit:exit id:farm_entrance_to_ubiquity_road_west:
-action name:exit:exit id:yak_farm:
-action name:exit:exit id:farm_entrance_to_ubiquity_road_west:
-action name:exit:exit id:yak_farm:
-action name:exit:exit id:farm_entrance_to_yak_farm_hillock:
 action name:exit:exit id:yak_farm_hillock_to_farm_entrance:
 action name:exit:exit id:farm_entrance_to_ubiquity_road_west:
 action name:show inventory:
@@ -498,10 +490,7 @@ action name:inventory item:item id:yak_zapper:location id:main_road_through_ubiq
 action name:use with:item id:yak_zapper:location id:main_road_through_ubiquity:
 action name:use with specific item:item id:yak_zapper:extra item id:grumpy_yak_at_main_road:
 action name:exit:exit id:main_road_through_ubiquity_to_yak_parlour:
-action name:talk:item id:larry_the_yak_shaver_without_yak:
-action name:say:string:howmuchtoshavemyyak:item id:larry_the_yak_shaver_without_yak:
 action name:talk:item id:larry_the_yak_shaver:
 action name:say:string:howmuchtoshavemyyak:item id:larry_the_yak_shaver:
 action name:say:string:soyoullcuthimforfree:item id:larry_the_yak_shaver:
 action name:say:string:wherecanifindthewitch:item id:larry_the_yak_shaver:
-action name:show inventory:
