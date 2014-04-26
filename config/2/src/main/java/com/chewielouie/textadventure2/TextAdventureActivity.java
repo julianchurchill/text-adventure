@@ -39,7 +39,11 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
     }
 
     protected int R_drawable_tta_button() {
-        return R.drawable.tta_button;
+        return R.drawable.tta_button00;
+    }
+
+    protected int R_drawable_tta_button(String buttonName) {
+        return this.getResources().getIdentifier(buttonName, "drawable", this.getPackageName());
     }
 
     protected int R_id_available_actions() {

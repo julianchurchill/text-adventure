@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true"
+        android:drawable="@drawable/pushedbutton02">
+        <shape>
+            <stroke
+                android:width="5dp"
+                android:color="#FFFFFF" />
+            <corners
+                android:radius="16dp" />
+            <padding
+                android:left="10dp"
+                android:top="10dp"
+                android:right="10dp"
+                android:bottom="10dp" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/button02">
+        <shape>
+            <stroke
+                android:width="5dp"
+                android:color="#FFFFFF" />
+            <corners
+                android:radius="16dp" />
+            <padding
+                android:left="10dp"
+                android:top="10dp"
+                android:right="10dp"
+                android:bottom="10dp" />
+        </shape>
+    </item>
+</selector>

@@ -96,6 +96,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     abstract protected Bitmap getMap();
     abstract protected int R_drawable_tta_button();
+    abstract protected int R_drawable_tta_button(String buttonName);
     abstract protected int R_id_available_actions();
     abstract protected int R_id_location_text_view();
     abstract protected int R_id_map_view();
@@ -129,6 +130,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected Field[] R_raw_class_getFields();
     abstract protected int R_style_WaypointDialogTheme();
 
+    private static final int NUMBER_OF_TTA_BUTTONS = 7;
     private static final int TEXT_TO_SPEECH_DATA_CHECK_CODE = 0;
 
     public static final int ABOUT_MENU_ITEM = 0;
@@ -536,15 +538,16 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         actionButtons.clear();
         available_actions_view.removeAllViews();
         for( Action action : actions )
-            makeActionButton( action );
+            makeActionButton( action, actions.indexOf(action));
     }
 
-    private void makeActionButton( Action action ) {
+    private void makeActionButton( Action action, int index ) {
         Button button = new Button( this );
         button.setText( action.label() );
         button.setOnClickListener( this );
         button.setTypeface( Typeface.SERIF );
-        button.setBackgroundResource( R_drawable_tta_button() );
+        String buttonResource = String.format("tta_button%02d", index % NUMBER_OF_TTA_BUTTONS);
+        button.setBackgroundResource( R_drawable_tta_button(buttonResource) );
         LayoutParams lp = new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT );
         available_actions_view.addView( button, lp );
 
