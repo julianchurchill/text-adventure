@@ -276,3 +276,20 @@ say do you have a fortune for me
 # score +1
 #
 # waypoint 13_received_scabby_marys_fortune
+go outside
+go main road
+go main gate to ubiquity
+go road leaving ubiquity
+go overgrown shubbery
+examine bushes
+go path to breakwater lake
+go cart track
+examine pile of root vegetables
+take turnip
+take string of parsnips
+take mop head
+use string of parsnips with turnip
+use turnip and parsnip melange with mop head
+# score +1
+#
+# waypoint 14_created_turnip_creature

@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:24
+maximum score:25
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -2306,6 +2306,7 @@ item use action:change item visibility:pretend_gibbling_boon:visible
 item use action:take item:pretend_gibbling_boon
 item use action:destroy item:turnip_with_string_of_parsnips
 item use action:destroy item:mop_head
+item use action:increment score:
 ITEM
 item name:Mop head
 item description:At first glance this could be a freshly harvested scalp or a very bad wig. Its actually a dirty old mop head which wafts a lingering stench of stale water and filth through the air. You try not to fling it around too much as the aroma gets worse.
@@ -2317,6 +2318,7 @@ item use action:change item visibility:pretend_gibbling_boon:visible
 item use action:take item:pretend_gibbling_boon
 item use action:destroy item:turnip_with_string_of_parsnips
 item use action:destroy item:mop_head
+item use action:increment score:
 ITEM
 item name:Ape-like vegetable confusion
 item description:It looks a bit like an ape, with dangling strung parsnips for arms and a mop on top of a turnip for a torso and head. You're not sure this would fool many people, they'd have to be blind, desperate or very lonely.
