@@ -39,7 +39,6 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [FEATURE] Add 'quick hint' in parallel to walkthrough. Add lines like '# quick hint: Have you tried the butchers?' and present the next one after the current score as a toast.
 - [FEATURE] Write a walkthrough for TTA1
 - [BUG] Occasionally the 9-patch bottom strip is partially drawn over the text at the bottom of the screen. Ensure the bottom padding is enough that the text is never drawn at the same position as the 9-patch strip.
 - [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
@@ -63,7 +62,6 @@ Ordered by priority, first to do at the top.
 - [TECHNICAL TASK] Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
 - [TECHNICAL TASK] Reword 'item use action' to 'item on use action' so it reads like the 'item on examine action' usage.
 - [TECHNICAL TASK] Check for syntax issues with model text at build time
-  - Non unique ids
   - Referenced ids that have no object, e.g. exit destination that doesn't exist, can be used with target that doesn't exist
 - [BUG] Use 'an' instead of 'a' in front of nouns that start with a vowel.
   - New item action - change countable noun prefix e.g. changing locked door to 'unlocked door' must also change the countable noun prefix
@@ -204,6 +202,7 @@ Marketing
 TTA1 v2.2.x/TTA2 v1.0.x
 ---
 
+- [FEATURE] A quick hint feature is available through the menu.
 - [FEATURE] A step-by-step walkthrough in plain English is now available. The displayed text is faded up to the current scored position.
 - [FEATURE] One shot contextual text can be displayed on entering a room and is then proceeded by the normal room description.
 - [FEATURE] Map - shows where you've been
@@ -253,6 +252,8 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [TECHINCAL TASK] Added 'You use [the] x with [the] y.' before outputting the result.
 - [TECHINCAL TASK] Turned on proguard for release APK generation - http://developer.android.com/tools/help/proguard.html
 - [TECHNICAL TASK] Made the item and exit list italic to distinguish them as state rather than story
+- [TECHNICAL TASK] Check for syntax issues with model text at build time - see config/verifyDataFiles.sh, run by ant task n custom_rules.xml
+  - Non unique ids
 - [DEV] Waypoints added to allow the player to skip ahead through the story, only for debug builds, through extra menu items.
 
 TTA2 only

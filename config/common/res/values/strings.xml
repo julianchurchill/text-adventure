@@ -19,5 +19,6 @@
     <string name="ok">Ok</string>
     <string name="show_map">Map</string>
     <string name="walkthrough">Walkthrough</string>
+    <string name="quick_hint">Quick Hint</string>
     <string name="loading">Loading...</string>
 </resources>

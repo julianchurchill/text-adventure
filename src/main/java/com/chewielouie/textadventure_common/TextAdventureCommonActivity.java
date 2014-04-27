@@ -58,6 +58,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.chewielouie.textadventure.BasicModel;
 import com.chewielouie.textadventure.BasicModelFactory;
 import com.chewielouie.textadventure.Exit;
@@ -126,6 +127,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_string_show_map();
     abstract protected int R_string_yes();
     abstract protected int R_string_walkthrough();
+    abstract protected int R_string_quick_hint();
     abstract protected int R_string_loading();
     abstract protected Field[] R_raw_class_getFields();
     abstract protected int R_style_WaypointDialogTheme();
@@ -139,6 +141,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     public static final int SHOW_MAP_MENU_ITEM = 3;
     public static final int DEBUG_WAYPOINTS_MENU_ITEM = 4;
     public static final int WALKTHROUGH_MENU_ITEM = 5;
+    public static final int QUICK_HINT_MENU_ITEM = 6;
     private static String oldJSONFormatSaveFileName = "save_file_1";
     private static String actionHistorySaveFileName = "action_history_save_file_1";
     private static String shared_prefs_root_key = "com.chewielouie.textadventure";
@@ -571,9 +574,10 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         menu.add( Menu.NONE, NEW_GAME_MENU_ITEM, Menu.NONE, getText( R_string_new_game() ) );
         menu.add( Menu.NONE, OPTIONS_MENU_ITEM, Menu.NONE, getText( R_string_options() ) );
         menu.add( Menu.NONE, SHOW_MAP_MENU_ITEM, Menu.NONE, getText( R_string_show_map() ) );
+        menu.add( Menu.NONE, QUICK_HINT_MENU_ITEM, Menu.NONE, getText( R_string_quick_hint() ) );
+        menu.add( Menu.NONE, WALKTHROUGH_MENU_ITEM, Menu.NONE, getText( R_string_walkthrough() ) );
         if( isDebugMode() )
             menu.add( Menu.NONE, DEBUG_WAYPOINTS_MENU_ITEM, Menu.NONE, "Waypoints" );
-        menu.add( Menu.NONE, WALKTHROUGH_MENU_ITEM, Menu.NONE, getText( R_string_walkthrough() ) );
         return true;
     }
 
@@ -606,6 +610,9 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
                 break;
             case WALKTHROUGH_MENU_ITEM:
                 showWalkthrough();
+                break;
+            case QUICK_HINT_MENU_ITEM:
+                showQuickHint();
                 break;
             default:
                 retVal = super.onOptionsItemSelected( item );
@@ -736,10 +743,21 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         map_view.setBitmap(getMap());
     }
 
+
+    private final String walkthroughTextFilename = "walkthrough";
+
     private void showWalkthrough() {
         walkthrough_scroll_view.setVisibility( View.VISIBLE );
         walkthrough_text_view.setText( R_string_loading() );
-        new WalkthroughTextFormatter( walkthrough_text_view, readRawTextFileFromResource( "walkthrough" ), currentScore );
+        new WalkthroughTextFormatter( walkthrough_text_view, readRawTextFileFromResource( walkthroughTextFilename ), currentScore );
+    }
+
+    private void showQuickHint() {
+        Toast.makeText(getApplicationContext(), findQuickHint(), Toast.LENGTH_LONG).show();
+    }
+
+    private String findQuickHint() {
+        return WalkthroughTextFormat.findQuickHint( readRawTextFileFromResource( walkthroughTextFilename ), currentScore );
     }
 
     private void showWaypointsList() {

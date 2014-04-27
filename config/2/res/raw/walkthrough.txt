@@ -20,6 +20,7 @@ say Hello?
 say Waiting for a friend
 say Alright, can you help me or what?
 say What's your price?
+# quick hint:Try exploring, shop around
 # score +1
 use dirty rag with stick
 go General Store
@@ -36,6 +37,7 @@ go east
 go General Store
 use Fiery torch with Fell beast
 go Rear store cupboard
+# quick hint:Wild beasts hate fire, especially hairless ones
 # score +1
 go Window
 #
@@ -66,6 +68,7 @@ go castle west wall
 go path over some precariously positioned rocks
 take winch handle
 use winch handle with winch
+# quick hint:It's probably worth helping someone out
 # score +1
 go castle gate
 talk to Oubliette
@@ -78,6 +81,7 @@ go north side of the courtyard
 # waypoint 05_barrelling_goon
 take section of hollow tree trunk
 use section of hollow tree trunk with ramps and slides
+# quick hint:You need to make it safe for Oubliette
 # score +1
 go south side of the courtyard
 talk to Oubliette
@@ -87,6 +91,7 @@ talk to Oubliette
 say Are those the mushrooms?
 use mushroom plucker with mushrooms
 use mushrooms with oubliette
+# quick hint:You need to get those mushrooms to Oubliette
 # score +1
 #
 # waypoint 06_beaten_the_barrelling_goon
@@ -116,11 +121,13 @@ go outside
 examine sleeping fisherman
 take fishing lure
 use fishing lure with fishing rod
+# quick hint:When you don't know what else to do it's always worth going fishing to calm the mind
 # score +1
 use cider bottle with angry fisherman
 use fishing rod with river
 use fishing rod with river
 use spiky-toothed goober with sign
+# quick hint:Calm that fisherman down and get back to fishing
 # score +1
 take spiky-toothed goober teeth
 use spiky-toothed goober teeth with ImpSaw 2000
@@ -134,6 +141,7 @@ go small track to town
 go south
 go south
 use tree logs with barricade
+# quick hint:You'll need materials to repair the barricade and something spiky and noisy to get the materials
 # score +1
 #
 # waypoint 08_fixed_the_barricade
@@ -143,6 +151,7 @@ go house
 talk to Cabal Jambon
 say I've fixed the barricade
 use charred run-covered bone with cabal jambon
+# quick hint:Show the boss what you've discovered
 # score +1
 go outside
 go west
@@ -164,6 +173,7 @@ go gatehouse
 use dung with men of the town's watch
 talk to poorly man on a bed
 say We are about to be attacked
+# quick hint:You need to talk to the captain or his second in command, whoever makes more sense
 # score +1
 go outside
 use broom with fell beast
@@ -173,6 +183,7 @@ use broom handle with fell beast
 take splinters
 use splinters with fell beast
 use broom head with fell beast
+# quick hint:Defend yourself with whatever you have to hand
 # score +1
 talk to men of the town's watch
 say I need a new weapon
@@ -186,6 +197,7 @@ go east
 use key to the fire shield with fire shield
 examine fire shield
 use key to the fire shield with break handle
+# quick hint:Protect the town, protect your men
 # score +1
 go west
 go west
@@ -201,6 +213,8 @@ go house
 talk to cabal jambon
 say the north barricade sustained a fire attack
 say what do we do next?
+# quick hint:Protect your men and speak to the boss
+# score +1
 #
 # waypoint 10_after_defence_of_perpetuity
 go outside
@@ -222,6 +236,8 @@ talk to bank teller
 say I'd like to borrow some money
 say wiggle your pinky
 say I still have one
+# quick hint:A bit of cash wouldn't hurt, your pockets must have holes in
+# score +1
 go outside
 go the rickets
 go frank's tool shed
@@ -243,6 +259,7 @@ go road to ubiquity
 use yak zapper with yak
 go main road through ubiquity
 use yak zapper with yak
+# quick hint:You need info so talk to the voice of the community and you'd better bring them something they want
 # score +1
 go yak parlour
 talk to larry
@@ -256,6 +273,7 @@ go the rickets
 go rotten alley
 go further down the alley
 use brass key with rusty gate
+# quick hint:Once you've spoken to the voice of the community put his words to good use
 # score +1
 go rusty gate
 go roughly west
@@ -273,6 +291,7 @@ go scabby mary the soothsayer
 use glasses of clear vision with scabby mary
 talk to scabby mary
 say do you have a fortune for me
+# quick hint:The future can only be seen with clear vision, which may be found if you burrow somewhere rocky
 # score +1
 #
 # waypoint 13_received_scabby_marys_fortune
@@ -290,6 +309,7 @@ take string of parsnips
 take mop head
 use string of parsnips with turnip
 use turnip and parsnip melange with mop head
+# quick hint:Exploration, creation and a love of vegetables is required here
 # score +1
 #
 # waypoint 14_created_turnip_creature
@@ -298,6 +318,7 @@ use aqualung with breakwater lake
 go down, down, down into the depths
 go the pillars
 use ape-like vegetable confusion with gibbling boon
+# quick hint:Loneliness affects us all, even strange monkey creatures
 # score +1
 #
 # waypoint 15_romancing_the_boon
@@ -306,6 +327,7 @@ examine pit
 examine key in a transparent block
 take torch
 use torch with pit
+# quick hint:Shedding some light on the problem might help
 # score +1
 # waypoint 16_wax_key_in_pit_found
 go door further into the temple
@@ -342,6 +364,7 @@ use re-poly-enhancer with Quaternius
 talk to Quaternius
 say so, what just happened?
 say I'm not really following you
+# quick hint:Just follow instructions, how hard can it be?
 # score +1
 #
 # waypoint 17_helped_quaternius
@@ -355,6 +378,7 @@ go the beating heart
 use claw of a fastidious mim with glass barrier
 use sleepy stick beast with wodge of toffee
 use sticky stick beast with Whirligig's Shattering Star Mace
+# quick hint:Think like a cat burglar and use something sticky
 # score +1
 #
 # waypoint 18_got_shattering_star_mace
@@ -379,19 +403,21 @@ go roughly west
 go downstream
 go gap in the scree
 use Whirligig's Shattering Star Mace with Barry Wight
+# quick hint:Get to the witch's castle as quick as you can, even if you have to whack a few heads on the way
 # score +1
 #
 # waypoint 19_beat_barry_wight
 go path behind the barrow
 go onwards and upwards
 use Whirligig's Shattering Star Mace with magical barrier
+# quick hint:Smash through the barrier, it looks like it might shatter easily
 # score +1
 #
 # waypoint 20_smashed_the_barrier
 go castle entrance
 go the great hall
 talk to Oubliette
-say it is really you?
+say is it really you?
 go north platform
 use Wyrm's Tongue Powder with burning brazier
 go centre of the room
@@ -404,18 +430,20 @@ go centre of the room
 go west platform
 use Wyrm's Tongue Powder with burning brazier
 go centre of the room
+# quick hint:You need to dominate the arena, force the witch down to where you can do battle
 # score +1
 #
 # waypoint 21_burnt_the_witch
 examine Bella's corpse
 use Kris knife with Demon Witch
+# quick hint:To kill a demon you need a special sort of weapon
 # score +1
 #
 # waypoint 22_killed_the_demon
 examine demon witch corpse
 use small black key with hanging cage
+# quick hint:Have you freed the girl?
 # score +1
 #
 # waypoint 23_freed_oubliette
-
-
+# quick hint:There's no more to do, go enjoy yourself

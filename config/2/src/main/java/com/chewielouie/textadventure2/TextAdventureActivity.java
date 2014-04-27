@@ -162,6 +162,10 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
         return R.string.walkthrough;
     }
 
+    protected int R_string_quick_hint() {
+        return R.string.quick_hint;
+    }
+
     protected int R_string_loading() {
         return R.string.loading;
     }
