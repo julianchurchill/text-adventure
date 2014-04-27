@@ -308,3 +308,40 @@ take torch
 use torch with pit
 # score +1
 # waypoint 16_wax_key_in_pit_found
+go door further into the temple
+talk to science dwarf
+say hi!
+talk to Quaternius
+say I'm not lost
+say what are you working on?
+say of course I can
+talk to Quaternius
+say what do we do first?
+take blue beaker
+use blue beaker with Quaternius
+talk to Quaternius
+say what do we do next?
+take red beaker
+use red beaker with Quaternius
+talk to Quaternius
+say what do you need now?
+take Higgs-Boson Funnel
+use Higgs-Boson Funnel with Quaternius
+talk to Quaternius
+say Ok, I'm ready for the next item
+take micro macro-matter transducer
+use micro macro-matter transducer with Quaternius
+talk to Quaternius
+say Good to go Gov'nor, what now?
+examine Tempus
+use Groove Thang with Quaternius
+talk to Quaternius
+say are we nearly done?
+take re-poly-enhancer
+use re-poly-enhancer with Quaternius
+talk to Quaternius
+say so, what just happened?
+say I'm not really following you
+# score +1
+#
+# waypoint 17_helped_quaternius
