@@ -301,3 +301,10 @@ use ape-like vegetable confusion with gibbling boon
 # score +1
 #
 # waypoint 15_romancing_the_boon
+go temple door
+examine pit
+examine key in a transparent block
+take torch
+use torch with pit
+# score +1
+# waypoint 16_wax_key_in_pit_found
