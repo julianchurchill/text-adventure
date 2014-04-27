@@ -412,5 +412,10 @@ use Kris knife with Demon Witch
 # score +1
 #
 # waypoint 22_killed_the_demon
+examine demon witch corpse
+use small black key with hanging cage
+# score +1
+#
+# waypoint 23_freed_oubliette
 
 
