@@ -293,3 +293,11 @@ use turnip and parsnip melange with mop head
 # score +1
 #
 # waypoint 14_created_turnip_creature
+go cart track
+use aqualung with breakwater lake
+go down, down, down into the depths
+go the pillars
+use ape-like vegetable confusion with gibbling boon
+# score +1
+#
+# waypoint 15_romancing_the_boon
