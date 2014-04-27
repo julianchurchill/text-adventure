@@ -345,3 +345,16 @@ say I'm not really following you
 # score +1
 #
 # waypoint 17_helped_quaternius
+take wodge of toffee
+go door further into the temple
+go follow the meandering corridor
+go the menagerie
+take sleepy stick beast
+examine fastidious mim
+go the beating heart
+use claw of a fastidious mim with glass barrier
+use sleepy stick beast with wodge of toffee
+use sticky stick beast with Whirligig's Shattering Star Mace
+# score +1
+#
+# waypoint 18_got_shattering_star_mace
