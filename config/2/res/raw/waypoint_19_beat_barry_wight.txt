@@ -633,6 +633,8 @@ action name:use with specific item:item id:re_poly_enhancer:extra item id:quater
 action name:talk:item id:quaternius_in_action_7:
 action name:say:string:sowhatjusthappened:item id:quaternius_in_action_7:
 action name:say:string:imnotreallyfollowingyou:item id:quaternius_in_action_7:
+action name:take an item:location id:breakwater_temple_quaternius_lab:
+action name:take specific item:item id:wodge_of_toffee:location id:breakwater_temple_quaternius_lab:
 action name:exit:exit id:breakwater_temple_quaternius_lab_door:
 action name:exit:exit id:breakwater_temple_corridor_to_breakwater_temple_corridor2:
 action name:exit:exit id:breakwater_temple_corridor2_to_breakwater_temple_the_menagerie:
@@ -640,26 +642,11 @@ action name:take an item:location id:breakwater_temple_the_menagerie:
 action name:take specific item:item id:sleepy_stick_beast:location id:breakwater_temple_the_menagerie:
 action name:examine an item:
 action name:examine:item id:fastidious_mim:
-action name:exit:exit id:breakwater_temple_corridor2_to_breakwater_temple_the_menagerie:
-action name:examine an item:
-action name:examine:item id:glass_barrier:
+action name:exit:exit id:breakwater_temple_the_menagerie_to_breakwater_temple_the_beating_heart:
 action name:show inventory:
 action name:inventory item:item id:claw_of_a_fastidious_mim:location id:breakwater_temple_the_beating_heart:
 action name:use with:item id:claw_of_a_fastidious_mim:location id:breakwater_temple_the_beating_heart:
 action name:use with specific item:item id:claw_of_a_fastidious_mim:extra item id:glass_barrier:
-action name:examine an item:
-action name:examine:item id:glass_barrier_with_a_hole_in_it:
-action name:show inventory:
-action name:exit:exit id:breakwater_temple_the_beating_heart_to_breakwater_temple_the_menagerie:
-action name:exit:exit id:breakwater_temple_the_menagerie_to_breakwater_temple_corridor2:
-action name:exit:exit id:breakwater_temple_corridor2_to_breakwater_temple_corridor:
-action name:exit:exit id:breakwater_temple_corridor_to_breakwater_temple_quaternius_lab:
-action name:take an item:location id:breakwater_temple_quaternius_lab:
-action name:take specific item:item id:wodge_of_toffee:location id:breakwater_temple_quaternius_lab:
-action name:exit:exit id:breakwater_temple_quaternius_lab_door:
-action name:exit:exit id:breakwater_temple_corridor_to_breakwater_temple_corridor2:
-action name:exit:exit id:breakwater_temple_corridor2_to_breakwater_temple_the_menagerie:
-action name:exit:exit id:breakwater_temple_corridor2_to_breakwater_temple_the_menagerie:
 action name:show inventory:
 action name:inventory item:item id:sleepy_stick_beast:location id:breakwater_temple_the_beating_heart:
 action name:use with:item id:sleepy_stick_beast:location id:breakwater_temple_the_beating_heart:
@@ -668,12 +655,7 @@ action name:show inventory:
 action name:inventory item:item id:sticky_stick_beast:location id:breakwater_temple_the_beating_heart:
 action name:use with:item id:sticky_stick_beast:location id:breakwater_temple_the_beating_heart:
 action name:use with specific item:item id:sticky_stick_beast:extra item id:whirligigs_shattering_star_mace_unreachable:
-action name:show inventory:
 action name:exit:exit id:breakwater_temple_the_beating_heart_to_breakwater_temple_the_menagerie:
-action name:exit:exit id:breakwater_temple_the_menagerie_to_breakwater_temple_corridor2:
-action name:exit:exit id:breakwater_temple_corridor2_to_breakwater_temple_corridor:
-action name:exit:exit id:breakwater_temple_corridor_to_breakwater_temple_corridor2:
-action name:exit:exit id:breakwater_temple_corridor2_to_breakwater_temple_the_menagerie:
 action name:exit:exit id:breakwater_temple_the_menagerie_to_breakwater_temple_corridor2:
 action name:exit:exit id:breakwater_temple_corridor2_to_breakwater_temple_corridor:
 action name:exit:exit id:breakwater_temple_corridor_to_breakwater_temple_quaternius_lab:
@@ -691,11 +673,8 @@ action name:exit:exit id:the_rickets_to_rotten_alley:
 action name:exit:exit id:rotten_alley_to_rotten_alley_2:
 action name:exit:exit id:rotten_alley_2_to_misty_downs:
 action name:exit:exit id:misty_downs_to_misty_downs_stream:
-action name:exit:exit id:misty_downs_stream_to_misty_downs:
-action name:exit:exit id:misty_downs_to_misty_downs_stream:
 action name:exit:exit id:misty_downs_stream_to_misty_downs_downstream:
 action name:exit:exit id:misty_downs_downstream_to_misty_downs_barrow:
-action name:talk:item id:barry_wight:
 action name:show inventory:
 action name:inventory item:item id:whirligigs_shattering_star_mace:location id:misty_downs_barrow:
 action name:use with:item id:whirligigs_shattering_star_mace:location id:misty_downs_barrow:
