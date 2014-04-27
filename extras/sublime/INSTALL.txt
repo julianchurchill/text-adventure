@@ -1,0 +1,1 @@
+Put the JSON-tmLanguage and tmLanguage files in your Sublime Packages directory. The choose "Set Syntax: Tiny Text Adventure" from the CTRl-SHIFT-P menu.
