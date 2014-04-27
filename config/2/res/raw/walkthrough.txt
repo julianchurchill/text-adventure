@@ -358,3 +358,27 @@ use sticky stick beast with Whirligig's Shattering Star Mace
 # score +1
 #
 # waypoint 18_got_shattering_star_mace
+go the menagerie
+go corridor towards the temple entrance
+go corridor towards the temple entrance
+go door towards the temple entrance
+go door towards the temple entrance
+go temple door
+go towards the moon pool
+go moon pool
+go swim back to the surface
+go path back to Ubiquity
+go crossroads
+go road to Ubiquity
+go main road through Ubiquity
+go The Rickets
+go Rotten Alley
+go further down the alley
+go rusty gate
+go roughly west
+go downstream
+go gap in the scree
+use Whirligig's Shattering Star Mace with Barry Wight
+# score +1
+#
+# waypoint 19_beat_barry_wight
