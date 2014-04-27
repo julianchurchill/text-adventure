@@ -407,4 +407,10 @@ go centre of the room
 # score +1
 #
 # waypoint 21_burnt_the_witch
+examine Bella's corpse
+use Kris knife with Demon Witch
+# score +1
+#
+# waypoint 22_killed_the_demon
+
 
