@@ -388,3 +388,23 @@ use Whirligig's Shattering Star Mace with magical barrier
 # score +1
 #
 # waypoint 20_smashed_the_barrier
+go castle entrance
+go the great hall
+talk to Oubliette
+say it is really you?
+go north platform
+use Wyrm's Tongue Powder with burning brazier
+go centre of the room
+go south platform
+use Wyrm's Tongue Powder with burning brazier
+go centre of the room
+go east platform
+use Wyrm's Tongue Powder with burning brazier
+go centre of the room
+go west platform
+use Wyrm's Tongue Powder with burning brazier
+go centre of the room
+# score +1
+#
+# waypoint 21_burnt_the_witch
+
