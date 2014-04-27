@@ -3580,7 +3580,7 @@ item can be used with:hanging_cage_key
 item successful use message:You put the key in the lock, turn it and throw the door wide open. Oubliette leaps out as fast as she can, into your waiting arms. Putting her down gently she puts her arms around your neck and gives you a passionate kiss. "You saved me." she says and holds onto you as though she will never let go. You grasp her in return, relief rushing from you as you realise your quest is over. The witch is vanquished forever and Oubliette is safe, you have kept your promise to her father and sister and to the townsfolk of Ubiquity and Perpetuity. Oubliette kisses your cheek and leaves to return to her waiting father and sister, allowing you a moment to contemplate everything you have done.
 item use action:change item visibility:hanging_cage_locked:invisible
 item use action:change item visibility:hanging_cage_unlocked:visible
-item use action:change item visibility:oubliette_in_the_cage:invisible
+item use action:change item visibility:oubliette_in_the_cage_after_demon_appears:invisible
 item use action:change item visibility:oubliette_after_rescuing_oubliette:visible
 item use action:change item visibility:cabal_jambon_in_the_morning:invisible
 item use action:change item visibility:cabal_jambon_after_rescuing_oubliette:visible
