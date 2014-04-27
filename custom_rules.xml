@@ -47,7 +47,14 @@
         <path location="${env.ANDROID_HOME}/add-ons/addon-google_apis-google-17/libs/maps.jar"/>
     </path>
 
-    <target name="-pre-build" depends="all-businesslogic">
+    <target name="verify-data-files">
+        <exec executable="bash" failonerror="true">
+            <arg value="-c"/>
+            <arg value="config/verifyDataFiles.sh"/>
+        </exec>
+    </target>
+
+    <target name="-pre-build" depends="all-businesslogic,verify-data-files">
         <jar basedir="${businesslogic.main.output}"
              destfile="${android.businesslogic.lib}"/>
     </target>

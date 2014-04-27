@@ -2118,7 +2118,7 @@ EXIT
 exit label:The Beating Heart
 exit destination:breakwater_temple_the_beating_heart
 exit direction hint:North
-exit id:breakwater_temple_corridor2_to_breakwater_temple_the_menagerie
+exit id:breakwater_temple_the_menagerie_to_breakwater_temple_the_beating_heart
 ITEM
 item name:Fastidious Mim
 item description:Standing tall on one of its three legs is the pink bobbined fastidious mim, preening its wings and eyeing you with a sideways glance. It lets out a curious squawk, as much a throaty croak as a bird call. Every few seconds it stops preening and peers into its neighbouring pen to check on the indivisible turpet.
