@@ -382,3 +382,9 @@ use Whirligig's Shattering Star Mace with Barry Wight
 # score +1
 #
 # waypoint 19_beat_barry_wight
+go path behind the barrow
+go onwards and upwards
+use Whirligig's Shattering Star Mace with magical barrier
+# score +1
+#
+# waypoint 20_smashed_the_barrier
