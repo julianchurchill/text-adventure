@@ -39,7 +39,6 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [FEATURE] Complete walkthrough for TTA2
 - [FEATURE] Add 'quick hint' in parallel to walkthrough. Add lines like '# quick hint: Have you tried the butchers?' and present the next one after the current score as a toast.
 - [FEATURE] Write a walkthrough for TTA1
 - [BUG] Occasionally the 9-patch bottom strip is partially drawn over the text at the bottom of the screen. Ensure the bottom padding is enough that the text is never drawn at the same position as the 9-patch strip.
