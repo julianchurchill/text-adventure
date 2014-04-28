@@ -65,7 +65,8 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
         int start = content.indexOf( locationDescriptionTag );
         if( start != -1 )
             location.setLocationDescription(
-                findContentForTag( locationDescriptionTag, start ) );
+                DeserialiserUtils.convertEncodedNewLines(
+                    findContentForTag( locationDescriptionTag, start ) ) );
     }
 
     private String findContentForTag( String tag, int start ) {
@@ -89,7 +90,8 @@ public class PlainTextModelLocationDeserialiser implements ModelLocationDeserial
         int start = content.indexOf( textToShowOnFirstEntryTag );
         if( start != -1 )
             location.setTextForFirstEntry(
-                findContentForTag( textToShowOnFirstEntryTag, start ) );
+                DeserialiserUtils.convertEncodedNewLines(
+                    findContentForTag( textToShowOnFirstEntryTag, start ) ) );
     }
 
     private void deserialiseExits() {

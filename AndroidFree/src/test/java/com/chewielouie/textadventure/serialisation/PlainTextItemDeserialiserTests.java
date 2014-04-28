@@ -49,6 +49,20 @@ public class PlainTextItemDeserialiserTests {
     }
 
     @Test
+    public void deserialise_extracts_item_description_including_embedded_newlines() {
+        final Item item = mockery.mock( Item.class );
+        PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );
+        mockery.checking( new Expectations() {{
+            oneOf( item ).setDescription( "description\ndescription" );
+            ignoring( item );
+        }});
+
+        d.deserialise( item,
+                       "item name:Name\n" +
+                       "item description:description<newline>description\n" );
+    }
+
+    @Test
     public void deserialise_extracts_item_id() {
         final Item item = mockery.mock( Item.class );
         PlainTextItemDeserialiser d = new PlainTextItemDeserialiser( null );

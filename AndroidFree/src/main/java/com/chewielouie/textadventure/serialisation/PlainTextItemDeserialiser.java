@@ -91,13 +91,9 @@ public class PlainTextItemDeserialiser implements ItemDeserialiser {
     }
 
     private String extractSuccessfulUseMessage( int fromIndex ) {
-        return convertEncodedNewLines(
+        return DeserialiserUtils.convertEncodedNewLines(
             DeserialiserUtils.extractNewlineDelimitedValueFor(
                 itemSuccessfulUseMessageTag, content, fromIndex ) );
-    }
-
-    private String convertEncodedNewLines( String input ) {
-        return input.replace( "<newline>", "\n" );
     }
 
     private String contentUptoNextCanBeUsedWith( int fromIndex ) {

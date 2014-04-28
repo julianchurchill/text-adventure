@@ -56,6 +56,19 @@ public class PlainTextModelLocationDeserialiserTests {
     }
 
     @Test
+    public void deserialise_extracts_location_description_including_embedded_newlines() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        PlainTextModelLocationDeserialiser d = new PlainTextModelLocationDeserialiser( null, null );
+        mockery.checking( new Expectations() {{
+            oneOf( location ).setLocationDescription(
+                "\nDescription\ndescription\n" );
+            ignoring( location );
+        }});
+        d.deserialise( location, "location id:name\n" +
+                 "location description:<newline>Description<newline>description\n" );
+    }
+
+    @Test
     public void deserialise_extracts_location_description_up_to_exit() {
         final ModelLocation location = mockery.mock( ModelLocation.class );
         PlainTextModelLocationDeserialiser d = new PlainTextModelLocationDeserialiser( null, null );
@@ -397,6 +410,19 @@ public class PlainTextModelLocationDeserialiserTests {
         d.deserialise( location, "location id:name\n" +
                  "text to show on first entry:You've never been here before.\n" +
                  "It is a bit untidy." );
+    }
+
+    @Test
+    public void deserialise_extracts_text_to_show_on_first_entry_including_embedded_newlines() {
+        final ModelLocation location = mockery.mock( ModelLocation.class );
+        PlainTextModelLocationDeserialiser d = new PlainTextModelLocationDeserialiser( null, null );
+        mockery.checking( new Expectations() {{
+            oneOf( location ).setTextForFirstEntry(
+                "\nDescription\ndescription\n" );
+            ignoring( location );
+        }});
+        d.deserialise( location, "location id:name\n" +
+                 "text to show on first entry:<newline>Description<newline>description\n" );
     }
 
     @Test

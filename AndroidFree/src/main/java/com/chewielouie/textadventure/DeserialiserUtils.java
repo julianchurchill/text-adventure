@@ -14,7 +14,7 @@ public class DeserialiserUtils {
         int endOfTag = content.indexOf( "\n", startOfTag );
         if( endOfTag == NOT_FOUND )
             endOfTag = content.length();
-        return content.substring( startOfTag + tag.length(), endOfTag );
+        return convertEncodedNewLines( content.substring( startOfTag + tag.length(), endOfTag ) );
     }
 
     public static boolean isStartOfALine( String content, int index ) {
@@ -34,7 +34,10 @@ public class DeserialiserUtils {
         int endOfTag = content.indexOf( "\n", startOfValue );
         if( endOfTag == NOT_FOUND )
             endOfTag = content.length();
-        return content.substring( startOfValue, endOfTag );
+        return convertEncodedNewLines( content.substring( startOfValue, endOfTag ) );
     }
 
+    public static String convertEncodedNewLines( String input ) {
+        return input.replace( "<newline>", "\n" );
+    }
 }

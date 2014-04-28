@@ -39,9 +39,8 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [BUG] <newline> in 'talk responses' don't seem to be obeyed. See newline before "You awake the following morning to Cabal brewing you".
-  - Also search for ""Go see Cabal, find out" in the 'successful use message' version and check that is obeyed too.
-  - <newline> also not working in location descriptions, see yak_farm_hillock
+- [FEATURE] Map - extras
+    - Make better masks and a better map! Charlies on the case.
 - [FEATURE] Write a walkthrough for TTA1
 - [BUG] Occasionally the 9-patch bottom strip is partially drawn over the text at the bottom of the screen. Ensure the bottom padding is enough that the text is never drawn at the same position as the 9-patch strip.
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
@@ -53,8 +52,6 @@ Ordered by priority, first to do at the top.
 - [DEV] Add walkthrough verification unit test to play through walkthrough and check score is as expected at each stage
 - [DEV] Add '# waypoint <name>' into walkthrough text file and auto generate waypoint files during build
 - [UI] Reduce the height of the buttons to better fit more in without squishing the text view down too much
-- [FEATURE] Map - extras
-    - Make better masks and a better map! Charlies on the case.
 - [TECHNICAL TASK] Add cucumber test run as part of build, see https://github.com/cucumber/cucumber-jvm and config/common/test/CucumberStepDefs.java and src/test/resources/cucumber/TTA2/TTA2_entering_the_town.feature
 - [FEATURE] Story log - a record of all the story text you've seen so far - i.e. the 'text on first entry to location'. Possibly also the conversation text? How much of this to store, room descriptions, item activations?
 - [TECHNICAL TASK] Is there a better way to help give the user better directional context? e.g. a compass, each exit on a newline
@@ -229,6 +226,8 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [BUG] Invisible items appeared in the 'use with' list - e.g. cider bottle after giving it to fisherman
 - [BUG] after giving Frank the groats the yak zapper in the shop is still visible - it appears to be the yak zapper that we have auto-picked up, so why is it still in the shop?
   - [FIX] NormalItems are equal in terms of 'name' and 'description', making the two yak_zappers equivalent for Location.removeItem()::ArrayList::remove() cos it uses the hashCode. This also the same for LocationExit objects... Very bad!!!
+- [BUG] <newline> in 'talk response', 'location description' and 'location text to show on first entry' are not obeyed.
+  - [FIX] Swap <newline> for '\n' when parsing these elements
 
 - [TECHNICAL TASK] Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
   - Mask images should be auto found by looking for resources starting with area-id. E.g. the mask filename for the town-area should be town-area_mask.png
