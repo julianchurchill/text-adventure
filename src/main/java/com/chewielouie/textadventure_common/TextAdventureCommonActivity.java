@@ -458,6 +458,11 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
        return actionFactory;
     }
 
+    private boolean isDebugMode()
+    {
+        return (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+    }
+
     private ActionHistory actionHistory() {
         if( actionHistory == null )
             actionHistory = new BasicActionHistory();
@@ -567,8 +572,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     @Override
-    public boolean onPrepareOptionsMenu( Menu menu )
-    {
+    public boolean onPrepareOptionsMenu( Menu menu ) {
         menu.clear();
         menu.add( Menu.NONE, ABOUT_MENU_ITEM, Menu.NONE, getText( R_string_about() ) );
         menu.add( Menu.NONE, NEW_GAME_MENU_ITEM, Menu.NONE, getText( R_string_new_game() ) );
@@ -576,19 +580,17 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         menu.add( Menu.NONE, SHOW_MAP_MENU_ITEM, Menu.NONE, getText( R_string_show_map() ) );
         menu.add( Menu.NONE, QUICK_HINT_MENU_ITEM, Menu.NONE, getText( R_string_quick_hint() ) );
         menu.add( Menu.NONE, WALKTHROUGH_MENU_ITEM, Menu.NONE, getText( R_string_walkthrough() ) );
-        if( isDebugMode() )
+        if( isWaypointsMenuAvailable() )
             menu.add( Menu.NONE, DEBUG_WAYPOINTS_MENU_ITEM, Menu.NONE, "Waypoints" );
         return true;
     }
 
-    public boolean isDebugMode()
-    {
-        return (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+    private boolean isWaypointsMenuAvailable() {
+        return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected( MenuItem item )
-    {
+    public boolean onOptionsItemSelected( MenuItem item ) {
         boolean retVal = true;
         switch( item.getItemId() )
         {
@@ -605,7 +607,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
                 showMap();
                 break;
             case DEBUG_WAYPOINTS_MENU_ITEM:
-                if( isDebugMode() )
+                if( isWaypointsMenuAvailable() )
                     showWaypointsList();
                 break;
             case WALKTHROUGH_MENU_ITEM:
