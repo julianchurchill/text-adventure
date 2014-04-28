@@ -39,21 +39,19 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [FEATURE] Write a walkthrough for TTA1
-- [BUG] Occasionally the 9-patch bottom strip is partially drawn over the text at the bottom of the screen. Ensure the bottom padding is enough that the text is never drawn at the same position as the 9-patch strip.
-- [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
-- [DEV] Add walkthrough verification unit test to play through walkthrough and check score is as expected at each stage
-- [DEV] Add '# waypoint <name>' into walkthrough text file and auto generate waypoint files during build
 - [BUG] <newline> in 'talk responses' don't seem to be obeyed. See newline before "You awake the following morning to Cabal brewing you".
   - Also search for ""Go see Cabal, find out" in the 'successful use message' version and check that is obeyed too.
   - <newline> also not working in location descriptions, see yak_farm_hillock
+- [FEATURE] Write a walkthrough for TTA1
+- [BUG] Occasionally the 9-patch bottom strip is partially drawn over the text at the bottom of the screen. Ensure the bottom padding is enough that the text is never drawn at the same position as the 9-patch strip.
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.
     - This fix works ok on 2.3.3 (emulator) but not on 4.3 (my nexus 4).
 - [TECHNICAL TASK] Protect all logging with 'isDebugMode()' to prevent hitting the filesystem when running release
 - [TECHNICAL TASK] Make CommonActivity create a LoggableLocationFactory, which wraps the LocationFactory to decorate Location objects with LoggableLocation objects to use a logger to record failed uses of exitable() on ids that are not exits for this location.
   - OR perhaps the BasicModel should be the object that gets logged in moveThroughExit() ???
-- [UI] Vary the images for buttons, i.e. on looking at a large inventory all the buttons are the same, would look nice if they varied at bit
+- [DEV] Add walkthrough verification unit test to play through walkthrough and check score is as expected at each stage
+- [DEV] Add '# waypoint <name>' into walkthrough text file and auto generate waypoint files during build
 - [UI] Reduce the height of the buttons to better fit more in without squishing the text view down too much
 - [FEATURE] Map - extras
     - Make better masks and a better map! Charlies on the case.
@@ -110,6 +108,7 @@ Ordered by priority, first to do at the top.
 
 Story - TTA2
 
+- [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
 - [BUG] say "Wiggle your pinky" doesn't read very well - it should simply be 'Wiggle you pinky' instead of a say option...
   - [FIX] Could change to 'Say "I'm wiggling my pinky at you"' ?
 - [BUG] Shaved yak picture needs moving to Larry's after the shaving
@@ -220,6 +219,7 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [UI] Action buttons have a complimentary style to the text background
 - [UI] Removed title bar to give more space for content
 - [UI] New icon for TTA2
+- [UI] Images for buttons now vary
 
 - [BUG] Double new lines appear before and after talk phrases are printed
   - [FIX] SayAction was adding unnecessary new lines.
