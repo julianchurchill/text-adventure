@@ -253,15 +253,15 @@ public class MainTextFormatter {
         return 70;
     }
 
-    private int LIGHT_BLUE = Color.rgb( 0, 154, 255 );
     private int PURPLE = Color.rgb( 130, 0, 186 );
+    private int DARK_GREEN = Color.rgb( 0, 100, 0 );
 
     private int selectExitColor( Exit exit )
     {
         if(      exit.directionHint() == Exit.DirectionHint.North ) return PURPLE;
         else if( exit.directionHint() == Exit.DirectionHint.South ) return Color.RED;
         else if( exit.directionHint() == Exit.DirectionHint.East ) return Color.BLUE;
-        else if( exit.directionHint() == Exit.DirectionHint.West ) return LIGHT_BLUE;
+        else if( exit.directionHint() == Exit.DirectionHint.West ) return DARK_GREEN;
         return Color.MAGENTA;
     }
 
