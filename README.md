@@ -105,7 +105,7 @@ Ordered by priority, first to do at the top.
 
 Story - TTA2
 
-- [BUG] Oubliette should vanish after the fire shield is used to defend the town's watch, _not_ after talking to cabal again
+- Correct improper uses of its (possessive) and it's (it is).
 - [BUG] say "Wiggle your pinky" doesn't read very well - it should simply be 'Wiggle you pinky' instead of a say option...
   - [FIX] Could change to 'Say "I'm wiggling my pinky at you"' ?
 - [BUG] Shaved yak picture needs moving to Larry's after the shaving
@@ -124,7 +124,7 @@ Story - TTA2
   - Fishing rod and the fisherman
   - Chainsaw and fisherman
   - Chainsaw and any of the people
-  - Dung and poorly man
+  - Dung and poorly man (You feel rather inept at putting dung on a man's head, smearing it casually over his forehead you step back and decide you'd better not go any further. Perhaps you need some help?)
   - Dung and mushrooms
   - Mop and parsnips, parsnips and mop, mop and turnip, turnip and mop - all should suggets the correct order to put them together
   - Glasses and Larry, yak, bank teller
@@ -306,6 +306,7 @@ TTA2 only
 - [MINOR STORY CORRECTION] Cabal Jambon is named properly after being introduced by talking to him or by Oubliette
 - [MINOR STORY CORRECTION] Iron bar left in the mechanism after unjamming the portcullis
 - [MINOR STORY CORRECTION] Two Oubliettes no longer appear outside the castle gate portcullis after opening it if you don't talk to her first
+- [MINOR STORY CORRECTION] Oubliette vanishes after the fire shield is used to defend the town's watch, instead of after talking to cabal again
 
 2.1.1
 -----
