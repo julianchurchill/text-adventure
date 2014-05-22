@@ -120,20 +120,28 @@ Story - TTA2
   - DONE Pocket lint and glowing embers - "There's not really enough of it to start a fire."
   - DONE Stick and glowing embers - "You can try to beat the embers out but the damage has already been done."
   - DONE Stick and the fell beast - "Really? Do you want to fight the beast or play with it?"
-  - Fiery torch and jar of paraffin - should explode or some comedy outcome
-  - Fishing rod and the fisherman
-  - Chainsaw and fisherman
-  - Chainsaw and any of the people
-  - Dung and poorly man (You feel rather inept at putting dung on a man's head, smearing it casually over his forehead you step back and decide you'd better not go any further. Perhaps you need some help?)
-  - Dung and mushrooms
+  - DONE Fiery torch and jar of paraffin - "It is highly likely to explode if you do that. Which would be fine, if it wasn't ten inches from your face."
+  - DONE Fishing rod and the fisherman
+    - DONE Angry fisherman - "You beat that fisherman with the rod, keeping a safe distance. Like a tiger in a cage it only seems to enrage him."
+    - DONE Sleeping fisherman - "He looks so peaceful, sleeping and dribbling and occassionally swear profusely. It would be a shame to disturb him."
+  - Chainsaw and any of the people - impsaw2000_broken, impsaw2000_fixed, impsaw2000_running
+    - DONE Cabal - "Whoa there Dexter."
+    - DONE Flechette - "If your mother could see you now."
+    - DONE Oubliette - "What kind of maniac are you?"
+    - DONE Fisherman - "That seems a bit drastic!"
+    - DONE Goober - "Perhaps something more delicate would help here, like a nice sign post. Otherwise you're likely to make fish pate."
+    - "I don't think she'd take kindly to that."
+  - Dung and poorly man "You feel rather inept at putting dung on a man's head, smearing it casually over his forehead you step back and decide you'd better not go any further. Perhaps you need some help?"
+  - Dung and muck seller "You think she's already got enough of that on her."
+  - Dung and mushrooms "The mushrooms have done all the growing their going to do."
   - Mop and parsnips, parsnips and mop, mop and turnip, turnip and mop - all should suggets the correct order to put them together
   - Glasses and Larry, yak, bank teller
   - Yak zapper and frank, bank teller, larry, scabby mary
   - Sleepy stick beast and whirligig's mace
-  - Sticky stick beast and Barry Wight
-  - Yak zapper and Barry Wight
-  - Wyrm's Tongue Powder and Bella
-  - Kris knife and Bella
+  - Sticky stick beast and Barry Wight "You poke and prod but to no avail, the stick beast is going floppy and Barry Wight will not yield."
+  - Yak zapper and Barry Wight "Electricity lights up the wight and makes his hair stand on end. He grins at you inanely, giving you a cheeky wink which makes you think he liked it a little too much."
+  - Wyrm's Tongue Powder and Bella - "You throw the powder at Bella which covers here in red and makes her sneeze. Besides that she seems no more incapacitated than before and now you have a little less powder."
+  - Kris knife and Bella - "You thurst the knife forward towards the witch but it glances off her to one side, as though you hit the underside of a protective frying pan."
 - Add embedded images at suitable places with <img src=""/> tags
   - DONE Spiky-toothed goober (large vicious fish)
   - DONE Portcullis

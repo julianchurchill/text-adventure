@@ -322,6 +322,8 @@ item use action:change item visibility:paraffin_soaked_torch:visible
 item use action:take item:paraffin_soaked_torch
 item can be used with:dirty_rag
 item successful use message:You'll get covered in paraffin if you do that which won't be very attractive to the ladies. If you were concerned with that sort of thing.
+item can be used with:fiery_torch
+item successful use message:It is highly likely to explode if you do that. Which would be fine, if it wasn't ten inches from your face.
 ITEM
 item name:Paraffin soaked torch
 item description:This is a makeshift torch, a rag wrapped around one end of a stick then soaked in paraffin. It looks like it will light quite nicely and the fumes are starting to make you a little light headed.
@@ -447,6 +449,12 @@ item mid sentence cased name:Flechette
 item is proper noun:
 item is untakeable:
 item visibility:invisible
+item can be used with:impsaw2000_broken
+item successful use message:If your mother could see you now.
+item can be used with:impsaw2000_fixed
+item successful use message:If your mother could see you now.
+item can be used with:impsaw2000_running
+item successful use message:If your mother could see you now.
 item talk initial phrase:isthereanythingicando:Is there anything I can do to help?:"Is there anything I can do to help?" you ask Flechette.
 item talk response to:isthereanythingicando:She looks at you moving forward and you think she might be about to wollup you again with the boot but she whispers "You should go see my dad, he's the boss around here.".
 ITEM
@@ -516,6 +524,12 @@ item mid sentence cased name:Oubliette
 item is proper noun:
 item is untakeable:
 item visibility:invisible
+item can be used with:impsaw2000_broken
+item successful use message:What kind of maniac are you?
+item can be used with:impsaw2000_fixed
+item successful use message:What kind of maniac are you?
+item can be used with:impsaw2000_running
+item successful use message:What kind of maniac are you?
 item talk initial phrase:howcanihelp:How can I help?:"How can I help?" you ask Oubliette.
 item talk response to:howcanihelp:"There are two things, I need to collect some mushrooms for healing drafts from the ruins of the old castle and my father needs help preparing the town defences.".
 
@@ -535,6 +549,12 @@ item mid sentence cased name:Oubliette
 item is proper noun:
 item is untakeable:
 item visibility:invisible
+item can be used with:impsaw2000_broken
+item successful use message:What kind of maniac are you?
+item can be used with:impsaw2000_fixed
+item successful use message:What kind of maniac are you?
+item can be used with:impsaw2000_running
+item successful use message:What kind of maniac are you?
 item talk initial phrase:howcanihelp:How can I help?:"How can I help?" you ask Oubliette.
 item talk response to:howcanihelp:"My father needs help preparing the town defences.".
 item talk follow up phrase to:howcanihelp:icanhelpyourfather:I can help your father:"I can help your father.", you say bravely, or at least as bravely as you can muster to a girl who has beaten you unconscious with a boot.
@@ -596,6 +616,12 @@ item is untakeable:
 item mid sentence cased name:Cabal Jambon
 item is proper noun:
 item visibility:invisible
+item can be used with:impsaw2000_broken
+item successful use message:Whoa there Dexter.
+item can be used with:impsaw2000_fixed
+item successful use message:Whoa there Dexter.
+item can be used with:impsaw2000_running
+item successful use message:Whoa there Dexter.
 item talk initial phrase:didyousayyouneededhelp:Did you say you needed help?:"Did you say you needed help?" you ask Cabal.
 item talk response to:didyousayyouneededhelp:Cabal barks at you. "Yes. That's why I gave you the ImpSaw 2000 and the imperator. Go and repair the barricade before we get attacked."
 ITEM
@@ -606,6 +632,12 @@ item is untakeable:
 item mid sentence cased name:Cabal Jambon
 item is proper noun:
 item visibility:invisible
+item can be used with:impsaw2000_broken
+item successful use message:Whoa there Dexter.
+item can be used with:impsaw2000_fixed
+item successful use message:Whoa there Dexter.
+item can be used with:impsaw2000_running
+item successful use message:Whoa there Dexter.
 item talk initial phrase:ivefixedthebarricade:I've fixed the barricade:"I've fixed the barricade, is there anything else I can do?". Of course what you meant to say was 'I'll be off now, nice to meet you.' but you somehow feel compelled to help these people. Drat.
 item talk response to:ivefixedthebarricade:"Well done boy, but you'll have to do better than that to convince me you're not a cowardly toad." he snarls. "I'd better have my ImpSaw back - it's not a toy for you to be playing around with.". You dutifully hand the ImpSaw back to Cabal, hanging onto the imperator, seeing as he didn't mention it...<br/><br/>"Have you noticed anything strange around town or on the outskirts? There was rumour of strange creatures at the old castle ruins, it would be good to know if this has anything to do with the witch's attacks." He looks at the ground mournfully, "I can feel something building, a dark pressure on the town - I'm certain we will be attacked soon. If you find any evidence of dark magic bring it to me at once, won't you?". You nod your head vigorously.
 item talk action in response to:ivefixedthebarricade:change item visibility:cabal_jambon_after_barricade_repair:invisible
@@ -1152,6 +1184,16 @@ item description:Huddled under a tree by the river bank is a fisherman, sou'west
 item id:sleeping_fisherman
 item countable noun prefix:a
 item is untakeable:
+item can be used with:fishing_rod
+item successful use message:He looks so peaceful, sleeping and dribbling and occassionally swear profusely. It would be a shame to disturb him.
+item can be used with:fishing_rod_with_reel
+item successful use message:He looks so peaceful, sleeping and dribbling and occassionally swear profusely. It would be a shame to disturb him.
+item can be used with:impsaw2000_broken
+item successful use message:That seems a bit drastic!
+item can be used with:impsaw2000_fixed
+item successful use message:That seems a bit drastic!
+item can be used with:impsaw2000_running
+item successful use message:That seems a bit drastic!
 item examine message:As you look at the fisherman he grumbles and moans, dropping the bottle of cider which clangs against the pebbles and tree roots he is nestled amongst. You jump and he wakes up, glares at you and shout-slurs "Geeearrr outt, myyy fish!" fumbling for his bottle of cider which he throws at you. You manage to dodge it, narrowly avoiding a braining and swiftly pick it up and prepare to defend yourself. There's no way you're getting near the fish in this river while he's awake. As he bumbles about you notice a fishing lure has dropped out of his pocket and lies on the ground.
 item on examine action:change item visibility:sleeping_fisherman:invisible
 item on examine action:change item visibility:angry_fisherman:visible
@@ -1169,6 +1211,18 @@ item id:sleeping_fisherman_after_giving_cider_bottle
 item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
+item can be used with:fishing_rod
+item successful use message:He looks so peaceful, sleeping and dribbling and occassionally swear profusely. It would be a shame to disturb him.
+item can be used with:fishing_rod_with_reel
+item successful use message:He looks so peaceful, sleeping and dribbling and occassionally swear profusely. It would be a shame to disturb him.
+item can be used with:fishing_rod_with_reel_and_lure
+item successful use message:He looks so peaceful, sleeping and dribbling and occassionally swear profusely. It would be a shame to disturb him.
+item can be used with:impsaw2000_broken
+item successful use message:That seems a bit drastic!
+item can be used with:impsaw2000_fixed
+item successful use message:That seems a bit drastic!
+item can be used with:impsaw2000_running
+item successful use message:That seems a bit drastic!
 item examine message:As you look at the fisherman he grumbles and moans, dropping the bottle of cider which clangs against the pebbles and tree roots he is nestled amongst. You jump and he wakes up, glares at you and shout-slurs "Geeearrr outt, myyy fish!" fumbling for his bottle of cider which he throws at you. You manage to dodge it, narrowly avoiding a braining and swiftly pick it up and prepare to defend yourself. There's no way you're getting near the fish in this river while he's awake.
 item on examine action:change item visibility:sleeping_fisherman_after_giving_cider_bottle:invisible
 item on examine action:change item visibility:angry_fisherman:visible
@@ -1184,6 +1238,18 @@ item id:angry_fisherman
 item countable noun prefix:an
 item is untakeable:
 item visibility:invisible
+item can be used with:fishing_rod
+item successful use message:You beat that fisherman with the rod, keeping a safe distance. Like a tiger in a cage it only seems to enrage him.
+item can be used with:fishing_rod_with_reel
+item successful use message:You beat that fisherman with the rod, keeping a safe distance. Like a tiger in a cage it only seems to enrage him.
+item can be used with:fishing_rod_with_reel_and_lure
+item successful use message:You beat that fisherman with the rod, keeping a safe distance. Like a tiger in a cage it only seems to enrage him.
+item can be used with:impsaw2000_broken
+item successful use message:That seems a bit drastic!
+item can be used with:impsaw2000_fixed
+item successful use message:That seems a bit drastic!
+item can be used with:impsaw2000_running
+item successful use message:That seems a bit drastic!
 item can be used with:cider_bottle
 item successful use message:You wait for the fisherman to wander away a few steps then place the cider bottle on the ground nearby. He turns back, still pacing and spots the bottle. "Arhhhh, drink!". He grabs the bottle, takes a deep glug and settles down for a snooze.
 item use action:change item visibility:cider_bottle:invisible
@@ -1251,6 +1317,8 @@ item description:This fish looks like a vicious fellow. It has the sharpest nipp
 item id:spiky_toothed_goober
 item countable noun prefix:a
 item visibility:invisible
+item can be used with:impsaw2000_broken
+item successful use message:Perhaps something more delicate would help here, like a nice sign post. Otherwise you're likely to make fish pate.
 ITEM
 item name:Sign
 item description:The sign says "No fishing - only spiky-toothed goobers here, go away.". The wooden post it is mounted on is covered in flaky, glistening fish scales as though someone has beaten it with a trout.
