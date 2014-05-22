@@ -168,7 +168,7 @@ x:240
 y:360
 location id:merchantslane
 location area id:town_area
-location description:Merchants Lane stretches out ahead of you, abandoned and battered, not a single shop is open or has the slightest sign of life. These shops have been closed for some time now and this street hasn't seen a merry day in many a month. The door to the general store has taken quite a beating. The corner is splintered and shattered, leaving a hole through which you might be able to fit your arm. A closer examination might reveal whether there is any point in doing this although it appears something has forced it's way inside so a little caution might be in order.
+location description:Merchants Lane stretches out ahead of you, abandoned and battered, not a single shop is open or has the slightest sign of life. These shops have been closed for some time now and this street hasn't seen a merry day in many a month. The door to the general store has taken quite a beating. The corner is splintered and shattered, leaving a hole through which you might be able to fit your arm. A closer examination might reveal whether there is any point in doing this although it appears something has forced its way inside so a little caution might be in order.
 text to show on first entry:Stepping over the broken pieces of crockery and half-melted knives spread across the street you start to wonder if it was a good idea to return to this town.
 EXIT
 exit label:East
@@ -287,7 +287,7 @@ exit on use action:destroy item:fiery_torch
 exit on use action:increment score:
 ITEM
 item name:Fell beast
-item description:It has the appearance of a dog, hunched over on four limbs, a slightly elongated head with a large jaw containing two rows of razor sharp teeth covered in drool. You suspect there is a lot more saliva now that it has spotted you and you fear for your life. It's deep red eyes squint as it observes you, turning it's head slightly away from the light entering the store by the doorway.
+item description:It has the appearance of a dog, hunched over on four limbs, a slightly elongated head with a large jaw containing two rows of razor sharp teeth covered in drool. You suspect there is a lot more saliva now that it has spotted you and you fear for your life. Its deep red eyes squint as it observes you, turning its head slightly away from the light entering the store by the doorway.
 item id:fell_beast
 item countable noun prefix:a
 item mid sentence cased name:fell beast
@@ -300,7 +300,7 @@ item can be used with:torch_stick
 item successful use message:Really? Do you want to fight the beast or play with it?
 ITEM
 item name:Jar of clear liquid
-item description:The jar contains a clear liquid. It has somehow managed to survive the devastation around it, perhaps due to it's placement on a shelf sheltered behind the door.
+item description:The jar contains a clear liquid. It has somehow managed to survive the devastation around it, perhaps due to its placement on a shelf sheltered behind the door.
 item id:jar_of_clear_liquid
 item countable noun prefix:a
 item is untakeable:
@@ -350,7 +350,7 @@ x:180
 y:360
 location id:merchantslane_west
 location area id:town_area
-location description:This is the west end of Merchants Lane, more shops boarded up, some doors broken in and there is nothing left of one shop but a burnt out shell. You can hear the faint crackle and pop of smouldering wood as it reluctantly gives up it's last bit of moisture to the fire.
+location description:This is the west end of Merchants Lane, more shops boarded up, some doors broken in and there is nothing left of one shop but a burnt out shell. You can hear the faint crackle and pop of smouldering wood as it reluctantly gives up its last bit of moisture to the fire.
 EXIT
 exit label:East
 exit destination:merchantslane
@@ -406,7 +406,7 @@ y:240
 location id:cobbledroad
 location area id:town_area
 location description:There is some debris on the road and the houses look as battle scarred as the rest that you have seen in this town.
-text to show on first entry:You throw yourself through the window just as the fell beast batters the door down and charges in amid a hail of splintered wood and gnashing teeth. As you scramble out the window the beast sinks it's teeth into your shoe leather holding you firmly then thrashing from side to side, wrenching your lower leg across the knee joint, you half out of the window. Desperately you kick out at the beast with your other foot catching it on the muzzle and it releases you long enough to complete your escape. You drop head first to the ground and land in an ungainly heap, slowly rising to your feet rubbing your head and looking around.
+text to show on first entry:You throw yourself through the window just as the fell beast batters the door down and charges in amid a hail of splintered wood and gnashing teeth. As you scramble out the window the beast sinks its teeth into your shoe leather holding you firmly then thrashing from side to side, wrenching your lower leg across the knee joint, you half out of the window. Desperately you kick out at the beast with your other foot catching it on the muzzle and it releases you long enough to complete your escape. You drop head first to the ground and land in an ungainly heap, slowly rising to your feet rubbing your head and looking around.
 
 Watching you in some amazement are a number of towns folk, gathering about you as one over friendly lady dusts you down before catching a glimpse of your face and starting back with a gasp. She turns and mutters to her neighbours and the mood of the mob quickly turns sour.
 
@@ -601,7 +601,7 @@ item mid sentence cased name:Cabal Jambon
 item is proper noun:
 item visibility:invisible
 item talk initial phrase:howcanihelp:How can I help?:"How can I help?".
-item talk response to:howcanihelp:"Well, you look like a scrawny fellow, can you lift your own arms up without crying?". You reply cautiously "Um, yes...". "Hmphh." snorts Cabal, "Well you'll have to do, we're getting short on hands every day that goes by.". Turning away for a moment he fumbles about amidst the straw you assumed was bedding and pulls out an ImpSaw 2000 and it's accompanying imperator. That seems to you like a rather dangerous place to keep a chainsaw but you decide against mentioning your opinion since the same man that made that decision now wields the contraption in front of you, and as he already alluded to, he doesn't like you very much. "Use this to cut some strong branches from the wood to the north that we can use to repair the barricades and hurry, night will be upon us before we know it.". He hands you the chainsaw and the imperator.
+item talk response to:howcanihelp:"Well, you look like a scrawny fellow, can you lift your own arms up without crying?". You reply cautiously "Um, yes...". "Hmphh." snorts Cabal, "Well you'll have to do, we're getting short on hands every day that goes by.". Turning away for a moment he fumbles about amidst the straw you assumed was bedding and pulls out an ImpSaw 2000 and its accompanying imperator. That seems to you like a rather dangerous place to keep a chainsaw but you decide against mentioning your opinion since the same man that made that decision now wields the contraption in front of you, and as he already alluded to, he doesn't like you very much. "Use this to cut some strong branches from the wood to the north that we can use to repair the barricades and hurry, night will be upon us before we know it.". He hands you the chainsaw and the imperator.
 item talk action in response to:howcanihelp:change item visibility:impsaw2000_broken:visible
 item talk action in response to:howcanihelp:change item visibility:imperator:visible
 item talk action in response to:howcanihelp:take item:impsaw2000_broken
@@ -684,7 +684,7 @@ item is untakeable:
 item mid sentence cased name:Cabal Jambon
 item is proper noun:
 item visibility:invisible
-item talk initial phrase:thenorthbarricadesustainedafireattack:The north barricade sustained a fire attack:"The north barricade sustained a fire attack.". You don't really know how to say it, it sounds crazy - "It, it looked like a dragon. I mean, there was fire and darkness it's roar shook the earth under our feet." you gabble and splutter, the adrenaline rush still coursing through you.
+item talk initial phrase:thenorthbarricadesustainedafireattack:The north barricade sustained a fire attack:"The north barricade sustained a fire attack.". You don't really know how to say it, it sounds crazy - "It, it looked like a dragon. I mean, there was fire and darkness its roar shook the earth under our feet." you gabble and splutter, the adrenaline rush still coursing through you.
 item talk response to:thenorthbarricadesustainedafireattack:"Ok, calm down." says Cabal firmly, he places both hands on your shoulders to steady and focus your eyes on him. "Tell me what happened.". You compose yourself and try to restate what had occurred more calmly than before. "The watchmen said they thought a fire attack was imminent, I went to fetch the fire shield from the town hall and when I got back, just in time, they attacked. We hid behind the shield and there was fire and smoke, then nothing, silence.". Cabal looks at the ground concentrating.
 item talk follow up phrase to:thenorthbarricadesustainedafireattack:whatdowedonext:What do we do next?:"What do we do next?" you mumble.
 item talk response to:whatdowedonext:Cabal hesitates, drawing a deep breath - "They took Oubliette. Just like her mother, whilst they attacked. One of those hounds dragged her off before I could stop it.". He looks at you, deadly serious but desperate. "Help us, help me and my daughters and all the people of this town. We can't continue to fend off the witch forever but we must stay and defend what we have left. Please defeat the witch.". He pauses and almost trembling says to you "If you find my daughter, bring her back to me.". You cannot refuse so you nod firmly and assure Cabal "I will, I will do my best to bring her back to you and I'll find the witch and stop her for good.". You feel relieved, purposeful and boldened by your conviction. "Stay here the night, take my bed and I'll keep watch." says Cabal, motioning to the pile of straw in the corner.". Thanking him you decide to retire for the night to get a good start on the new adventure in the morning.<newline><newline>You awake the following morning to Cabal brewing you a strong kettle of tea and cooking some delicious smelling sausages over the hearth. "Good morning, are you still feeling stout of heart?" asks Cabal. "I am." you reply and tuck hungrily in to your breakfast. "Take my boat to cross the river, you'll find our neighbouring town of Ubiquity a short way from the other bank. We've not heard much from them recently but we have heard they have been under attack just like us. It is likely they have succumbed to the witch but see what you can find to guide you to her. Good luck!". Wth that last statement Cabal gets back to planning the town's defenses for the nights to come.
@@ -869,14 +869,14 @@ item is untakeable:
 item visibility:invisible
 ITEM
 item name:Fell beast
-item description:It is another of the monstrosities you encountered in the wrecked general store. This one looks even more starved and desperate than the last, it's jaws laden with saliva and wild eyes blazing in the night, reflecting the light from the torches carried by the watchmen. It howls at you.
+item description:It is another of the monstrosities you encountered in the wrecked general store. This one looks even more starved and desperate than the last, its jaws laden with saliva and wild eyes blazing in the night, reflecting the light from the torches carried by the watchmen. It howls at you.
 item id:fell_beast_outside_gatehouse
 item countable noun prefix:a
 item mid sentence cased name:fell beast
 item is untakeable:
 item visibility:invisible
 item can be used with:broom
-item successful use message:Deciding to strike first to maximise what little advantage you have you thrust the broom at the beast probing for a weak spot. The beast grabs the broom from your hands with it's terrifying jaws and crushes the middle of it to splinters leaving the broom head with a small amount of handle attached and a longer piece of broom handle both of which clatter to the ground. It glares at you and prepares to move in for the kill.
+item successful use message:Deciding to strike first to maximise what little advantage you have you thrust the broom at the beast probing for a weak spot. The beast grabs the broom from your hands with its terrifying jaws and crushes the middle of it to splinters leaving the broom head with a small amount of handle attached and a longer piece of broom handle both of which clatter to the ground. It glares at you and prepares to move in for the kill.
 item use action:destroy item:broom
 item use action:change item visibility:broom_with_head:visible
 item use action:change item visibility:broom_handle:visible
@@ -885,21 +885,21 @@ item successful use message:You bravely wave the remains of the broom handle at 
 item use action:destroy item:broom_handle
 item use action:change item visibility:broom_handle_splinters:visible
 item can be used with:broom_handle_splinters
-item successful use message:Initially you try to throw the splinters one by one at the fell beast. This merely enrages it, causing it to step closer to you. In a panic you fling the remaining splinter from your hand, one sailing deftly through the air to land point first in the nostril of the approaching monster. It yowls and caterwauls, railing in surprise, desperately thrashing it's head around trying to dislodge the spiky irritation. While it is distracted perhaps you can find a weak spot and gain the upper hand...
+item successful use message:Initially you try to throw the splinters one by one at the fell beast. This merely enrages it, causing it to step closer to you. In a panic you fling the remaining splinter from your hand, one sailing deftly through the air to land point first in the nostril of the approaching monster. It yowls and caterwauls, railing in surprise, desperately thrashing its head around trying to dislodge the spiky irritation. While it is distracted perhaps you can find a weak spot and gain the upper hand...
 item use action:destroy item:broom_handle_splinters
 item use action:change item visibility:fell_beast_outside_gatehouse:invisible
 item use action:change item visibility:fell_beast_outside_gatehouse_in_pain:visible
 item talk initial phrase:letsbereasonablenoonewantstogethurt:Let's be reasonable, no one wants to get hurt:"Let's be reasonable, no one wants to get hurt." you recite the words in your head and then realise that you are about to attempt to reason with a rabid beast. Which is not only rabid and out for your blood but also is most unlikely to understand a word you are saying. You stow that one away with the rest of your finest ideas.
 ITEM
 item name:Fell beast
-item description:It is another of the monstrosities you encountered in the wrecked general store. This one looks even more starved and desperate than the last, it's jaws laden with saliva and wild eyes blazing in the night, reflecting the light from the torches carried by the watchmen. It is thrashing it's head around in apparent pain and paying little attention to you at the moment.
+item description:It is another of the monstrosities you encountered in the wrecked general store. This one looks even more starved and desperate than the last, its jaws laden with saliva and wild eyes blazing in the night, reflecting the light from the torches carried by the watchmen. It is thrashing its head around in apparent pain and paying little attention to you at the moment.
 item id:fell_beast_outside_gatehouse_in_pain
 item countable noun prefix:a
 item mid sentence cased name:fell beast
 item is untakeable:
 item visibility:invisible
 item can be used with:broom_with_head
-item successful use message:Whilst the beast is distracted you sneak up to it, ready the broom head, bristles forward waiting for the moment to strike. The beast notices you, pausing for a moment in it's thrashing and growls, opening it's mouth to snarl and spit. You jump forward shoving the broom head into the mouth of the beast, wedging it's jaws open with the short length of handle still attached to the head. It tries to crush the jam but this only causes it to yelp even more and it turns and runs off into the darkness to tend it's wounds.
+item successful use message:Whilst the beast is distracted you sneak up to it, ready the broom head, bristles forward waiting for the moment to strike. The beast notices you, pausing for a moment in its thrashing and growls, opening its mouth to snarl and spit. You jump forward shoving the broom head into the mouth of the beast, wedging its jaws open with the short length of handle still attached to the head. It tries to crush the jam but this only causes it to yelp even more and it turns and runs off into the darkness to tend its wounds.
 item use action:destroy item:broom_with_head
 item use action:change item visibility:fell_beast_outside_gatehouse_in_pain:invisible
 item use action:change item visibility:men_of_the_towns_watch_north_barricade:invisible
@@ -924,7 +924,7 @@ item mid sentence cased name:broom handle
 item visibility:invisible
 ITEM
 item name:Splinters
-item description:There are several small pieces of splintered wood from the handle of a broom that is well past it's best days.
+item description:There are several small pieces of splintered wood from the handle of a broom that is well past its best days.
 item id:broom_handle_splinters
 item countable noun prefix:some
 item is plural:
@@ -1002,7 +1002,7 @@ item countable noun prefix:a
 item visibility:invisible
 ITEM
 item name:Fire shield
-item description:It is a large contraption, mostly wood and metal, held upright on a wheeled cart so that it will protect whatever is behind it from fire attacks. There are numerous pitted scorch marks on the front plate showing it has seen plenty of use. It has come to a rest, the break handle now in the engaged position with the key still in place having rolled here from the town hall, mostly under it's own steam with a little encouragement from you.
+item description:It is a large contraption, mostly wood and metal, held upright on a wheeled cart so that it will protect whatever is behind it from fire attacks. There are numerous pitted scorch marks on the front plate showing it has seen plenty of use. It has come to a rest, the break handle now in the engaged position with the key still in place having rolled here from the town hall, mostly under its own steam with a little encouragement from you.
 item id:fire_shield_north_barricade
 item countable noun prefix:a
 item is untakeable:
@@ -1162,7 +1162,7 @@ x:120
 y:120
 location id:river_edge
 location area id:western_woods_area
-location description:Stepping out from the surrounding woods you come upon a river. It is full and the banks are fit to burst but the ground around you is clearly dry so you guess the swollen river has not breached it's confines yet.<div align="center"><img src="biteyfish.png"/></div>Not far from the river bank is a fisherman's shack and there is a boozy, wet smell wafting in from somewhere close by. The river runs north to south, the bank running to the north overgrown with vegetation, however to the south there is a man made track along the rivers edge.
+location description:Stepping out from the surrounding woods you come upon a river. It is full and the banks are fit to burst but the ground around you is clearly dry so you guess the swollen river has not breached its confines yet.<div align="center"><img src="biteyfish.png"/></div>Not far from the river bank is a fisherman's shack and there is a boozy, wet smell wafting in from somewhere close by. The river runs north to south, the bank running to the north overgrown with vegetation, however to the south there is a man made track along the rivers edge.
 EXIT
 exit label:North
 exit destination:church_woodland
@@ -1278,7 +1278,7 @@ item id:river_before_fishing
 item countable noun prefix:a
 item is untakeable:
 item can be used with:fishing_rod_with_reel_and_lure
-item successful use message:As you whip the line out from behind you the reel spins quickly unleashing the line across the river, landing about midway. An excellent cast, almost as though you know what you're doing. You slowly turn the reel handle to pull the line back, staring at the water, waiting for a tug on the line to indicate something has taken a nibble. Turn, turn, turn and out pops a Blue Mullet - it is very recognisable with it's silky blue sheen and toothless mouth. It pops and gasps at you with sad fishy eyes. This fish is of no use to you so you throw it back into the river. You wind the line right up ready for another cast.
+item successful use message:As you whip the line out from behind you the reel spins quickly unleashing the line across the river, landing about midway. An excellent cast, almost as though you know what you're doing. You slowly turn the reel handle to pull the line back, staring at the water, waiting for a tug on the line to indicate something has taken a nibble. Turn, turn, turn and out pops a Blue Mullet - it is very recognisable with its silky blue sheen and toothless mouth. It pops and gasps at you with sad fishy eyes. This fish is of no use to you so you throw it back into the river. You wind the line right up ready for another cast.
 item use action:change item visibility:river_before_fishing:invisible
 item use action:change item visibility:river_after_the_first_fish:visible
 ITEM
@@ -1289,7 +1289,7 @@ item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 item can be used with:fishing_rod_with_reel_and_lure
-item successful use message:You cast the line out again, another good throw the line drops straight into the middle of the river width. Slowly, slowly you turn the handle, dragging the line in willing the lure to entice a fish. You feel a slight tug, was that a nibble or just the lure catching a weed? You keep turning, again the line tugs, this must be a fish - you increase the pace, hoping the fish will make a dash for the lure and suddenly the line has some weight. You pull and wind, pull and wind and out of the river it comes. Firmly attached to the lure there is a large fish, about the length of your forearm and twice as wide, almost grinning as it chomps on the lure. It's teeth are sharp and pointy and you recognise it as a spiky-toothed goober. You grab the fish, detach the lure and hold it flapping about in your arms. You discard the rod as it is cumbersome and impractical to carry around any further.
+item successful use message:You cast the line out again, another good throw the line drops straight into the middle of the river width. Slowly, slowly you turn the handle, dragging the line in willing the lure to entice a fish. You feel a slight tug, was that a nibble or just the lure catching a weed? You keep turning, again the line tugs, this must be a fish - you increase the pace, hoping the fish will make a dash for the lure and suddenly the line has some weight. You pull and wind, pull and wind and out of the river it comes. Firmly attached to the lure there is a large fish, about the length of your forearm and twice as wide, almost grinning as it chomps on the lure. Its teeth are sharp and pointy and you recognise it as a spiky-toothed goober. You grab the fish, detach the lure and hold it flapping about in your arms. You discard the rod as it is cumbersome and impractical to carry around any further.
 item use action:change item visibility:river_after_the_first_fish:invisible
 item use action:change item visibility:river_with_no_fish:visible
 item use action:destroy item:fishing_rod_with_reel_and_lure
@@ -1326,7 +1326,7 @@ item id:river_sign
 item countable noun prefix:a
 item is untakeable:
 item can be used with:spiky_toothed_goober
-item successful use message:Eyeing up the sign post you figure that the local fishermen must have used it as a fish bashing post, to knock the critters out before, well, eating them. You want those teeth, and you don't want to be eaten by this goober so you line it up and whack it against the post. Your weak-wristed attempt at knocking the goober out is no match for the creature itself. It flops from your hands, defiantly spits some teeth out in your direction and wriggles back to the relative comfort of the river. You swear that the fish makes a rude sign at you with it's fins before diving beneath the water.
+item successful use message:Eyeing up the sign post you figure that the local fishermen must have used it as a fish bashing post, to knock the critters out before, well, eating them. You want those teeth, and you don't want to be eaten by this goober so you line it up and whack it against the post. Your weak-wristed attempt at knocking the goober out is no match for the creature itself. It flops from your hands, defiantly spits some teeth out in your direction and wriggles back to the relative comfort of the river. You swear that the fish makes a rude sign at you with its fins before diving beneath the water.
 item use action:destroy item:spiky_toothed_goober
 item use action:change item visibility:spiky_toothed_goober_teeth:visible
 item use action:increment score:
@@ -1492,7 +1492,7 @@ x:060
 y:060
 location id:ubiquity_road
 location area id:ubiquity_area
-location description:The road you stand on has been travelled by many merchants, heading for the town of Ubiquity to sell their wares, make some profit and rest their heads. You doubt they would get a warm welcome now, sensing that the land has been subjugated to the will of a powerful foe and most likely the townsfolk too. To the south east lies a river and further along the road you can see the remains of a bridge which once carried the road over the water, no more than splintered wood and frayed rope now. To the west the road continues past what looks like a farmstead of some sort while it winds it's way on towards a town in the distance.
+location description:The road you stand on has been travelled by many merchants, heading for the town of Ubiquity to sell their wares, make some profit and rest their heads. You doubt they would get a warm welcome now, sensing that the land has been subjugated to the will of a powerful foe and most likely the townsfolk too. To the south east lies a river and further along the road you can see the remains of a bridge which once carried the road over the water, no more than splintered wood and frayed rope now. To the west the road continues past what looks like a farmstead of some sort while it winds its way on towards a town in the distance.
 EXIT
 exit label:South
 exit destination:track_to_ubiquity_road
@@ -2202,7 +2202,7 @@ item countable noun prefix:a
 item visibility:invisible
 ITEM
 item name:Indivisible Turpet
-item description:Peering into one of the pens you spy movement on the floor. As you suspected, this is an indivisible turpet the companion creature of the fastidious mim. The turpet is a big, fat worm, also known as Crane's turpet after the famous biologist, who met his maker shortly after discovering and naming the turpet and then while testing it's indivisibility, he succumbed to blood loss from an accidental toe amputation. Later biologists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate.
+item description:Peering into one of the pens you spy movement on the floor. As you suspected, this is an indivisible turpet the companion creature of the fastidious mim. The turpet is a big, fat worm, also known as Crane's turpet after the famous biologist, who met his maker shortly after discovering and naming the turpet and then while testing its indivisibility, he succumbed to blood loss from an accidental toe amputation. Later biologists determined that this unexpectedly rapid exsanguination could be attributed to the same chemical which allowed the turpet to reconstitute itself after being chopped up. Upon the first chopping it released a sufficient amount into the air to trigger temporary haemophilia and the combination of the chemical and Crane's unwavering experimental determination sealed his fate.
 item id:indivisible_turpet
 item is untakeable:
 item countable noun prefix:an
@@ -2413,7 +2413,7 @@ item id:grumpy_yak_at_farm
 item countable noun prefix:a
 item is untakeable:
 item can be used with:yak_zapper
-item successful use message:Sneakily approaching the yak from behind you extend the yak zapper squeezing the trigger and prod the yak in the bum. Nothing happens. You shake the zapper about willing it to work as hard as you can and then you realise the yak's coat probably protected it from the zapping. You try again, this time delving deep into the fur and the yak jumps, flings it's head about and charges off in the direction of the hillock.
+item successful use message:Sneakily approaching the yak from behind you extend the yak zapper squeezing the trigger and prod the yak in the bum. Nothing happens. You shake the zapper about willing it to work as hard as you can and then you realise the yak's coat probably protected it from the zapping. You try again, this time delving deep into the fur and the yak jumps, flings its head about and charges off in the direction of the hillock.
 item use action:change item visibility:grumpy_yak_at_farm:invisible
 item use action:change item visibility:grumpy_yak_at_hillock:visible
 
@@ -2629,7 +2629,7 @@ x:-420
 y:000
 location id:misty_downs_downstream
 location area id:misty_downs_area
-location description:The mist seems to have no end. The stream continues winding it's way between rocks and over pebbles, the dense air settling momentarily on the waters surface before lifting and floating further on. A little further ahead there is a gap in the scree lining the stream. You think you might be able to scramble up.
+location description:The mist seems to have no end. The stream continues winding its way between rocks and over pebbles, the dense air settling momentarily on the waters surface before lifting and floating further on. A little further ahead there is a gap in the scree lining the stream. You think you might be able to scramble up.
 EXIT
 exit label:Upstream
 exit destination:misty_downs_stream
@@ -2912,7 +2912,7 @@ x:-120
 y:120
 location id:bank_of_ubiquity
 location area id:ubiquity_area
-location description:This is the once-eminent Bank of Ubiquity, in it's day known for the shrewdness of it's bankers, the stoic nature of it's account holders and the thoroughness of it's money cleaners. They had to be very thorough on account of most of the money passing through the bank was generated by the local yakonomy, however the bank was brought to it's knees by revelations of it's grimy dealings with the criminal Yakuza and their black market yak dealings. A dirty business indeed.
+location description:This is the once-eminent Bank of Ubiquity, in its day known for the shrewdness of its bankers, the stoic nature of its account holders and the thoroughness of its money cleaners. They had to be very thorough on account of most of the money passing through the bank was generated by the local yakonomy, however the bank was brought to its knees by revelations of its grimy dealings with the criminal Yakuza and their black market yak dealings. A dirty business indeed.
 EXIT
 exit label:Outside
 exit destination:main_road_through_ubiquity
@@ -3145,7 +3145,7 @@ item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
 item examine action is not repeatable:
-item examine message:The shield has rolled here from outside the town hall. You push up against it, heaving to try to budge it and ever so slightly it starts to move again. You are able to get up a little momentum before having to let it go it's own way, weaving through the streets heading towards the north barricade.
+item examine message:The shield has rolled here from outside the town hall. You push up against it, heaving to try to budge it and ever so slightly it starts to move again. You are able to get up a little momentum before having to let it go its own way, weaving through the streets heading towards the north barricade.
 item on examine action:change item visibility:fire_shield_clock_tower:invisible
 item on examine action:change item visibility:fire_shield_north_barricade:visible
 item on examine action:change item visibility:men_of_the_towns_watch_north_barricade_awaiting_fire_shield:invisible
