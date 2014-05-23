@@ -788,6 +788,8 @@ item id:muck_seller
 item countable noun prefix:a
 item is untakeable:
 item visibility:invisible
+item can be used with:handful_of_dung
+item successful use message:You think she's already got enough of that on her.
 item talk initial phrase:outofmywayoldcrone:Out of my way old crone:"Out of my way old crone!" you exclaim.
 item talk response to:outofmywayoldcrone:She's not so sure about you, looking you up and down, giving you a quick sniff. Then she says "Gurrr!".
 item talk initial phrase:whatareyoudoinghere:What are you doing here?:"What are you doing here?" you ask.
@@ -1063,6 +1065,8 @@ item description:This fellow is laid out on a bed at the back of the room, he is
 item id:man_on_the_bed
 item countable noun prefix:a
 item is untakeable:
+item can be used with:handful_of_dung
+item successful use message:You feel rather inept at putting dung on a man's head, smearing it casually over his forehead you step back and decide you'd better not go any further. Perhaps you need some help?
 item talk initial phrase:ihaveurgentnews:I have urgent news:Addressing the poor man on the bed you state "I have urgent news, from Cabal Jambon.".
 item talk response to:ihaveurgentnews:He moves not a jot to acknowledge your declaration, merely mumbling "Gugghlh brrcckk fip!". One of the seated men looks up and calls over to you - "He can't talk, he's got a fever, won't get no sense out of 'im."
 ITEM
@@ -2701,6 +2705,10 @@ item mid sentence cased name:Barry Wight
 item is proper noun:
 item is untakeable:
 item visibility:invisible
+item can be used with:yak_zapper
+item successful use message:Electricity lights up the wight and makes his hair stand on end. He grins at you inanely, giving you a cheeky wink which makes you think he liked it a little too much.
+item can be used with:sticky_stick_beast
+item successful use message:You poke and prod but to no avail, the stick beast is going floppy and Barry Wight will not yield.
 item can be used with:whirligigs_shattering_star_mace
 item successful use message:You clobber the wight soundly around the head with the mace. He stumbles backwards, stunned and even more confused but clear that you are not someone he wants to tackle. He backs up to the barrow and disappears inside. You hear him clattering between the walls all the while trying to maintain a tune. As you turn to leave you notice a blade glinting on the ground, the wight must have dropped it. You pick it up for a closer look. It is a Kris knife, an expensive one. There is something about it that draws you to it so you decide to hang on to the knife for now.
 item use action:change item visibility:barry_wight:invisible
@@ -3538,6 +3546,8 @@ item description:A precious wild mushroom that has healing powers - or so you've
 item id:single_mushroom
 item countable noun prefix:a
 item visibility:invisible
+item can be used with:handful_of_dung
+item successful use message:That mushroom has done all the growing that it's going to do.
 ITEM
 item name:Mushroom plucker
 item description:It is a long cone which you place over a mushroom, then you squeeze the trigger on the side and it pops the mushroom right out of the ground all in one piece. The best way to maintain a fresh fungus.
@@ -3716,6 +3726,8 @@ item mid sentence cased name:Bella's corpse
 item is proper noun:
 item is untakeable:
 item visibility:invisible
+item can be used with:kris_knife
+item successful use message:That's no use on a corpse. Perhaps a closer look is needed.
 item examine action is not repeatable:
 item examine message:You bend down to search the body for the key to Oubliette's cage but as you do you see movement under the robes. Stepping cautiously back the movement increases and the robes start to rise up as smoke emanates from underneath them. A shape forms behind the cloth, getting larger until it stands taller than you - then the robe slips off to reveal a creature of nightmares. The horned demon pierces your mind with its hateful gaze, focusing all of its will upon you. Under this psychic weight you fall down to your knees and hear the demon snarl, lifting one clawed foot, scraping on the floor like fingernails on a blackboard and stepping slowly towards you.
 item on examine action:change item visibility:bella_playing_dead:invisible
@@ -3800,6 +3812,10 @@ item id:bella_north_platform
 item mid sentence cased name:Bella Constantine
 item is proper noun:
 item is untakeable:
+item can be used with:wyrms_tongue_powder
+item successful use message:You throw the powder at Bella which covers here in red and makes her sneeze. Besides that she seems no more incapacitated than before and now you have a little less powder.
+item can be used with:kris_knife
+item successful use message:You thurst the knife forward towards the witch but it glances off her to one side, as though you hit the underside of a protective frying pan.
 item talk initial phrase:idemandyoufreeoubliette:I demand you free Oubliette:You clear your throat and state as confidently as you can - "I demand you free Oubliette.".
 item talk response to:idemandyoufreeoubliette:"You demand? Who are you to demand anything of me, I might just smite you down where you stand." she replies nonchalantly, clearly unperturbed by your attitude.
 
@@ -3845,6 +3861,10 @@ item mid sentence cased name:Bella Constantine
 item is proper noun:
 item is untakeable:
 item visibility:invisible
+item can be used with:wyrms_tongue_powder
+item successful use message:You throw the powder at Bella which covers here in red and makes her sneeze. Besides that she seems no more incapacitated than before and now you have a little less powder.
+item can be used with:kris_knife
+item successful use message:You thurst the knife forward towards the witch but it glances off her to one side, as though you hit the underside of a protective frying pan.
 item talk initial phrase:stopattackingthetownsfolk:Stop attacking the townsfolk:"Stop attacking the townsfolk, they've done nothing to you." You are becoming bolder, her reaction to the fire on the north platform has boosted your confidence and she can tell.
 item talk response to:stopattackingthetownsfolk:She sneers at you "Nothing? They took everything from me, pitiful, stupid people like that are always the same. They welcomed me in when I first arrived but when I married Oren Constantine they shunned me, they were jealous, pathetic wretches."
 
@@ -3890,6 +3910,10 @@ item mid sentence cased name:Bella Constantine
 item is proper noun:
 item is untakeable:
 item visibility:invisible
+item can be used with:wyrms_tongue_powder
+item successful use message:You throw the powder at Bella which covers here in red and makes her sneeze. Besides that she seems no more incapacitated than before and now you have a little less powder.
+item can be used with:kris_knife
+item successful use message:You thurst the knife forward towards the witch but it glances off her to one side, as though you hit the underside of a protective frying pan.
 item talk initial phrase:youwillnotwin:You will not win:Your burgeoning confidence fills you and you defiantly state "You will not win. Give up now and I will let you go free."
 item talk response to:youwillnotwin:"You will never beat me, you have not seen my true power yet." she screams at you.
 
@@ -3934,5 +3958,9 @@ item mid sentence cased name:Bella Constantine
 item is proper noun:
 item is untakeable:
 item visibility:invisible
+item can be used with:wyrms_tongue_powder
+item successful use message:You throw the powder at Bella which covers here in red and makes her sneeze. Besides that she seems no more incapacitated than before and now you have a little less powder.
+item can be used with:kris_knife
+item successful use message:You thurst the knife forward towards the witch but it glances off her to one side, as though you hit the underside of a protective frying pan.
 item talk initial phrase:ipromisedtosaveoubliette:I promised to save Oubliette:"I promised Oubliette's father and sister that I'd bring her back, I'll not fail them." You are clear in your intentions, your purpose fuels you onward.
 item talk response to:ipromisedtosaveoubliette:"I care nothing for your girl or her family, she is my hostage. Perpetuity will bow down to me just as Ubiquity has." Greed and a desperate desire for power lights her eyes and makes them burn red like the fires surrounding her.
