@@ -105,8 +105,6 @@ Ordered by priority, first to do at the top.
 
 Story - TTA2
 
-- [BUG] say "Wiggle your pinky" doesn't read very well - it should simply be 'Wiggle you pinky' instead of a say option...
-  - [FIX] Could change to 'Say "I'm wiggling my pinky at you"' ?
 - [BUG] Shaved yak picture needs moving to Larry's after the shaving
 - Oubliette's father and sister are happy you've rescued her and congratulate you if you return to town. Add some chit chat with them.
 - Add a 'torch use failure' message to the south indian monkey trap room in breakwater temple if you use the torch with the pit before you have discovered it is a key in _wax_. Also allow the torch to be used with the key in wax directly for the same result.
