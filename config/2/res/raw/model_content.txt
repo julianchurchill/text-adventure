@@ -1905,7 +1905,7 @@ item successful use message:He scoffs and chides you. "I don't know what you exp
 item can be used with:re_poly_enhancer
 item successful use message:"You do know what this is don't you? I have no idea what you are thinking but it is entirely inappropriate!". After this admonishment he points quite clearly at the funnel.
 item can be used with:unbearable_grin
-item successful use message:"Hmm, it might work but its just too daring - I'd be thrown out of the Guild of Science Dwarves for certain." he says tapping his finger on his lips thoughtfully. "Perhaps another time..."
+item successful use message:"Hmm, it might work but it's just too daring - I'd be thrown out of the Guild of Science Dwarves for certain." he says tapping his finger on his lips thoughtfully. "Perhaps another time..."
 item can be used with:wodge_of_toffee
 item successful use message:"I'm not hungry right now." he states waving his hand, dismissing the toffee.
 ITEM
@@ -2374,7 +2374,7 @@ item use action:destroy item:mop_head
 item use action:increment score:
 ITEM
 item name:Mop head
-item description:At first glance this could be a freshly harvested scalp or a very bad wig. Its actually a dirty old mop head which wafts a lingering stench of stale water and filth through the air. You try not to fling it around too much as the aroma gets worse.
+item description:At first glance this could be a freshly harvested scalp or a very bad wig. It's actually a dirty old mop head which wafts a lingering stench of stale water and filth through the air. You try not to fling it around too much as the aroma gets worse.
 item id:mop_head
 item visibility:invisible
 item can be used with:turnip_with_string_of_parsnips
@@ -2664,7 +2664,7 @@ item id:barrow_1
 item countable noun prefix:a
 item is untakeable:
 item examine action is not repeatable:
-item examine message:The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. Its probably a bear. You feel anxious about examining any further but feel there might be more to learn about this barrow.
+item examine message:The whistling wind unnerves you as you inspect the barrow more closely and for a moment you think you hear the sound of a human voice but it's more animalistic than that. It's probably a bear. You feel anxious about examining any further but feel there might be more to learn about this barrow.
 item on examine action:change item visibility:barrow_1:invisible
 item on examine action:change item visibility:barrow_2:visible
 ITEM
