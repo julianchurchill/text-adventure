@@ -3078,6 +3078,7 @@ item talk action in response to:wherecanifindthewitch:change item visibility:bra
 item talk action in response to:wherecanifindthewitch:change item visibility:larry_the_yak_shaver:invisible
 item talk action in response to:wherecanifindthewitch:change item visibility:larry_the_yak_shaver_shaving_your_yak:visible
 item talk action in response to:wherecanifindthewitch:take item:brass_key
+item talk action in response to:wherecanifindthewitch:change location description:yak_parlour:A hairy and sweaty place, a confusing melange of farm and hairdresser. There are several seated men and women, waiting, flicking through magazines with the latest hair styles in, idly chattering away whilst their charges, their yaks, are being tended to by a tall handsome man who keeps sweeping his long blonde fringe back over his head in an exaggerated motion. He's already starting to annoy you. This is a yak parlour, which explains everything.<div align="center"><img src="shaved_yak.png"/></div>
 ITEM
 item name:Larry
 item description:Larry the yak shaver, a popular man in Ubiquity due to his flair for turning a scruffy, straggly yak mullet into a buoyant bouffant, a coiffured comb over, a perfect perm. In any other town this man's talent would have been wasted, however since the whole socio-economic structure of Ubiquity thrives on the yak trade, the yakonomy, he's able to engage in a thriving business. One of the few left hereabouts.

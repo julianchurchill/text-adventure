@@ -105,7 +105,6 @@ Ordered by priority, first to do at the top.
 
 Story - TTA2
 
-- [BUG] Shaved yak picture needs moving to Larry's after the shaving
 - Oubliette's father and sister are happy you've rescued her and congratulate you if you return to town. Add some chit chat with them.
 - Add a 'torch use failure' message to the south indian monkey trap room in breakwater temple if you use the torch with the pit before you have discovered it is a key in _wax_. Also allow the torch to be used with the key in wax directly for the same result.
 - Add a hint of seeing Oubliette to some other places with mirrors - Larrys yak shaving parlour, the soothsayers crystal ball etc...
@@ -147,6 +146,7 @@ Story - TTA2
   - DONE Muck selling crone
   - DONE barricade for first entrance to Perpetuity
   - DONE Shaved yak
+  - A hairy yak for the farm?
   - Second Fell beast for the barricade attack
   - Mushrooms
   - Hearth for Cabal's house
