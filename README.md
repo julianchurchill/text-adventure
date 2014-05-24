@@ -41,6 +41,7 @@ Ordered by priority, first to do at the top.
 
 - [FEATURE] Map - extras
     - Make better masks and a better map! Charlies on the case.
+- [BUG] 9-patch button images have the occasional non-transparent pixels around the edges (shows in build errors) and more importantly has a few pixels of parchment in the 'burnt' out edges that break the smooth button list effect.
 - [FEATURE] Write a walkthrough for TTA1
 - [BUG] Occasionally the 9-patch bottom strip is partially drawn over the text at the bottom of the screen. Ensure the bottom padding is enough that the text is never drawn at the same position as the 9-patch strip.
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
