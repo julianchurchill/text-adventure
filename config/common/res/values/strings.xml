@@ -21,4 +21,7 @@
     <string name="walkthrough">Walkthrough</string>
     <string name="quick_hint">Quick Hint</string>
     <string name="loading">Loading...</string>
+    <string name="new_game_welcome_dialog_title">Welcome!</string>
+    <string name="new_game_welcome_dialog_text">You are about to embark on an adventure in interactive fiction where you control the main character as you play through the story. To see what you are carrying press the \'show inventory\' button, pick up items, examine them, use them, talk to other characters. To move from place to place tap the highlighted exits in the text. If you get stuck use the quick hints feature in the menu. Your game will be automatically saved when you leave and will be restored when you return. Above all enjoy the adventure!</string>
+    <string name="new_game_welcome_dialog_continue_button">Let\'s go</string>
 </resources>

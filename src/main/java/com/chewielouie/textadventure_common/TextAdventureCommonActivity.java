@@ -129,8 +129,12 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_string_walkthrough();
     abstract protected int R_string_quick_hint();
     abstract protected int R_string_loading();
+    abstract protected int R_string_new_game_welcome_dialog_title();
+    abstract protected int R_string_new_game_welcome_dialog_text();
+    abstract protected int R_string_new_game_welcome_dialog_continue_button();
     abstract protected Field[] R_raw_class_getFields();
     abstract protected int R_style_WaypointDialogTheme();
+    abstract protected int R_style_NewGameWelcomeDialogTheme();
 
     private static final int NUMBER_OF_TTA_BUTTONS = 7;
     private static final int TEXT_TO_SPEECH_DATA_CHECK_CODE = 0;
@@ -330,6 +334,15 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
             progressDialog = null;
         }
         loading = false;
+    }
+
+    private void showNewGameWelcomeDialog() {
+        ContextThemeWrapper newGameWelcomeDialogThemedContext = new ContextThemeWrapper( this, R_style_NewGameWelcomeDialogTheme() );
+        new AlertDialog.Builder( newGameWelcomeDialogThemedContext )
+            .setTitle( R_string_new_game_welcome_dialog_title() )
+            .setMessage( R_string_new_game_welcome_dialog_text() )
+            .setPositiveButton( R_string_new_game_welcome_dialog_continue_button(), null )
+            .show();
     }
 
     @Override
@@ -608,15 +621,6 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     private boolean isWaypointsMenuAvailable() {
         return true;
-    }
-
-    private void showNewGameWelcomeDialog() {
-        new AlertDialog.Builder( this )
-            .setIcon( android.R.drawable.ic_dialog_alert )
-            .setTitle( "Welcome!" )
-            .setMessage( "You are about to embark on an adventure in interactive fiction where you control the main character as you play through the story. To see what you are carrying press the 'show inventory' button, pick up items, examine them, use them, talk to other characters. To move from place to place tap the highlighted exits in the text. If you get stuck use the quick hints feature in the menu. Your game will be automatically saved when you leave and will be restored when you return. Above all enjoy the adventure!" )
-            .setPositiveButton( "Continue", null )
-            .show();
     }
 
     @Override

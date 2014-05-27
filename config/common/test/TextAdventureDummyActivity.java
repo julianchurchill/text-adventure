@@ -167,11 +167,27 @@ public class TextAdventureDummyActivity extends TextAdventureCommonActivity {
         return R.string.loading;
     }
 
+    protected int R_string_new_game_welcome_dialog_title() {
+        return R.string.new_game_welcome_dialog_title;
+    }
+
+    protected int R_string_new_game_welcome_dialog_text() {
+        return R.string.new_game_welcome_dialog_text;
+    }
+
+    protected int R_string_new_game_welcome_dialog_continue_button() {
+        return R.string.new_game_welcome_dialog_continue_button;
+    }
+
     protected Field[] R_raw_class_getFields() {
         return R.raw.class.getFields();
     }
 
     protected int R_style_WaypointDialogTheme() {
         return R.style.WaypointDialogTheme;
+    }
+
+    protected int R_style_NewGameWelcomeDialogTheme() {
+        return R.style.NewGameWelcomeDialogTheme;
     }
 }
