@@ -112,6 +112,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_layout_about_dialog();
     abstract protected int R_layout_main();
     abstract protected int R_layout_options_dialog();
+    abstract protected int R_layout_new_game_welcome_dialog();
     abstract protected int R_raw_model_content();
     abstract protected int R_string_about();
     abstract protected int R_string_app_name();
@@ -134,7 +135,6 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_string_new_game_welcome_dialog_continue_button();
     abstract protected Field[] R_raw_class_getFields();
     abstract protected int R_style_WaypointDialogTheme();
-    abstract protected int R_style_NewGameWelcomeDialogTheme();
 
     private static final int NUMBER_OF_TTA_BUTTONS = 7;
     private static final int TEXT_TO_SPEECH_DATA_CHECK_CODE = 0;
@@ -190,6 +190,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private boolean loading = false;
     private AsyncTask loadingTask = null;
     private TextToSpeech textToSpeech = null;
+    private Dialog newGameWelcomeDialog = null;
 
     public TextAdventureCommonActivity() {
     }
@@ -337,12 +338,14 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void showNewGameWelcomeDialog() {
-        ContextThemeWrapper newGameWelcomeDialogThemedContext = new ContextThemeWrapper( this, R_style_NewGameWelcomeDialogTheme() );
-        new AlertDialog.Builder( newGameWelcomeDialogThemedContext )
-            .setTitle( R_string_new_game_welcome_dialog_title() )
-            .setMessage( R_string_new_game_welcome_dialog_text() )
-            .setPositiveButton( R_string_new_game_welcome_dialog_continue_button(), null )
-            .show();
+        newGameWelcomeDialog = new Dialog( this );
+        newGameWelcomeDialog.setContentView( R_layout_new_game_welcome_dialog() );
+        newGameWelcomeDialog.show();
+    }
+
+    public void newGameWelcomeDialogContinueButtonClicked( View view ) {
+        newGameWelcomeDialog.dismiss();
+        newGameWelcomeDialog = null;
     }
 
     @Override

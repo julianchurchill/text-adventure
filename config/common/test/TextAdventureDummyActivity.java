@@ -99,6 +99,10 @@ public class TextAdventureDummyActivity extends TextAdventureCommonActivity {
         return R.layout.options_dialog;
     }
 
+    protected int R_layout_new_game_welcome_dialog() {
+        return R.layout.new_game_welcome_dialog;
+    }
+
     public int R_raw_model_content() {
         return R.raw.model_content;
     }
@@ -185,9 +189,5 @@ public class TextAdventureDummyActivity extends TextAdventureCommonActivity {
 
     protected int R_style_WaypointDialogTheme() {
         return R.style.WaypointDialogTheme;
-    }
-
-    protected int R_style_NewGameWelcomeDialogTheme() {
-        return R.style.NewGameWelcomeDialogTheme;
     }
 }

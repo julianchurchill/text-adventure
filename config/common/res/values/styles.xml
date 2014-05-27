@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="WaypointDialogTheme" parent="android:Theme.Dialog">
+    <style name="WaypointDialogTheme" parent="@android:style/Theme.Dialog">
         <item name="android:windowTitleSize">12sp</item>
         <item name="android:windowTitleStyle">@style/WaypointDialogTitleTextStyle</item>
         <item name="android:textSize">12sp</item>
     </style>
     <style name="WaypointDialogTitleTextStyle" >
         <item name="android:textSize">12sp</item>
-    </style>
-    <style name="NewGameWelcomeDialogTheme" parent="android:Theme.Dialog">
-        <item name="android:windowTitleBackgroundStyle">@style/NewGameWelcomeTitleBackgroundStyle</item>
-        <item name="android:windowTitleStyle">@style/NewGameWelcomeTitleTextStyle</item>
-        <item name="android:textSize">12sp</item>
-    </style>
-    <style name="NewGameWelcomeTitleBackgroundStyle">
-        <item name="android:background">#0000FF</item>
-    </style>
-    <style name="NewGameWelcomeTitleTextStyle">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold|italic</item>
     </style>
 </resources>
