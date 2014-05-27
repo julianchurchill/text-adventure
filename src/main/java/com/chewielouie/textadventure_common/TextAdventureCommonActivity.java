@@ -282,11 +282,16 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private class LoadTask extends AsyncTask<Void, Void, Void> {
+        boolean newGame = false;
+
         protected Void doInBackground(Void... args) {
             if( saveFileExists() )
                 loadGame();
             else
+            {
+                newGame = true;
                 createNewGame();
+            }
 
             if( saveJSONFileExists() ) {
                 BasicModelV1_0ToActionListConverter c
@@ -300,14 +305,30 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         }
 
          protected void onPostExecute(Void result) {
-            rendersView.render();
-            endLoading();
+            if( newGame )
+                completedLoadingNewGame();
+            else
+                completedLoadingSavedGame();
          }
+    }
+
+    private void completedLoadingNewGame() {
+        rendersView.render();
+        endLoading();
+        showNewGameWelcomeDialog();
+    }
+
+    private void completedLoadingSavedGame() {
+        rendersView.render();
+        endLoading();
     }
 
     private void endLoading() {
         if( progressDialog != null )
+        {
             progressDialog.dismiss();
+            progressDialog = null;
+        }
         loading = false;
     }
 
@@ -589,6 +610,15 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         return true;
     }
 
+    private void showNewGameWelcomeDialog() {
+        new AlertDialog.Builder( this )
+            .setIcon( android.R.drawable.ic_dialog_alert )
+            .setTitle( "Welcome!" )
+            .setMessage( "You are about to embark on an adventure in interactive fiction where you control the main character as you play through the story. To see what you are carrying press the 'show inventory' button, pick up items, examine them, use them, talk to other characters. To move from place to place tap the highlighted exits in the text. If you get stuck use the quick hints feature in the menu. Your game will be automatically saved when you leave and will be restored when you return. Above all enjoy the adventure!" )
+            .setPositiveButton( "Continue", null )
+            .show();
+    }
+
     @Override
     public boolean onOptionsItemSelected( MenuItem item ) {
         boolean retVal = true;
@@ -648,7 +678,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
                 @Override
                 public void onClick( DialogInterface dialog, int which ) {
                     createNewGame();
-                    rendersView.render();
+                    completedLoadingNewGame();
                 }
 
             })
@@ -783,7 +813,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
                     String strName = arrayAdapter.getItem(which);
                     String resourceName = "waypoint_" + strName;
                     loadGameFromString( readRawTextFileFromResource( resourceName ) );
-                    rendersView.render();
+                    completedLoadingSavedGame();
                 }
             });
         builder.show();

@@ -39,13 +39,14 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
+- [FEATURE] New game welcome dialog. Shown on any new game, but only then.
+  - DONE Basic dialog added
+  - Make custom dialog with parchment background and strings in strings.xml
+- [FEATURE] What's new dialog for first run of new version.
+  - Save the last version number for which the 'what's new' dialog was shown to avoid repeatedly showing it. Store text in strings.xml, assuming embedding newlines works.
 - [FEATURE] Map - extras
     - Make better masks and a better map! Charlies on the case.
 - [BUG] 9-patch button images have the occasional non-transparent pixels around the edges (shows in build errors) and more importantly has a few pixels of parchment in the 'burnt' out edges that break the smooth button list effect.
-- [FEATURE] What's new dialog for first run of new version.
-  - Save the last version number for which the 'what's new' dialog was shown to avoid repeatedly showing it. Store text in strings.xml, assuming embedding newlines works.
-- [FEATURE] New game welcome dialog. Shown on any new game, but only then.
-  - "Welcome! You are about to embark on an adventure in interactive fiction where you control the main character as you play through the story. To see what you are carrying press the 'show inventory' button, pick up items, examine them, use them, talk to other characters. To move from place to place tap the highlighted exits in the text. If you get stuck use the quick hints feature in the menu. Your game will be automatically saved when you leave and will be restored when you return. Above all enjoy the adventure!"
 - [FEATURE] Write a walkthrough for TTA1
 - [BUG] Occasionally the 9-patch bottom strip is partially drawn over the text at the bottom of the screen. Ensure the bottom padding is enough that the text is never drawn at the same position as the 9-patch strip.
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
