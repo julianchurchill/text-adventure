@@ -1,35 +1,46 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res/com.gh4a"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold|italic"
-        android:text="@string/new_game_welcome_dialog_title"/>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:id="@+id/relativeLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <ScrollView
         android:id="@+id/main_text_output_scroll_view"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:layout_below="@+id/textView"
+        android:layout_above="@+id/button">
+
         <TextView
             android:background="@drawable/paper38f"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:text="@string/new_game_welcome_dialog_text"
             android:textColor="#000000"
-            android:typeface="serif"/>
+            android:typeface="serif" />
     </ScrollView>
+
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="newGameWelcomeDialogContinueButtonClicked"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/new_game_welcome_dialog_continue_button"/>
-</LinearLayout>
+        android:text="@string/new_game_welcome_dialog_continue_button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/button" />
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold|italic"
+        android:text="@string/new_game_welcome_dialog_title"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
+</RelativeLayout>
