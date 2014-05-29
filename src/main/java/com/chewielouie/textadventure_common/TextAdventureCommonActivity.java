@@ -376,29 +376,29 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     protected boolean needToShowWhatsNew() {
-        // return getWhatsNewLastViewedVersion() < currentVersion();
-        return true;
+        return getWhatsNewLastViewedVersion() < currentVersion();
+        // return true;
     }
 
-    // private int getWhatsNewLastViewedVersion() {
-    //     return getPrefs().getInt( whats_new_last_viewed_version_key, 0 );
-    // }
+    private int getWhatsNewLastViewedVersion() {
+        return getPrefs().getInt( whats_new_last_viewed_version_key, 0 );
+    }
 
-    // private void updateWhatsNewLastViewedVersion() {
-    //     SharedPreferences.Editor editor = getPrefs().edit();
-    //     editor.putInt( whats_new_last_viewed_version_key, currentVersion() );
-    //     editor.apply();
-    // }
+    private void updateWhatsNewLastViewedVersion() {
+        SharedPreferences.Editor editor = getPrefs().edit();
+        editor.putInt( whats_new_last_viewed_version_key, currentVersion() );
+        editor.apply();
+    }
 
-    // private int currentVersion() {
-        // int versionCode = 0;
-        // try {
-        //     versionCode = getPackageManager().getPackageInfo( getPackageName(), 0 ).versionCode;
-        // }
-        // catch ( PackageManager.NameNotFoundException e ) {
-        // }
-    //     return versionCode;
-    // }
+    private int currentVersion() {
+        int versionCode = 0;
+        try {
+            versionCode = getPackageManager().getPackageInfo( getPackageName(), 0 ).versionCode;
+        }
+        catch ( PackageManager.NameNotFoundException e ) {
+        }
+        return versionCode;
+    }
 
     private void showWhatsNewDialog() {
         whatsNewDialog = new Dialog( this );
@@ -422,6 +422,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private void whatsNewDialogCloseActions() {
         whatsNewDialog.dismiss();
         whatsNewDialog = null;
+        updateWhatsNewLastViewedVersion();
         startGame();
     }
 
