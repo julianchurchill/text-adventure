@@ -109,10 +109,13 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_id_options_font_size_picker();
     abstract protected int R_id_options_tts_enabled();
     abstract protected int R_id_score_text_view();
+    abstract protected int R_id_new_game_welcome_dialog_continue_button();
+    abstract protected int R_id_whats_new_dialog_continue_button();
     abstract protected int R_layout_about_dialog();
     abstract protected int R_layout_main();
     abstract protected int R_layout_options_dialog();
     abstract protected int R_layout_new_game_welcome_dialog();
+    abstract protected int R_layout_whats_new_dialog();
     abstract protected int R_raw_model_content();
     abstract protected int R_string_about();
     abstract protected int R_string_app_name();
@@ -155,6 +158,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private static boolean default_text_to_speech_enabled = false;
     private static String text_to_speech_enabled_key = shared_prefs_root_key + ".texttospeechenabled";
     private boolean textToSpeechEnabled = default_text_to_speech_enabled;
+    private static String whats_new_last_viewed_version_key = shared_prefs_root_key + ".whatsnewlastviewedversion";
 
     private RendersView rendersView;
     private boolean externallySuppliedViewRenderer = false;
@@ -191,6 +195,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private AsyncTask loadingTask = null;
     private TextToSpeech textToSpeech = null;
     private Dialog newGameWelcomeDialog = null;
+    private Dialog whatsNewDialog = null;
 
     public TextAdventureCommonActivity() {
     }
@@ -340,10 +345,23 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private void showNewGameWelcomeDialog() {
         newGameWelcomeDialog = new Dialog( this );
         newGameWelcomeDialog.setContentView( R_layout_new_game_welcome_dialog() );
+        Button b = (Button)newGameWelcomeDialog.findViewById( R_id_new_game_welcome_dialog_continue_button() );
+        b.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick( View view ) {
+                newWelcomeDialogCloseActions();
+            }
+        });
+        newGameWelcomeDialog.setOnCancelListener( new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                newWelcomeDialogCloseActions();
+            }
+        });
         newGameWelcomeDialog.show();
     }
 
-    public void newGameWelcomeDialogContinueButtonClicked( View view ) {
+    private void newWelcomeDialogCloseActions() {
         newGameWelcomeDialog.dismiss();
         newGameWelcomeDialog = null;
     }
@@ -351,7 +369,63 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     @Override
     public void onResume() {
         super.onResume();
+        if( needToShowWhatsNew() )
+            showWhatsNewDialog();
+        else
+            startGame();
+    }
 
+    protected boolean needToShowWhatsNew() {
+        // return getWhatsNewLastViewedVersion() < currentVersion();
+        return true;
+    }
+
+    // private int getWhatsNewLastViewedVersion() {
+    //     return getPrefs().getInt( whats_new_last_viewed_version_key, 0 );
+    // }
+
+    // private void updateWhatsNewLastViewedVersion() {
+    //     SharedPreferences.Editor editor = getPrefs().edit();
+    //     editor.putInt( whats_new_last_viewed_version_key, currentVersion() );
+    //     editor.apply();
+    // }
+
+    // private int currentVersion() {
+        // int versionCode = 0;
+        // try {
+        //     versionCode = getPackageManager().getPackageInfo( getPackageName(), 0 ).versionCode;
+        // }
+        // catch ( PackageManager.NameNotFoundException e ) {
+        // }
+    //     return versionCode;
+    // }
+
+    private void showWhatsNewDialog() {
+        whatsNewDialog = new Dialog( this );
+        whatsNewDialog.setContentView( R_layout_whats_new_dialog() );
+        Button b = (Button)whatsNewDialog.findViewById( R_id_whats_new_dialog_continue_button() );
+        b.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick( View view ) {
+                whatsNewDialogCloseActions();
+            }
+        });
+        whatsNewDialog.setOnCancelListener( new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                whatsNewDialogCloseActions();
+            }
+        });
+        whatsNewDialog.show();
+    }
+
+    private void whatsNewDialogCloseActions() {
+        whatsNewDialog.dismiss();
+        whatsNewDialog = null;
+        startGame();
+    }
+
+    private void startGame() {
         progressDialog = ProgressDialog.show(this, "Starting...", "Loading game...", true, false);
         loading = true;
         loadingTask = new LoadTask().execute();
@@ -873,7 +947,11 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     @Override
     public void onBackPressed() {
-        if( map_view.getVisibility() == View.VISIBLE )
+        if( whatsNewDialog != null )
+            whatsNewDialogCloseActions();
+        else if( newGameWelcomeDialog != null )
+            newWelcomeDialogCloseActions();
+        else if( map_view.getVisibility() == View.VISIBLE )
             map_view.setVisibility( View.GONE );
         else if( walkthrough_scroll_view.getVisibility() == View.VISIBLE )
             walkthrough_scroll_view.setVisibility( View.GONE );

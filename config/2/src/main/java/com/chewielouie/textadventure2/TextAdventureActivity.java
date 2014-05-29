@@ -90,6 +90,14 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
         return R.id.score_text_view;
     }
 
+    protected int R_id_new_game_welcome_dialog_continue_button() {
+        return R.id.new_game_welcome_dialog_continue_button;
+    }
+
+    protected int R_id_whats_new_dialog_continue_button() {
+        return R.id.whats_new_dialog_continue_button;
+    }
+
     protected int R_layout_about_dialog() {
         return R.layout.about_dialog;
     }
@@ -104,6 +112,10 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
 
     protected int R_layout_new_game_welcome_dialog() {
         return R.layout.new_game_welcome_dialog;
+    }
+
+    protected int R_layout_whats_new_dialog() {
+        return R.layout.whats_new_dialog;
     }
 
     protected int R_raw_model_content() {
