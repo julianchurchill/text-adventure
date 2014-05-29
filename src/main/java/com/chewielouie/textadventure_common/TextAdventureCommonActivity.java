@@ -377,7 +377,6 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     protected boolean needToShowWhatsNew() {
         return getWhatsNewLastViewedVersion() < currentVersion();
-        // return true;
     }
 
     private int getWhatsNewLastViewedVersion() {
