@@ -39,11 +39,7 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [FEATURE] New game welcome dialog. Shown on any new game, but only then.
-  - DONE Basic dialog added
-  - Make custom dialog with parchment background and strings in strings.xml
-- [FEATURE] What's new dialog for first run of new version.
-  - Save the last version number for which the 'what's new' dialog was shown to avoid repeatedly showing it. Store text in strings.xml, assuming embedding newlines works.
+- [STORY] Ending is a bit of an anti-climax - how about the hero dies overpowered by the demon, then has to resurrect himself with one of the items left (mushroom?) and can then kill the demon. Or kills the demon as a ghost and then resurrects himself?
 - [FEATURE] Map - extras
     - Make better masks and a better map! Charlies on the case.
 - [BUG] 9-patch button images have the occasional non-transparent pixels around the edges (shows in build errors) and more importantly has a few pixels of parchment in the 'burnt' out edges that break the smooth button list effect.
@@ -209,6 +205,8 @@ Marketing
 TTA1 v2.2.x/TTA2 v1.0.x
 ---
 
+- [FEATURE] New game welcome dialog.
+- [FEATURE] What's new dialog for first run of a new version.
 - [FEATURE] A quick hint feature is available through the menu.
 - [FEATURE] A step-by-step walkthrough in plain English is now available. The displayed text is faded up to the current scored position.
 - [FEATURE] One shot contextual text can be displayed on entering a room and is then proceeded by the normal room description.

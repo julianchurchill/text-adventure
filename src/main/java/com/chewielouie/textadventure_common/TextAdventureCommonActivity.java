@@ -342,9 +342,16 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         loading = false;
     }
 
+    private Dialog createDialogWithNoTitle( int layoutResourceID )
+    {
+        Dialog d = new Dialog( this );
+        d.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        d.setContentView( layoutResourceID );
+        return d;
+    }
+
     private void showNewGameWelcomeDialog() {
-        newGameWelcomeDialog = new Dialog( this );
-        newGameWelcomeDialog.setContentView( R_layout_new_game_welcome_dialog() );
+        newGameWelcomeDialog = createDialogWithNoTitle( R_layout_new_game_welcome_dialog() );
         Button b = (Button)newGameWelcomeDialog.findViewById( R_id_new_game_welcome_dialog_continue_button() );
         b.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -400,8 +407,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void showWhatsNewDialog() {
-        whatsNewDialog = new Dialog( this );
-        whatsNewDialog.setContentView( R_layout_whats_new_dialog() );
+        whatsNewDialog = createDialogWithNoTitle( R_layout_whats_new_dialog() );
         Button b = (Button)whatsNewDialog.findViewById( R_id_whats_new_dialog_continue_button() );
         b.setOnClickListener( new View.OnClickListener() {
             @Override

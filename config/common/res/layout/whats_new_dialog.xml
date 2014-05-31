@@ -1,8 +1,8 @@
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:id="@+id/relativeLayout"
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/linearLayout"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
@@ -11,35 +11,34 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold|italic"
         android:text="@string/whats_new_dialog_title"
+        android:typeface="serif"
         android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true" />
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/whats_new_dialog_continue_button"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:id="@+id/whats_new_dialog_continue_button" />
+        android:gravity="center"
+        android:layout_gravity="top"/>
 
     <ScrollView
         android:id="@+id/main_text_output_scroll_view"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:fillViewport="true"
-        android:layout_below="@+id/textView"
-        android:layout_above="@+id/whats_new_dialog_continue_button">
+        android:layout_weight="1">
 
         <TextView
             android:background="@drawable/paper38f"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.Medium"
             android:text="@string/whats_new_dialog_text"
             android:textColor="#000000"
             android:typeface="serif" />
     </ScrollView>
-</RelativeLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/whats_new_dialog_continue_button"
+        android:typeface="serif"
+        android:layout_gravity="bottom"
+        android:id="@+id/whats_new_dialog_continue_button" />
+</LinearLayout>
