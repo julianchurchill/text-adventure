@@ -3,7 +3,6 @@ package REPLACE_ME;
 import java.lang.reflect.Field;
 import android.graphics.Bitmap;
 
-import com.chewielouie.textadventure2.R;
 import com.chewielouie.textadventure_common.TextAdventureCommonActivity;
 import com.chewielouie.textadventure.BasicModelFactory;
 import com.chewielouie.textadventure.RendersView;
