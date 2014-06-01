@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tiny Text Adventure 1</string>
+    <string name="whats_new_dialog_text">V1.0.8
+\n
+\n- New story
+\n- Map
+\n- Quick hints system
+</string>
 </resources>
