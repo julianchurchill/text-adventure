@@ -40,6 +40,7 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - [STORY] Ending is a bit of an anti-climax - how about the hero dies overpowered by the demon, then has to resurrect himself with one of the items left (mushroom?) and can then kill the demon. Or kills the demon as a ghost and then resurrects himself?
+- [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
 - [FEATURE] Map - extras
     - Make better masks and a better map! Charlies on the case.
 - [BUG] 9-patch button images have the occasional non-transparent pixels around the edges (shows in build errors) and more importantly has a few pixels of parchment in the 'burnt' out edges that break the smooth button list effect.
@@ -237,6 +238,7 @@ TTA1 v2.2.x/TTA2 v1.0.x
   - [FIX] NormalItems are equal in terms of 'name' and 'description', making the two yak_zappers equivalent for Location.removeItem()::ArrayList::remove() cos it uses the hashCode. This also the same for LocationExit objects... Very bad!!!
 - [BUG] <newline> in 'talk response', 'location description' and 'location text to show on first entry' are not obeyed.
   - [FIX] Swap <newline> for '\n' when parsing these elements
+- [BUG] Main text is not always visible around the edges on a smaller display - added a little padding liike the 'new game welcome' dialog has by default.
 
 - [TECHNICAL TASK] Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
   - Mask images should be auto found by looking for resources starting with area-id. E.g. the mask filename for the town-area should be town-area_mask.png

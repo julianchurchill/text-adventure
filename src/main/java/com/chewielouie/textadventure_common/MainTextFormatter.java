@@ -220,6 +220,7 @@ public class MainTextFormatter {
         addExitActionHandler( startIndex, endIndex, exit );
         builder.setSpan( new ForegroundColorSpan( selectExitColor( exit ) ),
                       startIndex, endIndex, 0 );
+        builder.setSpan( new StyleSpan( Typeface.ITALIC ), startIndex, endIndex, 0 );
     }
 
     private void terminateSpannableClickRegion() {
