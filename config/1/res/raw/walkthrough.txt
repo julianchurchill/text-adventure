@@ -1,0 +1,59 @@
+# score 0
+#
+# waypoint 00_start_of_game
+take skeleton key
+go east
+go ramshackle shed
+take spade
+examine bags of junk
+take clock hour hand
+go west
+go west
+go west
+use spade with mound of earth
+take clock face
+go east
+go north
+take dust of the ancients
+go north
+take clock minute hand
+use skeleton key with locked door
+go clock tower door
+go up
+go up
+use clock face with clock mechanism
+use clock hour hand with clock mechanism
+use clock minute hand with clock mechanism
+# quick hint:A clock unticked is a clock half struck
+# score +1
+go down
+go down
+go clock tower door
+go south
+go south
+go east
+go mineshaft entrance
+go dimly lit annex
+examine chunk of metal
+go even smaller annex
+examine pile of straw
+take wooden pole
+go dimly lit annex
+use wooden pole with axe head
+take blunk pick axe
+go east
+go dark tunnel
+go south
+go candle lit chamber
+examine table
+take map
+go smithy
+use blunt pick axe with sharpening wheel
+take pick axe
+go candle lit chamber
+go dark tunnel
+go south
+use pick axe with rock
+use map with shop keeper
+# quick hint:Dark mines are always worth investigating
+# score +1
