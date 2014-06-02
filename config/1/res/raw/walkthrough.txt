@@ -42,7 +42,7 @@ examine pile of straw
 take wooden pole
 go dimly lit annex
 use wooden pole with axe head
-take blunt pick axe
+take bluntG pick axe
 go east
 go dark tunnel
 go south
@@ -60,4 +60,4 @@ use map with shop keeper
 # quick hint:Dark mines are always worth investigating
 # score +1
 #
-# waypoint 01_rescued_shop_keeper
+# waypoint 02_rescued_shop_keeper
