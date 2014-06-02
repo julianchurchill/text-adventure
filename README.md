@@ -39,12 +39,13 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
+- [BUG] New game welcome screen did not show after what's new dialog for TTA1 fresh install on emulator
+l- [FEATURE] Write a walkthrough for TTA1
 - [STORY] Ending is a bit of an anti-climax - how about the hero dies overpowered by the demon, then has to resurrect himself with one of the items left (mushroom?) and can then kill the demon. Or kills the demon as a ghost and then resurrects himself?
 - [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
 - [FEATURE] Map - extras
     - Make better masks and a better map! Charlies on the case.
 - [BUG] 9-patch button images have the occasional non-transparent pixels around the edges (shows in build errors) and more importantly has a few pixels of parchment in the 'burnt' out edges that break the smooth button list effect.
-- [FEATURE] Write a walkthrough for TTA1
 - [BUG] Occasionally the 9-patch bottom strip is partially drawn over the text at the bottom of the screen. Ensure the bottom padding is enough that the text is never drawn at the same position as the 9-patch strip.
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?
   - FIX Other possible fix is to pad the textview with a single line of blank text after the rest of the text is in place. Same idea as we already do with adding a single " " to stop the clickable span extending to the end of the line.

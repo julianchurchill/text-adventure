@@ -26,6 +26,8 @@ use clock hour hand with clock mechanism
 use clock minute hand with clock mechanism
 # quick hint:A clock unticked is a clock half struck
 # score +1
+#
+# waypoint 01_fixed_clock
 go down
 go down
 go clock tower door
@@ -40,7 +42,7 @@ examine pile of straw
 take wooden pole
 go dimly lit annex
 use wooden pole with axe head
-take blunk pick axe
+take blunt pick axe
 go east
 go dark tunnel
 go south
@@ -57,3 +59,5 @@ use pick axe with rock
 use map with shop keeper
 # quick hint:Dark mines are always worth investigating
 # score +1
+#
+# waypoint 01_rescued_shop_keeper
