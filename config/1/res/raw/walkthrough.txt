@@ -125,3 +125,82 @@ go down
 go down
 go passageway
 use old dirty bone with massive wolf
+go door
+talk to burly brigand
+say your costume is amazing
+say and your shoes look so authentic
+say your hair is so shiny
+say you were very fierce
+go reinforced door
+go tough wooden door
+talk to voice activated safe
+say hello
+say fnargl
+say bendlebox
+say floomembrow
+#
+# waypoint 04_opened_safe
+take necklace
+use dust of the ancients with necklace
+# quick hint:A missing trinket, a mysterious church and a hiding place...
+# score +1
+go tough wooden door
+go reinforced door
+go door
+go passageway
+go up
+go up
+go east
+go east
+go east
+go east
+go east
+go east
+go east
+go south
+go south
+go east
+go east
+go east
+go east
+go east
+go east
+go north
+talk to wealthy merchant
+say hello
+say I found it in a crypt
+say here is the necklace
+#
+# waypoint 05_necklace_delivered_to_oren
+go front door
+go study
+talk to lady
+say I've found your necklace
+say I was just doing my duty
+say I would be honoured
+use pick axe with lady
+take enchanted pick axe
+take food and wine
+go hallway
+go porch
+go south
+go west
+go west
+go clock tower
+go west
+go west
+go west
+go north
+go north
+go north
+go east
+go east
+use food and wine with friar
+talk to friar
+say can I enter the friary
+say I'm here to fix the toilets
+go friary entrance
+#
+# waypoint 06_entered_the_friary
+
+

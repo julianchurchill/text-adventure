@@ -40,6 +40,7 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - [FEATURE] Write a walkthrough for TTA1
+- [FEATURE] TTA1 could do with more score increments... update the walkthrough to reflect it too and add more quick hints
 - [BUG] New game welcome screen did not show after what's new dialog for TTA1 fresh install on emulator
 - [UI] Improve the about dialog. Add credits for Charlie + Kickstarter backers. Add parchment background and serif font.
 - [STORY] Ending is a bit of an anti-climax - how about the hero dies overpowered by the demon, then has to resurrect himself with one of the items left (mushroom?) and can then kill the demon. Or kills the demon as a ghost and then resurrects himself?
