@@ -61,3 +61,67 @@ use map with shop keeper
 # score +1
 #
 # waypoint 02_rescued_shop_keeper
+go north
+go north
+go north
+go outside
+go west
+go north
+go merchants lane
+go general store
+talk to shop keeper
+say hello
+say I just came to check in
+say I was looking for some work
+take decoder ring
+go outside
+go east
+go north
+go east
+go east
+go east
+go north
+talk to wealthy merchant
+say hello
+go south
+go west
+go west
+go clock tower
+go west
+go west
+go west
+go north
+go north
+go west
+examine raging ansible
+go south
+examine raging ansible
+go west
+examine raging ansible
+go north
+examine raging ansible
+go north
+examine raging ansible
+examine headstone
+use decoder ring with headstone
+examine headstone
+#
+# waypoint 03_decoded_headstone
+go east
+examine pile of leaves
+take frayed rope
+go south
+go south
+go west
+go west
+examine pile of leaves
+take old dirty bone
+go north
+go west
+go west
+go west
+use frayed rope with candlestick
+go down
+go down
+go passageway
+use old dirty bone with massive wolf
