@@ -219,7 +219,7 @@ say finish with a full rotator cuff backflip
 #
 # waypoint 07_solved_rubriks_puzzle
 go down
-do down
+go down
 go down
 go south
 go door
@@ -248,7 +248,6 @@ take silk blood
 go north
 go west
 go south
-go west
 go west
 go west
 go west
