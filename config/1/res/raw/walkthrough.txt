@@ -202,5 +202,106 @@ say I'm here to fix the toilets
 go friary entrance
 #
 # waypoint 06_entered_the_friary
-
-
+go north
+go north
+go tower stairs
+go up
+go up
+go up
+talk to librarian
+say excuse me friar
+say can I help you?
+say sure lets solve it
+say rightwise untwistwise
+say back face upsy and forward
+say lateral hemisphere rotation over 5 seconds
+say finish with a full rotator cuff backflip
+#
+# waypoint 07_solved_rubriks_puzzle
+go down
+do down
+go down
+go south
+go door
+go east
+use multitool with loose flagstone
+go down
+go narrow tunnel
+take dirty scapula
+go out
+go up
+use dirty scapula with wash basin
+# quick hint:If it's bones you're after, then an Ossary is where you want to look
+# score +1
+take scapula
+go door
+go undergrowth
+go east
+go south
+take witches bane
+use spade with silk blood
+# quick hint:Friaries often have herb gardens hidden out the back
+# score +1
+take silk blood
+#
+# waypoint 08_got_silk_blood
+go north
+go west
+go south
+go west
+go west
+go west
+go west
+go south
+go south
+go west
+go west
+go west
+go south
+go south
+go south
+go east
+go east
+go east
+go south
+go south
+go east
+go mineshaft entrance
+go dark tunnel
+go south
+go south
+use enchanted pick axe with glowing seam
+use enchanted pick axe with glowing seam
+use enchanted pick axe with glowing seam
+# quick hint:The best place to find an unusual rock is probably a mine
+# score +1
+take arc stone
+#
+# waypoint 09_got_arc_stone
+go north
+go north
+go north
+go outside
+go west
+go north
+go north
+go east
+go east
+go east
+go north
+go front door
+go study
+#
+# waypoint 10_delivering_the_goods_to_bella
+use silk blood with lady
+use scapula with lady
+use arc stone with lady
+talk to lady
+say what is happening?
+say that doesn't smell like a love potion
+say I don't understand!
+use witches bane with lady
+# quick hint:Delivery time!
+# score +1
+#
+# waypoint 11_beaten_the_witch
