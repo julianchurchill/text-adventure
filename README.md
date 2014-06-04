@@ -39,7 +39,6 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [FEATURE] Write a walkthrough for TTA1
 - [FEATURE] TTA1 could do with more score increments... update the walkthrough to reflect it too and add more quick hints
 - [BUG] New game welcome screen did not show after what's new dialog for TTA1 fresh install on emulator
 - [UI] Improve the about dialog. Add credits for Charlie + Kickstarter backers. Add parchment background and serif font.
@@ -211,6 +210,7 @@ Marketing
 TTA1 v2.2.x/TTA2 v1.0.x
 ---
 
+- [FEATURE] Written walkthrough for TTA1 and TTA2
 - [FEATURE] New game welcome dialog.
 - [FEATURE] What's new dialog for first run of a new version.
 - [FEATURE] A quick hint feature is available through the menu.

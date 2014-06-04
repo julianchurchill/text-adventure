@@ -1,0 +1,148 @@
+action name:take an item:location id:townentrance:
+action name:take specific item:item id:clocktowerskeletonkey:location id:townentrance:
+action name:exit:exit id:townentranceeast:
+action name:exit:exit id:outsideamineshafteast:
+action name:take an item:location id:smallshed:
+action name:take specific item:item id:spade:location id:smallshed:
+action name:examine an item:
+action name:examine:item id:bagsofjunk:
+action name:take an item:location id:smallshed:
+action name:take specific item:item id:clockhourhand:location id:smallshed:
+action name:exit:exit id:smallshedwest:
+action name:exit:exit id:outsideamineshaftwest:
+action name:exit:exit id:townentrancewest:
+action name:show inventory:
+action name:inventory item:item id:spade:location id:townoutbuildings:
+action name:use with:item id:spade:location id:townoutbuildings:
+action name:use with specific item:item id:spade:extra item id:moundofearth:
+action name:take an item:location id:townoutbuildings:
+action name:take specific item:item id:clockface:location id:townoutbuildings:
+action name:exit:exit id:townoutbuildingseast:
+action name:exit:exit id:townentrancenorth:
+action name:take an item:location id:mainstreettown:
+action name:take specific item:item id:dustoftheancients:location id:mainstreettown:
+action name:exit:exit id:mainstreettownnorth:
+action name:take an item:location id:clocktower:
+action name:take specific item:item id:clockminutehand:location id:clocktower:
+action name:show inventory:
+action name:inventory item:item id:clocktowerskeletonkey:location id:clocktower:
+action name:use with:item id:clocktowerskeletonkey:location id:clocktower:
+action name:use with specific item:item id:clocktowerskeletonkey:extra item id:lockeddoor:
+action name:exit:exit id:clocktowerdoor:
+action name:exit:exit id:groundfloorclocktowerup:
+action name:exit:exit id:firstfloorclocktowerup:
+action name:show inventory:
+action name:inventory item:item id:clockface:location id:secondfloorclocktower:
+action name:use with:item id:clockface:location id:secondfloorclocktower:
+action name:use with specific item:item id:clockface:extra item id:clockmechanism:
+action name:show inventory:
+action name:inventory item:item id:clockhourhand:location id:secondfloorclocktower:
+action name:use with:item id:clockhourhand:location id:secondfloorclocktower:
+action name:use with specific item:item id:clockhourhand:extra item id:clockmechanismwithface:
+action name:show inventory:
+action name:inventory item:item id:clockminutehand:location id:secondfloorclocktower:
+action name:use with:item id:clockminutehand:location id:secondfloorclocktower:
+action name:use with specific item:item id:clockminutehand:extra item id:clockmechanismwithfaceandhourhand:
+action name:exit:exit id:secondfloorclocktowerdown:
+action name:exit:exit id:firstfloorclocktowerdown:
+action name:exit:exit id:groundfloorclocktowerdoor:
+action name:exit:exit id:clocktowersouth:
+action name:exit:exit id:mainstreettownsouth:
+action name:exit:exit id:townentranceeast:
+action name:exit:exit id:mineshaftentrance:
+action name:exit:exit id:mineshaftchamber1annex:
+action name:examine an item:
+action name:examine:item id:axehead:
+action name:exit:exit id:dimlylitannexevensmallerannex:
+action name:examine an item:
+action name:examine:item id:pileofstraw:
+action name:take an item:location id:evensmallerannex:
+action name:take specific item:item id:woodenpole:location id:evensmallerannex:
+action name:exit:exit id:evensmallerannexdimlylitannex:
+action name:show inventory:
+action name:inventory item:item id:woodenpole:location id:dimlylitannex:
+action name:use with:item id:woodenpole:location id:dimlylitannex:
+action name:use with specific item:item id:woodenpole:extra item id:axehead:
+action name:take an item:location id:dimlylitannex:
+action name:take specific item:item id:bluntpickaxe:location id:dimlylitannex:
+action name:exit:exit id:dimlylitannexeast:
+action name:exit:exit id:mineshaftchamber1darktunnel:
+action name:exit:exit id:darktunnel1south:
+action name:exit:exit id:darktunnel2candlelitchamber:
+action name:examine an item:
+action name:examine:item id:table:
+action name:take an item:location id:candlelitchamber:
+action name:take specific item:item id:minemap:location id:candlelitchamber:
+action name:exit:exit id:candlelitchambersmithy:
+action name:show inventory:
+action name:inventory item:item id:bluntpickaxe:location id:minesmithy:
+action name:use with:item id:bluntpickaxe:location id:minesmithy:
+action name:use with specific item:item id:bluntpickaxe:extra item id:sharpeningwheel:
+action name:take an item:location id:minesmithy:
+action name:take specific item:item id:pickaxe:location id:minesmithy:
+action name:exit:exit id:minesmithycandlelitchamber:
+action name:exit:exit id:candlelitchamberdarktunnel:
+action name:exit:exit id:darktunnel2south:
+action name:show inventory:
+action name:inventory item:item id:pickaxe:location id:smallminechamber:
+action name:use with:item id:pickaxe:location id:smallminechamber:
+action name:use with specific item:item id:pickaxe:extra item id:rock:
+action name:show inventory:
+action name:inventory item:item id:minemap:location id:smallminechamber:
+action name:use with:item id:minemap:location id:smallminechamber:
+action name:use with specific item:item id:minemap:extra item id:shopkeeper:
+action name:exit:exit id:smallminechambernorth:
+action name:exit:exit id:darktunnel2north:
+action name:exit:exit id:darktunnel1north:
+action name:exit:exit id:mineshaftchamber1outside:
+action name:exit:exit id:outsideamineshaftwest:
+action name:exit:exit id:townentrancenorth:
+action name:exit:exit id:merchantslaneentrance:
+action name:exit:exit id:merchantslanenorth:
+action name:talk:item id:generalstoreshopkeeper:
+action name:say:string:hello:item id:generalstoreshopkeeper:
+action name:say:string:checkin:item id:generalstoreshopkeeper:
+action name:say:string:lookingforwork:item id:generalstoreshopkeeper:
+action name:take an item:location id:generalstore:
+action name:take specific item:item id:decoderring:location id:generalstore:
+action name:exit:exit id:generalstoreoutside:
+action name:exit:exit id:merchantslaneeast:
+action name:exit:exit id:mainstreettownnorth:
+action name:exit:exit id:clocktower_to_nobles_quarter_west_street:
+action name:exit:exit id:nobles_quarter_west_street_to_nobles_quarter_middle_street:
+action name:exit:exit id:nobles_quarter_middle_street_to_nobles_quarter_east_street:
+action name:exit:exit id:nobles_quarter_east_street_to_orens_porch:
+action name:talk:item id:grumpy_oren:
+action name:say:string:hello:item id:grumpy_oren:
+action name:exit:exit id:orens_porch_to_nobles_quarter_east_street:
+action name:exit:exit id:nobles_quarter_east_street_to_nobles_quarter_middle_street:
+action name:exit:exit id:nobles_quarter_middle_street_to_nobles_quarter_west_street:
+action name:exit:exit id:nobles_quarter_west_street_to_clocktower:
+action name:exit:exit id:clocktower_to_cobbledroad:
+action name:exit:exit id:cobbledroad_to_morecobbledroad:
+action name:exit:exit id:morecobbledroad_to_westgatehouse:
+action name:exit:exit id:westgatehouse_to_dirttrack:
+action name:exit:exit id:dirttrack_to_moredirttrack:
+action name:exit:exit id:moredirttrack_to_churchyardeast:
+action name:examine an item:
+action name:examine:item id:ragingansible_churchyardeast:
+action name:exit:exit id:churchyardeast_to_churchyardsoutheast:
+action name:examine an item:
+action name:examine:item id:ragingansible_churchyardsoutheast:
+action name:exit:exit id:churchyardsoutheast_to_churchyardsouth:
+action name:examine an item:
+action name:examine:item id:ragingansible_churchyardsouth:
+action name:exit:exit id:churchyardsouth_to_churchyardmiddle:
+action name:examine an item:
+action name:examine:item id:ragingansible_churchyardmiddle:
+action name:exit:exit id:churchyardmiddle_to_churchyardnorth:
+action name:examine an item:
+action name:examine:item id:ragingansible_churchyardnorth:
+action name:examine an item:
+action name:examine:item id:headstone:
+action name:show inventory:
+action name:inventory item:item id:decoderring:location id:churchyardnorth:
+action name:use with:item id:decoderring:location id:churchyardnorth:
+action name:use with specific item:item id:decoderring:extra item id:headstone:
+action name:examine an item:
+action name:examine:item id:headstone:
