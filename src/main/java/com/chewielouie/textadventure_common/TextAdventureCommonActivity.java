@@ -741,6 +741,21 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void showAboutDialog() {
+        // Dialog dialog = createDialogWithNoTitle( R_layout_new_game_welcome_dialog() );
+        // TextView title = (TextView)dialog.findViewById( R_id_about_dialog_title() );
+        // String versionName = "";
+        // try {
+        //     versionName = getPackageManager().getPackageInfo( getPackageName(), 0 ).versionName;
+        // }
+        // catch ( PackageManager.NameNotFoundException e ) {
+        // }
+        // title.setText( getResources().getString( R_string_app_name() ) +
+        //                  " v" + versionName );
+        // // Enable clickable links within the about dialog main text
+        // TextView mainText = (TextView)dialog.findViewById( R_id_about_dialog_main_text() );
+        // mainText.setMovementMethod( LinkMovementMethod.getInstance() );
+        // dialog.show();
+
         Dialog dialog = new Dialog( this );
         dialog.setContentView( R_layout_about_dialog() );
 
