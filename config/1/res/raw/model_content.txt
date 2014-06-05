@@ -1,5 +1,5 @@
 PROPERTIES
-maximum score:7
+maximum score:15
 
 INVENTORY ITEM
 item name:Pocket lint
@@ -638,6 +638,7 @@ item talk action in response to:lookingforwork:change location description:clock
 item talk action in response to:lookingforwork:change item visibility:decoderring:visible
 item talk action in response to:lookingforwork:change item visibility:generalstoreshopkeeper:invisible
 item talk action in response to:lookingforwork:change item visibility:generalstoreshopkeeper2:visible
+item talk action in response to:lookingforwork:increment score:
 
 item talk initial phrase:lookingwell:You're looking well...:You say "You're looking well friend.".
 item talk response to:lookingwell:The Shop keeper replies "Why thank you, it's all down to you my friend.".
@@ -987,6 +988,7 @@ item talk follow up phrase to:can_i_enter_the_friary:i_want_to_join_your_order:I
 item talk follow up phrase to:can_i_enter_the_friary:i_am_here_to_fix_the_toilets:I'm here to fix the toilets:You say "I'm here to fix the toilets - I understand you have a very serious blockage.".
 item talk response to:i_am_here_to_fix_the_toilets:The friar looks at you with some concern, hesitates and then points at the gate, gesturing that you should proceed quickly.
 item talk action in response to:i_am_here_to_fix_the_toilets:change exit visibility:friary_gates_to_friary_entrance:visible
+item talk action in response to:i_am_here_to_fix_the_toilets:increment score:
 
 LOCATION
 x:300
@@ -1155,6 +1157,7 @@ item talk response to:finish_with_a_full_rotator_cuff_backflip:Without a second 
 item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change item visibility:loose_flagstone:visible
 item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change item visibility:librarian_friar:invisible
 item talk action in response to:finish_with_a_full_rotator_cuff_backflip:change item visibility:librarian_friar_solved:visible
+item talk action in response to:finish_with_a_full_rotator_cuff_backflip:increment score:
 item talk follow up phrase to:lateral_hemisphere_rotation_over_5_seconds:jazz_hands:A flurry, a Pas de Chat and jazz hands?:You say "How about a flurry, a Pas de Chat and finally Jazz hands!".
 item talk response to:jazz_hands:The friar readies himself and launches into a bizarre contortion of modern dance and flash jazz, as he lands he thrusts his arms out and waves his hands for all he's worth - the best Jazz hands you've ever seen. He looks at the cube with concern. "I think that made it worse.".
 item talk follow up phrase to:jazz_hands:jazz_hands
@@ -1640,6 +1643,7 @@ item successful use message:You are slightly amazed and much amused that the dec
 item use action:destroy item:decoderring
 item use action:change item description:The headstone has writing on it but not in any language that you have ever seen before. Next to the garbled script is the following phrase that you previously decoded and scratched here for posterity - "Search well at the altar of the headless saint and let truth light your path."
 item use action:change item visibility:candlestick:visible
+item use action:increment score:
 
 LOCATION
 x:060
@@ -1900,6 +1904,7 @@ item use is not repeatable:
 item successful use message:You throw the bone at the wolf and it hits him squarely between the eyes. He growls and looks mightily unimpressed, preparing himself to pounce upon you and get a decent meal - when his nose starts to twitch and he looks down at the bone. You thank your lucky stars as the wolf sniffs and licks the bone, picking it up in his jaws and taking it to a corner of the room allowing you to reach the door at the end of the room.
 item use action:destroy item:tastybone
 item use action:change exit visibility:churchcryptpassageway_to_churchcrypt_litroom:visible
+item use action:increment score:
 
 LOCATION
 x:-540
@@ -2142,6 +2147,7 @@ item talk response to:floomembrow:"Fantastic! You've got it right.". The safe do
 item talk action in response to:floomembrow:change item visibility:voice_activated_safe:invisible
 item talk action in response to:floomembrow:change item visibility:unlocked_voice_activated_safe:visible
 item talk action in response to:floomembrow:change item visibility:sapphire_necklace:visible
+item talk action in response to:floomembrow:increment score:
 
 ITEM
 item name:Voice activated safe
@@ -2265,6 +2271,7 @@ item talk action in response to:here_it_is:change item visibility:bluenoticeboar
 item talk action in response to:here_it_is:change item visibility:rubynoticeboard:visible
 item talk action in response to:here_it_is:change item visibility:amiable_oren:invisible
 item talk action in response to:here_it_is:change item visibility:relieved_oren:visible
+item talk action in response to:here_it_is:increment score:
 
 ITEM
 item name:Wealthy merchant
@@ -2366,6 +2373,7 @@ item use action:change item visibility:arc_stone_seam_1:visible
 item use action:change item visibility:lady_bella_2:invisible
 item use action:change item visibility:lady_bella_3:visible
 item use action:change item visibility:food_and_wine:visible
+item use action:increment score:
 
 item talk initial phrase:canyouremindme:Can you remind me of what I need to do next?:You say "My lady, I apologise deeply but I am a forgetful fool and have forgotten what it was that I need to do next."
 item talk response to:canyouremindme:Lady Bella looks up at you and puts her book down on the desk. "Of course my child - bring me a pick axe - so that I might cast an enchantment upon it for you to use the pick axe to find an arc stone."

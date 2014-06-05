@@ -42,7 +42,7 @@ examine pile of straw
 take wooden pole
 go dimly lit annex
 use wooden pole with axe head
-take bluntG pick axe
+take blunt pick axe
 go east
 go dark tunnel
 go south
@@ -73,6 +73,8 @@ talk to shop keeper
 say hello
 say I just came to check in
 say I was looking for some work
+# quick hint:To find out some local knowledge talk to some locals
+# score +1
 take decoder ring
 go outside
 go east
@@ -105,6 +107,8 @@ examine raging ansible
 examine headstone
 use decoder ring with headstone
 examine headstone
+# quick hint:Try exploring outside of town
+# score +1
 #
 # waypoint 03_decoded_headstone
 go east
@@ -125,6 +129,8 @@ go down
 go down
 go passageway
 use old dirty bone with massive wolf
+# quick hint:Dogs love a bone
+# score +1
 go door
 talk to burly brigand
 say your costume is amazing
@@ -138,11 +144,13 @@ say hello
 say fnargl
 say bendlebox
 say floomembrow
+# quick hint:Clues are often left on pieces of paper, just lying around
+# score +1
 #
 # waypoint 04_opened_safe
 take necklace
 use dust of the ancients with necklace
-# quick hint:A missing trinket, a mysterious church and a hiding place...
+# quick hint:The necklace can only be returned if it is recognisable
 # score +1
 go tough wooden door
 go reinforced door
@@ -170,6 +178,8 @@ talk to wealthy merchant
 say hello
 say I found it in a crypt
 say here is the necklace
+# quick hint:Weren't you delivering something to its rightful owner?
+# score +1
 #
 # waypoint 05_necklace_delivered_to_oren
 go front door
@@ -179,6 +189,8 @@ say I've found your necklace
 say I was just doing my duty
 say I would be honoured
 use pick axe with lady
+# quick hint:You should take the lady up on her offer
+# score +1
 take enchanted pick axe
 take food and wine
 go hallway
@@ -199,6 +211,8 @@ use food and wine with friar
 talk to friar
 say can I enter the friary
 say I'm here to fix the toilets
+# quick hint:Explore the outskirts of town
+# score +1
 go friary entrance
 #
 # waypoint 06_entered_the_friary
@@ -216,6 +230,8 @@ say rightwise untwistwise
 say back face upsy and forward
 say lateral hemisphere rotation over 5 seconds
 say finish with a full rotator cuff backflip
+# quick hint:It's good for the soul to take time out to helping someone in need
+# score +1
 #
 # waypoint 07_solved_rubriks_puzzle
 go down
