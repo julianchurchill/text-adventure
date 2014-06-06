@@ -42,6 +42,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -111,6 +112,8 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_id_score_text_view();
     abstract protected int R_id_new_game_welcome_dialog_continue_button();
     abstract protected int R_id_whats_new_dialog_continue_button();
+    abstract protected int R_id_about_dialog_title();
+    abstract protected int R_id_about_dialog_main_text();
     abstract protected int R_layout_about_dialog();
     abstract protected int R_layout_main();
     abstract protected int R_layout_options_dialog();
@@ -136,6 +139,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_string_new_game_welcome_dialog_title();
     abstract protected int R_string_new_game_welcome_dialog_text();
     abstract protected int R_string_new_game_welcome_dialog_continue_button();
+    abstract protected int R_string_about_dialog_text();
     abstract protected Field[] R_raw_class_getFields();
     abstract protected int R_style_WaypointDialogTheme();
 
@@ -741,33 +745,19 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void showAboutDialog() {
-        // Dialog dialog = createDialogWithNoTitle( R_layout_new_game_welcome_dialog() );
-        // TextView title = (TextView)dialog.findViewById( R_id_about_dialog_title() );
-        // String versionName = "";
-        // try {
-        //     versionName = getPackageManager().getPackageInfo( getPackageName(), 0 ).versionName;
-        // }
-        // catch ( PackageManager.NameNotFoundException e ) {
-        // }
-        // title.setText( getResources().getString( R_string_app_name() ) +
-        //                  " v" + versionName );
-        // // Enable clickable links within the about dialog main text
-        // TextView mainText = (TextView)dialog.findViewById( R_id_about_dialog_main_text() );
-        // mainText.setMovementMethod( LinkMovementMethod.getInstance() );
-        // dialog.show();
-
-        Dialog dialog = new Dialog( this );
-        dialog.setContentView( R_layout_about_dialog() );
-
+        Dialog dialog = createDialogWithNoTitle( R_layout_about_dialog() );
         String versionName = "";
         try {
             versionName = getPackageManager().getPackageInfo( getPackageName(), 0 ).versionName;
         }
         catch ( PackageManager.NameNotFoundException e ) {
         }
-        dialog.setTitle( getResources().getString( R_string_app_name() ) +
-                         " v" + versionName );
-
+        TextView title = (TextView)dialog.findViewById( R_id_about_dialog_title() );
+        title.setText( getResources().getString( R_string_app_name() ) + "\n(v" + versionName + ")" );
+        TextView mainText = (TextView)dialog.findViewById( R_id_about_dialog_main_text() );
+        mainText.setText( Html.fromHtml( getString( R_string_about_dialog_text() ) ) );
+        // Enable clickable links within the about dialog main text
+        mainText.setMovementMethod( LinkMovementMethod.getInstance() );
         dialog.show();
     }
 

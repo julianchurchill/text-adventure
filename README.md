@@ -40,7 +40,7 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - [BUG] New game welcome screen did not show after what's new dialog for TTA1 fresh install on emulator
-- [UI] Improve the about dialog. Add credits for Charlie + Kickstarter backers. Add parchment background and serif font.
+- [UI] Add credits for Kickstarter backers to about dialog.
 - [STORY] Ending is a bit of an anti-climax - how about the hero dies overpowered by the demon, then has to resurrect himself with one of the items left (mushroom?) and can then kill the demon. Or kills the demon as a ghost and then resurrects himself?
 - [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
 - [FEATURE] Map - extras
@@ -219,14 +219,15 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [FEATURE] Added location area to title bar
 - [FEATURE] Smarter resume - all the text from the actions that have taken place in the current location is shown upon loading. Allows players to regain context much more easily - e.g. if they were in the middle of a conversation or half way through a puzzle.
 - [FEATURE] Enabled 'move to sd card'
+- [FEATURE] Text to speech
+  - Added a check box for TTS to the options dialog, saves as a preference, default is off
+- [UI] About dialog style brought in to line with the rest of the app.
 - [UI] Parchment background (from http://www.myfreetextures.com/worn-parchment-paper-2)
   - Added higher res background parchment image
 - [UI] Full width action buttons
 - [UI] HTML can be embedded in text descriptions and action messages. Not all HTML tags are supported. Supported HTML tags by this method on android can be found here: http://commonsware.com/blog/Android/2010/05/26/html-tags-supported-by-textview.html
   - HTML tag support in any description or text resultant from an action
   - Images are automatically centered, but must use wrap the img tag in <div align="center"></div> otherwise image will not be surrounded with line breaks and therefore will have nothing to be centred within. The align="center" property is redundant as it doesn't work but may be useful for future extensions so please include it.
-- [FEATURE] Text to speech
-  - Added a check box for TTS to the options dialog, saves as a preference, default is off
 - [UI] Action buttons have a complimentary style to the text background
 - [UI] Removed title bar to give more space for content
 - [UI] New icon for TTA2

@@ -94,6 +94,14 @@ public class TextAdventureDummyActivity extends TextAdventureCommonActivity {
         return R.id.whats_new_dialog_continue_button;
     }
 
+    protected int R_id_about_dialog_title() {
+        return R.id.about_dialog_title;
+    }
+
+    protected int R_id_about_dialog_main_text() {
+        return R.id.about_dialog_main_text;
+    }
+
     public int R_layout_about_dialog() {
         return R.layout.about_dialog;
     }
@@ -192,6 +200,10 @@ public class TextAdventureDummyActivity extends TextAdventureCommonActivity {
 
     protected int R_string_new_game_welcome_dialog_continue_button() {
         return R.string.new_game_welcome_dialog_continue_button;
+    }
+
+    protected int R_string_about_dialog_text() {
+        return R.string.about_dialog_text;
     }
 
     protected Field[] R_raw_class_getFields() {

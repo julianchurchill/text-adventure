@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">About</string>
-    <string name="aboutDialogText">Thanks for playing!
-\nFor any support issues please use the email address below.
-\n
-\nParchment background used with permission from http://www.myfreetextures.com
-\n
-\nAll images except the parchment background created by Charles Armitage.
-\n
-\nThanks for all those who have supported, tested and contributed to Tiny
-Text Adventure. A big shout out to everyone who support the kickstarter project
-to help improve TTA1 and bring TTA2 to life.
-\n
-\nYou can find <a href="https://play.google.com/store/apps/details?id=com.chewielouie.textadventure">TTA1 here on the play store</a>
+    <string name="about_dialog_text"><![CDATA[Thanks for playing!
+<p>For any support issues please use the email address below.</p>
+<p>Parchment background used with permission from <a href="http://www.myfreetextures.com">My Free Textures</a></p>
+<p>All images except the parchment background created by Charles Armitage.</p>
+<p>Thanks to all those who have supported, tested and contributed to Tiny
+Text Adventure. A big shout out to everyone who supported the kickstarter project
+to help improve TTA1 and bring TTA2 to life.</p>
+<p>You can find <a href="https://play.google.com/store/apps/details?id=com.chewielouie.textadventure">TTA1 here on the play store</a>
  and <a href="https://play.google.com/store/apps/details?id=com.chewielouie.textadventure2">TTA2 over here</a>.
-If you enjoyed these games please leave a review.
-\n
+If you enjoyed these games please leave a review.</p>]]>
 </string>
     <string name="email">chewielouie03+textadventure@gmail.com</string>
-    <string name="copyright">Copyright 2013 Julian Churchill</string>
+    <string name="copyright">Copyright 2014 Julian Churchill</string>
     <string name="new_game">New Game</string>
     <string name="new_game_title">New Game</string>
     <string name="new_game_confirmation_dialog_text">All progress will be lost. Are you sure?</string>
