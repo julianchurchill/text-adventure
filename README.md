@@ -41,6 +41,7 @@ Ordered by priority, first to do at the top.
 
 - [BUG] New game welcome screen did not show after what's new dialog for TTA1 fresh install on emulator
 - [UI] Add credits for Kickstarter backers to about dialog.
+- [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
 - [STORY] Ending is a bit of an anti-climax - how about the hero dies overpowered by the demon, then has to resurrect himself with one of the items left (mushroom?) and can then kill the demon. Or kills the demon as a ghost and then resurrects himself?
 - [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
 - [FEATURE] Map - extras
