@@ -39,8 +39,7 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [UI] Walkthrough screen could do with the parchment background and font styling to match the rest of the app.
-- [UI] Add credits for Kickstarter backers to about dialog.
+- [UI] Send Charlie rough blocked out map images based on story progression.
 - [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
 - [STORY] Ending is a bit of an anti-climax - how about the hero dies overpowered by the demon, then has to resurrect himself with one of the items left (mushroom?) and can then kill the demon. Or kills the demon as a ghost and then resurrects himself?
 - [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
@@ -222,6 +221,7 @@ TTA1 v2.2.x/TTA2 v1.0.x
 - [FEATURE] Enabled 'move to sd card'
 - [FEATURE] Text to speech
   - Added a check box for TTS to the options dialog, saves as a preference, default is off
+- [UI] Walkthrough screen style brought in to line with the rest of the app.
 - [UI] About dialog style brought in to line with the rest of the app.
 - [UI] Parchment background (from http://www.myfreetextures.com/worn-parchment-paper-2)
   - Added higher res background parchment image
