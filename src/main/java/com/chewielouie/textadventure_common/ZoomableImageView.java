@@ -57,6 +57,15 @@ public class ZoomableImageView extends ImageView implements OnTouchListener {
     }
 
     @Override
+    public void setVisibility( int visibility ) {
+        super.setVisibility( visibility );
+        // Reclaim memory used by the map bitmap (this is needed for API level 10 (2.3.3) and earlier)
+        // Otherwise we could use BitMapOptions.inBitmap and supply a cache bitmap to reuse
+        if( visibility == View.GONE && ourBitmap != null )
+            ourBitmap.recycle();
+    }
+
+    @Override
     public void onSizeChanged (int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         viewWidth = w;

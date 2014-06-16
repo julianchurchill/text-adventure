@@ -39,11 +39,7 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [FEATURE] Map - extras
-    - DONE Make better masks and a better map! Charlie's on the case.
-    - DONE Map should fit the width of the screen on showing
-    - Out of memory errors in emulator when showing the map more than once...
-    - Is the APK too big with the map reveals in? It's about 30MB debug, how big for release?
+- [TECHNICAL TASK] Is the APK too big with the map reveals in? It's about 30MB debug, how big for release?
 - [TECHNICAL TASK] In prepare.sh stop 'rm'ing the entire res structure and try to remove specific files that shouldn't be there. This will stop the map images being copied afresh and causing long, laborious rebuilds.
 - [STORY] Ending is a bit of an anti-climax - how about the hero dies overpowered by the demon, then has to resurrect himself with one of the items left (mushroom?) and can then kill the demon. Or kills the demon as a ghost and then resurrects himself?
 - [BUG] Story bug - the general store outside description should change to say 'door is open' after you put your arm in the hole
