@@ -436,10 +436,14 @@ go centre of the room
 # waypoint 21_burnt_the_witch
 examine Bella's corpse
 use Kris knife with Demon Witch
+use Kris knife with Demon Witch
 # quick hint:To kill a demon you need a special sort of weapon
 # score +1
 #
 # waypoint 22_killed_the_demon
+use mushroom with your ghost
+# quick hint:You need something potent, something that can heal even beyond the veil
+# score +1
 examine demon witch corpse
 use small black key with hanging cage
 # quick hint:Have you freed the girl?

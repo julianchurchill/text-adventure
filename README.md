@@ -39,10 +39,9 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [STORY] Ending is a bit of an anti-climax - how about the hero dies overpowered by the demon, then has to resurrect himself with one of the items left (mushroom?) and can then kill the demon. Or kills the demon as a ghost and then resurrects himself?
+- [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
 - [TECHNICAL TASK] Is the APK too big with the map reveals in? It's about 30MB debug, how big for release?
 - [TECHNICAL TASK] In prepare.sh stop 'rm'ing the entire res structure and try to remove specific files that shouldn't be there. This will stop the map images being copied afresh and causing long, laborious rebuilds.
-- [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
 - [UI] Consider allowing landscape view - what affect will this have on image positioning, maps, dialogs and so on?
 - [TECHNICAL TASK] - convert to gradle build system from ant
 - [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
@@ -316,7 +315,7 @@ TTA2 only
   - You must smash the invisible magic barrier with the shattering mace to get into the castle.
   - Final battle is in a central room with four platforms, north, south, east and west. On entering the witch gives a diatribe about how badass she is then appears on the north platform. She does not move if you go there and if you talk to her she mocks you.
     - Oubliette is in the centre in a hanging cage. You speak to her and she gives you some Wyrm's Tongue Powder and tells you to use it with fire as the witch hates it. Use it with the brazier on each platform to get the witch to move around the room, once al platforms are done she goes to the centre, plays dead until you examine her and then transforms into a demon.
-    - To beat her demon form you must use the kris knife and then you can get the cage key from the body . You free Oubliette, celebrate and the game ends.
+    - To beat her demon form you must use the kris knife and then the demon kills you. Use the kris knife while in ghost form to kill the demon and the eat the mushroom to restore yourself to life. Then you can get the cage key from the demon's corpse. You free Oubliette, celebrate and the game ends.
 
 - [MINOR STORY CORRECTION] Little girl is introduced as "Flechette" but her description remains a small girl".
 - [MINOR STORY CORRECTION] Once you've accepted Oubliette's mushroom challenge she disappears but if you try talking to the little girl you are told that the older girl pulls her back.
