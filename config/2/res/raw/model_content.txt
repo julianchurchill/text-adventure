@@ -256,6 +256,7 @@ item talk action in response to:whatsyourprice:change exit visibility:merchantsl
 item talk action in response to:whatsyourprice:change exit visibility:merchantslanenorth:visible
 item talk action in response to:whatsyourprice:change item visibility:disembodied_voice:invisible
 item talk action in response to:whatsyourprice:change item visibility:broken_door:invisible
+item talk action in response to:whatsyourprice:change location description:merchantslane:Merchants Lane stretches out ahead of you, abandoned and battered, not a single shop is open or has the slightest sign of life. These shops have been closed for some time now and this street hasn't seen a merry day in many a month. The door to the general store has taken quite a beating but is open just a crack, enough for you to squeeze inside.
 item talk action in response to:whatsyourprice:increment score:
 item talk follow up phrase to:canyouhelpme:notonyournelly:Not on your nelly:"Not on your nelly. I make a habit of never owing anyone and I certainly never pay up front.". You suddenly feel cold hands rifling through your pockets and as quickly as you can crane your neck back to see who it was the scoundrels have gone. "No problem. I'll just take this shiny tool thingy and call it quits.". Quick as a flash there is some banging, a lot of jiggling, poking and general proddery and you are standing free, arm in tact, in front of the general store with the door now slightly ajar. You look around to see if you can spot whoever helped you knowing it is futile and that they have already gone.
 item talk action in response to:notonyournelly:destroy item:multitool
@@ -264,6 +265,7 @@ item talk action in response to:notonyournelly:change exit visibility:merchantsl
 item talk action in response to:notonyournelly:change exit visibility:merchantslanenorth:visible
 item talk action in response to:notonyournelly:change item visibility:disembodied_voice:invisible
 item talk action in response to:notonyournelly:change item visibility:broken_door:invisible
+item talk action in response to:notonyournelly:change location description:merchantslane:Merchants Lane stretches out ahead of you, abandoned and battered, not a single shop is open or has the slightest sign of life. These shops have been closed for some time now and this street hasn't seen a merry day in many a month. The door to the general store has taken quite a beating but is open just a crack, enough for you to squeeze inside.
 item talk action in response to:notonyournelly:increment score:
 
 LOCATION

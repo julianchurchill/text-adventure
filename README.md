@@ -39,10 +39,9 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
+- [STORY] Ending is a bit of an anti-climax - how about the hero dies overpowered by the demon, then has to resurrect himself with one of the items left (mushroom?) and can then kill the demon. Or kills the demon as a ghost and then resurrects himself?
 - [TECHNICAL TASK] Is the APK too big with the map reveals in? It's about 30MB debug, how big for release?
 - [TECHNICAL TASK] In prepare.sh stop 'rm'ing the entire res structure and try to remove specific files that shouldn't be there. This will stop the map images being copied afresh and causing long, laborious rebuilds.
-- [STORY] Ending is a bit of an anti-climax - how about the hero dies overpowered by the demon, then has to resurrect himself with one of the items left (mushroom?) and can then kill the demon. Or kills the demon as a ghost and then resurrects himself?
-- [BUG] Story bug - the general store outside description should change to say 'door is open' after you put your arm in the hole
 - [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
 - [UI] Consider allowing landscape view - what affect will this have on image positioning, maps, dialogs and so on?
 - [TECHNICAL TASK] - convert to gradle build system from ant
@@ -327,6 +326,7 @@ TTA2 only
 - [MINOR STORY CORRECTION] Two Oubliettes no longer appear outside the castle gate portcullis after opening it if you don't talk to her first
 - [MINOR STORY CORRECTION] Oubliette vanishes after the fire shield is used to defend the town's watch, instead of after talking to cabal again
 - [MINOR STORY CORRECTION] Correct improper uses of its (possessive) and it's (it is).
+- [MINOR STORY CORRECTION] The general store outside description should change to say 'door is open' after you put your arm in the hole
 
 2.1.1
 -----
