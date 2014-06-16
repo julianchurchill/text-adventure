@@ -31,11 +31,38 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
     }
 
     protected Bitmap getMap() {
-        return BitmapFactory.decodeResource(getResources(), R.drawable.map);
-    }
+        int bitmapId = R.drawable.map_town;
+        switch(movementMonitor.exploredAreas().size())
+        {
+            case 0:
+                bitmapId = R.drawable.map_town;
+                break;
+            case 1:
+                bitmapId = R.drawable.map_town;
+                break;
+            case 2:
+                bitmapId = R.drawable.map_town_castle_woods;
+                break;
+            case 3:
+                bitmapId = R.drawable.map_town_castle_woods;
+                break;
+            case 4:
+                bitmapId = R.drawable.map_ubiquity;
+                break;
+            case 5:
+                bitmapId = R.drawable.map_ubiquity_downs;
+                break;
+            case 6:
+                bitmapId = R.drawable.map_ubiquity_downs_lake;
+                break;
+            case 7:
+                bitmapId = R.drawable.map_ubiquity_downs_lake_castle;
+                break;
+            default:
+                break;
+        }
 
-    protected int R_drawable_map() {
-        return R.drawable.map;
+        return BitmapFactory.decodeResource(getResources(), bitmapId);
     }
 
     protected int R_drawable_tta_button() {

@@ -39,12 +39,15 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [BUG] Story bug - the general store outside description should change to say 'door is open' after you put your arm in the hole
-- [STORY] Ending is a bit of an anti-climax - how about the hero dies overpowered by the demon, then has to resurrect himself with one of the items left (mushroom?) and can then kill the demon. Or kills the demon as a ghost and then resurrects himself?
-- [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
-- [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
 - [FEATURE] Map - extras
-    - Make better masks and a better map! Charlie's on the case.
+    - DONE Make better masks and a better map! Charlie's on the case.
+    - Map should fit the width of the screen on showing
+    - Is the APK too big with the map reveals in? It's about 30MB debug, how big for release?
+- [STORY] Ending is a bit of an anti-climax - how about the hero dies overpowered by the demon, then has to resurrect himself with one of the items left (mushroom?) and can then kill the demon. Or kills the demon as a ghost and then resurrects himself?
+- [BUG] Story bug - the general store outside description should change to say 'door is open' after you put your arm in the hole
+- [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
+- [TECHNICAL TASK] - convert to gradle build system from ant
+- [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
 - [BUG] 9-patch button images have the occasional non-transparent pixels around the edges (shows in build errors) and more importantly has a few pixels of parchment in the 'burnt' out edges that break the smooth button list effect.
   - Charlie's fixing it.
 - [BUG] Occasionally the 9-patch bottom strip is partially drawn over the text at the bottom of the screen. Ensure the bottom padding is enough that the text is never drawn at the same position as the 9-patch strip.
