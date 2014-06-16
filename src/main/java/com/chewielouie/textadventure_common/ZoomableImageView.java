@@ -26,6 +26,7 @@ public class ZoomableImageView extends ImageView implements OnTouchListener {
     private PointF startPoint;
     private PointF middlePoint;
     private float oldDist;
+    private float scaleForBitmapToFitView = 1.0f;
     private int viewWidth = -1;
     private int viewHeight = -1;
     private Bitmap ourBitmap = null;
@@ -60,25 +61,40 @@ public class ZoomableImageView extends ImageView implements OnTouchListener {
         super.onSizeChanged(w, h, oldw, oldh);
         viewWidth = w;
         viewHeight = h;
-        centerBitmap();
+        resetBitmapPositionAndScale();
+    }
+
+    private void resetBitmapPositionAndScale() {
+        resetState();
+        if( haveValidViewSize() && ourBitmap != null ) {
+            fitBitmapToView();
+            centerBitmap();
+        }
+    }
+
+    private void fitBitmapToView() {
+        float scaleX = (float)viewWidth / (float)ourBitmap.getWidth();
+        float scaleY = (float)viewHeight / (float)ourBitmap.getHeight();
+        scaleForBitmapToFitView = scaleX < scaleY ? scaleX : scaleY;
+        matrix.postScale(scaleForBitmapToFitView, scaleForBitmapToFitView);
+        this.setImageMatrix(matrix);
+    }
+
+    private void centerBitmap() {
+        Point bitmapMiddlePoint = new Point();
+        int scaledWidth = (int)(scaleForBitmapToFitView * (float)ourBitmap.getWidth());
+        int scaledHeight = (int)(scaleForBitmapToFitView * (float)ourBitmap.getHeight());
+        bitmapMiddlePoint.x = (viewWidth / 2) - (scaledWidth / 2);
+        bitmapMiddlePoint.y = (viewHeight / 2) - (scaledHeight / 2);
+        matrix.postTranslate(bitmapMiddlePoint.x, bitmapMiddlePoint.y);
+        this.setImageMatrix(matrix);
     }
 
     public void setBitmap(Bitmap bitmap) {
         if(bitmap != null) {
             setImageBitmap( bitmap );
             this.ourBitmap = bitmap;
-            resetState();
-            centerBitmap();
-        }
-    }
-
-    private void centerBitmap() {
-        if( haveValidViewSize() && ourBitmap != null ) {
-            Point bitmapMiddlePoint = new Point();
-            bitmapMiddlePoint.x = (viewWidth / 2) - (ourBitmap.getWidth() /  2);
-            bitmapMiddlePoint.y = (viewHeight / 2) - (ourBitmap.getHeight() / 2);
-            matrix.postTranslate(bitmapMiddlePoint.x, bitmapMiddlePoint.y);
-            this.setImageMatrix(matrix);
+            resetBitmapPositionAndScale();
         }
     }
 
