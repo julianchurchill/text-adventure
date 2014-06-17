@@ -206,7 +206,7 @@ Marketing
 - Facebook, Twitter, Google+
   - Release 1.0 and 2.0 advertised on all of the above
 
-TTA1 v2.2.x/TTA2 v1.0.x
+TTA1 v2.2.x to v2.3.0 and TTA2 v1.0.x to v1.1.0
 ---
 
 - [FEATURE] Written walkthrough for TTA1 and TTA2
