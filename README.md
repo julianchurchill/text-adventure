@@ -39,10 +39,15 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
+* Must haves for next release
+- [UI] About dialog has floating text over the background, unlike the main screen which scrolls the background with the text... looks weird. 'New game welcome' dialog is ok...
+- [UI] Compress all pngs in both TTA1 and TTA2 with tinypng.com. map reveals for TTA2 have been done already.
 - [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
 - [BUG] 9-patch button images have the occasional non-transparent pixels around the edges (shows in build errors) and more importantly has a few pixels of parchment in the 'burnt' out edges that break the smooth button list effect.
   - Charlie's fixing it.
 - [UI] Add extra story images as Charlie makes them available
+
+* Would likes for next release
 - [UI] Consider allowing landscape view - what affect will this have on image positioning, maps, dialogs and so on?
 - [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
 - [TECHNICAL TASK] In prepare.sh stop 'rm'ing the entire res structure and try to remove specific files that shouldn't be there. This will stop the map images being copied afresh and causing long, laborious rebuilds.
