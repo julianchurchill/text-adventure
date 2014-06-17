@@ -45,7 +45,6 @@ Ordered by priority, first to do at the top.
 - [UI] Add extra story images as Charlie makes them available
 - [UI] Consider allowing landscape view - what affect will this have on image positioning, maps, dialogs and so on?
 - [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
-- [TECHNICAL TASK] Is the APK too big with the map reveals in? It's about 30MB debug, how big for release?
 - [TECHNICAL TASK] In prepare.sh stop 'rm'ing the entire res structure and try to remove specific files that shouldn't be there. This will stop the map images being copied afresh and causing long, laborious rebuilds.
 - [TECHNICAL TASK] - convert to gradle build system from ant
 - [BUG] Occasionally the 9-patch bottom strip is partially drawn over the text at the bottom of the screen. Ensure the bottom padding is enough that the text is never drawn at the same position as the 9-patch strip.
