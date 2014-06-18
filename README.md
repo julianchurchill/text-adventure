@@ -40,7 +40,6 @@ Backlog
 Ordered by priority, first to do at the top.
 
 * Must haves for next release
-- [UI] About dialog has floating text over the background, unlike the main screen which scrolls the background with the text... looks weird. 'New game welcome' dialog is ok...
 - [UI] Compress all pngs in both TTA1 and TTA2 with tinypng.com. map reveals for TTA2 have been done already.
 - [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
 - [BUG] 9-patch button images have the occasional non-transparent pixels around the edges (shows in build errors) and more importantly has a few pixels of parchment in the 'burnt' out edges that break the smooth button list effect.

@@ -15,7 +15,6 @@
         android:layout_gravity="top"/>
 
     <ScrollView
-        android:background="@drawable/paper38f"
         android:id="@+id/main_text_output_scroll_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -35,6 +34,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#000000"
             android:typeface="serif"
+            android:background="@drawable/paper38f"
             android:id="@+id/about_dialog_main_text"
             android:linksClickable="true"/>
     </ScrollView>
