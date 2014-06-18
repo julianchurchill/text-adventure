@@ -6,16 +6,16 @@ function usage()
     echo " where app id can currently be one of [1 2]"
 }
 
-function removeOldFiles()
+function removeOldManifest()
 {
-    rm --recursive AndroidManifest.xml res
+    rm --force AndroidManifest.xml
 }
 
 function removeOldSourceFilesForOtherPackage()
 {
     packageName=$1
-    rm --recursive src/main/java/com/chewielouie/$packageName
-    rm --recursive src/test/java/com/chewielouie/$packageName
+    rm --force --recursive src/main/java/com/chewielouie/$packageName
+    rm --force --recursive src/test/java/com/chewielouie/$packageName
 }
 
 function copy()
@@ -57,6 +57,22 @@ function copyFilesFromConfigArea()
     copy config/$configArea/src .
 }
 
+# remove all files in res that are not in config/$configArea/res or config/common/res
+function removeResourceFilesThatDoNotBelongToThisConfiguration()
+{
+    configArea=$1
+    cd config/$configArea && find res/ -type f -print | sort | uniq >  /tmp/goodFiles.$$ && cd - > /dev/null
+    cd config/common      && find res/ -type f -print | sort | uniq >> /tmp/goodFiles.$$ && cd - > /dev/null
+    find res/ -type f -print | sort | uniq > /tmp/currentFiles.$$
+    filesToRemove=`comm -23 <(sort /tmp/currentFiles.$$ | uniq) <(sort /tmp/goodFiles.$$ | uniq)`
+    echo "Removing resource files that do not belong in this configuration"
+    rm /tmp/goodFiles.$$ /tmp/currentFiles.$$
+    for file in $filesToRemove ; do
+        echo " removing $file"
+        rm --force $file
+    done
+}
+
 if [ -z "$1" ]
 then
     usage
@@ -65,18 +81,20 @@ fi
 
 case "$1" in
     1)  echo "Configuring app id 1"
-        removeOldFiles
+        removeOldManifest
         removeOldSourceFilesForOtherPackage textadventure2
         copyCommonFiles
         copyTestFilesForPackage textadventure
         copyFilesFromConfigArea 1
+        removeResourceFilesThatDoNotBelongToThisConfiguration 1
         ;;
     2)  echo "Configuring app id 2"
-        removeOldFiles
+        removeOldManifest
         removeOldSourceFilesForOtherPackage textadventure
         copyCommonFiles
         copyTestFilesForPackage textadventure2
         copyFilesFromConfigArea 2
+        removeResourceFilesThatDoNotBelongToThisConfiguration 2
         ;;
     *)  usage
         ;;
