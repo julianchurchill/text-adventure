@@ -40,10 +40,9 @@ Backlog
 Ordered by priority, first to do at the top.
 
 * Must haves for next release
-- [UI] Compress all pngs in both TTA1 and TTA2 with tinypng.com. map reveals for TTA2 have been done already.
-- [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
 - [BUG] 9-patch button images have the occasional non-transparent pixels around the edges (shows in build errors) and more importantly has a few pixels of parchment in the 'burnt' out edges that break the smooth button list effect.
   - Charlie's fixing it.
+- [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
 - [UI] Add extra story images as Charlie makes them available
 
 * Would likes for next release
@@ -273,6 +272,7 @@ TTA1 v2.2.x to v2.3.0 and TTA2 v1.0.x to v1.1.0
 - [TECHNICAL TASK] Made the item and exit list italic to distinguish them as state rather than story
 - [TECHNICAL TASK] Check for syntax issues with model text at build time - see config/verifyDataFiles.sh, run by ant task n custom_rules.xml
   - Non unique ids
+- [TECHNICAL TASK] Compress all pngs in both TTA1 and TTA2 with tinypng.com. map reveals for TTA2 have been done already.
 - [DEV] Waypoints added to allow the player to skip ahead through the story, only for debug builds, through extra menu items.
 
 TTA2 only
