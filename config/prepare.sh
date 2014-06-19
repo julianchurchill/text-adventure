@@ -41,6 +41,10 @@ function copyNewAndDifferingFilesFromSrcDirectoryToDestination()
     for file in $fileList; do
         fileSrc=$src/$file
         fileDest=$dest/$file
+        fileDestDir=`dirname $fileDest`
+        if [ ! -d "$fileDestDir" ] ; then
+            mkdir --parents $fileDestDir
+        fi
         if [ "$fileSrc" -nt "$fileDest" ] ; then
             echo " copying newer     $fileSrc"
             cp $fileSrc $fileDest
