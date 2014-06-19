@@ -40,8 +40,6 @@ Backlog
 Ordered by priority, first to do at the top.
 
 * Must haves for next release
-- [BUG] 9-patch button images have the occasional non-transparent pixels around the edges (shows in build errors) and more importantly has a few pixels of parchment in the 'burnt' out edges that break the smooth button list effect.
-  - Charlie's fixing it.
 - [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
 - [UI] Add extra story images as Charlie makes them available
 
@@ -247,6 +245,8 @@ TTA1 v2.2.x to v2.3.0 and TTA2 v1.0.x to v1.1.0
 - [BUG] <newline> in 'talk response', 'location description' and 'location text to show on first entry' are not obeyed.
   - [FIX] Swap <newline> for '\n' when parsing these elements
 - [BUG] Main text is not always visible around the edges on a smaller display - added a little padding liike the 'new game welcome' dialog has by default.
+- [BUG] 9-patch button images have the occasional non-transparent pixels around the edges (shows in build errors) and more importantly has a few pixels of parchment in the 'burnt' out edges that break the smooth button list effect.
+  - [FIX] pixels that break the burnt out effect have been removed, pixels that causes build errors left as I cannot figure out what the problem is
 
 - [TECHNICAL TASK] Seperation of content from framework so we can have one Android app + business logic and swap in different content for different builds
   - Mask images should be auto found by looking for resources starting with area-id. E.g. the mask filename for the town-area should be town-area_mask.png
