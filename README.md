@@ -40,6 +40,7 @@ Backlog
 Ordered by priority, first to do at the top.
 
 * Must haves for next release
+- [UI] Make button background on 'new game welcome' dialog a parchment button
 - [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
 - [UI] Add extra story images as Charlie makes them available
 
