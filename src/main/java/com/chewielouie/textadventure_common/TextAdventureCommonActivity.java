@@ -60,6 +60,9 @@ import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.chewielouie.textadventure.BasicModel;
 import com.chewielouie.textadventure.BasicModelFactory;
 import com.chewielouie.textadventure.Exit;
@@ -142,6 +145,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_string_about_dialog_text();
     abstract protected Field[] R_raw_class_getFields();
     abstract protected int R_style_WaypointDialogTheme();
+    abstract protected int R_xml_app_tracker();
 
     private static final int NUMBER_OF_TTA_BUTTONS = 7;
     private static final int TEXT_TO_SPEECH_DATA_CHECK_CODE = 0;
@@ -200,6 +204,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private TextToSpeech textToSpeech = null;
     private Dialog newGameWelcomeDialog = null;
     private Dialog whatsNewDialog = null;
+    private Tracker appAnalyticsTracker = null;
 
     public TextAdventureCommonActivity() {
     }
@@ -226,6 +231,12 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         this();
         this.userActionHandler = u;
         this.externallySuppliedUserActionHandler = true;
+    }
+
+    private Tracker getTracker() {
+        if( appAnalyticsTracker == null )
+            appAnalyticsTracker = GoogleAnalytics.getInstance( this ).newTracker(R_xml_app_tracker());
+        return appAnalyticsTracker;
     }
 
     public void setModelContent( String content ) {
@@ -333,8 +344,16 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void completedLoadingSavedGame() {
+        sendAnalyticsEvent( "finished loading saved game" );
         rendersView.render();
         endLoading();
+    }
+
+    private void sendAnalyticsEvent( String eventAction ) {
+        getTracker().send(new HitBuilders.EventBuilder()
+            .setCategory( "user activity" )
+            .setAction( eventAction )
+            .build());
     }
 
     private void endLoading() {

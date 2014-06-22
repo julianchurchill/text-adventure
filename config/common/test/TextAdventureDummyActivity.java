@@ -218,4 +218,8 @@ public class TextAdventureDummyActivity extends TextAdventureCommonActivity {
     protected boolean needToShowWhatsNew() {
         return false;
     }
+
+    protected int R_xml_app_tracker() {
+        return R.xml.app_tracker;
+    }
 }
