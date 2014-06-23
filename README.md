@@ -40,27 +40,29 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - Must haves for next release
-  - [UI] Make button background on 'new game welcome' dialog a parchment button
   - [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
   - [UI] Add extra story images as Charlie makes them available
-  - Investigate Google Analytics
+  - [TECHNICAL TASK] Analytics
+    - https://developers.google.com/analytics/devguides/collection/android
+    - Things to capture
+      DONE - Count how many times new game is started
+      DONE - Count how many times saved game is loaded
+      DONE - Count how many times game is completed (to find percent of started games that are completed)
+      DONE - Count how many times options dialog is opened
+      DONE - Count how many times map is opened
+      DONE - Count how many times quick hint is used
+      DONE - Count how many times walkthrough is opened
+      DONE - Count how many actions are made to complete game
+      DONE - Load time for new and saved games
+      DONE - Save time
+      DONE - Active time (between onResume() and onPause()) per session
+      DONE - Active time (between onResume() and onPause()) to game completion
+      DONE - Total active time spent playing
+      DONE - Calendar time to game completion
 
 * Would likes for next release
 - [UI] Consider allowing landscape view - what affect will this have on image positioning, maps, dialogs and so on?
 - [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
-- [TECHNICAL TASK] Analytics
-  - https://developers.google.com/analytics/devguides/collection/android
-  - Things to capture
-    - Active time (between onResume() and onPause()) from start to finish of game/average completion time
-    - Total active time spent playing
-    - Average active time period
-    - Load time
-    - Save time
-    - Count how many times new game is started
-    - Count how many times game is completed (to find percent of started games that are completed)
-    - Count how many actions are made to complete game
-    - Count how many times options dialog is opened
-    - Count how many times map is opened
 - [TECHNICAL TASK] - convert to gradle build system from ant
 - [BUG] Occasionally the 9-patch bottom strip is partially drawn over the text at the bottom of the screen. Ensure the bottom padding is enough that the text is never drawn at the same position as the 9-patch strip.
 - [BUG] Clickable area for exit seems to extend down the text view underneath the link - is the span limited correctly?

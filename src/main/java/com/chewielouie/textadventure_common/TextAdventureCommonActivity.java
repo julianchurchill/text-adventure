@@ -12,6 +12,7 @@ import java.lang.StringBuffer;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -167,6 +168,10 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private static String text_to_speech_enabled_key = shared_prefs_root_key + ".texttospeechenabled";
     private boolean textToSpeechEnabled = default_text_to_speech_enabled;
     private static String whats_new_last_viewed_version_key = shared_prefs_root_key + ".whatsnewlastviewedversion";
+    private static String game_completed_key = shared_prefs_root_key + ".gamecompleted";
+    private static String total_time_played_ever_key = shared_prefs_root_key + ".totaltimeplayedever";
+    private static String total_time_played_this_game_key = shared_prefs_root_key + ".totaltimeplayedthisgame";
+    private static String new_game_start_calendar_time_key = shared_prefs_root_key + ".newgamestartcalendartime";
 
     private RendersView rendersView;
     private boolean externallySuppliedViewRenderer = false;
@@ -205,6 +210,8 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private Dialog newGameWelcomeDialog = null;
     private Dialog whatsNewDialog = null;
     private Tracker appAnalyticsTracker = null;
+    private long startGameTime;
+    private long sessionTimeStartMs;
 
     public TextAdventureCommonActivity() {
     }
@@ -338,21 +345,58 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void completedLoadingNewGame() {
+        long diff = systemTimeMilliseconds();
+        sendAnalyticsTimingEvent( "time to load new game", diff );
+        sendAnalyticsEvent( "started new game" );
+        saveNewGameStartCalendarTime();
+        resetTotalTimePlayedThisGame();
         rendersView.render();
         endLoading();
         showNewGameWelcomeDialog();
     }
 
+    private void saveNewGameStartCalendarTime() {
+        Date d = new Date();
+        SharedPreferences.Editor editor = getPrefs().edit();
+        editor.putLong( new_game_start_calendar_time_key, d.getTime() );
+        editor.apply();
+    }
+
+    private void resetTotalTimePlayedThisGame() {
+        SharedPreferences.Editor editor = getPrefs().edit();
+        editor.putLong( total_time_played_this_game_key, 0 );
+        editor.apply();
+    }
+
     private void completedLoadingSavedGame() {
+        long diff = systemTimeMilliseconds();
+        sendAnalyticsTimingEvent( "time to load saved game", diff );
         sendAnalyticsEvent( "finished loading saved game" );
+        sendAnalyticsEventWithValue( "loaded game with number of actions", actionHistory().size() );
         rendersView.render();
         endLoading();
+    }
+
+    private void sendAnalyticsTimingEvent( String timingName, long timeMilliseconds ) {
+        getTracker().send(new HitBuilders.TimingBuilder()
+            .setCategory( "user activity" )
+            .setValue( timeMilliseconds )
+            .setVariable( timingName )
+            .build());
     }
 
     private void sendAnalyticsEvent( String eventAction ) {
         getTracker().send(new HitBuilders.EventBuilder()
             .setCategory( "user activity" )
             .setAction( eventAction )
+            .build());
+    }
+
+    private void sendAnalyticsEventWithValue( String eventAction, long value ) {
+        getTracker().send(new HitBuilders.EventBuilder()
+            .setCategory( "user activity" )
+            .setAction( eventAction )
+            .setValue( value )
             .build());
     }
 
@@ -399,6 +443,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     @Override
     public void onResume() {
         super.onResume();
+        sessionTimeStartMs = systemTimeMilliseconds();
         if( needToShowWhatsNew() )
             showWhatsNewDialog();
         else
@@ -457,6 +502,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private void startGame() {
         progressDialog = ProgressDialog.show(this, "Starting...", "Loading game...", true, false);
         loading = true;
+        startGameTime = systemTimeMilliseconds();
         loadingTask = new LoadTask().execute();
     }
 
@@ -764,6 +810,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void showAboutDialog() {
+        sendAnalyticsEvent( "show about dialog" );
         Dialog dialog = createDialogWithNoTitle( R_layout_about_dialog() );
         String versionName = "";
         try {
@@ -823,6 +870,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void showOptionsDialog() {
+        sendAnalyticsEvent( "show options dialog" );
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         View options_view = getLayoutInflater().inflate( R_layout_options_dialog(), null );
@@ -882,6 +930,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void showMap() {
+        sendAnalyticsEvent( "show map" );
         map_view.setVisibility( View.VISIBLE );
         map_view.setBitmap(getMap());
     }
@@ -890,12 +939,14 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private final String walkthroughTextFilename = "walkthrough";
 
     private void showWalkthrough() {
+        sendAnalyticsEvent( "show walkthrough" );
         walkthrough_scroll_view.setVisibility( View.VISIBLE );
         walkthrough_text_view.setText( R_string_loading() );
         new WalkthroughTextFormatter( walkthrough_text_view, readRawTextFileFromResource( walkthroughTextFilename ), currentScore );
     }
 
     private void showQuickHint() {
+        sendAnalyticsEvent( "show quick hint" );
         Toast.makeText(getApplicationContext(), findQuickHint(), Toast.LENGTH_LONG).show();
     }
 
@@ -947,6 +998,41 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     public void currentScore( int score ) {
         currentScore = score;
         updateScore();
+        if( score != maximumScore )
+            setGameIncomplete();
+        else if( gameCompleted() == false )
+            doGameCompletedActions();
+    }
+
+    private boolean gameCompleted() {
+        return getPrefs().getBoolean( game_completed_key, false );
+    }
+
+    private void doGameCompletedActions() {
+        sendAnalyticsEvent( "completed game" );
+        sendAnalyticsEventWithValue( "number of moves to complete game", actionHistory().size() );
+        sendAnalyticsTimingEvent( "active time played to complete this game",
+                                  totalTimePlayedThisGameMs() + sessionTimeSoFarMs() );
+        Date now = new Date();
+        sendAnalyticsTimingEvent( "calendar time played to complete this game",
+                                  now.getTime() - newGameStartCalendarTime() );
+        setGameComplete();
+    }
+
+    private long newGameStartCalendarTime() {
+        return getPrefs().getLong( new_game_start_calendar_time_key, 0 );
+    }
+
+    private void setGameComplete() {
+        SharedPreferences.Editor editor = getPrefs().edit();
+        editor.putBoolean( game_completed_key, true );
+        editor.apply();
+    }
+
+    private void setGameIncomplete() {
+        SharedPreferences.Editor editor = getPrefs().edit();
+        editor.putBoolean( game_completed_key, false );
+        editor.apply();
     }
 
     private void updateScore() {
@@ -1003,9 +1089,39 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
             if( saveJSONFileExists() )
                 deleteFile( oldJSONFormatSaveFileName );
         }
+        saveSessionTimeMs();
+    }
+
+    private void saveSessionTimeMs() {
+        long timeMilliseconds = sessionTimeSoFarMs();
+        long newTotalTimeEver = totalTimePlayedEverMs() + timeMilliseconds;
+        long newTotalTimeThisGame = totalTimePlayedThisGameMs() + timeMilliseconds;
+        SharedPreferences.Editor editor = getPrefs().edit();
+        editor.putLong( total_time_played_ever_key, newTotalTimeEver );
+        editor.putLong( total_time_played_this_game_key, newTotalTimeThisGame );
+        editor.apply();
+        sendAnalyticsTimingEvent( "active time played in this session", timeMilliseconds );
+        sendAnalyticsTimingEvent( "active time played ever", newTotalTimeEver );
+    }
+
+    private long sessionTimeSoFarMs() {
+        return systemTimeMilliseconds() - sessionTimeStartMs;
+    }
+
+    private long systemTimeMilliseconds() {
+        return System.nanoTime() / 1000000;
+    }
+
+    private long totalTimePlayedEverMs() {
+        return getPrefs().getLong( total_time_played_ever_key, 0 );
+    }
+
+    private long totalTimePlayedThisGameMs() {
+        return getPrefs().getLong( total_time_played_this_game_key, 0 );
     }
 
     private void writeActionHistorySaveFile() {
+        long startSaveTime = systemTimeMilliseconds();
         byte[] bytes = new ActionHistorySerialiser( actionHistory() ).serialise().getBytes();
         try {
             FileOutputStream outputStream = openFileOutput( actionHistorySaveFileName,
@@ -1017,5 +1133,8 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         } catch( IOException e ) {
             e.printStackTrace();
         }
+        long diff = systemTimeMilliseconds();
+        sendAnalyticsEventWithValue( "saved game with number of actions", actionHistory().size() );
+        sendAnalyticsTimingEvent( "time to save game", diff );
     }
 }
