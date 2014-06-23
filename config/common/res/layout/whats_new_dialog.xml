@@ -34,6 +34,7 @@
     </ScrollView>
 
     <Button
+        android:background="@drawable/button00"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
