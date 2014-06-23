@@ -5,11 +5,13 @@ import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import org.mockito.Mockito;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import com.xtremelabs.robolectric.Robolectric;
+import com.xtremelabs.robolectric.shadows.ShadowApplication;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -20,6 +22,7 @@ import android.content.Context;
 import android.text.Spannable;
 import android.widget.Button;
 import android.widget.TextView;
+import com.google.android.gms.analytics.GoogleAnalytics;
 import com.chewielouie.textadventure.item.Item;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.BasicModel;
@@ -27,6 +30,7 @@ import com.chewielouie.textadventure.BasicModelFactory;
 import com.chewielouie.textadventure.Exit;
 import com.chewielouie.textadventure.ModelLocation;
 import com.chewielouie.textadventure.RendersView;
+import com.chewielouie.textadventure_common.MockGoogleAnalyticsTracker;
 
 @RunWith(RobolectricTestRunner.class)
 public class ActivityAcceptanceTests {
@@ -38,14 +42,37 @@ public class ActivityAcceptanceTests {
         "action name:exit:exit id:mainstreettownnorth:\n" +
         "action name:use with specific item:item id:clocktowerskeletonkey:extra item id:lockeddoor:\n";
 
+    @Before
+    public void setup() {
+        ShadowApplication shadowApplication = Robolectric.shadowOf(Robolectric.application);
+        shadowApplication.declareActionUnbindable("com.google.android.gms.analytics.service.START");
+    }
+
+    TextAdventureDummyActivity createActivity( RendersView r, BasicModelFactory f ) {
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( r, f );
+        activity.setTracker( new MockGoogleAnalyticsTracker() );
+        return activity;
+    }
+
+    TextAdventureDummyActivity createActivity( BasicModelFactory f ) {
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( f );
+        activity.setTracker( new MockGoogleAnalyticsTracker() );
+        return activity;
+    }
+
+    TextAdventureDummyActivity createActivity() {
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
+        activity.setTracker( new MockGoogleAnalyticsTracker() );
+        return activity;
+    }
+
     @Test
     public void on_resume_reads_and_replays_action_history() {
         RendersView renderer = mock( RendersView.class );
         BasicModel model = new BasicModel();
         BasicModelFactory modelFactory = mock( BasicModelFactory.class );
         when( modelFactory.createModel() ).thenReturn( model );
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( renderer,
-            modelFactory );
+        TextAdventureDummyActivity activity = createActivity( renderer, modelFactory );
         prepareActionHistorySaveFile( activity );
         activity.setModelContent( modelContent );
 
@@ -84,7 +111,7 @@ public class ActivityAcceptanceTests {
         BasicModel model = new BasicModel();
         BasicModelFactory modelFactory = mock( BasicModelFactory.class );
         when( modelFactory.createModel() ).thenReturn( model );
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( modelFactory );
+        TextAdventureDummyActivity activity = createActivity( modelFactory );
         activity.setModelContent( modelContent );
         activity.onCreate( null );
         activity.onResume();
@@ -153,7 +180,7 @@ public class ActivityAcceptanceTests {
 
     @Test
     public void on_resume_reads_a_json_file_and_saves_as_an_action_history_file__unlock_door() {
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
+        TextAdventureDummyActivity activity = createActivity();
         activity.deleteFile( actionHistorySaveFileName );
         prepareJSONSaveFile( activity, json_model_unlock_door );
         activity.setModelContent( modelContent );
@@ -175,8 +202,7 @@ public class ActivityAcceptanceTests {
         BasicModel model = new BasicModel();
         BasicModelFactory modelFactory = mock( BasicModelFactory.class );
         when( modelFactory.createModel() ).thenReturn( model );
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( renderer,
-            modelFactory );
+        TextAdventureDummyActivity activity = createActivity( renderer, modelFactory );
         activity.setModelContent( modelContent );
         activity.deleteFile( actionHistorySaveFileName );
         prepareJSONSaveFile( activity, json_model_unlock_door );
@@ -203,7 +229,7 @@ public class ActivityAcceptanceTests {
 
     @Test
     public void on_resume_reads_a_json_file_and_saves_as_an_action_history_file__get_wooden_pole() {
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
+        TextAdventureDummyActivity activity = createActivity();
         activity.deleteFile( actionHistorySaveFileName );
         prepareJSONSaveFile( activity, json_model_get_wooden_pole );
         activity.setModelContent( modelContent );
@@ -237,8 +263,7 @@ public class ActivityAcceptanceTests {
         BasicModel model = new BasicModel();
         BasicModelFactory modelFactory = mock( BasicModelFactory.class );
         when( modelFactory.createModel() ).thenReturn( model );
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( renderer,
-            modelFactory );
+        TextAdventureDummyActivity activity = createActivity( renderer, modelFactory );
         activity.deleteFile( actionHistorySaveFileName );
         prepareJSONSaveFile( activity, json_model_get_wooden_pole );
         activity.setModelContent( modelContent );
@@ -268,7 +293,7 @@ public class ActivityAcceptanceTests {
 
     @Test
     public void on_resume_reads_a_json_file_and_saves_as_an_action_history_file__free_shopkeeper() {
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
+        TextAdventureDummyActivity activity = createActivity();
         activity.deleteFile( actionHistorySaveFileName );
         prepareJSONSaveFile( activity, json_model_upto_free_shopkeeper );
         activity.setModelContent( modelContent );
@@ -310,8 +335,7 @@ public class ActivityAcceptanceTests {
         BasicModel model = new BasicModel();
         BasicModelFactory modelFactory = mock( BasicModelFactory.class );
         when( modelFactory.createModel() ).thenReturn( model );
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( renderer,
-            modelFactory );
+        TextAdventureDummyActivity activity = createActivity( renderer, modelFactory );
         activity.deleteFile( actionHistorySaveFileName );
         prepareJSONSaveFile( activity, json_model_upto_free_shopkeeper );
         activity.setModelContent( modelContent );

@@ -20,6 +20,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.chewielouie.textadventure.action.Action;
 import com.chewielouie.textadventure.UserActionHandler;
+import com.chewielouie.textadventure_common.MockGoogleAnalyticsTracker;
 
 @RunWith(RobolectricTestRunner.class)
 public class TextAdventureActivityTests {
@@ -56,9 +57,21 @@ public class TextAdventureActivityTests {
         //assertEquals( "cheese", t.getText().toString() );
     //}
 
+    TextAdventureDummyActivity createActivity() {
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
+        activity.setTracker( new MockGoogleAnalyticsTracker() );
+        return activity;
+    }
+
+    TextAdventureDummyActivity createActivity( UserActionHandler u ) {
+        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( u );
+        activity.setTracker( new MockGoogleAnalyticsTracker() );
+        return activity;
+    }
+
     @Test
     public void set_actions_updates_action_view_with_buttons_for_each_action() {
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
+        TextAdventureDummyActivity activity = createActivity();
         activity.onCreate( null );
         final Action action1 = mockery.mock( Action.class, "action 1" );
         final Action action2 = mockery.mock( Action.class, "action 2" );
@@ -87,7 +100,7 @@ public class TextAdventureActivityTests {
     @Test
     public void pressing_an_action_view_button_triggers_action_on_user_event_handler() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( handler );
+        TextAdventureDummyActivity activity = createActivity( handler );
         activity.onCreate( null );
         final Action action = mockery.mock( Action.class );
         mockery.checking( new Expectations() {{
@@ -158,7 +171,7 @@ public class TextAdventureActivityTests {
 
     @Test
     public void current_score_updates_the_acquired_score_text() {
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
+        TextAdventureDummyActivity activity = createActivity();
         activity.onCreate( null );
 
         activity.currentScore( 5 );
@@ -171,7 +184,7 @@ public class TextAdventureActivityTests {
     @Test
     public void pressing_back_finishes_the_activity_when_not_in_an_action_chain() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( handler );
+        TextAdventureDummyActivity activity = createActivity( handler );
         activity.onCreate( null );
         mockery.checking( new Expectations() {{
             allowing( handler ).inAnActionChain();
@@ -186,7 +199,7 @@ public class TextAdventureActivityTests {
     @Test
     public void pressing_back_whilst_in_an_action_chain_does_not_finish_the_activity() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( handler );
+        TextAdventureDummyActivity activity = createActivity( handler );
         activity.onCreate( null );
         final Action action = mockery.mock( Action.class, "action" );
         final Action newAction = mockery.mock( Action.class, "new action" );
@@ -220,7 +233,7 @@ public class TextAdventureActivityTests {
     @Test
     public void pressing_back_whilst_in_an_action_chain_cancels_the_chain_on_the_user_action_handler() {
         final UserActionHandler handler = mockery.mock( UserActionHandler.class );
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity( handler );
+        TextAdventureDummyActivity activity = createActivity( handler );
         activity.onCreate( null );
         final Action action = mockery.mock( Action.class, "action" );
         final Action newAction = mockery.mock( Action.class, "new action" );
@@ -241,7 +254,7 @@ public class TextAdventureActivityTests {
 
     @Test
     public void selecting_walkthrough_menu_item_shows_walkthrough_view() {
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
+        TextAdventureDummyActivity activity = createActivity();
         activity.onCreate( null );
         assertEquals( View.GONE, walkthroughScrollView( activity ).getVisibility() );
 
@@ -256,7 +269,7 @@ public class TextAdventureActivityTests {
 
     @Test
     public void walkthrough_does_not_show_lines_starting_with_hash() {
-        TextAdventureDummyActivity activity = new TextAdventureDummyActivity();
+        TextAdventureDummyActivity activity = createActivity();
         activity.onCreate( null );
         activity.onOptionsItemSelected( new TestMenuItem( activity.WALKTHROUGH_MENU_ITEM ) );
 

@@ -45,6 +45,8 @@
         <pathelement location="${android.libs.test}/mockito-all-1.9.5.jar"/>
         <!-- Google APIs maps.jar included to satisfy robolectrics Shadow bindings -->
         <path location="${env.ANDROID_HOME}/add-ons/addon-google_apis-google-17/libs/maps.jar"/>
+        <!-- Google APIs google-play-services.jar included to satisfy robolectrics Shadow bindings -->
+        <path location="google-play-services_lib/libs/google-play-services.jar"/>
     </path>
 
     <target name="verify-data-files">

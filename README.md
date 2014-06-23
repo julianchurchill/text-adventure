@@ -59,6 +59,8 @@ Ordered by priority, first to do at the top.
       DONE - Active time (between onResume() and onPause()) to game completion
       DONE - Total active time spent playing
       DONE - Calendar time to game completion
+  - Update about dialog text to include privacy policy and info about permissions needed
+  - Update Play store info about permissions needed
 
 * Would likes for next release
 - [UI] Consider allowing landscape view - what affect will this have on image positioning, maps, dialogs and so on?

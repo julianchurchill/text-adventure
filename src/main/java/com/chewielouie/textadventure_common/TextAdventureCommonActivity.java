@@ -209,7 +209,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     private TextToSpeech textToSpeech = null;
     private Dialog newGameWelcomeDialog = null;
     private Dialog whatsNewDialog = null;
-    private Tracker appAnalyticsTracker = null;
+    private AnalyticsTracker appAnalyticsTracker = null;
     private long startGameTime;
     private long sessionTimeStartMs;
 
@@ -240,9 +240,14 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         this.externallySuppliedUserActionHandler = true;
     }
 
-    private Tracker getTracker() {
+    public void setTracker( AnalyticsTracker t ) {
+        appAnalyticsTracker = t;
+    }
+
+    private AnalyticsTracker getTracker() {
         if( appAnalyticsTracker == null )
-            appAnalyticsTracker = GoogleAnalytics.getInstance( this ).newTracker(R_xml_app_tracker());
+            appAnalyticsTracker = new GoogleAnalyticsTrackerWrapper(
+                GoogleAnalytics.getInstance( this ).newTracker(R_xml_app_tracker()) );
         return appAnalyticsTracker;
     }
 
