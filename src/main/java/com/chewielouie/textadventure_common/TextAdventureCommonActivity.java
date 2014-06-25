@@ -350,7 +350,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void completedLoadingNewGame() {
-        long diff = systemTimeMilliseconds();
+        long diff = systemTimeMilliseconds() - startGameTime;
         sendAnalyticsTimingEvent( "time to load new game", diff );
         sendAnalyticsEvent( "started new game" );
         saveNewGameStartCalendarTime();
@@ -374,7 +374,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void completedLoadingSavedGame() {
-        long diff = systemTimeMilliseconds();
+        long diff = systemTimeMilliseconds() - startGameTime;
         sendAnalyticsTimingEvent( "time to load saved game", diff );
         sendAnalyticsEvent( "finished loading saved game" );
         sendAnalyticsEventWithValue( "loaded game with number of actions", actionHistory().size() );
@@ -1003,10 +1003,16 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     public void currentScore( int score ) {
         currentScore = score;
         updateScore();
-        if( score != maximumScore )
-            setGameIncomplete();
-        else if( gameCompleted() == false )
-            doGameCompletedActions();
+        if( maximumScoreHasBeenSet() ) {
+            if( score != maximumScore )
+                setGameIncomplete();
+            else if( gameCompleted() == false )
+                doGameCompletedActions();
+        }
+    }
+
+    private boolean maximumScoreHasBeenSet() {
+        return maximumScore != 0;
     }
 
     private boolean gameCompleted() {
@@ -1042,7 +1048,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     private void updateScore() {
         int percentage = 0;
-        if ( maximumScore != 0 )
+        if( maximumScoreHasBeenSet() )
             percentage = (int) (((float)currentScore / (float)maximumScore) * (float)100);
         score_text_view.setText( Integer.toString( percentage ) + "% " + getText( R_string_completed() ) );
     }
@@ -1138,7 +1144,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         } catch( IOException e ) {
             e.printStackTrace();
         }
-        long diff = systemTimeMilliseconds();
+        long diff = systemTimeMilliseconds() - startSaveTime;
         sendAnalyticsEventWithValue( "saved game with number of actions", actionHistory().size() );
         sendAnalyticsTimingEvent( "time to save game", diff );
     }
