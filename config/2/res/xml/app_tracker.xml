@@ -2,5 +2,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools"
 tools:ignore="TypographyDashes">
     <integer name="ga_sessionTimeout">300</integer>
-    <string name="ga_trackingId">UA-52171838-1</string>
+    <!-- TinyTextAdventure2-Test1 !-->
+    <!-- <string name="ga_trackingId">UA-52171838-1</string> -->
+    <!-- TinyTextAdventure2-Test2 !-->
+    <string name="ga_trackingId">UA-52171838-2</string>
+    <!-- TinyTextAdventure2-Release !-->
+    <!-- <string name="ga_trackingId">UA-52171838-3</string> -->
 </resources>
