@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+tools:ignore="TypographyDashes">
+    <integer name="ga_sessionTimeout">300</integer>
+    <!-- TinyTextAdventure2-Test1 !-->
+    <!-- <string name="ga_trackingId">UA-52171838-1</string> -->
+    <!-- TinyTextAdventure2-Test2 !-->
+    <string name="ga_trackingId">UA-52171838-2</string>
+</resources>

@@ -252,4 +252,12 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
     protected int R_style_WaypointDialogTheme() {
         return R.style.WaypointDialogTheme;
     }
+
+    protected int R_xml_app_tracker() {
+        return R.xml.app_tracker;
+    }
+
+    protected int R_xml_debug_app_tracker() {
+        return R.xml.debug_app_tracker;
+    }
 }

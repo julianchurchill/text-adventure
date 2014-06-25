@@ -147,6 +147,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected Field[] R_raw_class_getFields();
     abstract protected int R_style_WaypointDialogTheme();
     abstract protected int R_xml_app_tracker();
+    abstract protected int R_xml_debug_app_tracker();
 
     private static final int NUMBER_OF_TTA_BUTTONS = 7;
     private static final int TEXT_TO_SPEECH_DATA_CHECK_CODE = 0;
@@ -245,9 +246,13 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private AnalyticsTracker getTracker() {
-        if( appAnalyticsTracker == null )
+        if( appAnalyticsTracker == null ) {
+            int app_tracker_id = R_xml_app_tracker();
+            if( isDebugMode() )
+                app_tracker_id = R_xml_debug_app_tracker();
             appAnalyticsTracker = new GoogleAnalyticsTrackerWrapper(
-                GoogleAnalytics.getInstance( this ).newTracker(R_xml_app_tracker()) );
+                GoogleAnalytics.getInstance( this ).newTracker(app_tracker_id) );
+        }
         return appAnalyticsTracker;
     }
 
@@ -777,7 +782,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private boolean isWaypointsMenuAvailable() {
-        return true;
+        return isDebugMode();
     }
 
     @Override

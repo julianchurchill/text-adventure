@@ -59,7 +59,8 @@ Ordered by priority, first to do at the top.
       DONE - Active time (between onResume() and onPause()) to game completion
       DONE - Total active time spent playing
       DONE - Calendar time to game completion
-    DONE - Create a 'real' analytics ID for TTA1 and TTA2, update the website and app_tracker.xml. Retain the one I've been using for testing purposes.
+    DONE - Create a 'real' analytics ID for TTA1 and TTA2, update the website and app_tracker.xml.
+    DONE - Retain the one I've been using for testing purposes and use in debug_app-tracker.xml.
     - Update about dialog text to include privacy policy and info about permissions needed
     - Update Play store info about permissions needed
 
