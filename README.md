@@ -42,27 +42,7 @@ Ordered by priority, first to do at the top.
 - Must haves for next release
   - [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
   - [UI] Add extra story images as Charlie makes them available
-  - [TECHNICAL TASK] Analytics
-    - https://developers.google.com/analytics/devguides/collection/android
-    - Things to capture
-      DONE - Count how many times new game is started
-      DONE - Count how many times saved game is loaded
-      DONE - Count how many times game is completed (to find percent of started games that are completed)
-      DONE - Count how many times options dialog is opened
-      DONE - Count how many times map is opened
-      DONE - Count how many times quick hint is used
-      DONE - Count how many times walkthrough is opened
-      DONE - Count how many actions are made to complete game
-      DONE - Load time for new and saved games
-      DONE - Save time
-      DONE - Active time (between onResume() and onPause()) per session
-      DONE - Active time (between onResume() and onPause()) to game completion
-      DONE - Total active time spent playing
-      DONE - Calendar time to game completion
-    DONE - Create a 'real' analytics ID for TTA1 and TTA2, update the website and app_tracker.xml.
-    DONE - Retain the one I've been using for testing purposes and use in debug_app-tracker.xml.
-    - Update about dialog text to include privacy policy and info about permissions needed
-    - Update Play store info about permissions needed
+  - Update Play store info about permissions needed - copy from about dialog (strings.xml)
 
 * Would likes for next release
 - [UI] Consider allowing landscape view - what affect will this have on image positioning, maps, dialogs and so on?
@@ -282,6 +262,18 @@ TTA1 v2.2.x to v2.3.0 and TTA2 v1.0.x to v1.1.0
   - Non unique ids
 - [TECHNICAL TASK] Compress all pngs in both TTA1 and TTA2 with tinypng.com. map reveals for TTA2 have been done already.
 - [DEV] Waypoints added to allow the player to skip ahead through the story, only for debug builds, through extra menu items.
+- [TECHNICAL TASK] Analytics - https://developers.google.com/analytics/devguides/collection/android
+  - Things to capture
+    - Count how many times new game is started, how many times saved game is loaded
+    - Count how many times game is completed (to find percent of started games that are completed)
+    - Count how many times options dialog is opened, how many times map is opened
+    - Count how many times quick hint is used, how many times walkthrough is opened
+    - Count how many actions are made to complete game
+    - Load time for new and saved games, save time
+    - Active time (between onResume() and onPause()) per session, active time to game completion
+    - Total active time spent playing, calendar time to game completion
+  - Create a 'real' analytics ID for TTA1 and TTA2 and debug ids, use in app_tracker.xml and debug_app-tracker.xml
+  - Update about dialog text to include privacy policy and info about permissions needed
 
 TTA2 only
 - [STORY] Enter town, find a barricade on main street, go to merchants lane, general store door is broken but has a hole in, when you examine it you get your arm stuck. There are no exits and some items around you.
