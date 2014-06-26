@@ -40,6 +40,7 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - Must haves for next release
+  - [UI] Parchment background seems to have lost it's 9-patch-ness...
   - [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
   - [UI] Add extra story images as Charlie makes them available
   - Update Play store info about permissions needed - copy from about dialog (strings.xml)
