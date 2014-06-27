@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tiny Text Adventure 2</string>
-    <string name="whats_new_dialog_text">V1.1.0
-\n
-\n- Map
-\n- Quick hints system
+    <string name="whats_new_dialog_text"><![CDATA[<b>V1.1.0</b>
+<p>- A brand new story following on from the events of TTA1
+- New look and feel with fonts and textures
+- Beautiful illustrations to elaborate the story
+- A wonderful map which reveals itself as you explore
+- Quick hints system in case you get a bit stuck
+- A walkthrough in case you get really stuck!</p>]]>
 </string>
 </resources>

@@ -40,9 +40,9 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - Must haves for next release
-  - [UI] Add correct what's new text to strings_app_specific.xml for both TTA1 and TTA2
   - [UI] Add extra story images as Charlie makes them available
   - Update Play store info about permissions needed - copy from about dialog (strings.xml)
+  - Update Play store info with what's new text - copy from what's new dialog (strings_app_specific.xml)
 
 * Would likes for next release
 - [UI] Consider allowing landscape view - what affect will this have on image positioning, maps, dialogs and so on?
