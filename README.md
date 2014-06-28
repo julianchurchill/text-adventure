@@ -40,7 +40,7 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - Must haves for next release
-  - [UI] Restore 9-patch-ness to button images
+  - [UI] Remove pixel artifacts from button images again - after restoring the 9-patch-ness
   - [UI] Add extra story images as Charlie makes them available
   - Update Play store info about permissions needed - copy from about dialog (strings.xml)
   - Update Play store info with what's new text - copy from what's new dialog (strings_app_specific.xml)
