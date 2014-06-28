@@ -40,13 +40,12 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - Must haves for next release
-  - [UI] Remove pixel artifacts from button images again - after restoring the 9-patch-ness
   - [UI] Add extra story images as Charlie makes them available
   - Update Play store info about permissions needed - copy from about dialog (strings.xml)
   - Update Play store info with what's new text - copy from what's new dialog (strings_app_specific.xml)
-  - prepare.sh script should preserve the timestamp from copied files, that should stop double builds being triggered
 
 * Would likes for next release
+- prepare.sh script should preserve the timestamp from copied files, that should stop double builds being triggered
 - [UI] Consider allowing landscape view - what affect will this have on image positioning, maps, dialogs and so on?
 - [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
 - [TECHNICAL TASK] - convert to gradle build system from ant
