@@ -102,6 +102,10 @@ public class TextAdventureDummyActivity extends TextAdventureCommonActivity {
         return R.id.about_dialog_main_text;
     }
 
+    protected int R_string_whats_new_dialog_text() {
+        return R.string.whats_new_dialog_text;
+    }
+
     public int R_layout_about_dialog() {
         return R.layout.about_dialog;
     }

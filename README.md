@@ -40,9 +40,11 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - Must haves for next release
+  - [UI] Restore 9-patch-ness to button images
   - [UI] Add extra story images as Charlie makes them available
   - Update Play store info about permissions needed - copy from about dialog (strings.xml)
   - Update Play store info with what's new text - copy from what's new dialog (strings_app_specific.xml)
+  - prepare.sh script should preserve the timestamp from copied files, that should stop double builds being triggered
 
 * Would likes for next release
 - [UI] Consider allowing landscape view - what affect will this have on image positioning, maps, dialogs and so on?

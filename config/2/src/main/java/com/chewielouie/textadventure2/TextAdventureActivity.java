@@ -237,6 +237,10 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
         return R.string.about_dialog_text;
     }
 
+    protected int R_string_whats_new_dialog_text() {
+        return R.string.whats_new_dialog_text;
+    }
+
     protected Field[] R_raw_class_getFields() {
         return R.raw.class.getFields();
     }

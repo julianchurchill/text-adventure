@@ -144,6 +144,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_string_new_game_welcome_dialog_text();
     abstract protected int R_string_new_game_welcome_dialog_continue_button();
     abstract protected int R_string_about_dialog_text();
+    abstract protected int R_string_whats_new_dialog_text();
     abstract protected Field[] R_raw_class_getFields();
     abstract protected int R_style_WaypointDialogTheme();
     abstract protected int R_xml_app_tracker();
@@ -831,7 +832,9 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
         TextView title = (TextView)dialog.findViewById( R_id_about_dialog_title() );
         title.setText( getResources().getString( R_string_app_name() ) + "\n(v" + versionName + ")" );
         TextView mainText = (TextView)dialog.findViewById( R_id_about_dialog_main_text() );
-        mainText.setText( Html.fromHtml( getString( R_string_about_dialog_text() ) ) );
+        String text = String.format( getString( R_string_about_dialog_text() ),
+                                     getString( R_string_whats_new_dialog_text() ) );
+        mainText.setText( Html.fromHtml( text ) );
         // Enable clickable links within the about dialog main text
         mainText.setMovementMethod( LinkMovementMethod.getInstance() );
         dialog.show();

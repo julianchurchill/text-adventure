@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">About</string>
-    <string name="about_dialog_text"><![CDATA[
-<p>Thanks for playing! For any support issues please use the email address at the bottom of this dialog.</p>
-<p>All images except the parchment background created by and copyright 2014 Charles Armitage.</p>
-<p>Parchment background used with permission from <a href="http://www.myfreetextures.com">My Free Textures</a>.</p>
-<p>Thanks to all those who have supported, tested and contributed to Tiny
+    <string name="about_dialog_text">
+&lt;p>Thanks for playing! For any support issues please use the email address at the bottom of this dialog.&lt;/p>
+&lt;p>All images except the parchment background created by and copyright 2014 Charles Armitage.&lt;/p>
+&lt;p>Parchment background used with permission from &lt;a href="http://www.myfreetextures.com">My Free Textures&lt;/a>.&lt;/p>
+&lt;p>Thanks to all those who have supported, tested and contributed to Tiny
 Text Adventure. A big shout out to everyone who supported the kickstarter project
-to help improve TTA1 and bring TTA2 to life.</p>
-<p>You can find <a href="https://play.google.com/store/apps/details?id=com.chewielouie.textadventure">TTA1 here on the play store</a>
- and <a href="https://play.google.com/store/apps/details?id=com.chewielouie.textadventure2">TTA2 over here</a>.
-If you enjoyed these games please leave a review.</p>
-<p><b>Permissions</b></p>
-<p>The INTERNET and ACCESS_NETWORK_STATE permissions are required to allow game play analytics to be gathered.
+to help improve TTA1 and bring TTA2 to life.&lt;/p>
+&lt;p>You can find &lt;a href="https://play.google.com/store/apps/details?id=com.chewielouie.textadventure">TTA1 here on the play store&lt;/a>
+ and &lt;a href="https://play.google.com/store/apps/details?id=com.chewielouie.textadventure2">TTA2 over here&lt;/a>.
+If you enjoyed these games please leave a review.&lt;/p>
+&lt;p>&lt;b>Permissions&lt;/b>&lt;/p>
+&lt;p>The INTERNET and ACCESS_NETWORK_STATE permissions are required to allow game play analytics to be gathered.
 This information is minimal and includes things like how many times you\'ve completed the game, how long it took and
 how long the game takes to load. All of this data is anonymous and averaged out by the Google Analytics servers. There
 is no personal data included in this information. This data will be used to understand what features of the game are used most
-and where improvements can be made, for instance to speed up load times if there is seen to be an issue on certain devices.</p>]]>
+and where improvements can be made, for instance to speed up load times if there is seen to be an issue on certain devices.&lt;/p>
+&lt;p>&lt;b>What\'s New&lt;/b>&lt;/p>
+%1$s
 </string>
     <string name="email">chewielouie03+textadventure@gmail.com</string>
     <string name="copyright">Copyright 2014 Julian Churchill</string>
