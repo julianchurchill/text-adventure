@@ -115,6 +115,7 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     abstract protected int R_id_options_tts_enabled();
     abstract protected int R_id_score_text_view();
     abstract protected int R_id_new_game_welcome_dialog_continue_button();
+    abstract protected int R_id_whats_new_dialog_main_text();
     abstract protected int R_id_whats_new_dialog_continue_button();
     abstract protected int R_id_about_dialog_title();
     abstract protected int R_id_about_dialog_main_text();
@@ -487,6 +488,11 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
 
     private void showWhatsNewDialog() {
         whatsNewDialog = createDialogWithNoTitle( R_layout_whats_new_dialog() );
+        TextView mainText = (TextView)whatsNewDialog.findViewById( R_id_whats_new_dialog_main_text() );
+        String text = getString( R_string_whats_new_dialog_text() );
+        mainText.setText( Html.fromHtml( text ) );
+        // Enable clickable links within the dialog main text
+        mainText.setMovementMethod( LinkMovementMethod.getInstance() );
         Button b = (Button)whatsNewDialog.findViewById( R_id_whats_new_dialog_continue_button() );
         b.setOnClickListener( new View.OnClickListener() {
             @Override

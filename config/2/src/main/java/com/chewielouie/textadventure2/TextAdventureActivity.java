@@ -121,6 +121,10 @@ public class TextAdventureActivity extends TextAdventureCommonActivity {
         return R.id.new_game_welcome_dialog_continue_button;
     }
 
+    protected int R_id_whats_new_dialog_main_text() {
+        return R.id.whats_new_dialog_main_text;
+    }
+
     protected int R_id_whats_new_dialog_continue_button() {
         return R.id.whats_new_dialog_continue_button;
     }
