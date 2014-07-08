@@ -1580,7 +1580,7 @@ x:000
 y:-060
 location id:path_to_breakwater_lake
 location area id:breakwater_lake_area
-location description:You stand at the edge of a large expanse of water, nestled within a horseshoe of low hills. A path rises up the slope behind you, back towards the town of Ubiquity and running further away between the hills is a small track that looks like it was used by a horse and cart a long time ago.
+location description:You stand at the edge of a large expanse of water, nestled within a horseshoe of low hills. A path rises up the slope behind you, back towards the town of Ubiquity and running further away between the hills is a small track that looks like it was used by a horse and cart a long time ago.<div align="center"><img src="lake.png"/></div>
 EXIT
 exit label:Path back to Ubiquity
 exit destination:overgrown_shrubbery
@@ -1707,7 +1707,7 @@ x:000
 y:-300
 location id:breakwater_temple_pit_room
 location area id:breakwater_lake_area
-location description:This room is mostly empty, a little dusty and the sound of dripping water echoes around. The source is not immediately obvious until you realise there is a pit in the centre of the room, into which a slow drip falls from a tiny burgeoning stalactite forming on the ceiling. There is a door on the other side of the room, which you try and discover that it is locked. Torches line the walls making shadows dance about eerily and there is a door leading out of the temple to the south.
+location description:This room is mostly empty, a little dusty and the sound of dripping water echoes around. The source is not immediately obvious until you realise there is a pit in the centre of the room, into which a slow drip falls from a tiny burgeoning stalactite forming on the ceiling. There is a door on the other side of the room, which you try and discover that it is locked. Torches line the walls making shadows dance about eerily and there is a door leading out of the temple to the south.<div align="center"><img src="temple.png"/></div>
 EXIT
 exit label:Temple door
 exit destination:breakwater_temple_entrance_pillars
@@ -2303,6 +2303,7 @@ item use action:change item visibility:glass_barrier_without_mace:visible
 item use action:change item visibility:barrow_2:invisible
 item use action:change item visibility:barrow_after_finding_the_mace:visible
 item use action:change item visibility:barry_wight:visible
+item use action:change location description:misty_downs_barrow:As you scramble up through the scree, feet slipping occasionally, the mist starts to clear and you see what looks like a barrow sitting in a clearing on the slope. The scree is cleared around it, some grass poking through the otherwise barren land. The barrow itself has been formed with several massive boulders and two giant slabs of rock creating a roof to the enclosure. The wind softly whistles through gaps in the stone blowing an occasional whiff of stale air in your direction. A gentle tapping sound seems to emanate from somewhere below your feet, which you find unnerving to say the least. There is a small path which climbs slightly higher up through the rocks behind the barrow.<div align="center"><img src="barry.png"/></div>
 item use action:change exit visibility:misty_downs_barrow_to_misty_downs_path_behind_barrow:invisible
 item use action:take item:whirligigs_shattering_star_mace
 item use action:increment score:
@@ -2652,7 +2653,7 @@ x:-480
 y:000
 location id:misty_downs_barrow
 location area id:misty_downs_area
-location description:As you scramble up through the scree, feet slipping occasionally, the mist starts to clear and you see what looks like a barrow sitting in a clearing on the slope. The scree is cleared around it, some grass poking through the otherwise barren land. The barrow itself has been formed with several massive boulders and two giant slabs of rock creating a roof to the enclosure. The wind softly whistles through gaps in the stone blowing an occasional whiff of stale air in your direction. A gentle tapping sound seems to emanate from somewhere below your feet, which you find unnerving to say the least. There is a small path which climbs slightly higher up through the rocks behind the barrow.
+location description:As you scramble up through the scree, feet slipping occasionally, the mist starts to clear and you see what looks like a barrow sitting in a clearing on the slope. The scree is cleared around it, some grass poking through the otherwise barren land. The barrow itself has been formed with several massive boulders and two giant slabs of rock creating a roof to the enclosure. The wind softly whistles through gaps in the stone blowing an occasional whiff of stale air in your direction. A gentle tapping sound seems to emanate from somewhere below your feet, which you find unnerving to say the least. There is a small path which climbs slightly higher up through the rocks behind the barrow.<div align="center"><img src="barrow.png"/></div>
 EXIT
 exit label:Gap in the scree
 exit destination:misty_downs_downstream
@@ -2717,6 +2718,7 @@ item use action:change item visibility:barry_wight:invisible
 item use action:change item visibility:barrow_after_finding_the_mace:invisible
 item use action:change item visibility:barrow_2:visible
 item use action:change item visibility:kris_knife:visible
+item use action:change location description:misty_downs_barrow:As you scramble up through the scree, feet slipping occasionally, the mist starts to clear and you see what looks like a barrow sitting in a clearing on the slope. The scree is cleared around it, some grass poking through the otherwise barren land. The barrow itself has been formed with several massive boulders and two giant slabs of rock creating a roof to the enclosure. The wind softly whistles through gaps in the stone blowing an occasional whiff of stale air in your direction. A gentle tapping sound seems to emanate from somewhere below your feet, which you find unnerving to say the least. There is a small path which climbs slightly higher up through the rocks behind the barrow.<div align="center"><img src="barrow.png"/></div>
 item use action:change exit visibility:misty_downs_barrow_to_misty_downs_path_behind_barrow:visible
 item use action:take item:kris_knife
 item use action:increment score:
@@ -2724,7 +2726,7 @@ item talk initial phrase:letmepast:Let me past:"Let me past." you command, direc
 item talk response to:letmepast:"I love you baby - but you're so baaad for me. Like salt and cheese, but we should be like garlic and coffeeeee, in perfect harmonyyyyy". Clearly this wight's brains have been addled more than most by his after death experience. You pity him but you'd rather not get into a relationship right now, your heart belongs to another. However he will not let you pass to continue your quest. The quickest way to resolve this may be a quick whack on the noggin with something heavy.
 ITEM
 item name:Kris knife
-item description:This is an unusual dagger with a long waved blade and etchings in the blade itself and the handle. You suspect it may be magical and recognise some of the symbols from old folklore. In particular on the handle there is a scene showing some sort of demonic creature being confronted by a kneeling man holding a waved dagger although the demon does not appear to be looking at the man who appears almost ethereal, ghost-like.
+item description:This is an unusual dagger with a long waved blade and etchings in the blade itself and the handle. You suspect it may be magical and recognise some of the symbols from old folklore. In particular on the handle there is a scene showing some sort of demonic creature being confronted by a kneeling man holding a waved dagger although the demon does not appear to be looking at the man who appears almost ethereal, ghost-like.<div align="center"><img src="knife.png"/></div>
 item id:kris_knife
 item countable noun prefix:a
 item mid sentence cased name:kris knife
@@ -3623,7 +3625,7 @@ y:-240
 location id:bellas_castle_great_hall
 location area id:bellas_castle_area
 location description:In the centre of the room a hanging cage draws your attention. It looks like it has been put to much use. Scattered scraps of food litter the floor beneath it and you see the odd glint of white-grey bone fragments on the floor - the remains of dinner or just remains?
-text to show on first entry:You walk into the room and pause for a moment to take in your surroundings. Your attention is immediately drawn to the girl in a cage suspended from the ceiling in the centre of the room, it looks like Oubliette. You hear a chuckle from the shadows - "So it was you who broke my barrier." The voice sounds familiar but is very croaky. Before you realise it the witch is upon you, Bella Constantine! You recognise her face as she rushes at you from one of the platforms at the edge of the room, a great leaping glide through the air and she levitates across the space to land only a few feet away from you.<newline><newline>The witch mocks you. "Welcome hero. You have come for your revenge, your reckoning for this world upon me? I think you are weak. You cannot stop me. You are no hero, just flesh and bone, flawed and scared. This isn't honourable, this isn't justice despite what you may think, you are no better than I. I'll warrant there are moments, in your grave and fearsome determination when you would collapse this hate filled, miserable world in on itself if given the power. Scream at the empty, pitiless sky - it will not listen to you.". She screams herself to emphasise the point and leaps away with a dramatic flourish into the shadows.
+text to show on first entry:You walk into the room and pause for a moment to take in your surroundings. Your attention is immediately drawn to the girl in a cage suspended from the ceiling in the centre of the room, it looks like Oubliette. You hear a chuckle from the shadows - "So it was you who broke my barrier." The voice sounds familiar but is very croaky. Before you realise it the witch is upon you, Bella Constantine! You recognise her face as she rushes at you from one of the platforms at the edge of the room, a great leaping glide through the air and she levitates across the space to land only a few feet away from you.<newline><div align="center"><img src="bella.png"/></div><newline>The witch mocks you. "Welcome hero. You have come for your revenge, your reckoning for this world upon me? I think you are weak. You cannot stop me. You are no hero, just flesh and bone, flawed and scared. This isn't honourable, this isn't justice despite what you may think, you are no better than I. I'll warrant there are moments, in your grave and fearsome determination when you would collapse this hate filled, miserable world in on itself if given the power. Scream at the empty, pitiless sky - it will not listen to you.". She screams herself to emphasise the point and leaps away with a dramatic flourish into the shadows.
 EXIT
 exit label:Castle entrance
 exit destination:bellas_castle_entrance
@@ -3753,7 +3755,7 @@ item on examine action:change exit visibility:bellas_castle_great_hall_to_bellas
 item on examine action:change exit visibility:bellas_castle_great_hall_to_bellas_castle_great_hall_west_platform:invisible
 ITEM
 item name:Demon Witch
-item description:Your mind does somersaults as you try to reason how this monster before you was once the beautiful lady that you first encountered in Oren Constantine's mansion study. Now turned to her true nature by whatever pact with hell she must have made, she stands as a monstrous demon before you, glowering down with intense rage.
+item description:Your mind does somersaults as you try to reason how this monster before you was once the beautiful lady that you first encountered in Oren Constantine's mansion study. Now turned to her true nature by whatever pact with hell she must have made, she stands as a monstrous demon before you, glowering down with intense rage.<div align="center"><img src="demon.png"/></div>
 item id:demon_witch_invulnerable
 item mid sentence cased name:Demon Witch
 item countable noun prefix:a
@@ -3768,7 +3770,7 @@ item use action:change item visibility:oubliette_in_the_cage_after_demon_appears
 item use action:change item visibility:oubliette_in_the_cage_when_you_are_a_ghost:visible
 ITEM
 item name:Demon Witch
-item description:Your mind does somersaults as you try to reason how this monster before you was once the beautiful lady that you first encountered in Oren Constantine's mansion study. Now turned to her true nature by whatever pact with hell she must have made, she stands as a monstrous demon before you, glowering down with intense rage. Her attention is currently directed towards Oubliette whom she glares at with impassionate calculation, eyeing her as a simple ingredient in a diabolical stew. The demon appears to be unable to see or hear you but you are not sure what good that will do you.
+item description:Your mind does somersaults as you try to reason how this monster before you was once the beautiful lady that you first encountered in Oren Constantine's mansion study. Now turned to her true nature by whatever pact with hell she must have made, she stands as a monstrous demon before you, glowering down with intense rage. Her attention is currently directed towards Oubliette whom she glares at with impassionate calculation, eyeing her as a simple ingredient in a diabolical stew. The demon appears to be unable to see or hear you but you are not sure what good that will do you.<div align="center"><img src="demon.png"/></div>
 item id:demon_witch
 item mid sentence cased name:Demon Witch
 item countable noun prefix:a
@@ -3838,7 +3840,7 @@ x:-480
 y:-270
 location id:bellas_castle_great_hall_north_platform
 location area id:bellas_castle_area
-location description:This is the north platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.
+location description:This is the north platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.<div align="center"><img src="brazier.png"/></div>
 EXIT
 exit label:Centre of the room
 exit destination:bellas_castle_great_hall
@@ -3886,7 +3888,7 @@ x:-480
 y:-210
 location id:bellas_castle_great_hall_south_platform
 location area id:bellas_castle_area
-location description:This is the south platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.
+location description:This is the south platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.<div align="center"><img src="brazier.png"/></div>
 EXIT
 exit label:Centre of the room
 exit destination:bellas_castle_great_hall
@@ -3935,7 +3937,7 @@ x:-450
 y:-240
 location id:bellas_castle_great_hall_east_platform
 location area id:bellas_castle_area
-location description:This is the east platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.
+location description:This is the east platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.<div align="center"><img src="brazier.png"/></div>
 EXIT
 exit label:Centre of the room
 exit destination:bellas_castle_great_hall
@@ -3984,7 +3986,7 @@ x:-510
 y:-240
 location id:bellas_castle_great_hall_west_platform
 location area id:bellas_castle_area
-location description:This is the west platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.
+location description:This is the west platform in the central room of the witch's castle. It is raised and a handful of cold stone steps lead up to it where a lone flaming brazier stands.<div align="center"><img src="brazier.png"/></div>
 EXIT
 exit label:Centre of the room
 exit destination:bellas_castle_great_hall

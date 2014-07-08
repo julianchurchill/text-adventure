@@ -40,9 +40,11 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - Must haves for next release
-  - [UI] Add extra story images as Charlie makes them available
+  - Build release versions of TTA1 and TTA2, upload to play store
+  - Add a git tag for each of the TTA releases (1 and 2)
   - Update Play store info about permissions needed - copy from about dialog (strings.xml)
   - Update Play store info with what's new text - copy from what's new dialog (strings_app_specific.xml)
+  - Increment version numbers in manifests
 
 * Would likes for next release
 - prepare.sh script should preserve the timestamp from copied files, that should stop double builds being triggered
@@ -141,6 +143,14 @@ Story - TTA2
   - DONE Muck selling crone
   - DONE barricade for first entrance to Perpetuity
   - DONE Shaved yak
+  - DONE Barrow for the barrow wight to live in
+  - DONE Barry Wight - the Nec-romancer
+  - DONE Lake
+  - DONE Temple
+  - DONE A brazier for the great hall 4 platforms
+  - DONE Bella
+  - DONE The demon witch
+  - DONE Kris knife
   - A hairy yak for the farm?
   - Second Fell beast for the barricade attack
   - Mushrooms
@@ -150,12 +160,8 @@ Story - TTA2
   - Bank of Ubiquity
   - Scabby Mary the soothsayer
   - Frank's Tool Shed
-  - Barrow for the barrow wight to live in
-  - Barry Wight - the Nec-romancer
   - The magical barrier in front of the castle
   - The Great Hall with Oubliette in a hanging cage
-  - A brazier for the great hall 4 platforms
-  - The demon witch
 - Add slightly animated images (3-5 frames)
   - A mouse scampering around the base of the barricade
   - Juddering hour hand on the clock tower
