@@ -39,14 +39,6 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- Must haves for next release
-  - Build release versions of TTA1 and TTA2, upload to play store
-  - Add a git tag for each of the TTA releases (1 and 2)
-  - Update Play store info about permissions needed - copy from about dialog (strings.xml)
-  - Update Play store info with what's new text - copy from what's new dialog (strings_app_specific.xml)
-  - Increment version numbers in manifests
-
-* Would likes for next release
 - prepare.sh script should preserve the timestamp from copied files, that should stop double builds being triggered
 - [UI] Consider allowing landscape view - what affect will this have on image positioning, maps, dialogs and so on?
 - [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
@@ -201,7 +193,7 @@ Marketing
 - Facebook, Twitter, Google+
   - Release 1.0 and 2.0 advertised on all of the above
 
-TTA1 v2.2.x to v2.3.0 and TTA2 v1.0.x to v1.1.0
+TTA1 v2.2.x to v2.3.0 (and v2.3.1) and TTA2 v1.0.x to v1.1.0
 ---
 
 - [FEATURE] Written walkthrough for TTA1 and TTA2
