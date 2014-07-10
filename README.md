@@ -39,6 +39,8 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
+- [BUG] In CommonActivity::showNewGameConfirmationDialog() the onClick() method will call createNewGame() in the UI thread - this loads a file which might take some time and may end up in a dreaded 'App Not Responding' error!!!
+
 - prepare.sh script should preserve the timestamp from copied files, that should stop double builds being triggered
 - [UI] Consider allowing landscape view - what affect will this have on image positioning, maps, dialogs and so on?
 - [BUG] Exits are not always clearly readable. Should they be in shadowed text or some other effect?
@@ -192,6 +194,11 @@ Marketing
   - Listed
 - Facebook, Twitter, Google+
   - Release 1.0 and 2.0 advertised on all of the above
+
+TTA1 v2.3.2 and TTA2 v1.1.1
+---
+
+- Turned off proguard to allow decipherable backtraces
 
 TTA1 v2.2.x to v2.3.0 (and v2.3.1) and TTA2 v1.0.x to v1.1.0
 ---

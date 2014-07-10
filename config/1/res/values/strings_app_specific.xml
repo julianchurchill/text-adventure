@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tiny Text Adventure 1</string>
-    <string name="whats_new_dialog_text">&lt;p>&lt;b>V2.3.0&lt;/b>&lt;/p>
+    <string name="whats_new_dialog_text">&lt;p>&lt;b>V2.3.2&lt;/b>&lt;/p>
+&lt;p>- Debugging fix to allow developer to read backtraces (proguard off)
+&lt;p>&lt;b>V2.3.0&lt;/b>&lt;/p>
 &lt;p>- New look and feel with fonts and textures
 &lt;br>- Beautiful illustrations to elaborate the story
 &lt;br>- A wonderful map which reveals itself as you explore
