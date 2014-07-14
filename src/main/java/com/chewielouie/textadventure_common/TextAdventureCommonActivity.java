@@ -517,8 +517,10 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     }
 
     private void whatsNewDialogCloseActions() {
-        whatsNewDialog.dismiss();
-        whatsNewDialog = null;
+        if( whatsNewDialog != null ) {
+            whatsNewDialog.dismiss();
+            whatsNewDialog = null;
+        }
         updateWhatsNewLastViewedVersion();
         startGame();
     }
