@@ -40,6 +40,7 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.text.Html;
@@ -266,6 +267,12 @@ public abstract class TextAdventureCommonActivity extends Activity implements Te
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        if( isDebugMode() ) {
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .build());
+        }
         super.onCreate(savedInstanceState);
         requestWindowFeature( Window.FEATURE_NO_TITLE );
         setContentView(R_layout_main());
