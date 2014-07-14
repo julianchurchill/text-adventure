@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tiny Text Adventure 2</string>
-    <string name="whats_new_dialog_text">&lt;p>&lt;b>V1.1.1&lt;/b>&lt;/p>
+    <string name="whats_new_dialog_text">&lt;p>&lt;b>V1.1.2&lt;/b>&lt;/p>
+&lt;p>- Fix for hang on start on some Samsung devices
+&lt;p>&lt;b>V1.1.1&lt;/b>&lt;/p>
 &lt;p>- Debugging fix to allow developer to read backtraces (proguard off)
 &lt;p>&lt;b>V1.1.0&lt;/b>&lt;/p>
 &lt;p>- A brand new story following on from the events of TTA1

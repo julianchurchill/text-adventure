@@ -198,6 +198,14 @@ Marketing
 TTA1 v2.3.2 and TTA2 v1.1.1
 ---
 
+ - [BUG] On some Samsung devices (Y, Galaxy Mega and S III) a 'App Not Responding' ANR error
+   occurs with a backtrace inside the for loop in MainTextFormatter::terminateSpannableClickRegion().
+   My best guess is that measureText() is broken for '\t' on these devices somehow and returning a value that is 0 or less
+   - [FIX] Check for a positive increment value for widthOfASingleTab in MainTextFormatter::terminateSpannableClickRegion()
+
+TTA1 v2.3.2 and TTA2 v1.1.1
+---
+
 - Turned off proguard to allow decipherable backtraces
 
 TTA1 v2.2.x to v2.3.0 (and v2.3.1) and TTA2 v1.0.x to v1.1.0

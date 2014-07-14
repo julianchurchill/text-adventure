@@ -227,11 +227,18 @@ public class MainTextFormatter {
         // These additional spaces stop the spannable click region for the last
         // spannable from extending all the way to the edge of the text view
         // and to the bottom of the  text view too
-        float widthOfASingleTab = text_output.getPaint().measureText( "\t" );
-        String fullWidthLineOfTabs = "";
-        for( float size = 0; size < text_output.getWidth(); size += widthOfASingleTab )
-            fullWidthLineOfTabs += "\t";
-        builder.append( fullWidthLineOfTabs );
+        float paddedTabWidth = text_output.getPaint().measureText( "X\tX" );
+        float widthOfASingleTab = paddedTabWidth - text_output.getPaint().measureText( "XX" );
+        // BUG: On some Samsung devices (Y, Galaxy Mega and S III) a 'App Not Responding' ANR error
+        // occurs with a backtrace inside the for loop below. My best guess is that measureText()
+        // is broken for '\t' on these devices somehow and returning a value that is 0 or less
+        // FIX: Check for a positive increment value for widthOfASingleTab
+        if( widthOfASingleTab > 0 ) {
+            String fullWidthLineOfTabs = "";
+            for( float size = 0; size < text_output.getWidth(); size += widthOfASingleTab )
+                fullWidthLineOfTabs += "\t";
+            builder.append( fullWidthLineOfTabs );
+        }
     }
 
     private List<Exit> orderForDisplay( List<Exit> exits ) {
