@@ -39,7 +39,15 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
+- [STORY BUG] Conversation with Bank Teller can be broken. Say 'I'd like to deposit some money' and the follow up options are 'No I don't' and 'Yes I do' which don't make any sense. Say 'No I don't' and the follow up options are 'Clarence of Davenport' and '' - these aren't right and the second one should never be an empty string!
 - [BUG] In CommonActivity::showNewGameConfirmationDialog() the onClick() method will call createNewGame() in the UI thread - this loads a file which might take some time and may end up in a dreaded 'App Not Responding' error!!!
+- [STORY BUG] Double punctuation after quotes or parenthesis e.g. "help?"., "crying?"., "goes by.".. Either keep the full stop before the closing quote or after, but not both. Be consistent.
+- [STORY BUG] The 'rabble of tired men' are still in the description for _outside_ of the gatehouse even when they've left.
+- [STORY BUG] The yak picture in the farm is of a shaved yak - but the description is of a hairy one...
+- [STORY BUG] The picture of Barry Wight appears from nowhere - perhaps a mention in the description would be a good idea.
+- The parchment texture gets very stretched in the walkthrough page and on some pages with lots of description - e.g. after doing Quaternius' lab.
+- It seems a bit odd to be able to use an object with itself - e.g. the spiky-toothed goober.
+- Barrelling goon puzzle is very easy!
 
 - prepare.sh script should preserve the timestamp from copied files, that should stop double builds being triggered
 - [UI] Consider allowing landscape view - what affect will this have on image positioning, maps, dialogs and so on?
