@@ -39,7 +39,6 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [STORY BUG] The 'rabble of tired men' are still in the description for _outside_ of the gatehouse even when they've left.
 - [STORY BUG] The picture of Barry Wight appears from nowhere - perhaps a mention in the description would be a good idea.
 - [STORY BUG] Conversation with Bank Teller can be broken. Say 'I'd like to deposit some money' and the follow up options are 'No I don't' and 'Yes I do' which don't make any sense. Say 'No I don't' and the follow up options are 'Clarence of Davenport' and '' - these aren't right and the second one should never be an empty string!
 - [BUG] In CommonActivity::showNewGameConfirmationDialog() the onClick() method will call createNewGame() in the UI thread - this loads a file which might take some time and may end up in a dreaded 'App Not Responding' error!!!
@@ -209,6 +208,8 @@ TTA2 v1.1.3
 
 - [STORY BUG] The yak picture in the farm is of a shaved yak - but the description is of a hairy one...
   - [FIX] Remove picture from this scene
+- [STORY BUG] The 'rabble of tired men' are still in the description for _outside_ of the gatehouse even when they've left.
+  - [FIX] Updated descriptions, including after attack finishes so that the men are tidying up.
 
 TTA1 v2.3.3 and TTA2 v1.1.2
 ---
