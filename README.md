@@ -39,12 +39,11 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
+- [STORY BUG] The 'rabble of tired men' are still in the description for _outside_ of the gatehouse even when they've left.
+- [STORY BUG] The picture of Barry Wight appears from nowhere - perhaps a mention in the description would be a good idea.
 - [STORY BUG] Conversation with Bank Teller can be broken. Say 'I'd like to deposit some money' and the follow up options are 'No I don't' and 'Yes I do' which don't make any sense. Say 'No I don't' and the follow up options are 'Clarence of Davenport' and '' - these aren't right and the second one should never be an empty string!
 - [BUG] In CommonActivity::showNewGameConfirmationDialog() the onClick() method will call createNewGame() in the UI thread - this loads a file which might take some time and may end up in a dreaded 'App Not Responding' error!!!
 - [STORY BUG] Double punctuation after quotes or parenthesis e.g. "help?"., "crying?"., "goes by.".. Either keep the full stop before the closing quote or after, but not both. Be consistent.
-- [STORY BUG] The 'rabble of tired men' are still in the description for _outside_ of the gatehouse even when they've left.
-- [STORY BUG] The yak picture in the farm is of a shaved yak - but the description is of a hairy one...
-- [STORY BUG] The picture of Barry Wight appears from nowhere - perhaps a mention in the description would be a good idea.
 - The parchment texture gets very stretched in the walkthrough page and on some pages with lots of description - e.g. after doing Quaternius' lab.
 - It seems a bit odd to be able to use an object with itself - e.g. the spiky-toothed goober.
 - Barrelling goon puzzle is very easy!
@@ -180,9 +179,11 @@ Marketing
 - Add keywords and description to Google Play description to include - "Story, game, puzzle"
 - Forums and newsgroups: intfiction.org, rec.games.int-fiction, rec.arts.int-fiction
   - TTA1 release posted on intfiction.org
+  - TTA2 release posted on intfiction.org
 - Game indexes and review sites: ifdb.tads.org, textadventures.co.uk, www.androidtapp.com
   - TTA1 androidtapp review request submitted
   - TTA1 added to ifdb - http://ifdb.tads.org/viewgame?id=6bsa13ogybwiucr0
+  - TTA2 androidtapp review request submitted
 - Add a Google+ page for the app, add to About box and play store/amazon store listings
   - Added Google+ page for Tiny Text Adventure https://plus.google.com/u/0/115456188877848985242
 
@@ -203,7 +204,13 @@ Marketing
 - Facebook, Twitter, Google+
   - Release 1.0 and 2.0 advertised on all of the above
 
-TTA1 v2.3.2 and TTA2 v1.1.1
+TTA2 v1.1.3
+---
+
+- [STORY BUG] The yak picture in the farm is of a shaved yak - but the description is of a hairy one...
+  - [FIX] Remove picture from this scene
+
+TTA1 v2.3.3 and TTA2 v1.1.2
 ---
 
 - [BUG] Intermittent null pointer exception when cancelling the what's new dialog

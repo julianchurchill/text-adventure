@@ -2402,7 +2402,7 @@ x:000
 y:120
 location id:yak_farm
 location area id:ubiquity_area
-location description:This is a farm, it stinks more than you'd expect and looking around you realise why. It's a yak farm, and there are a lot of them penned in fields far and wide. They've not been shaved for a long time, their coats long and hairy, sticky with mud and probably worse things. If there's one thing that a yak needs it's a regular shave but the farmer doesn't seem to be around.<div align="center"><img src="shaved_yak.png"/></div>Yak farming used to be a highly profitable business and this must have been a real money spinner. It seems quite strange to you that it would have been abandoned but you decide not to over analyse the situation, after all 'don't look a gift yak in the mouth', or something. In the distance you can hear what might be misconstrued as singing. It appears to be coming from a nearby hillock.
+location description:This is a farm, it stinks more than you'd expect and looking around you realise why. It's a yak farm, and there are a lot of them penned in fields far and wide. They've not been shaved for a long time, their coats long and hairy, sticky with mud and probably worse things. If there's one thing that a yak needs it's a regular shave but the farmer doesn't seem to be around. Yak farming used to be a highly profitable business and this must have been a real money spinner. It seems quite strange to you that it would have been abandoned but you decide not to over analyse the situation, after all 'don't look a gift yak in the mouth', or something. In the distance you can hear what might be misconstrued as singing. It appears to be coming from a nearby hillock.
 EXIT
 exit label:Road to Ubiquity
 exit destination:ubiquity_road_west
