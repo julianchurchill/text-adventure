@@ -39,7 +39,6 @@ Backlog
 
 Ordered by priority, first to do at the top.
 
-- [STORY BUG] The picture of Barry Wight appears from nowhere - perhaps a mention in the description would be a good idea.
 - [BUG] In CommonActivity::showNewGameConfirmationDialog() the onClick() method will call createNewGame() in the UI thread - this loads a file which might take some time and may end up in a dreaded 'App Not Responding' error!!!
 - [STORY BUG] Double punctuation after quotes or parenthesis e.g. "help?"., "crying?"., "goes by.".. Either keep the full stop before the closing quote or after, but not both. Be consistent.
 - The parchment texture gets very stretched in the walkthrough page and on some pages with lots of description - e.g. after doing Quaternius' lab.
@@ -210,6 +209,8 @@ TTA2 v1.1.3
   - [FIX] Updated descriptions, including after attack finishes so that the men are tidying up.
 - [STORY BUG] Conversation with Bank Teller is broken after you have got the groats from him. Say 'I'd like to deposit some money' and the follow up options are 'No I don't' and 'Yes I do' which don't make any sense. Say 'No I don't' and the follow up options are 'Clarence of Davenport' and '' - these aren't right and the second one should never be an empty string!
   - [FIX] The follow up phrase to 'noidont' was incorrectly marked as the follow up phrase for 'idliketodepositsomemoney' which led to a confused weird path of phrases.
+- [STORY BUG] The picture of Barry Wight appears from nowhere - perhaps a mention in the description would be a good idea.
+  - [FIX] Add a bit of description to accompany the image.
 
 TTA1 v2.3.3 and TTA2 v1.1.2
 ---
