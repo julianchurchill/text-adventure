@@ -40,6 +40,7 @@ Backlog
 Ordered by priority, first to do at the top.
 
 - [BUG] In CommonActivity::showNewGameConfirmationDialog() the onClick() method will call createNewGame() in the UI thread - this loads a file which might take some time and may end up in a dreaded 'App Not Responding' error!!!
+- [STORY BUG] Reported by Paul Baines via email "After I freed the shopkeeper and gave him the map I later went back into the mine and, out of ideas, I hit the rock again. Suddenly the shop keeper appeared! But now I don't have the map."
 - [STORY BUG] Double punctuation after quotes or parenthesis e.g. "help?"., "crying?"., "goes by.".. Either keep the full stop before the closing quote or after, but not both. Be consistent.
 - The parchment texture gets very stretched in the walkthrough page and on some pages with lots of description - e.g. after doing Quaternius' lab.
 - It seems a bit odd to be able to use an object with itself - e.g. the spiky-toothed goober.
